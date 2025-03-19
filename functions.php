@@ -187,3 +187,16 @@ function edpsybold_comment_count($count)
         return $count;
     }
 }
+
+// Jobs 
+function add_job_manager_body_classes($classes)
+{
+    if (is_page('jobs')) { // Check if it's the jobs page
+        $classes[] = 'edp-jobs job-listings-page'; // Add a class for the jobs page
+    }
+    if (is_singular('job_listing')) { // Check if it's a single job listing
+        $classes[] = 'edp-jobs single-job-listing'; // Add a class for single job listings
+    }
+    return $classes;
+}
+add_filter('body_class', 'add_job_manager_body_classes');

@@ -1,0 +1,7 @@
+@import url('variables.css');
+
+.business-directory {
+    #container {
+        background-color: var(--cl-lightblue);
+    }
+}

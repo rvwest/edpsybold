@@ -1,0 +1,12 @@
+@import url('variables.css');
+
+.edp-jobs {
+    #container {
+        background-color: var(--cl-orange);
+    }
+
+    .edp-pagewidth {
+        display: flex;
+    }
+
+}

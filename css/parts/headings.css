@@ -1,0 +1,22 @@
+@import url('variables.css');
+
+.edp-jobs {
+    h1 {
+        font-size: var(--fs-display-large);
+        line-height: calc(var(--fs-display-large) * 1.5);
+        color: var(--cl-light);
+        margin: var(--sp-medium) 0;
+        font-weight: var(--fw-semibold);
+    }
+}
+
+/* Thesis */
+.business-directory {
+    h1 {
+        font-size: var(--fs-display-medium);
+        line-height: calc(var(--fs-display-medium) * 1.5);
+        color: var(--cl-light);
+        margin: var(--sp-medium) 0;
+        font-weight: var(--fw-semibold);
+    }
+}

@@ -1,0 +1,10 @@
+@import url('variables.css');
+
+.header-logo {
+    width: 64px;
+    margin: var(--sp-small) 0
+}
+
+a:hover .header-logo {
+    opacity: 0.8;
+}

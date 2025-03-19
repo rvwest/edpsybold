@@ -1,0 +1,30 @@
+@import url('variables.css');
+
+#menu {
+    display: none;
+}
+
+aside {
+    display: none
+}
+
+body {
+    font-family: var(--ff);
+    color: var(--cl-dark);
+    font-size: var(--fs-body);
+    font-weight: var(--fw-extralight);
+    line-height: var(--lh-body);
+    margin-top: 10px;
+    background-color: var(--cl-light);
+    margin: 0 auto;
+
+
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+    color: var(--cl-link);
+    text-decoration: none;
+}

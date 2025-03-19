@@ -1,0 +1,42 @@
+@font-face {
+    font-family: "Geologica";
+    src: url("../../fonts/geologica.ttf") format("truetype");
+    font-weight: 200 900;
+    font-style: normal;
+}
+
+:root {
+    /* Colors */
+    --cl-light: #FFFBF2;
+    --cl-dark: #363033;
+    --cl-link: #0072B9;
+    --cl-orange: #DB633B;
+    --cl-lightblue: #78A8CF;
+
+    /* Spacing */
+    --sp-vsmall: 6px;
+    --sp-small: 12px;
+    --sp-medium: 24px;
+    --sp-large: 36px;
+    --sp-xlarge: 48px;
+
+    /* Layout */
+    --mw-full: 1248px;
+
+    /* Typography */
+    --ff: 'Geologica', sans-serif;
+    --fs-body: 18px;
+    --fs-display-large: 110px;
+    --fs-display-medium: 60px;
+    --lh-body: calc(var(--fs-body) * 1.5);
+    --fw-extralight: 200;
+    --fw-light: 300;
+    --fw-normal: 400;
+    --fw-semibold: 600;
+
+    /* Breakpoints */
+    --bp-small: 480px;
+    --bp-medium: 768px;
+    --bp-large: 1024px;
+    --bp-xlarge: 1281px;
+}

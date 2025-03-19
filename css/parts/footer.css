@@ -1,0 +1,16 @@
+@import url('variables.css');
+
+footer {
+    background-color: var(--cl-dark);
+    color: var(--cl-light);
+    padding: var(--sp-xlarge);
+
+    .footer-container {
+        max-width: 1248px;
+    }
+
+    .footer-logo {
+        width: 124px;
+        height: 116px;
+    }
+}

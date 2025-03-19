@@ -1,0 +1,37 @@
+@import url('variables.css');
+
+.edp-fullwidth {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.edp-pagewidth {
+    width: var(--mw-full);
+    margin: 0 max(4vw, var(--sp-small));
+}
+
+
+
+
+.grid12 {
+    grid-template-columns: repeat(12, 1fr);
+    display: grid;
+    grid-column-gap: 24px;
+    max-width: var(--mw-full);
+}
+
+.span12 {
+    grid-column: 1 / span 12;
+    grid-template-columns: subgrid;
+    display: grid;
+}
+
+.span10 {
+    grid-column: 2 / span 10;
+    grid-template-columns: subgrid;
+}
+
+.span8 {
+    grid-column: 3 / span 8;
+}
