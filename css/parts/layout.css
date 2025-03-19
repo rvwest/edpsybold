@@ -11,9 +11,20 @@
     margin: 0 max(4vw, var(--sp-small));
 }
 
+.span10 {
+    width: max(90vw, var(--gs-10));
+    /* Formula: (Full viewport width - total margins - total gutters) / 12 columns */
+}
+
+.span8 {
+    width: max(90vw, var(--gs-8));
+    /* Formula: (Full viewport width - total margins - total gutters) / 12 columns */
+}
 
 
 
+
+/*
 .grid12 {
     grid-template-columns: repeat(12, 1fr);
     display: grid;
@@ -35,3 +46,4 @@
 .span8 {
     grid-column: 3 / span 8;
 }
+    */

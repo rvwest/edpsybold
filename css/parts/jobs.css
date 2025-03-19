@@ -5,8 +5,37 @@
         background-color: var(--cl-orange);
     }
 
-    .edp-pagewidth {
-        display: flex;
+    .entry-content {
+        grid-template-columns: repeat(12, 1fr);
+        display: grid;
+        grid-column-gap: 24px;
+        max-width: var(--mw-full);
+
+        .job_filters {
+            display: none;
+        }
+
+        div.job_listings {
+            grid-column: 2 / span 10;
+        }
+
+        ul.job_listings a {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            grid-column-gap: 24px;
+
+            img.company_logo {
+                grid-column: 1 / span 2;
+            }
+
+            .position {
+                grid-column: 3 / span 8;
+            }
+
+        }
+
     }
+
+
 
 }

@@ -1,10 +1,12 @@
 @import url('variables.css');
 
-.header-logo {
-    width: 64px;
-    margin: var(--sp-small) 0
-}
+header[role="banner"] {
+    .header-logo {
+        width: 64px;
+        margin: var(--sp-small) 0
+    }
 
-a:hover .header-logo {
-    opacity: 0.8;
+    a:hover .header-logo {
+        opacity: 0.8;
+    }
 }

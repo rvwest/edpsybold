@@ -39,4 +39,9 @@
     --bp-medium: 768px;
     --bp-large: 1024px;
     --bp-xlarge: 1281px;
+
+    /* Grid spans */
+    --gs-8: calc((8 * ((100vw - 144px - (11 * 24px)) / 12)) + (7 * 24px));
+    --gs-10: calc((10 * ((100vw - 144px - (11 * 24px)) / 12)) + (9 * 24px));
+    --gs-12: calc(((100vw - 144px - (11 * 24px))) + (11 * 24px));
 }
