@@ -1,5 +1,38 @@
 @import url('variables.css');
 
+#signup-slice {
+    background-color: var(--cl-light);
+    color: var(--cl-dark);
+    padding: var(--sp-xxxlarge) 0;
+    background-image: url('../../images/edpsy-swirls-05.svg');
+    background-size: cover;
+    background-position: center;
+
+    .signup-content {
+        background-color: var(--cl-light);
+        padding: var(--sp-large);
+        display: flex;
+        align-items: start;
+
+        .message {
+            width: 60%;
+            padding-right: var(--sp-large);
+
+            h2 {
+                font-size: var(--fs-display-small);
+                line-height: var(--lh-display-small);
+                font-weight: var(--fw-semibold);
+                padding-bottom: var(--sp-small);
+            }
+        }
+
+        form {
+            width: 40%;
+        }
+    }
+
+}
+
 footer {
     background-color: var(--cl-dark);
     color: var(--cl-light);

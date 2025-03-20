@@ -3,7 +3,7 @@
 .edp-jobs {
     h1 {
         font-size: var(--fs-display-large);
-        line-height: calc(var(--fs-display-large) * 1.5);
+        line-height: var(--lh-display-large);
         color: var(--cl-light);
         margin: var(--sp-medium) 0;
         font-weight: var(--fw-semibold);
@@ -14,7 +14,7 @@
 .business-directory {
     h1 {
         font-size: var(--fs-display-medium);
-        line-height: calc(var(--fs-display-medium) * 1.5);
+        line-height: var(--lh-display-medium);
         color: var(--cl-light);
         margin: var(--sp-medium) 0;
         font-weight: var(--fw-semibold);

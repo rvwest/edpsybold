@@ -9,7 +9,11 @@
         grid-template-columns: repeat(12, 1fr);
         display: grid;
         grid-column-gap: 24px;
-        max-width: var(--mw-full);
+        max-width: var(--lv-full-width);
+
+        +* {
+            grid-column: 2 / span 10;
+        }
 
         .job_filters {
             display: none;
@@ -17,19 +21,61 @@
 
         div.job_listings {
             grid-column: 2 / span 10;
+            margin-bottom: var(--sp-xlarge);
         }
 
         ul.job_listings a {
             display: grid;
             grid-template-columns: repeat(10, 1fr);
             grid-column-gap: 24px;
+            background-color: var(--cl-light);
+            min-height: var(--lv-listing-height);
+            margin-bottom: var(--sp-medium);
+            align-items: center;
 
-            img.company_logo {
-                grid-column: 1 / span 2;
+            &:hover {
+                opacity: 0.8;
             }
 
-            .position {
-                grid-column: 3 / span 8;
+            .job-listing-logo {
+                grid-column: 1 / span 2;
+                padding: var(--sp-small) 0 var(--sp-small) var(--sp-small);
+                justify-self: center;
+
+                img {
+                    max-width: 100%;
+                    height: auto;
+                    max-height: calc(var(--lv-listing-height) - (2* var(--sp-small)));
+                }
+            }
+
+            .job-listing-details {
+                grid-column: 3 / span 5;
+                padding: var(--sp-small) 0;
+
+
+                .job-title {
+                    font-size: var(--fs-title-medium);
+                    color: var(--cl-dark);
+                    font-weight: var(--fw-semibold);
+                    padding-bottom: var(--sp-small);
+                }
+
+                .company {
+                    font-size: var(--fs-body);
+                    color: var(--cl-dark);
+                    font-weight: var(--fw-semibold);
+                }
+
+            }
+
+            .job-listing-meta {
+                grid-column: 8 / span 3;
+                background-color: var(--cl-dark);
+                color: var(--cl-light);
+                padding: var(--sp-small) 0 var(--sp-small) var(--sp-medium);
+                height: 100%;
+                align-content: center;
             }
 
         }

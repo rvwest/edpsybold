@@ -12,7 +12,7 @@
     <div id="wrapper" class="hfeed">
 
         <header id="header" role="banner" class="edp-fullwidth">
-            <div id="branding" class="edp-pagewidth">
+            <div class="gridcontainer grid12">
                 <div id="site-title" itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
                     <?php
                     // Determine if we're on the homepage or blog page
@@ -44,12 +44,18 @@
                 } ?>>
                     <?php bloginfo('description'); ?>
                 </div> -->
+
+                <nav class="top-nav-menu">
+                    <?php
+                    wp_nav_menu(array(
+                        'theme_location' => 'main-menu', // Menu location (defined in functions.php)
+                        'menu_class' => 'edp-main-menu', // Optional: Add class to the <ul>
+                    ));
+                    ?>
+                </nav>
             </div>
-            <nav id="menu" role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
-                <?php wp_nav_menu(array('theme_location' => 'main-menu', 'link_before' => '<span itemprop="name">', 'link_after' => '</span>')); ?>
-                <div id="search"><?php get_search_form(); ?></div>
-            </nav>
+
         </header>
 
         <div id="container" class="edp-fullwidth">
-            <main id="content" role="main" class="edp-pagewidth">
+            <main id="content" role="main" class="grid12">

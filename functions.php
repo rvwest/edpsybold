@@ -189,6 +189,14 @@ function edpsybold_comment_count($count)
 }
 
 // Jobs 
+
+function remove_wp_job_manager_frontend_css()
+{
+    if (!is_admin()) { // Ensures this only runs on the frontend
+        wp_dequeue_style('wp-job-manager-frontend'); // Default handle for frontend.css
+    }
+}
+add_action('wp_enqueue_scripts', 'remove_wp_job_manager_frontend_css', 20);
 function add_job_manager_body_classes($classes)
 {
     if (is_page('jobs')) { // Check if it's the jobs page

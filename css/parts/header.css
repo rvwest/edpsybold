@@ -1,6 +1,10 @@
 @import url('variables.css');
 
 header[role="banner"] {
+    .grid12 {
+        align-items: center;
+    }
+
     .header-logo {
         width: 64px;
         margin: var(--sp-small) 0

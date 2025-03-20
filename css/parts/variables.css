@@ -19,16 +19,25 @@
     --sp-medium: 24px;
     --sp-large: 36px;
     --sp-xlarge: 48px;
+    --sp-xxlarge: 60px;
+    --sp-xxxlarge: 72px;
 
-    /* Layout */
-    --mw-full: 1248px;
+    /* Layout variable */
+    --lv-full-width: 1248px;
+    --lv-listing-height: 140px;
 
     /* Typography */
     --ff: 'Geologica', sans-serif;
+    --fs-body-small: 14px;
     --fs-body: 18px;
+    --fs-title-medium: 24px;
     --fs-display-large: 110px;
     --fs-display-medium: 60px;
+    --fs-display-small: 45px;
     --lh-body: calc(var(--fs-body) * 1.5);
+    --lh-display-large: calc(var(--fs-display-large) * 1.15);
+    --lh-display-medium: calc(var(--fs-display-medium) * 1.15);
+    --lh-display-small: calc(var(--fs-display-small) * 1.15);
     --fw-extralight: 200;
     --fw-light: 300;
     --fw-normal: 400;
