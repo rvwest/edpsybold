@@ -24,6 +24,7 @@
                     }
                     ?>
 
+
                     <a href="<?php echo esc_url(home_url('/')); ?>"
                         title="<?php echo esc_attr(get_bloginfo('name')); ?>" rel="home" itemprop="url">
                         <span class="visually-hidden"
@@ -49,6 +50,7 @@
                     <?php
                     wp_nav_menu(array(
                         'theme_location' => 'main-menu', // Menu location (defined in functions.php)
+                        'container' => false, // Remove nav container
                         'menu_class' => 'edp-main-menu', // Optional: Add class to the <ul>
                     ));
                     ?>

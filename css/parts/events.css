@@ -1,0 +1,10 @@
+.post-type-archive-tribe_events {
+    #container {
+        color: var(--cl-light);
+        background-color: var(--cl-dark);
+        background-image: url(../../images/edpsy-swirls-03.svg);
+        background-position: right -74px;
+        background-size: 750px;
+        background-repeat: no-repeat;
+    }
+}

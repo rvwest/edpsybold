@@ -1,12 +1,28 @@
 @import url('variables.css');
 
-.edp-jobs {
+.edp-jobs,
+.archive {
     h1 {
         font-size: var(--fs-display-large);
         line-height: var(--lh-display-large);
-        color: var(--cl-light);
         margin: var(--sp-medium) 0;
         font-weight: var(--fw-semibold);
+    }
+}
+
+.edp-jobs {
+    h1 {
+        color: var(--cl-light);
+    }
+}
+
+/* Blog list page */
+.archive {
+    h1 {
+        color: var(--cl-lightblue);
+        margin-left: -7px;
+        text-transform: lowercase;
+
     }
 }
 

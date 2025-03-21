@@ -23,9 +23,11 @@
         grid-column: 2 / span 10;
     }
 
-    :is(article) {
+    /* Jobs listing page */
+    :is(article.page) {
         grid-column: 1 / span 12;
     }
+
 
     #site-title {
         grid-column: 1 / span 2;
@@ -35,6 +37,24 @@
         grid-column: 3 / span 10;
     }
 }
+
+/* Blog list page */
+.archive .grid12 {
+    :is(article.post) {
+        grid-column: 3 / span 8;
+    }
+
+    header {
+        grid-column: 1 / span 12;
+
+
+    }
+}
+
+.post-type-archive-tribe_events .tribe-events-view--month {
+    grid-column: 1 / span 12;
+}
+
 
 /* Footer */
 

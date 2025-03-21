@@ -30,9 +30,13 @@
     --ff: 'Geologica', sans-serif;
     --fs-body-small: 14px;
     --fs-body: 18px;
+    /* Jobs listings - job title */
     --fs-title-medium: 24px;
+    /* Jobs listings H1 */
     --fs-display-large: 110px;
+    /* Thesis directory listings H1 */
     --fs-display-medium: 60px;
+    /* Signup slice H2 */
     --fs-display-small: 45px;
     --lh-body: calc(var(--fs-body) * 1.5);
     --lh-display-large: calc(var(--fs-display-large) * 1.15);
