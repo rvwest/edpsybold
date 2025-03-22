@@ -1,0 +1,45 @@
+/* == Body ghost button ===== */
+/* Events date picker */
+
+button.tribe-events-c-top-bar__datepicker-button {
+    font-size: var(--fs-body);
+    color: var(--cl-light);
+    background-color: var(--cl-dark);
+
+    &:hover {
+        opacity: var(--op-strong);
+    }
+
+}
+
+/* == Outline button ===== */
+/* Events today button */
+
+.tribe-common--breakpoint-medium.tribe-events .tribe-events-c-top-bar__today-button {
+    background-color: var(--cl-dark);
+    color: var(--cl-light);
+    text-transform: lowercase;
+    font-size: var(--fs-body-small);
+    line-height: var(--lh-body-small);
+    border: 1px solid var(--cl-light);
+    padding: var(--sp-xxsmall) var(--sp-xsmall);
+
+    &:hover {
+        background-color: var(--cl-light);
+        color: var(--cl-dark);
+    }
+}
+
+
+/* == Icon button ===== */
+/* Events arrow buttons */
+
+a.tribe-common-c-btn-icon {
+    &:is(:link, :visited) {
+        color: var(--cl-light);
+    }
+
+    &:is(:hover, :active) {
+        opacity: var(--op-strong);
+    }
+}

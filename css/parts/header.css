@@ -17,7 +17,7 @@ header[role="banner"] {
     }
 
     a:hover .header-logo {
-        opacity: 0.8;
+        opacity: var(--op-light);
     }
 
     nav.top-nav-menu {

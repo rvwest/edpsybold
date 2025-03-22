@@ -1,8 +1,9 @@
 @import url('parts/reset.css');
 @import url('parts/global.css');
-@import url('parts/layout.css');
+@import url('parts/grid.css');
 @import url('parts/header.css');
 @import url('parts/headings.css');
+@import url('parts/cta.css');
 @import url('parts/blog.css');
 @import url('parts/events.css');
 @import url('parts/jobs.css');

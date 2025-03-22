@@ -12,9 +12,12 @@
     --cl-link: #0072B9;
     --cl-orange: #DB633B;
     --cl-lightblue: #78A8CF;
+    --op-light: 0.8;
+    --op-strong: 0.6;
 
     /* Spacing */
-    --sp-vsmall: 6px;
+    --sp-xxsmall: 3px;
+    --sp-xsmall: 6px;
     --sp-small: 12px;
     --sp-medium: 24px;
     --sp-large: 36px;
@@ -28,16 +31,21 @@
 
     /* Typography */
     --ff: 'Geologica', sans-serif;
+    /* Main menu - items, events list today button */
     --fs-body-small: 14px;
     --fs-body: 18px;
-    /* Jobs listings - job title */
+    /* Jobs list - job title */
     --fs-title-medium: 24px;
-    /* Jobs listings H1 */
+    /* Events list - month title */
+    --fs-title-large: 35px;
+    /* Jobs list H1 */
     --fs-display-large: 110px;
-    /* Thesis directory listings H1 */
+    /* Thesis directory list H1 */
     --fs-display-medium: 60px;
     /* Signup slice H2 */
     --fs-display-small: 45px;
+    /* ===== */
+    --lh-body-small: calc(var(--fs-body-small) * 1.15);
     --lh-body: calc(var(--fs-body) * 1.5);
     --lh-display-large: calc(var(--fs-display-large) * 1.15);
     --lh-display-medium: calc(var(--fs-display-medium) * 1.15);

@@ -10,7 +10,8 @@
     }
 }
 
-.edp-jobs {
+.edp-jobs,
+.archive.post-type-archive-tribe_events {
     h1 {
         color: var(--cl-light);
     }

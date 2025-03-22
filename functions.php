@@ -188,15 +188,43 @@ function edpsybold_comment_count($count)
     }
 }
 
-// Jobs 
 
-function remove_wp_job_manager_frontend_css()
+// CSS removal 
+
+add_action('wp_footer', function () {
+    global $wp_styles;
+    echo '<pre>';
+    print_r($wp_styles->queue);
+    echo '</pre>';
+}, 998);
+function remove_wp_plugin_frontend_css()
 {
     if (!is_admin()) { // Ensures this only runs on the frontend
         wp_dequeue_style('wp-job-manager-frontend'); // Default handle for frontend.css
+        wp_dequeue_style('co-authors-plus-coauthors-style');
+        wp_dequeue_style('co-authors-plus-avatar-style');
+        wp_dequeue_style('co-authors-plus-image-style');
+        wp_dequeue_style('co-authors-plus-name-style');
+        wp_dequeue_style('classic-theme-styles');
+        wp_dequeue_style('wp-job-manager-job-listings');
+        wp_dequeue_style('global-styles');
+        wp_dequeue_style('tribe-events-views-v2-skeleton');
+        //wp_dequeue_style('tec-variables-skeleton-css');
+        //wp_dequeue_style('tribe-events-views-v2-bootstrap-datepicker-styles');
+        // wp_dequeue_style('tribe-tooltipster-css-css');
+        //   wp_dequeue_style('tribe-events-views-v2-skeleton-css');
+        //    wp_dequeue_style('tec-variables-skeleton');
+        //     wp_dequeue_style('tribe-common-skeleton-style-css');
+
     }
 }
-add_action('wp_enqueue_scripts', 'remove_wp_job_manager_frontend_css', 20);
+
+add_action('wp_head', function () {
+    echo "<style>#tribe-common-skeleton-style-css { display: none !important; }</style>";
+}, 999);
+
+
+add_action('wp_enqueue_scripts', 'remove_wp_plugin_frontend_css', 9999);
 function add_job_manager_body_classes($classes)
 {
     if (is_page('jobs')) { // Check if it's the jobs page

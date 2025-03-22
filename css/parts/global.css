@@ -28,3 +28,9 @@ a:active {
     color: var(--cl-link);
     text-decoration: none;
 }
+
+button {
+    border: 0;
+    padding: 0;
+    font-family: var(--ff);
+}

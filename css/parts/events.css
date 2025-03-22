@@ -6,5 +6,38 @@
         background-position: right -74px;
         background-size: 750px;
         background-repeat: no-repeat;
+
+        header h1 {
+            width: 100%
+        }
+
+        .tribe-events-c-top-bar {
+
+            padding: var(--sp-xsmall) var(--sp-small);
+            border: 1px solid var(--cl-light);
+
+
+
+
+        }
+
+
     }
+}
+
+/* Reset */
+
+.tribe-common--breakpoint-medium.tribe-events .tribe-events-l-container {
+    padding: 0;
+}
+
+.tribe-events-calendar-list__month-separator-text {
+    font-size: var(--fs-title-large);
+    font-weight: var(--fw-semibold);
+}
+
+.tribe-common--breakpoint-medium.tribe-common .tribe-common-c-btn-border-small,
+.tribe-common--breakpoint-medium.tribe-common a.tribe-common-c-btn-border-small {
+    padding: inherit;
+    width: inherit;
 }
