@@ -323,3 +323,43 @@ section {
     clip: rect(1px, 1px, 1px, 1px);
     white-space: nowrap
 }
+
+
+/** ============== Events Calendar ============== **/
+
+/* Reset */
+
+
+
+.tribe-common--breakpoint-medium.tribe-events .tribe-events-l-container {
+    padding: 0;
+}
+
+.tribe-common--breakpoint-medium.tribe-common .tribe-common-c-btn-border-small,
+.tribe-common--breakpoint-medium.tribe-common a.tribe-common-c-btn-border-small {
+    padding: inherit;
+    width: inherit;
+}
+
+.datepicker table tr td.active,
+.datepicker table tr td.active.disabled,
+.datepicker table tr td.active.disabled:hover,
+.datepicker table tr td.active:hover,
+.datepicker table tr td span.active,
+.datepicker table tr td span.active.disabled,
+.datepicker table tr td span.active.disabled:hover,
+.datepicker table tr td span.active:hover {
+    background-image: none;
+    background-color: inherit;
+}
+
+.tribe-common--breakpoint-medium.tribe-events .tribe-events-calendar-list__event-cost,
+.tribe-events .tribe-events-calendar-list__event-date-tag-weekday,
+.tribe-events-calendar-list__event-date-tag-datetime,
+.tribe-events-calendar-list__event-date-tag,
+.tribe-events .tribe-events-calendar-list__event-title-link:visited {
+    margin-top: inherit;
+    margin-bottom: inherit;
+    padding: 0;
+    color: inherit;
+}

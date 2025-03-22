@@ -21,23 +21,153 @@
 
         }
 
+        .tribe-events-calendar-list__month-separator-text {
+            font-size: var(--fs-title-large);
+            font-weight: var(--fw-semibold);
+            height: auto;
+            margin-bottom: var(--sp-medium);
+        }
 
+        .edp-events-calendar-list__event-row a {
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: var(--sp-medium);
+
+            &:hover {
+
+                opacity: var(--op-light);
+            }
+
+
+            .edp-events-calendar-list__event-date-tag {
+                background-color: var(--cl-yellow);
+                min-width: 105px;
+                margin-right: var(--sp-small);
+
+
+                .edp-events-calendar-list__event-date-tag-datetime {
+                    padding: var(--sp-medium);
+                    justify-content: center;
+                    display: flex;
+                    flex-direction: column;
+                    text-align: center;
+
+                    .edp-events-calendar-list__event-date-tag-weekday,
+                    .edp-events-calendar-list__event-date-tag-month {
+                        font-size: var(--fs-title-medium);
+                        font-weight: var(--fw-medium);
+                        color: var(--cl-dark);
+                    }
+
+                    .edp-events-calendar-list__event-date-tag-daynum {
+                        font-size: var(--fs-title-large);
+                        font-weight: var(--fw-semibold);
+                        color: var(--cl-dark);
+                        padding: var(--sp-small) 0;
+                    }
+                }
+            }
+
+            .edp-events-calendar-list__event-header {
+                padding: var(--sp-medium);
+                background-color: var(--cl-light);
+                color: var(--cl-dark);
+                margin-right: var(--sp-small);
+                flex-grow: 3;
+                font-size: var(--fs-title-medium);
+                font-weight: var(--fw-semibold);
+            }
+
+            .edp-events-calendar-list__event-meta {
+                padding: var(--sp-medium);
+                background-color: var(--cl-light);
+                color: var(--cl-dark);
+                min-width: var(--gs-3);
+                font-style: normal;
+                font-weight: var(--fw-semibold);
+                font-size: var(--fs-body);
+
+                .epd-events-calendar-list__event-venue-address {
+                    font-style: normal;
+                }
+            }
+
+
+
+        }
+
+        .edp-events-calendar-list__event-row--featured a {
+
+            .edp-events-calendar-list__event-header,
+            .edp-events-calendar-list__event-meta {
+                background-color: var(--cl-dark);
+                color: var(--cl-light);
+                border: 1px solid var(--cl-light);
+            }
+
+
+        }
+
+
+    }
+
+    .tribe-events-c-subscribe-dropdown__container {
+        display: none;
     }
 }
 
-/* Reset */
 
-.tribe-common--breakpoint-medium.tribe-events .tribe-events-l-container {
-    padding: 0;
+/* == Date picker interface ====================== */
+
+.tribe-events .datepicker table {
+    width: 100%;
+
 }
 
-.tribe-events-calendar-list__month-separator-text {
-    font-size: var(--fs-title-large);
+.datepicker table tr td.active.active,
+.datepicker table tr td.active.disabled,
+.datepicker table tr td.active.disabled.active,
+.datepicker table tr td.active.disabled.disabled,
+.datepicker table tr td.active.disabled:active,
+.datepicker table tr td.active.disabled:hover,
+.datepicker table tr td.active.disabled:hover.active,
+.datepicker table tr td.active.disabled:hover.disabled,
+.datepicker table tr td.active.disabled:hover:active,
+.datepicker table tr td.active.disabled:hover:hover,
+.datepicker table tr td.active.disabled:hover[disabled],
+.datepicker table tr td.active.disabled[disabled],
+.datepicker table tr td.active:active,
+.datepicker table tr td.active:hover,
+.datepicker table tr td.active:hover.active,
+.datepicker table tr td.active:hover.disabled,
+.datepicker table tr td.active:hover:active,
+.datepicker table tr td.active:hover:hover,
+.datepicker table tr td.active:hover[disabled],
+.datepicker table tr td.active[disabled],
+.datepicker table tr td span.active.active,
+.datepicker table tr td span.active.disabled,
+.datepicker table tr td span.active.disabled.active,
+.datepicker table tr td span.active.disabled.disabled,
+.datepicker table tr td span.active.disabled:active,
+.datepicker table tr td span.active.disabled:hover,
+.datepicker table tr td span.active.disabled:hover.active,
+.datepicker table tr td span.active.disabled:hover.disabled,
+.datepicker table tr td span.active.disabled:hover:active,
+.datepicker table tr td span.active.disabled:hover:hover,
+.datepicker table tr td span.active.disabled:hover[disabled],
+.datepicker table tr td span.active.disabled[disabled],
+.datepicker table tr td span.active:active,
+.datepicker table tr td span.active:hover,
+.datepicker table tr td span.active:hover.active,
+.datepicker table tr td span.active:hover.disabled,
+.datepicker table tr td span.active:hover:active,
+.datepicker table tr td span.active:hover:hover,
+.datepicker table tr td span.active:hover[disabled],
+.datepicker table tr td span.active[disabled] {
+    background-color: var(--cl-purple);
+}
+
+.tribe-events .datepicker .dow,
+.tribe-events .datepicker .datepicker-switch {
     font-weight: var(--fw-semibold);
-}
-
-.tribe-common--breakpoint-medium.tribe-common .tribe-common-c-btn-border-small,
-.tribe-common--breakpoint-medium.tribe-common a.tribe-common-c-btn-border-small {
-    padding: inherit;
-    width: inherit;
 }

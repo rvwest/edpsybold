@@ -1,5 +1,13 @@
 @import url('variables.css');
 
+.tribe-events script {
+    display: none;
+}
+
+.post-edit-link {
+    display: none;
+}
+
 #menu {
     display: none;
 }

@@ -16,37 +16,3 @@
  */
 ?>
 <h1>events</h1>
-
-<?php
-if (empty($display_events_bar)) {
-	return;
-}
-
-$heading = $disable_event_search
-	? __('Views Navigation', 'the-events-calendar')
-	: sprintf(__('%s Search and Views Navigation', 'the-events-calendar'), tribe_get_event_label_plural());
-
-$classes = ['tribe-events-header__events-bar', 'tribe-events-c-events-bar'];
-if (empty($disable_event_search)) {
-	$classes[] = 'tribe-events-c-events-bar--border';
-}
-?>
-
-<div <?php tribe_classes($classes); ?> data-js="tribe-events-events-bar">
-
-	<h2 class="tribe-common-a11y-visual-hide">
-		<?php echo esc_html($heading); ?>
-	</h2>
-
-	<?php if (empty($disable_event_search)): ?>
-		<?php $this->template('components/events-bar/search-button'); ?>
-
-		<div class="tribe-events-c-events-bar__search-container" id="tribe-events-search-container"
-			data-js="tribe-events-search-container">
-			<?php $this->template('components/events-bar/search'); ?>
-		</div>
-	<?php endif; ?>
-
-
-
-</div>

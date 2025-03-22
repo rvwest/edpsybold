@@ -24,7 +24,7 @@ $view_selector_classes = [
 	'tribe-events-c-view-selector--tabs' => $is_tabs_style,
 ];
 ?>
-Hello
+
 <div class="tribe-events-c-events-bar__views">
 	<h3 class="tribe-common-a11y-visual-hide">
 		<?php printf(esc_html__('%s Views Navigation', 'the-events-calendar'), tribe_get_event_label_singular()); ?>

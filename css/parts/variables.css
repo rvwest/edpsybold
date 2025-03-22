@@ -12,6 +12,8 @@
     --cl-link: #0072B9;
     --cl-orange: #DB633B;
     --cl-lightblue: #78A8CF;
+    --cl-yellow: #E5C957;
+    --cl-purple: #59408A;
     --op-light: 0.8;
     --op-strong: 0.6;
 
@@ -34,8 +36,8 @@
     /* Main menu - items, events list today button */
     --fs-body-small: 14px;
     --fs-body: 18px;
-    /* Jobs list - job title */
-    --fs-title-medium: 24px;
+    /* Jobs list - job title, event list - event title */
+    --fs-title-medium: 22px;
     /* Events list - month title */
     --fs-title-large: 35px;
     /* Jobs list H1 */
@@ -53,6 +55,7 @@
     --fw-extralight: 200;
     --fw-light: 300;
     --fw-normal: 400;
+    --fw-medium: 500;
     --fw-semibold: 600;
 
     /* Breakpoints */
@@ -61,7 +64,9 @@
     --bp-large: 1024px;
     --bp-xlarge: 1281px;
 
-    /* Grid spans */
+    /* Grid spans converted */
+    /*    --gs-3: calc((3 * ((100vw - 144px - (11 * 24px)) / 12)) + (2 * 24px)); */
+    --gs-3: calc(3 * ((100% / 10) - (2 * 24px)) + (3 * 24px));
     --gs-8: calc((8 * ((100vw - 144px - (11 * 24px)) / 12)) + (7 * 24px));
     --gs-10: calc((10 * ((100vw - 144px - (11 * 24px)) / 12)) + (9 * 24px));
     --gs-12: calc(((100vw - 144px - (11 * 24px))) + (11 * 24px));

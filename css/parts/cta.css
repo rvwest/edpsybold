@@ -20,6 +20,7 @@ button.tribe-events-c-top-bar__datepicker-button {
     color: var(--cl-light);
     text-transform: lowercase;
     font-size: var(--fs-body-small);
+    font-weight: var(--fw-normal);
     line-height: var(--lh-body-small);
     border: 1px solid var(--cl-light);
     padding: var(--sp-xxsmall) var(--sp-xsmall);
@@ -34,7 +35,9 @@ button.tribe-events-c-top-bar__datepicker-button {
 /* == Icon button ===== */
 /* Events arrow buttons */
 
-a.tribe-common-c-btn-icon {
+a.tribe-common-c-btn-icon,
+.tribe-events-c-nav__prev,
+.tribe-events-c-nav__next {
     &:is(:link, :visited) {
         color: var(--cl-light);
     }

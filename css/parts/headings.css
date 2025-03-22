@@ -5,7 +5,7 @@
     h1 {
         font-size: var(--fs-display-large);
         line-height: var(--lh-display-large);
-        margin: var(--sp-medium) 0;
+        margin: var(--sp-medium) 0 var(--sp-xlarge) 0;
         font-weight: var(--fw-semibold);
     }
 }
