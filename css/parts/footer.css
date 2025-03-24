@@ -24,11 +24,13 @@
                 font-weight: var(--fw-semibold);
                 padding-bottom: var(--sp-small);
             }
+
+            p {
+                margin-bottom: var(--sp-small);
+            }
         }
 
-        form {
-            width: 40%;
-        }
+
     }
 
 }

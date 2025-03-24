@@ -1,0 +1,19 @@
+textarea,
+input[type="text"],
+input[type="email"] {
+    font-family: var(--ff);
+    font-size: var(--fs-body);
+    color: var(--cl-dark);
+    background-color: var(--cl-light);
+    border: 1px solid var(--cl-dark);
+    padding: var(--sp-small);
+    margin: var(--sp-xsmall) 0;
+    width: 100%;
+}
+
+.signup-content form {
+    width: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}

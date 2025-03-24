@@ -9,6 +9,7 @@
     /* Colors */
     --cl-light: #FFFBF2;
     --cl-dark: #363033;
+    --cl-dark-75: rgba(54, 48, 51, 0.75);
     --cl-link: #0072B9;
     --cl-orange: #DB633B;
     --cl-lightblue: #78A8CF;
@@ -49,6 +50,7 @@
     /* ===== */
     --lh-body-small: calc(var(--fs-body-small) * 1.15);
     --lh-body: calc(var(--fs-body) * 1.5);
+    --lh-title-large: calc(var(--fs-title-large) * 1.15);
     --lh-display-large: calc(var(--fs-display-large) * 1.15);
     --lh-display-medium: calc(var(--fs-display-medium) * 1.15);
     --lh-display-small: calc(var(--fs-display-small) * 1.15);

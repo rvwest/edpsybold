@@ -1,3 +1,34 @@
+input:is([type="button"], [type="submit"], [type="reset"]):disabled,
+input[type="file"]:disabled::file-selector-button,
+button:disabled,
+select:disabled,
+optgroup:disabled,
+option:disabled,
+select[disabled]>option {
+    color: var(--cl-dark);
+    opacity: var(--op-light);
+}
+
+button.edp-button-solid,
+input[type="submit"] {
+    font-size: var(--fs-body);
+    color: var(--cl-light);
+    background-color: var(--cl-dark);
+    border: 1px solid var(--cl-dark);
+    padding: var(--sp-xsmall) var(--sp-small);
+    margin: var(--sp-xsmall) 0;
+    font-weight: var(--fw-medium);
+    line-height: var(--lh-body);
+    cursor: pointer;
+    text-transform: lowercase;
+
+    &:hover {
+        background-color: var(--cl-light);
+        color: var(--cl-dark);
+    }
+}
+
+
 /* == Body ghost button ===== */
 /* Events date picker */
 

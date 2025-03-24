@@ -1,6 +1,6 @@
 @import url('variables.css');
 
-.edp-jobs {
+.edp-jobs.job-listings-page {
     #container {
         background-color: var(--cl-orange);
     }
@@ -84,4 +84,18 @@
 
 
 
+}
+
+.edp-jobs.single-job_listing {
+    header:not(#header) {
+
+        grid-column: 1 / span 10;
+        display: grid;
+        grid-template-columns: subgrid;
+
+        h1.entry-title {
+            font-size: var(--fs-title-large);
+            grid-column: 1 / span 6;
+        }
+    }
 }

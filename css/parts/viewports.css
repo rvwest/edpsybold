@@ -1,0 +1,21 @@
+@media screen and (max-width: 782px) {
+    #signup-slice .signup-content {
+        flex-wrap: wrap;
+
+
+        .message {
+            width: 100%;
+
+            h2 {
+                font-size: var(--fs-title-large);
+            }
+        }
+
+        form {
+            width: 100%;
+
+        }
+
+    }
+
+}

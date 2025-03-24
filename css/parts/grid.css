@@ -74,6 +74,7 @@
             grid-column: 2 / span 10;
         }
 
+       
     }
 
     .tribe-events-header {
@@ -120,26 +121,3 @@
 .span8 {
     grid-column: 3 / span 8;
 }
-
-/*
-.span12 {
-    grid-column: 1 / span 12;
-    grid-template-columns: subgrid;
-    display: grid;
-}
-.span10 {
-    width: max(90vw, var(--gs-10));
-}
-
-.span8 {
-    width: max(90vw, var(--gs-8));
-} 
-.span10 {
-    grid-column: 2 / span 10;
-    grid-template-columns: subgrid;
-}
-
-.span8 {
-    grid-column: 3 / span 8;
-}
-    */

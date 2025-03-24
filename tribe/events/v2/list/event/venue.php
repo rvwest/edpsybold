@@ -24,13 +24,16 @@ if (!$event->venues->count()) {
 
 $separator = esc_html_x(', ', 'Address separator', 'the-events-calendar');
 $venue = $event->venues[0];
+
 ?>
 <address class="epd-events-calendar-list__event-venue tribe-common-b2">
 
 	<span class="epd-events-calendar-list__event-venue-address">
 		<?php
-		//	echo esc_html($address);
-		
+		if (($venue->post_title) == "Online"):
+			echo esc_html($venue->post_title);
+		endif;
+
 		if (!empty($venue->city)):
 			echo esc_html($venue->city);
 		endif;
