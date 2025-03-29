@@ -24,78 +24,101 @@
             margin-bottom: var(--sp-xlarge);
         }
 
-        ul.job_listings a {
-            display: grid;
-            grid-template-columns: repeat(10, 1fr);
-            grid-column-gap: 24px;
-            background-color: var(--cl-light);
-            min-height: var(--lv-listing-height);
-            margin-bottom: var(--sp-medium);
-            align-items: center;
+        ul.job_listings {
+            li {
+                padding-left: 0;
 
-            &:hover {
-                opacity: var(--op-light);
-            }
+                a {
+                    display: grid;
+                    grid-template-columns: repeat(10, 1fr);
+                    grid-column-gap: 24px;
+                    background-color: var(--cl-light);
+                    min-height: var(--lv-listing-height);
+                    margin-bottom: var(--sp-medium);
+                    align-items: center;
 
-            .job-listing-logo {
-                grid-column: 1 / span 2;
-                padding: var(--sp-small) 0 var(--sp-small) var(--sp-small);
-                justify-self: center;
 
-                img {
-                    max-width: 100%;
-                    height: auto;
-                    max-height: calc(var(--lv-listing-height) - (2* var(--sp-small)));
+                    &:hover {
+                        opacity: var(--op-light);
+                    }
+
+                    .job-listing-logo {
+                        grid-column: 1 / span 2;
+                        padding: var(--sp-small) 0 var(--sp-small) var(--sp-small);
+                        justify-self: center;
+
+                        img {
+                            max-width: 100%;
+                            height: auto;
+                            max-height: calc(var(--lv-listing-height) - (2* var(--sp-small)));
+                        }
+                    }
+
+                    .job-listing-details {
+                        grid-column: 3 / span 5;
+                        padding: var(--sp-small) 0;
+
+
+                        .job-title {
+                            font-size: var(--fs-title-medium);
+                            color: var(--cl-dark);
+                            font-weight: var(--fw-semibold);
+                            padding-bottom: var(--sp-small);
+                        }
+
+                        .company {
+                            font-size: var(--fs-body);
+                            color: var(--cl-dark);
+                            font-weight: var(--fw-semibold);
+                        }
+
+                    }
+
+                    .job-listing-meta {
+                        grid-column: 8 / span 3;
+                        background-color: var(--cl-dark);
+                        color: var(--cl-light);
+                        padding: var(--sp-small) 0 var(--sp-small) var(--sp-medium);
+                        height: 100%;
+                        align-content: center;
+                    }
+
                 }
             }
-
-            .job-listing-details {
-                grid-column: 3 / span 5;
-                padding: var(--sp-small) 0;
-
-
-                .job-title {
-                    font-size: var(--fs-title-medium);
-                    color: var(--cl-dark);
-                    font-weight: var(--fw-semibold);
-                    padding-bottom: var(--sp-small);
-                }
-
-                .company {
-                    font-size: var(--fs-body);
-                    color: var(--cl-dark);
-                    font-weight: var(--fw-semibold);
-                }
-
-            }
-
-            .job-listing-meta {
-                grid-column: 8 / span 3;
-                background-color: var(--cl-dark);
-                color: var(--cl-light);
-                padding: var(--sp-small) 0 var(--sp-small) var(--sp-medium);
-                height: 100%;
-                align-content: center;
-            }
-
         }
-
     }
 
 
 
 }
 
-.edp-jobs.single-job_listing {
+.edp-jobs.single-job_listing article.type-job_listing {
     header:not(#header) {
 
-        grid-column: 1 / span 10;
-        display: grid;
-        grid-template-columns: subgrid;
+        grid-column: 1 / span 7;
+        display: flex;
+        flex-wrap: wrap;
 
-        h1.entry-title {
+        .entry-title {
             font-size: var(--fs-title-large);
-            grid-column: 1 / span 6;
+            line-height: var(--lh-title-large);
+            color: var(--cl-dark);
+            width: 100%;
+        }
+
+        .company {
+            font-size: var(--fs-title-large);
+            color: var(--cl-orange);
+            font-weight: var(--fw-semibold);
+        }
+
+    }
+
+    .job-listing-logo {
+        grid-column: 8 / span 3;
+
+        img {
+            max-height: 150px
         }
     }
 }

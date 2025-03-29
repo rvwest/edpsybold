@@ -1,0 +1,21 @@
+/* Standard page (single.php)
+also basis for: jobs page (single-job_listing.php) / events page */
+
+.page-template-default:not(.job-listings-page) article.type-page {
+    margin-bottom: var(--sp-xxlarge);
+
+    .entry-content {
+        li {
+            list-style-type: disc;
+            margin-left: var(--sp-medium);
+        }
+
+        p,
+        ul,
+        h2 {
+            margin-bottom: var(--sp-medium);
+        }
+
+
+    }
+}

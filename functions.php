@@ -187,8 +187,12 @@ function edpsybold_comment_count($count)
         return $count;
     }
 }
-
-
+/*
+function is_single_job_listing()
+{
+    return get_post_type() === 'single-job-listing';
+}
+*/
 // CSS removal 
 
 add_action('wp_footer', function () {

@@ -68,8 +68,28 @@ header[role="banner"] {
 
 }
 
+.single-job_listing {
+
+    header[role="banner"] {
+        border-bottom: none;
+    }
+
+    .backblock {
+        background-color: var(--cl-orange);
+
+        padding: var(--sp-small) 0;
+
+        a {
+            color: var(--cl-light)
+        }
+    }
+
+}
+
 .job-listings-page {
     header[role="banner"] {
         border-bottom: var(--cl-light);
     }
+
+
 }

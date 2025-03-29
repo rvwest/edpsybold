@@ -1,5 +1,16 @@
 @import url('variables.css');
 
+/* == H1 ============== */
+
+.page {
+    h1 {
+        font-size: var(--fs-display-small);
+        line-height: var(--lh-display-small);
+        font-weight: var(--fw-semibold);
+        margin: var(--sp-xxlarge) 0 var(--sp-medium) 0;
+    }
+}
+
 .edp-jobs,
 .archive {
     h1 {
@@ -36,4 +47,16 @@
         margin: var(--sp-medium) 0;
         font-weight: var(--fw-semibold);
     }
+}
+
+/* == Other headings ============== */
+
+h2 {
+    font-size: var(--fs-title-medium);
+    font-weight: var(--fw-semibold);
+}
+
+h3 {
+    font-size: var(--fs-body);
+    font-weight: var(--fw-semibold);
 }

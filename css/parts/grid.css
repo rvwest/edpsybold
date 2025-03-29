@@ -2,12 +2,13 @@
 
 .edp-fullwidth {
     width: 100%;
-
+    padding: 0 var(--sp-medium);
 }
 
 .edp-pagewidth {
     width: var(--lv-full-width);
     margin: 0 max(4vw, var(--sp-small));
+
 }
 
 
@@ -29,13 +30,39 @@
         grid-column: 1 / span 2;
     }
 
+    a.backblock-link {
+        grid-column: 1 / span 2;
+    }
+
     nav.top-nav-menu {
         grid-column: 3 / span 10;
     }
 }
 
-/* Blog list page */
-.archive .grid12 {
+/* === Page ===================== */
+
+.page-template-default:not(.job-listings-page) article.type-page,
+.single-job-listing article.type-job_listing {
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: 2 / span 10;
+
+    >* {
+        grid-column: 2 / span 8;
+    }
+
+    .entry-content {
+        grid-column: 2 / span 8;
+    }
+}
+
+
+
+
+
+/* === Blog list page =========== */
+
+.archive.category-blog .grid12 {
     :is(article.post) {
         grid-column: 3 / span 8;
     }
@@ -74,7 +101,7 @@
             grid-column: 2 / span 10;
         }
 
-       
+
     }
 
     .tribe-events-header {
@@ -102,10 +129,12 @@
 /* == Jobs ====================== */
 
 /* Jobs listing page */
-:is(article.page) {
-    grid-column: 1 / span 12;
-}
+.job-listings-page {
 
+    :is(article.page) {
+        grid-column: 1 / span 12;
+    }
+}
 
 
 /* == Footer ====================== */

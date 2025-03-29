@@ -58,6 +58,11 @@
             </div>
 
         </header>
+        <?php if (is_singular('job_listing')): ?>
+            <div class="backblock edp-fullwidth">
+                <div class="grid12"><a href="../../jobs/" class="backblock-link">all jobs</a></div>
+            </div>
+        <?php endif; ?>
 
         <div id="container" class="edp-fullwidth">
             <main id="content" role="main" class="grid12">

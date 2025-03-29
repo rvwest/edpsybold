@@ -52,13 +52,3 @@ a:active {
 
     }
 }
-
-h2 {
-    font-size: var(--fs-title-medium);
-    font-weight: var(--fw-semibold);
-}
-
-h3 {
-    font-size: var(--fs-body);
-    font-weight: var(--fw-semibold);
-}
