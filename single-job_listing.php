@@ -18,36 +18,47 @@
 
 
 
-            <div class="job-listing-details">
-                <div class="job-title">
-                    <h2><?php wpjm_the_job_title(); ?></h2>
-                </div>
 
-
-            </div>
             <div class="job-listing-meta">
                 <!-- <span class="location"></span> -->
-
-
                 <?php do_action('job_listing_meta_start'); ?>
+                <div class="location">Location <?php the_job_location(); ?></div>
+                <div class="salary">
+                    <div class="label">Salary</div>
+                    <div class="detail"><?php gma_wpjmef_display_combined_data_listings(); ?></div>
+                </div>
+
                 <?php if (get_option('job_manager_enable_types')) { ?>
-                    <div class="meta-types">
-                        <?php $types = wpjm_get_the_job_types(); ?>
-                        <?php if (!empty($types)):
-                            foreach ($types as $type): ?>
-                                <span
-                                    class="job-type <?php echo esc_attr(sanitize_title($type->slug)); ?>"><?php echo esc_html($type->name); ?></span>
-                            <?php endforeach; endif; ?>
+                    <div class="contract">
+                        <div class="label">Contract</div>
+                        <div class="detail"> <?php $types = wpjm_get_the_job_types(); ?>
+                            <?php if (!empty($types)):
+                                foreach ($types as $type): ?>
+                                    <span
+                                        class="job-type <?php echo esc_attr(sanitize_title($type->slug)); ?>"><?php echo esc_html($type->name); ?></span>
+                                <?php endforeach; endif; ?>
+                        </div>
                     </div>
+
                 <?php } ?>
-                <div class="salary"><?php gma_wpjmef_display_combined_data_listings(); ?></div>
-
+                <div class="closing-date">
+                    <div class="label">Closing date</div>
+                    <div class="detail"></div>
+                </div>
+                <div class="interview-date">
+                    <div class="label">Interview date</div>
+                    <div class="detail"></div>
+                </div>
+                <?php do_action('job_listing_meta_end'); ?>
             </div>
 
-            <?php do_action('job_listing_meta_end'); ?>
+
+            <div class="job_description">
+                <?php wpjm_the_job_description(); ?>
+            </div>
             </div>
 
-            <?php get_template_part('entry', 'content'); ?>
+
             <?php if (is_singular()) {
                 get_template_part('entry-footer');
             } ?>

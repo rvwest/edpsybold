@@ -1,10 +1,12 @@
 /* Standard page (single.php)
 also basis for: jobs page (single-job_listing.php) / events page */
 
-.page-template-default:not(.job-listings-page) article.type-page {
+.page-template-default:not(.job-listings-page) article.type-page,
+article.job_listing {
     margin-bottom: var(--sp-xxlarge);
 
-    .entry-content {
+    .entry-content,
+    .job_description {
         li {
             list-style-type: disc;
             margin-left: var(--sp-medium);

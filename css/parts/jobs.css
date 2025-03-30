@@ -93,17 +93,20 @@
 }
 
 .edp-jobs.single-job_listing article.type-job_listing {
-    header:not(#header) {
+    header {
 
-        grid-column: 1 / span 7;
         display: flex;
         flex-wrap: wrap;
+
+        margin-top: var(--sp-xxlarge);
 
         .entry-title {
             font-size: var(--fs-title-large);
             line-height: var(--lh-title-large);
             color: var(--cl-dark);
             width: 100%;
+            margin-bottom: var(--sp-small);
+            padding-right: var(--sp-xlarge);
         }
 
         .company {
@@ -114,11 +117,18 @@
 
     }
 
-    .job-listing-logo {
-        grid-column: 8 / span 3;
+    .job-listing-meta {
+        margin: var(--sp-xxlarge) 0;
+    }
 
-        img {
-            max-height: 150px
-        }
+}
+
+.job-listing-logo {
+    grid-column: 8 / span 3;
+    margin-top: var(--sp-xxlarge);
+
+    img {
+        max-height: 150px;
+        max-width: 290px;
     }
 }
