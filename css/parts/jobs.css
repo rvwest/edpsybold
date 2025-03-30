@@ -1,5 +1,7 @@
 @import url('variables.css');
 
+/* ==== Job listing page ==================================== */
+
 .edp-jobs.job-listings-page {
     #container {
         background-color: var(--cl-orange);
@@ -92,6 +94,8 @@
 
 }
 
+/* ==== Job ad page ==================================== */
+
 .edp-jobs.single-job_listing article.type-job_listing {
     header {
 
@@ -121,14 +125,14 @@
         margin: var(--sp-xxlarge) 0;
     }
 
-}
+    .job-listing-logo {
+        grid-column: 8 / span 3;
+        margin-top: var(--sp-xxlarge);
 
-.job-listing-logo {
-    grid-column: 8 / span 3;
-    margin-top: var(--sp-xxlarge);
-
-    img {
-        max-height: 150px;
-        max-width: 290px;
+        img {
+            max-height: 150px;
+            max-width: 290px;
+        }
     }
+
 }
