@@ -187,13 +187,8 @@ function edpsybold_comment_count($count)
         return $count;
     }
 }
-/*
-function is_single_job_listing()
-{
-    return get_post_type() === 'single-job-listing';
-}
-*/
-// CSS removal 
+
+// ========== CSS removal ================================================= //
 
 add_action('wp_footer', function () {
     global $wp_styles;
@@ -228,6 +223,8 @@ add_action('wp_head', function () {
 }, 999);
 
 
+// ========== Custom page types ================================================= //
+
 add_action('wp_enqueue_scripts', 'remove_wp_plugin_frontend_css', 9999);
 function add_job_manager_body_classes($classes)
 {
@@ -240,3 +237,137 @@ function add_job_manager_body_classes($classes)
     return $classes;
 }
 add_filter('body_class', 'add_job_manager_body_classes');
+
+// ========== Blog pages ================================================= //
+
+add_filter('wpseo_title', 'my_co_author_wseo_title');
+function my_co_author_wseo_title($title)
+{
+
+    // Only filter title output for author pages
+    if (is_author() && function_exists('get_coauthors')) {
+        $qo = get_queried_object();
+        $author_name = $qo->display_name;
+        return $author_name . '&#39;s articles on ' . get_bloginfo('name');
+    }
+    return $title;
+
+}
+
+// ========== Job manager ================================================= //
+
+// ---------- Post a job ------------------------------------------------- //
+
+
+// Modifies / remove / add fields for jobs form
+// Full field list: https://github.com/mikejolley/WP-Job-Manager/blob/master/includes/forms/class-wp-job-manager-form-submit-job.php
+
+add_filter('submit_job_form_fields', 'custom_submit_job_form_fields');
+
+function custom_submit_job_form_fields($fields)
+{
+
+    // Here we target one of the job fields (job_title) and change it's label
+    $fields['job']['job_location']['description'] = "";
+    $fields['job']['job_location']['placeholder'] = "";
+    $fields['job']['application']['label'] = "Where to apply";
+    $fields['job']['application']['description'] = "eg https://yourorg.gov.uk/apply";
+    $fields['job']['application']['value'] = "http://";
+    $fields['job']['application']['placeholder'] = "";
+    $fields['job']['job_type']['description'] = "You can select more than one";
+    $fields['company']['company_name']['placeholder'] = "";
+    $fields['company']['company_name']['label'] = "Organisation name";
+    $fields['company']['company_logo']['description'] = "Maximum file size 32 MB";
+    $fields['company']['company_logo']['allowed_mime_types'] = [
+        'jpg' => 'image/jpeg',
+        'jpeg' => 'image/jpeg',
+        'gif' => 'image/gif',
+        'png' => 'image/png',
+    ];
+    $fields['job']['closing_date'] = array(
+        'label' => __('Closing date', 'job_manager'),
+        'type' => 'date',
+        'data_type' => 'string',
+        'required' => false,
+        'classes' => ['job-manager-datepicker'],
+        'priority' => 8,
+        'description' => "eg " . date('j F Y', strtotime('+30 days')),
+        'sanitize_callback' => [__CLASS__, 'sanitize_meta_field_date'],
+    );
+    $fields['job']['interview_date'] = array(
+        'label' => __('Possible interview dates', 'job_manager'),
+        'type' => 'text',
+        'data_type' => 'string',
+        'required' => false,
+        'priority' => 8,
+        'description' => "eg " . date('j F Y', strtotime('+45 days')),
+        'sanitize_callback' => [__CLASS__, 'sanitize_text_field'],
+    );
+    $fields['job']['cap_declaration'] = array(
+        'label' => __('Declaration', 'job_manager'),
+        'type' => 'checkbox',
+        'required' => true,
+        'placeholder' => 'I confirm this to be true',
+        'priority' => 9,
+        'description' => __('<p>We follow the <a href="https://www.asa.org.uk/type/non_broadcast/code_section/20.html">CAP Code for employment advertisements</a>. Please confirm:</p><ul><li>This is a genuine employment opportunity</li><li>All details provided are comprehensive and accurate</li><li>You are acting directly for the employer, and not an employment agency</li><li>Your organisation is not in dispute with the <abbr title="Association of Educational Psychologists">AEP</abbr></li></ul>', 'wp-job-manager'),
+    );
+
+    unset($fields['company']['company_video']);
+    unset($fields['company']['company_tagline']);
+    unset($fields['company']['company_twitter']);
+    unset($fields['job']['remote_position']);
+
+    // And return the modified fields
+    return $fields;
+}
+
+// Modifies / remove / add fields for jobs admin
+// Full field list: https://github.com/mikejolley/WP-Job-Manager/blob/master/includes/forms/class-wp-job-manager-form-submit-job.php
+
+add_filter('job_manager_job_listing_data_fields', 'admin_add_custom_admin_fields');
+
+function admin_add_custom_admin_fields($fields)
+{
+    $fields['_closing_date'] = array(
+        'label' => __('Job closing date', 'wp-job_manager'),
+        'data_type' => 'string',
+        'classes' => ['job-manager-datepicker'],
+        'show_in_admin' => true,
+        'placeholder' => '',
+        'priority' => 13,
+    );
+    $fields['_cap_declaration'] = array(
+        'label' => __('Declaration', 'wp-job_manager'),
+        'type' => 'checkbox',
+        'data_type' => 'integer',
+        'show_in_admin' => true,
+        'placeholder' => '',
+        'description' => 'I confirm the above is true',
+        'priority' => 15,
+    );
+    $fields['_interview_date'] = array(
+        'label' => __('Possible interview dates', 'job_manager'),
+        'type' => 'text',
+        'data_type' => 'string',
+        'required' => false,
+        'priority' => 14,
+        'description' => "eg " . date('j F Y', strtotime('+45 days')),
+        'sanitize_callback' => [__CLASS__, 'sanitize_text_field'],
+    );
+    unset($fields['_company_video']);
+    unset($fields['_company_tagline']);
+    unset($fields['_company_twitter']);
+    unset($fields['_remote_position']);
+    unset($fields['_featured']);
+    unset($fields['_filled']);
+
+    return $fields;
+}
+
+
+add_filter('job_manager_update_job_listings_message', 'custom_job_manager_update_job_listings_message');
+
+function custom_job_manager_update_job_listings_message($save_message)
+{
+    return ('<i class="far fa-check-circle"></i> Your changes have been saved. <a href="' . esc_url(job_manager_get_permalink('job_dashboard')) . '">Return to your dashboard</a>.');
+}
