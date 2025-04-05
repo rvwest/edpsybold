@@ -47,10 +47,13 @@
                     .job-listing-logo {
                         grid-column: 1 / span 2;
                         padding: var(--sp-small) 0 var(--sp-small) var(--sp-small);
-                        justify-self: center;
+                        justify-content: center;
+                        align-content: center;
+                        display: flex;
+
 
                         img {
-                            max-width: 100%;
+                            max-width: 80%;
                             height: auto;
                             max-height: calc(var(--lv-listing-height) - (2* var(--sp-small)));
                         }
@@ -123,6 +126,21 @@
 
     .job-listing-meta {
         margin: var(--sp-xxlarge) 0;
+
+        .meta-item {
+            display: flex;
+
+            .label {
+                min-width: 150px;
+                text-align: right;
+                padding-right: var(--sp-medium);
+                border-right: 1px solid var(--cl-dark);
+            }
+
+            .detail {
+                padding-left: var(--sp-medium);
+            }
+        }
     }
 
     .job-listing-logo {
@@ -135,4 +153,10 @@
         }
     }
 
+}
+
+/* ==== Admin area ==================================== */
+
+.wpbdp-notice.wpbdp-upgrade-bar.wpbdp-inline-notice {
+    display: none;
 }

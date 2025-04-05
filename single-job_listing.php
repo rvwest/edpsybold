@@ -24,16 +24,19 @@
             <div class="job-listing-meta">
                 <!-- <span class="location"></span> -->
                 <?php do_action('job_listing_meta_start'); ?>
-                <div class="location">Location <?php the_job_location(); ?></div>
-                <div class="salary">
+                <div class="meta-item">
+                    <div class="label">Location</div>
+                    <div class="detail location"><?php the_job_location(); ?></div>
+                </div>
+                <div class="meta-item">
                     <div class="label">Salary</div>
-                    <div class="detail"><?php gma_wpjmef_display_combined_data_listings(); ?></div>
+                    <div class="detail salary"><?php gma_wpjmef_display_combined_data_listings(); ?></div>
                 </div>
 
                 <?php if (get_option('job_manager_enable_types')) { ?>
-                    <div class="contract">
+                    <div class="meta-item">
                         <div class="label">Contract</div>
-                        <div class="detail"> <?php $types = wpjm_get_the_job_types(); ?>
+                        <div class="detail contract"> <?php $types = wpjm_get_the_job_types(); ?>
                             <?php if (!empty($types)):
                                 foreach ($types as $type): ?>
                                     <span
@@ -43,13 +46,13 @@
                     </div>
 
                 <?php } ?>
-                <div class="closing-date">
+                <div class="meta-item">
                     <div class="label">Closing date</div>
-                    <div class="detail"></div>
+                    <div class="detail closing-date"></div>
                 </div>
-                <div class="interview-date">
+                <div class="meta-item">
                     <div class="label">Interview date</div>
-                    <div class="detail"></div>
+                    <div class="detail interview-date"></div>
                 </div>
                 <?php do_action('job_listing_meta_end'); ?>
             </div>

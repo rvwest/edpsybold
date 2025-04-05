@@ -68,6 +68,20 @@ header[role="banner"] {
 
 }
 
+/* === Jobs ================ */
+
+/* --- Jobs listing -------- */
+
+.job-listings-page {
+    header[role="banner"] {
+        border-bottom: var(--cl-light);
+    }
+
+
+}
+
+/* --- Job ad -------------- */
+
 .single-job_listing {
 
     header[role="banner"] {
@@ -86,10 +100,30 @@ header[role="banner"] {
 
 }
 
-.job-listings-page {
+/* === Thesis ================ */
+
+.wpbdp-view-main {
     header[role="banner"] {
         border-bottom: var(--cl-light);
     }
+}
 
+/* --- Thesis  -------- */
+
+.single-wpbdp_listing {
+
+    header[role="banner"] {
+        border-bottom: none;
+    }
+
+    .backblock {
+        background-color: var(--cl-lightblue);
+
+        padding: var(--sp-small) 0;
+
+        a {
+            color: var(--cl-light)
+        }
+    }
 
 }

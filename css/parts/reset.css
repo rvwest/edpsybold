@@ -367,3 +367,51 @@ section {
     padding: 0;
     color: inherit;
 }
+
+
+
+/** ============== Business Directory ============== **/
+
+
+.wpbdp-page input[type="email"],
+.wpbdp-form-field input[type="email"],
+.wpbdp-single input[type="email"],
+.wpbdp-excerpt input[type="email"],
+.wpbdp-page input[type="number"],
+.wpbdp-form-field input[type="number"],
+.wpbdp-single input[type="number"],
+.wpbdp-excerpt input[type="number"],
+.wpbdp-page input[type="password"],
+.wpbdp-form-field input[type="password"],
+.wpbdp-single input[type="password"],
+.wpbdp-excerpt input[type="password"],
+.wpbdp-page input[type="search"],
+.wpbdp-form-field input[type="search"],
+.wpbdp-single input[type="search"],
+.wpbdp-excerpt input[type="search"],
+.wpbdp-page input[type="tel"],
+.wpbdp-form-field input[type="tel"],
+.wpbdp-single input[type="tel"],
+.wpbdp-excerpt input[type="tel"],
+.wpbdp-page input[type="text"],
+.wpbdp-form-field input[type="text"],
+.wpbdp-single input[type="text"],
+.wpbdp-excerpt input[type="text"],
+.wpbdp-page input[type="url"],
+.wpbdp-form-field input[type="url"],
+.wpbdp-single input[type="url"],
+.wpbdp-excerpt input[type="url"],
+.wpbdp-page textarea,
+.wpbdp-form-field textarea,
+.wpbdp-single textarea,
+.wpbdp-excerpt textarea,
+.wpbdp-page select,
+.wpbdp-form-field select,
+.wpbdp-single select,
+.wpbdp-excerpt select,
+.wpbdp-page .select2 .select2-selection,
+.wpbdp-form-field .select2 .select2-selection,
+.wpbdp-single .select2 .select2-selection,
+.wpbdp-excerpt .select2 .select2-selection {
+    all: inherit;
+}

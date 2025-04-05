@@ -1,7 +1,7 @@
 @font-face {
     font-family: "Geologica";
     src: url("../../fonts/geologica.ttf") format("truetype");
-    font-weight: 200 900;
+    font-weight: 100 900;
     font-style: normal;
 }
 
@@ -36,6 +36,8 @@
     --ff: 'Geologica', sans-serif;
     /* Main menu - items, events list today button */
     --fs-body-small: 14px;
+    /* thesis listing meta */
+    --fs-body-medium: 16px;
     --fs-body: 18px;
     /* Jobs list - job title, event list - event title */
     --fs-title-medium: 22px;
@@ -54,6 +56,7 @@
     --lh-display-large: calc(var(--fs-display-large) * 1.15);
     --lh-display-medium: calc(var(--fs-display-medium) * 1.15);
     --lh-display-small: calc(var(--fs-display-small) * 1.15);
+    --fw-thin: 100;
     --fw-extralight: 200;
     --fw-light: 300;
     --fw-normal: 400;

@@ -206,6 +206,7 @@ function remove_wp_plugin_frontend_css()
         wp_dequeue_style('co-authors-plus-name-style');
         wp_dequeue_style('classic-theme-styles');
         wp_dequeue_style('wp-job-manager-job-listings');
+        wp_dequeue_style('wpbdp-base-css');
         wp_dequeue_style('global-styles');
         wp_dequeue_style('tribe-events-views-v2-skeleton');
         //wp_dequeue_style('tec-variables-skeleton-css');

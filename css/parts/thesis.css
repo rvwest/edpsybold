@@ -1,7 +1,115 @@
 @import url('variables.css');
 
 .business-directory {
-    #container {
-        background-color: var(--cl-lightblue);
+
+    &.wpbdp-view-main {
+
+        #container {
+            background-color: var(--cl-lightblue);
+
+            /* search & sort box */
+            .wpbdp-main-box {
+                display: flex;
+                width: 100%;
+                background-color: var(--cl-light);
+                align-items: center;
+
+                padding: 0 var(--sp-medium);
+
+                .search-block {
+                    flex-grow: 2;
+
+                    .main-input {
+                        display: flex;
+
+                        svg {
+                            width: 20px;
+                            margin-right: var(--sp-small);
+                        }
+
+                        input {
+                            width: 100%;
+
+                            &::placeholder {
+                                color: var(--cl-dark);
+                            }
+                        }
+                    }
+
+
+                }
+
+                .submit-btn {
+                    padding-right: var(--sp-medium);
+                    border-right: solid 1px var(--cl-dark);
+                }
+
+                .wpbdp-listings-sort-options {
+                    padding-left: var(--sp-medium);
+                    display: flex;
+
+                    label {
+                        padding-left: 0;
+                    }
+
+                    select {
+                        padding-left: var(--sp-small);
+                    }
+                }
+            }
+
+            .wpbdp-listing-excerpt {
+
+                padding: 0;
+                margin-bottom: var(--sp-medium);
+
+                a {
+                    &:hover {
+
+                        .excerpt-content {
+                            opacity: var(--op-light);
+                        }
+                    }
+
+                    .excerpt-content {
+                        display: flex;
+
+
+                        .listing-meta {
+                            min-width: 300px;
+                            margin-right: var(--sp-small);
+                            background-color: var(--cl-light);
+                            padding: var(--sp-medium);
+                            font-size: var(--fs-body);
+                            font-weight: var(--fw-semibold);
+                            color: var(--cl-dark);
+
+                            .wpbdp-field-value:not(:last-child) {
+                                margin-bottom: var(--sp-small);
+                            }
+                        }
+
+                        .listing-title {
+                            background-color: var(--cl-light);
+                            padding: var(--sp-medium);
+                            flex-grow: 1;
+
+                            h3 {
+                                font-size: var(--fs-body);
+                                font-weight: var(--fw-thin);
+                                color: var(--cl-dark);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+        .listing-actions {
+            display: none;
+        }
     }
 }
+
+.single-wpbdp_listing {}
