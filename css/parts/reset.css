@@ -333,7 +333,10 @@ section {
 
 /* Reset */
 
-
+#tribe-events-pg-template {
+    padding: 0;
+    margin: 0;
+}
 
 .tribe-common--breakpoint-medium.tribe-events .tribe-events-l-container {
     padding: 0;
@@ -343,6 +346,17 @@ section {
 .tribe-common--breakpoint-medium.tribe-common a.tribe-common-c-btn-border-small {
     padding: inherit;
     width: inherit;
+}
+
+.tribe-events .tribe-events-header {
+    align-items: center;
+    display: flex;
+    flex-direction: initial;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+    position: relative;
 }
 
 .datepicker table tr td.active,

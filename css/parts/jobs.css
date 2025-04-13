@@ -97,63 +97,7 @@
 
 }
 
-/* ==== Job ad page ==================================== */
 
-.edp-jobs.single-job_listing article.type-job_listing {
-    header {
-
-        display: flex;
-        flex-wrap: wrap;
-
-        margin-top: var(--sp-xxlarge);
-
-        .entry-title {
-            font-size: var(--fs-title-large);
-            line-height: var(--lh-title-large);
-            color: var(--cl-dark);
-            width: 100%;
-            margin-bottom: var(--sp-small);
-            padding-right: var(--sp-xlarge);
-        }
-
-        .company {
-            font-size: var(--fs-title-large);
-            color: var(--cl-orange);
-            font-weight: var(--fw-semibold);
-        }
-
-    }
-
-    .job-listing-meta {
-        margin: var(--sp-xxlarge) 0;
-
-        .meta-item {
-            display: flex;
-
-            .label {
-                min-width: 150px;
-                text-align: right;
-                padding-right: var(--sp-medium);
-                border-right: 1px solid var(--cl-dark);
-            }
-
-            .detail {
-                padding-left: var(--sp-medium);
-            }
-        }
-    }
-
-    .job-listing-logo {
-        grid-column: 8 / span 3;
-        margin-top: var(--sp-xxlarge);
-
-        img {
-            max-height: 150px;
-            max-width: 290px;
-        }
-    }
-
-}
 
 /* ==== Admin area ==================================== */
 

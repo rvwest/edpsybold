@@ -68,6 +68,38 @@ header[role="banner"] {
 
 }
 
+/* === Events ================ */
+
+/* --- Events listing -------- */
+
+.post-type-archive-tribe_events {
+    header[role="banner"] {
+        border-bottom: none;
+    }
+
+
+}
+
+/* --- Single event -------- */
+
+.single-tribe_events {
+
+    header[role="banner"] {
+        border-bottom: none;
+    }
+
+    .backblock {
+        background-color: var(--cl-dark);
+
+        padding: var(--sp-small) 0;
+
+        a {
+            color: var(--cl-light)
+        }
+    }
+
+}
+
 /* === Jobs ================ */
 
 /* --- Jobs listing -------- */
@@ -99,6 +131,7 @@ header[role="banner"] {
     }
 
 }
+
 
 /* === Thesis ================ */
 

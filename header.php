@@ -66,6 +66,10 @@
             <div class="backblock edp-fullwidth">
                 <div class="grid12"><a href="../../thesis-directory" class="backblock-link">thesis directory</a></div>
             </div>
+        <?php elseif (is_singular('tribe_events')): ?>
+            <div class="backblock edp-fullwidth">
+                <div class="grid12"><a href="../../events" class="backblock-link">all events</a></div>
+            </div>
         <?php endif; ?>
 
         <div id="container" class="edp-fullwidth">

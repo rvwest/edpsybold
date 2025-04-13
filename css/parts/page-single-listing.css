@@ -1,0 +1,55 @@
+/* ==== Job ad page ==================================== */
+
+.edp-jobs.single-job_listing article.type-job_listing {
+    header {
+
+        display: flex;
+        flex-wrap: wrap;
+
+        .entry-title {
+            margin-bottom: var(--sp-small);
+        }
+
+        .company {
+            font-size: var(--fs-title-large);
+            color: var(--cl-orange);
+            font-weight: var(--fw-semibold);
+        }
+
+    }
+
+
+
+    .job-listing-meta,
+    .wpbdp-metadata-block {
+        margin: var(--sp-xxlarge) 0;
+
+        .meta-item,
+        .wpbdp-field-display {
+            display: flex;
+
+            .label,
+            .field-label {
+                min-width: 150px;
+                text-align: right;
+                padding-right: var(--sp-medium);
+                border-right: 1px solid var(--cl-dark);
+            }
+
+            .detail,
+            .value {
+                padding-left: var(--sp-medium);
+            }
+        }
+    }
+
+    .job-listing-logo {
+        grid-column: 8 / span 3;
+        margin-top: var(--sp-xxlarge);
+
+        img {
+            max-height: 150px;
+            max-width: 290px;
+        }
+    }
+}

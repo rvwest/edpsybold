@@ -47,7 +47,8 @@ button.tribe-events-c-top-bar__datepicker-button {
 /* == Outline button ===== */
 /* Events today button */
 
-.tribe-common--breakpoint-medium.tribe-events .tribe-events-c-top-bar__today-button {
+.tribe-common--breakpoint-medium.tribe-events .tribe-events-c-top-bar__today-button,
+.wpbdp-main-box .submit-btn {
     background-color: var(--cl-dark);
     color: var(--cl-light);
     text-transform: lowercase;

@@ -188,14 +188,17 @@ function edpsybold_comment_count($count)
     }
 }
 
-// ========== CSS removal ================================================= //
+// ========== Debug footer ================================================= //
 
 add_action('wp_footer', function () {
     global $wp_styles;
     echo '<pre>';
     print_r($wp_styles->queue);
+
     echo '</pre>';
 }, 998);
+
+// ========== CSS removal ================================================= //
 function remove_wp_plugin_frontend_css()
 {
     if (!is_admin()) { // Ensures this only runs on the frontend
@@ -209,6 +212,7 @@ function remove_wp_plugin_frontend_css()
         wp_dequeue_style('wpbdp-base-css');
         wp_dequeue_style('global-styles');
         wp_dequeue_style('tribe-events-views-v2-skeleton');
+        wp_dequeue_style('tribe-events-v2-single-skeleton');
         //wp_dequeue_style('tec-variables-skeleton-css');
         //wp_dequeue_style('tribe-events-views-v2-bootstrap-datepicker-styles');
         // wp_dequeue_style('tribe-tooltipster-css-css');
@@ -238,6 +242,34 @@ function add_job_manager_body_classes($classes)
     return $classes;
 }
 add_filter('body_class', 'add_job_manager_body_classes');
+
+// ========== Page promos ================================================= //
+
+
+function get_page_promo()
+{
+    $promos = include get_template_directory() . '/promo-config.php';
+
+    if (is_page()) {
+        $slug = get_post_field('post_name', get_post());
+        if (isset($promos[$slug])) {
+            echo '<div class="page-promo">' . $promos[$slug] . '</div>';
+        }
+    } elseif (is_category()) {
+        $category = get_queried_object();
+        if ($category && isset($promos[$category->slug])) {
+            echo '<div class="page-promo">' . $promos[$category->slug] . '</div>';
+        }
+
+    } elseif (is_post_type_archive()) {
+        $post_type = get_post_type();
+        if (isset($promos[$post_type])) {
+            echo '<div class="page-promo">' . $promos[$post_type] . '</div>';
+        }
+    }
+}
+
+
 
 // ========== Blog pages ================================================= //
 
@@ -372,3 +404,4 @@ function custom_job_manager_update_job_listings_message($save_message)
 {
     return ('<i class="far fa-check-circle"></i> Your changes have been saved. <a href="' . esc_url(job_manager_get_permalink('job_dashboard')) . '">Return to your dashboard</a>.');
 }
+

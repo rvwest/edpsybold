@@ -1,54 +1,214 @@
-@import url('variables.css');
+/* == Heading layout (to allow promo boxes) - both the same, but bug requires both ============== */
 
-/* == H1 ============== */
+.post-type-archive-tribe_events header:not(role="banner") {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: flex-start;
+}
 
-.page {
-    h1 {
-        font-size: var(--fs-display-small);
-        line-height: var(--lh-display-small);
+.archive main header,
+article header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: flex-start;
+}
+
+.page-promo {
+
+
+
+    a {
+        display: flex;
+        align-items: center;
+        border: 1px solid var(--cl-light);
+        padding: var(--sp-small) var(--sp-medium);
+        font-size: var(--fs-title-medium);
         font-weight: var(--fw-semibold);
-        margin: var(--sp-xxlarge) 0 var(--sp-medium) 0;
+
+        &.edp-blog-promo {
+            color: var(--cl-lightblue);
+            border-color: var(--cl-lightblue);
+
+            &:link,
+            &:visited {
+                color: var(--cl-lightblue);
+            }
+
+            &:hover,
+            &:active {
+                background-color: var(--cl-lightblue);
+                color: var(--cl-light);
+            }
+        }
+
+        &.edp-jobs-promo {
+            padding: var(--sp-medium);
+
+            .promo-text {
+
+                display: flex;
+                align-items: flex-start;
+
+                .promo-subtitle {
+                    margin-left: var(--sp-medium);
+                    font-size: var(--fs-body);
+                    font-weight: var(--fw-light);
+                    line-height: var(--lh-body);
+                }
+            }
+        }
+
+
+
+
+
+        i {
+            margin-left: var(--sp-medium);
+        }
+
+        &:link,
+        &:visited {
+            color: var(--cl-light);
+        }
+
+        &.edp-events-promo:link,
+        &.edp-events-promo:visited {
+            background-color: var(--cl-dark-50);
+        }
+
+        &:hover,
+        &.edp-events-promo:hover,
+        &:active,
+        &.edp-events-promo:active {
+            background-color: var(--cl-light);
+            color: var(--cl-dark);
+        }
+
+
     }
 }
 
+/* == H1 ==================================================================================== */
+
+/*.page,
+.single-post,
+.archive,
+.single-tribe_events,
+.single-wpbdp_listing {*/
+
+/* global + breaking through Tribe css */
+
+body:not(.home) h1,
+.post-type-archive-tribe_events h1 {
+    font-weight: var(--fw-semibold);
+    margin: var(--sp-xxlarge) 0 var(--sp-xxlarge) 0;
+}
+
+
+/* == Listing pages (jobs, blog, events (.archive covers both), thesis)  ============== */
+/* ==================================================================================== */
+
+.job-listings-page,
+.archive,
+.wpbdp-view-main {
+    h1 {
+        text-transform: lowercase;
+    }
+}
+
+/* == Display large H1 (jobs, blog, events)  ============== */
 .edp-jobs,
 .archive {
     h1 {
         font-size: var(--fs-display-large);
         line-height: var(--lh-display-large);
-        margin: var(--sp-medium) 0 var(--sp-xlarge) 0;
-        font-weight: var(--fw-semibold);
     }
 }
 
+/* == Display medium H1 (thesis)  ============== */
+.business-directory {
+    &.wpbdp-view-main {
+        h1 {
+            font-size: var(--fs-display-medium);
+            line-height: var(--lh-display-medium);
+        }
+    }
+
+
+}
+
+/* == Dark ===== */
 .edp-jobs,
-.archive.post-type-archive-tribe_events {
+.archive.post-type-archive-tribe_events,
+.business-directory.wpbdp-view-main {
     h1 {
         color: var(--cl-light);
     }
 }
 
-/* Blog list page */
+/* == Light ===== */
+/* Blog listing page */
 .archive {
     h1 {
         color: var(--cl-lightblue);
         margin-left: -7px;
-        text-transform: lowercase;
 
     }
 }
 
-/* Thesis */
-.business-directory {
+
+/* == Content pages (job ad, blog post, event page, thesis page)  ===================== */
+/* ==================================================================================== */
+
+/*.page-template-default:not(.edp-jobs),
+.single-post {
     h1 {
-        font-size: var(--fs-display-medium);
-        line-height: var(--lh-display-medium);
-        color: var(--cl-light);
-        margin: var(--sp-medium) 0;
-        font-weight: var(--fw-semibold);
+        font-size: var(--fs-display-small);
+        line-height: var(--lh-display-small);
+    }
+}*/
+
+.page-template-default:not(.edp-jobs, .business-directory),
+.single-post,
+.single-tribe_events,
+.edp-jobs.single-job_listing article.type-job_listing,
+.single-wpbdp_listing article.wpbdp_listing {
+    h1 {
+        font-size: var(--fs-title-large);
+        line-height: var(--lh-title-large);
+        color: var(--cl-dark);
+        width: 100%;
+        padding-right: var(--sp-xlarge);
     }
 }
 
+
+
+/* Thesis 
+.business-directory {
+    &.wpbdp-view-main {
+        h1 {
+            font-size: var(--fs-display-medium);
+            line-height: var(--lh-display-medium);
+            color: var(--cl-light);
+            margin: var(--sp-xlarge) 0 var(--sp-xxlarge) 0;
+            font-weight: var(--fw-semibold);
+            text-transform: lowercase;
+        }
+    }
+
+    /*
+    &.single-wpbdp_listing {
+        h1 {
+            font-size: var(--fs-display-small);
+            line-height: var(--lh-display-small);
+            margin: var(--sp-medium) 0 var(--sp-xlarge) 0;
+            font-weight: var(--fw-semibold);
+            color: var(--cl-dark)
+        }
+    }*/
 /* == Other headings ============== */
 
 h2 {
