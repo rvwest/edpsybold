@@ -58,19 +58,42 @@
             </div>
 
         </header>
+        <!-- Single jobs page -->
         <?php if (is_singular('job_listing')): ?>
             <div class="backblock edp-fullwidth">
-                <div class="grid12"><a href="../../jobs/" class="backblock-link">all jobs</a></div>
+                <div class="grid12">
+                    <div class="backblock-link"><a href="../../jobs/"><i class="far fa-arrow-left fa-xs"></i> all
+                            jobs</a></div>
+                </div>
             </div>
-        <?php elseif (is_singular('wpbdp_listing')): ?>
-            <div class="backblock edp-fullwidth">
-                <div class="grid12"><a href="../../thesis-directory" class="backblock-link">thesis directory</a></div>
-            </div>
-        <?php elseif (is_singular('tribe_events')): ?>
-            <div class="backblock edp-fullwidth">
-                <div class="grid12"><a href="../../events" class="backblock-link">all events</a></div>
-            </div>
-        <?php endif; ?>
+            <div id="container">
+                <main id="content" role="main" class="fullwidth">
 
-        <div id="container" class="edp-fullwidth">
-            <main id="content" role="main" class="grid12">
+                    <!-- Single Thesis page -->
+                <?php elseif (is_singular('wpbdp_listing')): ?>
+                    <div class="backblock edp-fullwidth">
+                        <div class="grid12">
+                            <div class="backblock-link"><a href="../../thesis-directory"><i
+                                        class="far fa-arrow-left fa-xs"></i> thesis directory</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="container" class="edp-fullwidth">
+                        <main id="content" role="main" class="grid12">
+
+                            <!-- Single Event page -->
+                        <?php elseif (is_singular('tribe_events')): ?>
+                            <div class="backblock edp-fullwidth">
+                                <div class="grid12">
+                                    <div class="backblock-link"><a href="../../events"><i
+                                                class="far fa-arrow-left fa-xs"></i> all events</a></div>
+                                </div>
+                            </div>
+                            <div id="container" class="edp-fullwidth">
+                                <main id="content" role="main" class="grid12">
+
+                                    <!-- Regular page -->
+                                <?php else: ?>
+                                    <div id="container" class="edp-fullwidth">
+                                        <main id="content" role="main" class="grid12">
+                                        <?php endif; ?>

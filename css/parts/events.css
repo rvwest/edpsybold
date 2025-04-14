@@ -64,7 +64,7 @@
 
                     .edp-events-calendar-list__event-date-tag-weekday,
                     .edp-events-calendar-list__event-date-tag-month {
-                        font-size: var(--fs-title-medium);
+                        font-size: var(--fs-title-small);
                         font-weight: var(--fw-medium);
                         color: var(--cl-dark);
                     }
@@ -86,7 +86,7 @@
                 flex-grow: 3;
 
                 h3 {
-                    font-size: var(--fs-title-medium);
+                    font-size: var(--fs-title-small);
                     font-weight: var(--fw-semibold);
                 }
             }

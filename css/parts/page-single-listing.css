@@ -3,45 +3,64 @@
 .edp-jobs.single-job_listing article.type-job_listing {
     header {
 
-        display: flex;
-        flex-wrap: wrap;
+        display: grid;
 
         .entry-title {
             margin-bottom: var(--sp-small);
         }
 
         .company {
-            font-size: var(--fs-title-large);
+            font-size: var(--fs-title-medium);
             color: var(--cl-orange);
             font-weight: var(--fw-semibold);
         }
 
     }
 
-
-
-    .job-listing-meta,
-    .wpbdp-metadata-block {
+    .meta-slice {
         margin: var(--sp-xxlarge) 0;
 
-        .meta-item,
-        .wpbdp-field-display {
-            display: flex;
+        .meta-img-l {
+            background-image: url(../../images/edpsy-swirls-14.svg);
+            background-repeat: no-repeat;
+            background-position: 0 0;
+        }
 
-            .label,
-            .field-label {
-                min-width: 150px;
-                text-align: right;
-                padding-right: var(--sp-medium);
-                border-right: 1px solid var(--cl-dark);
-            }
+        .job-listing-meta,
+        .wpbdp-metadata-block {
 
-            .detail,
-            .value {
-                padding-left: var(--sp-medium);
+            margin: var(--sp-medium) 0;
+
+            .meta-item,
+            .wpbdp-field-display {
+                display: flex;
+                padding: 0 var(--sp-medium);
+
+                .label,
+                .field-label {
+                    min-width: 150px;
+                    text-align: right;
+                    padding-right: var(--sp-medium);
+                    border-right: 1px solid var(--cl-dark);
+                }
+
+                .detail,
+                .value {
+                    padding-left: var(--sp-medium);
+                    font-weight: var(--fw-normal);
+                    padding-bottom: var(--sp-small);
+                }
             }
         }
+
+        .meta-img-r {
+            background-image: url(../../images/edpsy-swirls-13.svg);
+            background-repeat: no-repeat;
+            background-position: 0 100%;
+        }
     }
+
+
 
     .job-listing-logo {
         grid-column: 8 / span 3;

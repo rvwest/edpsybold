@@ -24,7 +24,7 @@ article header {
         align-items: center;
         border: 1px solid var(--cl-light);
         padding: var(--sp-small) var(--sp-medium);
-        font-size: var(--fs-title-medium);
+        font-size: var(--fs-title-small);
         font-weight: var(--fw-semibold);
 
         &.edp-blog-promo {

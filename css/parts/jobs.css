@@ -65,7 +65,7 @@
 
 
                         .job-title {
-                            font-size: var(--fs-title-medium);
+                            font-size: var(--fs-title-small);
                             color: var(--cl-dark);
                             font-weight: var(--fw-semibold);
                             padding-bottom: var(--sp-small);

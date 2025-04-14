@@ -91,7 +91,8 @@ header[role="banner"] {
     .backblock {
         background-color: var(--cl-dark);
 
-        padding: var(--sp-small) 0;
+        padding-top: var(--sp-small);
+        padding-bottom: var(--sp-small);
 
         a {
             color: var(--cl-light)
@@ -123,7 +124,8 @@ header[role="banner"] {
     .backblock {
         background-color: var(--cl-orange);
 
-        padding: var(--sp-small) 0;
+        padding-top: var(--sp-small);
+        padding-bottom: var(--sp-small);
 
         a {
             color: var(--cl-light)
@@ -152,7 +154,8 @@ header[role="banner"] {
     .backblock {
         background-color: var(--cl-lightblue);
 
-        padding: var(--sp-small) 0;
+        padding-top: var(--sp-small);
+        padding-bottom: var(--sp-small);
 
         a {
             color: var(--cl-light)
