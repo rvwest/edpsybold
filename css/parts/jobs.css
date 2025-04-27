@@ -42,6 +42,7 @@
 
                     &:hover {
                         opacity: var(--op-light);
+                        box-shadow: none;
                     }
 
                     .job-listing-logo {
@@ -64,7 +65,7 @@
                         padding: var(--sp-small) 0;
 
 
-                        .job-title {
+                        .job-title h2 {
                             font-size: var(--fs-title-small);
                             color: var(--cl-dark);
                             font-weight: var(--fw-semibold);
@@ -74,7 +75,7 @@
                         .company {
                             font-size: var(--fs-body);
                             color: var(--cl-dark);
-                            font-weight: var(--fw-semibold);
+                            font-weight: var(--fw-medium);
                         }
 
                     }

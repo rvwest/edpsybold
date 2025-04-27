@@ -23,7 +23,6 @@
 
 
 
-
             <div class="meta-slice">
                 <div class="meta-img-l"></div>
                 <div class="job-listing-meta">
@@ -86,18 +85,23 @@
                 <?php if (candidates_can_apply()): ?>
                     <?php get_job_manager_template('job-application.php'); ?>
                 <?php endif; ?>
+
             <?php endif; ?>
 
 
 
 
 
-            <!-- -->
-            <a href="/jobs" class="button secondary see-all-jobs">See all jobs</a>
-            <p class="body-footnote"><i class="fad fa-check"></i> We follow the <a
-                    href="https://www.asa.org.uk/type/non_broadcast/code_section/20.html">CAP Code for employment ads</a>.</p>
+
 
         </article>
+        <div class="job-footer grid12">
+            <div class="span8"><a href="/jobs" class="button edp-button-outline secondary see-all-jobs">See all jobs</a>
+                <p class="footnote-asa"><i class="fad fa-check"></i> We follow the <a
+                        href="https://www.asa.org.uk/type/non_broadcast/code_section/20.html">CAP Code for employment ads</a>.
+                </p>
+            </div>
+        </div>
 
 
 

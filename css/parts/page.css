@@ -7,9 +7,14 @@ article.job_listing {
 
     .entry-content,
     .job_description {
-        li {
-            list-style-type: disc;
+        ul {
             margin-left: var(--sp-medium);
+
+            li {
+                list-style-type: disc;
+                margin-left: var(--sp-medium);
+
+            }
         }
 
         p,

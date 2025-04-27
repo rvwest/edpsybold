@@ -25,7 +25,6 @@
     }
 
 
-
     #site-title {
         grid-column: 1 / span 2;
     }
@@ -135,7 +134,7 @@
 
 
     >* {
-        grid-column: 2 / span 10;
+        grid-column: 3 / span 8;
     }
 
     header {

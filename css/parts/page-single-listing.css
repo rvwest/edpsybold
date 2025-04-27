@@ -1,74 +1,92 @@
 /* ==== Job ad page ==================================== */
 
-.edp-jobs.single-job_listing article.type-job_listing {
-    header {
+.edp-jobs.single-job_listing {
 
-        display: grid;
+    article.type-job_listing {
+        header {
 
-        .entry-title {
-            margin-bottom: var(--sp-small);
+            display: grid;
+
+            .entry-title {
+                margin-bottom: var(--sp-small);
+            }
+
+            .company {
+                font-size: var(--fs-title-medium);
+                color: var(--cl-orange);
+                font-weight: var(--fw-semibold);
+            }
+
         }
 
-        .company {
-            font-size: var(--fs-title-medium);
-            color: var(--cl-orange);
-            font-weight: var(--fw-semibold);
-        }
+        .meta-slice {
+            margin: var(--sp-xxlarge) 0;
 
-    }
+            .meta-img-l {
+                background-image: url(../../images/edpsy-swirls-14.svg);
+                background-repeat: no-repeat;
+                background-position: 0 0;
+            }
 
-    .meta-slice {
-        margin: var(--sp-xxlarge) 0;
+            .job-listing-meta,
+            .wpbdp-metadata-block {
 
-        .meta-img-l {
-            background-image: url(../../images/edpsy-swirls-14.svg);
-            background-repeat: no-repeat;
-            background-position: 0 0;
-        }
+                margin: var(--sp-medium) 0;
 
-        .job-listing-meta,
-        .wpbdp-metadata-block {
+                .meta-item,
+                .wpbdp-field-display {
+                    display: flex;
+                    padding: 0 var(--sp-medium);
 
-            margin: var(--sp-medium) 0;
+                    .label,
+                    .field-label {
+                        min-width: 150px;
+                        text-align: right;
+                        padding-right: var(--sp-medium);
+                        border-right: 1px solid var(--cl-dark);
+                    }
 
-            .meta-item,
-            .wpbdp-field-display {
-                display: flex;
-                padding: 0 var(--sp-medium);
-
-                .label,
-                .field-label {
-                    min-width: 150px;
-                    text-align: right;
-                    padding-right: var(--sp-medium);
-                    border-right: 1px solid var(--cl-dark);
+                    .detail,
+                    .value {
+                        padding-left: var(--sp-medium);
+                        font-weight: var(--fw-normal);
+                        padding-bottom: var(--sp-small);
+                    }
                 }
+            }
 
-                .detail,
-                .value {
-                    padding-left: var(--sp-medium);
-                    font-weight: var(--fw-normal);
-                    padding-bottom: var(--sp-small);
-                }
+            .meta-img-r {
+                background-image: url(../../images/edpsy-swirls-13.svg);
+                background-repeat: no-repeat;
+                background-position: 0 100%;
             }
         }
 
-        .meta-img-r {
-            background-image: url(../../images/edpsy-swirls-13.svg);
-            background-repeat: no-repeat;
-            background-position: 0 100%;
+
+
+        .job-listing-logo {
+            grid-column: 8 / span 3;
+            margin-top: var(--sp-xxlarge);
+
+            img {
+                max-height: 150px;
+                max-width: 290px;
+            }
         }
     }
 
+    .wpjm-submit-block {
+        margin: var(--sp-medium) 0;
+    }
 
+    .job-footer {
+        .footnote-asa {
+            text-align: center;
+            margin: var(--sp-large) 0;
 
-    .job-listing-logo {
-        grid-column: 8 / span 3;
-        margin-top: var(--sp-xxlarge);
-
-        img {
-            max-height: 150px;
-            max-width: 290px;
+            i {
+                color: var(--cl-lightpurple)
+            }
         }
     }
 }

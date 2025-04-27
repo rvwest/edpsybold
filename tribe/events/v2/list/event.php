@@ -31,9 +31,6 @@ $event_classes = tribe_get_post_class(['tribe-events-calendar-list__event', 'tri
 
 
 
-
-
-
 		<div class="edp-events-calendar-list__event-header">
 
 			<?php $this->template('list/event/title', ['event' => $event]); ?>
