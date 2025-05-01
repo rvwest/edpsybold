@@ -58,8 +58,9 @@
             </div>
 
         </header>
-        <!-- Single jobs page -->
+
         <?php if (is_singular('job_listing')): ?>
+            <!-- Single jobs page -->
             <div class="backblock edp-fullwidth">
                 <div class="grid12">
                     <div class="backblock-link"><a href="../../jobs/"><i class="far fa-arrow-left fa-xs"></i> all
@@ -69,8 +70,9 @@
             <div id="container">
                 <main id="content" role="main" class="fullwidth">
 
-                    <!-- Single Thesis page -->
+
                 <?php elseif (is_singular('wpbdp_listing')): ?>
+                    <!-- Single Thesis page -->
                     <div class="backblock edp-fullwidth">
                         <div class="grid12">
                             <div class="backblock-link"><a href="../../thesis-directory"><i
@@ -81,8 +83,9 @@
                     <div id="container" class="edp-fullwidth">
                         <main id="content" role="main" class="grid12">
 
-                            <!-- Single Event page -->
+
                         <?php elseif (is_singular('tribe_events')): ?>
+                            <!-- Single Event page -->
                             <div class="backblock edp-fullwidth">
                                 <div class="grid12">
                                     <div class="backblock-link"><a href="../../events"><i
@@ -90,10 +93,10 @@
                                 </div>
                             </div>
                             <div id="container" class="edp-fullwidth">
-                                <main id="content" role="main" class="grid12">
-
-                                    <!-- Regular page -->
+                                <main id="content" role="main" class="fullwidth">
                                 <?php else: ?>
+                                    <!-- Regular page -->
+
                                     <div id="container" class="edp-fullwidth">
                                         <main id="content" role="main" class="grid12">
                                         <?php endif; ?>

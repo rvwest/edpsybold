@@ -1,17 +1,21 @@
 /* ==== Job ad page ==================================== */
 
-.edp-jobs.single-job_listing {
+.edp-jobs.single-job_listing,
+.single-tribe_events {
 
-    article.type-job_listing {
+    article.type-job_listing,
+    article.type-tribe_events {
         header {
 
             display: grid;
 
-            .entry-title {
+            .entry-title,
+            .tribe-events-single-event-title {
                 margin-bottom: var(--sp-small);
             }
 
-            .company {
+            .company,
+            .edp-event-date-time {
                 font-size: var(--fs-title-medium);
                 color: var(--cl-orange);
                 font-weight: var(--fw-semibold);
@@ -29,7 +33,8 @@
             }
 
             .job-listing-meta,
-            .wpbdp-metadata-block {
+            .wpbdp-metadata-block,
+            .event-listing-meta {
 
                 margin: var(--sp-medium) 0;
 
@@ -89,4 +94,14 @@
             }
         }
     }
+}
+
+.single-tribe_events {
+
+    /** TODO remove properly **/
+    .tribe-events-ajax-loading {
+        display: none;
+    }
+
+
 }

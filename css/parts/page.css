@@ -1,12 +1,15 @@
 /* Standard page (single.php)
-also basis for: jobs page (single-job_listing.php) / events page */
+also basis for: jobs page (single-job_listing.php) / events page content */
 
 .page-template-default:not(.job-listings-page) article.type-page,
-article.job_listing {
+article.job_listing,
+article.tribe-events-single {
     margin-bottom: var(--sp-xxlarge);
 
     .entry-content,
-    .job_description {
+    .job_description,
+    .tribe-events-content {
+
         ul {
             margin-left: var(--sp-medium);
 

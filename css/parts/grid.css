@@ -129,7 +129,8 @@
 
 
 
-/* Job ad page */
+/* Single listing page - job ad page / events page */
+.single-tribe_events article.tribe-events-single,
 .single-job-listing article.type-job_listing {
 
 
@@ -151,7 +152,8 @@
 
         }
 
-        .job-listing-meta {
+        .job-listing-meta,
+        .event-listing-meta {
             grid-column: 4 / span 6;
 
         }
