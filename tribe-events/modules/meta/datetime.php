@@ -53,9 +53,6 @@ $time_formatted = apply_filters('tribe_events_single_event_time_formatted', $tim
  */
 $time_title = apply_filters('tribe_events_single_event_time_title', __('Time:', 'the-events-calendar'), $event_id);
 
-$cost = tribe_get_formatted_cost();
-$website = tribe_get_event_website_link($event_id);
-$website_title = tribe_events_get_event_website_title();
 ?>
 
 <?php
@@ -77,7 +74,7 @@ if (tribe_event_is_all_day() && tribe_event_is_multiday()):
 elseif (tribe_event_is_all_day()):
 	?>
 	<div class="meta-item">
-		<div class="label">Start date</div>
+		<div class="label">Date</div>
 		<div class="detail event-schedule event-start-time"><?php echo esc_html($start_date); ?></div>
 	</div>
 	<?php
@@ -99,12 +96,9 @@ else:
 
 	<div class="meta-item">
 		<div class="label">Date</div>
-		<div class="detail event-schedule event-end-date"><?php echo esc_html($start_date); ?> </div>
-	</div>
-
-	<div class="meta-item">
-		<div class="label">Time</div>
-		<div class="detail event-schedule event-end-date"><?php echo $time_formatted; ?></div>
+		<div class="detail event-schedule event-end-date"><?php echo esc_html($start_date); ?>
+			(<?php echo $time_formatted; ?>)
+		</div>
 	</div>
 
 <?php endif ?>
@@ -117,57 +111,3 @@ else:
  */
 do_action('tribe_events_single_meta_details_section_after_datetime');
 ?>
-
-<?php
-// Event Cost
-if (!empty($cost)): ?>
-	<div class="meta-item">
-		<div class="label">Cost</div>
-		<div class="detail event-cost"><?php echo esc_html($cost); ?></div>
-	</div>
-<?php endif ?>
-<!-- Todo - use this? -->
-<?php
-echo tribe_get_event_categories(
-	get_the_id(),
-	[
-		'before' => '',
-		'sep' => ', ',
-		'after' => '',
-		'label' => null, // An appropriate plural/singular label will be provided
-		'label_before' => '<dt class="tribe-events-event-categories-label">',
-		'label_after' => '</dt>',
-		'wrap_before' => '<dd class="tribe-events-event-categories">',
-		'wrap_after' => '</dd>',
-	]
-);
-?>
-
-<?php
-tribe_meta_event_archive_tags(
-	/* Translators: %s: Event (singular) */
-	sprintf(
-		esc_html__('%s Tags:', 'the-events-calendar'),
-		tribe_get_event_label_singular()
-	),
-	', ',
-	true
-);
-?>
-<!-- Todo - embed title -->
-<?php
-// Event Website
-if (!empty($website)): ?>
-	<div class="meta-item">
-		<div class="label">Book and find out more</div>
-		<div class="detail event-link">
-			<?php
-			echo '<a rel=”nofollow” href="' . esc_url($website) . '">' . esc_url($website) . '</a>';
-			?></li>
-		</div>
-	</div>
-
-
-<?php endif; ?>
-
-<?php do_action('tribe_events_single_meta_details_section_end'); ?>

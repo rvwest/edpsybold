@@ -84,48 +84,29 @@ $cost = tribe_get_formatted_cost($event_id);
 	<div class="meta-slice">
 		<div class="meta-img-l"></div>
 		<div class="event-listing-meta">
-			<div class="meta-item">
-				<div class="label">Time</div>
-				<div class="detail time"><?php echo tribe_get_organizer_link($organizer); ?></div>
-			</div>
-			<div class="meta-item">
-				<div class="label">Cost</div>
-				<div class="detail time"><?php echo esc_html($cost); ?></div>
-			</div>
-			<div class="meta-item">
-				<div class="label">Location</div>
-				<div class="detail address">
-					<?php echo tribe_get_full_address(); ?>
-					<?php if (tribe_show_google_map_link()): ?>
-						<?php echo tribe_get_map_link_html(); ?>
-					<?php endif; ?>
+			<?php
+			// Cost
+			tribe_get_template_part('modules/meta/cost');
+			// Date / time 
+			tribe_get_template_part('modules/meta/datetime');
+			// Booking link
+			tribe_get_template_part('modules/meta/book');
+			// Venue and venue address
+			tribe_get_template_part('modules/meta/venue');
+			// Organiser details
+			if (tribe_has_organizer()) {
+				tribe_get_template_part('modules/meta/organizer');
+			}
+			// Categories (eg webinar)
+			tribe_get_template_part('modules/meta/categories');
 
-				</div>
-			</div>
-			<div class="meta-item">
-				<div class="label">Website?</div>
-				<div class="detail location"><?php echo tribe_get_organizer_link($organizer); ?></div>
-			</div>
-			<div class="meta-item">
-				<div class="label">Organiser</div>
-				<div class="detail location"><?php echo tribe_get_organizer_link($organizer); ?></div>
-			</div>
+			?>
 
-			<?php tribe_get_template_part('modules/meta'); ?>
 
 
 		</div>
 		<div class="meta-img-r"></div>
 
-	</div>
-
-
-	<div class="tribe-events-schedule tribe-clearfix">
-		<?php echo tribe_events_event_schedule_details($event_id, '<h2>', '</h2>'); ?>
-
-		<?php if (!empty($cost)): ?>
-			<span class="tribe-events-cost"><?php echo esc_html($cost) ?></span>
-		<?php endif; ?>
 	</div>
 
 	<!-- #tribe-events-header -->
@@ -141,12 +122,15 @@ $cost = tribe_get_formatted_cost($event_id);
 			<div class="tribe-events-single-event-description tribe-events-content">
 				<?php the_content(); ?>
 			</div>
+			<?php tribe_get_template_part('modules/meta/book'); ?>
+
 			<!-- .tribe-events-single-event-description -->
 			<?php do_action('tribe_events_single_event_after_the_content') ?>
 
 			<!-- Event meta -->
 			<?php do_action('tribe_events_single_event_before_the_meta') ?>
 			<?php tribe_get_template_part('modules/meta'); ?>
+			<?php tribe_get_template_part('modules/meta/map'); ?>
 			<?php do_action('tribe_events_single_event_after_the_meta') ?>
 		</div> <!-- #post-x -->
 		<?php if (get_post_type() == Tribe__Events__Main::POSTTYPE && tribe_get_option('showComments', false))
@@ -169,5 +153,5 @@ $cost = tribe_get_formatted_cost($event_id);
 		</nav>
 	</div>
 	<!-- #tribe-events-footer -->
-
+	<?php tribe_get_template_part('modules/meta/tags'); ?>
 </article><!-- #tribe-events-content -->

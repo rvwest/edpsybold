@@ -219,7 +219,11 @@ dt {
     font-weight: bold
 }
 
-address,
+address {
+    font-style: normal;
+}
+
+
 cite,
 var {
     font-style: italic
