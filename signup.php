@@ -1,4 +1,4 @@
-<div id="signup-slice" role="contentinfo">
+<div id="signup-slice">
     <div class="signup-container grid12">
         <div class="signup-content span10">
             <div class="message">

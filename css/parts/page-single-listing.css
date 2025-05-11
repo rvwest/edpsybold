@@ -87,28 +87,32 @@
             margin: var(--sp-large) 0;
 
             i {
-                color: var(--cl-lightpurple)
+                color: var(--cl-medpurple)
             }
         }
     }
 }
 
+/* ==== Jobs only ==================================== */
 .edp-jobs.single-job_listing {
     header {
         .company {
-            color: var(--cl-orange);
+            color: var(--cl-jobs-primary);
         }
 
     }
 
-    .meta-img-l {
-        background-image: url(../../images/edpsy-swirls-14.svg);
-    }
+    article {
+        .meta-img-l {
+            background-image: url(../../images/edpsy-swirls-14.svg);
+        }
 
-    .meta-img-r {
-        background-image: url(../../images/edpsy-swirls-13.svg);
-    }
+        .meta-img-r {
+            background-image: url(../../images/edpsy-swirls-13.svg);
+        }
 
+        margin-bottom: 0;
+    }
 }
 
 

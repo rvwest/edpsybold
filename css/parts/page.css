@@ -1,10 +1,16 @@
 /* Standard page (single.php)
-also basis for: jobs page (single-job_listing.php) / events page content */
+also basis for: jobs page (single-job_listing.php) / events page content / Blog post */
 
 .page-template-default:not(.job-listings-page) article.type-page,
 article.job_listing,
-article.tribe-events-single {
-    margin-bottom: var(--sp-xxlarge);
+article.tribe-events-single,
+article.type-post {
+
+    img.wp-post-image {
+        width: 100%;
+        height: auto;
+        margin-bottom: var(--sp-medium);
+    }
 
     .entry-content,
     .job_description,
@@ -20,12 +26,40 @@ article.tribe-events-single {
             }
         }
 
+        ol {
+            margin-left: var(--sp-medium);
+
+            li {
+                list-style-type: decimal;
+                margin-left: var(--sp-medium);
+
+            }
+        }
+
         p,
         ul,
+        ol,
         h2 {
             margin-bottom: var(--sp-medium);
         }
 
+
+    }
+
+    margin-bottom: var(--sp-xxlarge);
+}
+
+/* ---- Blog post only ----- */
+
+article.type-post {
+
+    .entry-content {
+
+        p:first-of-type {
+            font-size: var(--fs-title-small);
+            line-height: var(--lh-title-small);
+            margin-bottom: var(--sp-medium);
+        }
 
     }
 }

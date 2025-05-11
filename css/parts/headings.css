@@ -28,17 +28,17 @@ article header {
         font-weight: var(--fw-semibold);
 
         &.edp-blog-promo {
-            color: var(--cl-lightblue);
-            border-color: var(--cl-lightblue);
+            color: var(--cl-blog-primary);
+            border-color: var(--cl-blog-primary);
 
             &:link,
             &:visited {
-                color: var(--cl-lightblue);
+                color: var(--cl-blog-primary);
             }
 
             &:hover,
             &:active {
-                background-color: var(--cl-lightblue);
+                background-color: var(--cl-blog-primary);
                 color: var(--cl-light);
             }
         }
@@ -152,7 +152,7 @@ body:not(.home) h1,
 /* Blog listing page */
 .archive {
     h1 {
-        color: var(--cl-lightblue);
+        color: var(--cl-blog-primary);
         margin-left: -7px;
 
     }

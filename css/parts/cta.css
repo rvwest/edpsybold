@@ -24,7 +24,8 @@ input[type="submit"] {
     text-transform: lowercase;
     font-family: var(--ff);
 
-    &:hover {
+    &:hover,
+    &:focus {
         background-color: var(--cl-light);
         color: var(--cl-dark);
         box-shadow: none;
@@ -45,11 +46,13 @@ button.edp-button-outline {
     text-transform: lowercase;
     font-family: var(--ff);
 
-    &:hover {
+    &:hover,
+    &:focus {
         background-color: var(--cl-dark);
         color: var(--cl-light);
         box-shadow: none;
     }
+
 }
 
 
@@ -61,7 +64,8 @@ button.tribe-events-c-top-bar__datepicker-button {
     color: var(--cl-light);
     background-color: var(--cl-dark);
 
-    &:hover {
+    &:hover,
+    &:focus {
         opacity: var(--op-strong);
     }
 
@@ -81,10 +85,12 @@ button.tribe-events-c-top-bar__datepicker-button {
     border: 1px solid var(--cl-light);
     padding: var(--sp-xxsmall) var(--sp-xsmall);
 
-    &:hover {
+    &:hover,
+    &:focus {
         background-color: var(--cl-light);
         color: var(--cl-dark);
     }
+
 }
 
 
@@ -98,7 +104,7 @@ a.tribe-common-c-btn-icon,
         color: var(--cl-light);
     }
 
-    &:is(:hover, :active) {
+    &:is(:hover, :active, :focus) {
         opacity: var(--op-strong);
     }
 }

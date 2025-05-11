@@ -102,7 +102,9 @@ body {
 }
 
 a {
-    text-decoration-skip-ink: auto
+    text-decoration-skip-ink: auto;
+    position: relative;
+    z-index: auto
 }
 
 a[href^="tel"] {

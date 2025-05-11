@@ -70,13 +70,12 @@
             <div id="container">
                 <main id="content" role="main" class="fullwidth">
 
-
-                <?php elseif (is_singular('wpbdp_listing')): ?>
+                <?php elseif (is_singular('post')): ?>
                     <!-- Single Thesis page -->
                     <div class="backblock edp-fullwidth">
                         <div class="grid12">
-                            <div class="backblock-link"><a href="../../thesis-directory"><i
-                                        class="far fa-arrow-left fa-xs"></i> thesis directory</a>
+                            <div class="backblock-link"><a href="../../blog"><i class="far fa-arrow-left fa-xs"></i> all
+                                    blogs</a>
                             </div>
                         </div>
                     </div>
@@ -84,19 +83,32 @@
                         <main id="content" role="main" class="grid12">
 
 
-                        <?php elseif (is_singular('tribe_events')): ?>
-                            <!-- Single Event page -->
+                        <?php elseif (is_singular('wpbdp_listing')): ?>
+                            <!-- Single Thesis page -->
                             <div class="backblock edp-fullwidth">
                                 <div class="grid12">
-                                    <div class="backblock-link"><a href="../../events"><i
-                                                class="far fa-arrow-left fa-xs"></i> all events</a></div>
+                                    <div class="backblock-link"><a href="../../thesis-directory"><i
+                                                class="far fa-arrow-left fa-xs"></i> thesis directory</a>
+                                    </div>
                                 </div>
                             </div>
                             <div id="container" class="edp-fullwidth">
-                                <main id="content" role="main" class="fullwidth">
-                                <?php else: ?>
-                                    <!-- Regular page -->
+                                <main id="content" role="main" class="grid12">
 
+
+                                <?php elseif (is_singular('tribe_events')): ?>
+                                    <!-- Single Event page -->
+                                    <div class="backblock edp-fullwidth">
+                                        <div class="grid12">
+                                            <div class="backblock-link"><a href="../../events"><i
+                                                        class="far fa-arrow-left fa-xs"></i> all events</a></div>
+                                        </div>
+                                    </div>
                                     <div id="container" class="edp-fullwidth">
-                                        <main id="content" role="main" class="grid12">
-                                        <?php endif; ?>
+                                        <main id="content" role="main" class="fullwidth">
+                                        <?php else: ?>
+                                            <!-- Regular page -->
+
+                                            <div id="container" class="edp-fullwidth">
+                                                <main id="content" role="main" class="grid12">
+                                                <?php endif; ?>

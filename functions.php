@@ -188,6 +188,20 @@ function edpsybold_comment_count($count)
     }
 }
 
+
+// ========== Tabbable links fix ================================================= //
+function edpsy_enqueue_fix_tab_focus_script()
+{
+    wp_enqueue_script(
+        'fix-tab-focus',
+        get_template_directory_uri() . '/js/fix-tab-focus.js',
+        array(),
+        null,
+        true // load in footer
+    );
+}
+add_action('wp_enqueue_scripts', 'edpsy_enqueue_fix_tab_focus_script');
+
 // ========== Debug footer ================================================= //
 
 add_action('wp_footer', function () {

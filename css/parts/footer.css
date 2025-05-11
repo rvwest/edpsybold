@@ -35,7 +35,7 @@
 
 }
 
-footer {
+footer#footer {
     background-color: var(--cl-dark);
     color: var(--cl-light);
     padding: var(--sp-xlarge);

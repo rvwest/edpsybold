@@ -68,6 +68,29 @@ header[role="banner"] {
 
 }
 
+/* === Blog ================ */
+
+/* --- Blog page single -------- */
+
+.single-post {
+
+    header[role="banner"] {
+        border-bottom: none;
+    }
+
+    .backblock {
+        background-color: var(--cl-blog-primary);
+
+        padding-top: var(--sp-small);
+        padding-bottom: var(--sp-small);
+
+        a {
+            color: var(--cl-light)
+        }
+    }
+
+}
+
 /* === Events ================ */
 
 /* --- Events listing -------- */
@@ -89,7 +112,7 @@ header[role="banner"] {
     }
 
     .backblock {
-        background-color: var(--cl-dark);
+        background-color: var(--cl-events-primary);
 
         padding-top: var(--sp-small);
         padding-bottom: var(--sp-small);
@@ -122,7 +145,7 @@ header[role="banner"] {
     }
 
     .backblock {
-        background-color: var(--cl-orange);
+        background-color: var(--cl-jobs-primary);
 
         padding-top: var(--sp-small);
         padding-bottom: var(--sp-small);

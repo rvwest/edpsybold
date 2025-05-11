@@ -4,7 +4,7 @@
 
 .edp-jobs.job-listings-page {
     #container {
-        background-color: var(--cl-orange);
+        background-color: var(--cl-jobs-primary);
     }
 
     .entry-content {

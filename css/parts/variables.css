@@ -16,9 +16,20 @@
     --cl-lightblue: #78A8CF;
     --cl-yellow: #E5C957;
     --cl-purple: #59408A;
+    --cl-medpurple: #A359A2;
     --cl-lightpurple: #BF86A7;
+
+    /* Context colors */
+    --cl-thesis-primary: var(--cl-lightblue);
+    --cl-blog-primary: var(--cl-medpurple);
+    --cl-jobs-primary: var(--cl-orange);
+    --cl-events-primary: var(--cl-dark);
+
     --op-light: 0.8;
     --op-strong: 0.6;
+
+
+
 
     /* Spacing */
     --sp-xxsmall: 3px;
@@ -56,6 +67,7 @@
     /* ===== */
     --lh-body-small: calc(var(--fs-body-small) * 1.15);
     --lh-body: calc(var(--fs-body) * 1.5);
+    --lh-title-medium: calc(var(--fs-title-medium) * 1.15);
     --lh-title-large: calc(var(--fs-title-large) * 1.15);
     --lh-display-large: calc(var(--fs-display-large) * 1.15);
     --lh-display-medium: calc(var(--fs-display-medium) * 1.15);
