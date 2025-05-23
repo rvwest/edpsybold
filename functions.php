@@ -212,6 +212,19 @@ add_action('wp_footer', function () {
     echo '</pre>';
 }, 998);
 
+
+// ========== Remove comments ================================================= //
+
+function disable_page_comments()
+{
+    if (is_page()) {
+        // Close comments on front-end
+        add_filter('comments_open', '__return_false');
+        add_filter('pings_open', '__return_false');
+    }
+}
+add_action('template_redirect', 'disable_page_comments');
+
 // ========== CSS removal ================================================= //
 function remove_wp_plugin_frontend_css()
 {

@@ -4,7 +4,5 @@
         the_post(); ?>
         <?php get_template_part('entry'); ?>
     <?php endwhile; endif; ?>
-<footer class="footer">
-
-</footer>
+<?php get_template_part('biography', get_post_format()); ?>
 <?php get_footer(); ?>
