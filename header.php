@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- file: header.php -->
 <html <?php language_attributes(); ?> <?php edpsybold_schema_type(); ?>>
 
 <head>
@@ -60,7 +61,7 @@
         </header>
 
         <?php if (is_singular('job_listing')): ?>
-            <!-- Single jobs page -->
+            <!-- var: single jobs page -->
             <div class="backblock edp-fullwidth">
                 <div class="grid12">
                     <div class="backblock-link"><a href="../../jobs/"><i class="far fa-arrow-left fa-xs"></i> all
@@ -71,7 +72,7 @@
                 <main id="content" role="main" class="fullwidth">
 
                 <?php elseif (is_singular('post')): ?>
-                    <!-- Single Thesis page -->
+                    <!-- var: single blog page -->
                     <div class="backblock edp-fullwidth">
                         <div class="grid12">
                             <div class="backblock-link"><a href="../../blog"><i class="far fa-arrow-left fa-xs"></i> all
@@ -84,7 +85,7 @@
 
 
                         <?php elseif (is_singular('wpbdp_listing')): ?>
-                            <!-- Single Thesis page -->
+                            <!-- var: single thesis page -->
                             <div class="backblock edp-fullwidth">
                                 <div class="grid12">
                                     <div class="backblock-link"><a href="../../thesis-directory"><i
@@ -97,7 +98,7 @@
 
 
                                 <?php elseif (is_singular('tribe_events')): ?>
-                                    <!-- Single Event page -->
+                                    <!-- var: single event page -->
                                     <div class="backblock edp-fullwidth">
                                         <div class="grid12">
                                             <div class="backblock-link"><a href="../../events"><i
@@ -107,8 +108,9 @@
                                     <div id="container" class="edp-fullwidth">
                                         <main id="content" role="main" class="fullwidth">
                                         <?php else: ?>
-                                            <!-- Regular page -->
+                                            <!-- var: regular page -->
 
                                             <div id="container" class="edp-fullwidth">
                                                 <main id="content" role="main" class="grid12">
                                                 <?php endif; ?>
+                                                <!-- file end: header.php -->

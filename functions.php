@@ -202,8 +202,9 @@ function edpsy_enqueue_fix_tab_focus_script()
 }
 add_action('wp_enqueue_scripts', 'edpsy_enqueue_fix_tab_focus_script');
 
-// ========== Debug footer ================================================= //
+// ========== Debug  ========================================================== //
 
+// Footer debug
 add_action('wp_footer', function () {
     global $wp_styles;
     echo '<pre>';
@@ -211,6 +212,13 @@ add_action('wp_footer', function () {
 
     echo '</pre>';
 }, 998);
+
+// Template labeling
+//add_filter('template_include', function ($template) {
+//    echo "\n<!-- TEMPLATE_INCLUDE: $template -->\n";
+//    return $template;
+//});
+
 
 
 // ========== Remove comments ================================================= //

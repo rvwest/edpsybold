@@ -1,3 +1,4 @@
+<!-- file: entry.php -->
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <header>
         <?php if (is_singular()) { ?>
@@ -24,3 +25,4 @@
         get_template_part('entry-footer');
     } ?>
 </article>
+<!-- file end: entry.php -->

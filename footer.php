@@ -1,3 +1,4 @@
+<!-- file: footer.php -->
 </main>
 </div>
 <?php include get_template_directory() . '/signup.php'; ?>
@@ -15,5 +16,6 @@
 </div>
 <?php wp_footer(); ?>
 </body>
+<!-- File end: footer.php -->
 
 </html>

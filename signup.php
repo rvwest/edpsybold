@@ -1,3 +1,4 @@
+<!-- file: signup.php -->
 <div id="signup-slice">
     <div class="signup-container grid12">
         <div class="signup-content span10">
@@ -17,3 +18,4 @@
         </div>
     </div>
 </div>
+<!-- file end: signup.php -->
