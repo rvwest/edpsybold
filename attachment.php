@@ -1,3 +1,4 @@
+<!-- file: attachment.php -->
 <?php get_header(); ?>
 <?php global $post; ?>
 <?php if (have_posts()):
@@ -41,3 +42,4 @@
         <?php comments_template(); ?>
     <?php endwhile; endif; ?>
 <?php get_footer(); ?>
+<!-- file end: attachement.php -->

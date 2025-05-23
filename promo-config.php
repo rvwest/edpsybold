@@ -1,3 +1,4 @@
+<!-- file: promo-config.php -->
 <?php
 
 return [
@@ -7,3 +8,4 @@ return [
     'blog' => '<a href="/events/community/add/" class="edp-blog-promo" >Write for us <i class="fal fa-plus-circle fa-2x"></i></a>',
 ];
 ?>
+<!-- file end: promo-config.php -->

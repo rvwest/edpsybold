@@ -16,6 +16,6 @@
 </div>
 <?php wp_footer(); ?>
 </body>
-<!-- File end: footer.php -->
 
 </html>
+<!-- file end: footer.php -->

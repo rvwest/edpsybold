@@ -30,8 +30,9 @@ if (function_exists('coauthors_posts_links')) {
             </div>
 
         </div>
-        <!-- file end: biography.php -->
+
 
     <?php endforeach;
 }
 ?>
+<!-- file end: biography.php -->

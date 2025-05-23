@@ -1,3 +1,4 @@
+<!-- file: category.php -->
 <?php get_header(); ?>
 <header class="header">
     <h1 class="entry-title" itemprop="name"><?php single_term_title(); ?></h1>
@@ -15,3 +16,4 @@
     <?php endwhile; endif; ?>
 <?php get_template_part('nav', 'below'); ?>
 <?php get_footer(); ?>
+<!-- file end: category.php -->

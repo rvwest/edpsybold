@@ -1,4 +1,4 @@
-<!-- edpsybold - used to control the job ad page ---->
+<!-- file: single-job_listing.php -->
 <?php $closing = get_post_meta($post->ID, '_closing_date', true, get_option('date_format')); ?>
 <?php $interview = get_post_meta($post->ID, '_interview_date', true) ?>
 
@@ -108,3 +108,4 @@
     <?php endwhile; endif; ?>
 
 <?php get_footer(); ?>
+<!-- file end: single-job_listing.php -->

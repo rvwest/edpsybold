@@ -1,3 +1,4 @@
+<!-- file: 404.php -->
 <?php get_header(); ?>
 <article id="post-0" class="post not-found">
     <header class="header">
@@ -9,3 +10,4 @@
     </div>
 </article>
 <?php get_footer(); ?>
+<!-- file end: 404.php -->
