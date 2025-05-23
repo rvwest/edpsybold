@@ -1,3 +1,4 @@
+<!-- file: tribe/events/v2/list/event/title.php -->
 <?php
 /**
  * View: List View - Single Event Title
@@ -24,3 +25,4 @@
 	?>
 
 </h3>
+<!-- file end: tribe/events/v2/list/event/title.php -->

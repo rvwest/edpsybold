@@ -1,11 +1,12 @@
+<!-- file: tribe/events/v2/list/event/venue.php -->
 <?php
 /**
  * View: List Single Event Venue
  *
+ * See more documentation about our views templating system.
  * Override this template in your own theme by creating a file at:
  * [your-theme]/tribe/events/v2/list/event/venue.php
  *
- * See more documentation about our views templating system.
  *
  * @link http://evnt.is/1aiy
  *
@@ -52,3 +53,4 @@ $venue = $event->venues[0];
 	do_action('tec_events_view_venue_after_address', $event, $slug);
 	?>
 </address>
+<!-- file end: tribe/events/v2/list/event/date-tag.php -->

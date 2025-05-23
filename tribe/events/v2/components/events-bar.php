@@ -1,3 +1,4 @@
+<!-- file: tribe/events/v2/components/events-bar.php -->
 <?php
 /**
  * View: Events Bar
@@ -16,3 +17,4 @@
  */
 ?>
 <h1>events</h1>
+<!-- file end: tribe/events/v2/components/events-bar.php -->

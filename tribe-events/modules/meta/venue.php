@@ -1,3 +1,4 @@
+<!-- file: tribe-events/modules/meta/venue.php -->
 <?php /** 
   * Single Event Meta (Venue) Template * 
   * Override this template in your own theme by creating a file at: *
@@ -58,3 +59,4 @@ $website_title = tribe_events_get_venue_website_title(); ?>
 <?php endif ?>
 
 <?php do_action('tribe_events_single_meta_venue_section_end') ?>
+<!-- file end: tribe-events/modules/meta/venue.php -->

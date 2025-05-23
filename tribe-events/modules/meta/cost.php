@@ -1,3 +1,4 @@
+<!-- file: tribe-events/modules/meta/cost.php -->
 <?php
 /**
  * Single Event Meta (Details) Template
@@ -25,3 +26,4 @@ if (!empty($cost)): ?>
 		<div class="detail event-cost"><?php echo esc_html($cost); ?></div>
 	</div>
 <?php endif ?>
+<!-- file end: tribe-events/modules/meta/cost.php -->

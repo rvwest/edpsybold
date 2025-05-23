@@ -1,3 +1,4 @@
+<!-- file: tribe-events/modules/meta/book.php -->
 <?php
 /**
  * Single Event Meta (Details) Template
@@ -32,3 +33,4 @@ if (!empty($website)): ?>
 
 
 <?php endif; ?>
+<!-- file end: tribe-events/modules/meta/book.php -->

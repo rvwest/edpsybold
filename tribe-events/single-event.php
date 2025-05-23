@@ -1,3 +1,4 @@
+<!-- file: tribe-events/single-event.php -->
 <?php
 /**
  * Single Event Template
@@ -154,4 +155,5 @@ $cost = tribe_get_formatted_cost($event_id);
 	</div>
 	<!-- #tribe-events-footer -->
 	<?php tribe_get_template_part('modules/meta/tags'); ?>
-</article><!-- #tribe-events-content -->
+</article>
+<!-- file end: tribe-events/single-event.php -->

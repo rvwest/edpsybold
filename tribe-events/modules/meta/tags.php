@@ -1,3 +1,4 @@
+<!-- file: tribe-events/modules/meta/tags.php -->
 <?php
 /**
  * Single Event Meta (Details) Template
@@ -25,3 +26,4 @@ tribe_meta_event_archive_tags(
 	true
 );
 ?>
+<!-- file end: tribe-events/modules/meta/tags.php -->

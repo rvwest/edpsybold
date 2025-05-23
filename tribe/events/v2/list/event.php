@@ -1,3 +1,4 @@
+<!-- file: tribe/events/v2/list/event.php -->
 <?php
 /**
  * View: List Event
@@ -45,3 +46,4 @@ $event_classes = tribe_get_post_class(['tribe-events-calendar-list__event', 'tri
 
 	</a>
 </div>
+<!-- file: tribe/events/v2/list/event.php -->

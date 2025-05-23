@@ -1,3 +1,4 @@
+<!-- file: tribe-events/modules/meta/categories.php -->
 <?php
 /**
  * Single Event Meta (Details) Template
@@ -29,3 +30,4 @@ echo tribe_get_event_categories(
 	]
 );
 ?>
+<!-- file end: tribe-events/modules/meta/categories.php -->

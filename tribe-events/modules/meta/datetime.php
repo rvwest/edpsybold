@@ -1,3 +1,4 @@
+<!-- file: tribe-events/modules/meta/datetime.php -->
 <?php
 /**
  * Single Event Meta (Details) Template
@@ -111,3 +112,4 @@ else:
  */
 do_action('tribe_events_single_meta_details_section_after_datetime');
 ?>
+<!-- file end: tribe-events/modules/meta/datetime.php -->

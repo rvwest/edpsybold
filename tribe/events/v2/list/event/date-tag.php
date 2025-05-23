@@ -1,3 +1,4 @@
+<!-- file: tribe/events/v2/list/event/date-tag.php -->
 <?php
 /**
  * View: List View - Single Event Date Tag
@@ -48,3 +49,4 @@ $event_date_attr = $display_date->format(Dates::DBDATEFORMAT);
 		</span>
 	</time>
 </div>
+<!-- file end: tribe/events/v2/list/event/date-tag.php -->

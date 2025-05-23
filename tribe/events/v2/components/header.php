@@ -1,3 +1,4 @@
+<!-- file: tribe/events/v2/components/header.php -->
 <?php
 
 use \Tribe\Events\Views\V2\Template;
@@ -46,3 +47,4 @@ if (empty($disable_event_search)) {
 </header>
 
 <?php $this->template([$this->get_view_slug(), 'top-bar']); ?>
+<!-- file end: tribe/events/v2/components/header.php -->

@@ -1,3 +1,4 @@
+<!-- file: tribe/events/v2/list/top-bar.php -->
 <?php
 /**
  * View: Top Bar
@@ -26,3 +27,4 @@
 	<?php $this->template('components/events-bar/views'); ?>
 
 </div>
+<!-- file end: tribe/events/v2/list/top-bar.php -->
