@@ -143,7 +143,7 @@
             background-image: url(../../images/edpsy-swirls-13.svg);
         }
 
-        margin-bottom: 0;
+        margin-bottom: var(--sp-xxlarge);
 
     }
 }

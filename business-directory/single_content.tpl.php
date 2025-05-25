@@ -85,21 +85,20 @@
 
 
 
+
+        <div class="edp-thesis-abstract">
+            <h2>Abstract</h2>
+            <?php echo wpautop($fields->abstract->raw); ?>
+
+        </div>
+
+        <?php // echo $fields->html; ?>
+        <?php if ($fields->share_email->value == 'Yes'): ?>
+            <h3 class="wpbdp-contact"><a href="mailto:<?php echo $fields->email->raw; ?>">Email
+                    <?php echo $fields->name->raw; ?></a></h3>
+
+        <?php endif; ?>
+        <div class="entry-links"><?php wp_link_pages(); ?></div>
     </div>
-    <div class="edp-thesis-abstract">
-        <h2>Abstract</h2>
-        <?php echo wpautop($fields->abstract->raw); ?>
-
-    </div>
-
-    <?php // echo $fields->html; ?>
-    <?php if ($fields->share_email->value == 'Yes'): ?>
-        <h2 class="wpbdp-contact">Contact <?php echo $fields->name->raw; ?></h2>
-        <?php echo $fields->email->html; ?>
-    <?php endif; ?>
-
-
-    <div class="entry-links"><?php wp_link_pages(); ?></div>
-    </>
 </article>
 <!-- file end: business-directory/single_content.tpl.php-->

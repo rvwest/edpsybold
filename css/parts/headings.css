@@ -212,31 +212,6 @@ body:not(.home),
     }
 }
 
-
-
-/* Thesis 
-.business-directory {
-    &.wpbdp-view-main {
-        h1 {
-            font-size: var(--fs-display-medium);
-            line-height: var(--lh-display-medium);
-            color: var(--cl-light);
-            margin: var(--sp-xlarge) 0 var(--sp-xxlarge) 0;
-            font-weight: var(--fw-semibold);
-            text-transform: lowercase;
-        }
-    }
-
-    /*
-    &.single-wpbdp_listing {
-        h1 {
-            font-size: var(--fs-display-small);
-            line-height: var(--lh-display-small);
-            margin: var(--sp-medium) 0 var(--sp-xlarge) 0;
-            font-weight: var(--fw-semibold);
-            color: var(--cl-dark)
-        }
-    }*/
 /* == Other headings ============== */
 
 h2 {
@@ -245,6 +220,6 @@ h2 {
 }
 
 h3 {
-    font-size: var(--fs-body);
+    font-size: var(--fs-title-small);
     font-weight: var(--fw-semibold);
 }

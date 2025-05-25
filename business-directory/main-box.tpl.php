@@ -59,7 +59,4 @@
 
 
 </div>
-<div class="wpbdp-add-your-own"><i class="far fa-book"></i> <a
-		href="https://docs.google.com/forms/d/e/1FAIpQLSeeHm-OYkTotMzt99GuAbgP-j1rZBl3n54kPz4e-BWZDtz-Lg/viewform?usp=sf_link">Add
-		your own thesis</a></div>
 <!-- file end: business-directory/main-box.tpl.php-->
