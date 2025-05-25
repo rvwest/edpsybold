@@ -121,5 +121,9 @@
                 margin-top: var(--sp-medium)
             }
         }
+
+        .listing-actions {
+            display: none;
+        }
     }
 }

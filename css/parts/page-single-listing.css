@@ -122,14 +122,19 @@
 
 /* ==== Thesis only ==================================== */
 .single-wpbdp_listing {
-    header {
-        .name-inst-year {
-            color: var(--cl-thesis-primary);
+    article.type-wpbdp_listing {
+        header {
+            .name-inst-year {
+                color: var(--cl-thesis-primary);
+
+                .wpbdp-year-inst-block {
+                    font-weight: var(--fw-light);
+                }
+            }
+
         }
 
-    }
 
-    article {
         .meta-img-l {
             background-image: url(../../images/edpsy-swirls-23.svg);
         }
@@ -139,6 +144,7 @@
         }
 
         margin-bottom: 0;
+
     }
 }
 

@@ -2,9 +2,7 @@
 <!-- file: business-directory/single_content.tpl.php-->
 <article id="post-<?php the_ID(); ?>" <?php post_class(grid12); ?>>
     <header class="header">
-        <h1 class="entry-title" itemprop="name"><?php the_title(); ?></h1>
 
-        <?php echo $fields->subtitle->html; ?>
         <div class="name-inst-year">
             <?php echo $fields->name->raw; ?>
             <div class="wpbdp-year-inst-block">
@@ -14,6 +12,9 @@
 
             </div>
         </div>
+        <h1 class="entry-title" itemprop="name"><?php the_title(); ?></h1>
+
+        <?php echo $fields->subtitle->html; ?>
     </header>
 
 
@@ -32,34 +33,52 @@
                     <div class="wpbdp-further-reading-block">
                         <div class="wpbdp-field-display">
                             <span class="field-label">Further reading</span>
+                            <div class="value">
+                            <?php endif; ?>
 
-                        <?php endif; ?>
+                            <?php if ($fields->full_text_thesis->html > ""): ?>
 
-                        <?php if ($fields->full_text_thesis->html > ""): ?>
+                                <p> <a href="<?php echo $fields->full_text_thesis->raw[0]; ?>">Full text
+                                        thesis</a>
 
-                            <div class="value"><a href="<?php echo $fields->full_text_thesis->raw[0]; ?>">Full text
-                                    thesis</a>
-                            </div>
+
+                                <?php endif; ?>
+                                <?php if ($fields->published_paper->html > ""): ?>
+                                <p>
+                                    <a href="<?php echo $fields->published_paper->raw[0]; ?>">Published paper</a>
+                                </p>
+
+                            <?php endif; ?>
+
+                            <?php if ($fields->blog__news_story->html > ""): ?>
+
+                                <a href="<?php echo $fields->blog__news_story->raw[0]; ?>">Blog / news story</a>
+
+                            <?php endif; ?>
+
+                            <?php if ($fields->website->html > ""): ?>
+
+                                <?php
+                                $website_url = $fields->website->raw[0];
+                                $parsed_url = parse_url($website_url);
+
+                                // Start with just the domain
+                                $display_url = $parsed_url['host'] ?? '';
+
+                                // Add first part of path, if available
+                                if (!empty($parsed_url['path'])) {
+                                    $path_parts = explode('/', trim($parsed_url['path'], '/'));
+                                    if (!empty($path_parts[0])) {
+                                        $display_url .= '/' . $path_parts[0] . '...';
+                                    }
+                                }
+                                ?>
+                                <p><a href="<?php echo $website_url; ?>">Website: <?php echo $display_url; ?></a></p>
+
+
+                            <?php endif; ?>
                         </div>
-                    <?php endif; ?>
-                    <?php if ($fields->published_paper->html > ""): ?>
-                        <li>
-                            <a href="<?php echo $fields->published_paper->raw[0]; ?>">Published paper</a>
-                        </li>
-                    <?php endif; ?>
-
-                    <?php if ($fields->blog__news_story->html > ""): ?>
-                        <li>
-                            <a href="<?php echo $fields->blog__news_story->raw[0]; ?>">Blog / news story</a>
-                        </li>
-                    <?php endif; ?>
-
-                    <?php if ($fields->website->html > ""): ?>
-                        <li>
-                            <?php echo $fields->website->html; ?>
-                        </li>
-
-                    <?php endif; ?>
+                    </div>
                 </div>
             </div>
         </div>

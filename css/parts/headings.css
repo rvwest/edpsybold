@@ -100,11 +100,27 @@ article header {
 
 /* global + breaking through Tribe css */
 
-body:not(.home) h1,
-.post-type-archive-tribe_events h1 {
-    font-weight: var(--fw-semibold);
-    margin: var(--sp-xxlarge) 0 var(--sp-xxlarge) 0;
+body:not(.home),
+.post-type-archive-tribe_events {
+    h1 {
+        font-weight: var(--fw-semibold);
+        margin: var(--sp-xxlarge) 0 var(--sp-xxlarge) 0;
+    }
+
+    .wpbdp-listing-single {
+        .name-inst-year {
+            margin-top: var(--sp-xxlarge);
+        }
+
+        h1 {
+            margin-top: var(--sp-large);
+            max-width: 850px;
+            font-weight: var(--fw-light);
+        }
+    }
 }
+
+
 
 
 /* == Listing pages (jobs, blog, events (.archive covers both), thesis)  ============== */
