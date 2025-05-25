@@ -127,7 +127,7 @@ body:not(.home) h1,
     }
 }
 
-/* == Display medium H1 (thesis)  ============== */
+/* == Display medium H1 (thesis listings)  ============== */
 .business-directory {
     &.wpbdp-view-main {
         h1 {
@@ -138,6 +138,19 @@ body:not(.home) h1,
 
 
 }
+
+
+/* == Title medium H1 (thesis single)  ============== */
+
+.business-directory.single-wpbdp_listing {
+
+    h1 {
+        font-size: var(--fs-title-medium);
+        line-height: var(--lh-title-medium);
+    }
+}
+
+
 
 /* == Dark ===== */
 .edp-jobs,
@@ -173,8 +186,7 @@ body:not(.home) h1,
 .page-template-default:not(.edp-jobs, .business-directory),
 .single-post,
 .single-tribe_events,
-.edp-jobs.single-job_listing article.type-job_listing,
-.single-wpbdp_listing article.wpbdp_listing {
+.edp-jobs.single-job_listing article.type-job_listing {
     h1 {
         font-size: var(--fs-title-large);
         line-height: var(--lh-title-large);

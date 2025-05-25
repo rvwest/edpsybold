@@ -112,5 +112,14 @@
     }
 
 
-    .single-wpbdp_listing {}
+    &.single-wpbdp_listing {
+        article {
+
+            margin-bottom: var(--sp-xxlarge);
+
+            .wpbdp-further-reading-block {
+                margin-top: var(--sp-medium)
+            }
+        }
+    }
 }
