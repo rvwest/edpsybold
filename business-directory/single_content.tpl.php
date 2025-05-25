@@ -61,19 +61,10 @@
                                 <?php
                                 $website_url = $fields->website->raw[0];
                                 $parsed_url = parse_url($website_url);
-
-                                // Start with just the domain
                                 $display_url = $parsed_url['host'] ?? '';
-
-                                // Add first part of path, if available
-                                if (!empty($parsed_url['path'])) {
-                                    $path_parts = explode('/', trim($parsed_url['path'], '/'));
-                                    if (!empty($path_parts[0])) {
-                                        $display_url .= '/' . $path_parts[0] . '...';
-                                    }
-                                }
                                 ?>
-                                <p><a href="<?php echo $website_url; ?>">Website: <?php echo $display_url; ?></a></p>
+                                <p><a href="<?php echo $website_url; ?>"><i class="far fa-link fa-sm"></i>
+                                        <?php echo $display_url; ?>...</a></p>
 
 
                             <?php endif; ?>
