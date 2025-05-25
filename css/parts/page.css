@@ -1,10 +1,11 @@
 /* Standard page (single.php)
-also basis for: jobs page (single-job_listing.php) / events page content / Blog post */
+also basis for: jobs page (single-job_listing.php) / events page content / Blog post / Thesis page */
 
 .page-template-default:not(.job-listings-page) article.type-page,
 article.job_listing,
 article.tribe-events-single,
-article.type-post {
+article.type-post,
+article.type-wpbdp_listing {
 
     img.wp-post-image {
         width: 100%;
@@ -14,7 +15,8 @@ article.type-post {
 
     .entry-content,
     .job_description,
-    .tribe-events-content {
+    .tribe-events-content,
+    .edp-thesis-abstract {
 
         ul {
             margin-left: var(--sp-medium);

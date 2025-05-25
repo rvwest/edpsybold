@@ -80,6 +80,7 @@ $cost = tribe_get_formatted_cost($event_id);
 	<header>
 		<?php echo $title; ?>
 		<?php echo tribe_events_event_schedule_details($event_id, '<div class="edp-event-date-time">', '</div>'); ?>
+		<div class="edp-event-cost"><?php echo esc_html($cost); ?></div>
 	</header>
 
 	<div class="meta-slice">

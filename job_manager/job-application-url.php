@@ -1,3 +1,4 @@
+<!-- file: job_manager/job-application-url.php -->
 <?php
 /**
  * Apply using link to website.
@@ -18,3 +19,4 @@ if (!defined('ABSPATH')) {
 <div class="wpjm-submit-block apply-block">
 	<a href="<?php echo esc_url($apply->url); ?>" class="button edp-button-solid">Find out more and apply</a>
 </div>
+<!-- file end: job_manager/job-application-url.php -->

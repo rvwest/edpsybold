@@ -440,3 +440,34 @@ function custom_job_manager_update_job_listings_message($save_message)
     return ('<i class="far fa-check-circle"></i> Your changes have been saved. <a href="' . esc_url(job_manager_get_permalink('job_dashboard')) . '">Return to your dashboard</a>.');
 }
 
+
+// ========== Events pages ================================================= //
+
+
+add_filter('tribe_events_event_schedule_details_inner', 'edpsy_custom_time_range_in_brackets', 10, 2);
+
+function edpsy_custom_time_range_in_brackets($inner, $event_id)
+{
+    $event = get_post($event_id);
+
+    // Only apply on single-day, timed events with different start/end times
+    if (
+        !tribe_event_is_all_day($event)
+        && !tribe_event_is_multiday($event)
+        && tribe_get_start_date($event, false, 'g:i A') !== tribe_get_end_date($event, false, 'g:i A')
+    ) {
+        $date = tribe_get_start_date($event, false, tribe_get_date_format());
+        $start_time = tribe_get_start_date($event, false, get_option('time_format'));
+        $end_time = tribe_get_end_date($event, false, get_option('time_format'));
+        $time_range_separator = tribe_get_option('timeRangeSeparator', ' - ');
+
+        $output = '<span class="tribe-event-date-start">';
+        $output .= esc_html($date) . ' <span class="tribe-event-time">(' . esc_html($start_time . $time_range_separator . $end_time) . ')</span>';
+        $output .= '</span>';
+
+        return $output;
+    }
+
+    // Otherwise return original unchanged
+    return $inner;
+}

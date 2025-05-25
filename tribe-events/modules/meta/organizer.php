@@ -1,3 +1,4 @@
+<!-- file: tribe-events/modules/meta/organizer.php -->
 <?php
 /**
  * Single Event Meta (Organizer) Template
@@ -50,3 +51,4 @@ foreach ($organizer_ids as $organizer) {
 		</div>
 	</div>
 <?php } ?>
+<!-- file end: tribe-events/modules/meta/organizer.php -->

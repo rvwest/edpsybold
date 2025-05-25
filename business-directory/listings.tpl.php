@@ -5,7 +5,7 @@
  * @package BDP/Templates/Listings
  */
 ?>
-
+<!-- file: business-directory/listings.tpl.php-->
 <div id="wpbdp-listings-list"
 	class="listings wpbdp-listings-list list wpbdp-grid <?php echo esc_attr(apply_filters('wpbdp_listings_class', '')); ?>">
 	<?php
@@ -36,3 +36,4 @@ if (!$display_pagination_in_listings_wrapper) {
 		)
 	);
 }
+echo '<!-- file end: business-directory/listings.tpl.php-->';

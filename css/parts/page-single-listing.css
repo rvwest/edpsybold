@@ -15,9 +15,11 @@
             }
 
             .company,
-            .edp-event-date-time {
+            .edp-event-date-time,
+            .edp-event-cost {
                 font-size: var(--fs-title-medium);
                 font-weight: var(--fw-semibold);
+                line-height: var(--lh-title-medium);
             }
 
         }
@@ -124,7 +126,9 @@
     }
 
     header {
-        .edp-event-date-time {
+
+        .edp-event-date-time,
+        .edp-event-cost {
             color: var(--cl-purple);
         }
 

@@ -1,3 +1,4 @@
+<!-- file: job_manager/job-filters.php -->
 <?php
 /**
  * Filters in `[jobs]` shortcode.
@@ -29,3 +30,4 @@ do_action('job_manager_job_filters_before', $atts);
 <?php do_action('job_manager_job_filters_after', $atts); ?>
 
 <noscript><?php esc_html_e('Your browser does not support JavaScript, or it is disabled. JavaScript must be enabled in order to view listings.', 'wp-job-manager'); ?></noscript>
+<!-- file end: job_manager/job-filters.php -->

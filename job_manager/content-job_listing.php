@@ -1,5 +1,4 @@
-<!-- content-job_listing.php --
--- used in edpsybold to change the list items on jobs listing page -->
+<!-- file: job_manager/content-job_listing.php -->
 
 <li <?php job_listing_class(); ?> data-longitude="<?php echo esc_attr($post->geolocation_long); ?>"
     data-latitude="<?php echo esc_attr($post->geolocation_lat); ?>">
@@ -39,3 +38,4 @@
         </div>
     </a>
 </li>
+<!-- file end: job_manager/content-job_listing.php -->

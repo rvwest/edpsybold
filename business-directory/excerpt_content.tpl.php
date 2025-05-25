@@ -6,7 +6,7 @@
  */
 
 ?>
-<!--excerpt_content.tpl.php-->
+<!-- file: business-directory/excerpt_content.tpl.php-->
 
 <div class="excerpt-content --wpbdp-hide-title">
 	<div class="listing-meta">
@@ -36,3 +36,4 @@
 		<?php echo $fields->subtitle->html; ?>
 	</div>
 </div>
+<!-- file end: business-directory/excerpt_content.tpl.php-->

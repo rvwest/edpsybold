@@ -6,7 +6,7 @@
  */
 
 ?>
-<!--main-box.tpl.php-->
+<!-- file: business-directory/main-box.tpl.php-->
 <div id="wpbdp-main-box" class="wpbdp-main-box" data-breakpoints-class-prefix="wpbdp-main-box">
 
 	<?php if (wpbdp_get_option('show-search-listings') || $in_shortcode): ?>
@@ -62,3 +62,4 @@
 <div class="wpbdp-add-your-own"><i class="far fa-book"></i> <a
 		href="https://docs.google.com/forms/d/e/1FAIpQLSeeHm-OYkTotMzt99GuAbgP-j1rZBl3n54kPz4e-BWZDtz-Lg/viewform?usp=sf_link">Add
 		your own thesis</a></div>
+<!-- file end: business-directory/main-box.tpl.php-->
