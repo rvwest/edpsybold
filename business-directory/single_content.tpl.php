@@ -1,10 +1,27 @@
-<?php /** * Listing detail view rendering template * * @package BDP/Templates/Single Content */ ?>
+<?php
+/** 
+ * Listing detail view rendering template 
+ * 
+ * @package BDP/Templates/Single Content 
+ */
+
+function render_wpbdp_field_array($fields, $field_key, $label)
+{
+    if (!empty($fields->{$field_key}->raw) && is_array($fields->{$field_key}->raw)) {
+        echo '<div class="wpbdp-field-display"><span class="field-label">' . esc_html($label) . '</span><div class="value">';
+        foreach ($fields->{$field_key}->raw as $item) {
+            echo '<p>' . esc_html($item) . '</p>';
+        }
+        echo '</div></div>';
+    }
+}
+?>
 <!-- file: business-directory/single_content.tpl.php-->
 <article id="post-<?php the_ID(); ?>" <?php post_class(grid12); ?>>
     <header class="header">
 
         <div class="name-inst-year">
-            <?php echo $fields->name->raw; ?>
+            <div class="edp-wpbdp-name"><?php echo $fields->name->raw; ?></div>
             <div class="wpbdp-year-inst-block">
 
                 <?php echo $fields->institution->raw[0]; ?><br />
@@ -25,10 +42,10 @@
 
         <div class="edp-thesis-meta">
             <div class="wpbdp-metadata-block">
-                <?php echo $fields->methodology->html; ?>
-                <?php echo $fields->participants->html; ?>
-                <?php echo $fields->data_collection->html; ?>
-                <?php echo $fields->data_analysis->html; ?>
+                <?php render_wpbdp_field_array($fields, 'methodology', 'Methodology'); ?>
+                <?php render_wpbdp_field_array($fields, 'participants', 'Participants'); ?>
+                <?php render_wpbdp_field_array($fields, 'data_collection', 'Data collection'); ?>
+                <?php render_wpbdp_field_array($fields, 'data_analysis', 'Data analysis'); ?>
                 <?php if ($fields->full_text_thesis->html > "" | $fields->published_paper->html > "" | $fields->blog__news_story->html > "" | $fields->website->html > ""): ?>
                     <div class="wpbdp-further-reading-block">
                         <div class="wpbdp-field-display">
