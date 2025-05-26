@@ -5,7 +5,7 @@
  * @package BDP/Templates/Single Content 
  */
 
-function render_wpbdp_field_array($fields, $field_key, $label)
+function edp_render_meta_field_array($fields, $field_key, $label)
 {
     if (!empty($fields->{$field_key}->raw) && is_array($fields->{$field_key}->raw)) {
         echo '<div class="wpbdp-field-display"><span class="field-label">' . esc_html($label) . '</span><div class="value">';
@@ -42,10 +42,10 @@ function render_wpbdp_field_array($fields, $field_key, $label)
 
         <div class="edp-thesis-meta">
             <div class="wpbdp-metadata-block">
-                <?php render_wpbdp_field_array($fields, 'methodology', 'Methodology'); ?>
-                <?php render_wpbdp_field_array($fields, 'participants', 'Participants'); ?>
-                <?php render_wpbdp_field_array($fields, 'data_collection', 'Data collection'); ?>
-                <?php render_wpbdp_field_array($fields, 'data_analysis', 'Data analysis'); ?>
+                <?php edp_render_meta_field_array($fields, 'methodology', 'Methodology'); ?>
+                <?php edp_render_meta_field_array($fields, 'participants', 'Participants'); ?>
+                <?php edp_render_meta_field_array($fields, 'data_collection', 'Data collection'); ?>
+                <?php edp_render_meta_field_array($fields, 'data_analysis', 'Data analysis'); ?>
                 <?php if ($fields->full_text_thesis->html > "" | $fields->published_paper->html > "" | $fields->blog__news_story->html > "" | $fields->website->html > ""): ?>
                     <div class="wpbdp-further-reading-block">
                         <div class="wpbdp-field-display">
@@ -74,16 +74,14 @@ function render_wpbdp_field_array($fields, $field_key, $label)
                             <?php endif; ?>
 
                             <?php if ($fields->website->html > ""): ?>
-
                                 <?php
                                 $website_url = $fields->website->raw[0];
-                                $parsed_url = parse_url($website_url);
-                                $display_url = $parsed_url['host'] ?? '';
+                                $website_label = isset($fields->website->raw[1]) && !empty($fields->website->raw[1])
+                                    ? $fields->website->raw[1]
+                                    : (parse_url($website_url)['host'] ?? '');
                                 ?>
-                                <p><a href="<?php echo $website_url; ?>"><i class="far fa-link fa-sm"></i>
-                                        <?php echo $display_url; ?>...</a></p>
-
-
+                                <p><a href="<?php echo esc_url($website_url); ?>">
+                                        <?php echo esc_html($website_label); ?></a></p>
                             <?php endif; ?>
                         </div>
                     </div>
