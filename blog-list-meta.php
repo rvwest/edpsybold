@@ -16,8 +16,5 @@
         echo '<meta itemprop="dateModified" content="' . esc_attr(get_the_modified_date()) . '">';
     } ?>
 
-    <div class="tag-links"><i class="fal fa-tags fa-sm"></i>
-        <div class="tag-link-list"><?php the_tags($before = ''); ?></div>
-    </div>
 </div>
 <!-- file end: entry-meta.php -->
