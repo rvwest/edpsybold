@@ -81,7 +81,7 @@ body {
 
             &:hover,
             &:focus {
-                background-color: var(--cl-light-20);
+                background-color: var(--cl-light-15);
             }
 
         }

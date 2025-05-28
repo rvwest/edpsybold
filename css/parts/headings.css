@@ -7,10 +7,11 @@
     align-content: flex-start;
 }
 
-/* == listing page (jobs, blog, thesis) - page title + CTA block ============== */
+/* == listing page (jobs, blog, thesis, events) - page title + CTA block ============== */
 .job-listings-page article header,
 .business-directory article header,
-.archive main header.header .tribe-events header.tribe-events-header {
+.archive main header.header,
+.tribe-events header.tribe-events-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -24,6 +25,10 @@
     justify-content: space-between;
     align-items: center;
     align-content: flex-start;
+
+    h1 {
+        font-size: var(--fs-display-medium);
+    }
 
     .entry-title {
         margin-bottom: var(--sp-small);
