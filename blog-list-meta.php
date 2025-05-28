@@ -1,6 +1,6 @@
-<!-- file: entry-meta.php -->
+<!-- file: blog-list-meta.php -->
 <div class="entry-meta">
-    <div class="author-name"><?php _e(' by ', 'advertica-lite');
+    <div class="author-name"><?php _e('', 'advertica-lite');
     if (function_exists('coauthors_posts_links')) {
         coauthors_posts_links();
     } else {
@@ -17,4 +17,4 @@
     } ?>
 
 </div>
-<!-- file end: entry-meta.php -->
+<!-- file end: blog-list-meta.php -->

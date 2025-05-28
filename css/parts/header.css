@@ -68,6 +68,26 @@ header[role="banner"] {
 
 }
 
+body {
+    .backblock {
+        padding-top: var(--sp-small);
+        padding-bottom: var(--sp-small);
+
+        a {
+            border-radius: var(--rd-small);
+            margin-left: -8px;
+
+            padding: 2px var(--sp-xsmall);
+
+            &:hover,
+            &:focus {
+                background-color: var(--cl-light-20);
+            }
+
+        }
+    }
+}
+
 /* === Blog ================ */
 
 /* --- Blog page single -------- */
@@ -81,11 +101,13 @@ header[role="banner"] {
     .backblock {
         background-color: var(--cl-blog-primary);
 
-        padding-top: var(--sp-small);
-        padding-bottom: var(--sp-small);
 
         a {
-            color: var(--cl-light)
+            color: var(--cl-light);
+
+            &:hover {
+                color: var(--cl-light);
+            }
         }
     }
 
@@ -114,11 +136,13 @@ header[role="banner"] {
     .backblock {
         background-color: var(--cl-events-primary);
 
-        padding-top: var(--sp-small);
-        padding-bottom: var(--sp-small);
-
         a {
-            color: var(--cl-light)
+            color: var(--cl-light);
+
+            &:hover {
+                color: var(--cl-light);
+
+            }
         }
     }
 
@@ -147,9 +171,6 @@ header[role="banner"] {
     .backblock {
         background-color: var(--cl-jobs-primary);
 
-        padding-top: var(--sp-small);
-        padding-bottom: var(--sp-small);
-
         a {
             color: var(--cl-light)
         }
@@ -176,9 +197,6 @@ header[role="banner"] {
 
     .backblock {
         background-color: var(--cl-lightblue);
-
-        padding-top: var(--sp-small);
-        padding-bottom: var(--sp-small);
 
         a {
             color: var(--cl-light)

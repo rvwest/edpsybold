@@ -7,8 +7,12 @@
 
 :root {
     /* Colors */
+    /* solid hovers 80% opacity - converted to hex */
     --cl-light: #FFFBF2;
+
+    --cl-light-20: #fffbf233;
     --cl-dark: #363033;
+    --cl-dark-hover: #534E50;
     --cl-dark-75: rgba(54, 48, 51, 0.75);
     --cl-dark-50: rgba(54, 48, 51, 0.5);
     --cl-link: #0072B9;
@@ -17,13 +21,14 @@
     --cl-yellow: #E5C957;
     --cl-purple: #59408A;
     --cl-medpurple: #A359A2;
+    --cl-medpurple-hover: #B07DB2;
     --cl-lightpurple: #BF86A7;
 
     /* Context colors */
     --cl-thesis-primary: var(--cl-lightblue);
     --cl-blog-primary: var(--cl-medpurple);
-    --cl-jobs-primary: var(--cl-orange);
     --cl-events-primary: var(--cl-dark);
+    --cl-jobs-primary: var(--cl-orange);
 
     --op-light: 0.8;
     --op-strong: 0.6;
@@ -41,9 +46,13 @@
     --sp-xxlarge: 60px;
     --sp-xxxlarge: 72px;
 
+    /* Radius */
+    --rd-small: 6px;
+
     /* Layout variable */
     --lv-full-width: 1248px;
     --lv-listing-height: 140px;
+
 
     /* Typography */
     --ff: 'Geologica', sans-serif;

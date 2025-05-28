@@ -355,11 +355,8 @@ section {
 }
 
 .tribe-events .tribe-events-header {
-    align-items: center;
-    display: flex;
     flex-direction: initial;
     flex-wrap: nowrap;
-    justify-content: space-between;
     margin: 0;
     padding: 0;
     position: relative;

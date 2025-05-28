@@ -7,13 +7,40 @@
     align-content: flex-start;
 }
 
-.archive main header,
-article header {
+/* == listing page (jobs, blog, thesis) - page title + CTA block ============== */
+.job-listings-page article header,
+.business-directory article header,
+.archive main header.header .tribe-events header.tribe-events-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     align-content: flex-start;
 }
+
+/* == Blog post ============== */
+.single-post article header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: flex-start;
+
+    .entry-title {
+        margin-bottom: var(--sp-small);
+    }
+
+    .entry-meta {
+        margin-bottom: var(--sp-small);
+    }
+
+    >* {
+        width: 100%;
+    }
+}
+
+
+
+
 
 .page-promo {
 
@@ -125,6 +152,7 @@ body:not(.home),
 
 /* == Listing pages (jobs, blog, events (.archive covers both), thesis)  ============== */
 /* ==================================================================================== */
+
 
 .job-listings-page,
 .archive,
