@@ -1,6 +1,9 @@
 <!-- file: entry-header.php -->
-<header>
+<header class="grid12">
     <h1 class="entry-title" itemprop="headline"><?php the_title(); ?></h1>
+</header>
+<div class="author-image-header-block grid12">
+
     <?php edit_post_link(); ?>
     <?php if (!is_search()) {
         get_template_part('entry', 'meta');
@@ -16,5 +19,5 @@
         <?php endif; ?>
     <?php endif; ?>
 
-</header>
+</div>
 <!-- file end: entry-header.php -->

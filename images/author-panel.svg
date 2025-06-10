@@ -1,0 +1,25 @@
+<svg width="73" height="298" viewBox="0 0 73 298" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_263_3214" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="73" height="298">
+<path d="M73 0H0V298H73V0Z" fill="white"/>
+</mask>
+<g mask="url(#mask0_263_3214)">
+<g style="mix-blend-mode:multiply">
+<path d="M226.706 167.215C89.8758 167.215 -21.0352 50.0231 -21.0352 -94.5552" stroke="#AB53A2" stroke-width="45" stroke-miterlimit="10"/>
+</g>
+<g style="mix-blend-mode:multiply">
+<path d="M146.706 297.307C9.87583 297.307 -101.035 180.115 -101.035 35.5367" stroke="#AB53A2" stroke-width="45" stroke-miterlimit="10"/>
+</g>
+<g style="mix-blend-mode:multiply">
+<path d="M178.706 229.306C41.8758 229.306 -69.0352 112.115 -69.0352 -32.4634" stroke="#AB53A2" stroke-width="45" stroke-miterlimit="10"/>
+</g>
+<g style="mix-blend-mode:multiply">
+<path d="M-113.986 287.516C-113.986 135.512 2.6403 12.2808 146.498 12.2808" stroke="#C983A9" stroke-width="45" stroke-miterlimit="10"/>
+</g>
+<g style="mix-blend-mode:multiply">
+<path d="M-2.58301 337.832C-2.58301 231.47 79.1217 145.252 179.917 145.252" stroke="#C983A9" stroke-width="45" stroke-miterlimit="10"/>
+</g>
+<g style="mix-blend-mode:multiply">
+<path d="M-53 295C-53 172.389 60.7151 73 201 73" stroke="#C983A9" stroke-width="45" stroke-miterlimit="10"/>
+</g>
+</g>
+</svg>

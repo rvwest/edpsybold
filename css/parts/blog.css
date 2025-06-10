@@ -11,17 +11,40 @@
             >* {
                 width: 100%;
             }
+        }
 
-            h1 {
-                margin-bottom: var(--sp-large);
-            }
 
-            .entry-meta {
+        .entry-meta {
 
-                padding-right: var(--sp-large);
+
+
+
+            .heading-author-block {
+                align-items: center;
+                padding-bottom: var(--sp-xxlarge);
+                flex-direction: column;
+                padding-top: var(--sp-xxlarge);
+                background-image: url(../../images/author-side-swirls.svg);
+                background-position: left;
+                background-size: 85px;
+                background-repeat: no-repeat;
+
+
+                .author-avatar {
+                    max-width: 125px;
+                    height: auto;
+                    margin: 0 auto;
+
+
+                    img {
+                        width: 125px;
+                        height: auto;
+                        border-radius: 50%;
+                    }
+                }
 
                 .author-name {
-                    font-size: var(--fs-title-medium);
+                    font-size: var(--fs-title-small);
                     line-height: var(--lh-title-medium);
                     color: var(--cl-blog-primary);
 
@@ -34,38 +57,37 @@
 
                 time {
                     color: var(--cl-blog-primary);
-                    margin-bottom: var(--sp-large);
                     display: block;
                 }
+            }
 
-                .tag-links {
 
-                    margin-bottom: var(--sp-large);
-                    display: flex;
 
-                    i {
-                        margin-top: 8px;
-                        margin-right: var(--sp-xsmall);
-                        color: var(--cl-blog-primary);
-                    }
+            .tag-links {
 
-                    a:link,
-                    a:visited {
-                        color: var(--cl-dark);
-                        text-decoration: none;
-                    }
+                margin-bottom: var(--sp-large);
+                display: flex;
 
+                i {
+                    margin-top: 8px;
+                    margin-right: var(--sp-xsmall);
+                    color: var(--cl-blog-primary);
                 }
-            }
 
-            img {
-                padding-right: var(--sp-large);
-            }
+                a:link,
+                a:visited {
+                    color: var(--cl-dark);
+                    text-decoration: none;
+                }
 
+            }
         }
 
-        .entry-content {
-            margin-top: var(--sp-xxlarge);
-        }
+
+
+    }
+
+    .entry-content {
+        margin-top: var(--sp-xxlarge);
     }
 }

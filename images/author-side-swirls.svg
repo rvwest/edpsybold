@@ -1,0 +1,31 @@
+<svg width="73" height="298" viewBox="0 0 73 298" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_263_3214" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="73" height="298">
+<path d="M73 0H0V298H73V0Z" fill="white"/>
+</mask>
+<g mask="url(#mask0_263_3214)">
+<g clip-path="url(#clip0_263_3214)">
+<g style="mix-blend-mode:multiply">
+<g style="mix-blend-mode:multiply">
+<path d="M-117.82 297.151C-117.82 180.576 -23.4283 86.075 93 86.075" stroke="#4EA459" stroke-width="40" stroke-miterlimit="10"/>
+</g>
+<g style="mix-blend-mode:multiply">
+<path d="M92.7178 153.056C12.7648 153.056 -52.0432 217.946 -52.0432 298" stroke="#4EA459" stroke-width="40" stroke-miterlimit="10"/>
+</g>
+<g style="mix-blend-mode:multiply">
+<path d="M92.7178 219.552C49.4519 219.552 14.3691 254.669 14.3691 298" stroke="#4EA459" stroke-width="40" stroke-miterlimit="10"/>
+</g>
+</g>
+<g style="mix-blend-mode:multiply">
+<path d="M-57.7141 2.51526C-57.7141 85.6709 9.61637 153.086 92.667 153.086" stroke="#77A8CE" stroke-width="40" stroke-miterlimit="10"/>
+</g>
+<g style="mix-blend-mode:multiply">
+<path d="M11.5638 2C11.5638 48.3816 47.9987 85.984 92.9395 85.984" stroke="#77A8CE" stroke-width="40" stroke-miterlimit="10"/>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_263_3214">
+<rect width="231" height="296" fill="white" transform="matrix(-1 0 0 1 93 2)"/>
+</clipPath>
+</defs>
+</svg>
