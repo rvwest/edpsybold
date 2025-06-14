@@ -1,6 +1,7 @@
 <!-- file: entry-meta.php -->
+
+<div class="meta-bg"></div>
 <div class="entry-meta">
-    <div class="heading-author-block">
         <div class="author-avatar">
             <?php echo get_avatar($coauthor->user_email, '', '', '', array('style' => '')); ?>
         </div>
@@ -19,5 +20,4 @@
         <?php if (is_single()) {
             echo '<meta itemprop="dateModified" content="' . esc_attr(get_the_modified_date()) . '">';
         } ?>
-    </div>
 </div><!-- file end: entry-meta.php -->

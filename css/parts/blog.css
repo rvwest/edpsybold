@@ -13,81 +13,92 @@
             }
         }
 
+        .meta-bg {
+            background-image: url(../../images/author-panel.svg);
+            background-position: top right;
+            background-size: 85px;
+            background-repeat: no-repeat;
+            margin-left: -156px;
+            margin-right: 82px;
+        }
 
         .entry-meta {
 
 
 
 
-            .heading-author-block {
-                align-items: center;
-                padding-bottom: var(--sp-xxlarge);
-                flex-direction: column;
-                padding-top: var(--sp-xxlarge);
-                background-image: url(../../images/author-side-swirls.svg);
-                background-position: left;
-                background-size: 85px;
-                background-repeat: no-repeat;
+
+            align-items: center;
+            padding-bottom: var(--sp-xxlarge);
+            flex-direction: column;
+            padding-top: var(--sp-xxlarge);
+            margin-left: -106px;
+            margin-right: -24px;
 
 
-                .author-avatar {
-                    max-width: 125px;
+
+
+
+            .author-avatar {
+                max-width: 125px;
+                height: auto;
+                margin: 0 auto;
+
+
+                img {
+                    width: 125px;
                     height: auto;
-                    margin: 0 auto;
-
-
-                    img {
-                        width: 125px;
-                        height: auto;
-                        border-radius: 50%;
-                    }
-                }
-
-                .author-name {
-                    font-size: var(--fs-title-small);
-                    line-height: var(--lh-title-medium);
-                    color: var(--cl-blog-primary);
-
-                    a:link,
-                    a:visited {
-                        color: var(--cl-blog-primary);
-                        text-decoration: none;
-                    }
-                }
-
-                time {
-                    color: var(--cl-blog-primary);
-                    display: block;
+                    border-radius: 50%;
                 }
             }
 
-
-
-            .tag-links {
-
-                margin-bottom: var(--sp-large);
-                display: flex;
-
-                i {
-                    margin-top: 8px;
-                    margin-right: var(--sp-xsmall);
-                    color: var(--cl-blog-primary);
-                }
+            .author-name {
+                font-size: var(--fs-title-small);
+                line-height: var(--lh-title-medium);
+                color: var(--cl-blog-primary);
+                text-align: center;
 
                 a:link,
                 a:visited {
-                    color: var(--cl-dark);
+                    color: var(--cl-blog-primary);
                     text-decoration: none;
                 }
+            }
 
+            time {
+                color: var(--cl-blog-primary);
+                display: block;
+                text-align: center;
             }
         }
 
 
 
+        .tag-links {
+
+            margin-bottom: var(--sp-large);
+            display: flex;
+
+            i {
+                margin-top: 8px;
+                margin-right: var(--sp-xsmall);
+                color: var(--cl-blog-primary);
+            }
+
+            a:link,
+            a:visited {
+                color: var(--cl-dark);
+                text-decoration: none;
+            }
+
+        }
     }
 
-    .entry-content {
-        margin-top: var(--sp-xxlarge);
-    }
+
+
+}
+
+.entry-content {
+    margin-top: var(--sp-xxlarge);
+}
 }
