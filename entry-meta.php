@@ -2,15 +2,28 @@
 
 <div class="meta-bg"></div>
 <div class="entry-meta">
-        <div class="author-avatar">
-            <?php echo get_avatar($coauthor->user_email, '', '', '', array('style' => '')); ?>
-        </div>
-        <div class="author-name"><?php _e(' by ', 'advertica-lite');
-        if (function_exists('coauthors_posts_links')) {
-            coauthors_posts_links();
-        } else {
-            the_author_posts_link(first_name, last_name);
-        } ?></div>
+     
+        <?php
+        if ( function_exists( 'coauthors_posts_links' ) ) {
+            global $post;
+                $author_id=$post->post_author;
+                foreach( get_coauthors() as $coauthor ): ?>
+                    <div class="author-info">
+                        <div class="author-avatar">
+                        <?php echo get_avatar( $coauthor->user_email, '', '', '', array( 'style' => '' ) ); ?>
+                        </div><!-- .author-avatar -->
+        
+                        <div class="author-name">
+                           by <span class="author-heading"><?php echo $coauthor->display_name; ?>
+                        </div>
+        
+                    </div><!-- .author-info -->
+        
+                <?php endforeach;
+        }
+        ?>
+        
+
 
 
         <time class="entry-date" datetime="<?php echo esc_attr(get_the_date('c')); ?>"

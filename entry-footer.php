@@ -1,6 +1,8 @@
 <!-- file: entry-footer.php -->
-<footer class="entry-footer">
-    <span class="cat-links"><?php esc_html_e('Categories: ', 'edpsybold'); ?><?php the_category(', '); ?></span>
+ <hr>
+<footer class="entry-footer grid12">
+  
     <span class="tag-links"><?php the_tags(); ?></span>
+    <?php get_template_part('biography', get_post_format()); ?>
 </footer>
 <!-- file end: entry-footer.php -->

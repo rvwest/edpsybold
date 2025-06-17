@@ -10,7 +10,7 @@
     } ?>
     <?php if (has_post_thumbnail()): ?>
         <?php if (is_singular()): ?>
-            <?php the_post_thumbnail('full', array('itemprop' => 'image')); ?>
+           <div class="entry-image"> <?php the_post_thumbnail('full', array('itemprop' => 'image')); ?></div>
         <?php else: ?>
             <a href="<?php the_post_thumbnail_url('full'); ?>" title="<?php $attachment_id = get_post_thumbnail_id($post->ID);
               the_title_attribute(array('post' => get_post($attachment_id))); ?>">

@@ -39,6 +39,12 @@ a:active {
     text-decoration: none;
 }
 
+/* For content in non-entry blocks like bios */
+
+p {
+    margin-bottom: var(--sp-medium);
+}
+
 article {
 
     a:hover,

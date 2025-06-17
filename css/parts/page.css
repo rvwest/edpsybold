@@ -45,10 +45,14 @@ article.type-wpbdp_listing {
             margin-bottom: var(--sp-medium);
         }
 
-
     }
 
     margin-bottom: var(--sp-xxlarge);
+
+    /* for the bio block */
+    h2.author-title {
+        margin-bottom: var(--sp-medium);
+    }
 }
 
 /* ---- Blog post only ----- */

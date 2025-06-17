@@ -16,7 +16,7 @@
         .meta-bg {
             background-image: url(../../images/author-panel.svg);
             background-position: top right;
-            background-size: 85px;
+            background-size: 73px;
             background-repeat: no-repeat;
             margin-left: -156px;
             margin-right: 82px;
@@ -29,9 +29,9 @@
 
 
             align-items: center;
-            padding-bottom: var(--sp-xxlarge);
+            padding-bottom: var(--sp-xlarge);
             flex-direction: column;
-            padding-top: var(--sp-xxlarge);
+            padding-top: var(--sp-xlarge);
             margin-left: -106px;
             margin-right: -24px;
 
@@ -39,18 +39,7 @@
 
 
 
-            .author-avatar {
-                max-width: 125px;
-                height: auto;
-                margin: 0 auto;
 
-
-                img {
-                    width: 125px;
-                    height: auto;
-                    border-radius: 50%;
-                }
-            }
 
             .author-name {
                 font-size: var(--fs-title-small);
@@ -70,14 +59,30 @@
                 display: block;
                 text-align: center;
             }
+
+
         }
 
+        .entry-image {
+            margin-right: -72px;
 
 
+            img.wp-post-image {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .entry-content {
+        margin-top: var(--sp-xxlarge);
+    }
+
+    .entry-footer {
         .tag-links {
 
             margin-bottom: var(--sp-large);
             display: flex;
+            flex-wrap: wrap;
 
             i {
                 margin-top: 8px;
@@ -92,13 +97,29 @@
             }
 
         }
+
+        .author-info {
+
+
+            .author-avatar {
+                width: 125px;
+                padding-right: var(--sp-small);
+            }
+        }
     }
 
+    /* Used in header and footer */
+    .author-avatar {
+        max-width: 125px;
+        height: auto;
+        margin: 0 auto;
 
 
-}
 
-.entry-content {
-    margin-top: var(--sp-xxlarge);
-}
+        img {
+            width: 125px;
+            height: auto;
+            border-radius: 50%;
+        }
+    }
 }
