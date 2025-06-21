@@ -108,18 +108,60 @@
         }
     }
 
-    /* Used in header and footer */
+
+}
+
+#container article.type-post {
+
     .author-avatar {
         max-width: 125px;
         height: auto;
         margin: 0 auto;
+        overflow: hidden;
 
-
-
+        img.wp-post-image,
         img {
             width: 125px;
             height: auto;
             border-radius: 50%;
         }
     }
+
+    .author-count-2 {
+        .author-avatars {
+            position: relative;
+
+            .author-avatar {
+                max-width: 110px;
+
+
+                img {
+                    width: 110px;
+                    border: 5px solid var(--cl-light);
+
+                }
+            }
+
+            .author-1 {
+                position: relative;
+                z-index: 1;
+            }
+
+            .author-2 {
+                position: relative;
+                z-index: 2;
+                margin-left: -80px;
+            }
+        }
+    }
 }
+
+/* Author Avatar Styles */
+.author-avatars {
+    display: flex;
+    align-items: center;
+}
+
+
+
+/* Two authors layout with 50px overlap */
