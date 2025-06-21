@@ -6,20 +6,33 @@
         <?php
         if ( function_exists( 'coauthors_posts_links' ) ) {
             global $post;
-                $author_id=$post->post_author;
-                foreach( get_coauthors() as $coauthor ): ?>
-                    <div class="author-info">
-                        <div class="author-avatar">
-                        <?php echo get_avatar( $coauthor->user_email, '', '', '', array( 'style' => '' ) ); ?>
-                        </div><!-- .author-avatar -->
-        
-                        <div class="author-name">
-                           by <span class="author-heading"><?php echo $coauthor->display_name; ?>
-                        </div>
-        
-                    </div><!-- .author-info -->
-        
-                <?php endforeach;
+            $author_id = $post->post_author;
+            $coauthors = get_coauthors();
+            
+            if (!empty($coauthors)): ?>
+                <div class="authors-section author-count-<?php echo count($coauthors); ?>">
+                    <!-- Display all author avatars first -->
+                    <div class="author-avatars">
+                        <?php foreach($coauthors as $coauthor): ?>
+                            <div class="author-avatar">
+                                <?php echo get_avatar( $coauthor->user_email, '', '', '', array( 'style' => '' ) ); ?>
+                            </div>
+                        <?php endforeach; ?>
+                    </div><!-- .author-avatars -->
+                    
+                    <!-- Display all author names -->
+                    <div class="author-name">
+                        by 
+                        <?php 
+                        $author_names = array();
+                        foreach($coauthors as $coauthor) {
+                            $author_names[] = '<span class="author-heading">' . $coauthor->display_name . '</span>';
+                        }
+                        echo implode(', ', $author_names);
+                        ?>
+                    </div><!-- .author-names -->
+                </div><!-- .authors-section -->
+            <?php endif;
         }
         ?>
         
