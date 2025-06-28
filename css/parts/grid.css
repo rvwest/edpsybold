@@ -192,6 +192,10 @@ body.single-post {
             grid-column: 2 / span 8;
         }
     }
+
+    .tribe-events-venue-map {
+        grid-column: 1 / span 12;
+    }
 }
 
 

@@ -489,4 +489,38 @@ function add_event_category_to_body_class($classes)
 }
 add_filter('body_class', 'add_event_category_to_body_class');
 
+// Add classes to the event website link 
+function my_custom_event_website_link( $event = null, $label = null, $target = '_self', $class = '' ): string {
+	$post_id = Tribe__Events__Main::postIdHelper( $event );
+	$url     = tribe_get_event_website_url( $post_id );
+	$target  = $target ? $target : '_self';
 
+	$target = apply_filters( 'tribe_get_event_website_link_target', $target, $url, $post_id );
+
+	$allowed = [ '_self', '_blank', '_parent', '_top', '_unfencedTop' ];
+	if ( ! in_array( $target, $allowed ) ) {
+		$target = '_self';
+	}
+
+	$rel = ( '_blank' === $target ) ? 'noopener noreferrer' : 'external';
+
+	if ( ! empty( $url ) ) {
+		$label = empty( $label ) ? $url : $label;
+		$label = apply_filters( 'tribe_get_event_website_link_label', $label, $post_id );
+
+		$class_attr = $class ? ' class="' . esc_attr( $class ) . '"' : '';
+
+		$html = sprintf(
+			'<a href="%s" target="%s" rel="%s"%s>%s</a>',
+			esc_url( $url ),
+			esc_attr( $target ),
+			esc_attr( $rel ),
+			$class_attr,
+			esc_html( $label )
+		);
+	} else {
+		$html = '';
+	}
+
+	return apply_filters( 'my_custom_event_website_link', $html );
+}

@@ -20,6 +20,36 @@ $not_skeleton = !apply_filters('tribe_events_single_event_the_meta_skeleton', fa
 $set_venue_apart = apply_filters('tribe_events_single_event_the_meta_group_venue', false, get_the_ID());
 ?>
 
+<div class="meta-slice">
+		<div class="meta-img-l"></div>
+		<div class="event-listing-meta">
+			<?php
+			// Cost
+			tribe_get_template_part('modules/meta/cost');
+			// Date / time 
+			tribe_get_template_part('modules/meta/datetime');
+			// Booking link
+			tribe_get_template_part('modules/meta/book');
+			// Venue and venue address
+			tribe_get_template_part('modules/meta/venue');
+			// Organiser details
+			if (tribe_has_organizer()) {
+				tribe_get_template_part('modules/meta/organizer');
+			}
+			// Categories (eg webinar)
+			tribe_get_template_part('modules/meta/categories');
+
+			?>
+
+
+
+		</div>
+		<div class="meta-img-r"></div>
+
+	</div>
+
+
+
 <?php if ($not_skeleton): ?>
 	<div class="tribe-events-single-section tribe-events-event-meta primary tribe-clearfix">
 	<?php endif; ?>
@@ -28,7 +58,7 @@ $set_venue_apart = apply_filters('tribe_events_single_event_the_meta_group_venue
 	do_action('tribe_events_single_event_meta_primary_section_start');
 
 	// Always include the main event details in this first section
-	tribe_get_template_part('modules/meta/details');
+	//tribe_get_template_part('modules/meta/details');
 
 	// Include venue meta if appropriate.
 	if (tribe_get_venue_id()) {

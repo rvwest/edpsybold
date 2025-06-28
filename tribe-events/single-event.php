@@ -89,33 +89,8 @@ $cost = tribe_get_formatted_cost($event_id);
 		<div class="edp-event-cost"><?php echo esc_html($cost); ?></div>
 	</header>
 
-	<div class="meta-slice">
-		<div class="meta-img-l"></div>
-		<div class="event-listing-meta">
-			<?php
-			// Cost
-			tribe_get_template_part('modules/meta/cost');
-			// Date / time 
-			tribe_get_template_part('modules/meta/datetime');
-			// Booking link
-			tribe_get_template_part('modules/meta/book');
-			// Venue and venue address
-			tribe_get_template_part('modules/meta/venue');
-			// Organiser details
-			if (tribe_has_organizer()) {
-				tribe_get_template_part('modules/meta/organizer');
-			}
-			// Categories (eg webinar)
-			tribe_get_template_part('modules/meta/categories');
-
-			?>
-
-
-
-		</div>
-		<div class="meta-img-r"></div>
-
-	</div>
+	
+	<?php tribe_get_template_part('modules/meta-top'); ?>
 
 	<!-- #tribe-events-header -->
 
@@ -130,14 +105,16 @@ $cost = tribe_get_formatted_cost($event_id);
 			<div class="tribe-events-single-event-description tribe-events-content">
 				<?php the_content(); ?>
 			</div>
-			<?php tribe_get_template_part('modules/meta/book'); ?>
+			<?php tribe_get_template_part('modules/meta/book-cta'); ?>
 
 			<!-- .tribe-events-single-event-description -->
-			<?php do_action('tribe_events_single_event_after_the_content') ?>
+			<!-- ?php do_action('tribe_events_single_event_after_the_content') ?> -->
 
 			<!-- Event meta -->
 			<?php do_action('tribe_events_single_event_before_the_meta') ?>
-			<?php tribe_get_template_part('modules/meta'); ?>
+	</div>
+	<div class="meta-slice">
+			<?php tribe_get_template_part('modules/meta-bottom'); ?>
 			<?php tribe_get_template_part('modules/meta/map'); ?>
 			<?php do_action('tribe_events_single_event_after_the_meta') ?>
 		</div> <!-- #post-x -->
@@ -148,19 +125,7 @@ $cost = tribe_get_formatted_cost($event_id);
 	<!-- Event footer -->
 	<div id="tribe-events-footer">
 		<!-- Navigation -->
-		<nav class="tribe-events-nav-pagination"
-			aria-label="<?php printf(esc_html__('%s Navigation', 'the-events-calendar'), $events_label_singular); ?>">
-			<ul class="tribe-events-sub-nav">
-				<li class="tribe-events-nav-previous">
-					<?php tribe_the_prev_event_link('<span>&laquo;</span> %title%') ?>
-				</li>
-				<li class="tribe-events-nav-next"><?php tribe_the_next_event_link('%title% <span>&raquo;</span>') ?>
-				</li>
-			</ul>
-			<!-- .tribe-events-sub-nav -->
-		</nav>
+		
 	</div>
-	<!-- #tribe-events-footer -->
-	<?php tribe_get_template_part('modules/meta/tags'); ?>
 </article>
 <!-- file end: tribe-events/single-event.php -->
