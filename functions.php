@@ -488,3 +488,5 @@ function add_event_category_to_body_class($classes)
 	return $classes;
 }
 add_filter('body_class', 'add_event_category_to_body_class');
+
+

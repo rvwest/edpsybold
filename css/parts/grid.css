@@ -139,154 +139,165 @@ body.single-post {
             }
         }
     }
+}
 
-    /* == Events ====================== */
+/* == Events ====================== */
 
-    /* Events list */
+/* Events list */
 
-    .post-type-archive-tribe_events .tribe-events-view--month {
-        grid-column: 1 / span 12;
+.post-type-archive-tribe_events .tribe-events-view--month {
+    grid-column: 1 / span 12;
+}
+
+.tribe-events-view--list {
+    grid-column: 1 / span 12;
+    display: grid;
+    grid-template-columns: subgrid;
+
+
+    >* {
+        grid-column: 2 / span 10;
     }
 
-    .tribe-events-view--list {
+    .tribe-events-l-container {
         grid-column: 1 / span 12;
         display: grid;
         grid-template-columns: subgrid;
 
-
         >* {
             grid-column: 2 / span 10;
         }
 
-        .tribe-events-l-container {
-            grid-column: 1 / span 12;
-            display: grid;
-            grid-template-columns: subgrid;
-
-            >* {
-                grid-column: 2 / span 10;
-            }
-
-
-        }
-
-        .tribe-events-header {
-            grid-column: 1 / span 12;
-        }
-
-        .tribe-events-header__top-bar {
-            grid-column: 2 / span 10;
-        }
-
-        .tribe-events-calendar-list {
-            grid-column: 2 / span 10;
-        }
-    }
-
-
-    /* == Jobs ====================== */
-
-    /* Jobs listing page */
-    .job-listings-page {
-
-
-        :is(article.page) {
-            grid-column: 1 / span 12;
-        }
-    }
-
-
-
-    /* Single listing page - job ad page / events page / Thesis page*/
-    .single-tribe_events article.tribe-events-single,
-    .single-job-listing article.type-job_listing,
-    .single-wpbdp_listing article.wpbdp_listing {
-
-
-        >* {
-            grid-column: 3 / span 8;
-        }
-
-        header {
-            grid-column: 2 / span 10;
-        }
-
-        .meta-slice {
-            grid-column: 1 / span 12;
-            display: grid;
-            grid-template-columns: subgrid;
-
-            .meta-img-l {
-                grid-column: 1 / span 3;
-
-            }
-
-            .job-listing-meta,
-            .event-listing-meta,
-            .edp-thesis-meta {
-                grid-column: 4 / span 6;
-
-            }
-
-
-            .meta-img-r {
-                grid-column: 10 / span 3;
-
-            }
-        }
-
-        .job_description {
-            grid-column: 3 / span 8;
-        }
-
-        .job-listing-logo {
-            grid-column: 8 / span 3;
-            margin-top: var(--sp-xxlarge);
-
-            img {
-                max-height: 150px;
-                max-width: 290px;
-            }
-        }
-
-
 
     }
 
-    /* == Thesis directory ====================== */
-
-    .wpbdp-view-main {
-
-        :is(article.page) {
-            grid-column: 1 / span 12;
-            grid-template-columns: subgrid;
-            display: grid;
-
-            /* Title */
-            header {
-                grid-column: 1 / span 12;
-            }
-
-
-            /* Search tools and list */
-            >* {
-                grid-column: 2 / span 10;
-            }
-        }
-
+    .tribe-events-header {
+        grid-column: 1 / span 12;
     }
 
-
-    /* == Footer ====================== */
-
-    .footer-container.grid12>img {
-        grid-column: 1 / span 3;
-    }
-
-    .span10 {
+    .tribe-events-header__top-bar {
         grid-column: 2 / span 10;
     }
 
-    .span8 {
+    .tribe-events-calendar-list {
+        grid-column: 2 / span 10;
+    }
+}
+
+/* Single event */
+
+.single-tribe_events {
+    .tribe-events-after-html {
+        .event-disclaimer {
+            grid-column: 2 / span 8;
+        }
+    }
+}
+
+
+/* == Jobs ====================== */
+
+/* Jobs listing page */
+.job-listings-page {
+
+
+    :is(article.page) {
+        grid-column: 1 / span 12;
+    }
+}
+
+
+
+/* Single listing page - job ad page / events page / Thesis page*/
+.single-tribe_events article.tribe-events-single,
+.single-job-listing article.type-job_listing,
+.single-wpbdp_listing article.wpbdp_listing {
+
+
+    >* {
         grid-column: 3 / span 8;
     }
+
+    header {
+        grid-column: 2 / span 10;
+    }
+
+    .meta-slice {
+        grid-column: 1 / span 12;
+        display: grid;
+        grid-template-columns: subgrid;
+
+        .meta-img-l {
+            grid-column: 1 / span 3;
+
+        }
+
+        .job-listing-meta,
+        .event-listing-meta,
+        .edp-thesis-meta {
+            grid-column: 4 / span 6;
+
+        }
+
+
+        .meta-img-r {
+            grid-column: 10 / span 3;
+
+        }
+    }
+
+    .job_description {
+        grid-column: 3 / span 8;
+    }
+
+    .job-listing-logo {
+        grid-column: 8 / span 3;
+        margin-top: var(--sp-xxlarge);
+
+        img {
+            max-height: 150px;
+            max-width: 290px;
+        }
+    }
+
+
+
+}
+
+/* == Thesis directory ====================== */
+
+.wpbdp-view-main {
+
+    :is(article.page) {
+        grid-column: 1 / span 12;
+        grid-template-columns: subgrid;
+        display: grid;
+
+        /* Title */
+        header {
+            grid-column: 1 / span 12;
+        }
+
+
+        /* Search tools and list */
+        >* {
+            grid-column: 2 / span 10;
+        }
+    }
+
+}
+
+
+/* == Footer ====================== */
+
+.footer-container.grid12>img {
+    grid-column: 1 / span 3;
+}
+
+.span10 {
+    grid-column: 2 / span 10;
+}
+
+.span8 {
+    grid-column: 3 / span 8;
+}

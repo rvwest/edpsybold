@@ -250,3 +250,15 @@
     }
 
 }
+
+.single-tribe_events {
+    .tribe-events-after-html {
+        padding: var(--sp-xlarge) 0 var(--sp-large) 0;
+        background-color: var(--cl-dark);
+        color: var(--cl-light);
+
+        .event-disclaimer {
+            padding-left: var(--sp-large);
+        }
+    }
+}

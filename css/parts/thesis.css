@@ -118,6 +118,12 @@
 
             margin-bottom: var(--sp-xxlarge);
 
+            .edp-thesis-meta {
+                p {
+                    margin-bottom: 0;
+                }
+            }
+
             .wpbdp-further-reading-block {
                 margin-top: var(--sp-medium)
             }

@@ -45,6 +45,13 @@ article.type-wpbdp_listing {
             margin-bottom: var(--sp-medium);
         }
 
+        blockquote {
+
+            border-left: 4px solid var(--cl-);
+            padding-left: var(--sp-medium);
+            margin-bottom: var(--sp-medium);
+        }
+
     }
 
     margin-bottom: var(--sp-xxlarge);

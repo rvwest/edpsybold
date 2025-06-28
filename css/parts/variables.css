@@ -23,7 +23,7 @@
     --cl-medpurple-hover: #B07DB2;
     --cl-lightpurple: #BF86A7;
 
-    /* Context colors */
+    /* Context colors - for context specific primary colours see lower down the file */
     --cl-thesis-primary: var(--cl-lightblue);
     --cl-blog-primary: var(--cl-medpurple);
     --cl-events-primary: var(--cl-dark);
@@ -31,9 +31,6 @@
 
     --op-light: 0.8;
     --op-strong: 0.6;
-
-
-
 
     /* Spacing */
     --sp-xxsmall: 3px;
@@ -51,7 +48,6 @@
     /* Layout variable */
     --lv-full-width: 1248px;
     --lv-listing-height: 140px;
-
 
     /* Typography */
     --ff: 'Geologica', sans-serif;
@@ -99,4 +95,21 @@
     --gs-8: calc((8 * ((100vw - 144px - (11 * 24px)) / 12)) + (7 * 24px));
     --gs-10: calc((10 * ((100vw - 144px - (11 * 24px)) / 12)) + (9 * 24px));
     --gs-12: calc(((100vw - 144px - (11 * 24px))) + (11 * 24px));
+}
+
+/* Context-specific primary colors */
+.edp-thesis-abstract {
+    --cl-primary: var(--cl-thesis-primary);
+}
+
+.entry-content {
+    --cl-primary: var(--cl-blog-primary);
+}
+
+.tribe-events-content {
+    --cl-primary: var(--cl-events-primary);
+}
+
+.edp-jobs {
+    --cl-primary: var(--cl-jobs-primary);
 }
