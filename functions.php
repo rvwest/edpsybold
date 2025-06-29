@@ -524,3 +524,13 @@ function my_custom_event_website_link( $event = null, $label = null, $target = '
 
 	return apply_filters( 'my_custom_event_website_link', $html );
 }
+
+// Remove the automatic "View Venue Website" label override
+remove_filter( 'tribe_get_venue_website_link_label', [ tribe( 'events.views.v2.hooks' ), 'filter_single_event_details_venue_website_label' ] );
+
+// Add a filter to remove the colon from the output
+add_filter('tribe_get_event_categories', function($html, $post_id, $args, $categories) {
+    // Remove the colon that's automatically added
+    $html = str_replace(':', '', $html);
+    return $html;
+}, 10, 4);

@@ -77,7 +77,7 @@ $cost = tribe_get_formatted_cost($event_id);
 	<!-- Notices -->
 	<?php tribe_the_notices() ?>
 
-	<header>
+	<header class="event-page-header">
 		<?php echo $title; ?>
 		<?php if (strpos(implode(' ', get_body_class()), 'event-cat-on-demand') === false): ?>
 			<?php echo tribe_events_event_schedule_details($event_id, '<div class="edp-event-date-time">', '</div>'); ?>
@@ -90,7 +90,7 @@ $cost = tribe_get_formatted_cost($event_id);
 	</header>
 
 	
-	<?php tribe_get_template_part('modules/meta-top'); ?>
+
 
 	<!-- #tribe-events-header -->
 
@@ -115,7 +115,12 @@ $cost = tribe_get_formatted_cost($event_id);
 	</div>
 	<div class="meta-slice">
 			<?php tribe_get_template_part('modules/meta-bottom'); ?>
-			<?php tribe_get_template_part('modules/meta/map'); ?>
+			<?php 
+			// Only show map if it's enabled for this event
+			if (tribe_embed_google_map()) {
+				tribe_get_template_part('modules/meta/map'); 
+			}
+			?>
 			<?php do_action('tribe_events_single_event_after_the_meta') ?>
 		</div> <!-- #post-x -->
 		<?php if (get_post_type() == Tribe__Events__Main::POSTTYPE && tribe_get_option('showComments', false))

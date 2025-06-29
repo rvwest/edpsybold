@@ -22,7 +22,7 @@ echo tribe_get_event_categories(
 		'before' => '',
 		'sep' => ', ',
 		'after' => '',
-		'label' => "Event type", // An appropriate plural/singular label will be provided
+		'label' => 'Event type', 
 		'label_before' => '<div class="meta-item"><div class="label">',
 		'label_after' => '</div>',
 		'wrap_before' => '	<div class="detail event-category">',

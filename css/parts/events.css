@@ -252,6 +252,25 @@
 }
 
 .single-tribe_events {
+
+    header.event-page-header {
+        margin-bottom: var(--sp-xxlarge)
+    }
+
+    .meta-item {
+
+        li {
+            padding-bottom: var(--sp-xsmall);
+        }
+
+
+    }
+
+    .page-cta {
+        display: flex;
+        justify-content: end;
+    }
+
     .tribe-events-after-html {
         padding: var(--sp-xlarge) 0 var(--sp-large) 0;
         background-color: var(--cl-dark);

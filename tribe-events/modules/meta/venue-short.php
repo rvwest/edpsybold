@@ -23,40 +23,19 @@ $website_title = tribe_events_get_venue_website_title(); ?>
 	<div class="meta-item">
 		<div class="label">Venue</div>
 		<div class="detail event-venue">
-<ul>
-		<li>	
 
 			<?php if ($website): ?>
 				<?php echo $website ?>
 			<?php else: ?>
 				<?php echo tribe_get_venue() ?>
 			<?php endif; ?>
-			</li>
-	
-	
-
-
-	<?php if (tribe_address_exists()): ?>
-		<li>
-				<address class="tribe-events-address">
-					<?php echo tribe_get_full_address(); ?>
-
-					<?php if (tribe_show_google_map_link()): ?>
-						<?php echo tribe_get_map_link_html(); ?>
-						<?php endif; ?>
-				</address>
-					</li>
-		
-	<?php endif; ?>
-
-	<?php if (!empty($phone)): ?>
-		<li>
-			<a href="tel:<?php echo $phone ?>"><?php echo $phone ?></a>
-	</li>
-	<?php endif ?>
-	</ul>
+		</div>
 	</div>
-	</div>
+	
+
+
+	
+
 
 
 <?php do_action('tribe_events_single_meta_venue_section_end') ?>

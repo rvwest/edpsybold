@@ -10,6 +10,9 @@
  *
  * @package TribeEventsCalendar
  */
+
+ $event_id = Tribe__Main::post_id_helper();
+
 ?>
 <div class="meta-slice">
 		<div class="meta-img-l"></div>
@@ -20,9 +23,11 @@
  // Date / time 
  tribe_get_template_part('modules/meta/datetime');
  // Booking link
- tribe_get_template_part('modules/meta/book');
+ //tribe_get_template_part('modules/meta/book');
  // Venue and venue address
- tribe_get_template_part('modules/meta/venue');
+ if (tribe_has_venue($event_id)) {
+ tribe_get_template_part('modules/meta/venue-short');
+ }
  // Organiser details
  if (tribe_has_organizer()) {
 	 tribe_get_template_part('modules/meta/organizer');

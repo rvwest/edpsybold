@@ -41,11 +41,12 @@ foreach ($organizer_ids as $organizer) {
 				} else {
 					echo esc_html($organizer_name);
 				} ?></li>
-				<?php if ($phone) {
-					echo '<li>' . esc_html($phone) . '</li>';
-				} ?>
+				
 				<?php if ($email) {
-					echo '<a rel=”nofollow” href="mailto:' . esc_html($email) . '">' . esc_html($email) . '</a>';
+					echo '<li><a rel=”nofollow” href="mailto:' . esc_html($email) . '">' . esc_html($email) . '</a></li>';
+				} ?>
+				<?php if ($phone) {
+					echo '<li><a href="tel:' . esc_html($phone) . '">' . esc_html($phone) . '</a></li>';
 				} ?>
 			</ul>
 		</div>

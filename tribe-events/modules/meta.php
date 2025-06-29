@@ -98,7 +98,10 @@ $set_venue_apart = apply_filters('tribe_events_single_event_the_meta_group_venue
 		do_action('tribe_events_single_event_meta_secondary_section_start');
 
 		tribe_get_template_part('modules/meta/venue');
-		tribe_get_template_part('modules/meta/map');
+		// Only show map if it's enabled for this event
+		if (tribe_embed_google_map()) {
+			tribe_get_template_part('modules/meta/map');
+		}
 
 		do_action('tribe_events_single_event_meta_secondary_section_end');
 		?>

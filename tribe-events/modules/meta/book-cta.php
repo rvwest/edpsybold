@@ -21,7 +21,7 @@ $website = tribe_get_event_website_link($event_id, 'Find out more + book');
 // TODO - extract url from $website
 if (!empty($website)): ?>
 	<?php esc_html($website) ?>
-	<div class="meta-item">
+	<div class="meta-item page-cta">
 		<div class="detail event-link">
 			<?php
 			echo my_custom_event_website_link( get_the_ID($event_id), 'Find out more and book', '_blank', 'button edp-button-solid' );
