@@ -188,21 +188,8 @@ function edpsybold_comment_count($count)
     }
 }
 
-
-// ========== Tabbable links fix ================================================= //
-function edpsy_enqueue_fix_tab_focus_script()
-{
-    wp_enqueue_script(
-        'fix-tab-focus',
-        get_template_directory_uri() . '/js/fix-tab-focus.js',
-        array(),
-        null,
-        true // load in footer
-    );
-}
-add_action('wp_enqueue_scripts', 'edpsy_enqueue_fix_tab_focus_script');
-
-// ========== Debug  ========================================================== //
+// ========== Debugger  =================================================== //
+// ======================================================================== //
 
 // Footer debug
 add_action('wp_footer', function () {
@@ -213,15 +200,8 @@ add_action('wp_footer', function () {
     echo '</pre>';
 }, 998);
 
-// Template labeling
-//add_filter('template_include', function ($template) {
-//    echo "\n<!-- TEMPLATE_INCLUDE: $template -->\n";
-//    return $template;
-//});
-
-
-
 // ========== Remove comments ================================================= //
+// ============================================================================ //
 
 function disable_page_comments()
 {
@@ -234,6 +214,7 @@ function disable_page_comments()
 add_action('template_redirect', 'disable_page_comments');
 
 // ========== CSS removal ================================================= //
+// ======================================================================== //
 function remove_wp_plugin_frontend_css()
 {
     if (!is_admin()) { // Ensures this only runs on the frontend
@@ -264,6 +245,7 @@ add_action('wp_head', function () {
 
 
 // ========== Custom page types ================================================= //
+// ======================================================================== //
 
 add_action('wp_enqueue_scripts', 'remove_wp_plugin_frontend_css', 9999);
 function add_job_manager_body_classes($classes)
@@ -279,7 +261,7 @@ function add_job_manager_body_classes($classes)
 add_filter('body_class', 'add_job_manager_body_classes');
 
 // ========== Page promos ================================================= //
-
+// ======================================================================== //
 
 function get_page_promo()
 {
@@ -307,6 +289,7 @@ function get_page_promo()
 
 
 // ========== Blog pages ================================================= //
+// ======================================================================== //
 
 add_filter('wpseo_title', 'my_co_author_wseo_title');
 function my_co_author_wseo_title($title)
@@ -323,8 +306,9 @@ function my_co_author_wseo_title($title)
 }
 
 // ========== Job manager ================================================= //
+// ======================================================================== //
 
-// ---------- Post a job ------------------------------------------------- //
+// ---------- Post a job //
 
 
 // Modifies / remove / add fields for jobs form
@@ -443,6 +427,75 @@ function custom_job_manager_update_job_listings_message($save_message)
 
 // ========== Events pages ================================================= //
 
+// Add "Online" checkbox after Venue in the Location section
+add_action('tribe_events_after_venue_metabox', function($post) {
+    $value = get_post_meta($post->ID, '_EventOnline', true);
+    ?>
+    <tr>
+        <td class='tribe-table-field-label'>
+            <label for="EventOnline"><?php esc_html_e('Online event?', 'edpsybold'); ?></label>
+        </td>
+        <td>
+            <input
+                id="EventOnline"
+                name="EventOnline"
+                type="checkbox"
+                value="1"
+                <?php checked($value, '1'); ?>
+            />
+            <span class="description"><?php esc_html_e('Check if this is an online/virtual event', 'edpsybold'); ?></span>
+        </td>
+    </tr>
+    <?php
+});
+
+// Add "CTA Label" text field after Event Website URL
+add_action('tribe_events_url_table', function($event_id) {
+    $value = get_post_meta($event_id, '_EventCTALabel', true);
+    ?>
+    <tr>
+        <td style="width:172px;">
+            <label for="EventCTALabel"><?php esc_html_e('CTA Label', 'edpsybold'); ?></label>
+        </td>
+        <td>
+            <input
+                id="EventCTALabel"
+                name="EventCTALabel"
+                type="text"
+                value="<?php echo esc_attr($value); ?>"
+                size="25"
+                placeholder="<?php esc_attr_e('Find out more and book', 'edpsybold'); ?>"
+            />
+            <span class="description"><?php esc_html_e('Optional', 'edpsybold'); ?></span>
+        </td>
+    </tr>
+    <?php
+});
+
+// Save the custom fields when the event is saved
+add_action('save_post_tribe_events', function($post_id) {
+    if (isset($_POST['EventOnline'])) {
+        update_post_meta($post_id, '_EventOnline', '1');
+    } else {
+        update_post_meta($post_id, '_EventOnline', '0');
+    }
+    if (isset($_POST['EventCTALabel'])) {
+        update_post_meta($post_id, '_EventCTALabel', sanitize_text_field($_POST['EventCTALabel']));
+    }
+});
+
+// Tabbable links fix 
+function edpsy_enqueue_fix_tab_focus_script()
+{
+    wp_enqueue_script(
+        'fix-tab-focus',
+        get_template_directory_uri() . '/js/fix-tab-focus.js',
+        array(),
+        null,
+        true // load in footer
+    );
+}
+add_action('wp_enqueue_scripts', 'edpsy_enqueue_fix_tab_focus_script');
 
 add_filter('tribe_events_event_schedule_details_inner', 'edpsy_custom_time_range_in_brackets', 10, 2);
 
@@ -474,7 +527,6 @@ function edpsy_custom_time_range_in_brackets($inner, $event_id)
 
 
 // Add event categories to body tag
-
 function add_event_category_to_body_class($classes)
 {
 	if (is_singular('tribe_events')) {
@@ -555,8 +607,6 @@ function tribe_add_website_helptext()
 add_action('tribe_events_community_section_after_website', 'tribe_add_website_helptext');
 
 
-// Tribe events 
-
 // Add the custom event cost column to the admin list view
 function tribe_events_add_column_headers($columns)
 {
@@ -621,7 +671,8 @@ function tribe_events_custom_orderby($query)
 add_action('pre_get_posts', 'tribe_events_custom_orderby');
 
 
-// =========== Thesis Directory =================
+
+// =========== Thesis Directory  ================================================= //
 
 add_shortcode('get_search_term_used', function () {
 	/* translators: %s: Search query/keyword. */
@@ -631,7 +682,7 @@ add_shortcode('get_search_term_used', function () {
 	);
 });
 
-// =========== Wordfence email =================
+// =========== Wordfence email  ================================================= //
 function modify_wordfence_ip_display($formatted_row, $row)
 {
 	if (isset($row['IP'])) {
