@@ -266,6 +266,13 @@
 
     }
 
+    .tribe-events-notices {
+        background-color: var(--cl-dark);
+        color: var(--cl-light);
+        padding: var(--sp-small);
+        margin-bottom: var(--sp-xlarge);
+    }
+
     .page-cta {
         display: flex;
         justify-content: end;

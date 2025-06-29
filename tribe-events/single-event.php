@@ -75,7 +75,7 @@ $cost = tribe_get_formatted_cost($event_id);
 <article id="tribe-events-content" class="tribe-events-single type-tribe_events grid12">
 
 	<!-- Notices -->
-	<?php tribe_the_notices() ?>
+
 
 	<header class="event-page-header">
 		<?php echo $title; ?>
@@ -85,10 +85,14 @@ $cost = tribe_get_formatted_cost($event_id);
 			<div><span class="edp-event-on-demand">On-demand training</span> <i class="far fa-bolt on-demand-icon"></i>
 			</div>
 		<?php endif; ?>
-		
+		<?php  if (tribe_get_city( $event_id )) {?>
+			<div class="edp-event-cost"><?php echo tribe_get_city( $event_id );?></div> 
+		<?php } ?>
 		<div class="edp-event-cost"><?php echo esc_html($cost); ?></div>
+		
 	</header>
 
+	<?php tribe_the_notices() ?>
 	
 
 
@@ -103,7 +107,8 @@ $cost = tribe_get_formatted_cost($event_id);
 			<!-- Event content -->
 			<?php do_action('tribe_events_single_event_before_the_content') ?>
 			<div class="tribe-events-single-event-description tribe-events-content">
-				<?php the_content(); ?>
+			
+			<?php the_content(); ?>
 			</div>
 			<?php tribe_get_template_part('modules/meta/book-cta'); ?>
 
@@ -113,7 +118,7 @@ $cost = tribe_get_formatted_cost($event_id);
 			<!-- Event meta -->
 			<?php do_action('tribe_events_single_event_before_the_meta') ?>
 	</div>
-	<div class="meta-slice">
+	
 			<?php tribe_get_template_part('modules/meta-bottom'); ?>
 			<?php 
 			// Only show map if it's enabled for this event
@@ -122,7 +127,7 @@ $cost = tribe_get_formatted_cost($event_id);
 			}
 			?>
 			<?php do_action('tribe_events_single_event_after_the_meta') ?>
-		</div> <!-- #post-x -->
+		
 		<?php if (get_post_type() == Tribe__Events__Main::POSTTYPE && tribe_get_option('showComments', false))
 			comments_template() ?>
 	<?php endwhile; ?>

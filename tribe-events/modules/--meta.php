@@ -111,5 +111,5 @@ $set_venue_apart = apply_filters('tribe_events_single_event_the_meta_group_venue
 	<?php endif; ?>
 <?php
 endif;
-do_action('tribe_events_single_meta_after');
-echo '<!-- file end: tribe-events/modules/meta.php -->';
+do_action('tribe_events_single_meta_after');?>
+<!-- file end: tribe-events/modules/meta.php -->';

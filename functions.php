@@ -528,9 +528,117 @@ function my_custom_event_website_link( $event = null, $label = null, $target = '
 // Remove the automatic "View Venue Website" label override
 remove_filter( 'tribe_get_venue_website_link_label', [ tribe( 'events.views.v2.hooks' ), 'filter_single_event_details_venue_website_label' ] );
 
-// Add a filter to remove the colon from the output
+// Add a filter to remove the colon from event metadata
 add_filter('tribe_get_event_categories', function($html, $post_id, $args, $categories) {
     // Remove the colon that's automatically added
     $html = str_replace(':', '', $html);
     return $html;
 }, 10, 4);
+
+
+// Tribe community events - submission form help text (to avoid changig the field php)
+
+// Taxonomy = category
+
+function tribe_add_datetime_helptext()
+{
+	echo '<p class="tribe-helptext"><strong>For events that span non-consecutive dates</strong> (eg 7 March and 9 April) add the start date, then put the full details in the description</p>';
+}
+
+add_action('tribe_events_community_section_after_datetime', 'tribe_add_datetime_helptext');
+
+function tribe_add_website_helptext()
+{
+	echo '<p class="tribe-helptext">For more information about the event. Don\'t worry if there isn\'t one</p>';
+}
+
+add_action('tribe_events_community_section_after_website', 'tribe_add_website_helptext');
+
+
+// Tribe events 
+
+// Add the custom event cost column to the admin list view
+function tribe_events_add_column_headers($columns)
+{
+	$events_label_singular = tribe_get_event_label_singular();
+
+	foreach ((array) $columns as $key => $value) {
+		$mycolumns[$key] = $value;
+		if ($key == 'author') {
+			$mycolumns['events-cats'] = sprintf(esc_html__('%s Categories', 'the-events-calendar'), $events_label_singular);
+		}
+	}
+	$columns = $mycolumns;
+
+	unset($columns['date']);
+	$columns['start-date'] = esc_html__('Start Date', 'the-events-calendar');
+	$columns['end-date'] = esc_html__('End Date', 'the-events-calendar');
+	// Cost addition
+	$columns['cost'] = esc_html__('Cost', 'the-events-calendar');
+	return $columns;
+}
+add_filter('manage_tribe_events_posts_columns', 'tribe_events_add_column_headers', 10, 1);
+
+// Display the event cost in the custom column
+function tribe_events_show_event_cost_column($column, $post_id)
+{
+	if ($column === 'cost') {
+		$event_cost = get_post_meta($post_id, '_EventCost', true);
+		if (!empty($event_cost)) {
+			echo $event_cost;
+		} else {
+			echo '-';
+		}
+	}
+}
+add_action('manage_tribe_events_posts_custom_column', 'tribe_events_show_event_cost_column', 10, 2);
+
+
+// Register the tribe events cost custom column as sortable
+function tribe_events_custom_sortable_columns($columns)
+{
+	$columns['cost'] = 'cost';
+	return $columns;
+}
+add_filter('manage_edit-tribe_events_sortable_columns', 'tribe_events_custom_sortable_columns');
+
+// Modify the sorting query
+function tribe_events_custom_orderby($query)
+{
+	if (!is_admin() || !$query->is_main_query()) {
+		return;
+	}
+
+	$orderby = $query->get('orderby');
+
+	if ('cost' == $orderby) {
+		// Set the meta key for the event cost
+		$query->set('meta_key', '_EventCost');
+		// Order by meta value as an integer
+		$query->set('orderby', 'meta_value_num');
+	}
+}
+add_action('pre_get_posts', 'tribe_events_custom_orderby');
+
+
+// =========== Thesis Directory =================
+
+add_shortcode('get_search_term_used', function () {
+	/* translators: %s: Search query/keyword. */
+	return sprintf(
+		__('Search Results for "%s"', 'business-directory-plugin'),
+		esc_attr(get_search_query())
+	);
+});
+
+// =========== Wordfence email =================
+function modify_wordfence_ip_display($formatted_row, $row)
+{
+	if (isset($row['IP'])) {
+		$ip = $row['IP'];
+		$ip_url = sprintf('<a href="https://cpanel.edpsy.org.uk/cpsess8093929927/frontend/jupiter/denyip/add.html?ip=%s" target="_blank">%s</a>', $ip, $ip);
+		$formatted_row = str_replace($ip, $ip_url, $formatted_row);
+	}
+	return $formatted_row;
+}
+add_filter('wordfence_attack_table_row', 'modify_wordfence_ip_display', 10, 2);

@@ -187,14 +187,20 @@ body.single-post {
 /* Single event */
 
 .single-tribe_events {
-    .tribe-events-after-html {
-        .event-disclaimer {
-            grid-column: 2 / span 8;
-        }
-    }
+    article.tribe-events-single {
 
-    .tribe-events-venue-map {
-        grid-column: 1 / span 12;
+
+
+
+        .tribe-events-after-html {
+            .event-disclaimer {
+                grid-column: 2 / span 8;
+            }
+        }
+
+        .tribe-events-venue-map {
+            grid-column: 1 / span 12;
+        }
     }
 }
 
