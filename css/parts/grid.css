@@ -12,6 +12,13 @@
 }
 
 
+@media only screen and (max-width: 600px) {
+    .fullwidth {
+        width: 100%;
+        padding: 0 var(--sp-medium);
+    }
+}
+
 
 .grid12 {
     grid-template-columns: repeat(12, 1fr);
@@ -229,6 +236,8 @@ body.single-post {
     }
 
     header {
+        display: grid;
+
         grid-column: 2 / span 10;
     }
 
@@ -262,16 +271,44 @@ body.single-post {
 
     .job-listing-logo {
         grid-column: 8 / span 3;
-        margin-top: var(--sp-xxlarge);
 
-        img {
-            max-height: 150px;
-            max-width: 290px;
-        }
     }
 
+    @media only screen and (max-width: 600px) {
 
 
+        header {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column-reverse;
+            grid-column: 1 / span 12;
+        }
+
+        .meta-slice {
+            .meta-img-l {
+                grid-column: 1 / span 1;
+
+            }
+
+            .job-listing-meta,
+            .event-listing-meta,
+            .edp-thesis-meta {
+                grid-column: 2 / span 10;
+
+            }
+
+
+            .meta-img-r {
+                grid-column: 12 / span 1;
+
+            }
+        }
+
+        .job_description {
+            grid-column: 1 / span 12;
+        }
+
+    }
 }
 
 /* == Thesis directory ====================== */

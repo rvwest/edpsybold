@@ -9,7 +9,6 @@
     article.type-wpbdp_listing {
         header {
 
-            display: grid;
 
             .entry-title,
             .tribe-events-single-event-title {
@@ -80,7 +79,6 @@
 
 
         .job-listing-logo {
-            grid-column: 8 / span 3;
             margin-top: var(--sp-xxlarge);
 
             img {
