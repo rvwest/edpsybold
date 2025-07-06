@@ -497,6 +497,19 @@ function edpsy_enqueue_fix_tab_focus_script()
 }
 add_action('wp_enqueue_scripts', 'edpsy_enqueue_fix_tab_focus_script');
 
+// Match meta-item label widths on small screens
+function edpsy_enqueue_meta_label_resize_script()
+{
+    wp_enqueue_script(
+        'meta-label-resize',
+        get_template_directory_uri() . '/js/meta-label-resize.js',
+        array(),
+        null,
+        true // load in footer
+    );
+}
+add_action('wp_enqueue_scripts', 'edpsy_enqueue_meta_label_resize_script');
+
 add_filter('tribe_events_event_schedule_details_inner', 'edpsy_custom_time_range_in_brackets', 10, 2);
 
 function edpsy_custom_time_range_in_brackets($inner, $event_id)
