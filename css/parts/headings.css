@@ -244,6 +244,14 @@ body:not(.home),
         width: 100%;
         padding-right: var(--sp-xlarge);
     }
+
+    @media only screen and (max-width: 600px) {
+        h1 {
+            font-size: var(--fs-title-small);
+            line-height: var(--lh-title-small);
+            margin-top: var(--sp-large);
+        }
+    }
 }
 
 /* == Other headings ============== */
@@ -251,9 +259,17 @@ body:not(.home),
 h2 {
     font-size: var(--fs-title-medium);
     font-weight: var(--fw-semibold);
+
+
 }
 
 h3 {
     font-size: var(--fs-title-small);
     font-weight: var(--fw-semibold);
+}
+
+@media only screen and (max-width: 600px) {
+    h2 {
+        font-size: var(--fs-title-small);
+    }
 }

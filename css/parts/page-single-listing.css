@@ -86,6 +86,70 @@
                 max-width: 290px;
             }
         }
+
+        @media only screen and (max-width: 600px) {
+
+            header {
+
+                .entry-title,
+                .tribe-events-single-event-title {
+                    margin-bottom: var(--sp-medium);
+                }
+
+                .company,
+                .edp-event-date-time,
+                .edp-event-cost,
+                .edp-event-location,
+                .edp-event-on-demand,
+                .wpbdp-year-inst-block {
+                    font-size: var(--fs-title-small);
+                    font-weight: var(--fw-semibold);
+                    line-height: var(--lh-title-small);
+                }
+
+            }
+
+
+            .meta-slice {
+
+                margin: var(--sp-medium) 0;
+
+                .job-listing-meta,
+                .edp-thesis-meta,
+                .event-listing-meta {
+
+
+                    .meta-item {
+                        width: 100%;
+
+
+                        .label,
+                        .field-label {
+                            width: 55%;
+                            min-width: 0;
+                        }
+
+                        .detail {
+                            width: 45%;
+                        }
+                    }
+                }
+            }
+
+            .job-listing-logo {
+                margin-top: var(--sp-large);
+
+                img {
+                    max-height: 100px;
+                    max-width: 200px;
+                }
+            }
+
+        }
+
+
+
+
     }
 
     .wpjm-submit-block {

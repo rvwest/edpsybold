@@ -84,6 +84,7 @@
 
                 <?php if (candidates_can_apply()): ?>
                     <?php get_job_manager_template('job-application.php'); ?>
+                    
                 <?php endif; ?>
 
             <?php endif; ?>
@@ -95,12 +96,14 @@
 
 
         </article>
-        <div class="job-footer grid12">
-            <div class="span8"><a href="/jobs" class="button edp-button-outline secondary see-all-jobs">See all jobs</a>
+        <div class="fullwidth">
+            <div class="job-footer grid12">
+            <div class="job-footer-contents"><p><a href="/jobs" class="button edp-button-outline secondary see-all-jobs">See all jobs</a></p>
                 <p class="footnote-asa"><i class="fad fa-check"></i> We follow the <a
                         href="https://www.asa.org.uk/type/non_broadcast/code_section/20.html">CAP Code for employment ads</a>.
                 </p>
             </div>
+                </div>
         </div>
 
 

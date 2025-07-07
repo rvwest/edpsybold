@@ -31,6 +31,12 @@ body {
 
 }
 
+@media only screen and (max-width: 600px) {
+    body {
+        font-size: var(--fs-body-medium);
+    }
+}
+
 a:link,
 a:visited,
 a:hover,
@@ -43,7 +49,15 @@ a:active {
 
 p {
     margin-bottom: var(--sp-medium);
+    font-size: var(--fs-body);
 }
+
+@media only screen and (max-width: 600px) {
+    p {
+        font-size: var(--fs-body-medium);
+    }
+}
+
 
 article {
 

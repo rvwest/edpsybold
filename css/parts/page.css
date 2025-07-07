@@ -47,9 +47,15 @@ article.type-wpbdp_listing {
 
         blockquote {
 
-            border-left: 4px solid var(--cl-);
+            border-left: 4px solid var(--cl-primary);
             padding-left: var(--sp-medium);
             margin-bottom: var(--sp-medium);
+        }
+
+        @media only screen and (max-width: 600px) {
+            ul {
+                margin-left: var(--sp-small);
+            }
         }
 
     }
