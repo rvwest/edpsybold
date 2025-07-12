@@ -47,6 +47,7 @@
                     <?php bloginfo('description'); ?>
                 </div> -->
 
+                <button class="menu-toggle" aria-label="Toggle menu"><i class="far fa-bars"></i></button>
                 <nav class="top-nav-menu">
                     <?php
                     wp_nav_menu(array(

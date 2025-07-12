@@ -45,6 +45,19 @@
     }
 }
 
+@media only screen and (max-width: 700px) {
+    .grid12 {
+        .menu-toggle {
+            grid-column: 11 / span 2;
+            justify-self: end;
+        }
+
+        nav.top-nav-menu {
+            grid-column: 1 / span 12;
+        }
+    }
+}
+
 /* === Page ===================== */
 
 .page-template-default:not(.job-listings-page, .wpbdp-view-main) article.type-page {

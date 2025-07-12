@@ -497,6 +497,19 @@ function edpsy_enqueue_fix_tab_focus_script()
 }
 add_action('wp_enqueue_scripts', 'edpsy_enqueue_fix_tab_focus_script');
 
+// Mobile menu toggle script
+function edpsy_enqueue_mobile_menu_script()
+{
+    wp_enqueue_script(
+        'mobile-menu',
+        get_template_directory_uri() . '/js/mobile-menu.js',
+        array('jquery'),
+        null,
+        true
+    );
+}
+add_action('wp_enqueue_scripts', 'edpsy_enqueue_mobile_menu_script');
+
 function edpsy_custom_time_range_in_brackets($inner, $event_id)
 {
     $event = get_post($event_id);
