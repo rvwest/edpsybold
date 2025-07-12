@@ -105,7 +105,7 @@
                                                         class="far fa-arrow-left fa-xs"></i> all events</a></div>
                                         </div>
                                     </div>
-                                    <div id="container" class="fullwidth">
+                                    <div id="container" >
                                         <main id="content" role="main" class="fullwidth">
                                         <?php else: ?>
                                             <!-- var: regular page -->

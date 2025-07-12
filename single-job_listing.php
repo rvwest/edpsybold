@@ -14,7 +14,12 @@
                         <?php the_title(); ?>
                     </h1>
                     <div class="company">
-                        <?php the_company_name(); ?>
+                    <?php if ( $website = get_the_company_website() ) : ?>
+			<a class="company-name" href="<?php echo esc_url( $website ); ?>"><?php the_company_name( ); ?></a>
+		<?php else : ?>
+			<?php the_company_name( ); ?> 
+		<?php endif; ?>
+                    
 
                     </div>
                 </div>

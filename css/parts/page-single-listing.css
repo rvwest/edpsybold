@@ -35,7 +35,7 @@
         }
 
         .meta-slice {
-            margin: var(--sp-xxlarge) 0;
+
 
             .meta-img-l {
                 background-repeat: no-repeat;
@@ -93,7 +93,8 @@
 
                 .entry-title,
                 .tribe-events-single-event-title {
-                    margin-bottom: var(--sp-medium);
+                    margin-bottom: var(--sp-xsmall);
+                    margin-top: var(--sp-large)
                 }
 
                 .company,
@@ -121,16 +122,17 @@
 
                     .meta-item {
                         width: 100%;
-
+                        padding-left: 0;
+                        padding-right: 0;
 
                         .label,
                         .field-label {
-                            width: 55%;
+                            width: 42%;
                             min-width: 0;
                         }
 
                         .detail {
-                            width: 45%;
+                            width: 58%;
                         }
                     }
                 }
@@ -151,6 +153,21 @@
 
 
     }
+
+    article.type-job_listing,
+    article.type-wpbdp_listing {
+
+        .meta-slice {
+            margin: var(--sp-xxlarge) 0;
+        }
+    }
+
+    article.type-tribe_events {
+        .meta-slice {
+            margin: var(--sp-xxxlarge) 0 var(--sp-medium) 0;
+        }
+    }
+
 
     .wpjm-submit-block {
         margin: var(--sp-medium) 0;
@@ -246,4 +263,82 @@
         background-image: url(../../images/edpsy-swirls-15.svg);
     }
 
+}
+
+
+
+
+
+
+@media only screen and (max-width: 600px) {
+
+    .edp-jobs.single-job_listing,
+    .single-tribe_events,
+    .single-wpbdp_listing {
+
+        article.type-job_listing,
+        article.type-tribe_events,
+        article.type-wpbdp_listing {
+
+
+            header {
+
+                .entry-title,
+                .tribe-events-single-event-title {
+                    margin-bottom: var(--sp-xsmall);
+                    margin-top: var(--sp-large)
+                }
+
+                .company,
+                .edp-event-date-time,
+                .edp-event-cost,
+                .edp-event-location,
+                .edp-event-on-demand,
+                .wpbdp-year-inst-block {
+                    font-size: var(--fs-title-small);
+                    font-weight: var(--fw-semibold);
+                    line-height: var(--lh-title-small);
+                }
+
+            }
+
+
+            .meta-slice {
+
+                margin: var(--sp-medium) 0;
+
+                .job-listing-meta,
+                .edp-thesis-meta,
+                .event-listing-meta {
+
+
+                    .meta-item {
+                        width: 100%;
+                        padding-left: 0;
+                        padding-right: 0;
+
+                        .label,
+                        .field-label {
+                            width: 42%;
+                            min-width: 0;
+                        }
+
+                        .detail {
+                            width: 58%;
+                        }
+                    }
+                }
+            }
+
+            .job-listing-logo {
+                margin-top: var(--sp-large);
+
+                img {
+                    max-height: 100px;
+                    max-width: 200px;
+                }
+            }
+
+        }
+    }
 }

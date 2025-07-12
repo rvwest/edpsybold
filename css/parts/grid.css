@@ -301,7 +301,7 @@ body.single-post {
             header {
                 display: flex;
                 flex-wrap: wrap;
-                flex-direction: column-reverse;
+                flex-direction: column;
                 grid-column: 1 / span 12;
             }
 
@@ -315,6 +315,8 @@ body.single-post {
                 .event-listing-meta,
                 .edp-thesis-meta {
                     grid-column: 1 / span 12;
+
+
 
                 }
 

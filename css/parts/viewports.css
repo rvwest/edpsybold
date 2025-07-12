@@ -19,3 +19,16 @@
     }
 
 }
+
+@media screen and (max-width: 600px) {
+    #signup-slice .signup-content {
+        .message {
+            padding-right: 0;
+
+            h2 {
+                font-size: var(--fs-title-medium);
+                line-height: var(--lh-title-medium);
+            }
+        }
+    }
+}
