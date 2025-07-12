@@ -19,8 +19,22 @@ jQuery(function($){
         e.preventDefault();
         var $btn = $(this);
         var $li = $btn.parent('li');
-        $li.toggleClass('submenu-open');
-        $li.children('ul.sub-menu').slideToggle(200);
-        $btn.find('i').toggleClass('fa-angle-down fa-angle-up');
+        var $submenu = $li.children('ul.sub-menu');
+
+        if($li.hasClass('submenu-open')) {
+            $submenu.slideUp(200, function(){
+                $submenu.attr('style', '');
+            });
+            $li.removeClass('submenu-open');
+            $btn.attr('aria-expanded', 'false');
+            $btn.find('i').removeClass('fa-angle-up').addClass('fa-angle-down');
+        } else {
+            $submenu.hide().css('display', 'flex').slideDown(200, function(){
+                $submenu.attr('style', '');
+            });
+            $li.addClass('submenu-open');
+            $btn.attr('aria-expanded', 'true');
+            $btn.find('i').removeClass('fa-angle-down').addClass('fa-angle-up');
+        }
     });
 });
