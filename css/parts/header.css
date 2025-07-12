@@ -20,6 +20,14 @@ header[role="banner"] {
         opacity: var(--op-light);
     }
 
+    .menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
     nav.top-nav-menu {
         height: 100%;
 
@@ -203,4 +211,35 @@ body {
         }
     }
 
+}
+
+@media screen and (max-width: 700px) {
+    header[role="banner"] {
+        .menu-toggle {
+            display: block;
+        }
+
+        nav.top-nav-menu {
+            grid-column: 1 / span 12;
+
+            ul {
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+                display: none;
+            }
+
+            &.open>ul {
+                display: flex;
+
+                >li {
+                    width: 100%;
+
+                    a {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
 }
