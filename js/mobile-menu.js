@@ -1,20 +1,7 @@
 jQuery(function($){
     $('.menu-toggle').on('click', function(){
         var nav = $('.top-nav-menu');
-        var menuList = nav.children('ul');
-
-        if(nav.hasClass('open')) {
-            menuList.slideUp(200, function(){
-                menuList.attr('style', '');
-            });
-            nav.removeClass('open');
-        } else {
-            menuList.hide().css('display', 'flex').slideDown(200, function(){
-                menuList.attr('style', '');
-            });
-            nav.addClass('open');
-        }
-
+        nav.toggleClass('open');
         $(this).find('i').toggleClass('fa-bars fa-times');
     });
 
