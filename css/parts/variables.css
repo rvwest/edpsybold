@@ -60,6 +60,8 @@
     --fs-body: 18px;
     /* Jobs list - job meta, event list - event meta */
     --fs-title-small: 22px;
+    /* Jobs list - job meta, event list - event meta */
+    --fs-title-smallmedium: 26px;
     /* Jobs list - job title, event list - event title */
     --fs-title-medium: 28px;
     /* Events list - month title */
@@ -77,6 +79,7 @@
     --lh-title-large: calc(var(--fs-title-large) * 1.15);
     --lh-display-large: calc(var(--fs-display-large) * 1.15);
     --lh-display-medium: calc(var(--fs-display-medium) * 1.15);
+    --lh-display-smallmedium: calc(var(--fs-display-smallmedium) * 1.15);
     --lh-display-small: calc(var(--fs-display-small) * 1.15);
     --fw-thin: 100;
     --fw-extralight: 200;

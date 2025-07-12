@@ -247,9 +247,11 @@ body:not(.home),
 
     @media only screen and (max-width: 600px) {
         h1 {
-            font-size: var(--fs-title-small);
-            line-height: var(--lh-title-small);
+            font-size: var(--fs-title-smallmedium);
+            line-height: var(--lh-title-smallmedium);
             margin-top: var(--sp-large);
+            margin-bottom: var(--sp-medium);
+            padding-right: 0;
         }
     }
 }
@@ -259,7 +261,7 @@ body:not(.home),
 h2 {
     font-size: var(--fs-title-medium);
     font-weight: var(--fw-semibold);
-
+    line-height: var(--lh-title-medium);
 
 }
 

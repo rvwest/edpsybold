@@ -59,6 +59,20 @@
     .entry-content {
         grid-column: 2 / span 8;
     }
+
+    @media only screen and (max-width: 600px) {
+
+        grid-column: 1 / span 12;
+
+        >* {
+            grid-column: 1 / span 12;
+        }
+
+        .entry-content {
+            grid-column: 1 / span 12;
+        }
+    }
+
 }
 
 
@@ -146,6 +160,8 @@ body.single-post {
             }
         }
     }
+
+
 }
 
 /* == Events ====================== */

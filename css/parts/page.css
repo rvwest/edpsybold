@@ -52,11 +52,7 @@ article.type-wpbdp_listing {
             margin-bottom: var(--sp-medium);
         }
 
-        @media only screen and (max-width: 600px) {
-            ul {
-                margin-left: var(--sp-small);
-            }
-        }
+
 
     }
 
@@ -65,6 +61,24 @@ article.type-wpbdp_listing {
     /* for the bio block */
     h2.author-title {
         margin-bottom: var(--sp-medium);
+    }
+
+    @media only screen and (max-width: 600px) {
+
+        ul,
+        ol {
+            margin-left: 0;
+        }
+
+        .wp-block-media-text__content {
+            margin-top: var(--sp-medium);
+            padding: 0;
+
+            p:last-of-type {
+                margin-bottom: 0;
+            }
+
+        }
     }
 }
 
