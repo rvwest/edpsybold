@@ -41,6 +41,7 @@ header[role="banner"] {
 
             >li {
 
+                position: relative;
                 font-size: var(--fs-body-small);
                 font-weight: var(--fw-semibold);
                 color: var(--cl-dark);
@@ -67,8 +68,26 @@ header[role="banner"] {
                     border-bottom: 3px solid var(--cl-dark);
                 }
 
-                li {
+                ul.sub-menu {
                     display: none;
+                    flex-direction: column;
+                    width: 100%;
+                    margin: 0;
+                    padding: 0;
+                    list-style: none;
+                }
+
+                &.submenu-open > ul.sub-menu {
+                    display: flex;
+                }
+
+                button.submenu-toggle {
+                    display: none;
+                    width: 30px;
+                    background: none;
+                    border: none;
+                    padding: var(--sp-medium);
+                    cursor: pointer;
                 }
             }
         }
@@ -237,6 +256,14 @@ body {
 
                     a {
                         width: 100%;
+                    }
+
+                    button.submenu-toggle {
+                        display: inline-block;
+                    }
+
+                    ul.sub-menu {
+                        padding-left: var(--sp-medium);
                     }
                 }
             }
