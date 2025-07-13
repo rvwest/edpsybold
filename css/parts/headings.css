@@ -130,8 +130,16 @@
     }
 
     @media only screen and (max-width: 600px) {
+
+        width: 100%;
+
         a {
             flex-direction: row;
+            justify-content: space-between;
+
+            .promo-title {
+                margin-bottom: var(--sp-xxsmall);
+            }
 
             .promo-text {
                 flex-direction: column

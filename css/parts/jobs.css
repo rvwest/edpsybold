@@ -95,13 +95,52 @@
     }
 
 
+    @media screen and (max-width: 600px) {
+        .entry-content {
 
-}
+            +* {
+                grid-column: 1 / span 12;
+            }
+
+
+            div.job_listings {
+                grid-column: 1 / span 12;
+                margin-top: var(--sp-large);
+
+                li a {
+
+                    .job-listing-logo,
+                    .job-listing-meta,
+                    .job-listing-details {
+                        grid-column: 1 / span 12;
+                        padding-left: var(--sp-small);
+                        padding-right: var(--sp-small);
+
+                        .job-title h2 {
+                            font-size: var(--fs-body);
+                            line-height: var(--lh-body);
+                            font-weight: var(--fw-medium);
+                            padding-bottom: var(--sp-xxsmall);
+                        }
+
+                        .company {
+                            font-weight: var(--fw-extralight);
+                        }
+                    }
 
 
 
-/* ==== Admin area ==================================== */
+                }
+            }
 
-.wpbdp-notice.wpbdp-upgrade-bar.wpbdp-inline-notice {
-    display: none;
-}
+        }
+
+    }
+
+
+
+    /* ==== Admin area ==================================== */
+
+    .wpbdp-notice.wpbdp-upgrade-bar.wpbdp-inline-notice {
+        display: none;
+    }
