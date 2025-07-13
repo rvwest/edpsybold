@@ -204,6 +204,12 @@ body.single-post {
             grid-column: 2 / span 10;
         }
 
+        @media only screen and (max-width: 600px) {
+
+            >* {
+                grid-column: 1 / span 12;
+            }
+        }
 
     }
 
@@ -217,6 +223,18 @@ body.single-post {
 
     .tribe-events-calendar-list {
         grid-column: 2 / span 10;
+    }
+
+    @media only screen and (max-width: 600px) {
+        .tribe-events-l-container {
+            >* {
+                grid-column: 1 / span 12;
+            }
+        }
+
+        .tribe-events-header__top-bar {
+            grid-column: 1 / span 12;
+        }
     }
 }
 

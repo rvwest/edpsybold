@@ -18,6 +18,6 @@ if ( empty( $after_events ) ) {
 	return;
 }
 ?>
-<div class="tribe-events-after-html grid12">
+<div class="tribe-events-after-html">
 	<?php echo $after_events; ?>
 </div>

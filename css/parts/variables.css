@@ -22,6 +22,7 @@
     --cl-medpurple: #A359A2;
     --cl-medpurple-hover: #B07DB2;
     --cl-lightpurple: #BF86A7;
+    --cl-lightpurple-hover: rgba(228, 212, 228);
 
     /* Context colors - for context specific primary colours see lower down the file */
     --cl-thesis-primary: var(--cl-lightblue);

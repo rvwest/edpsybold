@@ -62,7 +62,10 @@ button.edp-button-outline {
 button.tribe-events-c-top-bar__datepicker-button {
     font-size: var(--fs-body);
     color: var(--cl-light);
-    background-color: var(--cl-dark);
+    /* background-color: var(--cl-dark-75);*/
+
+
+    padding: var(--sp-xsmall) var(--sp-small);
 
     &:hover,
     &:focus {
@@ -107,4 +110,17 @@ a.tribe-common-c-btn-icon,
     &:is(:hover, :active, :focus) {
         opacity: var(--op-strong);
     }
+}
+
+.tribe-events a.tribe-events-c-view-selector__list-item-link {
+
+    &:is(:link, :visited) {
+        color: var(--cl-dark);
+    }
+
+    &:is(:hover, :active) {
+        color: var(--cl-purple);
+        background: var(--cl-lightpurple-hover);
+    }
+
 }

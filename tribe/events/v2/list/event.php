@@ -52,10 +52,10 @@ foreach ($event_classes as $class) {
 		</div>
 		<div class="edp-events-calendar-list__event-meta">
 		<?php if ($is_on_demand): ?>
-						<address class="tribe-events-calendar-list__event-venue tribe-common-b2">
-							<span class="tribe-events-calendar-list__event-venue-title tribe-common-b2--bold">
+						<address class="edp-events-calendar-list__event-venue tribe-common-b2">
+							<span class="edp-events-calendar-list__event-venue-title tribe-common-b2--bold">
 								On-demand training </span>
-							<span class="tribe-events-calendar-list__event-venue-address">
+							<span class="edp-events-calendar-list__event-venue-address">
 							</span>
 						</address>
 					<?php else: ?>
