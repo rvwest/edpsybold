@@ -12,7 +12,7 @@ jQuery(function ($) {
             var $btn = $('<button class="submenu-toggle" aria-expanded="false"><i class="far fa-angle-down"></i></button>');
             $li.append($btn);
         }
-    }); */
+    });
 
     // Toggle submenu visibility
     $('.top-nav-menu').on('click', 'button.submenu-toggle', function (e) {
@@ -36,5 +36,5 @@ jQuery(function ($) {
             $btn.attr('aria-expanded', 'true');
             $btn.find('i').removeClass('fa-angle-down').addClass('fa-angle-up');
         }
-    });
+    });*/
 });
