@@ -39,4 +39,10 @@ jQuery(function ($) {
             $btn.find('i').removeClass('fa-angle-down').addClass('fa-angle-up');
         }
     });
+    // Remove 'submenu-open' on viewport resize > 700px
+    $(window).on('resize', function () {
+        if ($(window).width() > 700) {
+            $('.top-nav-menu li.submenu-open').removeClass('submenu-open');
+        }
+    });
 });

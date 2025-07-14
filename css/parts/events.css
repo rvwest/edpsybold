@@ -262,6 +262,15 @@
 
         .tribe-events-calendar-month__day-date-daynum {
             color: var(--cl-light);
+
+            a.tribe-events-calendar-month__day-date-link {
+                border-radius: 100%;
+                background: red;
+                width: 27px;
+                display: block;
+                margin-left: -7px;
+                padding: 0 7px;
+            }
         }
 
     }

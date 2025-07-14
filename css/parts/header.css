@@ -54,6 +54,9 @@ header[role="banner"] {
                 a {
                     color: var(--cl-dark);
                     height: 100%;
+                    display: flex;
+                    align-items: center;
+                    gap: var(--sp-xsmall);
                     padding: var(--sp-medium);
                     padding-bottom: calc(var(--sp-medium) - 2px);
                     border-bottom: 3px solid var(--cl-light);
@@ -64,7 +67,7 @@ header[role="banner"] {
                 }
 
                 &.current-menu-parent a,
-                a:hover,
+                & a:hover,
                 &.current-menu-item a {
 
                     border-bottom: 3px solid var(--cl-dark);
