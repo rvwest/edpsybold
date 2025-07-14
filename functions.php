@@ -15,6 +15,9 @@ function edpsybold_setup()
         $content_width = 1920;
     }
     register_nav_menus(array('main-menu' => esc_html__('Main Menu', 'edpsybold')));
+
+    // Add wrapper and toggle for menu items that have submenus in the main menu
+    add_filter('walker_nav_menu_start_el', 'edpsybold_add_submenu_toggle', 10, 4);
 }
 add_action('admin_notices', 'edpsybold_notice');
 function edpsybold_notice()
@@ -106,6 +109,15 @@ function edpsybold_schema_url($atts)
 {
     $atts['itemprop'] = 'url';
     return $atts;
+}
+
+// Wrap menu items that have children in a div and append a submenu toggle
+function edpsybold_add_submenu_toggle($item_output, $item, $depth, $args)
+{
+    if ('main-menu' === $args->theme_location && in_array('menu-item-has-children', $item->classes, true)) {
+        $item_output = '<div>' . $item_output . '<div class="sub-menu-toggle"></div></div>';
+    }
+    return $item_output;
 }
 if (!function_exists('edpsybold_wp_body_open')) {
     function edpsybold_wp_body_open()
