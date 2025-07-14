@@ -51,20 +51,17 @@ header[role="banner"] {
                 transition: background-color 0.3s;
                 display: flex;
 
-
                 a {
-
                     color: var(--cl-dark);
                     height: 100%;
                     padding: var(--sp-medium);
                     padding-bottom: calc(var(--sp-medium) - 2px);
                     border-bottom: 3px solid var(--cl-light);
-
-
                 }
 
-                a:hover,
+
                 &.current-menu-parent a,
+                a:hover,
                 &.current-menu-item a {
 
                     border-bottom: 3px solid var(--cl-dark);
@@ -85,13 +82,17 @@ header[role="banner"] {
 
                 button.submenu-toggle {
                     display: none;
-                    width: 30px;
+                    margin-right: -24px;
                     font-size: 1.3rem;
                     background: none;
                     border: none;
-                    padding: var(--sp-medium);
+                    padding: 0 var(--sp-medium);
                     cursor: pointer;
                     border-left: 1px solid var(--cl-dark);
+
+                    &:is(:hover, :active) {
+                        background-color: var(--cl-lightpurple-hover);
+                    }
                 }
             }
         }
@@ -252,16 +253,28 @@ body {
                 align-items: flex-start;
                 width: 100%;
                 display: none;
+
+                li {
+                    width: 100%;
+
+                    .submenu-wrapper {
+                        width: 100%;
+                    }
+                }
             }
 
-            &.open>ul {
+            &.open>ul,
+            &.open>ul>.open ul {
                 display: flex;
 
                 margin-bottom: var(--sp-medium);
 
                 >li {
-                    width: 100%;
 
+
+                    .submenu-wrapper {
+                        display: flex;
+                    }
 
                     a {
                         width: 100%;
@@ -280,11 +293,14 @@ body {
                         background-color: var(--cl-lightpurple-hover);
                     }
 
-                    &.current-menu-parent a,
-                    &.current-menu-item a {
-                        border: 1px solid var(--cl-lightpurple-hover);
-
-
+                    &.current_page_parent>a:first-of-type,
+                    &.current_page_item>a:first-of-type,
+                    &.current-menu-item>a:first-of-type,
+                    &.current-menu-item>div>a:first-of-type,
+                    &.current_page_item>div>a:first-of-type,
+                    &.current_page_parent>div>a:first-of-type,
+                    .current-menu-item a:first-of-type {
+                        color: var(--cl-purple);
                     }
 
                     /*  &.current-menu-parent a::before,
@@ -297,7 +313,8 @@ body {
                     }*/
 
 
-                    &.menu-item-object-page {
+                    &.menu-item-object-page,
+                    .menu-item-object-page {
                         display: flex;
                         flex-direction: column;
                     }
