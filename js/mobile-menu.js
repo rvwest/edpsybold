@@ -5,13 +5,14 @@ jQuery(function ($) {
         $(this).find('i').toggleClass('fa-bars fa-times');
     });
 
-    // Insert submenu toggle buttons
+    // Insert submenu toggle buttons and wrap <a> and <button> in a <div>
     $('.top-nav-menu li.menu-item-has-children').each(function () {
         var $li = $(this);
         var $link = $li.children('a');
-        if (!$link.siblings('button.submenu-toggle').length) {
+        if (!$link.siblings('div.submenu-wrapper').length) {
             var $btn = $('<button class="submenu-toggle" aria-expanded="false"><i class="far fa-angle-down"></i></button>');
-            $link.after($btn);
+            var $wrapper = $('<div class="submenu-wrapper"></div>').append($link.clone(), $btn);
+            $link.replaceWith($wrapper);
         }
     });
 
@@ -19,7 +20,7 @@ jQuery(function ($) {
     $('.top-nav-menu').on('click', 'button.submenu-toggle', function (e) {
         e.preventDefault();
         var $btn = $(this);
-        var $li = $btn.parent('li');
+        var $li = $btn.closest('li');
         var $submenu = $li.children('ul.sub-menu');
 
         if ($li.hasClass('submenu-open')) {
