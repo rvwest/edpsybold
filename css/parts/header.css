@@ -59,6 +59,9 @@ header[role="banner"] {
                     border-bottom: 3px solid var(--cl-light);
                 }
 
+                .submenu-wrapper {
+                    display: flex;
+                }
 
                 &.current-menu-parent a,
                 a:hover,
@@ -82,7 +85,7 @@ header[role="banner"] {
 
                 button.submenu-toggle {
                     display: none;
-                    margin-right: -24px;
+
                     font-size: 1.3rem;
                     background: none;
                     border: none;
@@ -247,6 +250,8 @@ body {
 
         nav.top-nav-menu {
             grid-column: 1 / span 12;
+            margin-right: -24px;
+            margin-left: -24px;
 
             ul {
                 flex-direction: column;
@@ -276,9 +281,10 @@ body {
                         display: flex;
                     }
 
-                    a {
+                    a,
+                    .submenu-wrapper a {
                         width: 100%;
-                        padding: var(--sp-small);
+                        padding: var(--sp-small) var(--sp-small) var(--sp-small) var(--sp-medium);
                         border-bottom: none;
                     }
 
