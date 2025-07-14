@@ -7,6 +7,11 @@
         background-size: 750px;
         background-repeat: no-repeat;
 
+
+        .tribe-common-l-container {
+            padding-top: 0;
+        }
+
         .tribe-events-c-top-bar {
 
             padding: var(--sp-xsmall) var(--sp-small);
@@ -265,7 +270,7 @@
 
             a.tribe-events-calendar-month__day-date-link {
                 border-radius: 100%;
-                background: red;
+                background: var(--cl-light);
                 width: 27px;
                 display: block;
                 margin-left: -7px;

@@ -229,6 +229,9 @@ function remove_wp_plugin_frontend_css()
         wp_dequeue_style('global-styles');
         wp_dequeue_style('tribe-events-views-v2-skeleton');
         wp_dequeue_style('tribe-events-v2-single-skeleton');
+        wp_dequeue_style('tribe_events-community-styles');
+        wp_dequeue_style('tribe-events-full-calendar-style');
+        wp_dequeue_style('tribe-events-admin-ui');
         //wp_dequeue_style('tec-variables-skeleton-css');
         //wp_dequeue_style('tribe-events-views-v2-bootstrap-datepicker-styles');
         // wp_dequeue_style('tribe-tooltipster-css-css');
@@ -682,7 +685,6 @@ function tribe_events_custom_orderby($query)
 	}
 }
 add_action('pre_get_posts', 'tribe_events_custom_orderby');
-
 
 
 // =========== Thesis Directory  ================================================= //

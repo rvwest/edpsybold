@@ -240,23 +240,19 @@ body.single-post {
 
 /* Single event */
 
-.single-tribe_events {
-    article.tribe-events-single {
-
-
-
-
-        .tribe-events-after-html {
-            .event-disclaimer {
-                grid-column: 2 / span 8;
-            }
-        }
-
-        .tribe-events-venue-map {
-            grid-column: 1 / span 12;
-        }
-    }
+.single-tribe_events article.tribe-events-single .tribe-events-after-html .event-disclaimer {
+    grid-column: 2 / span 8;
 }
+
+.single-tribe_events article.tribe-events-single .tribe-events-venue-map {
+    grid-column: 1 / span 12;
+}
+
+/* Event form */
+.tribe_community_edit .tribe-events-pg-template {
+    grid-column: 3 / span 8;
+}
+
 
 
 /* == Jobs ====================== */

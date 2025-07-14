@@ -17,3 +17,9 @@ input[type="email"] {
     flex-wrap: wrap;
     justify-content: flex-end;
 }
+
+/* Community events form */
+
+#tribe-events-pg-template.tribe-events-pg-template {
+    background: none;
+}

@@ -166,8 +166,11 @@
 /* global + breaking through Tribe css */
 
 body:not(.home),
+.tribe_community_edit,
 .post-type-archive-tribe_events {
-    h1 {
+
+    h1,
+    h2.my-events {
         font-weight: var(--fw-semibold);
         margin: var(--sp-xxlarge) 0 var(--sp-xxlarge) 0;
     }
@@ -217,16 +220,14 @@ body:not(.home),
 }
 
 /* == Display medium H1 (thesis listings)  ============== */
-.business-directory {
-    &.wpbdp-view-main {
-        h1 {
-            font-size: var(--fs-display-medium);
-            line-height: var(--lh-display-medium);
-        }
-    }
-
-
+.business-directory .wpbdp-view-main h1,
+.tribe_community_edit h2.my-events,
+.category-jobs-admin h1.entry-title {
+    font-size: var(--fs-display-medium);
+    line-height: var(--lh-display-medium);
 }
+
+
 
 
 /* == Title medium H1 (thesis single)  ============== */
