@@ -28,6 +28,8 @@ header[role="banner"] {
         cursor: pointer;
     }
 
+
+
     nav.top-nav-menu {
         height: 100%;
 
@@ -77,20 +79,24 @@ header[role="banner"] {
                     list-style: none;
                 }
 
-                &.submenu-open > ul.sub-menu {
+                &.submenu-open>ul.sub-menu {
                     display: flex;
                 }
 
                 button.submenu-toggle {
                     display: none;
                     width: 30px;
+                    font-size: 1.3rem;
                     background: none;
                     border: none;
                     padding: var(--sp-medium);
                     cursor: pointer;
+                    border-left: 1px solid var(--cl-dark);
                 }
             }
         }
+
+
     }
 
 }
@@ -251,11 +257,49 @@ body {
             &.open>ul {
                 display: flex;
 
+                margin-bottom: var(--sp-medium);
+
                 >li {
                     width: 100%;
 
+
                     a {
                         width: 100%;
+                        padding: var(--sp-small);
+                        border-bottom: none;
+                    }
+
+                    a:hover,
+                    &.current-menu-parent a,
+                    &.current-menu-item a {
+                        border-bottom: none;
+
+                    }
+
+                    a:hover {
+                        background-color: var(--cl-lightpurple-hover);
+                    }
+
+                    &.current-menu-parent a,
+                    &.current-menu-item a {
+                        border: 1px solid var(--cl-lightpurple-hover);
+
+
+                    }
+
+                    /*  &.current-menu-parent a::before,
+                    &.current-menu-item a::before {
+                        content: '⏺';
+                        margin-left: -20px;
+                        margin-right: 10px;
+
+                    
+                    }*/
+
+
+                    &.menu-item-object-page {
+                        display: flex;
+                        flex-direction: column;
                     }
 
                     button.submenu-toggle {
@@ -264,6 +308,7 @@ body {
 
                     ul.sub-menu {
                         padding-left: var(--sp-medium);
+
                     }
                 }
             }

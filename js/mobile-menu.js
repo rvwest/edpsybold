@@ -5,7 +5,7 @@ jQuery(function ($) {
         $(this).find('i').toggleClass('fa-bars fa-times');
     });
 
-    // Insert submenu toggle buttons
+    /* Insert submenu toggle buttons
     $('.top-nav-menu li.menu-item-has-children').each(function () {
         var $li = $(this);
         if (!$li.children('button.submenu-toggle').length) {
@@ -36,5 +36,5 @@ jQuery(function ($) {
             $btn.attr('aria-expanded', 'true');
             $btn.find('i').removeClass('fa-angle-down').addClass('fa-angle-up');
         }
-    });
+    });*/
 });
