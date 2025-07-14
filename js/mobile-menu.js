@@ -8,9 +8,10 @@ jQuery(function ($) {
     // Insert submenu toggle buttons
     $('.top-nav-menu li.menu-item-has-children').each(function () {
         var $li = $(this);
-        if (!$li.children('button.submenu-toggle').length) {
+        var $link = $li.children('a');
+        if (!$link.siblings('button.submenu-toggle').length) {
             var $btn = $('<button class="submenu-toggle" aria-expanded="false"><i class="far fa-angle-down"></i></button>');
-            $li.append($btn);
+            $link.after($btn);
         }
     });
 
