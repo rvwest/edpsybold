@@ -115,7 +115,7 @@ function edpsybold_schema_url($atts)
 function edpsybold_add_submenu_toggle($item_output, $item, $depth, $args)
 {
     if ('main-menu' === $args->theme_location && in_array('menu-item-has-children', $item->classes, true)) {
-        $item_output = '<div>' . $item_output . '<div class="sub-menu-toggle"></div></div>';
+        $item_output = '<div>' . $item_output . '<div class="sub-menu-toggle"><button class="submenu-toggle" aria-expanded="false"><i class="far fa-angle-down"></i></button></div></div>';
     }
     return $item_output;
 }
