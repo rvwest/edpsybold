@@ -14,7 +14,7 @@
 
 		<?php echo $fields->name->html; ?>
 
-		<?php
+		<div class="secondary-meta"><?php
 		$methodology_value = strip_tags($fields->methodology->raw[0]);
 		if (trim($methodology_value) === 'Interpretative Phenomenological Analysis (IPA)') {
 			echo '<div class="wpbdp-field-value wpbdp-methodology">IPA</div>';
@@ -26,8 +26,7 @@
 		}
 		?>
 
-		<?php echo $fields->year->html; ?>
-
+		<?php echo $fields->year->html; ?></div>
 	</div>
 
 

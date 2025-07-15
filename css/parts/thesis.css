@@ -1,107 +1,105 @@
 @import url('variables.css');
 
-.business-directory {
+.business-directory.wpbdp-view-main {
 
-    &.wpbdp-view-main {
+    #container {
+        background-color: var(--cl-lightblue);
 
-        #container {
-            background-color: var(--cl-lightblue);
+        /* search & sort box */
+        .wpbdp-main-box {
+            display: flex;
+            width: 100%;
+            background-color: var(--cl-light);
+            align-items: center;
+            padding: 0 var(--sp-medium);
+            margin-bottom: var(--sp-xlarge);
 
-            /* search & sort box */
-            .wpbdp-main-box {
-                display: flex;
-                width: 100%;
-                background-color: var(--cl-light);
-                align-items: center;
-                padding: 0 var(--sp-medium);
-                margin-bottom: var(--sp-xlarge);
+            .search-block {
+                flex-grow: 2;
 
-                .search-block {
-                    flex-grow: 2;
-
-                    .main-input {
-                        display: flex;
-
-                        svg {
-                            width: 20px;
-                            margin-right: var(--sp-small);
-                        }
-
-                        input {
-                            width: 100%;
-
-                            &::placeholder {
-                                color: var(--cl-dark);
-                            }
-                        }
-                    }
-
-
-                }
-
-                .submit-btn {
-                    padding-right: var(--sp-medium);
-                    border-right: solid 1px var(--cl-dark);
-                }
-
-                .wpbdp-listings-sort-options {
-                    padding-left: var(--sp-medium);
+                .main-input {
                     display: flex;
 
-                    label {
-                        padding-left: 0;
+                    svg {
+                        width: 20px;
+                        margin-right: var(--sp-small);
                     }
 
-                    select {
-                        padding-left: var(--sp-small);
+                    input {
+                        width: 100%;
 
-
-
-                    }
-                }
-            }
-
-            .wpbdp-listing-excerpt {
-
-                padding: 0;
-                margin-bottom: var(--sp-medium);
-
-                a {
-                    &:hover {
-
-                        .excerpt-content {
-                            opacity: var(--op-light);
+                        &::placeholder {
+                            color: var(--cl-dark);
                         }
                     }
+                }
+
+
+            }
+
+            .submit-btn {
+                padding-right: var(--sp-medium);
+                border-right: solid 1px var(--cl-dark);
+            }
+
+            .wpbdp-listings-sort-options {
+                padding-left: var(--sp-medium);
+                display: flex;
+
+                label {
+                    padding-left: 0;
+                    font-weight: var(--fw-normal);
+                }
+
+                select {
+                    padding-left: var(--sp-small);
+
+
+
+                }
+            }
+        }
+
+        .wpbdp-listing-excerpt {
+
+            padding: 0;
+            margin-bottom: var(--sp-medium);
+
+            a {
+                &:hover {
 
                     .excerpt-content {
-                        display: flex;
+                        opacity: var(--op-light);
+                    }
+                }
+
+                .excerpt-content {
+                    display: flex;
 
 
-                        .listing-meta {
-                            min-width: 300px;
-                            margin-right: var(--sp-small);
-                            background-color: var(--cl-light);
-                            padding: var(--sp-medium);
-                            font-size: var(--fs-body);
-                            font-weight: var(--fw-semibold);
-                            color: var(--cl-dark);
+                    .listing-meta {
+                        min-width: 300px;
+                        margin-right: var(--sp-small);
+                        background-color: var(--cl-light);
+                        padding: var(--sp-medium);
+                        font-size: var(--fs-body);
+                        font-weight: var(--fw-semibold);
+                        color: var(--cl-dark);
 
-                            .wpbdp-field-value:not(:last-child) {
-                                margin-bottom: var(--sp-small);
-                            }
+                        .wpbdp-field-value:not(:last-child) {
+                            margin-bottom: var(--sp-small);
                         }
+                    }
 
-                        .listing-title {
-                            background-color: var(--cl-light);
-                            padding: var(--sp-medium);
-                            flex-grow: 1;
+                    .listing-title {
+                        background-color: var(--cl-light);
+                        padding: var(--sp-medium);
+                        flex-grow: 1;
 
-                            h3 {
-                                font-size: var(--fs-body);
-                                font-weight: var(--fw-thin);
-                                color: var(--cl-dark);
-                            }
+                        h3 {
+                            font-size: var(--fs-body);
+                            font-weight: var(--fw-thin);
+                            color: var(--cl-dark);
                         }
                     }
                 }
@@ -110,27 +108,77 @@
     }
 
 
+    /* Hide plugin crud */
+    .listing-actions,
+    .wpbdp-categories {
+        display: none;
+    }
+}
+
+
+@media only screen and (max-width: 600px) {
+    .business-directory.wpbdp-view-main #container {
 
 
 
-    &.single-wpbdp_listing {
-        article {
+        .wpbdp-main-box .wpbdp-listings-sort-options {
+            flex-direction: column;
 
-            margin-bottom: var(--sp-xxlarge);
-
-            .edp-thesis-meta {
-                p {
-                    margin-bottom: 0;
-                }
-            }
-
-            .wpbdp-further-reading-block {
-                margin-top: var(--sp-medium)
+            & select {
+                padding-left: 0;
             }
         }
 
+        .wpbdp-listing-excerpt a .excerpt-content {
+            flex-direction: column;
 
+            .listing-meta {
+                margin-right: 0;
+                padding-bottom: 0;
+                min-width: 200px;
+
+                .wpbdp-field-value:not(:last-child).wpbdp-field-name {
+                    margin-bottom: 0;
+                }
+
+                .secondary-meta {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+
+                    .wpbdp-field-year {
+                        margin-top: -27px;
+                    }
+                }
+            }
+
+            .listing-title {
+                padding-top: 0;
+            }
+        }
     }
+}
+
+
+
+/* ========= Single thesis ===== */
+
+.business-directory.single-wpbdp_listing {
+    article {
+
+        margin-bottom: var(--sp-xxlarge);
+
+        .edp-thesis-meta {
+            p {
+                margin-bottom: 0;
+            }
+        }
+
+        .wpbdp-further-reading-block {
+            margin-top: var(--sp-medium)
+        }
+    }
+
 
     /* Hide plugin crud */
     .listing-actions,

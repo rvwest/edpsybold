@@ -115,7 +115,13 @@
     }
 }
 
-
+@media only screen and (max-width: 600px) {
+    .archive.category-blog .grid12 {
+        :is(article.post) {
+            grid-column: 1 / span 12;
+        }
+    }
+}
 
 
 /* Blog post */
@@ -348,7 +354,14 @@ body.single-post {
         grid-column: 3 / span 8;
     }
 
-    @media only screen and (max-width: 600px) {
+
+}
+
+@media only screen and (max-width: 600px) {
+
+    .single-tribe_events,
+    .single-job-listing,
+    .single-wpbdp_listing {
 
         article.tribe-events-single,
         article.type-job_listing,
@@ -417,6 +430,19 @@ body.single-post {
         }
     }
 
+}
+
+@media only screen and (max-width: 600px) {
+    .wpbdp-view-main {
+
+        :is(article.page) {
+
+            /* Search tools and list */
+            >* {
+                grid-column: 1 / span 12;
+            }
+        }
+    }
 }
 
 
