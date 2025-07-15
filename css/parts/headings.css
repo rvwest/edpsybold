@@ -144,9 +144,11 @@
     .page-promo {
         width: 100%;
 
+
         a {
             flex-direction: row;
             justify-content: space-between;
+            margin-bottom: var(--sp-medium);
 
             .promo-title {
                 margin-bottom: var(--sp-xxsmall);
