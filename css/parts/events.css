@@ -313,6 +313,11 @@
                 margin-bottom: var(--sp-medium);
 
 
+                .tribe-events-c-view-selector {
+                    margin-right: calc(var(--sp-small) - 4px);
+
+                }
+
             }
 
             .tribe-events-calendar-list__month-separator {
