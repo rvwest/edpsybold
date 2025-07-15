@@ -102,7 +102,8 @@ button.tribe-events-c-top-bar__datepicker-button {
 
 a.tribe-common-c-btn-icon,
 .tribe-events-c-nav__prev,
-.tribe-events-c-nav__next {
+.tribe-events-c-nav__next,
+.tribe-events-c-nav__today {
     &:is(:link, :visited) {
         color: var(--cl-light);
     }
