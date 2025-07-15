@@ -17,7 +17,15 @@
     align-items: center;
     align-content: flex-start;
 
-    @media only screen and (max-width: 600px) {
+
+}
+
+@media only screen and (max-width: 600px) {
+
+    .job-listings-page article header,
+    .business-directory article header,
+    .archive main header.header,
+    .tribe-events header.tribe-events-header {
         flex-direction: column;
         align-items: start;
     }
@@ -129,8 +137,11 @@
 
     }
 
-    @media only screen and (max-width: 600px) {
 
+}
+
+@media only screen and (max-width: 600px) {
+    .page-promo {
         width: 100%;
 
         a {
@@ -191,7 +202,7 @@ body:not(.home),
 
 
 
-/* == Listing pages (jobs, blog, events (.archive covers both), thesis)  ============== */
+/* == Listing pages (jobs, blog, events (.archive covers both))  ============== */
 /* ==================================================================================== */
 
 
@@ -220,7 +231,7 @@ body:not(.home),
 }
 
 /* == Display medium H1 (thesis listings)  ============== */
-.business-directory .wpbdp-view-main h1,
+.business-directory.wpbdp-view-main h1.entry-title,
 .tribe_community_edit h2.my-events,
 .category-jobs-admin h1.entry-title {
     font-size: var(--fs-display-medium);
