@@ -305,10 +305,9 @@ add_action('customize_register', 'mytheme_customize_register');
 // ======== Customizer - 'focus on' posts
 
 function edp_customize_register($wp_customize) {
-    // Add to existing section (you said it's called 'edp_hero_section')
     $section = 'edp_home_section';
 
-    // ===== Focus on section 
+    // ===== Focus On section =====
 
     // Toggle
     $wp_customize->add_setting('focus_on_enabled', array(
@@ -350,14 +349,7 @@ function edp_customize_register($wp_customize) {
         'choices' => $tag_choices,
     ));
 
-   // Post selectors (limit to posts with the selected tag)
-for ($i = 1; $i <= 3; $i++) {
-    $wp_customize->add_setting("focus_on_post_$i", array(
-        'default' => '',
-        'sanitize_callback' => 'absint',
-    ));
-
-    // Use a dropdown with available posts (up to 100 for performance)
+    // Prepare post choices once (outside the loop)
     $post_choices = array('' => '— Select a post —');
     $posts = get_posts(array(
         'numberposts' => 100,
@@ -367,16 +359,21 @@ for ($i = 1; $i <= 3; $i++) {
         $post_choices[$post->ID] = $post->post_title;
     }
 
-    $wp_customize->add_control("focus_on_post_$i", array(
-        'label' => __("Focus On Post $i", 'yourtheme'),
-        'section' => $section,
-        'type' => 'select',
-        'choices' => $post_choices,
-    ));
+    // Add Focus On post selectors
+    for ($i = 1; $i <= 3; $i++) {
+        $wp_customize->add_setting("focus_on_post_$i", array(
+            'default' => '',
+            'sanitize_callback' => 'absint',
+        ));
+        $wp_customize->add_control("focus_on_post_$i", array(
+            'label' => __("Focus On Post $i", 'yourtheme'),
+            'section' => $section,
+            'type' => 'select',
+            'choices' => $post_choices,
+        ));
+    }
 
-    // ==== Featured articles section
-
-        // === Longer Reads Section ===
+    // ===== Longer Reads Section =====
 
     // Toggle
     $wp_customize->add_setting('longer_reads_enabled', array(
@@ -400,16 +397,7 @@ for ($i = 1; $i <= 3; $i++) {
         'type' => 'text',
     ));
 
-    // Post dropdowns
-    $post_choices = array('' => '— Select a post —');
-    $posts = get_posts(array(
-        'numberposts' => 100,
-        'post_status' => 'publish',
-    ));
-    foreach ($posts as $post) {
-        $post_choices[$post->ID] = $post->post_title;
-    }
-
+    // Add Longer Reads post selectors
     for ($i = 1; $i <= 2; $i++) {
         $wp_customize->add_setting("longer_reads_post_$i", array(
             'default' => '',
@@ -422,10 +410,6 @@ for ($i = 1; $i <= 3; $i++) {
             'choices' => $post_choices,
         ));
     }
-
-
-}
-
 }
 add_action('customize_register', 'edp_customize_register');
 

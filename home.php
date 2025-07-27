@@ -291,6 +291,41 @@ $final_posts = get_posts(array(
     </section>
 <?php endif; ?>
 
+<h2>Jobs</h2>
+<?php echo do_shortcode('[jobs per_page="3" show_filters="false"]') ?>
+
+<h2>Next events</h2>
+<?php
+// Query the next 4 upcoming Tribe events
+$events = tribe_get_events( array(
+    'posts_per_page' => 4,
+    'start_date'     => date( 'Y-m-d H:i:s' ),
+    'orderby'        => 'event_date',
+    'order'          => 'ASC',
+) );
+
+if ( $events ) :
+    echo '<ul class="homepage-upcoming-events">';
+    foreach ( $events as $event ) :
+        $event_id = $event->ID;
+        $event_title = get_the_title( $event_id );
+        $event_link = get_permalink( $event_id );
+        $event_date = tribe_get_start_date( $event_id, false, 'F j, Y g:i a' );
+        ?>
+        <li>
+            <a href="<?php echo esc_url( $event_link ); ?>"><?php echo esc_html( $event_title ); ?></a><br>
+            <small><?php echo esc_html( $event_date ); ?></small>
+        </li>
+        <?php
+    endforeach;
+    echo '</ul>';
+else :
+    echo '<p>No upcoming events found.</p>';
+endif;
+?>
+
+
+
 
 <?php get_template_part('nav', 'below');
 get_footer();
