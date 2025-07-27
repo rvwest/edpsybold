@@ -20,29 +20,42 @@ if ($hero_post_id) {
 
 ?>
 <?php
+// Collect post IDs to exclude
+$excluded_ids = array();
+
+// Hero post
 $hero_post_id = get_theme_mod('hero_post_id');
+if ($hero_post_id) $excluded_ids[] = $hero_post_id;
 
-// Get the latest 7 posts
-$args = array(
-    'numberposts' => 12,
+// Focus On posts
+for ($i = 1; $i <= 3; $i++) {
+    $id = get_theme_mod("focus_on_post_$i");
+    if ($id) $excluded_ids[] = $id;
+}
+
+// Longer Reads posts
+for ($i = 1; $i <= 2; $i++) {
+    $id = get_theme_mod("longer_reads_post_$i");
+    if ($id) $excluded_ids[] = $id;
+}
+
+// Check if a job should be displayed
+$job_shortcode_output = do_shortcode('[job_summary width="" align=""]');
+$has_jobs = !empty(trim($job_shortcode_output));
+
+// Determine how many posts to load
+$posts_to_fetch = $has_jobs ? 7 : 6;
+
+// Fetch latest posts, excluding selected ones
+$latest_posts = get_posts(array(
+    'numberposts' => $posts_to_fetch + count($excluded_ids), // fetch extras to account for exclusions
     'post_status' => 'publish',
-);
-$latest_posts = get_posts($args);
+    'post__not_in' => $excluded_ids,
+));
 
-// Filter out the hero post
-$filtered_posts = array_filter($latest_posts, function($post) use ($hero_post_id) {
-    return $post->ID != $hero_post_id;
-});
-
-// Reset array keys
-$filtered_posts = array_values($filtered_posts);
-
-// Assume there is at least one job if this returns non-empty
-$has_jobs = !empty(do_shortcode('[job_summary width="" align=""]'));
-
-// Adjust number of posts to fetch: 6 if no job, 5 if job present
-$posts_to_show = $has_jobs ? 5 : 6;
-$display_posts = array_slice($filtered_posts, 0, $posts_to_show);
+// Trim to the number needed (5 if job is shown, 6 if not)
+$display_post_count = $has_jobs ? 5 : 6;
+$display_posts = array_slice($latest_posts, 0, $display_post_count);
 ?>
 
 <section class="latest-articles">
@@ -52,9 +65,9 @@ $display_posts = array_slice($filtered_posts, 0, $posts_to_show);
         $item_index = 0;
         for ($i = 0; $i < 6; $i++) {
             if ($i === 2 && $has_jobs) {
-                // Insert job at third slot (index 2)
+                // Insert job summary as item 3
                 echo '<div class="article-item job-summary">';
-                echo do_shortcode('[job_summary width="" align=""]');
+                echo $job_shortcode_output;
                 echo '</div>';
             } else {
                 if (isset($display_posts[$item_index])) {
@@ -76,6 +89,7 @@ $display_posts = array_slice($filtered_posts, 0, $posts_to_show);
         ?>
     </div>
 </section>
+
 <!-- focus on section -->
 <?php
 if (get_theme_mod('focus_on_enabled')) :
@@ -115,6 +129,64 @@ if (get_theme_mod('focus_on_enabled')) :
     endif;
 endif;
 ?>
+
+<!-- next 3 articles -->
+
+<?php
+// Start with all the previously excluded post IDs
+$excluded_ids = array();
+
+// Hero post
+$hero_post_id = get_theme_mod('hero_post_id');
+if ($hero_post_id) $excluded_ids[] = $hero_post_id;
+
+// Focus On
+for ($i = 1; $i <= 3; $i++) {
+    $id = get_theme_mod("focus_on_post_$i");
+    if ($id) $excluded_ids[] = $id;
+}
+
+// Longer Reads
+for ($i = 1; $i <= 2; $i++) {
+    $id = get_theme_mod("longer_reads_post_$i");
+    if ($id) $excluded_ids[] = $id;
+}
+
+// Also exclude posts shown in the latest articles section
+// We assume this array was built earlier (see previous section)
+if (isset($display_posts)) {
+    foreach ($display_posts as $p) {
+        $excluded_ids[] = $p->ID;
+    }
+}
+
+// Now fetch the next 3 latest posts, excluding all of the above
+$next_posts = get_posts(array(
+    'numberposts' => 3,
+    'post_status' => 'publish',
+    'post__not_in' => $excluded_ids,
+));
+?>
+
+<?php if (!empty($next_posts)): ?>
+    <section class="next-latest-posts">
+        <h2>More Articles</h2>
+        <div class="article-grid">
+            <?php foreach ($next_posts as $post): ?>
+                <article class="article-item">
+                    <a href="<?php echo get_permalink($post); ?>">
+                        <?php if (has_post_thumbnail($post)): ?>
+                            <?php echo get_the_post_thumbnail($post, 'medium'); ?>
+                        <?php endif; ?>
+                        <h3><?php echo esc_html(get_the_title($post)); ?></h3>
+                    </a>
+                </article>
+            <?php endforeach; ?>
+        </div>
+    </section>
+<?php endif; ?>
+
+
 
 <!-- longer reads section -->
 
@@ -157,6 +229,67 @@ if (get_theme_mod('longer_reads_enabled')) :
 endif;
 ?>
 
+<!-- next two articles -->
+
+<?php
+// Collect excluded post IDs again
+$excluded_ids = array();
+
+// Hero post
+$hero_post_id = get_theme_mod('hero_post_id');
+if ($hero_post_id) $excluded_ids[] = $hero_post_id;
+
+// Focus On
+for ($i = 1; $i <= 3; $i++) {
+    $id = get_theme_mod("focus_on_post_$i");
+    if ($id) $excluded_ids[] = $id;
+}
+
+// Longer Reads
+for ($i = 1; $i <= 2; $i++) {
+    $id = get_theme_mod("longer_reads_post_$i");
+    if ($id) $excluded_ids[] = $id;
+}
+
+// Latest Articles (already in $display_posts)
+if (isset($display_posts)) {
+    foreach ($display_posts as $p) {
+        $excluded_ids[] = $p->ID;
+    }
+}
+
+// 3 Next Latest
+if (isset($next_posts)) {
+    foreach ($next_posts as $p) {
+        $excluded_ids[] = $p->ID;
+    }
+}
+
+// Fetch next 2 posts, excluding all shown so far
+$final_posts = get_posts(array(
+    'numberposts' => 2,
+    'post_status' => 'publish',
+    'post__not_in' => $excluded_ids,
+));
+?>
+
+<?php if (!empty($final_posts)): ?>
+    <section class="final-articles">
+        <h2>Latest Reads</h2>
+        <div class="article-grid">
+            <?php foreach ($final_posts as $post): ?>
+                <article class="article-item">
+                    <a href="<?php echo get_permalink($post); ?>">
+                        <?php if (has_post_thumbnail($post)): ?>
+                            <?php echo get_the_post_thumbnail($post, 'medium'); ?>
+                        <?php endif; ?>
+                        <h3><?php echo esc_html(get_the_title($post)); ?></h3>
+                    </a>
+                </article>
+            <?php endforeach; ?>
+        </div>
+    </section>
+<?php endif; ?>
 
 
 <?php get_template_part('nav', 'below');
