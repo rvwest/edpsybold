@@ -79,6 +79,17 @@ article.type-wpbdp_listing {
             }
 
         }
+
+        .entry-content,
+        .job_description,
+        .tribe-events-content,
+        .edp-thesis-abstract {
+
+            ul,
+            ol {
+                margin-left: 0;
+            }
+        }
     }
 }
 

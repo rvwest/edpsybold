@@ -109,12 +109,24 @@
 
                 li a {
 
+                    .job-listing-logo {
+                        justify-content: flex-start;
+                        padding-top: var(--sp-small);
+                        /*todo*/
+                    }
+
+
                     .job-listing-logo,
                     .job-listing-meta,
                     .job-listing-details {
                         grid-column: 1 / span 12;
                         padding-left: var(--sp-small);
                         padding-right: var(--sp-small);
+
+                        img.company_logo {
+                            max-height: 100px;
+                            max-width: 200px;
+                        }
 
                         .job-title h2 {
                             font-size: var(--fs-body);
