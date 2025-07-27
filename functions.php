@@ -263,6 +263,174 @@ function add_job_manager_body_classes($classes)
 }
 add_filter('body_class', 'add_job_manager_body_classes');
 
+
+// ========== Homepage ================================================= //
+// ======================================================================== //
+
+
+// ======== Customizer - featured post
+
+function mytheme_customize_register($wp_customize) {
+    // Add a section for the Hero Post
+    $wp_customize->add_section('edp_home_section', array(
+        'title'       => __('edpsy homepage settings', 'mytheme'),
+        'priority'    => 30,
+    ));
+
+    // Get all posts for the dropdown
+    $posts = get_posts(array('numberposts' => -1));
+    $choices = array('' => '— Select a post —');
+    foreach ($posts as $post) {
+        $choices[$post->ID] = $post->post_title;
+    }
+
+    // Add the setting
+    $wp_customize->add_setting('hero_post_id', array(
+        'default'   => '',
+        'sanitize_callback' => 'absint',
+    ));
+
+    // Add the control
+    $wp_customize->add_control('hero_post_id', array(
+        'label'    => __('Select Hero Post', 'mytheme'),
+        'section'  => 'edp_home_section',
+        'settings' => 'hero_post_id',
+        'type'     => 'select',
+        'choices'  => $choices,
+    ));
+}
+add_action('customize_register', 'mytheme_customize_register');
+
+
+// ======== Customizer - 'focus on' posts
+
+function edp_customize_register($wp_customize) {
+    // Add to existing section (you said it's called 'edp_hero_section')
+    $section = 'edp_home_section';
+
+    // ===== Focus on section 
+
+    // Toggle
+    $wp_customize->add_setting('focus_on_enabled', array(
+        'default' => false,
+        'sanitize_callback' => 'wp_validate_boolean',
+    ));
+    $wp_customize->add_control('focus_on_enabled', array(
+        'label' => __('Show "Focus On" section', 'yourtheme'),
+        'section' => $section,
+        'type' => 'checkbox',
+    ));
+
+    // Title
+    $wp_customize->add_setting('focus_on_title', array(
+        'default' => 'Focus On',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('focus_on_title', array(
+        'label' => __('"Focus On" Section Title', 'yourtheme'),
+        'section' => $section,
+        'type' => 'text',
+    ));
+
+    // Tag dropdown
+    $tags = get_tags(array('hide_empty' => false));
+    $tag_choices = array('' => '— Select Tag —');
+    foreach ($tags as $tag) {
+        $tag_choices[$tag->term_id] = $tag->name;
+    }
+
+    $wp_customize->add_setting('focus_on_tag', array(
+        'default' => '',
+        'sanitize_callback' => 'absint',
+    ));
+    $wp_customize->add_control('focus_on_tag', array(
+        'label' => __('Tag to use for selecting posts', 'yourtheme'),
+        'section' => $section,
+        'type' => 'select',
+        'choices' => $tag_choices,
+    ));
+
+   // Post selectors (limit to posts with the selected tag)
+for ($i = 1; $i <= 3; $i++) {
+    $wp_customize->add_setting("focus_on_post_$i", array(
+        'default' => '',
+        'sanitize_callback' => 'absint',
+    ));
+
+    // Use a dropdown with available posts (up to 100 for performance)
+    $post_choices = array('' => '— Select a post —');
+    $posts = get_posts(array(
+        'numberposts' => 100,
+        'post_status' => 'publish',
+    ));
+    foreach ($posts as $post) {
+        $post_choices[$post->ID] = $post->post_title;
+    }
+
+    $wp_customize->add_control("focus_on_post_$i", array(
+        'label' => __("Focus On Post $i", 'yourtheme'),
+        'section' => $section,
+        'type' => 'select',
+        'choices' => $post_choices,
+    ));
+
+    // ==== Featured articles section
+
+        // === Longer Reads Section ===
+
+    // Toggle
+    $wp_customize->add_setting('longer_reads_enabled', array(
+        'default' => false,
+        'sanitize_callback' => 'wp_validate_boolean',
+    ));
+    $wp_customize->add_control('longer_reads_enabled', array(
+        'label' => __('Show "Longer Reads" section', 'yourtheme'),
+        'section' => $section,
+        'type' => 'checkbox',
+    ));
+
+    // Title
+    $wp_customize->add_setting('longer_reads_title', array(
+        'default' => 'Longer Reads',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('longer_reads_title', array(
+        'label' => __('"Longer Reads" Section Title', 'yourtheme'),
+        'section' => $section,
+        'type' => 'text',
+    ));
+
+    // Post dropdowns
+    $post_choices = array('' => '— Select a post —');
+    $posts = get_posts(array(
+        'numberposts' => 100,
+        'post_status' => 'publish',
+    ));
+    foreach ($posts as $post) {
+        $post_choices[$post->ID] = $post->post_title;
+    }
+
+    for ($i = 1; $i <= 2; $i++) {
+        $wp_customize->add_setting("longer_reads_post_$i", array(
+            'default' => '',
+            'sanitize_callback' => 'absint',
+        ));
+        $wp_customize->add_control("longer_reads_post_$i", array(
+            'label' => __("Longer Read Post $i", 'yourtheme'),
+            'section' => $section,
+            'type' => 'select',
+            'choices' => $post_choices,
+        ));
+    }
+
+
+}
+
+}
+add_action('customize_register', 'edp_customize_register');
+
+
+
 // ========== Page promos ================================================= //
 // ======================================================================== //
 
