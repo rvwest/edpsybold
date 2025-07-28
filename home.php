@@ -3,22 +3,8 @@ echo '<!-- file: home.php -->';
 
 get_header();
 
-$hero_post_id = get_theme_mod('hero_post_id');
+get_template_part('home-slice-hero'); ?>
 
-if ($hero_post_id) {
-    $hero_post = get_post($hero_post_id);
-    $hero_image = get_the_post_thumbnail_url($hero_post_id, 'large');
-    ?>
-    <section class="hero-post">
-        <?php if ($hero_image): ?>
-            <img src="<?php echo esc_url($hero_image); ?>" alt="<?php echo esc_attr(get_the_title($hero_post)); ?>">
-        <?php endif; ?>
-        <h1><?php echo esc_html(get_the_title($hero_post)); ?></h1>
-    </section>
-    <?php
-}
-
-?>
 <?php
 // Collect post IDs to exclude
 $excluded_ids = array();
@@ -57,7 +43,6 @@ $latest_posts = get_posts(array(
 $display_post_count = $has_jobs ? 5 : 6;
 $display_posts = array_slice($latest_posts, 0, $display_post_count);
 ?>
-
 <section class="latest-articles">
     <h2>Latest Articles</h2>
     <div class="article-grid">

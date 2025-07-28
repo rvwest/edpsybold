@@ -414,7 +414,6 @@ function edp_customize_register($wp_customize) {
 add_action('customize_register', 'edp_customize_register');
 
 
-
 // ========== Page promos ================================================= //
 // ======================================================================== //
 
