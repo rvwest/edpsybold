@@ -108,6 +108,12 @@
                                     </div>
                                     <div id="container" >
                                         <main id="content" role="main" class="fullwidth">
+                                        <?php elseif ($is_homepage): ?>
+                                            <!-- var: homepage -->
+                                            <div id="container" class="edp-fullwidth">
+                                                <main id="content" role="main" >
+                                               
+
                                         <?php else: ?>
                                             <!-- var: regular page -->
 

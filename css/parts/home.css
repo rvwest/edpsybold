@@ -1,0 +1,27 @@
+.home {
+    .article-grid {
+        display: flex;
+        flex-wrap: wrap;
+
+        .article-item {
+            width: 28%
+        }
+    }
+
+    section.focus-on {
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+
+        padding: var(--sp-medium);
+
+        .focus-posts-grid {
+            display: flex;
+            flex-wrap: nowrap;
+        }
+    }
+
+    .homepage-events-wrapper {
+        background-color: var(--cl-dark);
+    }
+}

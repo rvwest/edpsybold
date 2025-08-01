@@ -43,7 +43,7 @@ $latest_posts = get_posts(array(
 $display_post_count = $has_jobs ? 5 : 6;
 $display_posts = array_slice($latest_posts, 0, $display_post_count);
 ?>
-<section class="latest-articles">
+<section class="latest-articles grid12">
     <h2>Latest Articles</h2>
     <div class="article-grid">
         <?php
@@ -82,7 +82,7 @@ if (get_theme_mod('focus_on_enabled')) :
 
     // Collect selected posts
     $posts = array();
-    for ($i = 1; $i <= 3; $i++) {
+    for ($i = 1; $i <= 4; $i++) {
         $post_id = get_theme_mod("focus_on_post_$i");
         if ($post_id) {
             $post = get_post($post_id);
@@ -95,7 +95,7 @@ if (get_theme_mod('focus_on_enabled')) :
     $post_count = count($posts);
     if ($post_count > 0) :
 ?>
-    <section class="focus-on edp-bold-posts-<?php echo $post_count; ?>">
+    <section class="focus-on grid12 edp-bold-posts-<?php echo $post_count; ?>">
         <h2><?php echo esc_html($section_title); ?></h2>
         <div class="focus-posts-grid">
             <?php foreach ($posts as $post): ?>
@@ -154,7 +154,7 @@ $next_posts = get_posts(array(
 ?>
 
 <?php if (!empty($next_posts)): ?>
-    <section class="next-latest-posts">
+    <section class="next-latest-posts grid12">
         <h2>More Articles</h2>
         <div class="article-grid">
             <?php foreach ($next_posts as $post): ?>
@@ -194,7 +194,7 @@ if (get_theme_mod('longer_reads_enabled')) :
     $post_count = count($posts);
     if ($post_count > 0) :
 ?>
-    <section class="longer-reads edp-bold-posts-<?php echo $post_count; ?>">
+    <section class="longer-reads grid12 edp-bold-posts-<?php echo $post_count; ?>">
         <h2><?php echo esc_html($title); ?></h2>
         <div class="longer-reads-grid">
             <?php foreach ($posts as $post): ?>
@@ -259,7 +259,7 @@ $final_posts = get_posts(array(
 ?>
 
 <?php if (!empty($final_posts)): ?>
-    <section class="final-articles">
+    <section class="final-articles grid12">
         <h2>Latest Reads</h2>
         <div class="article-grid">
             <?php foreach ($final_posts as $post): ?>
@@ -276,9 +276,13 @@ $final_posts = get_posts(array(
     </section>
 <?php endif; ?>
 
+<section class="grid12">
 <h2>Jobs</h2>
 <?php echo do_shortcode('[jobs per_page="3" show_filters="false"]') ?>
+</section>
 
+<section class="homepage-events-wrapper">
+    <div class="homepage-events grid12">
 <h2>Next events</h2>
 <?php
 // Query the next 4 upcoming Tribe events
@@ -308,7 +312,8 @@ else :
     echo '<p>No upcoming events found.</p>';
 endif;
 ?>
-
+    </div>
+</section>
 
 
 

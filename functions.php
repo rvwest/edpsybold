@@ -360,7 +360,7 @@ function edp_customize_register($wp_customize) {
     }
 
     // Add Focus On post selectors
-    for ($i = 1; $i <= 3; $i++) {
+    for ($i = 1; $i <= 4; $i++) {
         $wp_customize->add_setting("focus_on_post_$i", array(
             'default' => '',
             'sanitize_callback' => 'absint',
