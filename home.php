@@ -58,7 +58,7 @@ $display_posts = array_slice($latest_posts, 0, $display_post_count);
                 if (isset($display_posts[$item_index])) {
                     $post = $display_posts[$item_index];
                     ?>
-                    <article class="article-item">
+                    <article <?php post_class('article-item'); ?>>
                         <a href="<?php echo get_permalink($post); ?>">
                             <?php if (has_post_thumbnail($post)): ?>
                                 <?php echo get_the_post_thumbnail($post, 'medium'); ?>
