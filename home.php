@@ -3,7 +3,7 @@ echo '<!-- file: home.php -->';
 
 get_header();
 
-get_template_part('home-slice-hero'); ?>
+get_template_part('_home-slice-hero'); ?>
 
 <?php
 // Collect post IDs to exclude
@@ -57,16 +57,9 @@ $display_posts = array_slice($latest_posts, 0, $display_post_count);
             } else {
                 if (isset($display_posts[$item_index])) {
                     $post = $display_posts[$item_index];
-                    ?>
-                    <article <?php post_class('article-item'); ?>>
-                        <a href="<?php echo get_permalink($post); ?>">
-                            <?php if (has_post_thumbnail($post)): ?>
-                                <?php echo get_the_post_thumbnail($post, 'medium'); ?>
-                            <?php endif; ?>
-                            <h3><?php echo esc_html(get_the_title($post)); ?></h3>
-                        </a>
-                    </article>
-                    <?php
+                    setup_postdata($post);
+                    get_template_part('_home-article-item');
+                    wp_reset_postdata();
                     $item_index++;
                 }
             }
@@ -99,14 +92,11 @@ if (get_theme_mod('focus_on_enabled')) :
         <h2><?php echo esc_html($section_title); ?></h2>
         <div class="focus-posts-grid">
             <?php foreach ($posts as $post): ?>
-                <article class="focus-post">
-                    <a href="<?php echo get_permalink($post); ?>">
-                        <?php if (has_post_thumbnail($post)): ?>
-                            <?php echo get_the_post_thumbnail($post, 'medium'); ?>
-                        <?php endif; ?>
-                        <h3><?php echo esc_html(get_the_title($post)); ?></h3>
-                    </a>
-                </article>
+                <?php
+                setup_postdata($post);
+                get_template_part('_home-article-item');
+                wp_reset_postdata();
+                ?>
             <?php endforeach; ?>
         </div>
     </section>
@@ -158,14 +148,11 @@ $next_posts = get_posts(array(
         <h2>More Articles</h2>
         <div class="article-grid">
             <?php foreach ($next_posts as $post): ?>
-                <article class="article-item">
-                    <a href="<?php echo get_permalink($post); ?>">
-                        <?php if (has_post_thumbnail($post)): ?>
-                            <?php echo get_the_post_thumbnail($post, 'medium'); ?>
-                        <?php endif; ?>
-                        <h3><?php echo esc_html(get_the_title($post)); ?></h3>
-                    </a>
-                </article>
+                <?php
+                setup_postdata($post);
+                get_template_part('_home-article-item');
+                wp_reset_postdata();
+                ?>
             <?php endforeach; ?>
         </div>
     </section>
@@ -198,14 +185,11 @@ if (get_theme_mod('longer_reads_enabled')) :
         <h2><?php echo esc_html($title); ?></h2>
         <div class="longer-reads-grid">
             <?php foreach ($posts as $post): ?>
-                <article class="longer-read">
-                    <a href="<?php echo get_permalink($post); ?>">
-                        <?php if (has_post_thumbnail($post)): ?>
-                            <?php echo get_the_post_thumbnail($post, 'medium'); ?>
-                        <?php endif; ?>
-                        <h3><?php echo esc_html(get_the_title($post)); ?></h3>
-                    </a>
-                </article>
+                <?php
+                setup_postdata($post);
+                get_template_part('_home-article-item');
+                wp_reset_postdata();
+                ?>
             <?php endforeach; ?>
         </div>
     </section>
@@ -263,14 +247,11 @@ $final_posts = get_posts(array(
         <h2>Latest Reads</h2>
         <div class="article-grid">
             <?php foreach ($final_posts as $post): ?>
-                <article class="article-item">
-                    <a href="<?php echo get_permalink($post); ?>">
-                        <?php if (has_post_thumbnail($post)): ?>
-                            <?php echo get_the_post_thumbnail($post, 'medium'); ?>
-                        <?php endif; ?>
-                        <h3><?php echo esc_html(get_the_title($post)); ?></h3>
-                    </a>
-                </article>
+                <?php
+                setup_postdata($post);
+                get_template_part('_home-article-item');
+                wp_reset_postdata();
+                ?>
             <?php endforeach; ?>
         </div>
     </section>
