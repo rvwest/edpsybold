@@ -236,7 +236,7 @@ if (isset($next_posts)) {
 
 // Fetch next 2 posts, excluding all shown so far
 $final_posts = get_posts(array(
-    'numberposts' => 2,
+    'numberposts' => 3,
     'post_status' => 'publish',
     'post__not_in' => $excluded_ids,
 ));
