@@ -4,7 +4,7 @@ also basis for: jobs page (single-job_listing.php) / events page content / Blog 
 .page-template-default:not(.job-listings-page) article.type-page,
 article.job_listing,
 article.tribe-events-single,
-article.type-post,
+body:not(.home) article.type-post,
 article.type-wpbdp_listing {
 
     img.wp-post-image {

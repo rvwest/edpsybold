@@ -2,9 +2,56 @@
     .article-grid {
         display: flex;
         flex-wrap: wrap;
+        gap: var(--sp-small);
 
         .article-item {
-            width: 28%
+            width: calc(33.333% - 2*(var(--sp-small)));
+        }
+    }
+
+    .home-hero-item a {
+        display: flex;
+        flex-direction: row;
+        gap: var(--sp-small);
+        margin-top: var(--sp-medium);
+
+        .hero-text {
+            width: calc(50% - var(--sp-small));
+
+            h1 {
+                font-size: var(--fs-title-large);
+                line-height: var(--lh-title-large);
+                font-weight: var(--fw-semibold);
+                margin-bottom: var(--sp-small);
+            }
+
+        }
+
+        .hero-image {
+            width: calc(50% - var(--sp-small));
+            aspect-ratio: var(--aspect-ratio-landscape);
+
+        }
+    }
+
+    .article-item {
+        .home-article-image {
+            width: 100%;
+            aspect-ratio: 2 / 1;
+            overflow: hidden;
+        }
+
+        .wp-post-image {
+            margin-bottom: var(--sp-xsmall);
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+
+        h3 {
+            font-size: var(--fs-body);
+            line-height: var(--lh-body);
+            font-weight: var(--fw-semibold);
         }
     }
 

@@ -89,6 +89,9 @@
     --fw-medium: 500;
     --fw-semibold: 600;
 
+    /* article images */
+    --aspect-ratio-landscape: 16/9;
+
     /* Breakpoints */
     --bp-small: 480px;
     --bp-medium: 768px;
