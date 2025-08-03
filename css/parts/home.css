@@ -1,52 +1,118 @@
 .home {
+
+    a:link,
+    a:visited {
+        color: var(--cl-dark);
+    }
+
+    /*  ===== Hero ========================= */
+
+    .hero-post,
+    .home-divider,
+    .focus-on,
+    .longer-reads {
+        margin-bottom: 70px;
+    }
+
+    /* because the bottom row of articles bring their own margins */
+    .article-grid {
+        margin-bottom: var(--sp-home-gap);
+    }
+
+    .hero-post {
+        margin-top: var(--sp-xlarge);
+
+        .home-hero-item a {
+            display: flex;
+            flex-direction: row;
+            gap: var(--sp-home-gap);
+
+            .hero-text {
+                width: calc(50% - (var(--sp-medium))/2);
+
+                h1 {
+                    font-size: var(--fs-title-large);
+                    line-height: var(--lh-title-large);
+                    font-weight: var(--fw-semibold);
+                    margin-bottom: var(--sp-small);
+                }
+
+            }
+
+            .hero-image {
+                width: calc(50% - (var(--sp-medium))/2);
+                aspect-ratio: var(--aspect-ratio-landscape);
+
+            }
+        }
+    }
+
+    .home-divider {
+        height: 75px;
+        width: 100%;
+        background-image: url(../../images/edpsy-swirls-21.svg);
+        background-size: cover;
+        background-position: center;
+
+
+
+    }
+
+    /*  ===== Articles ========================= */
     .article-grid {
         display: flex;
         flex-wrap: wrap;
-        gap: var(--sp-small);
+        gap: var(--sp-home-gap);
 
         .article-item {
-            width: calc(33.333% - 2*(var(--sp-small)));
+            width: calc(33.333% - (2*(var(--sp-home-gap)))/3);
+            margin-bottom: calc(var(--sp-xlarge) - var(--sp-home-gap));
         }
     }
 
-    .home-hero-item a {
-        display: flex;
-        flex-direction: row;
-        gap: var(--sp-small);
-        margin-top: var(--sp-medium);
 
-        .hero-text {
-            width: calc(50% - var(--sp-small));
 
-            h1 {
-                font-size: var(--fs-title-large);
-                line-height: var(--lh-title-large);
-                font-weight: var(--fw-semibold);
-                margin-bottom: var(--sp-small);
-            }
 
-        }
 
-        .hero-image {
-            width: calc(50% - var(--sp-small));
-            aspect-ratio: var(--aspect-ratio-landscape);
 
-        }
-    }
+    .article-item,
+    li.job_listing {
 
-    .article-item {
+
         .home-article-image {
             width: 100%;
             aspect-ratio: 2 / 1;
             overflow: hidden;
+            align-content: center;
+            justify-content: center;
+            margin-bottom: var(--sp-small);
+        }
+
+        &.job-summary .home-article-image {
+            text-align: center;
+            border: solid 1px var(--cl-orange);
+
+
+            .crp_job_logo {
+                object-fit: contain;
+                width: 80%;
+                height: 80%;
+
+            }
         }
 
         .wp-post-image {
-            margin-bottom: var(--sp-xsmall);
+
             object-fit: cover;
             width: 100%;
             height: 100%;
+
+
+
+
         }
+
+
 
         h3 {
             font-size: var(--fs-body);
@@ -55,18 +121,70 @@
         }
     }
 
-    section.focus-on {
-        background-color: white;
+    /* ======= Focus on ===== */
+
+    section.focus-on,
+    section.longer-reads {
         display: flex;
         flex-direction: column;
-
         padding: var(--sp-medium);
+        margin-top: 60px;
+        margin-bottom: 100px;
 
-        .focus-posts-grid {
+        h2 {
+            margin-bottom: var(--sp-home-gap);
+            font-size: 60px;
+            margin-top: -60px;
+            margin-left: -5px;
+
+        }
+
+        .focus-posts-grid,
+        .longer-reads-grid {
             display: flex;
             flex-wrap: nowrap;
+            gap: var(--sp-home-gap);
+        }
+
+    }
+
+    section.longer-reads {
+        background-color: var(--cl-lightpurple-hover);
+
+        h2 {
+            color: var(--cl-lightpurple-hover);
         }
     }
+
+    section.focus-on {
+
+        background-color: var(--cl-lightpurple-hover);
+
+        h2 {
+            color: var(--cl-lightpurple-hover);
+        }
+
+
+    }
+
+    /* article widths ==== */
+
+    .focus-on.edp-bold-posts-4 .article-item {
+        width: calc(25% - (3*(var(--sp-home-gap)))/4);
+    }
+
+    .focus-on.edp-bold-posts-3 .article-item {
+        width: calc(33% - (2*(var(--sp-home-gap)))/3);
+    }
+
+    .focus-on.edp-bold-posts-2 .article-item,
+    .longer-reads.edp-bold-posts-2 .article-item {
+        width: calc(50% - ((var(--sp-home-gap)))/2);
+    }
+
+
+
+    /* ======= Events ===== */
 
     .homepage-events-wrapper {
         background-color: var(--cl-dark);

@@ -43,6 +43,9 @@
     --sp-xxlarge: 60px;
     --sp-xxxlarge: 72px;
 
+    /* Page specific spacing */
+    --sp-home-gap: var(--sp-medium);
+
     /* Radius */
     --rd-small: 6px;
 

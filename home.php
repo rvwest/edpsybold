@@ -43,8 +43,10 @@ $latest_posts = get_posts(array(
 $display_post_count = $has_jobs ? 5 : 6;
 $display_posts = array_slice($latest_posts, 0, $display_post_count);
 ?>
+
+<div class="home-divider grid12"></div>
 <section class="latest-articles grid12">
-    <h2>Latest Articles</h2>
+
     <div class="article-grid">
         <?php
         $item_index = 0;
@@ -52,7 +54,7 @@ $display_posts = array_slice($latest_posts, 0, $display_post_count);
             if ($i === 2 && $has_jobs) {
                 // Insert job summary as item 3
                 echo '<div class="article-item job-summary">';
-                echo $job_shortcode_output;
+                echo do_shortcode('[job_summary width="" align=""]');
                 echo '</div>';
             } else {
                 if (isset($display_posts[$item_index])) {
@@ -145,7 +147,7 @@ $next_posts = get_posts(array(
 
 <?php if (!empty($next_posts)): ?>
     <section class="next-latest-posts grid12">
-        <h2>More Articles</h2>
+
         <div class="article-grid">
             <?php foreach ($next_posts as $post): ?>
                 <?php
@@ -198,7 +200,7 @@ if (get_theme_mod('longer_reads_enabled')) :
 endif;
 ?>
 
-<!-- next two articles -->
+<!-- next articles -->
 
 <?php
 // Collect excluded post IDs again
@@ -234,9 +236,9 @@ if (isset($next_posts)) {
     }
 }
 
-// Fetch next 2 posts, excluding all shown so far
+// Fetch next 3 posts, excluding all shown so far
 $final_posts = get_posts(array(
-    'numberposts' => 3,
+    'numberposts' => 6,
     'post_status' => 'publish',
     'post__not_in' => $excluded_ids,
 ));
@@ -244,7 +246,6 @@ $final_posts = get_posts(array(
 
 <?php if (!empty($final_posts)): ?>
     <section class="final-articles grid12">
-        <h2>Latest Reads</h2>
         <div class="article-grid">
             <?php foreach ($final_posts as $post): ?>
                 <?php
@@ -256,7 +257,7 @@ $final_posts = get_posts(array(
         </div>
     </section>
 <?php endif; ?>
-
+<div class="home-divider grid12"></div>
 <section class="grid12">
 <h2>Jobs</h2>
 <?php echo do_shortcode('[jobs per_page="3" show_filters="false"]') ?>
