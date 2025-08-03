@@ -1,3 +1,8 @@
+<?php 
+if (!defined('ABSPATH')) {
+	exit; // Exit if accessed directly.
+}
+echo '<!-- file: _home-jobs-item.php -->'; ?>
 <article <?php post_class('article-item job-summary'); ?>>
 <a href="<?php the_permalink(); ?>" class="crp_link post-3212 crp_job">
 	<?php if ( $logo = get_the_company_logo() ) : ?>

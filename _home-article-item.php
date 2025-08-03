@@ -1,3 +1,8 @@
+<?php 
+if (!defined('ABSPATH')) {
+	exit; // Exit if accessed directly.
+}
+echo '<!-- file: _home-article-item.php -->'; ?>
 <article <?php post_class('article-item'); ?>>
     <a href="<?php the_permalink(); ?>">
         <?php if (has_post_thumbnail()): ?>

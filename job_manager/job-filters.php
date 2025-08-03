@@ -16,6 +16,7 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 
+echo '<!-- file: /job_manager/job-filters.php -->';
 wp_enqueue_script('wp-job-manager-ajax-filters');
 
 do_action('job_manager_job_filters_before', $atts);

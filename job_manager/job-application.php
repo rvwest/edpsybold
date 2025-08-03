@@ -15,6 +15,7 @@
 if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
+echo '<!-- file: /job_manager/job-application.php -->';
 ?>
 <?php if ($apply = get_the_job_application_method()):
 	wp_enqueue_script('wp-job-manager-job-application');

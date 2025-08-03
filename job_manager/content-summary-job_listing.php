@@ -16,6 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 global $job_manager;
+echo '<!-- file: job_manager/content-summary-job_listing.php -->';
 ?>
 <a href="<?php the_permalink(); ?>" class="crp_link post-3212 crp_job">
 	<?php if ( $logo = get_the_company_logo() ) : ?>

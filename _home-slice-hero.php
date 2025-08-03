@@ -1,5 +1,8 @@
 <?php 
-echo '<!-- file: home.php -->';
+if (!defined('ABSPATH')) {
+	exit; // Exit if accessed directly.
+}
+echo '<!-- file: home-slice-hero.php -->';
 $hero_post_id = get_theme_mod('hero_post_id');
 
 if ($hero_post_id) {

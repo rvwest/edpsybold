@@ -1,5 +1,12 @@
 <!-- file: job_manager/content-job_listing.php -->
 
+<?php if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
+echo '<!-- file: job_manager/content-job_listing.php -->';
+?>
+
 <li <?php job_listing_class(); ?> data-longitude="<?php echo esc_attr($post->geolocation_long); ?>"
     data-latitude="<?php echo esc_attr($post->geolocation_lat); ?>">
     <a href="<?php the_job_permalink(); ?>">

@@ -2,7 +2,10 @@
 /**
  * The Template for displaying all single job posts.
  */
-
+if (!defined('ABSPATH')) {
+	exit; // Exit if accessed directly.
+}
+echo '<!-- file: -single-job_listing.php -->';
 get_header(); ?>
 
 <?php if (have_posts()):
