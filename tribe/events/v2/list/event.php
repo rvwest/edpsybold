@@ -12,7 +12,11 @@
  *
  * @version 5.0.0
  *
- * @var WP_Post $event The event post object with properties added by the `tribe_get_event` function.
+ * @var WP_Post            $event        The event post object with properties added by the `tribe_get_event` function.
+ * @var \DateTimeInterface $request_date The request date object. This will be "today" if the user did not input any
+ *                                       date, or the user input date.
+ * @var bool               $is_past      Whether the current display mode is "past" or not.
+ * @var string             $slug         The slug of the current view.
  *
  * @see tribe_get_event() For the format of the event object.
  */
@@ -39,10 +43,14 @@ foreach ($event_classes as $class) {
 
 
 		<?php if ($is_on_demand): ?>
-		<?php $this->template('list/event/ondemand-tag') ?>
-	<?php else: ?>
-		<?php $this->template('list/event/date-tag', ['event' => $event]); ?>
-<?php endif; ?>
+                <?php $this->template('list/event/ondemand-tag'); ?>
+        <?php else: ?>
+                <?php $this->template('list/event/date-tag', [
+                        'event'        => $event,
+                        'request_date' => $request_date,
+                        'is_past'      => $is_past,
+                ]); ?>
+        <?php endif; ?>
 
 
 		<div class="edp-events-calendar-list__event-header">
@@ -59,7 +67,10 @@ foreach ($event_classes as $class) {
 							</span>
 						</address>
 					<?php else: ?>
-						<?php $this->template('list/event/venue', ['event' => $event]); ?>
+                                                <?php $this->template('list/event/venue', [
+                                                        'event' => $event,
+                                                        'slug'  => $slug,
+                                                ]); ?>
 					<?php endif; ?>
 			
 			<?php $this->template('list/event/cost', ['event' => $event]); ?>

@@ -265,35 +265,46 @@ $final_posts = get_posts(array(
 
 <section class="homepage-events-wrapper">
     <div class="homepage-events grid12">
-<h2>Next events</h2>
-<?php
-// Query the next 4 upcoming Tribe events
-$events = tribe_get_events( array(
-    'posts_per_page' => 4,
-    'start_date'     => date( 'Y-m-d H:i:s' ),
-    'orderby'        => 'event_date',
-    'order'          => 'ASC',
-) );
-
-if ( $events ) :
-    echo '<ul class="homepage-upcoming-events">';
-    foreach ( $events as $event ) :
-        $event_id = $event->ID;
-        $event_title = get_the_title( $event_id );
-        $event_link = get_permalink( $event_id );
-        $event_date = tribe_get_start_date( $event_id, false, 'F j, Y g:i a' );
-        ?>
-        <li>
-            <a href="<?php echo esc_url( $event_link ); ?>"><?php echo esc_html( $event_title ); ?></a><br>
-            <small><?php echo esc_html( $event_date ); ?></small>
-        </li>
+        <h2>Next events</h2>
         <?php
-    endforeach;
-    echo '</ul>';
-else :
-    echo '<p>No upcoming events found.</p>';
-endif;
-?>
+        // Query the next 4 upcoming Tribe events
+        $events = tribe_get_events([
+                'posts_per_page' => 4,
+                'start_date'     => date('Y-m-d H:i:s'),
+                'orderby'        => 'event_date',
+                'order'          => 'ASC',
+        ]);
+
+        if ($events) :
+                if (!class_exists('EDP_Tribe_Template')) {
+                        class EDP_Tribe_Template {
+                                public function template($template, $data = []) {
+                                        $path = locate_template('tribe/events/v2/' . $template . '.php');
+                                        if (!$path) {
+                                                return;
+                                        }
+                                        extract($data);
+                                        include $path;
+                                }
+                        }
+                }
+
+                $tpl = new EDP_Tribe_Template();
+                echo '<div class="edp-events-calendar-list">';
+                foreach ($events as $event_post) {
+                        $event = tribe_get_event($event_post);
+                        $tpl->template('list/event', [
+                                'event'        => $event,
+                                'is_past'      => false,
+                                'request_date' => null,
+                                'slug'         => 'home',
+                        ]);
+                }
+                echo '</div>';
+        else :
+                echo '<p>No upcoming events found.</p>';
+        endif;
+        ?>
     </div>
 </section>
 
