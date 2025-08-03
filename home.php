@@ -276,20 +276,12 @@ $events = tribe_get_events( array(
 ) );
 
 if ( $events ) :
-    echo '<ul class="homepage-upcoming-events">';
-    foreach ( $events as $event ) :
-        $event_id = $event->ID;
-        $event_title = get_the_title( $event_id );
-        $event_link = get_permalink( $event_id );
-        $event_date = tribe_get_start_date( $event_id, false, 'F j, Y g:i a' );
-        ?>
-        <li>
-            <a href="<?php echo esc_url( $event_link ); ?>"><?php echo esc_html( $event_title ); ?></a><br>
-            <small><?php echo esc_html( $event_date ); ?></small>
-        </li>
-        <?php
+    echo '<div class="tribe-events-calendar-list">';
+    foreach ( $events as $post ) :
+        $event = tribe_get_event( $post );
+        tribe_get_template_part( 'events/v2/list/event', null, [ 'event' => $event ] );
     endforeach;
-    echo '</ul>';
+    echo '</div>';
 else :
     echo '<p>No upcoming events found.</p>';
 endif;
