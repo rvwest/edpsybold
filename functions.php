@@ -413,6 +413,42 @@ function edp_customize_register($wp_customize) {
 }
 add_action('customize_register', 'edp_customize_register');
 
+// ========== Jobs homepage shortcode =========== //
+
+// Register [jobs-homepage] shortcode with count-based CSS class
+function wpjm_jobs_homepage_shortcode($atts) {
+    $atts = shortcode_atts([
+        'per_page' => 3,
+    ], $atts, 'jobs-homepage');
+
+    ob_start();
+
+    // Query jobs
+    $jobs = new WP_Query([
+        'post_type'      => 'job_listing',
+        'posts_per_page' => intval($atts['per_page']),
+        'post_status'    => 'publish',
+    ]);
+
+    $job_count = $jobs->found_posts;
+
+    if ( $jobs->have_posts() ) {
+        $count_class = 'edp-bold-posts-' . $job_count;
+        echo '<div class="jobs-homepage-grid ' . esc_attr($count_class) . '">';
+        while ( $jobs->have_posts() ) {
+            $jobs->the_post();
+
+            // Load custom template for each job
+            get_template_part('_home-jobs-item');
+        }
+        echo '</div>';
+    }
+
+    wp_reset_postdata();
+    return ob_get_clean();
+}
+add_shortcode('jobs-homepage', 'wpjm_jobs_homepage_shortcode');
+
 
 // ========== Page promos ================================================= //
 // ======================================================================== //

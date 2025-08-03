@@ -124,7 +124,9 @@
     /* ======= Focus on ===== */
 
     section.focus-on,
-    section.longer-reads {
+    section.longer-reads,
+    section.homepage-events-wrapper,
+    section.homepage-jobs {
         display: flex;
         flex-direction: column;
         padding: var(--sp-medium);
@@ -140,7 +142,8 @@
         }
 
         .focus-posts-grid,
-        .longer-reads-grid {
+        .longer-reads-grid,
+        .jobs-homepage-grid {
             display: flex;
             flex-wrap: nowrap;
             gap: var(--sp-home-gap);
@@ -169,13 +172,19 @@
 
     /* article widths ==== */
 
-    .focus-on.edp-bold-posts-4 .article-item {
+    .focus-on.edp-bold-posts-4 .article-item,
+    .jobs-homepage-grid.edp-bold-posts-4 .article-item {
         width: calc(25% - (3*(var(--sp-home-gap)))/4);
     }
 
-    .focus-on.edp-bold-posts-3 .article-item {
+    .focus-on.edp-bold-posts-3 .article-item,
+    .jobs-homepage-grid.edp-bold-posts-3 .article-item,
+    .jobs-homepage-grid.edp-bold-posts-2 .article-item,
+    .jobs-homepage-grid.edp-bold-posts-3 .article-item {
         width: calc(33% - (2*(var(--sp-home-gap)))/3);
     }
+
+    /* jobs ist he same for 2 and 3 because we replace #3 with a link */
 
     .focus-on.edp-bold-posts-2 .article-item,
     .longer-reads.edp-bold-posts-2 .article-item {

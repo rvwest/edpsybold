@@ -258,9 +258,9 @@ $final_posts = get_posts(array(
     </section>
 <?php endif; ?>
 <div class="home-divider grid12"></div>
-<section class="grid12">
+<section class="homepage-jobs grid12">
 <h2>Jobs</h2>
-<?php echo do_shortcode('[jobs per_page="3" show_filters="false"]') ?>
+<?php echo do_shortcode('[jobs-homepage per_page="3" show_filters="false"]') ?>
 </section>
 
 <section class="homepage-events-wrapper">
