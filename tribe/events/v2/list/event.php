@@ -20,7 +20,7 @@
  *
  * @see tribe_get_event() For the format of the event object.
  */
-
+$is_homepage = is_front_page() || is_home();
 $container_classes = ['edp-events-calendar-list__event-row'];
 $container_classes['edp-events-calendar-list__event-row--featured'] = $event->featured;
 
@@ -52,7 +52,9 @@ foreach ($event_classes as $class) {
                 ]); ?>
         <?php endif; ?>
 
-
+		<?php if ($is_homepage): ?>  
+<div class="edp-event-title-and-meta">
+	<?php endif; ?>
 		<div class="edp-events-calendar-list__event-header">
 
 			<?php $this->template('list/event/title', ['event' => $event]); ?>
@@ -75,6 +77,10 @@ foreach ($event_classes as $class) {
 			
 			<?php $this->template('list/event/cost', ['event' => $event]); ?>
 		</div>
+
+		<?php if ($is_homepage): ?>
+		</div>
+	<?php endif; ?>
 
 
 

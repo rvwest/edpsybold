@@ -197,5 +197,29 @@
 
     .homepage-events-wrapper {
         background-color: var(--cl-dark);
+
+        .edp-events-calendar-list {
+            display: flex;
+            flex-wrap: wrap;
+
+            gap: var(--sp-home-gap);
+
+            .edp-events-calendar-list__event-row {
+                width: calc(50% - ((var(--sp-home-gap)))/2);
+
+                .edp-event-title-and-meta {
+                    display: flex;
+                    width: 100%;
+                    flex-direction: column;
+
+                    .edp-events-calendar-list__event-header {
+                        margin-right: 0;
+
+                    }
+                }
+            }
+        }
+
     }
+
 }
