@@ -26,15 +26,24 @@ $container_classes['edp-events-calendar-list__event-row--featured'] = $event->fe
 
 $event_classes = tribe_get_post_class(['tribe-events-calendar-list__event', 'tribe-common-g-row', 'tribe-common-g-row--gutters'], $event->ID);
 ?>
-<!-- Adds ondemand tag --> 
+<!-- Adds ondemand tag -->
 <?php
-$is_on_demand = false;
-foreach ($event_classes as $class) {
-	if (strpos($class, 'cat_on-demand') !== false) {
-		$is_on_demand = true;
-		$container_classes[] = 'cat_on-demand';
-		break;
-	}
+/**
+ * Determine whether the event belongs to the "on-demand" category. When
+ * rendering on the home page the event's classes do not include category
+ * information, so we use `has_term` to perform the check.
+ */
+$is_on_demand = function_exists('has_term') && has_term('on-demand', 'tribe_events_cat', $event->ID);
+if (!$is_on_demand) {
+        foreach ($event_classes as $class) {
+                if (strpos($class, 'cat_on-demand') !== false) {
+                        $is_on_demand = true;
+                        break;
+                }
+        }
+}
+if ($is_on_demand) {
+        $container_classes[] = 'cat_on-demand';
 }
 ?>
 <div <?php tribe_classes($container_classes); ?>>
