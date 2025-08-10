@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ERROR | E_PARSE);
 // Minimal environment to render event template and ensure nested templates receive data.
 
 // Stub WordPress and TEC functions used in templates.
@@ -14,6 +15,11 @@ function esc_html($text) { return htmlspecialchars($text, ENT_QUOTES, 'UTF-8'); 
 function esc_attr($text) { return htmlspecialchars($text, ENT_QUOTES, 'UTF-8'); }
 function esc_html_x($text) { return esc_html($text); }
 function do_action($hook, ...$args) { /* no-op for test */ }
+function is_front_page() { return false; }
+function is_home() { return false; }
+function has_term($term, $taxonomy, $post_id) {
+    return $term === 'on-demand';
+}
 
 // Minimal DateTime utilities used by date-tag template.
 class Stub_DateTime extends DateTime {
@@ -58,6 +64,7 @@ $event = (object) [
 ];
 
 $tpl = new EDP_Tribe_Template();
+$event_date_attr = '';
 $tpl->template('list/event', [
     'event'        => $event,
     'is_past'      => false,
