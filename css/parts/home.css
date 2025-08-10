@@ -207,6 +207,7 @@
             .edp-events-calendar-list__event-row {
                 width: calc(50% - ((var(--sp-home-gap)))/2);
 
+
                 .edp-event-title-and-meta {
                     display: flex;
                     width: 100%;

@@ -264,7 +264,7 @@ $final_posts = get_posts(array(
 </section>
 
 <?php
-// Query the next 4 upcoming Tribe events
+// Query the next 4 upcoming events
 $events = tribe_get_events([
         'posts_per_page' => 4,
         'start_date'     => date('Y-m-d H:i:s'),
