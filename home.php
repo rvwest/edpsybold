@@ -280,21 +280,18 @@ $count_class = edpsybold_count_class($event_count);
         <h2>Next events</h2>
         <?php
         if ($events) :
-                if (!class_exists('EDP_Tribe_Template')) {
-                        class EDP_Tribe_Template {
-                                public function template($template, $data = []) {
-                                        $path = locate_template('tribe/events/v2/' . $template . '.php');
-                                        if (!$path) {
-                                                return;
-                                        }
-                                        extract($data);
-                                        include $path;
-                                }
-                        }
-                }
-
-                $tpl = new EDP_Tribe_Template();
                 echo '<div class="edp-events-calendar-list">';
+                $tpl = new class {
+                        public function template($template, $data = []) {
+                                $path = locate_template('tribe/events/v2/' . $template . '.php');
+                                if (!$path) {
+                                        return;
+                                }
+                                extract($data);
+                                include $path;
+                        }
+                };
+
                 foreach ($events as $event_post) {
                         $event = tribe_get_event($event_post);
                         $tpl->template('list/event', [
