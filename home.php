@@ -263,18 +263,22 @@ $final_posts = get_posts(array(
 <?php echo do_shortcode('[jobs-homepage per_page="3" show_filters="false"]') ?>
 </section>
 
-<section class="homepage-events-wrapper">
+<?php
+// Query the next 4 upcoming Tribe events
+$events = tribe_get_events([
+        'posts_per_page' => 4,
+        'start_date'     => date('Y-m-d H:i:s'),
+        'orderby'        => 'event_date',
+        'order'          => 'ASC',
+]);
+
+$event_count = count($events);
+$count_class = edpsybold_count_class($event_count);
+?>
+<section class="homepage-events-wrapper <?php echo esc_attr($count_class); ?>">
     <div class="homepage-events grid12">
         <h2>Next events</h2>
         <?php
-        // Query the next 4 upcoming Tribe events
-        $events = tribe_get_events([
-                'posts_per_page' => 4,
-                'start_date'     => date('Y-m-d H:i:s'),
-                'orderby'        => 'event_date',
-                'order'          => 'ASC',
-        ]);
-
         if ($events) :
                 if (!class_exists('EDP_Tribe_Template')) {
                         class EDP_Tribe_Template {
