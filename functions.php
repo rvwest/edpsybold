@@ -413,6 +413,10 @@ function edp_customize_register($wp_customize) {
 }
 add_action('customize_register', 'edp_customize_register');
 
+function edpsybold_count_class($count) {
+    return 'edp-bold-posts-' . intval($count);
+}
+
 // ========== Jobs homepage shortcode =========== //
 
 // Register [jobs-homepage] shortcode with count-based CSS class
@@ -433,7 +437,7 @@ function wpjm_jobs_homepage_shortcode($atts) {
     $job_count = $jobs->found_posts;
 
     if ( $jobs->have_posts() ) {
-        $count_class = 'edp-bold-posts-' . $job_count;
+        $count_class = edpsybold_count_class($job_count);
         echo '<div class="jobs-homepage-grid ' . esc_attr($count_class) . '">';
         while ( $jobs->have_posts() ) {
             $jobs->the_post();
