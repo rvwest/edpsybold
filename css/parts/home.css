@@ -207,16 +207,25 @@
             .edp-events-calendar-list__event-row {
                 width: calc(50% - ((var(--sp-home-gap)))/2);
 
-
                 .edp-event-title-and-meta {
                     display: flex;
                     width: 100%;
                     flex-direction: column;
 
+
                     .edp-events-calendar-list__event-header {
                         margin-right: 0;
 
                     }
+
+                    .edp-events-calendar-list__event-meta {
+                        padding-top: 0;
+
+                        .epd-events-calendar-list__event-venue {
+                            margin-bottom: 0;
+                        }
+                    }
+
                 }
             }
         }
