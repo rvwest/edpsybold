@@ -292,7 +292,12 @@ $count_class = edpsybold_count_class($event_count);
                         }
                 };
 
+                $event_index = 0;
                 foreach ($events as $event_post) {
+                        if ($event_index % 2 === 0) {
+                                echo '<div class="edp-events-calendar-list__event-row-wrapper">';
+                        }
+
                         $event = tribe_get_event($event_post);
                         $tpl->template('list/event', [
                                 'event'        => $event,
@@ -300,6 +305,11 @@ $count_class = edpsybold_count_class($event_count);
                                 'request_date' => null,
                                 'slug'         => 'home',
                         ]);
+
+                        $event_index++;
+                        if ($event_index % 2 === 0 || $event_index === $event_count) {
+                                echo '</div>';
+                        }
                 }
                 echo '</div>';
         else :
