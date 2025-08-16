@@ -19,8 +19,10 @@
         margin-bottom: var(--sp-home-gap);
     }
 
-    .hero-post {
-        margin-top: var(--sp-xlarge);
+    section.hero-post {
+        /*margin-top: var(--sp-xlarge);*/
+        margin-top: 90px !important;
+        margin-bottom: 90px !important;
 
         .home-hero-item a {
             display: flex;
@@ -122,7 +124,7 @@
     }
 
     /* ======= Focus on ===== */
-
+    section.hero-post,
     section.focus-on,
     section.longer-reads,
     section.homepage-events-wrapper,
@@ -151,6 +153,14 @@
 
     }
 
+    section.hero-post {
+        background-color: var(--cl-lightpurple-hover);
+
+        h2 {
+            color: var(--cl-lightpurple-hover);
+        }
+    }
+
     section.longer-reads {
         background-color: var(--cl-lightpurple-hover);
 
@@ -168,6 +178,12 @@
         }
 
 
+    }
+
+    section.homepage-jobs {
+        h2 {
+            color: var(--cl-jobs-primary);
+        }
     }
 
     /* article widths ==== */
@@ -204,28 +220,35 @@
 
             gap: var(--sp-home-gap);
 
-            .edp-events-calendar-list__event-row {
-                width: calc(50% - ((var(--sp-home-gap)))/2);
+            .edp-events-calendar-list__event-row-wrapper {
+                display: flex;
+                width: 100%;
+                gap: var(--sp-home-gap);
 
-                .edp-event-title-and-meta {
-                    display: flex;
-                    width: 100%;
-                    flex-direction: column;
+                .edp-events-calendar-list__event-row {
+                    width: calc(50% - ((var(--sp-home-gap)))/2);
 
 
-                    .edp-events-calendar-list__event-header {
-                        margin-right: 0;
+                    .edp-event-title-and-meta {
+                        display: flex;
+                        width: 100%;
+                        flex-direction: column;
 
-                    }
 
-                    .edp-events-calendar-list__event-meta {
-                        padding-top: 0;
+                        .edp-events-calendar-list__event-header {
+                            margin-right: 0;
 
-                        .epd-events-calendar-list__event-venue {
-                            margin-bottom: 0;
                         }
-                    }
 
+                        .edp-events-calendar-list__event-meta {
+                            padding-top: 0;
+
+                            .epd-events-calendar-list__event-venue {
+                                margin-bottom: 0;
+                            }
+                        }
+
+                    }
                 }
             }
         }

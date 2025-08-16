@@ -11,7 +11,7 @@ if ($hero_post_id) {
     ?>
 
     <section class="hero-post grid12">
-
+<h2>Featured</h2>
     <article <?php post_class('home-hero-item'); ?>>
 <a href="<?php the_permalink(); ?>">
 <div class="hero-text"><h1><?php echo esc_html(get_the_title($hero_post)); ?></h1>

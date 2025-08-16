@@ -321,6 +321,6 @@ $count_class = edpsybold_count_class($event_count);
 
 
 
-<?php get_template_part('nav', 'below');
+<?php 
 get_footer();
 echo '<!-- file end: home.php -->'; ?>
