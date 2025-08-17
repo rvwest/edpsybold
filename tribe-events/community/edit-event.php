@@ -47,12 +47,20 @@ $datepicker_format = Tribe__Date_Utils::get_datepicker_format_index();
 	data-datepicker_format="<?php echo esc_attr($datepicker_format); ?>">
 	<input type="hidden" name="post_ID" id="post_ID" value="<?php echo absint($tribe_event_id); ?>" />
 	<?php wp_nonce_field('ecp_event_submission'); ?>
-
+	<div class="tribe-section-header">
+	<h3>Key information</h3>
+	</div>
+	
+	<div class="form-block">
 	<?php tribe_get_template_part('community/modules/title'); ?>
 
 	<?php tribe_get_template_part('community/modules/description'); ?>
 
 	<?php tribe_get_template_part('integrations/the-events-calendar/modules/datepickers'); ?>
+
+</div>
+
+
 
 	<?php tribe_get_template_part('community/modules/image'); ?>
 

@@ -52,9 +52,7 @@ $events_label_plural_lowercase   = tribe_get_event_label_plural_lowercase();
 ?>
 
 <div class="tribe-section tribe-section-datetime event-datepickers event-time eventForm">
-	<div class="tribe-section-header">
-		<h3><?php printf( __( '%s Time &amp; Date', 'tribe-events-community' ), $events_label_singular ); ?></h3>
-	</div>
+	
 
 	<?php
 	/**

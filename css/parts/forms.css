@@ -359,7 +359,8 @@
         padding: var(--sp-small-plus);
         margin-top: var(--sp-small);
 
-        fieldset.fieldset-job_description {
+        fieldset.fieldset-job_description,
+        .events-community-post-content {
             flex-direction: column;
             margin-top: 0;
 
