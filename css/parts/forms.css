@@ -275,6 +275,24 @@
         text-align: center;
     }
 
+    .select2-selection {
+        display: flex;
+        height: 49px;
+
+        ul {
+            margin: 0;
+            padding: 0;
+            display: flex;
+
+            li {
+                list-style: none;
+                margin: 3px 6px 3px 0;
+            }
+        }
+    }
+
+
+
     .checkbox-pair {
         display: flex;
         outline: 1px solid var(--cl-dark);
@@ -368,10 +386,25 @@
                 flex-direction: column-reverse;
             }
 
-            fieldset.fieldset-closing_date .field {
+            fieldset.fieldset-closing_date .field,
+            .fieldset-cap_declaration .field {
                 flex-direction: column;
             }
         }
+    }
+
+    /* job type iframe */
+
+    .select2-dropdown {
+        background-color: var(--cl-light);
+        margin-top: -2px;
+        border-radius: 0;
+        border: none;
+        outline: 3px solid var(--cl-lightpurple)
+    }
+
+    .select2-container--default .select2-results__option--highlighted[aria-selected] {
+        background-color: var(--cl-lightpurple);
     }
 }
 

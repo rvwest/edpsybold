@@ -6,7 +6,8 @@ article.job_listing,
 article.tribe-events-single,
 body:not(.home) article.type-post,
 article.type-wpbdp_listing,
-.tribe-community-events.form {
+.tribe-community-events.form,
+.edp-jobs.add-job {
 
     img.wp-post-image {
         width: 100%;
@@ -20,7 +21,8 @@ article.type-wpbdp_listing,
     .edp-thesis-abstract,
     .category-jobs-admin,
     fieldset.fieldset-cap_declaration,
-    .events-promo {
+    .events-promo,
+    .category-jobs-admin {
 
         ul {
             margin-left: var(--sp-medium);
