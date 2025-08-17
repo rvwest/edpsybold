@@ -1,9 +1,17 @@
-.edpsybold,
+.edpsybold.tribe_community_edit,
 .edpsybold.edp-jobs.add-job #container.edp-fullwidth {
 
 
     .category-jobs-admin,
     &.tribe_community_edit {
+
+        .tribe-events-community-details,
+        .tribe-section-content,
+        .form-block {
+            background-color: var(--cl-light);
+            padding: var(--sp-small) var(--sp-large) var(--sp-large) var(--sp-large);
+            color: var(--cl-dark);
+        }
 
         fieldset,
         div.venue,
@@ -14,6 +22,7 @@
             display: flex;
             gap: 12px;
             align-items: flex-start;
+            margin-top: var(--sp-small);
 
             padding: var(--sp-xxsmall) 0;
 
@@ -30,14 +39,16 @@
         }
     }
 
-    h2 {
+    h2,
+    .tribe-section-header h3 {
         font-size: var(--fs-display-small);
         color: var(--cl-light);
         margin-top: var(--sp-xlarge);
     }
 
     .form-block,
-    .tribe-section {
+    .tribe-section-content,
+    .tribe-events-community-details {
         margin-top: var(--sp-small);
     }
 
@@ -374,13 +385,6 @@
 
 
         .category-jobs-admin {
-
-
-
-            .form-block {
-                background-color: var(--cl-light);
-                padding: var(--sp-small) var(--sp-large) var(--sp-large) var(--sp-large);
-            }
 
             fieldset .field {
                 flex-direction: column-reverse;

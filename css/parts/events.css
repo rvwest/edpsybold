@@ -1,4 +1,5 @@
-.post-type-archive-tribe_events {
+.post-type-archive-tribe_events,
+.tribe_community_edit {
     #container {
         color: var(--cl-light);
         background-color: var(--cl-events-primary);
