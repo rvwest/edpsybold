@@ -51,6 +51,8 @@
     --rd-small: 6px;
 
     /* Text box sizes */
+    --tb-xxsmall: 100px;
+    --tb-xsmall: 150px;
     --tb-small: 240px;
     --tb-medium: 386px;
     --tb-large: 520px;

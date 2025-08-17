@@ -5,7 +5,8 @@ also basis for: jobs page (single-job_listing.php) / events page content / Blog 
 article.job_listing,
 article.tribe-events-single,
 body:not(.home) article.type-post,
-article.type-wpbdp_listing {
+article.type-wpbdp_listing,
+.tribe-community-events.form {
 
     img.wp-post-image {
         width: 100%;
@@ -18,7 +19,8 @@ article.type-wpbdp_listing {
     .tribe-events-content,
     .edp-thesis-abstract,
     .category-jobs-admin,
-    fieldset.fieldset-cap_declaration {
+    fieldset.fieldset-cap_declaration,
+    .events-promo {
 
         ul {
             margin-left: var(--sp-medium);

@@ -81,11 +81,11 @@ article.category-jobs-admin {
     grid-column: 2 / span 10;
 
     >* {
-        grid-column: 2 / span 8;
+        grid-column: 1 / span 10;
     }
 
     .entry-content {
-        grid-column: 2 / span 8;
+        grid-column: 1 / span 10;
     }
 
 
@@ -251,7 +251,7 @@ body.single-post {
     }
 
     .tribe-events-calendar-list {
-        grid-column: 2 / span 10;
+        jobs grid-column: 2 / span 10;
     }
 
     @media only screen and (max-width: 600px) {
@@ -270,7 +270,7 @@ body.single-post {
 /* Event form */
 
 .tribe_community_edit .tribe-events-pg-template {
-    grid-column: 3 / span 8;
+    grid-column: 2 / span 10;
 }
 
 

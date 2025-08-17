@@ -1,20 +1,36 @@
 .edpsybold {
 
-    /*
-    .category-jobs-admin {
-        fieldset {
+
+    .category-jobs-admin,
+    &.tribe_community_edit {
+
+        fieldset,
+        div.venue,
+        div.organizer,
+        .tribe-section-content-row,
+        div.events-community-post-title,
+        .events-community-post-content {
             display: flex;
             gap: 12px;
-            align-items: center;
+            align-items: flex-start;
 
-            label {
+            padding: var(--sp-xxsmall) 0;
+
+            label,
+            .tribe-section-content-label {
                 width: 30%;
-                text-align: right;
+                /*text-align: right;*/
+                padding: 17px 0 0 var(--sp-small)
             }
         }
-    }*/
 
-    .form-block {
+        table {
+            width: 100%;
+        }
+    }
+
+    .form-block,
+    .tribe-section {
         margin-top: var(--sp-xlarge);
     }
 
@@ -57,7 +73,8 @@
     textarea,
     input[type="text"],
     input[type="email"],
-    input[type="password"] {
+    input[type="password"],
+    input[type="tel"] {
         font-family: var(--ff);
         font-size: var(--fs-body);
         color: var(--cl-dark);
@@ -65,36 +82,68 @@
         border: 1px solid var(--cl-dark);
         padding: var(--sp-small);
         margin: var(--sp-xsmall) 0;
-        width: 100%;
-    }
-
-    .checkbox-pair {
-        display: flex;
-        outline: 1px solid var(--cl-dark);
+        width: 65%;
     }
 
 
-    /* Field widths */
+
+    fieldset:has(:focus),
+    div.venue:has(:focus),
+    div.organizer:has(:focus),
+    .tribe-section-content-row:has(:focus),
+    .events-community-post-title:has(:focus),
+    .events-community-post-content:has(:focus) {
+        background: var(--cl-lightpurple-hover);
+    }
 
 
+    /* ==== Field widths ========*/
 
+    /* Standard */
     input[type="text"],
     input[type="email"],
     input#create_account_email,
     input[type="password"],
     input#company_name {
-        max-width: var(--tb-medium);
+        width: var(--tb-medium);
     }
 
-    input[type="closing_date"] {
-        max-width: var(--tb-small);
+    /* County / City / Phone */
+    input#StateProvinceText,
+    input#VenueCity,
+    input[type="tel"],
+    input#OrganizerPhone,
+    input#EventCost {
+        width: var(--tb-small);
     }
 
+    /* Dates / Postcodes */
+    input[type="closing_date"],
+    input[type="text"].tribe-field-start_date,
+    input[type="text"].tribe-field-end_date,
+    input[type="text"]#EventZip {
+        width: var(--tb-xsmall);
+    }
+
+    /* Long URLs */
     input[type="text"]#company_website,
-    input[type="text"]#application {
-        max-width: var(--tb-large);
+    input[type="text"]#application,
+    input#post_title,
+    textarea#post_content {
+        width: var(--tb-large);
     }
 
+    /* Times */
+    input[type="text"].tribe-field-start_time,
+    input[type="text"].tribe-field-end_time {
+        width: var(--tb-xxsmall);
+    }
+
+
+    /* help text */
+    .tribe-section-content-field p {
+        margin-bottom: 0;
+    }
 
 
 
@@ -166,6 +215,23 @@
 
     }
 
+    /* ===----====---==== Field types  ===----====---==== */
+
+
+    input[type="closing_date"],
+    input[type="text"].tribe-field-start_date,
+    input[type="text"].tribe-field-end_date,
+    input[type="text"].tribe-field-start_time,
+    input[type="text"].tribe-field-end_time {
+        text-align: center;
+    }
+
+    .checkbox-pair {
+        display: flex;
+        outline: 1px solid var(--cl-dark);
+    }
+
+
 
 
 }
@@ -174,6 +240,47 @@ body#tinymce.mce-content-body {
     background-color: var(--cl-light);
     font-family: var(--ff);
 }
+
+/* ========== Add an event =========== */
+
+
+.tribe-datetime-block .tribe-section-content-field {
+    display: flex;
+    gap: var(--sp-medium);
+    flex-wrap: wrap;
+
+    .tribe-change-timezone {
+        width: 100%;
+    }
+
+    .tribe-datetime-separator {
+        display: flex;
+        align-items: center;
+    }
+
+}
+
+.tribe-section-image-uploader,
+.aes {
+    display: none;
+}
+
+/* ============= Jobs only  ============= */
+/* ====================================== */
+
+.edpsybold .category-jobs-admin {
+
+    fieldset .field {
+        flex-direction: column-reverse;
+    }
+
+    fieldset.fieldset-closing_date .field {
+        flex-direction: column;
+    }
+}
+
+
+/* =============== Date pickers =============== */
 
 div#ui-datepicker-div,
 .tribe-events .datepicker {
@@ -234,6 +341,7 @@ ui-datepicker - forms datepicker - jobs and events */
 
 div#ui-datepicker-div {
     width: 395px;
+    max-width: 395px;
 }
 
 .ui-datepicker-group.ui-datepicker-group-middle,
@@ -273,13 +381,16 @@ div#ui-datepicker-div {
 .datepicker th,
 .ui-state-default,
 .ui-widget-content .ui-state-default,
-.ui-widget-header .ui-state-default {
+.ui-widget-header .ui-state-default,
+input[type="checkbox"] {
     border-radius: 0;
     font-size: var(--fs-body-small);
     font-weight: var(--fw-extralight);
     min-width: 48px;
-    min-height: 42px;
+    min-height: 49px;
 }
+
+
 
 .datepicker table tr td.active.active,
 .datepicker table tr td.active.disabled,
@@ -323,9 +434,6 @@ div#ui-datepicker-div {
 .datepicker table tr td span.active[disabled] {
     background-color: var(--cl-purple);
 }
-
-
-
 
 .tribe-events .datepicker .dow,
 .tribe-events .datepicker .datepicker-switch {

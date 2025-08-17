@@ -26,8 +26,10 @@ if (!isset($tribe_event_id)) {
 }
 
 $datepicker_format = Tribe__Date_Utils::get_datepicker_format_index();
+
+
 ?>
-<!-- file: tribe-events/community/edit-event.php -->
+<?php echo '<!-- file: /tribe-events/community/edit-event.php -->'; ?>
 <?php tribe_get_template_part('community/modules/header-links'); ?>
 
 <?php do_action('tribe_events_community_form_before_template', $tribe_event_id); ?>
@@ -54,7 +56,8 @@ $datepicker_format = Tribe__Date_Utils::get_datepicker_format_index();
 
 	<?php tribe_get_template_part('community/modules/image'); ?>
 
-	<!-- <?php tribe_get_template_part('community/modules/taxonomy', null, ['taxonomy' => Tribe__Events__Main::TAXONOMY]); ?> 
+	<!--    <?php tribe_get_template_part('community/modules/taxonomy', null, ['taxonomy' => Tribe__Events__Main::TAXONOMY]); ?> 
+
 	<?php tribe_get_template_part('community/modules/taxonomy', null, ['taxonomy' => 'post_tag']); ?> -->
 
 	<?php
@@ -67,8 +70,8 @@ $datepicker_format = Tribe__Date_Utils::get_datepicker_format_index();
 	 *
 	 * @param int|string $tribe_event_id The Event ID.
 	 */
-	 do_action('tribe_events_community_form_before_linked_posts', $tribe_event_id);
-?>
+	do_action('tribe_events_community_form_before_linked_posts', $tribe_event_id);
+	?>
 
 	<?php tribe_get_template_part('community/modules/venue'); ?>
 
@@ -101,4 +104,3 @@ $datepicker_format = Tribe__Date_Utils::get_datepicker_format_index();
 </form>
 
 <?php do_action('tribe_events_community_form_after_template', $tribe_event_id); ?>
-<!-- file ends: tribe-events/community/edit-event.php -->
