@@ -32,6 +32,7 @@ global $job_manager;
 </div>
 <form action="<?php echo esc_url($action); ?>" method="post" id="submit-job-form" class="job-manager-form"
 	enctype="multipart/form-data">
+	<h2>Account</h2>
 	<div class="form-block">
 
 
@@ -41,7 +42,7 @@ global $job_manager;
 		<?php if (apply_filters('submit_job_form_show_signin', true)): ?>
 
 			<?php get_job_manager_template('account-signin.php'); ?>
-			<div class="home-divider grid12"></div>
+			
 		<?php endif; ?>
 	</div>
 
@@ -59,8 +60,9 @@ global $job_manager;
 
 		<!-- Company Information Fields -->
 		<?php if ($company_fields): ?>
+			<h2><?php esc_html_e('Organisation details', 'wp-job-manager'); ?></h2>
 			<div class="form-block">
-				<h2><?php esc_html_e('Organisation details', 'wp-job-manager'); ?></h2>
+				
 
 				<?php do_action('submit_job_form_company_fields_start'); ?>
 
@@ -77,9 +79,10 @@ global $job_manager;
 				<?php do_action('submit_job_form_company_fields_end'); ?>
 			</div>
 		<?php endif; ?>
-		<div class="home-divider grid12"></div>
+		
+		<h2>Job details</h2>
 		<div class="form-block">
-			<h2>Job details</h2>
+		
 			<?php foreach ($job_fields as $key => $field): ?>
 				<fieldset class="fieldset-<?php echo esc_attr($key); ?> fieldset-type-<?php echo esc_attr($field['type']); ?>">
 					<label
@@ -92,7 +95,7 @@ global $job_manager;
 			<?php do_action('submit_job_form_job_fields_end'); ?>
 		</div>
 
-		<div class="home-divider grid12"></div>
+		
 		<?php do_action('submit_job_form_end'); ?>
 		<p class="wpjm-submit-block">
 			<input type="hidden" name="job_manager_form" value="<?php echo esc_attr($form); ?>" />

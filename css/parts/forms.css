@@ -29,14 +29,20 @@
         }
     }
 
+    h2 {
+        font-size: var(--fs-display-small);
+        color: var(--cl-light);
+        margin-top: var(--sp-xlarge);
+    }
+
     .form-block,
     .tribe-section {
-        margin-top: var(--sp-xlarge);
+        margin-top: var(--sp-small);
     }
 
     fieldset,
     .wpjm-submit-block {
-        margin-top: var(--sp-medium);
+        margin-top: var(--sp-small);
 
         label small {
             font-weight: var(--fw-normal);
@@ -104,7 +110,8 @@
     input[type="email"],
     input#create_account_email,
     input[type="password"],
-    input#company_name {
+    input#company_name,
+    .fieldset-type-term-multiselect .field {
         width: var(--tb-medium);
     }
 
@@ -138,6 +145,8 @@
     input[type="text"].tribe-field-end_time {
         width: var(--tb-xxsmall);
     }
+
+
 
 
     /* help text */
@@ -231,10 +240,22 @@
         outline: 1px solid var(--cl-dark);
     }
 
+    input[type="file"].input-text {
+        font-size: var(--fs-body);
+        font-family: var(--ff);
+    }
 
+    .fieldset-job_description {
+        flex-direction: column;
 
-
+        .field {
+            margin-left: var(--sp-small);
+            width: calc(100% - var(--sp-small));
+        }
+    }
 }
+
+
 
 body#tinymce.mce-content-body {
     background-color: var(--cl-light);
@@ -268,14 +289,35 @@ body#tinymce.mce-content-body {
 /* ============= Jobs only  ============= */
 /* ====================================== */
 
-.edpsybold .category-jobs-admin {
 
-    fieldset .field {
-        flex-direction: column-reverse;
+.edpsybold.edp-jobs.add-job {
+    header[role="banner"] {
+        border-bottom: none;
     }
 
-    fieldset.fieldset-closing_date .field {
-        flex-direction: column;
+    #container.edp-fullwidth {
+        background-color: var(--cl-jobs-primary);
+
+
+
+
+        .category-jobs-admin {
+
+
+
+            .form-block {
+                background-color: var(--cl-light);
+                padding: var(--sp-small) var(--sp-large) var(--sp-large) var(--sp-large);
+            }
+
+            fieldset .field {
+                flex-direction: column-reverse;
+            }
+
+            fieldset.fieldset-closing_date .field {
+                flex-direction: column;
+            }
+        }
     }
 }
 

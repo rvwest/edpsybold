@@ -259,6 +259,12 @@ function add_job_manager_body_classes($classes)
     if (is_singular('job_listing')) { // Check if it's a single job listing
         $classes[] = 'edp-jobs single-job-listing'; // Add a class for single job listings
     }
+    if ( function_exists('job_manager_get_page_id') 
+     && is_page( job_manager_get_page_id( 'submit_job_form' ) ) ) {
+    // We're on the "Post a Job" (submit form) page
+    $classes[] = 'edp-jobs add-job'; // Add a class for single job listings
+}
+    
     return $classes;
 }
 add_filter('body_class', 'add_job_manager_body_classes');

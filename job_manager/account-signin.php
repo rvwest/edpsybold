@@ -18,9 +18,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 <?php echo '<!-- file: /job_manager/account-signin.php -->'; ?>
 <?php if ( is_user_logged_in() ) : ?>
-
+	
 	<div class="fieldset-logged_in">
-		<h2>Your account</h2>
+
 		<div class="field account-sign-in">
 			<?php
 				$user = wp_get_current_user();
@@ -38,13 +38,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	$registration_fields         = wpjm_get_registration_fields();
 	$use_standard_password_email = wpjm_use_standard_password_setup_email();
 	?>
+		
 	<div class="fieldset-login_required">
-	<h2>Account</h2>	
+	
 	<!-- <label><?php esc_html_e( 'Have an account?', 'wp-job-manager' ); ?></label>
-	 -->	<div class="field account-sign-in">
+	 -->	<div class="field account-sign-in"><fieldset>
 		 <p>
 			<a class="button edp-button-solid secondary" href="<?php echo esc_url( apply_filters( 'submit_job_form_login_url', wp_login_url( get_permalink() ) ) ); ?>"><?php esc_html_e( 'Sign in', 'wp-job-manager' ); ?></a>
 </p>
+</fieldset>
 			 <?php if ( $registration_enabled ) : ?>
 
 				<!-- <?php printf( esc_html__( 'If you don\'t have an account you can %screate one below by entering your email address.', 'wp-job-manager' ), $account_required ? '' : esc_html__( 'optionally', 'wp-job-manager' ) . ' ' ); ?> 
@@ -60,7 +62,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<?php endif; ?>
 		</div>
 			</div>
-		<h2>Create account</h2>
+		<h3>Create account</h3>
 		<p>This will let you save drafts, manage your listings once live, and speeds up posting a job in the future. We will not spam you. </p>
 
 <?php
