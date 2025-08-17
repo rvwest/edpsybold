@@ -60,7 +60,7 @@ global $job_manager;
 
 		<!-- Company Information Fields -->
 		<?php if ($company_fields): ?>
-			<h2><?php esc_html_e('Organisation details', 'wp-job-manager'); ?></h2>
+			<h2><?php esc_html_e('Your organisation', 'wp-job-manager'); ?></h2>
 			<div class="form-block">
 				
 
@@ -80,20 +80,41 @@ global $job_manager;
 			</div>
 		<?php endif; ?>
 		
-		<h2>Job details</h2>
-		<div class="form-block">
-		
-			<?php foreach ($job_fields as $key => $field): ?>
-				<fieldset class="fieldset-<?php echo esc_attr($key); ?> fieldset-type-<?php echo esc_attr($field['type']); ?>">
-					<label
-						for="<?php echo esc_attr($key); ?>"><?php echo wp_kses_post($field['label']) . wp_kses_post(apply_filters('submit_job_form_required_label', $field['required'] ? '' : ' <small>' . __('(optional)', 'wp-job-manager') . '</small>', $field)); ?></label>
-					<div class="field <?php echo $field['required'] ? 'required-field' : ''; ?>">
-						<?php get_job_manager_template('form-fields/' . $field['type'] . '-field.php', ['key' => $key, 'field' => $field]); ?>
-					</div>
-				</fieldset>
-			<?php endforeach; ?>
-			<?php do_action('submit_job_form_job_fields_end'); ?>
+		<h2>Job headline</h2>
+<div class="form-block">
+  <?php foreach ( $job_fields as $key => $field ) : 
+        $is_editor = ( isset( $field['type'] ) && 'wp-editor' === $field['type'] );
+        if ( $is_editor ) : ?>
 		</div>
+		<h2><?php echo esc_html__( 'Job description', 'your-textdomain' ); ?></h2>
+		<div class="form-block form-block-job-description" id="form-block-job-description">
+        <?php endif; ?>
+
+        <fieldset class="fieldset-<?php echo esc_attr( $key ); ?> fieldset-type-<?php echo esc_attr( $field['type'] ); ?>">
+          <label for="<?php echo esc_attr( $key ); ?>">
+            <?php
+              echo wp_kses_post( $field['label'] ) .
+                   wp_kses_post(
+                     apply_filters(
+                       'submit_job_form_required_label',
+                       $field['required'] ? '' : ' <small>' . __( '(optional)', 'wp-job-manager' ) . '</small>',
+                       $field
+                     )
+                   );
+            ?>
+          </label>
+          <div class="field <?php echo $field['required'] ? 'required-field' : ''; ?>">
+            <?php get_job_manager_template( 'form-fields/' . $field['type'] . '-field.php', [ 'key' => $key, 'field' => $field ] ); ?>
+          </div>
+        </fieldset>
+
+        <?php if ( $is_editor ) : ?>
+		</div>  <h2>Job details</h2> <div class="form-block">
+        <?php endif; ?>
+  <?php endforeach; ?>
+
+  <?php do_action( 'submit_job_form_job_fields_end' ); ?>
+</div>
 
 		
 		<?php do_action('submit_job_form_end'); ?>

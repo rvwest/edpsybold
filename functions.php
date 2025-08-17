@@ -624,6 +624,16 @@ function custom_job_manager_update_job_listings_message($save_message)
     return ('<i class="far fa-check-circle"></i> Your changes have been saved. <a href="' . esc_url(job_manager_get_permalink('job_dashboard')) . '">Return to your dashboard</a>.');
 }
 
+// Allows direct CSS changes to the job description editor box
+
+add_filter( 'mce_css', function( $mce_css ) {
+    // Optionally limit to the submit job page:
+    if ( function_exists('job_manager_get_page_id') && is_page( job_manager_get_page_id( 'submit_job_form' ) ) ) {
+        $style = get_stylesheet_directory_uri() . '/css/job-editor.css';
+        return $mce_css ? $mce_css . ',' . $style : $style;
+    }
+    return $mce_css;
+});
 
 // ========== Events pages ================================================= //
 

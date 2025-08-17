@@ -1,4 +1,5 @@
-.edpsybold {
+.edpsybold,
+.edpsybold.edp-jobs.add-job #container.edp-fullwidth {
 
 
     .category-jobs-admin,
@@ -111,7 +112,8 @@
     input#create_account_email,
     input[type="password"],
     input#company_name,
-    .fieldset-type-term-multiselect .field {
+    .fieldset-type-term-multiselect .field,
+    .checkbox-pair {
         width: var(--tb-medium);
     }
 
@@ -207,18 +209,56 @@
         outline-offset: 0;
     }
 
+    /* Editor block - job description */
+
     div.mce-panel {
-        background-color: var(--cl-dark-50);
+        background-color: var(--cl-light);
 
-        .mce-toolbar {
+        .mce-toolbar-grp {
+            border-bottom: none;
 
-            .mce-ico {
-                color: var(--cl-light);
+            #mceu_11-body {
+                background-color: var(--cl-dark);
+
+                .mce-toolbar {
+                    background-color: var(--cl-dark);
+
+                    .mce-ico {
+                        color: var(--cl-light);
+                    }
+
+                    .mce-btn-group .mce-btn.mce-listbox {
+                        background-color: var(--cl-light);
+                    }
+
+                    .mce-btn-group .mce-btn:focus,
+                    .mce-btn-group .mce-btn:hover,
+                    .qt-dfw:focus,
+                    .qt-dfw:hover {
+                        background-color: var(--cl-light);
+                        color: var(--cl-dark);
+
+                        .mce-ico {
+                            color: var(--cl-dark);
+                        }
+                    }
+
+                    .mce-btn-group .mce-btn.mce-active,
+                    .mce-btn-group .mce-btn:active,
+                    .qt-dfw.active {
+                        background-color: var(--cl-lightpurple-hover);
+                        color: var(--cl-dark);
+
+                        .mce-ico {
+                            color: var(--cl-dark);
+                        }
+                    }
+                }
             }
+        }
 
-            .mce-btn-group .mce-btn.mce-listbox {
-                background-color: var(--cl-light);
-            }
+        iframe#job_description_ifr {
+            height: 500px !important;
         }
 
 
@@ -238,6 +278,12 @@
     .checkbox-pair {
         display: flex;
         outline: 1px solid var(--cl-dark);
+        align-items: center;
+        padding-left: var(--sp-medium);
+
+        &:hover {
+            background-color: var(--cl-lightpurple-hover);
+        }
     }
 
     input[type="file"].input-text {
@@ -245,22 +291,30 @@
         font-family: var(--ff);
     }
 
-    .fieldset-job_description {
-        flex-direction: column;
+    .form-block.form-block-job-description#form-block-job-description {
+        padding: var(--sp-small-plus);
+        margin-top: var(--sp-small);
 
-        .field {
-            margin-left: var(--sp-small);
-            width: calc(100% - var(--sp-small));
+        fieldset.fieldset-job_description {
+            flex-direction: column;
+            margin-top: 0;
+
+            label {
+                display: none;
+            }
+
+            .field {
+                width: 100%;
+
+            }
+
+
         }
     }
 }
 
 
 
-body#tinymce.mce-content-body {
-    background-color: var(--cl-light);
-    font-family: var(--ff);
-}
 
 /* ========== Add an event =========== */
 

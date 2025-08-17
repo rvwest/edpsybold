@@ -1,0 +1,21 @@
+@font-face {
+    font-family: "Geologica";
+    src: url("../fonts/geologica.ttf") format("truetype");
+    font-weight: 100 900;
+    font-style: normal;
+}
+
+body#tinymce {
+    font-family: "Geologica", sans-serif;
+    background-color: #FFFBF2;
+
+
+    p {
+        font-size: 18px;
+    }
+
+    h3 {
+        font-size: 22px;
+    }
+
+}
