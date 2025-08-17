@@ -57,51 +57,19 @@ if ( isset( $_EventCurrencyPosition ) && 'suffix' === $_EventCurrencyPosition ) 
 	do_action( 'tribe_events_community_section_before_cost' );
 	?>
 
-	<table class="tribe-section-content">
-		<colgroup>
-			<col class="tribe-colgroup tribe-colgroup-label">
-			<col class="tribe-colgroup tribe-colgroup-field">
-		</colgroup>
-
-		<tr class="tribe-section-content-row" style="display: none;">
-			<td class="tribe-section-content-label">
-				<?php tribe_community_events_field_label( 'EventCurrencySymbol', __( 'Currency Symbol:', 'tribe-events-community' ) ); ?>
-			</td>
-			<td class="tribe-section-content-field">
-				<input
-					disabled
-					id="EventCurrencySymbol"
-					name="EventCurrencySymbol"
-					class="<?php tribe_community_events_field_classes( 'EventCurrencySymbol', [ 'event-currency-symbol' ] ); ?>"
-					type="text"
-					size="2"
-					value="<?php echo esc_attr( isset( $_POST['EventCurrencySymbol'] ) ? $_POST['EventCurrencySymbol'] : tribe_community_events_form_currency_symbol() ); ?>"
-				/>
-				<select
-					disabled
-					id="EventCurrencyPosition"
-					name="EventCurrencyPosition"
-					class="<?php tribe_community_events_field_classes( 'EventCurrencyPosition', [ 'event-currency-position', 'tribe-dropdown' ] ); ?>"
-					aria-label="<?php esc_html_e( 'Events Currency Position', 'tribe-events-community' ); ?>"
-				>
-					<option value="prefix"> <?php _ex( 'Before cost', 'Currency symbol position', 'tribe-events-community' ) ?> </option>
-					<option value="suffix"  <?php selected( $suffix, true ); ?>><?php _ex( 'After cost', 'Currency symbol position', 'tribe-events-community' ) ?></option>
-				</select>
-			</td>
-		</tr>
-
-		<tr class="tribe-section-content-row">
-			<td class="tribe-section-content-label">
-				<?php tribe_community_events_field_label( 'EventCost', __( 'Cost:', 'tribe-events-community' ) ); ?>
-			</td>
-			<td class="tribe-section-content-field">
+	<div class="tribe-section-content">
+			<fieldset>		
+				<?php tribe_community_events_field_label( 'EventCost', __( 'Cost', 'tribe-events-community' ) ); ?>
+			
+				<field class="tribe-section-content-field">
 				<input type="text" id="EventCost" name="EventCost" class="cost-input-field" size="6" value="<?php echo esc_attr( isset( $_POST['EventCost'] ) ? $_POST['EventCost'] : tribe_get_cost() ); ?>" />
 				<p>
-					<?php printf( __( 'Leave blank to hide the field. Enter a 0 for %s that are free.', 'tribe-events-community' ), $events_label_plural_lowercase ); ?>
+					eg £30 - £120 <br />
+					Leave blank for events that are free
 				</p>
-			</td>
-		</tr>
-	</table>
+				</field>
+			</fieldset>
+		
 
 	<?php
 	/**

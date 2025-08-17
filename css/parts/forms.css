@@ -44,6 +44,7 @@
         font-size: var(--fs-display-small);
         color: var(--cl-light);
         margin-top: var(--sp-xlarge);
+        margin-bottom: var(--sp-medium);
     }
 
     .form-block,
@@ -57,7 +58,7 @@
         margin-top: var(--sp-small);
 
         label small {
-            font-weight: var(--fw-normal);
+            font-weight: var(--fw-light);
         }
 
     }
@@ -163,7 +164,9 @@
 
 
     /* help text */
-    .tribe-section-content-field p {
+    .tribe-section-content-field p,
+    .tribe-community-event-info p,
+    .tribe-section-content p {
         margin-bottom: 0;
     }
 
@@ -183,6 +186,38 @@
     #tribe-events-pg-template.tribe-events-pg-template {
         background: none;
     }
+
+
+    .divider {
+        margin-top: var(--sp-medium);
+        margin-bottom: var(--sp-medium);
+        overflow: hidden;
+        text-align: center;
+
+    }
+
+    .divider::before,
+    .divider::after {
+        background-color: var(--cl-lightpurple-hover);
+        content: "";
+        display: inline-block;
+        height: 3px;
+        position: relative;
+        vertical-align: middle;
+        width: 50%;
+    }
+
+    .divider::before {
+        right: 0.5em;
+        margin-left: -50%;
+    }
+
+    .divider::after {
+        left: 0.5em;
+        margin-right: -50%;
+    }
+
+
 
     /* Jobs form */
 
@@ -368,6 +403,8 @@
 .aes {
     display: none;
 }
+
+
 
 /* ============= Jobs only  ============= */
 /* ====================================== */

@@ -319,7 +319,10 @@ h2 {
 }
 
 h3,
-fieldset label {
+fieldset label,
+.tribe-section-content label,
+.tribe-events-community-detail label,
+.tribe_community_edit label {
     font-size: var(--fs-title-small);
     font-weight: var(--fw-semibold);
 }

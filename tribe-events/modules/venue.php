@@ -60,15 +60,36 @@ $google_maps_enabled = tribe_get_option( 'embedGoogleMaps', true )
 
 <div class="tribe-community-event-info">
 
+<fieldset>
 
 
+
+
+		
+						<label for="VenueName">
+							Online event
+						</label>
+						
+						
+						<div class="online-event checkbox-pair">
+						<input
+							type="checkbox"
+							id="VenueName"
+							name="venue[Venue]"
+							value="Online"
+						/>
+						<span class="checkbox-label">This is an online event</span></div>
+		
+</fieldset>
+					</div>
+					<div class="divider">or</div>
 
 
 
 <div class="venue">
 
 <label for="VenueName">
-	<?php esc_html_e( 'Venue name', 'tribe-events-community' ); ?>:
+	<?php esc_html_e( 'Venue name', 'tribe-events-community' ); ?>
 </label>
 <input
 	type="text"
@@ -78,27 +99,11 @@ $google_maps_enabled = tribe_get_option( 'embedGoogleMaps', true )
 	value="<?php echo esc_attr( tribe_get_venue() ); ?>"
 />
 </div>
-<p><strong>-- or --</strong></p>
-<div class="venue">
-		
-						<label for="VenueName">
-							<?php esc_html_e( 'This is an online event', 'tribe-events-community' ); ?>:
-						</label>
-						<input
-							type="checkbox"
-							id="VenueName"
-							name="venue[Venue]"
-							value="Online"
-						/>
-		
-					</div>
-			
 
-					<h4>Venue details (if you have them)</h4>
 		<div class="venue">
 
 		<label for="VenueAddress">
-			<?php esc_html_e( 'Address', 'tribe-events-community' ); ?>:
+			<?php esc_html_e( 'Address', 'tribe-events-community' ); ?>
 		</label>
 		<input
 			type="text"
@@ -112,7 +117,7 @@ $google_maps_enabled = tribe_get_option( 'embedGoogleMaps', true )
 	<div class="venue">
 
 		<label for="VenueCity">
-			<?php esc_html_e( 'City', 'tribe-events-community' ); ?>:
+			<?php esc_html_e( 'City', 'tribe-events-community' ); ?>
 		</label>
 		<input
 			type="text"
@@ -126,7 +131,7 @@ $google_maps_enabled = tribe_get_option( 'embedGoogleMaps', true )
 	<?php if ( ! tribe_community_events_single_geo_mode() ) : ?>
 		<div class="venue" style="display:none;">
 			<label for="EventCountry">
-				<?php esc_html_e( 'Country', 'tribe-events-community' ); ?>:
+				<?php esc_html_e( 'Country', 'tribe-events-community' ); ?>
 			</label>
 			<input
 				id="EventCountry"
@@ -139,7 +144,7 @@ $google_maps_enabled = tribe_get_option( 'embedGoogleMaps', true )
 
 		<div class="venue">
 			<label for="StateProvinceText">
-				<?php esc_html_e( 'County', 'tribe-events-community' ); ?>:
+				<?php esc_html_e( 'County', 'tribe-events-community' ); ?>
 			</label>
 			<input
 				id="StateProvinceText"
@@ -168,7 +173,7 @@ $google_maps_enabled = tribe_get_option( 'embedGoogleMaps', true )
 	<div class="venue">
 
 		<label for="EventZip">
-			<?php esc_html_e( 'Postcode', 'tribe-events-community' ); ?>:
+			<?php esc_html_e( 'Postcode', 'tribe-events-community' ); ?>
 		</label>
 		<input
 			type="text"
@@ -183,7 +188,7 @@ $google_maps_enabled = tribe_get_option( 'embedGoogleMaps', true )
 	<div class="venue">
 
 		<label for="EventPhone">
-			<?php esc_html_e( 'Venue phone', 'tribe-events-community' ); ?>:
+			<?php esc_html_e( 'Venue phone', 'tribe-events-community' ); ?>
 		</label>
 		<input
 			type="tel"
@@ -197,7 +202,7 @@ $google_maps_enabled = tribe_get_option( 'embedGoogleMaps', true )
 	<!--<div class="venue">
 
 		<label for="EventWebsite">
-			<?php esc_html_e( 'Website', 'tribe-events-community' ); ?>:
+			<?php esc_html_e( 'Website', 'tribe-events-community' ); ?>
 		</label>
 		<input
 			type="url"
