@@ -41,9 +41,10 @@ global $job_manager;
 		<?php if (apply_filters('submit_job_form_show_signin', true)): ?>
 
 			<?php get_job_manager_template('account-signin.php'); ?>
-
+			<div class="home-divider grid12"></div>
 		<?php endif; ?>
 	</div>
+
 	<?php if (job_manager_user_can_post_job() || job_manager_user_can_edit_job($job_id)): ?>
 
 		<!-- Job Information Fields -->
@@ -55,7 +56,6 @@ global $job_manager;
 		?>
 
 		<?php do_action('submit_job_form_job_fields_start'); ?>
-
 
 		<!-- Company Information Fields -->
 		<?php if ($company_fields): ?>
@@ -77,6 +77,7 @@ global $job_manager;
 				<?php do_action('submit_job_form_company_fields_end'); ?>
 			</div>
 		<?php endif; ?>
+		<div class="home-divider grid12"></div>
 		<div class="form-block">
 			<h2>Job details</h2>
 			<?php foreach ($job_fields as $key => $field): ?>
@@ -91,7 +92,7 @@ global $job_manager;
 			<?php do_action('submit_job_form_job_fields_end'); ?>
 		</div>
 
-
+		<div class="home-divider grid12"></div>
 		<?php do_action('submit_job_form_end'); ?>
 		<p class="wpjm-submit-block">
 			<input type="hidden" name="job_manager_form" value="<?php echo esc_attr($form); ?>" />

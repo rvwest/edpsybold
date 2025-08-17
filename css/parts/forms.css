@@ -1,25 +1,333 @@
-textarea,
-input[type="text"],
-input[type="email"] {
-    font-family: var(--ff);
-    font-size: var(--fs-body);
-    color: var(--cl-dark);
+.edpsybold {
+
+    /*
+    .category-jobs-admin {
+        fieldset {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+
+            label {
+                width: 30%;
+                text-align: right;
+            }
+        }
+    }*/
+
+    .form-block {
+        margin-top: var(--sp-xlarge);
+    }
+
+    fieldset,
+    .wpjm-submit-block {
+        margin-top: var(--sp-medium);
+
+        label small {
+            font-weight: var(--fw-normal);
+        }
+
+    }
+
+    .field {
+        display: flex;
+        flex-direction: column;
+    }
+
+    a:focus,
+    .category-jobs a.button:focus,
+    .wpjm-page input.button:focus,
+    .job-manager-form fieldset input.input-date:focus,
+    .job-manager-form fieldset input.input-text:focus,
+    .job-manager-form fieldset select:focus,
+    .job-manager-form fieldset textarea:focus,
+    .select2-container--default.select2-container--focus .select2-selection--multiple,
+    .job-manager-form input.button:focus,
+    .job-manager-application-wrapper .application .application_button:focus,
+    .single_job_listing .application .application_button:focus,
+    .wpjm-single-job-post a.button:focus,
+    #job_preview a.button:focus,
+    .mc4wp-form-fields input:focus,
+    .StripeElement--focus,
+    input[type=checkbox]:focus {
+        outline: 3px solid var(--cl-lightpurple);
+        outline-offset: 0;
+    }
+
+
+    textarea,
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+        font-family: var(--ff);
+        font-size: var(--fs-body);
+        color: var(--cl-dark);
+        background-color: var(--cl-light);
+        border: 1px solid var(--cl-dark);
+        padding: var(--sp-small);
+        margin: var(--sp-xsmall) 0;
+        width: 100%;
+    }
+
+    .checkbox-pair {
+        display: flex;
+        outline: 1px solid var(--cl-dark);
+    }
+
+
+    /* Field widths */
+
+
+
+    input[type="text"],
+    input[type="email"],
+    input#create_account_email,
+    input[type="password"],
+    input#company_name {
+        max-width: var(--tb-medium);
+    }
+
+    input[type="closing_date"] {
+        max-width: var(--tb-small);
+    }
+
+    input[type="text"]#company_website,
+    input[type="text"]#application {
+        max-width: var(--tb-large);
+    }
+
+
+
+
+
+
+    .signup-content form {
+        width: 40%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+
+    /* Community events form */
+
+    #tribe-events-pg-template.tribe-events-pg-template {
+        background: none;
+    }
+
+    /* Jobs form */
+
+    .select2-container--default .select2-selection--multiple {
+        font-family: var(--ff);
+        font-size: var(--fs-body);
+        color: var(--cl-dark);
+        background-color: var(--cl-light);
+        border: 1px solid var(--cl-dark);
+        padding: var(--sp-xsmall);
+        margin: var(--sp-xsmall) 0;
+        width: 100%;
+        border-radius: 0;
+
+        input::placeholder {
+            font-family: var(--ff);
+        }
+
+        .select2-selection__choice {
+            background-color: var(--cl-dark);
+            border-color: var(--cl-dark);
+            color: var(--cl-light);
+
+
+            .select2-selection__choice__remove {
+                margin-right: var(--sp-xxsmall);
+                color: var(--cl-light);
+            }
+
+        }
+    }
+
+    .select2-container--default.select2-container--focus .select2-selection--multiple {
+        outline: 3px solid var(--cl-lightpurple);
+        outline-offset: 0;
+    }
+
+    div.mce-panel {
+        background-color: var(--cl-dark-50);
+
+        .mce-toolbar {
+
+            .mce-ico {
+                color: var(--cl-light);
+            }
+
+            .mce-btn-group .mce-btn.mce-listbox {
+                background-color: var(--cl-light);
+            }
+        }
+
+
+    }
+
+
+
+}
+
+body#tinymce.mce-content-body {
     background-color: var(--cl-light);
-    border: 1px solid var(--cl-dark);
-    padding: var(--sp-small);
-    margin: var(--sp-xsmall) 0;
+    font-family: var(--ff);
+}
+
+div#ui-datepicker-div,
+.tribe-events .datepicker {
+    background-color: var(--cl-light);
+    font-family: var(--ff);
+
+    border: 3px solid var(--cl-purple);
+    padding: 0 var(--sp-small-plus) var(--sp-small-plus) var(--sp-small-plus);
+
+    .ui-datepicker-group {
+        background-color: var(--cl-light);
+    }
+
+    .ui-datepicker-prev,
+    .ui-datepicker-next {
+        display: none;
+    }
+
+    table {
+        font-size: var(--fs-body-small);
+    }
+
+    .ui-state-default,
+    .ui-widget-content .ui-state-default,
+    .ui-widget-header .ui-state-default {
+        background-image: none;
+        border: none;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    .ui-datepicker-calendar td a:link,
+    .ui-datepicker-calendar td a:visited {
+        background-color: var(--cl-light);
+    }
+
+    table tr td.day.focused,
+    table tr td.day:hover,
+    .ui-datepicker-calendar td a:hover {
+        background-color: var(--cl-lightpurple-hover);
+    }
+
+
+}
+
+/* .datepicker - events listing page
+ui-datepicker - forms datepicker - jobs and events */
+
+.tribe-events .datepicker table {
+    width: 100%;
+
+}
+
+/* Changing the three col datepicker to one */
+
+div#ui-datepicker-div {
+    width: 395px;
+}
+
+.ui-datepicker-group.ui-datepicker-group-middle,
+.ui-datepicker-group.ui-datepicker-group-last {
+    display: none;
+}
+
+.ui-datepicker-multi-3 .ui-datepicker-group.ui-datepicker-group-first {
     width: 100%;
 }
 
-.signup-content form {
-    width: 40%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
+.edpsybold .ui-widget-content {
+    background-color: var(--cl-light);
+    background-image: none;
 }
 
-/* Community events form */
-
-#tribe-events-pg-template.tribe-events-pg-template {
+.edpsybold .ui-widget-header {
+    border: none;
     background: none;
+}
+
+
+
+
+
+.datepicker.dropdown-menu,
+div#ui-datepicker-div {
+    background-color: var(--cl-light);
+    border: 5px solid var(--cl-purple);
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+}
+
+
+.datepicker table tr td span,
+.datepicker td,
+.datepicker th,
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default {
+    border-radius: 0;
+    font-size: var(--fs-body-small);
+    font-weight: var(--fw-extralight);
+    min-width: 48px;
+    min-height: 42px;
+}
+
+.datepicker table tr td.active.active,
+.datepicker table tr td.active.disabled,
+.datepicker table tr td.active.disabled.active,
+.datepicker table tr td.active.disabled.disabled,
+.datepicker table tr td.active.disabled:active,
+.datepicker table tr td.active.disabled:hover,
+.datepicker table tr td.active.disabled:hover.active,
+.datepicker table tr td.active.disabled:hover.disabled,
+.datepicker table tr td.active.disabled:hover:active,
+.datepicker table tr td.active.disabled:hover:hover,
+.datepicker table tr td.active.disabled:hover[disabled],
+.datepicker table tr td.active.disabled[disabled],
+.datepicker table tr td.active:active,
+.datepicker table tr td.active:hover,
+.datepicker table tr td.active:hover.active,
+.datepicker table tr td.active:hover.disabled,
+.datepicker table tr td.active:hover:active,
+.datepicker table tr td.active:hover:hover,
+.datepicker table tr td.active:hover[disabled],
+.datepicker table tr td.active[disabled],
+.datepicker table tr td span.active.active,
+.datepicker table tr td span.active.disabled,
+.datepicker table tr td span.active.disabled.active,
+.datepicker table tr td span.active.disabled.disabled,
+.datepicker table tr td span.active.disabled:active,
+.datepicker table tr td span.active.disabled:hover,
+.datepicker table tr td span.active.disabled:hover.active,
+.datepicker table tr td span.active.disabled:hover.disabled,
+.datepicker table tr td span.active.disabled:hover:active,
+.datepicker table tr td span.active.disabled:hover:hover,
+.datepicker table tr td span.active.disabled:hover[disabled],
+.datepicker table tr td span.active.disabled[disabled],
+.datepicker table tr td span.active:active,
+.datepicker table tr td span.active:hover,
+.datepicker table tr td span.active:hover.active,
+.datepicker table tr td span.active:hover.disabled,
+.datepicker table tr td span.active:hover:active,
+.datepicker table tr td span.active:hover:hover,
+.datepicker table tr td span.active:hover[disabled],
+.datepicker table tr td span.active[disabled] {
+    background-color: var(--cl-purple);
+}
+
+
+
+
+.tribe-events .datepicker .dow,
+.tribe-events .datepicker .datepicker-switch {
+    font-weight: var(--fw-semibold);
 }

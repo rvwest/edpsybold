@@ -11,7 +11,9 @@ select[disabled]>option {
 
 a.button.edp-button-solid,
 button.edp-button-solid,
-input[type="submit"] {
+input[type="submit"],
+input[type="button"],
+input[type="file"]::file-selector-button {
     font-size: var(--fs-body);
     color: var(--cl-light);
     background-color: var(--cl-dark);

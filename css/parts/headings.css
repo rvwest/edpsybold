@@ -318,7 +318,8 @@ h2 {
 
 }
 
-h3 {
+h3,
+fieldset label {
     font-size: var(--fs-title-small);
     font-weight: var(--fw-semibold);
 }

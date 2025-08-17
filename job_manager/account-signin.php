@@ -43,7 +43,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<!-- <label><?php esc_html_e( 'Have an account?', 'wp-job-manager' ); ?></label>
 	 -->	<div class="field account-sign-in">
 		 <p>
-			<a class="button secondary" href="<?php echo esc_url( apply_filters( 'submit_job_form_login_url', wp_login_url( get_permalink() ) ) ); ?>"><?php esc_html_e( 'Sign in', 'wp-job-manager' ); ?></a>
+			<a class="button edp-button-solid secondary" href="<?php echo esc_url( apply_filters( 'submit_job_form_login_url', wp_login_url( get_permalink() ) ) ); ?>"><?php esc_html_e( 'Sign in', 'wp-job-manager' ); ?></a>
 </p>
 			 <?php if ( $registration_enabled ) : ?>
 

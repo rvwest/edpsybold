@@ -49,16 +49,7 @@
         }
     }
 
-    .home-divider {
-        height: 75px;
-        width: 100%;
-        background-image: url(../../images/edpsy-swirls-21.svg);
-        background-size: cover;
-        background-position: center;
 
-
-
-    }
 
     /*  ===== Articles ========================= */
     .article-grid {
@@ -254,5 +245,16 @@
         }
 
     }
+
+}
+
+.home-divider {
+    height: 75px;
+    width: 100%;
+    background-image: url(../../images/edpsy-swirls-21.svg);
+    background-size: cover;
+    background-position: center;
+
+
 
 }

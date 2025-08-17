@@ -16,7 +16,9 @@ article.type-wpbdp_listing {
     .entry-content,
     .job_description,
     .tribe-events-content,
-    .edp-thesis-abstract {
+    .edp-thesis-abstract,
+    .category-jobs-admin,
+    fieldset.fieldset-cap_declaration {
 
         ul {
             margin-left: var(--sp-medium);

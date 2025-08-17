@@ -37,6 +37,7 @@
     --sp-xxsmall: 3px;
     --sp-xsmall: 6px;
     --sp-small: 12px;
+    --sp-small-plus: 18px;
     --sp-medium: 24px;
     --sp-large: 36px;
     --sp-xlarge: 48px;
@@ -48,6 +49,11 @@
 
     /* Radius */
     --rd-small: 6px;
+
+    /* Text box sizes */
+    --tb-small: 240px;
+    --tb-medium: 386px;
+    --tb-large: 520px;
 
     /* Layout variable */
     --lv-full-width: 1248px;

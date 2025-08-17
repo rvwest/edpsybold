@@ -199,72 +199,7 @@
 
 
     /* == Date picker interface ====================== */
-
-    .tribe-events .datepicker table {
-        width: 100%;
-
-    }
-
-    .datepicker.dropdown-menu {
-        background-color: var(--cl-light);
-        border: 5px solid var(--cl-purple);
-        border-radius: 5px;
-    }
-
-
-    .datepicker table tr td span,
-    .datepicker td,
-    .datepicker th {
-        border-radius: 0;
-    }
-
-    .datepicker table tr td.active.active,
-    .datepicker table tr td.active.disabled,
-    .datepicker table tr td.active.disabled.active,
-    .datepicker table tr td.active.disabled.disabled,
-    .datepicker table tr td.active.disabled:active,
-    .datepicker table tr td.active.disabled:hover,
-    .datepicker table tr td.active.disabled:hover.active,
-    .datepicker table tr td.active.disabled:hover.disabled,
-    .datepicker table tr td.active.disabled:hover:active,
-    .datepicker table tr td.active.disabled:hover:hover,
-    .datepicker table tr td.active.disabled:hover[disabled],
-    .datepicker table tr td.active.disabled[disabled],
-    .datepicker table tr td.active:active,
-    .datepicker table tr td.active:hover,
-    .datepicker table tr td.active:hover.active,
-    .datepicker table tr td.active:hover.disabled,
-    .datepicker table tr td.active:hover:active,
-    .datepicker table tr td.active:hover:hover,
-    .datepicker table tr td.active:hover[disabled],
-    .datepicker table tr td.active[disabled],
-    .datepicker table tr td span.active.active,
-    .datepicker table tr td span.active.disabled,
-    .datepicker table tr td span.active.disabled.active,
-    .datepicker table tr td span.active.disabled.disabled,
-    .datepicker table tr td span.active.disabled:active,
-    .datepicker table tr td span.active.disabled:hover,
-    .datepicker table tr td span.active.disabled:hover.active,
-    .datepicker table tr td span.active.disabled:hover.disabled,
-    .datepicker table tr td span.active.disabled:hover:active,
-    .datepicker table tr td span.active.disabled:hover:hover,
-    .datepicker table tr td span.active.disabled:hover[disabled],
-    .datepicker table tr td span.active.disabled[disabled],
-    .datepicker table tr td span.active:active,
-    .datepicker table tr td span.active:hover,
-    .datepicker table tr td span.active:hover.active,
-    .datepicker table tr td span.active:hover.disabled,
-    .datepicker table tr td span.active:hover:active,
-    .datepicker table tr td span.active:hover:hover,
-    .datepicker table tr td span.active:hover[disabled],
-    .datepicker table tr td span.active[disabled] {
-        background-color: var(--cl-purple);
-    }
-
-    .tribe-events .datepicker .dow,
-    .tribe-events .datepicker .datepicker-switch {
-        font-weight: var(--fw-semibold);
-    }
+    /* See forms.css */
 
     /* === Calendar view === */
 
