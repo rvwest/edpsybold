@@ -552,14 +552,14 @@ function custom_submit_job_form_fields($fields)
         'data_type' => 'string',
         'required' => false,
         'priority' => 8,
-        'description' => "eg " . date('j F Y', strtotime('+45 days')),
+        'description' => "eg " . date('j F', strtotime('+45 days')) . " - " . date('j F Y', strtotime('+47 days')),
         'sanitize_callback' => [__CLASS__, 'sanitize_text_field'],
     );
     $fields['job']['cap_declaration'] = array(
         'label' => __('Declaration', 'job_manager'),
         'type' => 'checkbox',
         'required' => true,
-        'placeholder' => 'I confirm this to be true',
+        'placeholder' => 'I confirm this',
         'priority' => 9,
         'description' => __('<p>We follow the <a href="https://www.asa.org.uk/type/non_broadcast/code_section/20.html">CAP Code for employment advertisements</a>. Please confirm:</p><ul><li>This is a genuine employment opportunity</li><li>All details provided are comprehensive and accurate</li><li>You are acting directly for the employer, and not an employment agency</li><li>Your organisation is not in dispute with the <abbr title="Association of Educational Psychologists">AEP</abbr></li></ul>', 'wp-job-manager'),
     );

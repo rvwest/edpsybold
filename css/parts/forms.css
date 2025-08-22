@@ -248,6 +248,19 @@
             }
 
         }
+
+
+
+    }
+
+    .wpjm-submit-block {
+        display: flex;
+        justify-content: end;
+        gap: var(--sp-home-gap);
+
+        span.spinner {
+            display: none;
+        }
     }
 
     .select2-container--default.select2-container--focus .select2-selection--multiple {

@@ -35,10 +35,12 @@ input[type="file"]::file-selector-button {
 }
 
 a.button.edp-button-outline,
-button.edp-button-outline {
+button.edp-button-outline,
+input[type="submit"].button.secondary {
     font-size: var(--fs-body);
     color: var(--cl-dark);
     background-color: none;
+    background: none;
     border: 1px solid var(--cl-dark);
     padding: var(--sp-xsmall) var(--sp-small);
     margin: var(--sp-xsmall) 0;
