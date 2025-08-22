@@ -9,7 +9,7 @@
             </div>
             <form action="https://edpsychjobs.us7.list-manage.com/subscribe/post?u=">
                 <input type="text" id="name" name="name" placeholder="full name" required>
-                <br>
+              
                 <input type="email" id="email" name="email" placeholder="email" required>
                 <br>
 
