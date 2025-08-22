@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 */
 	do_action( 'preview_job_form_start' );
 	?>
-	<p class="job-post-promo"><i class="far fa-briefcase"></i> £400 for a 30-day listing + mailout and social promos</p>
+	
 
 	<div class="progressbar-container job-preview">
 <ul class="progressbar">
@@ -36,7 +36,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 </div>
 
-	<div class="job_listing_preview single-job_listing">
+	<div class="job_listing_preview edp-jobs single-job_listing">
+		<article class="type-job_listing">
 	<div class="clear"></div>
 	<?php $logo = get_the_company_logo( $post, $size ); ?>
 <?php if ( has_post_thumbnail( $post ) ) :?>
@@ -60,6 +61,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<input type="hidden" name="step" value="<?php echo esc_attr( $form->get_step() ); ?>" />
 		<input type="hidden" name="job_manager_form" value="<?php echo esc_attr( $form->get_form_name() ); ?>" />
 	</div>
+		</article>
 <div class="preview-actions">
 		<input type="submit" name="edit_job" class="button secondary job-manager-button-edit-listing" value="<?php esc_attr_e( 'Edit Job', 'wp-job-manager' ); ?>" />
 		<input type="submit" name="continue" id="job_preview_submit_button" class="button job-manager-button-submit-listing" value="<?php echo esc_attr( apply_filters( 'submit_job_step_preview_submit_text', __( 'Pay and post job', 'wp-job-manager' ) ) ); ?>" />

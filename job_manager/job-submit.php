@@ -30,7 +30,7 @@ global $job_manager;
 <form action="<?php echo esc_url($action); ?>" method="post" id="submit-job-form" class="job-manager-form"
 	enctype="multipart/form-data">
 	<h2>Account</h2>
-	<div class="form-block">
+	<div class="form-block edpjobs-signin">
 
 
 

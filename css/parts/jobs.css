@@ -148,11 +148,51 @@
         }
 
     }
+}
 
 
 
-    /* ==== Admin area ==================================== */
+/* ==== Admin area ==================================== */
 
-    .wpbdp-notice.wpbdp-upgrade-bar.wpbdp-inline-notice {
-        display: none;
+.wpbdp-notice.wpbdp-upgrade-bar.wpbdp-inline-notice {
+    display: none;
+}
+
+.edpsybold.edp-jobs.add-job #container.edp-fullwidth {
+
+    .form-block.edpjobs-signin {
+        display: flex;
+        padding-bottom: var(--sp-small);
+
     }
+
+    .fieldset-logged_in {
+        padding-left: var(--sp-small);
+        padding-right: var(--sp-medium);
+        width: 100%;
+
+        .field.account-sign-in {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        p.signout-button {
+            margin: 0;
+        }
+    }
+
+    .signin-text {
+        padding-top: var(--sp-medium);
+    }
+
+    .job-manager-uploaded-files {
+        margin: var(--sp-medium) 0;
+
+        .job-manager-uploaded-file-preview {
+            display: flex;
+            gap: var(--sp-small);
+            align-items: flex-end;
+        }
+    }
+}

@@ -24,11 +24,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<div class="field account-sign-in">
 			<?php
 				$user = wp_get_current_user();
-				printf( wp_kses_post( __( '<p class="signin-text">You are currently signed in as <strong>%s</strong>. To view your drafts go to your <a href="' . esc_url( job_manager_get_permalink( 'job_dashboard' )) . '">job dashboard</a>.</p>
+				printf( wp_kses_post( __( '<p class="signin-text">You are currently signed in as <strong>%s</strong>.<br/>To view your drafts go to your <a href="' . esc_url( job_manager_get_permalink( 'job_dashboard' )) . '">job dashboard</a>.</p>
 				', 'wp-job-manager' ) ), esc_html( $user->user_email ) );
 			?>
 
-			<p><a class="button secondary" href="<?php echo esc_url( apply_filters( 'submit_job_form_logout_url', wp_logout_url( get_permalink() ) ) ); ?>"><?php esc_html_e( 'Sign out', 'wp-job-manager' ); ?></a></p>
+			<p class="signout-button"><a class="button secondary edp-button-outline" href="<?php echo esc_url( apply_filters( 'submit_job_form_logout_url', wp_logout_url( get_permalink() ) ) ); ?>"><?php esc_html_e( 'Sign out', 'wp-job-manager' ); ?></a></p>
 		</div>
 </div>
 
@@ -62,7 +62,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<?php endif; ?>
 		</div>
 			</div>
-		<h3>Create account</h3>
+		
+		<div class="edp-jobs-createaccount">	<h3>Create account</h3>
 		<p>This will let you save drafts, manage your listings once live, and speeds up posting a job in the future. We will not spam you. </p>
 
 <?php
@@ -83,5 +84,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 		do_action( 'job_manager_register_form' );
 	}
 	?>
+	</div>
 <?php endif; ?>
 <?php echo '<!-- file end: /job_manager/account-signin.php -->'; ?>
