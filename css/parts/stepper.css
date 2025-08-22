@@ -5,7 +5,7 @@
 
         .progressbar-container {
             width: 100%;
-            margin: var(--sp-large) 0 var(--sp-xxlarge) 0;
+            margin: var(--sp-large) 0 var(--sp-xxxlarge) 0;
             min-height: 4rem;
             /*background-image: url(../../images/edpsy-swirls-21.svg);*/
         }
@@ -14,6 +14,7 @@
             counter-reset: step;
             position: relative;
             overflow: visible;
+            isolation: isolate;
         }
 
         .progressbar li {
@@ -25,7 +26,6 @@
             text-align: center;
             font-weight: 600;
             font-size: var(--fs-title-small);
-            z-index: 1;
         }
 
         .progressbar li:before {
@@ -44,7 +44,7 @@
             color: var(--cl-light);
             font-size: var(--fs-title-medium);
             position: relative;
-            z-index: 2;
+            z-index: 1;
         }
 
         .progressbar li:after {
@@ -56,7 +56,7 @@
             background-color: var(--cl-light);
             top: 29px;
             left: -50%;
-            z-index: 1;
+            z-index: -1;
         }
 
         .progressbar li:first-child:after {
