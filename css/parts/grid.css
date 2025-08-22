@@ -322,7 +322,8 @@ body.single-post {
 /* Single listing page - job ad page / events page / Thesis page*/
 .single-tribe_events,
 .single-job-listing,
-.single-wpbdp_listing {
+.single-wpbdp_listing,
+.job_listing_preview {
 
     article.tribe-events-single,
     article.type-job_listing,

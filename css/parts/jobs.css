@@ -150,6 +150,20 @@
     }
 }
 
+/* ==== Preview ====== */
+
+.edpsybold.edp-jobs.add-job #container.edp-fullwidth .job_listing_preview article.type-job_listing {
+    background-color: var(--cl-light);
+    border: solid 3px var(--cl-dark);
+    padding-bottom: var(--sp-large);
+
+    h2 {
+        color: var(--cl-dark);
+        font-size: var(--fs-title-medium);
+        margin: 0;
+    }
+
+}
 
 
 /* ==== Admin area ==================================== */
@@ -158,12 +172,22 @@
     display: none;
 }
 
+
+/* ==== Post job ==================================== */
+
+
 .edpsybold.edp-jobs.add-job #container.edp-fullwidth {
 
     .form-block.edpjobs-signin {
         display: flex;
         padding-bottom: var(--sp-small);
+        margin-bottom: var(--sp-medium);
+    }
 
+    p.new-job-warning,
+    div.job-manager-error {
+        background-color: var(--cl-light);
+        padding: var(--sp-large) var(--sp-large) var(--sp-large) var(--sp-xlarge);
     }
 
     .fieldset-logged_in {

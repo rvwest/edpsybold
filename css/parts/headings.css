@@ -21,6 +21,7 @@
 
 }
 
+
 @media only screen and (max-width: 600px) {
 
     .job-listings-page article header,
@@ -312,25 +313,26 @@ body:not(.home),
 }
 
 /* == Other headings ============== */
-
-h2 {
-    font-size: var(--fs-title-medium);
-    font-weight: var(--fw-semibold);
-    line-height: var(--lh-title-medium);
-
-}
-
-h3,
-fieldset label,
-.tribe-section-content label,
-.tribe-events-community-detail label,
-.tribe_community_edit label {
-    font-size: var(--fs-title-small);
-    font-weight: var(--fw-semibold);
-}
-
-@media only screen and (max-width: 600px) {
+body:not(.wp-admin) {
     h2 {
+        font-size: var(--fs-title-medium);
+        font-weight: var(--fw-semibold);
+        line-height: var(--lh-title-medium);
+
+    }
+
+    h3,
+    fieldset label,
+    .tribe-section-content label,
+    .tribe-events-community-detail label,
+    .tribe_community_edit label {
         font-size: var(--fs-title-small);
+        font-weight: var(--fw-semibold);
+    }
+
+    @media only screen and (max-width: 600px) {
+        h2 {
+            font-size: var(--fs-title-small);
+        }
     }
 }

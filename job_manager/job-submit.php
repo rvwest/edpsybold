@@ -49,7 +49,7 @@ global $job_manager;
 
 		<?php
 		if (isset($resume_edit) && $resume_edit) {
-			printf('<p class="new-job-warning" ><strong><i class="far fa-exclamation-triangle"></i> ' . esc_html__("You about to edit an existing job. %s", 'wp-job-manager') . '</strong></p>', '<a href="?new=1&key=' . esc_attr($resume_edit) . '">' . esc_html__('Create a new job', 'wp-job-manager') . '</a>');
+			printf('<p class="new-job-warning" ><strong><i class="far fa-exclamation-triangle"></i> ' . esc_html__("You about to edit an existing job. If this isn't what you planned - %s", 'wp-job-manager') . '</strong></p>', '<a href="?new=1&key=' . esc_attr($resume_edit) . '">' . esc_html__('Create a new job', 'wp-job-manager') . '</a>');
 		}
 		?>
 

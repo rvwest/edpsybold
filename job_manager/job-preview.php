@@ -37,35 +37,120 @@ if ( ! defined( 'ABSPATH' ) ) {
 </div>
 
 	<div class="job_listing_preview edp-jobs single-job_listing">
-		<article class="type-job_listing">
-	<div class="clear"></div>
-	<?php $logo = get_the_company_logo( $post, $size ); ?>
-<?php if ( has_post_thumbnail( $post ) ) :?>
-	<?php the_company_logo(); ?>
-<?php endif; ?>
-		<h1 class="title "><?php the_title(); ?></h1>
-<h2 class="name">
+	
+
+	<article id="post-<?php the_ID(); ?>" <?php post_class('grid12'); ?>>
+
+<header>
+	<div class="job-company">
+		<h1 class="entry-title" itemprop="headline">
+			<?php the_title(); ?>
+		</h1>
+		<div class="company">
 		<?php if ( $website = get_the_company_website() ) : ?>
-			<a class="company-name" target="_blank" href="<?php echo esc_url( $website ); ?>"><?php the_company_name( ); ?></a>
-		<?php else : ?>
-			<?php the_company_name( ); ?> 
-		<?php endif; ?>
-		</h2>
-
-
-		<?php get_job_manager_template_part( 'content-single', 'job_listing' ); ?>
+<a class="company-name" href="<?php echo esc_url( $website ); ?>"><?php the_company_name( ); ?></a>
+<?php else : ?>
+<?php the_company_name( ); ?> 
+<?php endif; ?>
 		
-			<?php get_job_manager_template( 'job-application.php' ); ?>
+
+		</div>
+	</div>
+	<div class="job-listing-logo"><?php the_company_logo(); ?></div>
+</header>
+
+
+
+<div class="meta-slice">
+	<div class="meta-img-l"></div>
+	<div class="job-listing-meta">
+		<!-- <span class="location"></span> -->
+		<?php do_action('job_listing_meta_start'); ?>
+		<div class="meta-item">
+			<div class="label">Location</div>
+			<div class="detail location"><?php the_job_location(); ?></div>
+		</div>
+		<div class="meta-item">
+			<div class="label">Salary</div>
+			<div class="detail salary"><?php gma_wpjmef_display_combined_data_listings(); ?></div>
+		</div>
+
+		<?php if (get_option('job_manager_enable_types')) { ?>
+			<div class="meta-item">
+				<div class="label">Contract</div>
+				<div class="detail contract"> <?php $types = wpjm_get_the_job_types(); ?>
+					<?php if (!empty($types)):
+						foreach ($types as $type): ?>
+							<span
+								class="job-type <?php echo esc_attr(sanitize_title($type->slug)); ?>"><?php echo esc_html($type->name); ?></span>
+						<?php endforeach; endif; ?>
+				</div>
+			</div>
+
+		<?php } ?>
+
+		<?php if ($closing) { ?>
+			<div class="meta-item">
+				<div class="label">Closing date</div>
+				<div class="detail closing-date"><?php echo date("j F Y", strtotime($closing)) ?></div>
+			</div>
+		<?php } ?>
+
+		<?php if ($interview) { ?>
+			<div class="meta-item">
+				<div class="label">Interview date</div>
+				<div class="detail closing-date"><?php echo $interview ?></div>
+			</div>
+		<?php } ?>
+
+
+
+
+		<?php do_action('job_listing_meta_end'); ?>
+	</div>
+	<div class="meta-img-r"></div>
+</div>
+
+<?php if (get_option('job_manager_hide_expired_content', 1) && 'expired' === $post->post_status): ?>
+	<div class="job-manager-info"><?php _e('This listing has expired.', 'wp-job-manager'); ?></div>
+<?php else: ?>
+	<div class="job_description">
+		<?php wpjm_the_job_description(); ?>
+	</div>
+
+
+	<?php get_job_manager_template( 'job-application.php' ); ?>
+
+<?php endif; ?>
+
+
+
+
+
+
+
+
+
+
+	
+	
 		
 		<input type="hidden" name="job_id" value="<?php echo esc_attr( $form->get_job_id() ); ?>" />
 		<input type="hidden" name="step" value="<?php echo esc_attr( $form->get_step() ); ?>" />
 		<input type="hidden" name="job_manager_form" value="<?php echo esc_attr( $form->get_form_name() ); ?>" />
 	</div>
-		</article>
-<div class="preview-actions">
-		<input type="submit" name="edit_job" class="button secondary job-manager-button-edit-listing" value="<?php esc_attr_e( 'Edit Job', 'wp-job-manager' ); ?>" />
-		<input type="submit" name="continue" id="job_preview_submit_button" class="button job-manager-button-submit-listing" value="<?php echo esc_attr( apply_filters( 'submit_job_step_preview_submit_text', __( 'Pay and post job', 'wp-job-manager' ) ) ); ?>" />
-		</div>
+	
+<div class="preview-actions wpjm-submit-block">
+		
+	
+		<button type="submit" name="edit_job" value="1" class="button edp-button-outline">
+  <i class="fas fa-arrow-left" aria-hidden="true"> Edit job</i>
+</button>
+		
+		<button type="submit" name="continue" value="1" id="job_preview_submit_button" class="button edp-button-solid">
+  Pay for listing <i class="fas fa-arrow-right" aria-hidden="true"></i>
+</button>
+
 	<?php
 	/**
 	 * Fires at the bottom of the preview job form.
@@ -75,4 +160,5 @@ if ( ! defined( 'ABSPATH' ) ) {
 	do_action( 'preview_job_form_end' );
 	?>
 </form>
+</article>
 <!-- file end: /job_manager/job-dashboard.php -->
