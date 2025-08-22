@@ -72,6 +72,8 @@
             <div id="container">
                 <main id="content" role="main" class="fullwidth">
 
+                
+
                 <?php elseif (is_singular('post')): ?>
                     <!-- var: single blog page -->
                     <div class="backblock edp-fullwidth">

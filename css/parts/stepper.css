@@ -1,0 +1,81 @@
+@import url('variables.css');
+
+.edp-jobs.add-job.edpsybold {
+    article.category-jobs-admin {
+
+        .progressbar-container {
+            width: 100%;
+            margin: var(--sp-large) 0 var(--sp-xxlarge) 0;
+            min-height: 4rem;
+            /*background-image: url(../../images/edpsy-swirls-21.svg);*/
+        }
+
+        .progressbar {
+            counter-reset: step;
+            position: relative;
+            overflow: visible;
+        }
+
+        .progressbar li {
+            list-style-type: none;
+            float: left;
+            width: 33.33%;
+            margin-left: 0;
+            position: relative;
+            text-align: center;
+            font-weight: 600;
+            font-size: var(--fs-title-small);
+            z-index: 1;
+        }
+
+        .progressbar li:before {
+            /* CSS for creating steper block before the li item*/
+            content: counter(step);
+            counter-increment: step;
+            height: 50px;
+            width: 50px;
+            line-height: 50px;
+            border: 4px solid var(--cl-light);
+            display: block;
+            text-align: center;
+            margin: 0 auto 10px auto;
+            border-radius: 50%;
+            background-color: var(--cl-jobs-primary);
+            color: var(--cl-light);
+            font-size: var(--fs-title-medium);
+            position: relative;
+            z-index: 2;
+        }
+
+        .progressbar li:after {
+            /* CSS for creating horizontal line*/
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 4px;
+            background-color: var(--cl-light);
+            top: 29px;
+            left: -50%;
+            z-index: 1;
+        }
+
+        .progressbar li:first-child:after {
+            content: none;
+        }
+
+        .progressbar li {
+            color: var(--cl-light);
+        }
+
+        .progressbar li.active:before {
+            border-color: var(--cl-light);
+            background-color: var(--cl-light);
+            color: var(--cl-jobs-primary);
+        }
+
+        .progressbar li.active+li:after {
+            background-color: var(--cl-light);
+            background-image: var(--cl-light);
+        }
+    }
+}

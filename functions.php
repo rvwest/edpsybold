@@ -463,25 +463,41 @@ add_shortcode('jobs-homepage', 'wpjm_jobs_homepage_shortcode');
 // ========== Page promos ================================================= //
 // ======================================================================== //
 
-function get_page_promo()
-{
+function get_page_promo() {
     $promos = include get_template_directory() . '/promo-config.php';
 
     if (is_page()) {
-        $slug = get_post_field('post_name', get_post());
+        $post = get_post();
+        if (!$post) return;
+
+        $slug       = $post->post_name;              // current page slug
+        $parent     = $post->post_parent ? get_post_field('post_name', $post->post_parent) : '';
+        $combined   = $parent ? $parent . '/' . $slug : $slug;
+
+        // Priority: parent/child key → slug only → ID
+        if (isset($promos[$combined])) {
+            echo '<div class="page-promo">' . $promos[$combined] . '</div>';
+            return;
+        }
         if (isset($promos[$slug])) {
             echo '<div class="page-promo">' . $promos[$slug] . '</div>';
+            return;
+        }
+        if (isset($promos[(string) $post->ID])) {
+            echo '<div class="page-promo">' . $promos[(string) $post->ID] . '</div>';
+            return;
         }
     } elseif (is_category()) {
         $category = get_queried_object();
         if ($category && isset($promos[$category->slug])) {
             echo '<div class="page-promo">' . $promos[$category->slug] . '</div>';
+            return;
         }
-
     } elseif (is_post_type_archive()) {
-        $post_type = get_post_type();
+        $post_type = get_query_var('post_type');
         if (isset($promos[$post_type])) {
             echo '<div class="page-promo">' . $promos[$post_type] . '</div>';
+            return;
         }
     }
 }

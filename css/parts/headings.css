@@ -11,7 +11,8 @@
 .job-listings-page article header,
 .business-directory article header,
 .archive main header.header,
-.tribe-events header.tribe-events-header {
+.tribe-events header.tribe-events-header,
+.add-job header.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -25,7 +26,8 @@
     .job-listings-page article header,
     .business-directory article header,
     .archive main header.header,
-    .tribe-events header.tribe-events-header {
+    .tribe-events header.tribe-events-header,
+    .add-job header.header {
         flex-direction: column;
         align-items: start;
     }

@@ -18,10 +18,8 @@ if (!defined('ABSPATH')) {
 global $job_manager;
 ?>
 <!-- file: /job_manager/job-submit.php -->
+	
 
-<p class="job-post-promo"><i class="far fa-briefcase"></i> £400 for a 30-day listing + mailout and social promos - <a
-		href="/jobs/choosing-edpsy-jobs/">find out more</a></p>
-<div class="form-block">
 	<div class="progressbar-container">
 		<ul class="progressbar">
 			<li class="active">Write</li>
@@ -29,7 +27,6 @@ global $job_manager;
 			<li>Pay</li>
 		</ul>
 	</div>
-</div>
 <form action="<?php echo esc_url($action); ?>" method="post" id="submit-job-form" class="job-manager-form"
 	enctype="multipart/form-data">
 	<h2>Account</h2>
@@ -127,9 +124,10 @@ global $job_manager;
 				echo '<input type="submit" name="save_draft" class="button secondary save_draft" value="' . esc_attr__('Save Draft', 'wp-job-manager') . '" formnovalidate />';
 			}
 			?>
-			<input type="submit" name="submit_job" class="button" value="<?php echo esc_attr($submit_button_text); ?>" />
-
-			<!-- 	<input type="submit" name="submit_job" class="button" value="<?php echo esc_attr('Preview and continue'); ?>" /> -->
+		 	
+			 <button type="submit" name="submit_job" value="1" class="button edp-button-solid">
+  Preview and continue <i class="fas fa-arrow-right" aria-hidden="true"></i>
+</button>
 			<span class="spinner"
 				style="background-image: url(<?php echo esc_url(includes_url('images/spinner.gif')); ?>);"></span>
 		</p>

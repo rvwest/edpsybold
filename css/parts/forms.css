@@ -13,6 +13,11 @@
             color: var(--cl-dark);
         }
 
+        .job-post-promo {
+            background-color: var(--cl-light);
+            padding: var(--sp-small) var(--sp-large);
+        }
+
         fieldset,
         div.venue,
         div.organizer,

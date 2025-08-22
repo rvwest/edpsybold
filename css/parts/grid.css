@@ -291,7 +291,8 @@ body.single-post {
 /* == Jobs ====================== */
 
 /* Jobs listing page */
-.job-listings-page {
+.job-listings-page,
+.add-job {
 
 
     :is(article.page) {

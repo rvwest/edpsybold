@@ -4,9 +4,11 @@
     while (have_posts()):
         the_post(); ?>
         <?php if (is_singular('wpbdp_listing')): ?>
+            <!-- var: post a jobs page -->
             <?php the_content(); ?>
-        <?php else: ?>
-
+            
+        <?php else : ?>
+ <!-- var: regular page -->
             <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                 <header class="header">
                     <h1 class="entry-title" itemprop="name"><?php the_title(); ?></h1>
