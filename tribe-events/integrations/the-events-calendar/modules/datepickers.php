@@ -61,23 +61,14 @@ $events_label_plural_lowercase   = tribe_get_event_label_plural_lowercase();
 	do_action( 'tribe_events_community_section_before_datetime' );
 	?>
 
-	<table class="tribe-section-content tribe-datetime-block">
-		<colgroup>
-			<col class="tribe-colgroup tribe-colgroup-label">
-			<col class="tribe-colgroup tribe-colgroup-field">
-		</colgroup>
+<div class="tribe-datetime-block">
 
-		<tr id="recurrence-changed-row">
-			<td colspan="2">
-				<?php printf( __( 'You have changed the recurrence rules of this %1$s. Saving the %1$s will update all future %2$s.  If you did not mean to change all %2$s, then please refresh the page.', 'tribe-events-community' ), $events_label_singular_lowercase, $events_label_plural_lowercase ); ?>
-			</td>
-		</tr>
+		<fieldset>
+		<label for="event-start-end">
+Starts / ends
+		</label>
 
-		<tr class="tribe-section-content-row">
-			<td class="tribe-section-content-label">
-				<?php tribe_community_events_field_label( 'EventStartDate', __( 'Start/End:', 'tribe-events-community' ) ); ?>
-			</td>
-			<td class="tribe-section-content-field">
+<div class="start-end-values">
 				<!-- Start Date -->
 				<label class="screen-reader-text" for="EventStartDate">
 					<?php esc_html_e( 'Event Start Date', 'tribe-events-community' ); ?>
@@ -142,8 +133,9 @@ $events_label_plural_lowercase   = tribe_get_event_label_plural_lowercase();
 					value="<?php echo esc_attr( $end_date ); ?>"
 				/>
 				<span class="helper-text hide-if-js"><?php esc_html_e( 'YYYY-MM-DD', 'tribe-events-community' ); ?></span>
+</div>
 
-				<?php if ( class_exists( 'Tribe__Events__Timezones' ) && ! tribe_community_events_single_geo_mode() ) : ?>
+		</fieldset>				<?php if ( class_exists( 'Tribe__Events__Timezones' ) && ! tribe_community_events_single_geo_mode() ) : ?>
 
 					<!-- Timezone -->
 					<select
@@ -165,32 +157,32 @@ $events_label_plural_lowercase   = tribe_get_event_label_plural_lowercase();
 					</select>
 
 				<?php endif ?>
-			</td>
-		</tr>
+					</div>
+			
 
-		<tr class="tribe-section-content-row">
-			<td class="tribe-section-content-label"></td>
-			<td class="tribe-section-content-field">
-				<input
+				
+
+
+	<fieldset>
+<label for="all-day">
+</label>
+
+<div class="online-event checkbox-pair">
+<input
 					id="allDayCheckbox"
 					type="checkbox"
 					name="EventAllDay"
 					class="<?php tribe_community_events_field_classes( 'EventAllDay', [] ); ?>"
 					value="yes" <?php echo esc_html( $isEventAllDay ); ?>
 				/>
-				<label for="allDayCheckbox"><?php esc_html_e( 'All Day Event', 'tribe-events-community' ); ?></label>
-			</td>
-		</tr>
+<span class="checkbox-label">This is an all day / multiday event</span></div>
 
-		<tr class="tribe-section-content-row event-dynamic-helper">
-			<td class="tribe-section-content-label"></td>
-			<td class="tribe-section-content-field">
-				<div class="event-dynamic-helper-text"></div>
-			</td>
-		</tr>
-
+</fieldset>
+					</div>
+		
+		
 		<?php do_action( 'tribe_events_date_display', null, true ); ?>
-	</table>
+	
 
 	<?php
 	/**
@@ -198,4 +190,4 @@ $events_label_plural_lowercase   = tribe_get_event_label_plural_lowercase();
 	 */
 	do_action( 'tribe_events_community_section_after_datetime' );
 	?>
-</div>
+

@@ -53,6 +53,13 @@
             margin-top: var(--sp-xlarge);
             margin-bottom: var(--sp-medium);
         }
+
+        .start-end-values {
+            display: flex;
+            gap: var(--sp-small-plus);
+            align-items: center;
+            width: 70%;
+        }
     }
 
 
@@ -597,8 +604,27 @@ div#ui-datepicker-div {
 
 body:not(.wp-admin, .wp-core-ui) {
 
+
+
+    .ui-timepicker-wrapper {
+        background-color: var(--cl-light);
+        color: var(--cl-dark);
+
+        li.ui-timepicker-selected,
+        .ui-timepicker-list li:hover,
+        .ui-timepicker-list .ui-timepicker-selected:hover {
+            background-color: var(--cl-lightpurple-hover);
+            color: var(--cl-dark);
+        }
+
+        .ui-timepicker-list li {
+            text-align: center;
+        }
+    }
+
     .datepicker.dropdown-menu,
-    div#ui-datepicker-div {
+    div#ui-datepicker-div,
+    .ui-timepicker-wrapper {
         background-color: var(--cl-light);
         border: 5px solid var(--cl-purple);
         border-radius: 5px;

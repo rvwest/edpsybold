@@ -204,8 +204,8 @@
             margin-bottom: var(--sp-medium);
 
             h2 {
-                font-size: var(--fs-title-medium);
-                margin-top: var(--sp-medium);
+                font-size: var(--fs-title-medium) !important;
+                margin-top: var(--sp-medium) !important;
             }
         }
 
@@ -224,6 +224,12 @@
             padding-left: calc(30% + var(--sp-medium));
             margin-top: var(--sp-large);
         }
+
+        .tribe-change-timezone,
+        #event-timezone {
+            display: none;
+        }
+
 
 
     }
