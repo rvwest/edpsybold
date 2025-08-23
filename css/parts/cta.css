@@ -34,9 +34,12 @@ input[type="file"]::file-selector-button {
     }
 }
 
+
+
 a.button.edp-button-outline,
 button.edp-button-outline,
-input[type="submit"].button.secondary {
+input[type="submit"].button.secondary,
+.tribe-events-community-footer input[type="submit"] {
     font-size: var(--fs-body);
     color: var(--cl-dark);
     background-color: none;
@@ -59,6 +62,17 @@ input[type="submit"].button.secondary {
 
 }
 
+.tribe-events-pg-template .tribe-events-community-footer input[type="submit"] {
+    color: var(--cl-light);
+    border-color: var(--cl-light);
+
+    &:hover,
+    &:focus {
+        background-color: var(--cl-light);
+        color: var(--cl-dark);
+        box-shadow: none;
+    }
+}
 
 /* == Body ghost button ===== */
 /* Events date picker */

@@ -35,7 +35,7 @@ $datepicker_format = Tribe__Date_Utils::get_datepicker_format_index();
 <?php do_action('tribe_events_community_form_before_template', $tribe_event_id); ?>
 
 <div class="events-promo">
-	<p><b>Prices</b></p>
+	<h2>Prices</h2>
 	<ul>
 		<li>Free and low-cost events (tickets under £15) - free to add an event</li>
 		<li>For other events - £49 per event</li>

@@ -25,23 +25,25 @@
 	
 		
 
-	<div class="job_listing_stripe_checkout_form ">	
-	<fieldset class="fieldset-stripe_payment fieldset-type-text">
-	<div class="job-details-block">
-		<div class="payment-details-name-description">	
+	<div class="job_listing_stripe_checkout_form">	
+		<fieldset class="fieldset-stripe_payment fieldset-type-text">
+		<div class="job-details-block">
+			<div class="payment-details-name-description">	
 		<label class="job-listing">
 				<?php esc_html_e( 'Job listing', 'wp-job-manager-simple-paid-listings' ); ?>
 			</label>
 			<div class="field">
 				<span class="item-description"><?php echo esc_html( $item_description ); ?></span>
 				
-			</div></div>
-			<div>
+			</div>
+		</div>
+		<div>
 			<span class="item-cost"><?php echo esc_html( $item_cost ); ?></span></div></div>
 		</fieldset>
 
 		<div class="option-cols">
-		<div class="option-col1">
+
+			<div class="option-col1">
 		
 		<h2>Pay by card <a href="https://stripe.com/gb"><img class="stripe-badge" alt="Powered by Stripe" src="/wp-content/themes/edpsy/images/powered_by_stripe.svg" /></a></h2>
 	
@@ -87,6 +89,9 @@
 <p>Once we have this we will issue an invoice and publish your job listing.</p>
 <p>It's OK to close this page.</p>
 </div>
+</div>
 </form>
+
+
 
 <!-- file end: /simple-paid-listings/stripe-checkout.php -->

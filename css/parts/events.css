@@ -1,5 +1,5 @@
 .post-type-archive-tribe_events,
-.tribe_community_edit {
+.edpsybold.tribe_community_edit {
     #container {
         color: var(--cl-light);
         background-color: var(--cl-events-primary);
@@ -10,8 +10,10 @@
 
 
         .tribe-common-l-container {
-            padding-top: 0;
+            margin-top: var(--sp-small);
         }
+
+
 
         .tribe-events-c-top-bar {
 
@@ -194,6 +196,34 @@
 
         }
 
+        /* ===== Form (most in form.css) ======= */
+        #tribe-community-events .events-promo {
+            padding: var(--sp-xsmall) var(--sp-medium);
+            border: 1px solid var(--cl-light);
+            background: var(--cl-dark-50);
+            margin-bottom: var(--sp-medium);
+
+            h2 {
+                font-size: var(--fs-title-medium);
+                margin-top: var(--sp-medium);
+            }
+        }
+
+        #recurrence-changed-row {
+            display: none;
+        }
+
+        .tribe-events-community-footer {
+            margin-top: var(--sp-medium);
+            display: flex;
+            justify-content: end;
+        }
+
+        .tribe-events-community-details#event_captcha {
+            padding-top: var(--sp-medium);
+            padding-left: calc(30% + var(--sp-medium));
+            margin-top: var(--sp-large);
+        }
 
 
     }

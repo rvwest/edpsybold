@@ -323,6 +323,8 @@ body:not(.wp-admin) {
 
     h3,
     fieldset label,
+    .events-community-post-title label,
+    .events-community-post-content label,
     .tribe-section-content label,
     .tribe-events-community-detail label,
     .tribe_community_edit label {

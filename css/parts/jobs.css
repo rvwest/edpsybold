@@ -183,8 +183,40 @@ body>.job-manager-error {
 
     .form-block.edpjobs-signin {
         display: flex;
-        padding-bottom: var(--sp-small);
+        padding-bottom: var(--sp-medium);
         margin-bottom: var(--sp-medium);
+
+        .fieldset-login_required {
+            min-width: 150px;
+            margin-top: var(--sp-small);
+            border-right: solid 4px var(--cl-jobs-primary);
+            margin-left: var(--sp-medium);
+        }
+
+        fieldset.account-sign-in-field {
+            display: block;
+        }
+
+        .edp-jobs-createaccount {
+            margin-top: var(--sp-medium);
+            margin-left: var(--sp-xxlarge);
+        }
+
+        .option-block-or {
+            float: right;
+            margin-right: -19px;
+            padding: 0 6px 3px 6px;
+            margin-top: -53px;
+            font-size: 18px;
+            background: var(--cl-light);
+            border-radius: 20px;
+            border: var(--cl-jobs-primary) 2px solid;
+            font-weight: 500;
+        }
+
+        .fieldset-logged_in .option-block-or {
+            display: none;
+        }
     }
 
     p.new-job-warning,
@@ -303,6 +335,7 @@ body>.job-manager-error {
 
     fieldset {
         align-items: center;
+        padding-right: var(--sp-small);
 
         &.fieldset-name {
             margin-bottom: 0;
@@ -347,7 +380,7 @@ body>.job-manager-error {
 
     fieldset label:not(.full-line-checkbox-field label) {
         width: 70%;
-        padding: 0;
+        padding: 0 0 0 var(--sp-small);
 
     }
 
@@ -401,10 +434,10 @@ body>.job-manager-error {
         float: none;
         margin: 4rem auto 3rem auto;
         text-align: center;
-        padding: 0.5rem 0 0.5rem 0;
+        padding: 0 6px 3px 6px;
         border-radius: 0;
         border: none;
-        background-color: rgba(221, 221, 221, 0.24);
+        background-color: var(--cl-light);
     }
 }
 
@@ -429,7 +462,7 @@ ul.fa-features {
 
 /* Payments success page */
 
-.job-manager-message {
+.edpsybold.edp-jobs.add-job #container.edp-fullwidth .category-jobs-admin .job-manager-message {
 
     display: flex;
     background-color: var(--cl-light);

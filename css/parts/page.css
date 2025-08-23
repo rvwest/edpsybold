@@ -6,8 +6,10 @@ article.job_listing,
 article.tribe-events-single,
 body:not(.home) article.type-post,
 article.type-wpbdp_listing,
-.tribe-community-events.form,
+.tribe-events-pg-template,
 .edp-jobs.add-job {
+
+    margin-bottom: var(--sp-xxlarge);
 
     img.wp-post-image {
         width: 100%;
@@ -61,8 +63,6 @@ article.type-wpbdp_listing,
 
 
     }
-
-    margin-bottom: var(--sp-xxlarge);
 
     /* for the bio block */
     h2.author-title {

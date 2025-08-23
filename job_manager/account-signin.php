@@ -29,6 +29,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			?>
 
 			<p class="signout-button"><a class="button secondary edp-button-outline" href="<?php echo esc_url( apply_filters( 'submit_job_form_logout_url', wp_logout_url( get_permalink() ) ) ); ?>"><?php esc_html_e( 'Sign out', 'wp-job-manager' ); ?></a></p>
+			<div class="option-block-or">or</div>	
 		</div>
 </div>
 
@@ -42,10 +43,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<div class="fieldset-login_required">
 	
 	<!-- <label><?php esc_html_e( 'Have an account?', 'wp-job-manager' ); ?></label>
-	 -->	<div class="field account-sign-in"><fieldset>
+	 -->	<div class="field account-sign-in"><fieldset class="account-sign-in-field">
 		 <p>
 			<a class="button edp-button-solid secondary" href="<?php echo esc_url( apply_filters( 'submit_job_form_login_url', wp_login_url( get_permalink() ) ) ); ?>"><?php esc_html_e( 'Sign in', 'wp-job-manager' ); ?></a>
 </p>
+<div class="option-block-or">or</div>	
 </fieldset>
 			 <?php if ( $registration_enabled ) : ?>
 

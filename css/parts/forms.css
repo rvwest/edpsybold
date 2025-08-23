@@ -8,8 +8,12 @@
         .tribe-section-content,
         .form-block {
             background-color: var(--cl-light);
-            padding: var(--sp-small) var(--sp-large) var(--sp-large) var(--sp-large);
+            padding: var(--sp-small) var(--sp-large) var(--sp-small) var(--sp-large);
             color: var(--cl-dark);
+        }
+
+        .tribe-events-community-details {
+            padding-bottom: var(--sp-medium);
         }
 
         .job-post-promo {
@@ -42,7 +46,7 @@
             width: 100%;
         }
 
-        h2,
+        h2:not(#signup-slice h2),
         .tribe-section-header h3 {
             font-size: var(--fs-display-small);
             color: var(--cl-light);
@@ -60,12 +64,19 @@
     }
 
     fieldset,
+    .events-community-post-title,
+    .events-community-post-content,
     .wpjm-submit-block {
         margin-top: var(--sp-medium);
         margin-bottom: var(--sp-medium);
 
-        label small {
+        label small,
+        label span.req {
             font-weight: var(--fw-light);
+        }
+
+        label span.req {
+            font-size: 80%;
         }
 
     }
@@ -111,7 +122,9 @@
         width: 65%;
     }
 
-
+    textarea {
+        height: 250px;
+    }
 
     fieldset:has(:focus),
     div.venue:has(:focus),
@@ -120,6 +133,10 @@
     .events-community-post-title:has(:focus),
     .events-community-post-content:has(:focus) {
         background: var(--cl-lightpurple-hover);
+    }
+
+    fieldset.account-sign-in-field:has(:focus) {
+        background: none;
     }
 
 
@@ -155,10 +172,13 @@
 
     /* Long URLs */
     input[type="text"]#company_website,
-    input[type="text"]#application,
-    input#post_title,
-    textarea#post_content {
+    input[type="text"]#application {
         width: var(--tb-large);
+    }
+
+    textarea#post_content,
+    input#post_title {
+        width: 70%;
     }
 
     /* Times */
@@ -575,7 +595,7 @@ div#ui-datepicker-div {
 
 
 
-body:not(.wp-admin) {
+body:not(.wp-admin, .wp-core-ui) {
 
     .datepicker.dropdown-menu,
     div#ui-datepicker-div {
