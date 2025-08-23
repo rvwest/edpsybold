@@ -12,6 +12,7 @@
  * @since       1.4.0
  */
 ?>
+<!-- file: /simple-paid-listings/stripe-checkout.php -->
 <div class="progressbar-container">
 <ul class="progressbar">
 <li>Write</li>
@@ -73,7 +74,7 @@
 <!--	<?php esc_attr_e( 'Pay <?php echo esc_html( $item_cost ); ?>', 'wp-job-manager-simple-paid-listings' ); ?>-->
 	<input type="submit" name="submit_payment" class="button" value="Pay <?php echo esc_html( $item_cost ); ?>" />
 	<span class="spinner" style="background-image: url(<?php echo esc_url( includes_url( 'images/spinner.gif' ) ); ?>);"></span>
-	<div class="option-block-or">OR</div>	
+	<div class="option-block-or">or</div>	
 </div>
 <div class="option-col2">	
 <h2>Pay by purchase order</h2>
@@ -88,3 +89,4 @@
 </div>
 </form>
 
+<!-- file end: /simple-paid-listings/stripe-checkout.php -->

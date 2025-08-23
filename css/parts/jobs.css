@@ -175,6 +175,9 @@
 
 /* ==== Post job ==================================== */
 
+body>.job-manager-error {
+    display: none;
+}
 
 .edpsybold.edp-jobs.add-job #container.edp-fullwidth {
 
@@ -219,4 +222,350 @@
             align-items: flex-end;
         }
     }
+
+    /*form#stripe-checkout-form {
+
+        .option-cols {
+            display: flex;
+
+            gap: var(--sp-home-gap);
+
+            .option-col1,
+            .option-col2,
+            .fieldset-stripe_payment {
+                background-color: var(--cl-light);
+            }
+        }
+
+    }*/
+
+
+}
+
+/* ============== IMPORTED ================= */
+.edpsybold.edp-jobs.add-job #container.edp-fullwidth .category-jobs-admin form#stripe-checkout-form {
+    .option-cols {
+        display: flex;
+        margin-bottom: 3rem;
+        background-color: var(--cl-light);
+    }
+
+    .option-col1,
+    .option-col2 {
+        padding: var(--sp-small) var(--sp-large) var(--sp-large) var(--sp-large);
+
+        h2 {
+            font-size: var(--fs-title-medium);
+            color: var(--cl-dark);
+        }
+    }
+
+    .option-col1 {
+        border-right: solid 4px var(--cl-jobs-primary);
+        width: 60%;
+    }
+
+    .option-col2 {
+        width: 40%
+    }
+
+    .job_listing_stripe_checkout_form fieldset label {
+        padding-bottom: 0.55rem;
+        margin-top: 0;
+    }
+
+    .fieldset-stripe_payment.fieldset-type-text .item-cost {
+        margin-left: 1rem
+    }
+
+    input[type="text"]#stripe-cardholder-name {
+        height: 40px;
+        width: 100%;
+    }
+
+    .StripeElement {
+        border: 1px solid var(--cl-dark);
+        border-radius: 0;
+        margin: 0;
+        box-shadow: none;
+        background-color: var(--cl-light);
+    }
+
+    .stripe-badge {
+        margin-left: 1rem;
+        margin-top: 0.2rem;
+        position: absolute;
+    }
+
+    .option-block-top-text {
+        padding-top: 0.75rem;
+    }
+
+    fieldset {
+        align-items: center;
+
+        &.fieldset-name {
+            margin-bottom: 0;
+        }
+
+        .job-details-block {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            padding: var(--sp-medium);
+            margin: 1rem 0;
+            background: var(--cl-light);
+            align-items: center;
+
+            label.job-listing {
+                padding-top: 0;
+                width: 100%;
+                text-align: right;
+            }
+        }
+
+    }
+
+    .payment-details-name-description {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        width: 50%;
+    }
+
+    .job-details-block div:nth-child(2) {
+        width: 50%
+    }
+
+    fieldset .job-details-block label:not(.full-line-checkbox-field label),
+    fieldset .job-details-block .field {
+
+        width: 50%;
+        text-align: right;
+        padding-right: 30px;
+    }
+
+    fieldset label:not(.full-line-checkbox-field label) {
+        width: 70%;
+        padding: 0;
+
+    }
+
+    fieldset div.field:not(.full-line-checkbox-field) {
+        width: 90%;
+    }
+
+
+
+    .option-block-or {
+        float: right;
+        margin-right: -55px;
+        padding: 0 6px 3px 6px;
+        margin-top: -10rem;
+        font-size: 18px;
+        background: var(--cl-light);
+        border-radius: 20px;
+        border: var(--cl-jobs-primary) 2px solid;
+        font-weight: 500;
+    }
+
+    .item-cost {
+        font-size: 2rem;
+        margin-left: 3rem;
+    }
+
+    h2 {
+        line-height: 2rem;
+        margin-top: 2rem;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .option-cols {
+        display: inherit
+    }
+
+    .option-col1 {
+        width: 100%;
+        border-right: none;
+        padding-right: 0;
+        padding-bottom: 0
+    }
+
+    .option-col2 {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .option-block-or {
+        float: none;
+        margin: 4rem auto 3rem auto;
+        text-align: center;
+        padding: 0.5rem 0 0.5rem 0;
+        border-radius: 0;
+        border: none;
+        background-color: rgba(221, 221, 221, 0.24);
+    }
+}
+
+ul.fa-features li i,
+ul.fa-features li svg {
+    color: var(--cl-jobs-dark);
+    padding-top: 0.3rem;
+}
+
+ul.fa-features li {
+    margin-bottom: 2rem;
+}
+
+ul.fa-features li ul li {
+    margin-bottom: 0;
+}
+
+ul.fa-features {
+    margin-left: 3rem;
+    margin-top: 3rem;
+}
+
+/* Payments success page */
+
+.job-manager-message {
+
+    display: flex;
+    background-color: var(--cl-light);
+    margin-bottom: 30%;
+    margin-top: var(--sp-large);
+
+    h2 {
+        color: var(--cl-dark);
+        margin-top: 0;
+    }
+
+    .success-icon {
+        margin-top: var(--sp-small-plus);
+        margin-left: var(--sp-medium);
+    }
+
+}
+
+.success-icon {
+    margin-top: 2rem;
+}
+
+.success-message {
+    margin: 2rem 2rem 0.5rem 2rem
+}
+
+.success-message h2 {
+    margin-top: 0;
+}
+
+/* Dashboard */
+
+#job-manager-job-dashboard td.company {
+    vertical-align: middle;
+
+    img {
+        max-width: 150px;
+        max-height: 120px;
+    }
+
+}
+
+#content .job-manager-uploaded-file-preview img {
+    max-width: 280px;
+}
+
+#job-manager-job-dashboard th.stats,
+#job-manager-job-dashboard td.stats {
+    display: none;
+}
+
+
+
+.wpjm-dashboard .job-post-promo,
+.wpjm-dashboard .progressbar-container {
+    display: none;
+}
+
+#job-manager-job-dashboard table td,
+#job-manager-job-dashboard table th {
+    padding: 1rem;
+    border: none;
+}
+
+#job-manager-job-dashboard table tr {
+    border-top: solid 1px rgba(0, 0, 0, .12);
+}
+
+#job-manager-job-dashboard table {
+    border: 1px solid rgba(0, 0, 0, .12);
+}
+
+table.job-manager-jobs th.filled,
+table.job-manager-jobs td.filled {
+    display: none;
+}
+
+table.job-manager-jobs th,
+#content table.job-manager-jobs tr td,
+#job-manager-job-dashboard table .applications,
+#job-manager-job-dashboard table .expires,
+#job-manager-job-dashboard table .filled {
+    text-align: left;
+}
+
+#job-manager-job-dashboard table thead {
+    background-color: rgba(0, 0, 0, .04);
+}
+
+#job-manager-job-dashboard table tbody tr:hover {
+    outline: solid 1px rgba(0, 0, 0, .04);
+    background-color: rgba(0, 0, 0, 0.01);
+}
+
+#job-manager-job-dashboard table ul.job-dashboard-actions li:after {
+    content: "|";
+    color: var(--cl-dark);
+}
+
+table.job-manager-jobs .job_title small {
+    border: #999 solid 1px;
+    color: #999;
+    padding: 0.05rem 0.3rem;
+    margin-left: 0.5rem;
+    font-weight: 400;
+    font-size: 0.8rem;
+    min-width: 20%;
+    text-align: center;
+}
+
+table.job-manager-jobs .job-title a,
+.dashboard-job-title {
+    font-weight: 300;
+}
+
+#job-manager-job-dashboard table ul.job-dashboard-actions li {
+    font-weight: 300;
+}
+
+#job-manager-job-dashboard table.job-manager-jobs .job_title small.dashboard-live {
+    background-color: rgb(171, 96, 96);
+    color: red;
+}
+
+table.job-manager-jobs .job_title {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+table.job-manager-jobs ul.job-dashboard-actions {
+    flex-basis: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#job-manager-job-dashboard table ul.job-dashboard-actions li .job-dashboard-action-delete {
+    color: red
 }

@@ -33,7 +33,7 @@ switch ( $job->post_status ) :
 		echo '<div class="job-manager-message"><div class="success-icon"><i class="far fa-check-circle fa-3x"></i></div><div class="success-message"><h2>Thank you</h2><p>' . wp_kses_post(
 			sprintf(
 				// translators: Placeholder %s is the job listing post type name.
-				esc_html__( 'Your %s has been submitted.', 'wp-job-manager' ), 
+				esc_html__( 'Your job has been submitted.', 'wp-job-manager' ), 
 				esc_html( $wp_post_types['job_listing']->labels->singular_name )
 			)
 		) . '</p><p>We will email you when the listing has been approved and put live.</p><p>You can also access your advert <a href="' . esc_url( job_manager_get_permalink( 'job_dashboard' )) . '">via your dashboard</a>.</p></div></div>';
