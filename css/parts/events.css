@@ -569,6 +569,7 @@ body.tribe_community_list:not(.wp-admin, .wp-core-ui) {
         z-index: 1;
         background-color: var(--cl-light);
 
+
         ul li label {
             display: flex;
             align-items: center;
@@ -602,6 +603,7 @@ body.tribe_community_list:not(.wp-admin, .wp-core-ui) {
 
     .tribe-community-events-list {
         margin-top: var(--sp-large);
+        margin-bottom: 20%;
 
         thead {
             font-weight: var(--fw-semibold);
