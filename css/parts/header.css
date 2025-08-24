@@ -93,6 +93,32 @@ header[role="banner"] {
                         left: 0;
                         background-color: var(--cl-light);
                         z-index: 1000;
+                        min-width: 200px;
+                        align-items: flex-start;
+                        border: 1px solid var(--cl-dark);
+
+                        .menu-item-has-children:last-of-type & {
+                            right: 0;
+                            left: inherit;
+                            min-width: 250px;
+                        }
+
+                        li {
+                            width: 100%;
+
+                            a {
+                                width: 100%;
+                                border: none;
+                                height: 27px;
+
+                                &:hover,
+                                &:active {
+                                    background-color: var(--cl-lightpurple-hover);
+                                    border: none;
+                                }
+                            }
+                        }
+
                     }
 
                     &:hover>ul.sub-menu {
