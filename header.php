@@ -9,8 +9,9 @@
 </head>
 
 <body <?php body_class(); ?>>
-    <?php wp_body_open(); ?>
+<?php wp_body_open(); ?>
     <div id="wrapper" class="hfeed">
+        <?php get_template_part('_promo-banner'); ?>
 
         <header id="header" role="banner" class="edp-fullwidth">
             <div class="gridcontainer grid12">

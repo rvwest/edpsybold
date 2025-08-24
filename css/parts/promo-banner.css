@@ -1,0 +1,11 @@
+.promo-banner-block-style--festival-1 {
+    background: #0c1729 url("../images/banner-festival-2.jpg") right no-repeat;
+    background-size: 1000px;
+}
+
+.promo-banner-block-style--green-light {
+    background: var(--cl-green);
+    background: -moz-linear-gradient(-45deg, var(--cl-green) 0%, #5f8929 100%);
+    background: -webkit-linear-gradient(-45deg, var(--cl-green) 0%, #5f8929 100%);
+    background: linear-gradient(135deg, var(--cl-green) 0%, #5f8929 100%);
+}
