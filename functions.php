@@ -217,29 +217,43 @@ add_action('template_redirect', 'disable_page_comments');
 // ======================================================================== //
 function remove_wp_plugin_frontend_css()
 {
-    if (!is_admin()) { // Ensures this only runs on the frontend
-        wp_dequeue_style('wp-job-manager-frontend'); // Default handle for frontend.css
-        wp_dequeue_style('co-authors-plus-coauthors-style');
-        wp_dequeue_style('co-authors-plus-avatar-style');
-        wp_dequeue_style('co-authors-plus-image-style');
-        wp_dequeue_style('co-authors-plus-name-style');
-        wp_dequeue_style('classic-theme-styles');
-        wp_dequeue_style('wp-job-manager-job-listings');
-        wp_dequeue_style('wpbdp-base-css');
-        wp_dequeue_style('global-styles');
-        wp_dequeue_style('tribe-events-views-v2-skeleton');
-        wp_dequeue_style('tribe-events-v2-single-skeleton');
-        wp_dequeue_style('tribe_events-community-styles');
-        wp_dequeue_style('tribe-events-full-calendar-style');
-        wp_dequeue_style('tribe-events-admin-ui');
-        //wp_dequeue_style('tec-variables-skeleton-css');
-        //wp_dequeue_style('tribe-events-views-v2-bootstrap-datepicker-styles');
-        // wp_dequeue_style('tribe-tooltipster-css-css');
-        //   wp_dequeue_style('tribe-events-views-v2-skeleton-css');
-        //    wp_dequeue_style('tec-variables-skeleton');
-        //     wp_dequeue_style('tribe-common-skeleton-style-css');
-
+    if (is_admin()) {
+        return;
     }
+
+    // Determine if we're on a Community Events page where core styles are required.
+    $is_community_events_page = (
+        function_exists('tribe_is_community_my_events_page') && tribe_is_community_my_events_page()
+    ) || (
+        function_exists('tribe_is_community_edit_event_page') && tribe_is_community_edit_event_page()
+    );
+
+    wp_dequeue_style('wp-job-manager-frontend'); // Default handle for frontend.css
+    wp_dequeue_style('co-authors-plus-coauthors-style');
+    wp_dequeue_style('co-authors-plus-avatar-style');
+    wp_dequeue_style('co-authors-plus-image-style');
+    wp_dequeue_style('co-authors-plus-name-style');
+    wp_dequeue_style('classic-theme-styles');
+    wp_dequeue_style('wp-job-manager-job-listings');
+    wp_dequeue_style('wpbdp-base-css');
+    wp_dequeue_style('global-styles');
+    wp_dequeue_style('tribe-events-views-v2-skeleton');
+    wp_dequeue_style('tribe-events-v2-single-skeleton');
+
+    // Keep essential Community Events styles so UI components like the
+    // "Display Options" menu continue to function.
+    if ( ! $is_community_events_page ) {
+        wp_dequeue_style('tribe_events-community-styles');
+        wp_dequeue_style('tribe-events-admin-ui');
+    }
+
+    wp_dequeue_style('tribe-events-full-calendar-style');
+    //wp_dequeue_style('tec-variables-skeleton-css');
+    //wp_dequeue_style('tribe-events-views-v2-bootstrap-datepicker-styles');
+    // wp_dequeue_style('tribe-tooltipster-css-css');
+    //   wp_dequeue_style('tribe-events-views-v2-skeleton-css');
+    //    wp_dequeue_style('tec-variables-skeleton');
+    //     wp_dequeue_style('tribe-common-skeleton-style-css');
 }
 
 add_action('wp_head', function () {
