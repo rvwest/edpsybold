@@ -27,7 +27,7 @@
 
 
                     <a href="<?php echo esc_url(home_url('/')); ?>"
-                        title="<?php echo esc_attr(get_bloginfo('name')); ?>" rel="home" itemprop="url">
+                        title="<?php echo esc_attr(get_bloginfo('name')); ?>" class="header-logo-wrapper" rel="home" itemprop="url">
                         <span class="visually-hidden"
                             itemprop="name"><?php echo esc_html(get_bloginfo('name')); ?></span>
                         <img src="<?php echo esc_url(get_template_directory_uri() . '/images/edpsy-logo-dark.svg'); ?>"

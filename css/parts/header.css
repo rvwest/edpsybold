@@ -11,6 +11,18 @@ header[role="banner"] {
         line-height: 0;
     }
 
+    .header-logo-wrapper {
+        display: inline-block;
+        /* or display: block; */
+
+
+    }
+
+    .header-logo-wrapper img {
+        display: block;
+        /* optional: removes leftover baseline gap */
+    }
+
     .header-logo {
         width: 48px;
         margin: var(--sp-small) 0
