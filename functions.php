@@ -419,6 +419,74 @@ function edp_customize_register($wp_customize) {
 }
 add_action('customize_register', 'edp_customize_register');
 
+function edp_promo_banner_customize($wp_customize) {
+    $wp_customize->add_section('edp_promo_banner', array(
+        'title' => __('Promo banner', 'yourtheme'),
+        'priority' => 40,
+    ));
+
+    $wp_customize->add_setting('promo_banner_visible', array(
+        'default' => false,
+        'sanitize_callback' => 'wp_validate_boolean',
+    ));
+    $wp_customize->add_control('promo_banner_visible', array(
+        'label' => __('Show promo banner', 'yourtheme'),
+        'section' => 'edp_promo_banner',
+        'type' => 'checkbox',
+    ));
+
+    $wp_customize->add_setting('promo_banner_css_class', array(
+        'default' => '',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('promo_banner_css_class', array(
+        'label' => __('CSS class', 'yourtheme'),
+        'section' => 'edp_promo_banner',
+        'type' => 'text',
+    ));
+
+    $wp_customize->add_setting('promo_banner_icon', array(
+        'default' => '',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('promo_banner_icon', array(
+        'label' => __('Font Awesome icon class', 'yourtheme'),
+        'section' => 'edp_promo_banner',
+        'type' => 'text',
+    ));
+
+    $wp_customize->add_setting('promo_banner_text1', array(
+        'default' => '',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('promo_banner_text1', array(
+        'label' => __('Text 1', 'yourtheme'),
+        'section' => 'edp_promo_banner',
+        'type' => 'text',
+    ));
+
+    $wp_customize->add_setting('promo_banner_text2', array(
+        'default' => '',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('promo_banner_text2', array(
+        'label' => __('Text 2', 'yourtheme'),
+        'section' => 'edp_promo_banner',
+        'type' => 'text',
+    ));
+
+    $wp_customize->add_setting('promo_banner_link', array(
+        'default' => '',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    $wp_customize->add_control('promo_banner_link', array(
+        'label' => __('Link URL', 'yourtheme'),
+        'section' => 'edp_promo_banner',
+        'type' => 'url',
+    ));
+}
+add_action('customize_register', 'edp_promo_banner_customize');
+
 function edpsybold_count_class($count) {
     return 'edp-bold-posts-' . intval($count);
 }
