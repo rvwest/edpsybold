@@ -226,8 +226,17 @@
                         flex-direction: column;
 
 
+
                         .edp-events-calendar-list__event-header {
                             margin-right: 0;
+
+                            .edp-events-calendar-list__event-title {
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                display: -webkit-box;
+                                -webkit-box-orient: vertical;
+                                -webkit-line-clamp: 2;
+                            }
 
                         }
 
