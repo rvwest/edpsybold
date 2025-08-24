@@ -420,11 +420,11 @@ function edp_customize_register($wp_customize) {
 add_action('customize_register', 'edp_customize_register');
 
 function edp_get_promo_classes() {
-    $file = get_template_directory() . '/css/parts/promo-list.css';
+    $file = get_template_directory() . '/css/parts/promo-banner.css';
     $classes = array();
     if (file_exists($file)) {
         $css = file_get_contents($file);
-        if (preg_match_all('/\.cta-header-block--[a-z0-9_-]+/', $css, $matches)) {
+        if (preg_match_all('/\\.promo-banner-block-style--[a-z0-9_-]+/', $css, $matches)) {
             foreach (array_unique($matches[0]) as $class) {
                 $name = ltrim($class, '.');
                 $classes[$name] = $name;
