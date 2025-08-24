@@ -84,10 +84,10 @@ do_action( 'tribe_community_events_before_list_navigation' );
 	<div class="table-menu-wrapper ce-top">
 		<?php if ( $show_display_options_dropdown && $events->have_posts() ) : ?>
 			<a
-				class="table-menu-btn button tribe-button tribe-button-tertiary tribe-button-activate"
+				class="table-menu-btn button tribe-button tribe-button-secondary tribe-button-activate"
 				href="#"
 			>
-				<?php echo apply_filters( 'tribe_community_events_list_display_button_text', __( 'Display Option', 'tribe-events-community' ) ); ?>
+				<?php echo apply_filters( 'tribe_community_events_list_display_button_text', __( 'Display options', 'tribe-events-community' ) ); ?>
 			</a>
 		<?php endif; ?>
 
