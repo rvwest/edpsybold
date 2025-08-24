@@ -18,8 +18,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 <?php echo '<!-- file: /job_manager/content-no-jobs-found.php -->'; ?>
 <?php if ( defined( 'DOING_AJAX' ) ) : ?>
-	<li class="no_job_listings_found"><?php esc_html_e( 'We don\'t currently have any job listings.', 'wp-job-manager' ); ?>
-	<div class="jobs-placeholder"><img src="<?php echo get_template_directory_uri(); ?>/images/job-plant.jpg" alt=""></div></li>
+	<li class="no_job_listings_found">
+		<div class="no_job_listings_found-text"> <?php esc_html_e( 'We don\'t currently have any job listings.', 'wp-job-manager' ); ?><br/>
+	<a href="post/">Add your job</a></div>
+	<div class="no_job_listings_found-image"><img src="<?php echo get_template_directory_uri(); ?>/images/edpsy-swirls-13-light.svg" alt=""></div>
+</li>
 <?php else : ?>
 	<p class="no_job_listings_found"><?php esc_html_e( 'We are currently no vacancies.', 'wp-job-manager' ); ?></p>
 	<div class="jobs-placeholder"><img src="<?php echo get_template_directory_uri(); ?>/images/job-plant.jpg" alt=""></div>

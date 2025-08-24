@@ -77,14 +77,20 @@
 .page-template-default:not(.job-listings-page, .wpbdp-view-main) article.type-page {
     display: grid;
     grid-template-columns: subgrid;
-    grid-column: 2 / span 10;
+    grid-column: 3 / span 8;
 
     >* {
-        grid-column: 1 / span 10;
+        grid-column: 1 / span 8;
     }
 
+
+
     .entry-content {
-        grid-column: 1 / span 10;
+        grid-column: 1 / span 8;
+
+        img {
+            grid-column: -1 / span 10;
+        }
     }
 
 

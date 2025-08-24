@@ -26,6 +26,16 @@
             margin-bottom: var(--sp-xlarge);
         }
 
+
+        .no_job_listings_found-text {
+            font-size: var(--fs-display-small);
+            font-weight: var(--fw-semibold);
+            line-height: var(--lh-display-small);
+            color: var(--cl-light);
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
         ul.job_listings {
             li {
                 padding-left: 0;
@@ -441,23 +451,46 @@ body>.job-manager-error {
     }
 }
 
-ul.fa-features li i,
-ul.fa-features li svg {
-    color: var(--cl-jobs-dark);
-    padding-top: 0.3rem;
-}
+.edpsybold #container.edp-fullwidth .category-jobs {
 
-ul.fa-features li {
-    margin-bottom: 2rem;
-}
+    ul.fa-features li i,
+    ul.fa-features li svg {
+        color: var(--cl-jobs-dark);
+        padding-top: 0.3rem;
+    }
 
-ul.fa-features li ul li {
-    margin-bottom: 0;
-}
+    ul.fa-features li {
+        margin-bottom: 2rem;
+        list-style-type: none;
 
-ul.fa-features {
-    margin-left: 3rem;
-    margin-top: 3rem;
+    }
+
+    ul.fa-features li ul li {
+        margin-bottom: 0;
+    }
+
+    ul.fa-features {
+        margin: var(--sp-medium) var(--sp-xxlarge) 0 var(--sp-xxlarge);
+        position: relative;
+
+    }
+
+    .fa-ul {
+        list-style-type: none;
+        padding-left: 0;
+
+        >li {
+            position: relative;
+        }
+    }
+
+    .fa-li {
+        left: -52px;
+        position: absolute;
+        text-align: center;
+        width: 50px;
+        line-height: inherit;
+    }
 }
 
 /* Payments success page */
