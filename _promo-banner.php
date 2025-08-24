@@ -11,7 +11,6 @@ $class = get_theme_mod('promo_banner_css_class', '');
 $icon  = get_theme_mod('promo_banner_icon', '');
 $text1 = get_theme_mod('promo_banner_text1', '');
 $text2 = get_theme_mod('promo_banner_text2', '');
-$link  = get_theme_mod('promo_banner_link', '');
 ?>
 <div class="cta-header-block <?php echo esc_attr( $class ); ?>">
     <div class="container">
@@ -20,9 +19,11 @@ $link  = get_theme_mod('promo_banner_link', '');
                 <?php if ( $icon ) : ?>
                     <i class="<?php echo esc_attr( $icon ); ?>"></i>&nbsp;
                 <?php endif; ?>
-                Come join us: <a href="<?php echo esc_url( $link ); ?>"><?php echo esc_html( $text1 ); ?></a>
+                Come join us: <?php echo wp_kses_post( $text1 ); ?>
             </p>
-            <p class="cta-second-link"><a href="<?php echo esc_url( $link ); ?>"><?php echo esc_html( $text2 ); ?></a></p>
+            <?php if ( $text2 ) : ?>
+                <p class="cta-second-link"><?php echo wp_kses_post( $text2 ); ?></p>
+            <?php endif; ?>
         </div>
     </div>
 </div>
