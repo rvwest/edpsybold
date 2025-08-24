@@ -86,6 +86,20 @@ header[role="banner"] {
                     display: flex;
                 }
 
+                @media screen and (min-width: 701px) {
+                    ul.sub-menu {
+                        position: absolute;
+                        top: 100%;
+                        left: 0;
+                        background-color: var(--cl-light);
+                        z-index: 1000;
+                    }
+
+                    &:hover>ul.sub-menu {
+                        display: flex;
+                    }
+                }
+
                 button.submenu-toggle {
                     display: none;
 
