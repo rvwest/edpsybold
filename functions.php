@@ -426,8 +426,10 @@ function edp_get_promo_classes() {
         $css = file_get_contents($file);
         if (preg_match_all('/\\.promo-banner-block-style--[a-z0-9_-]+/', $css, $matches)) {
             foreach (array_unique($matches[0]) as $class) {
-                $name = ltrim($class, '.');
-                $classes[$name] = $name;
+                $name  = ltrim($class, '.');
+                $label = preg_replace('/^promo-banner-block-style--/', '', $name);
+                $label = str_replace('-', ' ', $label);
+                $classes[$name] = $label;
             }
         }
     }
