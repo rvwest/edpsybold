@@ -540,12 +540,38 @@ body.tribe_community_list {
     h2 {
         font-size: var(--fs-display-medium);
         line-height: var(--lh-display-medium);
-        margin: var(--sp-xxlarge) 0 var(--sp-xxlarge) 0;
+        margin: var(--sp-xxlarge) 0 var(--sp-large) 0;
+    }
+
+    .tribe-community-events-add-event {
+        margin-bottom: var(--sp-xxlarge);
     }
 
     .tribe-event-list-search {
         display: none;
     }
 
+    .table-menu-hidden {
+        left: -999em;
+        right: auto;
+        display: none;
+    }
 
+    .table-menu {
+        background-color: var(--tec-color-background);
+        border-bottom: 1px solid var(--tec-color-border-default);
+        border-left: 1px solid var(--tec-color-border-default);
+        border-right: 1px solid var(--tec-color-border-default);
+        left: 2px;
+        padding: var(--tec-spacer-2);
+        position: absolute;
+        width: 140px;
+        z-index: 1;
+    }
+
+    .tribe-nav-top {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
 }
