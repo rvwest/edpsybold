@@ -325,6 +325,7 @@ body {
     header[role="banner"] {
         .menu-toggle {
             display: block;
+            grid-column: 12 / span 1;
         }
 
         nav.top-nav-menu {

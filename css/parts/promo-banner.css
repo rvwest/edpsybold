@@ -1,3 +1,59 @@
+.skehead-headernav-shrink .promo-banner-block {
+    display: none;
+}
+
+.promo-banner-block {
+    padding: 20px;
+    color: white;
+    background: #331a99;
+    background: -moz-linear-gradient(-45deg, #331a99 0%, #b85abd 100%);
+    background: -webkit-linear-gradient(-45deg, #331a99 0%, #b85abd 100%);
+    background: linear-gradient(135deg, #331a99 0%, #b85abd 100%)
+}
+
+.cta-body-block {
+    padding: 20px;
+    background: #fff;
+}
+
+.promo-banner-block img,
+.cta-body-block img {
+    max-height: 20px;
+    padding-right: 10px;
+}
+
+.cta-body-block p {
+    margin-bottom: 0;
+}
+
+.promo-banner-block-style--green {
+    background: #008791;
+    background: -moz-linear-gradient(-45deg, #337 0%, #008791 100%);
+    background: -webkit-linear-gradient(-45deg, #337 0%, #008791 100%);
+    background: linear-gradient(135deg, #337 0%, #008791 100%)
+}
+
+.promo-banner-block-style--green-bright {
+    background: #20b0bd;
+    background: -moz-linear-gradient(-45deg, #2b7583 0%, #20b0bd 100%);
+    background: -webkit-linear-gradient(-45deg, #2b7583 0%, #20b0bd 100%);
+    background: linear-gradient(135deg, #2b7583 0%, #20b0bd 100%)
+}
+
+.promo-banner-block-style--green-dark {
+    background: #009736;
+    background: -moz-linear-gradient(-45deg, #009736 0%, #097831 100%);
+    background: -webkit-linear-gradient(-45deg, #009736 0%, #097831 100%);
+    background: linear-gradient(135deg, #009736 0%, #097831 100%)
+}
+
+.promo-banner-block-style--black {
+    background: #000;
+    background: -moz-linear-gradient(-45deg, #000 0%, #3c3c3c 100%);
+    background: -webkit-linear-gradient(-45deg, #000 0%, #3c3c3c 100%);
+    background: linear-gradient(135deg, #000 0%, #3c3c3c 100%)
+}
+
 .promo-banner-block-style--festival-1 {
     background: #0c1729 url("../images/banner-festival-2.jpg") right no-repeat;
     background-size: 1000px;
@@ -8,4 +64,243 @@
     background: -moz-linear-gradient(-45deg, var(--cl-green) 0%, #5f8929 100%);
     background: -webkit-linear-gradient(-45deg, var(--cl-green) 0%, #5f8929 100%);
     background: linear-gradient(135deg, var(--cl-green) 0%, #5f8929 100%);
+}
+
+
+.promo-banner-block-style--festival-25 {
+    background: #0c1729 url("../images/banner-festival-25-2.jpg");
+    background-size: cover;
+
+    p {
+        color: black;
+        background: rgba(255, 255, 255, 0.93);
+        padding: 5px 7px;
+        margin-left: -7px;
+
+        i.far {
+            color: #9f3287
+        }
+
+        a:link,
+        a:visited,
+        a:hover,
+        a:active {
+            color: #9f3287;
+            font-weight: 400;
+            text-decoration: none;
+        }
+
+        a:link,
+        a:visited {
+
+            text-decoration: none;
+        }
+
+
+        a:hover,
+        a:active {
+            text-decoration: underline;
+        }
+    }
+}
+
+.promo-banner-block-style--festival-1 {
+    background: #0c1729 url("../images/banner-festival-2.jpg") right no-repeat;
+    background-size: 1000px;
+}
+
+.promo-banner-block-style--green-light {
+    background: $color-about;
+    background: -moz-linear-gradient(-45deg, $color-about 0%, #5f8929 100%);
+    background: -webkit-linear-gradient(-45deg, $color-about 0%, #5f8929 100%);
+    background: linear-gradient(135deg, $color-about 0%, #5f8929 100%)
+}
+
+
+.promo-banner-block-style--dark {
+    background: #181c1d;
+    background: -moz-linear-gradient(-45deg, rgb(28, 28, 34) 0%, #555b5c 100%);
+    background: -webkit-linear-gradient(-45deg, rgb(28, 28, 34) 0%, #555b5c 100%);
+    background: linear-gradient(135deg, rgb(28, 28, 34) 0%, #555b5c 100%)
+}
+
+.promo-banner-block a.cta-header-button {
+    border: 1px solid white;
+    padding: 0 12px;
+    display: inline-block;
+    margin-left: 10px;
+    font-weight: 400;
+    line-height: 3rem;
+    background-color: #fff;
+    border-width: 0;
+    outline: none;
+    border-radius: 2px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    transition: background-color .3s;
+}
+
+.promo-banner-block .promo-banner-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.promo-banner-block p {
+    margin-bottom: 0;
+    vertical-align: bottom;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.3rem;
+}
+
+.promo-banner-block .row-fluid {
+    margin-left: 0;
+    width: 100%
+}
+
+.promo-banner-block a.cta-header-button:hover,
+.promo-banner-block a.cta-header-button:focus {
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
+    background-color: rgb(195, 226, 255)
+}
+
+.promo-banner-block a:link,
+.promo-banner-block a:visited {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.promo-banner-block a:hover,
+.promo-banner-block a:focus {
+    color: #fff;
+    text-decoration: none;
+}
+
+.promo-banner-block .row-fluid:before,
+.promo-banner-block .row-fluid:after {
+    display: none !important;
+}
+
+/* Refugee Education UK promo */
+
+div.post#post-7821 .container.post-wrap .row-fluid,
+div.post#post-7817 .container.post-wrap .row-fluid,
+div.post#post-7819 .container.post-wrap .row-fluid,
+div.post#post-9346 .container.post-wrap .row-fluid {
+    background: white;
+    box-shadow: 35px 0 31px #fff, -41px 0 35px #fff
+}
+
+div.post#post-7817,
+div.post#post-7819,
+div.post#post-7821,
+div.post#post-9346 {
+    background-image: url("../images/reuk-background--3.png");
+    background-repeat: repeat-y;
+    background-size: contain;
+    background-position: right top;
+}
+
+
+.promo-banner-block-style--refugee-pale {
+    background: #b28bfc;
+    background: -moz-linear-gradient(-45deg, #b28bfc 0%, #ffbc8f 100%);
+    background: -webkit-linear-gradient(-45deg, #b28bfc 0%, #ffbc8f 100%);
+    background: linear-gradient(135deg, #b28bfc 0%, #ffbc8f 100%);
+    color: $color-copy;
+}
+
+.promo-banner-block-style--refugee {
+    background: #1D3A76;
+    background: -moz-linear-gradient(-45deg, #115599 0%, #2B65F5 100%);
+    background: -webkit-linear-gradient(-45deg, #115599 0%, #2B65F5 100%);
+    background: linear-gradient(135deg, #115599 0%, #2B65F5 100%);
+    //color: $color-copy;
+}
+
+.promo-banner-block.promo-banner-block-style--refugee-pale a:link,
+.promo-banner-block.promo-banner-block-style--refugee-pale a:visited,
+.promo-banner-block.promo-banner-block-style--refugee-pale a:hover,
+.promo-banner-block.promo-banner-block-style--refugee-pale a:active {
+    color: $color-copy;
+}
+
+
+.cta-body-block--refugee-pale {
+    color: #052d67;
+    margin-bottom: 20px;
+    border: rgba(187, 221, 255, 0.55) 1px solid;
+    box-shadow: inset 0 0 50px #fff,
+        /* inner white */
+        -2px 1px 65px rgba(178, 139, 252, 0.07) inset,
+        /*inner left magenta short */
+        50px 6px 100px rgba(255, 188, 143, 0.54),
+        /* outer peach - right top */
+        -30px 20px 78px rgba(178, 139, 252, 0.45),
+        /* outer magenta - left bottom */
+        50px 5px 80px #fff;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.cta-body-block.cta-body-block--refugee-pale a:link,
+.cta-body-block.cta-body-block--refugee-pale a:visited,
+.cta-body-block.cta-body-block--refugee-pale a:hover,
+.cta-body-block.cta-body-block--refugee-pale a:active {
+    color: $color-link;
+}
+
+#content .cta-body-block.cta-body-block--refugee-pale a:hover,
+#content .cta-body-block.cta-body-block--refugee-pale a:active {
+    text-decoration: none;
+}
+
+.single-wpbdp_listing .cont_nav_inner p :nth-last-child(1),
+.single-post .cont_nav_inner p :nth-last-child(1),
+.page-child .cont_nav_inner p :nth-last-child(1),
+.single-job_listing .cont_nav_inner p :nth-last-child(1),
+.single-job_listing .cont_nav_inner p :nth-last-child(2),
+.single-tribe_events .cont_nav_inner p :nth-last-child(1),
+.single-tribe_events .cont_nav_inner p :nth-last-child(2) {
+    display: none;
+}
+
+
+@media screen and (max-width: 700px) {
+
+    .cta-second-link {
+        display: none;
+    }
+
+}
+
+/* 1 col */
+
+.cta-header-block {
+    padding: 10px 20px;
+}
+
+.cta-header-block p {
+    display: inline
+}
+
+
+/*3 col*/
+.cta-header-block p {
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+
+/* 3+ row */
+.cta-header-block .fixedrow {
+    padding-left: 23px;
+}
+
+.cta-header-block .fixedrow {
+    width: 94%
+}
+
+.cta-header-block {
+    padding: 25px 20px;
 }
