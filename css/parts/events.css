@@ -535,3 +535,17 @@
 
 
 }
+
+body.tribe_community_list {
+    h2 {
+        font-size: var(--fs-display-medium);
+        line-height: var(--lh-display-medium);
+        margin: var(--sp-xxlarge) 0 var(--sp-xxlarge) 0;
+    }
+
+    .tribe-event-list-search {
+        display: none;
+    }
+
+
+}

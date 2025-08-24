@@ -11,6 +11,7 @@ select[disabled]>option {
 
 a.button.edp-button-solid,
 button.edp-button-solid,
+.tribe-button.tribe-button-primary,
 input[type="submit"],
 input[type="button"],
 input[type="file"]::file-selector-button {
@@ -39,6 +40,7 @@ input[type="file"]::file-selector-button {
 a.button.edp-button-outline,
 button.edp-button-outline,
 input[type="submit"].button.secondary,
+.tribe-button.tribe-button-secondary,
 .tribe-events-community-footer input[type="submit"] {
     font-size: var(--fs-body);
     color: var(--cl-dark);
@@ -75,8 +77,8 @@ input[type="submit"].button.secondary,
 }
 
 /* == Body ghost button ===== */
-/* Events date picker */
 
+/* Ghost on dark - Events date picker */
 button.tribe-events-c-top-bar__datepicker-button {
     font-size: var(--fs-body);
     color: var(--cl-light);
@@ -90,6 +92,21 @@ button.tribe-events-c-top-bar__datepicker-button {
         opacity: var(--op-strong);
     }
 
+}
+
+/* Ghost on light */
+.tribe-button.tribe-button-tertiary {
+    font-size: var(--fs-body);
+    color: var(--cl-dark);
+    /* background-color: var(--cl-dark-75);*/
+
+
+    padding: var(--sp-xsmall) var(--sp-small);
+
+    &:hover,
+    &:focus {
+        opacity: var(--op-strong);
+    }
 }
 
 /* == Outline button ===== */
