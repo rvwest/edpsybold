@@ -88,49 +88,7 @@ header[role="banner"] {
                     display: flex;
                 }
 
-                @media screen and (min-width: 701px) {
-                    ul.sub-menu {
-                        position: absolute;
-                        top: 100%;
-                        left: 0;
-                        background-color: var(--cl-light);
-                        z-index: 1000;
-                        min-width: 100%;
-                        width: max-content;
-                        align-items: flex-start;
-                        border: 1px solid var(--cl-dark);
 
-                        .menu-item-has-children:last-of-type & {
-                            right: 0;
-                            left: inherit;
-                        }
-
-                        li {
-                            width: 100%;
-
-                            a {
-                                display: flex;
-                                align-items: center;
-                                width: auto;
-                                min-width: 100%;
-                                white-space: nowrap;
-                                border: none;
-                                height: 27px;
-
-                                &:hover,
-                                &:active {
-                                    background-color: var(--cl-lightpurple-hover);
-                                    border: none;
-                                }
-                            }
-                        }
-
-                    }
-
-                    /*  &:hover>ul.sub-menu {
-                        display: flex;
-                    }*/
-                }
 
                 button.submenu-toggle {
                     display: none;
@@ -148,15 +106,7 @@ header[role="banner"] {
             }
         }
 
-        /* Only open first-level dropdowns on hover (desktop) */
-        >ul>li:hover>ul.sub-menu {
-            display: flex;
-        }
 
-        /* Do not auto-open deeper levels on hover (desktop) */
-        ul ul.sub-menu {
-            display: none;
-        }
 
     }
 
@@ -299,7 +249,64 @@ body {
 
 }
 
+@media screen and (min-width: 701px) {
+    header[role="banner"] nav.top-nav-menu {
+        ul>li {
+            ul.sub-menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: var(--cl-light);
+                z-index: 1000;
+                min-width: 100%;
+                width: max-content;
+                align-items: flex-start;
+                border: 1px solid var(--cl-dark);
 
+                .menu-item-has-children:last-of-type & {
+                    right: 0;
+                    left: inherit;
+                }
+
+                li {
+                    width: 100%;
+
+                    a {
+                        display: flex;
+                        align-items: center;
+                        width: auto;
+                        min-width: 100%;
+                        white-space: nowrap;
+                        border: none;
+                        height: 27px;
+
+                        &:hover,
+                        &:active {
+                            background-color: var(--cl-lightpurple-hover);
+                            border: none;
+                        }
+                    }
+                }
+            }
+
+
+        }
+
+        /* Only open first-level dropdowns on hover (desktop) */
+        >ul>li:hover>ul.sub-menu {
+            display: flex;
+        }
+
+        /* Do not auto-open deeper levels on hover (desktop) */
+        ul ul.sub-menu {
+            display: none;
+        }
+
+        /*  &:hover>ul.sub-menu {
+        display: flex;
+    }*/
+    }
+}
 
 
 @media screen and (max-width: 700px) {
