@@ -18,7 +18,7 @@ return [
     ],
     [
         // Apply the same promo to /blog exactly, and to /tag and any /tag/*
-        'keys' => ['blog', 'tag/cpd'],
+        'keys' => ['blog', 'tag/*', 'author/*'],
         'html' => '<a href="/events/community/add/" class="edp-blog-promo" >Write for us <i class="fal fa-plus-circle fa-2x"></i></a>',
     ],
 ];

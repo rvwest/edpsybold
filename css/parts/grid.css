@@ -138,9 +138,23 @@
 }
 
 @media only screen and (max-width: 600px) {
-    .archive.category-blog .grid12 {
+
+    .archive.author .archive.category-blog .grid12,
+    body.archive.author .grid12 {
         :is(article.post) {
             grid-column: 1 / span 12;
+        }
+
+        .archive-meta {
+            grid-column: 1 / span 12;
+
+            .author-avatar {
+                grid-column: 1 / span 4;
+            }
+
+            .author-description {
+                grid-column: 5 / span 7;
+            }
         }
     }
 }
@@ -207,6 +221,10 @@ body.single-post {
 
 body.single-post article.type-post .entry-footer,
 .archive.author {
+
+    header.header {
+        grid-column: 1 / span 12;
+    }
 
     .author-info {
 
