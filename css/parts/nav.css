@@ -265,7 +265,14 @@ body {
 /* ---- listing footer nav ---- */
 .navigation.posts-navigation {
     margin-bottom: var(--sp-xxxlarge);
+
+    .nav-links {
+        display: flex;
+        justify-content: space-between;
+    }
 }
+
+
 
 
 

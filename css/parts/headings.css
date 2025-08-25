@@ -191,6 +191,53 @@ body:not(.home),
         margin: var(--sp-xxlarge) 0 var(--sp-xxlarge) 0;
     }
 
+    .title-tag {
+        h1 {
+            margin-bottom: var(--sp-small);
+        }
+
+        h2 {
+            margin-bottom: calc(var(--sp-xxlarge) - var(--sp-small) - 42px);
+            padding-left: var(--sp-xsmall);
+            display: flex;
+            gap: var(--sp-small);
+            align-items: center;
+
+            .fa-tags,
+            .fa-user-circle {
+                color: var(--cl-medpurple);
+            }
+
+            .tag-block {
+                background-color: var(--cl-lightpurple-hover);
+                padding: var(--sp-xxsmall) var(--sp-small) var(--sp-xxsmall) var(--sp-small);
+                display: flex;
+                gap: var(--sp-small);
+                align-items: center;
+                color: var(--cl-dark);
+                border-radius: 4px;
+
+                &:link,
+                &:visited {
+                    border: 2px solid var(--cl-light);
+
+                    .fa-times {
+                        color: var(--cl-dark-50);
+                    }
+                }
+
+                &:hover,
+                &:active {
+                    border: 2px solid var(--cl-medpurple);
+
+                    .fa-times {
+                        color: var(--cl-medpurple);
+                    }
+                }
+            }
+        }
+    }
+
     .wpbdp-listing-single {
         .name-inst-year {
             margin-top: var(--sp-xxlarge);

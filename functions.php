@@ -584,39 +584,99 @@ add_shortcode('jobs-homepage', 'wpjm_jobs_homepage_shortcode');
 // ======================================================================== //
 
 function get_page_promo() {
-    $promos = include get_template_directory() . '/promo-config.php';
+    $raw = include get_template_directory() . '/promo-config.php';
+
+    // Normalize config into groups of ['keys' => [...], 'html' => '...']
+    $groups = [];
+    if (is_array($raw)) {
+        foreach ($raw as $k => $v) {
+            // New format: each item is an array with 'keys' and 'html'
+            if (is_array($v) && isset($v['keys'], $v['html'])) {
+                $groups[] = [
+                    'keys' => array_values((array) $v['keys']),
+                    'html' => $v['html'],
+                ];
+            } else {
+                // Back-compat: associative 'key' => 'html'
+                if (is_string($k)) {
+                    $groups[] = [
+                        'keys' => [$k],
+                        'html' => $v,
+                    ];
+                }
+            }
+        }
+    }
+
+    // Current route (path without leading/trailing slashes)
+    $request_path = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH);
+    $route = trim($request_path ?? '/', '/');
+
+    // Pattern matcher: supports exact and simple prefix wildcard '/*'
+    $matches = function ($pattern, $route) {
+        if (!is_string($pattern)) return false;
+        $pattern = trim($pattern, '/');
+        if ($pattern === '') {
+            return $route === '';
+        }
+        if (substr($pattern, -2) === '/*') {
+            $base = rtrim(substr($pattern, 0, -2), '/');
+            return ($route === $base) || (strpos($route, $base . '/') === 0);
+        }
+        return $route === $pattern; // exact only
+    };
+
+    // 1) Try path-based matching first (arrays of keys + wildcards)
+    foreach ($groups as $group) {
+        foreach ($group['keys'] as $pattern) {
+            if ($matches($pattern, $route)) {
+                echo '<div class="page-promo">' . $group['html'] . '</div>';
+                return;
+            }
+        }
+    }
+
+    // 2) Fallback to original logic (page slug, category slug, post type archive)
+    // Build an associative map of exact keys only for quick lookup
+    $promos_assoc = [];
+    foreach ($groups as $group) {
+        foreach ($group['keys'] as $pattern) {
+            if (is_string($pattern) && substr(trim($pattern), -2) !== '/*') {
+                $promos_assoc[trim($pattern, '/')] = $group['html'];
+            }
+        }
+    }
 
     if (is_page()) {
         $post = get_post();
         if (!$post) return;
 
-        $slug       = $post->post_name;              // current page slug
-        $parent     = $post->post_parent ? get_post_field('post_name', $post->post_parent) : '';
-        $combined   = $parent ? $parent . '/' . $slug : $slug;
+        $slug     = $post->post_name; // current page slug
+        $parent   = $post->post_parent ? get_post_field('post_name', $post->post_parent) : '';
+        $combined = $parent ? $parent . '/' . $slug : $slug;
 
-        // Priority: parent/child key → slug only → ID
-        if (isset($promos[$combined])) {
-            echo '<div class="page-promo">' . $promos[$combined] . '</div>';
+        if (isset($promos_assoc[$combined])) {
+            echo '<div class="page-promo">' . $promos_assoc[$combined] . '</div>';
             return;
         }
-        if (isset($promos[$slug])) {
-            echo '<div class="page-promo">' . $promos[$slug] . '</div>';
+        if (isset($promos_assoc[$slug])) {
+            echo '<div class="page-promo">' . $promos_assoc[$slug] . '</div>';
             return;
         }
-        if (isset($promos[(string) $post->ID])) {
-            echo '<div class="page-promo">' . $promos[(string) $post->ID] . '</div>';
+        if (isset($promos_assoc[(string) $post->ID])) {
+            echo '<div class="page-promo">' . $promos_assoc[(string) $post->ID] . '</div>';
             return;
         }
     } elseif (is_category()) {
         $category = get_queried_object();
-        if ($category && isset($promos[$category->slug])) {
-            echo '<div class="page-promo">' . $promos[$category->slug] . '</div>';
+        if ($category && isset($promos_assoc[$category->slug])) {
+            echo '<div class="page-promo">' . $promos_assoc[$category->slug] . '</div>';
             return;
         }
     } elseif (is_post_type_archive()) {
         $post_type = get_query_var('post_type');
-        if (isset($promos[$post_type])) {
-            echo '<div class="page-promo">' . $promos[$post_type] . '</div>';
+        if ($post_type && isset($promos_assoc[$post_type])) {
+            echo '<div class="page-promo">' . $promos_assoc[$post_type] . '</div>';
             return;
         }
     }
@@ -1051,3 +1111,15 @@ function modify_wordfence_ip_display($formatted_row, $row)
 	return $formatted_row;
 }
 add_filter('wordfence_attack_table_row', 'modify_wordfence_ip_display', 10, 2);
+
+
+// =========== Blog list page  ================================================= //
+
+// Add classes to "Older posts" and "Newer posts" links.
+function edp_posts_nav_link_attrs( $attr ) {
+    // Change this string to whatever classes you want:
+    $classes = 'edp-button-solid button';
+    return trim( $attr . ' class="' . $classes . '"' );
+}
+add_filter( 'previous_posts_link_attributes', 'edp_posts_nav_link_attrs' );
+add_filter( 'next_posts_link_attributes', 'edp_posts_nav_link_attrs' );

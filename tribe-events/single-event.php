@@ -82,7 +82,7 @@ $cost = tribe_get_formatted_cost($event_id);
 		<?php if (strpos(implode(' ', get_body_class()), 'event-cat-on-demand') === false): ?>
 			<?php echo tribe_events_event_schedule_details($event_id, '<div class="edp-event-date-time">', '</div>'); ?>
 		<?php else: ?>
-			<div><span class="edp-event-on-demand">On-demand training</span> <i class="far fa-bolt on-demand-icon"></i>
+			<div><span class="edp-event-on-demand">On-demand training</span> <i class="fas fa-bolt fa-lg on-demand-icon"></i>
 			</div>
 		<?php endif; ?>
 		<?php  if (tribe_get_city( $event_id )) {?>

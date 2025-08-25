@@ -378,7 +378,7 @@
 .single-tribe_events {
 
     header.event-page-header {
-        margin-bottom: var(--sp-xxlarge)
+        margin-bottom: var(--sp-xlarge)
     }
 
     .meta-item {
@@ -418,6 +418,22 @@
 
         }
     }
+
+    /* ===== On demand events ======= */
+    &.event-cat-on-demand {
+
+        .on-demand-icon {
+            color: var(--cl-yellow);
+            margin-left: var(--sp-xsmall);
+        }
+
+        .meta-item.meta-item--date {
+            display: none !important;
+        }
+
+    }
+
+
 
 
 

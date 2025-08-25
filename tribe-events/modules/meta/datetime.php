@@ -62,19 +62,19 @@ do_action('tribe_events_single_meta_details_section_start');
 // All day (multiday) events
 if (tribe_event_is_all_day() && tribe_event_is_multiday()):
 	?>
-	<div class="meta-item">
-		<div class="label">Start date</div>
+	<div class="meta-item meta-item--start-date">
+		<div class="label">Starts</div>
 		<div class="detail event-schedule event-start-date"><?php echo esc_html($start_date); ?></div>
 	</div>
-	<div class="meta-item">
-		<div class="label">End date</div>
+	<div class="meta-item meta-item--end-date">
+		<div class="label">Ends</div>
 		<div class="detail event-schedule event-end-date"><?php echo esc_html($end_date); ?></div>
 	</div>
 	<?php
 	// All day (single day) events
 elseif (tribe_event_is_all_day()):
 	?>
-	<div class="meta-item">
+	<div class="meta-item meta-item--date">
 		<div class="label">Date</div>
 		<div class="detail event-schedule event-start-time"><?php echo esc_html($start_date); ?></div>
 	</div>
@@ -82,12 +82,12 @@ elseif (tribe_event_is_all_day()):
 	// Multiday events
 elseif (tribe_event_is_multiday()):
 	?>
-	<div class="meta-item">
-		<div class="label">Start date</div>
+	<div class="meta-item meta-item--start-date">
+		<div class="label">Starts</div>
 		<div class="detail event-schedule event-start-date"><?php echo esc_html($start_datetime); ?></div>
 	</div>
-	<div class="meta-item">
-		<div class="label">End date</div>
+	<div class="meta-item meta-item--end-date">
+		<div class="label">Ends</div>
 		<div class="detail event-schedule event-end-date"><?php echo esc_html($end_datetime); ?></div>
 	</div>
 	<?php
@@ -95,8 +95,8 @@ elseif (tribe_event_is_multiday()):
 else:
 	?>
 
-	<div class="meta-item">
-		<div class="label">Date</div>
+	<div class="meta-item meta-item--date">
+		<div class="label ">Date</div>
 		<div class="detail event-schedule event-end-date"><?php echo esc_html($start_date); ?>
 			(<?php echo $time_formatted; ?>)
 		</div>
