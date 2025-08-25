@@ -264,6 +264,8 @@
     background-size: cover;
     background-position: center;
 
-
+    &.home-divider--jobs-events {
+        margin-bottom: 100px;
+    }
 
 }

@@ -257,11 +257,16 @@ $final_posts = get_posts(array(
         </div>
     </section>
 <?php endif; ?>
-<div class="home-divider grid12"></div>
+<div class="home-divider home-divider--jobs-events grid12"></div>
+<?php
+$homepage_jobs_output = do_shortcode('[jobs-homepage per_page="3" show_filters="false"]');
+if (trim($homepage_jobs_output) !== '') :
+?>
 <section class="homepage-jobs grid12">
 <h2>Jobs</h2>
-<?php echo do_shortcode('[jobs-homepage per_page="3" show_filters="false"]') ?>
+<?php echo $homepage_jobs_output; ?>
 </section>
+<?php endif; ?>
 
 <?php
 // Query the next 4 upcoming events
