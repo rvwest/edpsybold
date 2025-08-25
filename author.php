@@ -10,9 +10,7 @@
 <div class="archive-meta" itemprop="description">
 
 <?php get_template_part( 'biography', get_post_format() ); ?>
-        <?php if ('' != get_the_archive_description()) {
-            echo esc_html(get_the_archive_description());
-        } ?></div>
+        </div>
 <?php if (have_posts()):
     while (have_posts()):
         the_post(); ?>

@@ -23,10 +23,14 @@ if (function_exists('coauthors_posts_links')) {
                 <p class="author-bio">
                     <?php echo $coauthor->description; ?>
                 </p>
-                <p class="author-bio">
-                    View all posts by <a
-                        href="<?php echo get_author_posts_url($coauthor->ID, $coauthor->user_nicename); ?>"><?php echo $coauthor->display_name; ?></a>
-                </p>
+                <?php if ( is_single() ) : ?>
+                    <p class="author-bio">
+                        View all posts by
+                        <a href="<?php echo esc_url( get_author_posts_url( $coauthor->ID, $coauthor->user_nicename ) ); ?>">
+                            <?php echo esc_html( $coauthor->display_name ); ?>
+                        </a>
+                    </p>
+                <?php endif; ?>
             </div>
 
         </div>

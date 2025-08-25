@@ -11,21 +11,22 @@
     gap: var(--sp-home-gap);
 }
 
-.archive.category #content > header,
-.archive.category #content > nav,
-.archive.tag #content > header,
-.archive.tag #content > nav {
+.archive.category #content>header,
+.archive.category #content>nav,
+.archive.tag #content>header,
+.archive.tag #content>nav {
     flex: 1 1 100%;
 }
 
-.archive.category #content > article,
-.archive.tag #content > article {
+.archive.category #content>article,
+.archive.tag #content>article {
     flex: 1 1 calc(50% - var(--sp-home-gap));
 }
 
 @media only screen and (max-width: 700px) {
-    .archive.category #content > article,
-    .archive.tag #content > article {
+
+    .archive.category #content>article,
+    .archive.tag #content>article {
         flex-basis: 100%;
     }
 }
@@ -126,36 +127,42 @@
 
             }
 
-            .author-info {
 
-
-                .author-avatar {
-                    width: 125px;
-                    height: 125px;
-                    padding-right: var(--sp-small);
-
-
-                    img {
-                        width: 125px;
-                        height: 125px;
-                        border-radius: 50%;
-                        object-fit: cover;
-                        object-position: top center;
-                        border: 5px solid var(--cl-light);
-
-                    }
-                }
-
-
-            }
         }
     }
 
 
 }
 
+.single-post article.type-post .entry-footer,
+.archive.author {
+    .author-info {
 
-#container article.type-post .authors-section {
+
+        .author-avatar {
+            width: 125px;
+            height: 125px;
+            padding-right: var(--sp-small);
+
+
+            img {
+                width: 125px;
+                height: 125px;
+                border-radius: 50%;
+                object-fit: cover;
+                object-position: top center;
+                border: 5px solid var(--cl-light);
+
+            }
+        }
+
+
+    }
+}
+
+
+#container article.type-post .authors-section,
+.archive.author {
 
     .author-avatar {
         height: auto;
@@ -173,6 +180,12 @@
 
         }
     }
+}
+
+.archive.author .archive-meta {
+    background-color: var(--cl-lightpurple-hover);
+    padding: var(--sp-medium) 0;
+    margin: var(--sp-large) 0;
 }
 
 

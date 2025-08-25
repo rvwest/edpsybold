@@ -131,6 +131,12 @@
     }
 }
 
+.archive.author .archive-meta {
+    display: grid;
+    grid-template-columns: subgrid;
+
+}
+
 @media only screen and (max-width: 600px) {
     .archive.category-blog .grid12 {
         :is(article.post) {
@@ -141,6 +147,8 @@
 
 
 /* Blog post */
+
+
 
 body.single-post {
     article.type-post {
@@ -190,24 +198,55 @@ body.single-post {
                 grid-column: 4 / span 7;
             }
 
-            .author-info {
-                grid-column: 2 / span 10;
-                display: grid;
-                grid-template-columns: subgrid;
 
-                .author-avatar {
-                    grid-column: 1 / span 2;
-                }
-
-                .author-description {
-                    grid-column: 3 / span 7;
-                }
-            }
         }
     }
 
 
 }
+
+body.single-post article.type-post .entry-footer,
+.archive.author {
+
+    .author-info {
+
+        display: grid;
+        grid-template-columns: subgrid;
+
+        .author-avatar {
+            grid-column: 1 / span 2;
+        }
+
+        .author-description {
+            grid-column: 3 / span 7;
+        }
+    }
+
+    :where(.author) .author-info {
+        grid-column: 1 / span 10;
+    }
+}
+
+body.single-post article.type-post .entry-footer {
+
+    .author-info {
+        grid-column: 2 / span 10;
+
+    }
+}
+
+.archive {
+
+    .author-info {
+        grid-column: 1 / span 10;
+    }
+}
+
+
+.archive.author .author-info {
+    grid-column: 1 / span 10;
+}
+
 
 /* == Events ====================== */
 
