@@ -11,6 +11,8 @@ if (is_singular()) { ?>
 <?php } else { ?>
     <!-- var: listing page -->
     <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+        
+        <?php get_template_part('entry-summary'); ?>
         <header>
 
             <h2 class="entry-title">
@@ -22,7 +24,6 @@ if (is_singular()) { ?>
                 get_template_part('blog-list-meta');
             } ?>
         </header>
-        <?php get_template_part('entry-summary'); ?>
     </article>
 <?php } ?>
 <!-- file end: entry.php -->
