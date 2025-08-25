@@ -185,7 +185,7 @@
 .archive.author .archive-meta {
     background-color: var(--cl-lightpurple-hover);
     padding: var(--sp-medium) 0;
-    margin: var(--sp-large) 0;
+    margin: var(--sp-large) 0 var(--sp-xlarge) 0;
 }
 
 
