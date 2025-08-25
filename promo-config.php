@@ -17,6 +17,10 @@ return [
         'html' => '<a href="/events/community/add/" class="edp-events-promo">Add your event <i class="fal fa-plus-circle fa-2x"></i></a>',
     ],
     [
+        'keys' => ['events/month/*'],
+        'html' => '<a href="/events/community/add/" class="edp-events-promo">Add your event <i class="fal fa-plus-circle fa-2x"></i></a>',
+    ],
+    [
         // Apply the same promo to /blog exactly, and to /tag and any /tag/*
         'keys' => ['blog', 'tag/*', 'author/*'],
         'html' => '<a href="/events/community/add/" class="edp-blog-promo" >Write for us <i class="fal fa-plus-circle fa-2x"></i></a>',

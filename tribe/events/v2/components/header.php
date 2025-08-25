@@ -27,9 +27,6 @@ if (empty($disable_event_search)) {
 ?>
 
 <header <?php tribe_classes($header_classes); ?>>
-	<?php $this->template('components/messages'); ?>
-
-	<?php $this->template('components/messages', ['classes' => ['tribe-events-header__messages--mobile']]); ?>
 
 	<?php $this->template('components/header-title'); ?>
 
@@ -45,6 +42,11 @@ if (empty($disable_event_search)) {
 
 
 </header>
+
+<?php $this->template('components/messages'); ?>
+
+<?php $this->template('components/messages', ['classes' => ['tribe-events-header__messages--mobile']]); ?>
+
 
 <?php $this->template([$this->get_view_slug(), 'top-bar']); ?>
 <!-- file end: tribe/events/v2/components/header.php -->

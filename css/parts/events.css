@@ -15,6 +15,31 @@
 
 
 
+        .tribe-events-header__messages {
+            padding: var(--sp-xsmall) var(--sp-medium);
+            border: 1px solid var(--cl-light);
+            background: var(--cl-dark-50);
+            margin-bottom: var(--sp-medium);
+            margin-left: 0;
+            width: fit-content;
+
+            .tribe-events-c-messages__message {
+                gap: var(--sp-small);
+
+                a:link,
+                a:visited {
+                    color: var(--cl-light);
+                    text-decoration: underline;
+                }
+
+                a:hover,
+                a:active {
+                    color: var(--cl-light);
+                    text-decoration: none;
+                }
+            }
+        }
+
         .tribe-events-c-top-bar {
 
             padding: var(--sp-xsmall) var(--sp-small);
@@ -279,6 +304,8 @@
                 padding: 0;
             }
 
+            .tribe-events-header__messages {}
+
             .tribe-events-c-top-bar.tribe-events-header__top-bar {
                 display: flex;
                 align-items: center;
@@ -296,6 +323,20 @@
                 .tribe-events-calendar-list__month-separator-text {
                     font-size: var(--fs-title-medium);
                 }
+            }
+
+            .edp-events-calendar-list__event-row--featured a {
+
+                .edp-events-calendar-list__event-header {
+                    border-bottom: none;
+                }
+
+                .edp-events-calendar-list__event-meta {
+
+                    border-top: none;
+                }
+
+
             }
 
             .edp-events-calendar-list__event-row a {
