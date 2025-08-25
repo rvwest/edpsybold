@@ -72,38 +72,7 @@
     li.job_listing {
 
 
-        .home-article-image {
-            width: 100%;
-            aspect-ratio: 2 / 1;
-            overflow: hidden;
-            align-content: center;
-            justify-content: center;
-            margin-bottom: var(--sp-small);
-        }
 
-        &.job-summary .home-article-image {
-            text-align: center;
-            border: solid 1px var(--cl-orange);
-
-
-            .crp_job_logo {
-                object-fit: contain;
-                width: 80%;
-                height: 80%;
-
-            }
-        }
-
-        .wp-post-image {
-
-            object-fit: cover;
-            width: 100%;
-            height: 100%;
-
-
-
-
-        }
 
 
 
@@ -256,5 +225,54 @@
     background-position: center;
 
 
+
+}
+
+body {
+
+    &.home .article-item,
+    /* home */
+    &.home li.job_listing,
+    /* home - jobs */
+    &.archive article.type-post.has-post-thumbnail
+
+    /* Archive pages */
+        {
+
+
+        .home-article-image,
+        .archive-article-img {
+            width: 100%;
+            aspect-ratio: 2 / 1;
+            overflow: hidden;
+            align-content: center;
+            justify-content: center;
+            margin-bottom: var(--sp-small);
+        }
+
+        &.job-summary .home-article-image {
+            text-align: center;
+            border: solid 1px var(--cl-orange);
+
+
+            .crp_job_logo {
+                object-fit: contain;
+                width: 80%;
+                height: 80%;
+
+            }
+        }
+
+        img.wp-post-image {
+
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+
+
+
+
+        }
+    }
 
 }
