@@ -257,7 +257,7 @@ $final_posts = get_posts(array(
         </div>
     </section>
 <?php endif; ?>
-<div class="home-divider grid12"></div>
+<div class="home-divider home-divider--jobs-events grid12"></div>
 <?php
 $homepage_jobs_output = do_shortcode('[jobs-homepage per_page="3" show_filters="false"]');
 if (trim($homepage_jobs_output) !== '') :
