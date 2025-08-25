@@ -261,6 +261,14 @@ body {
 
 }
 
+
+/* ---- listing footer nav ---- */
+.navigation.posts-navigation {
+    margin-bottom: var(--sp-xxxlarge);
+}
+
+
+
 @media screen and (min-width: 701px) {
     header[role="banner"] nav.top-nav-menu {
         ul>li {
