@@ -70,6 +70,7 @@ header[role="banner"] {
                     align-items: center;
                     gap: var(--sp-xsmall);
                     padding: var(--sp-medium);
+                    padding-right: calc(var(--sp-medium) + 2px);
                     padding-bottom: calc(var(--sp-medium) - 2px);
                     border-bottom: 3px solid var(--cl-light);
                 }
