@@ -125,12 +125,24 @@
 
                 margin-bottom: var(--sp-large);
                 display: flex;
-                flex-wrap: wrap;
+                flex-wrap: nowrap;
+                gap: var(--sp-small);
+
+                .tag-items {
+                    display: flex;
+                    flex-wrap: wrap;
+                }
 
                 i {
                     margin-top: 8px;
                     margin-right: var(--sp-xsmall);
                     color: var(--cl-blog-primary);
+                }
+
+                a {
+                    margin: var(--sp-xsmall);
+                    padding: 0 var(--sp-xsmall);
+                    background-color: var(--cl-lightpurple-hover);
                 }
 
                 a:link,
