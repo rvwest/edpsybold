@@ -1,5 +1,4 @@
 <!-- file: author.php -->
-<!-- file: tag.php -->
 <?php 
 global $post;
 $author_id = $post->post_author;
@@ -22,8 +21,9 @@ foreach (get_coauthors() as $coauthor): ?>
     <?php endwhile; endif; ?>
 <?php get_template_part('nav', 'below'); ?>
 <?php get_footer(); ?>
-<!-- file end: tag.php -->
 
+
+----
 <?php get_header(); ?>
 <header class="header">
     <?php the_post(); ?>hksdsajksadhk
