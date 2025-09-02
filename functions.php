@@ -37,6 +37,13 @@ function edpsybold_enqueue()
 {
     wp_enqueue_style('edpsybold-style', get_stylesheet_uri());
     wp_enqueue_script('jquery');
+    wp_enqueue_script(
+        'edpsybold-share',
+        get_template_directory_uri() . '/js/share.js',
+        array(),
+        filemtime(get_template_directory() . '/js/share.js'),
+        true
+    );
 }
 add_action('wp_footer', 'edpsybold_footer');
 function edpsybold_footer()
