@@ -29,7 +29,7 @@
                         <?php 
                         $author_names = array();
                         foreach($coauthors as $coauthor) {
-                            $author_names[] = '<span class="author-heading">' . $coauthor->display_name . '</span>';
+                            $author_names[] = '<span class="author-heading"><a href="' . esc_url( get_author_posts_url( $coauthor->ID, $coauthor->user_nicename ) ) . '">' . esc_html( $coauthor->display_name ) . '</a></span>';
                         }
                         
                         $author_count = count($coauthors);
