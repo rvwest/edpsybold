@@ -1,3 +1,4 @@
+
 <!-- file: entry-meta.php -->
 
 <div class="meta-bg"></div>
@@ -33,13 +34,7 @@ if ($tags && ! is_wp_error($tags)) {
 }
 ?>
             </div>
-<button type="button"
-        id="share-button"
-        class="share-button button edp-button"
-        data-title="<?php echo esc_attr(get_the_title()); ?>"
-        data-url="<?php echo esc_url(get_permalink()); ?>"
-        data-text="<?php echo esc_attr(strip_tags(get_the_excerpt())); ?>"
-        data-image="<?php echo esc_url(get_the_post_thumbnail_url(null, 'full')); ?>">
-    <?php esc_html_e('Share', 'edpsybold'); ?>
+<button type="button" id="share-button" class="edp-button-solid">
+    <?php esc_html_e('share', 'edpsybold'); ?>
 </button>
 <!-- file end: entry-meta.php -->
