@@ -15,6 +15,7 @@
     --cl-dark-75: rgba(54, 48, 51, 0.75);
     --cl-dark-50: rgba(54, 48, 51, 0.5);
     --cl-link: #0072B9;
+    --cl-straw: #FFF4DA;
     --cl-orange: #DB633B;
     --cl-lightblue: #78A8CF;
     --cl-green: #5EA259;
@@ -27,7 +28,7 @@
 
     /* Context colors - for context specific primary colours see lower down the file */
     --cl-thesis-primary: var(--cl-lightblue);
-    --cl-blog-primary: var(--cl-medpurple);
+    --cl-blog-primary: var(--cl-orange);
     --cl-events-primary: var(--cl-dark);
     --cl-jobs-primary: var(--cl-orange);
 

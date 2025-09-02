@@ -1,7 +1,6 @@
 <!-- file: entry-author.php -->
 
-<div class="meta-bg"></div>
-<div class="entry-meta">
+<div class="entry-author--top">
      
         <?php
         if ( function_exists( 'coauthors_posts_links' ) ) {
@@ -17,7 +16,7 @@
                         $author_counter = 1;
                         foreach($coauthors as $coauthor): ?>
                             <div class="author-avatar author-<?php echo $author_counter; ?>">
-                                <?php echo get_avatar( $coauthor->user_email, '', '', '', array( 'style' => '' ) ); ?>
+                                <?php echo get_avatar( $coauthor->user_email, '', '', '', array( 'style' => 'author' ) ); ?>
                             </div>
                         <?php 
                         $author_counter++;
@@ -52,14 +51,4 @@
         }
         ?>
         
-
-
-
-        <time class="entry-date" datetime="<?php echo esc_attr(get_the_date('c')); ?>"
-            title="<?php echo esc_attr(get_the_date()); ?>" <?php if (is_single()) {
-                   echo 'itemprop="datePublished" pubdate';
-               } ?>><?php the_time(get_option('date_format')); ?></time>
-        <?php if (is_single()) {
-            echo '<meta itemprop="dateModified" content="' . esc_attr(get_the_modified_date()) . '">';
-        } ?>
 </div><!-- file end: entry-author.php -->

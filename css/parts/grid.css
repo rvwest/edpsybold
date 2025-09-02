@@ -181,14 +181,18 @@ body.single-post {
             }
 
             .entry-meta {
-                grid-column: 2 / span 2;
+                grid-column: 10 / span 3;
             }
 
             .entry-image {
-                grid-column: 4 / span 9;
-                ;
+                grid-column: 2 / span 7;
+
             }
+
+
         }
+
+
 
         .entry-content {
 
@@ -200,8 +204,13 @@ body.single-post {
             p,
             ul,
             ol,
-            blockquote {
-                grid-column: 4 / span 6;
+            blockquote,
+            .content-body {
+                grid-column: 3 / span 6;
+            }
+
+            .entry-author--top {
+                grid-column: 9 / span 3;
             }
         }
 

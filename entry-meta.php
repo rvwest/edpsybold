@@ -2,7 +2,8 @@
 <!-- file: entry-meta.php -->
 <?php require_once __DIR__ . '/entry-read-time.php'; ?>
 
-<div class="meta-bg"></div>
+
+<div class="entry-meta">
 <div class="entry-date-readtime">
         <time class="entry-date" datetime="<?php echo esc_attr(get_the_date('c')); ?>"
             title="<?php echo esc_attr(get_the_date()); ?>" <?php if (is_single()) {
@@ -23,14 +24,14 @@ $tags = get_the_terms(get_the_ID(), 'post_tag');
 if ($tags && ! is_wp_error($tags)) {
     $count = count($tags);
 
-    if ($count > 4) {
+    if ($count > 5) {
         // Show the first three tags
-        $display = array_slice($tags, 0, 3);
+        $display = array_slice($tags, 0, 4);
         foreach ($display as $tag) {
             echo '<a class="post-tag" href="' . esc_url(get_tag_link($tag)) . '">' . esc_html($tag->name) . '</a>';
         }
         // Replace the fourth with a +X others link to the full tag list
-        $others = $count - 3;
+        $others = $count - 4;
         $label = _n('+ %d other', '+ %d others', $others, 'edpsybold');
         echo '<a class="post-tag post-tag--more" href="#page-tags">' . sprintf($label, intval($others)) . '</a>';
     } else {
@@ -45,4 +46,5 @@ if ($tags && ! is_wp_error($tags)) {
 <button type="button" id="share-button" class="edp-button-solid">
     <?php esc_html_e('share', 'edpsybold'); ?>
 </button>
+</div>
 <!-- file end: entry-meta.php -->

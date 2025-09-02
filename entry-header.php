@@ -1,4 +1,5 @@
 <!-- file: entry-header.php -->
+<div class="blog-header-block">
 <header class="grid12">
     <h1 class="entry-title" itemprop="headline"><?php the_title(); ?></h1>
 </header>
@@ -21,9 +22,9 @@
         get_template_part('entry', 'meta');
     } ?>
 
-<?php if (!is_search()) {
-        get_template_part('entry', 'author');
-    } ?>
+
 
 </div>
+</div>
+
 <!-- file end: entry-header.php -->

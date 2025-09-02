@@ -5,6 +5,7 @@ if (is_singular()) { ?>
     <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
         <?php get_template_part('entry-header'); ?>
         <?php get_template_part('entry-content'); ?>
+        
         <?php get_template_part('entry-footer'); ?>
     </article>
 

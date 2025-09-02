@@ -156,14 +156,17 @@ body {
     }
 
     .backblock {
-        background-color: var(--cl-blog-primary);
+        background-color: var(--cl-light);
+        border-top: 1px solid var(--cl-dark);
+        border-bottom: 1px solid var(--cl-dark);
+
 
 
         a {
-            color: var(--cl-light);
+            color: var(--cl-dark);
 
             &:hover {
-                color: var(--cl-light);
+                color: var(--cl-dark);
             }
         }
     }
