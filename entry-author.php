@@ -47,6 +47,32 @@
                         }
                         ?>
                     </div><!-- .author-names -->
+                    <?php
+                    $job_titles = array();
+                    foreach ($coauthors as $coauthor) {
+                        if (is_a($coauthor, 'WP_User')) {
+                            $job_title = get_user_meta($coauthor->ID, 'job_title', true);
+                        } else {
+                            $job_title = get_post_meta($coauthor->ID, 'job_title', true);
+                        }
+                        if ($job_title) {
+                            $job_titles[] = '<span class="author-heading">' . esc_html($job_title) . '</span>';
+                        }
+                    }
+                    if (!empty($job_titles)) {
+                        echo '<div class="author-job-title">';
+                        $jt_count = count($job_titles);
+                        if ($jt_count == 2) {
+                            echo implode('<br> & ', $job_titles);
+                        } elseif ($jt_count > 2) {
+                            $last_job = array_pop($job_titles);
+                            echo implode(',<br> ', $job_titles) . '<br>& ' . $last_job;
+                        } else {
+                            echo $job_titles[0];
+                        }
+                        echo '</div>';
+                    }
+                    ?>
                 </div><!-- .authors-section -->
             <?php endif;
         }
