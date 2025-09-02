@@ -1,3 +1,4 @@
+
 <!-- file: entry-meta.php -->
 
 <div class="meta-bg"></div>
@@ -33,8 +34,7 @@ if ($tags && ! is_wp_error($tags)) {
 }
 ?>
             </div>
-
-<div class="share-button button edp-button">
-    SHAREBUTTON
-            </div>
+<button type="button" id="share-button" class="edp-button-solid">
+    <?php esc_html_e('share', 'edpsybold'); ?>
+</button>
 <!-- file end: entry-meta.php -->
