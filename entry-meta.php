@@ -1,5 +1,6 @@
 
 <!-- file: entry-meta.php -->
+<?php require_once __DIR__ . '/entry-read-time.php'; ?>
 
 <div class="meta-bg"></div>
 <div class="entry-date-readtime">
@@ -7,7 +8,14 @@
             title="<?php echo esc_attr(get_the_date()); ?>" <?php if (is_single()) {
                    echo 'itemprop="datePublished" pubdate';
                } ?>><?php the_time(get_option('date_format')); ?></time>
-        <div class="read-time">5 minute read time</div>
+        <?php
+        $read_time = edp_calculate_read_time();
+        $read_label = sprintf(
+            _n('%d minute read time', '%d minute read', $read_time, 'edpsybold'),
+            intval($read_time)
+        );
+        ?>
+        <div class="read-time"><?php echo esc_html($read_label); ?></div>
 </div>
 <div class="tags--header">
     <?php
