@@ -1,5 +1,5 @@
 <!-- file: entry-meta.php -->
-<?php require_once __DIR__ . '/read-time.php'; ?>
+<?php require_once __DIR__ . '/entry-read-time.php'; ?>
 
 <div class="meta-bg"></div>
 <div class="entry-date-readtime">
@@ -10,7 +10,7 @@
         <?php
         $read_time = edp_calculate_read_time();
         $read_label = sprintf(
-            _n('%d minute read time', '%d minutes read time', $read_time, 'edpsybold'),
+            _n('%d minute read time', '%d minute read', $read_time, 'edpsybold'),
             intval($read_time)
         );
         ?>
