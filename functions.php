@@ -708,6 +708,48 @@ function my_co_author_wseo_title($title)
 
 }
 
+// ========== Co-authors job title field ==================================== //
+// ======================================================================== //
+
+// Add job title field to guest author edit screen
+add_filter('coauthors_guest_author_fields', 'edpsybold_add_guest_author_job_title_field');
+function edpsybold_add_guest_author_job_title_field($fields)
+{
+    $fields['job_title'] = array(
+        'key'   => 'job_title',
+        'label' => __('Job title', 'edpsybold'),
+        'type'  => 'text',
+    );
+    return $fields;
+}
+
+// Add job title field to user profile
+add_action('show_user_profile', 'edpsybold_user_job_title_profile_field');
+add_action('edit_user_profile', 'edpsybold_user_job_title_profile_field');
+function edpsybold_user_job_title_profile_field($user)
+{
+    ?>
+    <h3><?php esc_html_e('Job title', 'edpsybold'); ?></h3>
+    <table class="form-table">
+        <tr>
+            <th><label for="job_title"><?php esc_html_e('Job title', 'edpsybold'); ?></label></th>
+            <td>
+                <input type="text" name="job_title" id="job_title" value="<?php echo esc_attr(get_user_meta($user->ID, 'job_title', true)); ?>" class="regular-text" />
+            </td>
+        </tr>
+    </table>
+    <?php
+}
+
+add_action('personal_options_update', 'edpsybold_save_user_job_title_profile_field');
+add_action('edit_user_profile_update', 'edpsybold_save_user_job_title_profile_field');
+function edpsybold_save_user_job_title_profile_field($user_id)
+{
+    if (current_user_can('edit_user', $user_id) && isset($_POST['job_title'])) {
+        update_user_meta($user_id, 'job_title', sanitize_text_field($_POST['job_title']));
+    }
+}
+
 // ========== Job manager ================================================= //
 // ======================================================================== //
 

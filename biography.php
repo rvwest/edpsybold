@@ -19,6 +19,15 @@ if (function_exists('coauthors_posts_links')) {
 
             <div class="author-description">
                 <h2 class="author-title">About <span class="author-heading"><?php echo $coauthor->display_name; ?></h2>
+                <?php
+                if (is_a($coauthor, 'WP_User')) {
+                    $job_title = get_user_meta($coauthor->ID, 'job_title', true);
+                } else {
+                    $job_title = get_post_meta($coauthor->ID, 'job_title', true);
+                }
+                if ($job_title) : ?>
+                    <div class="author-job-title"><?php echo esc_html($job_title); ?></div>
+                <?php endif; ?>
 
                 <p class="author-bio">
                     <?php echo $coauthor->description; ?>
