@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 338.06 338.06">
+  <defs>
+    <style>
+      .cls-1 { isolation: isolate; }
+      .cls-top, .cls-bottom, .cls-left {
+        fill: none;
+        mix-blend-mode: multiply;
+        stroke-miterlimit: 10;
+        stroke-width: 40px;
+        stroke-linecap: butt; /* clean seam at the midline */
+      }
+      .cls-left { stroke: #584189; }
+      .cls-top { stroke: #AB53A2; }
+      .cls-bottom { stroke: #584189; }
+    </style>
+  </defs>
+
+  <g class="cls-1" transform="translate(169.03,0)">
+    <g id="Layer_1" data-name="Layer 1">
+      
+      <g transform="rotate(-90 0 169.03)">
+        <path class="cls-bottom" d="M0,20c82.31,0,149.03,66.72,149.03,149.03"/>
+        <path class="cls-bottom" d="M0,88.37c44.55,0,80.66,36.11,80.66,80.66"/>
+      </g>
+	  
+      <!-- Top semicircle -->
+      <g>
+        <path class="cls-top" d="M0,20c82.31,0,149.03,66.72,149.03,149.03"/>
+        <path class="cls-top" d="M0,88.37c44.55,0,80.66,36.11,80.66,80.66"/>
+      </g>
+
+      <!-- Bottom semicircle (mirrored to align with top) -->
+      <g transform="rotate(90 0 169.03)">
+        <path class="cls-bottom" d="M0,20c82.31,0,149.03,66.72,149.03,149.03"/>
+        <path class="cls-bottom" d="M0,88.37c44.55,0,80.66,36.11,80.66,80.66"/>
+      </g>
+    </g>
+  </g>
+</svg>

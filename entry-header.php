@@ -3,6 +3,7 @@
 <header class="grid12">
     <h1 class="entry-title" itemprop="headline"><?php the_title(); ?></h1>
 </header>
+
 <div class="author-image-header-block grid12">
 
     <?php edit_post_link(); ?>

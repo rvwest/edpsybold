@@ -51,8 +51,15 @@
             background-color: var(--cl-straw);
             padding-bottom: var(--sp-xxlarge);
 
+
+
+
             header {
                 flex-wrap: wrap;
+                background-image: url(../../images/edpsy-swirls-14.svg);
+                background-size: 232px;
+                background-position: right top;
+                background-repeat: no-repeat;
 
                 >* {
                     width: 100%;
@@ -64,14 +71,7 @@
             }
 
 
-            .meta-bg {
-                background-image: url(../../images/author-panel.svg);
-                background-position: top right;
-                background-size: 73px;
-                background-repeat: no-repeat;
-                margin-left: -156px;
-                margin-right: 82px;
-            }
+
 
             .entry-meta {
 
@@ -126,6 +126,19 @@
 
         .entry-content {
             margin-top: var(--sp-xxlarge);
+
+
+            .blog-swirls-tr {
+                background-image: url(../../images/edpsy-swirls-26.svg);
+                background-position: top left;
+                background-size: 140px;
+                background-repeat: no-repeat;
+                width: 140px;
+                height: 280px;
+                grid-column: 1 / span 2;
+                margin-top: calc(-140px - var(--sp-xxlarge));
+                margin-left: 0;
+            }
 
             .entry-author--top {
                 margin-top: -125px;
