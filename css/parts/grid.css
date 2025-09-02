@@ -201,7 +201,7 @@ body.single-post {
             ul,
             ol,
             blockquote {
-                grid-column: 4 / span 7;
+                grid-column: 4 / span 6;
             }
         }
 

@@ -5,9 +5,7 @@
 <div class="author-image-header-block grid12">
 
     <?php edit_post_link(); ?>
-    <?php if (!is_search()) {
-        get_template_part('entry', 'meta');
-    } ?>
+ 
     <?php if (has_post_thumbnail()): ?>
         <?php if (is_singular()): ?>
            <div class="entry-image"> <?php the_post_thumbnail('full', array('itemprop' => 'image')); ?></div>
@@ -18,6 +16,14 @@
             </a>
         <?php endif; ?>
     <?php endif; ?>
+
+    <?php if (!is_search()) {
+        get_template_part('entry', 'meta');
+    } ?>
+
+<?php if (!is_search()) {
+        get_template_part('entry', 'author');
+    } ?>
 
 </div>
 <!-- file end: entry-header.php -->
