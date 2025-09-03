@@ -25,19 +25,33 @@ if ($tags && ! is_wp_error($tags)) {
     $count = count($tags);
 
     if ($count > 5) {
-        // Show the first three tags
+        // Show first 4; last of the shown ones has no wrapper/comma
         $display = array_slice($tags, 0, 4);
-        foreach ($display as $tag) {
-            echo '<a class="post-tag" href="' . esc_url(get_tag_link($tag)) . '">' . esc_html($tag->name) . '</a>';
+        $last_index = count($display) - 1;
+        foreach ($display as $i => $tag) {
+            $link = '<a class="post-tag" href="' . esc_url(get_tag_link($tag)) . '">' . esc_html($tag->name) . '</a>';
+            if ($i === $last_index) {
+                // Last displayed tag: no wrapper/comma
+                echo $link;
+            } else {
+                // Non-last: wrap with comma after
+                echo '<div class="post-tag-wrapper">' . $link . ',</div>';
+            }
         }
-        // Replace the fourth with a +X others link to the full tag list
+        // Then append the +X others link without a preceding comma
         $others = $count - 4;
-        $label = _n('+ %d other', '+ %d others', $others, 'edpsybold');
-        echo '<a class="post-tag post-tag--more" href="#page-tags">' . sprintf($label, intval($others)) . '</a>';
+        $label  = _n('+ %d other', '+ %d others', $others, 'edpsybold');
+        echo ' <a class="post-tag post-tag--more" href="#page-tags">' . sprintf($label, intval($others)) . '</a>';
     } else {
-        // 4 or fewer: show them all
-        foreach ($tags as $tag) {
-            echo '<a class="post-tag" href="' . esc_url(get_tag_link($tag)) . '">' . esc_html($tag->name) . '</a>';
+        // 5 or fewer: show them all, only the last lacks wrapper/comma
+        $last_index = $count - 1;
+        foreach ($tags as $i => $tag) {
+            $link = '<a class="post-tag" href="' . esc_url(get_tag_link($tag)) . '">' . esc_html($tag->name) . '</a>';
+            if ($i === $last_index) {
+                echo $link;
+            } else {
+                echo '<div class="post-tag-wrapper">' . $link . ',</div>';
+            }
         }
     }
 }

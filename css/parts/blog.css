@@ -101,7 +101,7 @@
                     flex-wrap: wrap;
 
                     .post-tag {
-                        margin-right: var(--sp-small);
+
 
                         &:link,
                         &:visited,
@@ -120,9 +120,12 @@
                             }
                         }
                     }
+
+                    .post-tag-wrapper {
+                        margin-right: var(--sp-xsmall);
+                    }
+
                 }
-
-
             }
 
             .entry-image {
