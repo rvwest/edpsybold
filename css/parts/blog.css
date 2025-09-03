@@ -46,17 +46,24 @@
 
 .single-post {
     article.type-post {
+
+
+
         .blog-header-block {
 
             background-color: var(--cl-straw);
             padding-bottom: var(--sp-xxlarge);
+            background-image: url(../../images/edpsy-swirls-29.svg);
+            background-size: 250px;
+            background-position: right top;
+            background-repeat: no-repeat;
 
 
 
 
             header {
                 flex-wrap: wrap;
-                background-image: url(../../images/edpsy-swirls-14.svg);
+                /*  background-image: url(../../images/edpsy-swirls-14.svg); */
                 background-size: 260px;
                 background-position: right top;
                 background-repeat: no-repeat;
@@ -147,7 +154,7 @@
             margin-top: var(--sp-xxlarge);
 
 
-            .blog-swirls-tr {
+            /*  .blog-swirls-tr {
                 background-image: url(../../images/edpsy-swirls-27.svg);
                 background-position: top left;
                 background-size: 260px;
@@ -157,6 +164,20 @@
                 grid-column: 1 / span 2;
                 margin-top: calc(-130px - var(--sp-xxlarge));
                 margin-left: -170px;
+                z-index: -1;
+            } */
+
+            .blog-swirls-tr {
+                background-image: url(../../images/edpsy-swirls-27.svg);
+                background-position: top left;
+                background-size: 300px;
+                background-repeat: no-repeat;
+                width: 300px;
+                height: 300px;
+                grid-column: 1 / span 2;
+                margin-top: calc(-150px - var(--sp-xxlarge));
+                margin-left: -300px;
+                z-index: 0;
             }
 
             .entry-author--top {
