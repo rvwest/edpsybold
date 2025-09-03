@@ -111,6 +111,7 @@
                         }
 
                         &.post-tag--more {
+                            width: 100%;
 
                             &:link,
                             &:visited,
@@ -268,7 +269,7 @@
             border-radius: 50%;
             object-fit: cover;
             object-position: top center;
-            border: 5px solid var(--cl-lightblue);
+            /* border: 5px solid var(--cl-lightblue); */
 
         }
     }
@@ -416,10 +417,14 @@
     }
 
     .author-deco {
-        width: 60px;
-        height: 10px;
+        width: 80px;
+        height: 50px;
         margin-top: var(--sp-medium);
-        background-color: var(--cl-lightblue);
+        background-image: url(../../images/edpsy-swirls-element-2.svg);
+        background-position: top left;
+        background-size: 80px;
+        background-repeat: no-repeat;
+
     }
 }
 
