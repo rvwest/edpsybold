@@ -169,7 +169,7 @@ body.single-post {
 
 
         h1.entry-title {
-            grid-column: 2 / span 9;
+            grid-column: 2 / span 8;
         }
 
         .author-image-header-block {
@@ -181,7 +181,7 @@ body.single-post {
             }
 
             .entry-meta {
-                grid-column: 10 / span 3;
+                grid-column: 10 / span 2;
             }
 
             .entry-image {
