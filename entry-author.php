@@ -46,6 +46,7 @@
                         }
                         ?>
                     </div><!-- .author-names -->
+                    <div class="author-deco"></div>
                 </div><!-- .authors-section -->
             <?php endif;
         }

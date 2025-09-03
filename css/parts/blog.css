@@ -49,7 +49,7 @@
         .blog-header-block {
 
             background-color: var(--cl-straw);
-            padding-bottom: var(--sp-xlarge);
+            padding-bottom: var(--sp-xxlarge);
 
 
 
@@ -66,7 +66,7 @@
                 }
 
                 h1 {
-                    margin-bottom: var(--sp-large);
+                    margin-bottom: var(--sp-xxlarge);
                 }
             }
 
@@ -95,13 +95,6 @@
 
                 }
 
-                #share-button {
-                    width: fit-content;
-                    display: flex;
-                    align-items: center;
-                    gap: 5px;
-                    border-radius: 10px;
-                }
 
                 .tags--header {
                     display: flex;
@@ -110,6 +103,22 @@
                     .post-tag {
                         margin-right: var(--sp-small);
 
+                        &:link,
+                        &:visited,
+                        &:hover,
+                        &:active {
+                            color: var(--cl-dark)
+                        }
+
+                        &.post-tag--more {
+
+                            &:link,
+                            &:visited,
+                            &:hover,
+                            &:active {
+                                color: var(--cl-dark-75)
+                            }
+                        }
                     }
                 }
 
@@ -117,11 +126,13 @@
             }
 
             .entry-image {
-
+                aspect-ratio: 2 / 1;
 
                 img.wp-post-image {
                     margin-bottom: 0;
-
+                    object-fit: cover;
+                    height: 100%;
+                    width: 100%;
                 }
             }
 
@@ -135,13 +146,13 @@
             .blog-swirls-tr {
                 background-image: url(../../images/edpsy-swirls-27.svg);
                 background-position: top left;
-                background-size: 300px;
+                background-size: 260px;
                 background-repeat: no-repeat;
-                width: 300px;
-                height: 300px;
+                width: 260px;
+                height: 260px;
                 grid-column: 1 / span 2;
-                margin-top: calc(-150px - var(--sp-xxlarge));
-                margin-left: -150px;
+                margin-top: calc(-130px - var(--sp-xxlarge));
+                margin-left: -170px;
             }
 
             .entry-author--top {
@@ -154,8 +165,8 @@
                 }
 
                 .author-name {
-                    font-size: var(--fs-title-small);
-                    line-height: var(--lh-title-medium);
+                    font-size: var(--fs-body);
+                    line-height: var(--lh-body);
 
                     text-align: center;
 
@@ -254,7 +265,7 @@
             border-radius: 50%;
             object-fit: cover;
             object-position: top center;
-            border: 5px solid var(--cl-light);
+            border: 5px solid var(--cl-lightblue);
 
         }
     }
@@ -271,15 +282,20 @@
 
 
 #container article.type-post .authors-section {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     &.author-count-1 {
         .author-avatar {
-            max-width: 125px;
+            max-width: 150px;
 
 
             img.wp-post-image,
             img {
-                width: 125px;
-                height: 125px;
+                width: 150px;
+                height: 150px;
             }
         }
     }
@@ -392,6 +408,13 @@
                 margin-top: -15px;
             }
         }
+    }
+
+    .author-deco {
+        width: 60px;
+        height: 20px;
+        margin-top: var(--sp-medium);
+        background-color: var(--cl-medpurple);
     }
 }
 

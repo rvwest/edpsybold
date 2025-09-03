@@ -28,7 +28,7 @@
 
     /* Context colors - for context specific primary colours see lower down the file */
     --cl-thesis-primary: var(--cl-lightblue);
-    --cl-blog-primary: var(--cl-orange);
+    --cl-blog-primary: var(--cl-medpurple);
     --cl-events-primary: var(--cl-dark);
     --cl-jobs-primary: var(--cl-orange);
 

@@ -10,9 +10,9 @@
         stroke-width: 40px;
         stroke-linecap: butt; /* clean seam at the midline */
       }
-      .cls-left { stroke: #363033; }
+      .cls-left { stroke: #78a8cf; }
       .cls-top { stroke: #AB53A2; }
-      .cls-bottom { stroke: #584189; }
+      .cls-bottom { stroke: #78a8cf; }
     </style>
   </defs>
 
@@ -21,8 +21,8 @@
       
 	  <!-- Left semicricle -->
       <g transform="rotate(-90 0 169.03)">
-        <path class="cls-bottom" d="M0,20c82.31,0,149.03,66.72,149.03,149.03"/>
-        <path class="cls-bottom" d="M0,88.37c44.55,0,80.66,36.11,80.66,80.66"/>
+        <path class="cls-left" d="M0,20c82.31,0,149.03,66.72,149.03,149.03"/>
+        <path class="cls-left" d="M0,88.37c44.55,0,80.66,36.11,80.66,80.66"/>
       </g>
 	  
       <!-- Top semicircle -->

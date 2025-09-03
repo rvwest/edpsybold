@@ -43,7 +43,7 @@ if ($tags && ! is_wp_error($tags)) {
 }
 ?>
             </div>
-<button type="button" id="share-button" class="edp-button-solid">
+<button type="button" id="share-button" class="edp-button-pill">
     <?php esc_html_e('share', 'edpsybold'); ?> <i class="far fa-share-alt"></i>
 </button>
 </div>
