@@ -43,7 +43,7 @@ button.edp-button-pill {
     align-items: center;
     gap: 5px;
     border-radius: 9999px;
-    border: 1px solid var(--cl-light);
+    border: none;
     padding: var(--sp-xxsmall) var(--sp-small-plus);
     margin: var(--sp-xsmall) 0;
     font-weight: var(--fw-medium);

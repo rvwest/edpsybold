@@ -74,6 +74,8 @@
 
                 h1 {
                     margin-bottom: var(--sp-xxlarge);
+                    font-size: var(--fs-title-xlarge);
+                    line-height: var(--lh-title-xlarge);
                 }
             }
 
@@ -181,7 +183,7 @@
             }
 
             .entry-author--top {
-                margin-top: -125px;
+                margin-top: -130px;
 
                 /* 3 -107px */
 
@@ -257,13 +259,13 @@
             padding-right: var(--sp-small);
 
 
-            img {
+            img.wp-post-image {
                 width: 125px;
                 height: 125px;
                 border-radius: 50%;
                 object-fit: cover;
                 object-position: top center;
-                border: 5px solid var(--cl-light);
+
 
             }
         }
@@ -291,7 +293,7 @@
             object-fit: cover;
             object-position: top center;
             /* border: 5px solid var(--cl-lightblue); */
-
+            outline: none !important;
         }
     }
 }
@@ -321,6 +323,7 @@
             img {
                 width: 150px;
                 height: 150px;
+
             }
         }
     }

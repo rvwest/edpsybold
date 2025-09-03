@@ -80,6 +80,8 @@
     --fs-title-medium: 28px;
     /* Events list - month title */
     --fs-title-large: 35px;
+    /* Blog article */
+    --fs-title-xlarge: 40px;
     /* Jobs list H1 */
     --fs-display-large: 110px;
     /* Thesis directory list H1 */
@@ -91,6 +93,7 @@
     --lh-body: calc(var(--fs-body) * 1.5);
     --lh-title-medium: calc(var(--fs-title-medium) * 1.15);
     --lh-title-large: calc(var(--fs-title-large) * 1.15);
+    --lh-title-xlarge: calc(var(--fs-title-xlarge) * 1.15);
     --lh-display-large: calc(var(--fs-display-large) * 1.15);
     --lh-display-medium: calc(var(--fs-display-medium) * 1.15);
     --lh-display-smallmedium: calc(var(--fs-display-smallmedium) * 1.15);
