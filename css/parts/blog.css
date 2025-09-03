@@ -90,7 +90,7 @@
 
 
                 .entry-date-readtime {
-                    color: var(--cl-blog-primary);
+                    color: var(--cl-orange);
                     display: block;
 
                 }
@@ -325,7 +325,7 @@
             .author-2 {
                 position: relative;
                 z-index: 2;
-                margin-left: -80px;
+                margin-left: -180px;
             }
         }
     }
@@ -349,18 +349,19 @@
             .author-1 {
                 position: relative;
                 z-index: 1;
+
             }
 
             .author-2 {
                 position: relative;
                 z-index: 2;
-                margin-left: -80px;
+                margin-left: -25px;
             }
 
             .author-3 {
                 position: relative;
                 z-index: 3;
-                margin-left: -80px;
+                margin-left: -25px;
             }
         }
     }
@@ -371,6 +372,7 @@
             flex-wrap: wrap;
             max-width: 240px;
             margin: 0 auto;
+            margin-bottom: var(--sp-small);
 
             .author-avatar {
                 max-width: 110px;
@@ -412,9 +414,9 @@
 
     .author-deco {
         width: 60px;
-        height: 20px;
+        height: 10px;
         margin-top: var(--sp-medium);
-        background-color: var(--cl-medpurple);
+        background-color: var(--cl-lightblue);
     }
 }
 
