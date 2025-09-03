@@ -4,6 +4,10 @@
 
     #container {
         background-color: var(--cl-lightblue);
+        background-image: url(../../images/edpsy-swirls-28.svg);
+        background-size: 400px;
+        background-position: top right;
+        background-repeat: no-repeat;
 
         /* search & sort box */
         .wpbdp-main-box {
@@ -25,8 +29,9 @@
                         margin-right: var(--sp-small);
                     }
 
-                    input {
+                    input[type="text"] {
                         width: 100%;
+                        border: none;
 
                         &::placeholder {
                             color: var(--cl-dark);

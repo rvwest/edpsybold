@@ -114,7 +114,6 @@
 
 
 
-
         i {
             margin-left: var(--sp-medium);
         }
@@ -124,6 +123,12 @@
             color: var(--cl-light);
         }
 
+        &.edp-thesis-promo:link,
+        &.edp-thesis-promo:visited {
+            background-color: var(--cl-light-15);
+        }
+
+
         &.edp-events-promo:link,
         &.edp-events-promo:visited {
             background-color: var(--cl-dark-50);
@@ -132,9 +137,12 @@
         &:hover,
         &.edp-events-promo:hover,
         &:active,
-        &.edp-events-promo:active {
+        &.edp-events-promo:active,
+        &.edp-thesis-promo:hover,
+        &.edp-thesis-promo:active {
             background-color: var(--cl-light);
             color: var(--cl-dark);
+            box-shadow: none;
         }
 
 
