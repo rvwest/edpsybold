@@ -167,6 +167,7 @@ body {
 
             &:hover {
                 color: var(--cl-dark);
+                background-color: var(--cl-lightpurple-hover);
             }
         }
     }
