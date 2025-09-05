@@ -145,6 +145,15 @@ body {
     }
 }
 
+/* === Home ============== */
+
+.home {
+
+    header[role="banner"] {
+        border-bottom: none;
+    }
+}
+
 /* === Blog ================ */
 
 /* --- Blog page single -------- */
