@@ -23,7 +23,7 @@
     .home-divider,
     .focus-on,
     .longer-reads {
-        margin-bottom: 70px;
+        margin-bottom: 100px;
     }
 
     /* because the bottom row of articles bring their own margins */
@@ -139,6 +139,14 @@
 }
 
 /* ======= Focus on ===== */
+
+section.hero-post,
+section.focus-on,
+section.longer-reads,
+section.homepage-jobs-wrapper {
+    margin-bottom: 100px;
+}
+
 section.hero-post,
 section.focus-on,
 section.longer-reads,
@@ -148,7 +156,7 @@ section.homepage-jobs-wrapper {
     flex-direction: column;
 
     margin-top: 60px;
-    margin-bottom: 100px;
+
 
     a:link,
     a:visited {
