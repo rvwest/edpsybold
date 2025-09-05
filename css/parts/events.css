@@ -48,10 +48,13 @@
             margin-bottom: var(--sp-medium);
 
 
+            .tribe-events-c-view-selector {
+                display: none;
 
-            .tribe-common-c-svgicon--list.tribe-events-c-view-selector__button-icon-svg {
-                color: var(--cl-light);
+                .tribe-common-c-svgicon--list.tribe-events-c-view-selector__button-icon-svg {
+                    color: var(--cl-light);
 
+                }
             }
 
             .tribe-events-c-view-selector__content {
@@ -472,6 +475,9 @@
             display: none !important;
         }
 
+        .tribe-events-notices {
+            display: none;
+        }
     }
 
 

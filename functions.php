@@ -35,7 +35,7 @@ function edpsybold_notice_dismissed()
 add_action('wp_enqueue_scripts', 'edpsybold_enqueue');
 function edpsybold_enqueue()
 {
-    wp_enqueue_style('edpsybold-style', get_stylesheet_uri());
+  //  wp_enqueue_style('edpsybold-style', get_stylesheet_uri());
     wp_enqueue_script('jquery');
     wp_enqueue_script(
         'edpsybold-share',

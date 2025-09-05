@@ -44,7 +44,6 @@ $display_post_count = $has_jobs ? 5 : 6;
 $display_posts = array_slice($latest_posts, 0, $display_post_count);
 ?>
 
-<div class="home-divider grid12"></div>
 <section class="latest-articles grid12">
 
     <div class="article-grid">
@@ -257,14 +256,17 @@ $final_posts = get_posts(array(
         </div>
     </section>
 <?php endif; ?>
-<div class="home-divider home-divider--jobs-events grid12"></div>
+
 <?php
 $homepage_jobs_output = do_shortcode('[jobs-homepage per_page="3" show_filters="false"]');
 if (trim($homepage_jobs_output) !== '') :
 ?>
-<section class="homepage-jobs grid12">
+<section class="homepage-jobs-wrapper">
+<div class="homepage-jobs grid12">
 <h2>Jobs</h2>
 <?php echo $homepage_jobs_output; ?>
+
+</div>
 </section>
 <?php endif; ?>
 

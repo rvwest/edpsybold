@@ -114,6 +114,7 @@
     }
 
 
+
     textarea,
     input[type="text"],
     input[type="email"],
@@ -185,7 +186,7 @@
 
     textarea#post_content,
     input#post_title {
-        width: 70%;
+        width: 68%;
     }
 
     /* Times */

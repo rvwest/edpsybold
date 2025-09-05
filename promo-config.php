@@ -10,7 +10,7 @@ return [
     ],
     [
         'keys' => ['thesis-directory'],
-        'html' => '<a href="https://docs.google.com/..." class="edp-thesis-promo">Add your thesis<i class="fal fa-plus-circle fa-2x"></i></a>',
+        'html' => '<a href="https://docs.google.com/forms/d/e/1FAIpQLSeeHm-OYkTotMzt99GuAbgP-j1rZBl3n54kPz4e-BWZDtz-Lg/viewform?usp=sf_link" class="edp-thesis-promo">Add your thesis<i class="fal fa-plus-circle fa-2x"></i></a>',
     ],
     [
         'keys' => ['tribe_events'],

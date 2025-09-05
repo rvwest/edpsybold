@@ -1,9 +1,21 @@
 .home {
 
+    #container.edp-fullwidth {
+        background-image: url(../../images/edpsy-swirls-21-90.svg);
+        background-color: var(--cl-dark);
+        background-position: calc(100% + 2px) top;
+        background-repeat: no-repeat;
+        background-size: 300px;
+        padding-top: 90px;
+    }
+
     a:link,
     a:visited {
-        color: var(--cl-dark);
+        color: var(--cl-light);
     }
+
+
+
 
     /*  ===== Hero ========================= */
 
@@ -21,13 +33,19 @@
 
     section.hero-post {
         /*margin-top: var(--sp-xlarge);*/
-        margin-top: 90px !important;
+        margin-top: 0px !important;
         margin-bottom: 90px !important;
+        background-color: var(--cl-light);
+
+        h2 {
+            color: var(--cl-light);
+        }
 
         .home-hero-item a {
             display: flex;
             flex-direction: row;
             gap: var(--sp-home-gap);
+            color: var(--cl-dark);
 
             .hero-text {
                 width: calc(50% - (var(--sp-medium))/2);
@@ -60,6 +78,12 @@
         .article-item {
             width: calc(33.333% - (2*(var(--sp-home-gap)))/3);
             margin-bottom: calc(var(--sp-xlarge) - var(--sp-home-gap));
+            background-color: var(--cl-dark-50);
+        }
+
+        a:hover h3,
+        a:active h3 {
+            color: var(--cl-lightpurple-hover);
         }
     }
 
@@ -71,160 +95,229 @@
     .article-item,
     li.job_listing {
 
-
-
-
-
-
         h3 {
             font-size: var(--fs-body);
             line-height: var(--lh-body);
             font-weight: var(--fw-semibold);
         }
-    }
 
-    /* ======= Focus on ===== */
-    section.hero-post,
-    section.focus-on,
-    section.longer-reads,
-    section.homepage-events-wrapper,
-    section.homepage-jobs {
-        display: flex;
-        flex-direction: column;
-        padding: var(--sp-medium);
-        margin-top: 60px;
-        margin-bottom: 100px;
+        &:active,
+        &:hover {
+            opacity: var(--op-light);
 
-        h2 {
-            margin-bottom: var(--sp-home-gap);
-            font-size: 60px;
-            margin-top: -60px;
-            margin-left: -5px;
 
-        }
 
-        .focus-posts-grid,
-        .longer-reads-grid,
-        .jobs-homepage-grid {
-            display: flex;
-            flex-wrap: nowrap;
-            gap: var(--sp-home-gap);
         }
 
     }
 
-    section.hero-post {
-        background-color: var(--cl-lightpurple-hover);
+    .article-item {
 
-        h2 {
-            color: var(--cl-lightpurple-hover);
-        }
-    }
+        &:active,
+        &:hover {
 
-    section.longer-reads {
-        background-color: var(--cl-lightpurple-hover);
-
-        h2 {
-            color: var(--cl-lightpurple-hover);
-        }
-    }
-
-    section.focus-on {
-
-        background-color: var(--cl-lightpurple-hover);
-
-        h2 {
-            color: var(--cl-lightpurple-hover);
+            a {
+                color: var(--cl-light);
+            }
         }
 
-
-    }
-
-    section.homepage-jobs {
-        h2 {
-            color: var(--cl-jobs-primary);
-        }
-    }
-
-    /* article widths ==== */
-
-    .focus-on.edp-bold-posts-4 .article-item,
-    .jobs-homepage-grid.edp-bold-posts-4 .article-item {
-        width: calc(25% - (3*(var(--sp-home-gap)))/4);
-    }
-
-    .focus-on.edp-bold-posts-3 .article-item,
-    .jobs-homepage-grid.edp-bold-posts-3 .article-item,
-    .jobs-homepage-grid.edp-bold-posts-2 .article-item,
-    .jobs-homepage-grid.edp-bold-posts-3 .article-item {
-        width: calc(33% - (2*(var(--sp-home-gap)))/3);
-    }
-
-    /* jobs ist he same for 2 and 3 because we replace #3 with a link */
-
-    .focus-on.edp-bold-posts-2 .article-item,
-    .longer-reads.edp-bold-posts-2 .article-item {
-        width: calc(50% - ((var(--sp-home-gap)))/2);
     }
 
 
+    .article-item.job-summary {
 
-    /* ======= Events ===== */
+        &:active,
+        &:hover {
 
-    .homepage-events-wrapper {
-        background-color: var(--cl-dark);
-
-        .edp-events-calendar-list {
-            display: flex;
-            flex-wrap: wrap;
-
-            gap: var(--sp-home-gap);
-
-            .edp-events-calendar-list__event-row-wrapper {
-                display: flex;
-                width: 100%;
-                gap: var(--sp-home-gap);
-
-                .edp-events-calendar-list__event-row {
-                    width: calc(50% - ((var(--sp-home-gap)))/2);
-
-
-                    .edp-event-title-and-meta {
-                        display: flex;
-                        width: 100%;
-                        flex-direction: column;
-
-
-
-                        .edp-events-calendar-list__event-header {
-                            margin-right: 0;
-
-                            .edp-events-calendar-list__event-title {
-                                overflow: hidden;
-                                text-overflow: ellipsis;
-                                display: -webkit-box;
-                                -webkit-box-orient: vertical;
-                                -webkit-line-clamp: 2;
-                            }
-
-                        }
-
-                        .edp-events-calendar-list__event-meta {
-                            padding-top: 0;
-
-                            .epd-events-calendar-list__event-venue {
-                                margin-bottom: 0;
-                            }
-                        }
-
-                    }
-                }
+            a {
+                color: var(--cl-light);
             }
         }
 
     }
 
 }
+
+/* ======= Focus on ===== */
+section.hero-post,
+section.focus-on,
+section.longer-reads,
+section.homepage-events-wrapper,
+section.homepage-jobs-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 60px;
+    margin-bottom: 100px;
+
+    a:link,
+    a:visited {
+        color: var(--cl-dark);
+    }
+
+    a:hover h3,
+    a:active h3 {
+        color: var(--cl-purple);
+    }
+
+    h2 {
+        margin-bottom: var(--sp-home-gap);
+        font-size: 60px;
+        margin-top: -60px;
+        margin-left: -5px;
+
+    }
+
+    .focus-posts-grid,
+    .longer-reads-grid,
+    .jobs-homepage-grid {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: var(--sp-home-gap);
+    }
+
+}
+
+section.hero-post,
+section.focus-on,
+section.longer-reads,
+section.homepage-events-wrapper,
+section.homepage-jobs-wrapper {
+    padding: var(--sp-medium);
+}
+
+section.homepage-jobs-wrapper {
+    padding: var(--sp-medium) 0;
+}
+
+section.hero-post {
+    background-color: var(--cl-light);
+
+    h2 {
+        color: var(--cl-light);
+    }
+}
+
+section.longer-reads {
+    background-color: var(--cl-light);
+
+    h2 {
+        color: var(--cl-light);
+    }
+}
+
+section.focus-on {
+
+    background-color: var(--cl-light);
+
+    h2 {
+        color: var(--cl-light);
+    }
+
+
+}
+
+section.homepage-jobs-wrapper {
+
+    background-color: var(--cl-light);
+
+    .homepage-jobs {
+
+        width: 100%;
+
+        h2 {
+            color: var(--cl-light);
+        }
+
+        article.job_listing {
+            margin-bottom: 0;
+        }
+    }
+}
+
+/* article widths ==== */
+
+.focus-on.edp-bold-posts-4 .article-item,
+.jobs-homepage-grid.edp-bold-posts-4 .article-item {
+    width: calc(25% - (3*(var(--sp-home-gap)))/4);
+}
+
+.focus-on.edp-bold-posts-3 .article-item,
+.jobs-homepage-grid.edp-bold-posts-3 .article-item,
+.jobs-homepage-grid.edp-bold-posts-2 .article-item,
+.jobs-homepage-grid.edp-bold-posts-3 .article-item {
+    width: calc(33.333% - (2*(var(--sp-home-gap)))/3);
+}
+
+/* jobs is the same for 2 and 3 because we replace #3 with a link */
+
+.focus-on.edp-bold-posts-2 .article-item,
+.longer-reads.edp-bold-posts-2 .article-item {
+    width: calc(50% - ((var(--sp-home-gap)))/2);
+}
+
+
+
+/* ======= Events ===== */
+
+.homepage-events-wrapper {
+    background-color: var(--cl-dark);
+
+    h2 {
+        color: var(--cl-light);
+    }
+
+    .edp-events-calendar-list {
+        display: flex;
+        flex-wrap: wrap;
+
+        gap: var(--sp-home-gap);
+
+        .edp-events-calendar-list__event-row-wrapper {
+            display: flex;
+            width: 100%;
+            gap: var(--sp-home-gap);
+
+            .edp-events-calendar-list__event-row {
+                width: calc(50% - ((var(--sp-home-gap)))/2);
+
+
+                .edp-event-title-and-meta {
+                    display: flex;
+                    width: 100%;
+                    flex-direction: column;
+
+
+
+                    .edp-events-calendar-list__event-header {
+                        margin-right: 0;
+
+                        .edp-events-calendar-list__event-title {
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            display: -webkit-box;
+                            -webkit-box-orient: vertical;
+                            -webkit-line-clamp: 2;
+                        }
+
+                    }
+
+                    .edp-events-calendar-list__event-meta {
+                        padding-top: 0;
+
+                        .epd-events-calendar-list__event-venue {
+                            margin-bottom: 0;
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+
+}
+
+
 
 .home-divider {
     height: 75px;
@@ -264,6 +357,7 @@ body {
         &.job-summary .home-article-image {
             text-align: center;
             border: solid 1px var(--cl-orange);
+            background-color: var(--cl-light);
 
 
             .crp_job_logo {
