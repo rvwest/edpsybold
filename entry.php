@@ -12,14 +12,19 @@ if (is_singular()) { ?>
 <?php } else { ?>
     <!-- var: listing page -->
     <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-        
-        <?php get_template_part('entry-summary'); ?>
-        <header>
+    <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"
+    rel="bookmark">
+    <div class="archive-article-img">
+    <?php if ( has_post_thumbnail() ) : ?>
+        <?php the_post_thumbnail(); ?>
+    <?php endif; ?>
+</div>     
+   
 
             <h2 class="entry-title">
-                <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"
-                    rel="bookmark"><?php the_title(); ?></a>
+                <?php the_title(); ?>
             </h2>
+            </a>
             <?php edit_post_link(); ?>
             <?php if (!is_search()) {
                 get_template_part('blog-list-meta');

@@ -459,3 +459,36 @@
     align-items: center;
     margin-bottom: var(--sp-small);
 }
+
+/* Blog listing */
+.archive.category-blog {
+    article.type-post {
+
+        a:hover,
+        a:active {
+
+            h2 {
+                color: var(--cl-purple);
+            }
+
+            img {
+                filter: brightness(75%)
+            }
+
+        }
+
+        a:link,
+        a:visited {
+            color: var(--cl-dark);
+
+        }
+
+        h2.entry-title {
+            margin-bottom: var(--sp-small);
+
+
+
+        }
+    }
+
+}
