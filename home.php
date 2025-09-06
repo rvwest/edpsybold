@@ -264,7 +264,6 @@ if (trim($homepage_jobs_output) !== '') :
 <div class="homepage-jobs grid12">
 <h2><a href="jobs/">Jobs</a></h2>
 <?php echo $homepage_jobs_output; ?>
-
 <div class="home-see-all"><a href="jobs/" class="edp-button-outline button">See all jobs</a></div>
 </div>
 </section>

@@ -578,6 +578,9 @@ function wpjm_jobs_homepage_shortcode($atts) {
             // Load custom template for each job
             get_template_part('_home-jobs-item');
         }
+        if  ( $count_class < 3 ) { 
+        get_template_part('_home-jobs-promo');
+        }
         echo '</div>';
     }
 

@@ -37,6 +37,7 @@
 
     #site-title {
         grid-column: 1 / span 2;
+        height: 68.83px;
     }
 
     .backblock-link {

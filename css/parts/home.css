@@ -113,8 +113,10 @@
 
         &:active,
         &:hover {
-            opacity: var(--op-light);
 
+            .home-article-image {
+                filter: brightness(75%);
+            }
 
 
         }

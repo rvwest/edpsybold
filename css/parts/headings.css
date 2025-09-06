@@ -114,6 +114,8 @@
 
 
 
+
+
         i {
             margin-left: var(--sp-medium);
         }
@@ -150,6 +152,51 @@
 
 
 }
+
+.home .homepage-jobs .article-item {
+
+    &:hover,
+    &:active {
+
+        a {
+            color: var(--cl-dark-75) !important;
+        }
+    }
+
+    .edp-jobs-promo--home {
+        padding: var(--sp-medium);
+
+
+
+
+
+
+        .promo-text {
+
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+
+            .promo-title {
+                margin-bottom: var(--sp-small);
+                color: var(--cl-orange);
+            }
+
+            .promo-subtitle {
+                margin-left: 0;
+                text-align: left;
+            }
+
+
+
+        }
+
+        i {
+            color: var(--cl-orange);
+        }
+    }
+}
+
 
 @media only screen and (max-width: 600px) {
     .page-promo {
