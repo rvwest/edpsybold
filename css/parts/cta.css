@@ -92,6 +92,21 @@ input[type="submit"].button.secondary,
 
 }
 
+a.button.edp-button-outline.edp-button-outline--reversed,
+button.edp-button-outline.edp-button-outline--reversed {
+
+    color: var(--cl-light);
+    background-color: none;
+    border: 1px solid var(--cl-light);
+
+    &:hover,
+    &:focus {
+        background-color: var(--cl-light);
+        color: var(--cl-dark);
+    }
+
+}
+
 .tribe-events-pg-template .tribe-events-community-footer input[type="submit"] {
     color: var(--cl-light);
     border-color: var(--cl-light);
@@ -107,6 +122,8 @@ input[type="submit"].button.secondary,
 /* == Body ghost button ===== */
 
 /* Ghost on dark - Events date picker */
+button.edp-button-ghost.edp-button-ghost--reverse,
+.button.edp-button-ghost.edp-button-ghost--reverse,
 button.tribe-events-c-top-bar__datepicker-button {
     font-size: var(--fs-body);
     color: var(--cl-light);
@@ -123,6 +140,8 @@ button.tribe-events-c-top-bar__datepicker-button {
 }
 
 /* Ghost on light */
+button.edp-button-ghost,
+.button.edp-button-ghost,
 .tribe-button.tribe-button-tertiary {
     font-size: var(--fs-body);
     color: var(--cl-dark);

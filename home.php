@@ -164,10 +164,9 @@ $next_posts = get_posts(array(
 <!-- longer reads section -->
 
 <?php
-if (get_theme_mod('longer_reads_enabled')) :
+if (get_theme_mod('longer_reads_enabled')) : 
     $title = get_theme_mod('longer_reads_title', 'Longer Reads');
-
-    // Collect selected posts
+      // Collect selected posts
     $posts = array();
     for ($i = 1; $i <= 2; $i++) {
         $post_id = get_theme_mod("longer_reads_post_$i");
@@ -263,9 +262,10 @@ if (trim($homepage_jobs_output) !== '') :
 ?>
 <section class="homepage-jobs-wrapper">
 <div class="homepage-jobs grid12">
-<h2>Jobs</h2>
+<h2><a href="jobs/">Jobs</a></h2>
 <?php echo $homepage_jobs_output; ?>
 
+<div class="home-see-all"><a href="jobs/" class="edp-button-outline button">See all jobs</a></div>
 </div>
 </section>
 <?php endif; ?>
@@ -284,7 +284,7 @@ $count_class = edpsybold_count_class($event_count);
 ?>
 <section class="homepage-events-wrapper <?php echo esc_attr($count_class); ?>">
     <div class="homepage-events grid12">
-        <h2>Next events</h2>
+        <h2><a href="events">Next events</a></h2>
         <?php
         if ($events) :
                 echo '<div class="edp-events-calendar-list">';
@@ -323,7 +323,9 @@ $count_class = edpsybold_count_class($event_count);
                 echo '<p>No upcoming events found.</p>';
         endif;
         ?>
-    </div>
+<div class="home-see-all"><a href="events/" class="button edp-button-outline edp-button-outline--reversed">See all events</a></div>    
+</div>
+    
 </section>
 
 

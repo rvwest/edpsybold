@@ -6,7 +6,7 @@
         background-position: calc(100% + 2px) top;
         background-repeat: no-repeat;
         background-size: 300px;
-        padding-top: 90px;
+        padding-top: 120px;
     }
 
     a:link,
@@ -36,6 +36,16 @@
         margin-top: 0px !important;
         margin-bottom: 90px !important;
         background-color: var(--cl-light);
+
+        a:hover,
+        a:active {
+            box-shadow: none;
+            opacity: var(--op-light);
+
+            h1 {
+                color: var(--cl-purple);
+            }
+        }
 
         h2 {
             color: var(--cl-light);
@@ -123,18 +133,12 @@
 
     }
 
-
-    .article-item.job-summary {
-
-        &:active,
-        &:hover {
-
-            a {
-                color: var(--cl-light);
-            }
-        }
-
+    .home-see-all {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
     }
+
 
 }
 
@@ -142,10 +146,18 @@
 
 section.hero-post,
 section.focus-on,
-section.longer-reads,
-section.homepage-jobs-wrapper {
+section.longer-reads {
     margin-bottom: 100px;
+
+    h2 {
+
+        margin-top: -60px;
+
+    }
 }
+
+
+
 
 section.hero-post,
 section.focus-on,
@@ -157,6 +169,11 @@ section.homepage-jobs-wrapper {
 
     margin-top: 60px;
 
+    h2 {
+        font-size: 60px;
+        margin-bottom: var(--sp-home-gap);
+        margin-left: -5px;
+    }
 
     a:link,
     a:visited {
@@ -168,13 +185,6 @@ section.homepage-jobs-wrapper {
         color: var(--cl-purple);
     }
 
-    h2 {
-        margin-bottom: var(--sp-home-gap);
-        font-size: 60px;
-        margin-top: -60px;
-        margin-left: -5px;
-
-    }
 
     .focus-posts-grid,
     .longer-reads-grid,
@@ -192,11 +202,44 @@ section.longer-reads,
 section.homepage-events-wrapper,
 section.homepage-jobs-wrapper {
     padding: var(--sp-medium);
+
+}
+
+section.hero-post,
+section.focus-on,
+section.longer-reads,
+section.homepage-events-wrapper {
+    h2 {
+
+        a:link,
+        a:visited {
+            color: var(--cl-light);
+        }
+
+        a:hover,
+        a:active {
+            color: var(--cl-light-75);
+        }
+    }
+
 }
 
 section.homepage-jobs-wrapper {
-    padding: var(--sp-medium) 0;
+    h2 {
+
+        a:link,
+        a:visited {
+            color: var(--cl-orange);
+        }
+
+        a:hover,
+        a:active {
+            opacity: var(--op-light);
+        }
+    }
+
 }
+
 
 section.hero-post {
     background-color: var(--cl-light);
@@ -225,16 +268,20 @@ section.focus-on {
 
 }
 
-section.homepage-jobs-wrapper {
 
+
+section.homepage-jobs-wrapper {
+    padding: var(--sp-medium);
     background-color: var(--cl-light);
 
     .homepage-jobs {
-
+        margin-top: var(--sp-medium);
+        margin-bottom: var(--sp-medium);
         width: 100%;
 
         h2 {
-            color: var(--cl-light);
+            color: var(--cl-orange);
+            margin-bottom: var(--sp-large);
         }
 
         article.job_listing {
@@ -271,8 +318,15 @@ section.homepage-jobs-wrapper {
 .homepage-events-wrapper {
     background-color: var(--cl-dark);
 
-    h2 {
-        color: var(--cl-light);
+
+
+    .homepage-events {
+        margin-bottom: 60px;
+
+        h2 {
+            color: var(--cl-light);
+            margin-bottom: var(--sp-large);
+        }
     }
 
     .edp-events-calendar-list {
@@ -364,7 +418,7 @@ body {
 
         &.job-summary .home-article-image {
             text-align: center;
-            border: solid 1px var(--cl-orange);
+            border: solid 1px var(--cl-dark-50);
             background-color: var(--cl-light);
 
 
