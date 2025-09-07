@@ -278,7 +278,8 @@
 
 
 #container article.type-post .authors-section,
-.archive.author {
+.archive.author,
+.author-info {
 
     .author-avatar {
         height: auto;

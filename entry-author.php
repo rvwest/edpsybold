@@ -16,8 +16,12 @@
                         $author_counter = 1;
                         foreach($coauthors as $coauthor): ?>
                             <div class="author-avatar author-<?php echo $author_counter; ?>">
-                                <?php echo get_avatar( $coauthor->user_email, '', '', '', array( 'style' => 'author' ) ); ?>
+                                <?php echo get_avatar( $coauthor->user_email, '150', '', '', array( 'style' => '' ) ); ?>
                             </div>
+
+
+
+
                         <?php 
                         $author_counter++;
                         endforeach; ?>
