@@ -552,7 +552,15 @@ body.single-post article.type-post .entry-footer {
 /* == Footer ====================== */
 
 .footer-container.grid12>img {
-    grid-column: 1 / span 3;
+    grid-column: 1 / span 2;
+}
+
+.footer-container .footer-content {
+    grid-column: 3 / span 8;
+}
+
+.footer-container .footer-right {
+    grid-column: 11 / span 2;
 }
 
 .span10 {

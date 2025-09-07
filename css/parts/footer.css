@@ -42,6 +42,64 @@ footer#footer {
 
     .footer-container {
         max-width: 1248px;
+        margin-top: var(--sp-small);
+
+
+
+        a:link,
+        a:visited {
+            color: var(--cl-light);
+        }
+
+        a:hover,
+        a:active {
+            opacity: var(--op-strong);
+        }
+
+
+        .footer-social {
+            i {
+                font-size: var(--fs-title-small);
+                line-height: 20px;
+
+            }
+
+            a {
+                display: flex;
+            }
+
+            .footer-bluesky-svg {
+                display: flex;
+                height: 20px;
+                width: 23px;
+            }
+
+            .footer-mail {
+                align-items: center;
+                gap: var(--sp-xsmall);
+            }
+        }
+
+        .footer-social,
+        .footer-message {
+            color: var(--cl-light-50);
+            display: flex;
+            align-items: center;
+            gap: var(--sp-small);
+
+
+
+        }
+
+
+        .footer-ecologi {
+            -webkit-mask: url(icon.png) no-repeat center;
+            -webkit-mask-size: contain;
+            mask: url(icon.png) no-repeat center;
+            mask-size: contain;
+            background-color: #FFFBF2;
+        }
+
     }
 
     .footer-logo {

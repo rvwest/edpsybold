@@ -10,6 +10,7 @@
     /* solid hovers 80% opacity - converted to hex */
     --cl-light: #FFFBF2;
     --cl-light-75: #fffbf2b4;
+    --cl-light-50: #fffbf27a;
     --cl-light-15: #fffbf226;
     --cl-dark: #363033;
     --cl-dark-hover: #534E50;
