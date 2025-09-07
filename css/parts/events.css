@@ -297,6 +297,21 @@
         border-left: 1px solid var(--cl-light);
     }
 
+
+    .tribe-community-notice {
+        margin: var(--sp-xxxlarge) 0 50% 0;
+        background-color: var(--cl-light);
+
+        padding: var(--sp-xlarge) var(--sp-xlarge) var(--sp-large) var(--sp-xlarge);
+
+        p {
+            color: var(--cl-dark);
+            font-size: var(--fs-title-medium);
+            line-height: var(--lh-title-medium);
+            font-weight: var(--fw-medium);
+        }
+    }
+
     /* === Small viewports === */
 
     @media only screen and (max-width: 600px) {

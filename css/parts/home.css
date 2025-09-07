@@ -288,6 +288,10 @@ section.homepage-jobs-wrapper {
         article.job_listing {
             margin-bottom: 0;
         }
+
+        .edp-jobs-promo--home {
+            height: 100%;
+        }
     }
 }
 
