@@ -240,6 +240,7 @@
             }
 
 
+
         }
     }
 
@@ -259,7 +260,7 @@
             padding-right: var(--sp-small);
 
 
-            img.wp-post-image {
+            img {
                 width: 125px;
                 height: 125px;
                 border-radius: 50%;
@@ -314,6 +315,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+
 
     &.author-count-1 {
         .author-avatar {
@@ -460,6 +463,8 @@
     align-items: center;
     margin-bottom: var(--sp-small);
 }
+
+
 
 /* Blog listing */
 .archive.category-blog {

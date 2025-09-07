@@ -14,7 +14,7 @@ if (function_exists('coauthors_posts_links')) {
         <!-- file: biography.php -->
         <div class="author-info">
             <div class="author-avatar">
-                <?php echo get_avatar($coauthor->user_email, '300', '', '', array('style' => '')); ?>
+                <?php echo get_avatar($coauthor->user_email, '150', '', '', array('style' => '')); ?>
             </div>
 
             <div class="author-description">
