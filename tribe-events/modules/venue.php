@@ -234,4 +234,4 @@ $google_maps_enabled = tribe_get_option( 'embedGoogleMaps', true )
 	do_action( 'tribe_events_community_section_after_venue' );
 	?>
 </div>
-				</div>
+				
