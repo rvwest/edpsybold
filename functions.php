@@ -195,17 +195,17 @@ function edpsybold_comment_count($count)
     }
 }
 
-// ========== Debugger  =================================================== //
+// ========== Debugger - show CSS in use  =================================================== //
 // ======================================================================== //
 
 // Footer debug
-add_action('wp_footer', function () {
-    global $wp_styles;
-    echo '<pre>';
-    print_r($wp_styles->queue);
-
-    echo '</pre>';
-}, 998);
+// add_action('wp_footer', function () {
+//    global $wp_styles;
+//    echo '<pre>';
+//    print_r($wp_styles->queue);
+//
+//    echo '</pre>';
+//}, 998);
 
 // ========== Remove comments ================================================= //
 // ============================================================================ //

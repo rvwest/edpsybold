@@ -92,13 +92,7 @@ footer#footer {
         }
 
 
-        .footer-ecologi {
-            -webkit-mask: url(icon.png) no-repeat center;
-            -webkit-mask-size: contain;
-            mask: url(icon.png) no-repeat center;
-            mask-size: contain;
-            background-color: #FFFBF2;
-        }
+
 
     }
 
