@@ -35,17 +35,15 @@
 }
 
 /* == Blog post ============== */
-.single-post article {
+.single-post article,
+.page-template-default {
 
     header {
-        /* display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    align-content: flex-start;*/
+
 
         h1 {
-            font-size: var(--fs-display-medium);
+            font-size: var(--fs-title-xlarge);
+            line-height: var(--lh-title-xlarge);
         }
 
         .entry-title {
@@ -391,7 +389,6 @@ body:not(.home),
     }
 }*/
 
-.page-template-default:not(.edp-jobs, .business-directory),
 .single-post,
 .single-tribe_events,
 .edp-jobs.single-job_listing article.type-job_listing {

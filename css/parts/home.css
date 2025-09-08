@@ -79,6 +79,45 @@
 
 
 
+
+
+    .home-see-all {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+
+}
+
+.home {
+    .article-grid {
+        .article-item {
+
+            background-color: var(--cl-dark-50);
+
+
+        }
+
+        li.job_listing,
+        .article-item {
+
+            &:active,
+            &:hover {
+
+                .home-article-image {
+                    filter: brightness(75%);
+                }
+
+
+            }
+        }
+    }
+}
+
+.home,
+.crp_related {
+
     /*  ===== Articles ========================= */
     .article-grid {
         display: flex;
@@ -88,12 +127,17 @@
         .article-item {
             width: calc(33.333% - (2*(var(--sp-home-gap)))/3);
             margin-bottom: calc(var(--sp-xlarge) - var(--sp-home-gap));
-            background-color: var(--cl-dark-50);
+            ;
         }
 
         a:hover h3,
         a:active h3 {
             color: var(--cl-lightpurple-hover);
+        }
+
+        a:hover .crp_title,
+        a:active .crp_title {
+            color: var(--cl-purple);
         }
     }
 
@@ -105,21 +149,14 @@
     .article-item,
     li.job_listing {
 
-        h3 {
+        h3,
+        .crp_title {
             font-size: var(--fs-body);
             line-height: var(--lh-body);
             font-weight: var(--fw-semibold);
         }
 
-        &:active,
-        &:hover {
 
-            .home-article-image {
-                filter: brightness(75%);
-            }
-
-
-        }
 
     }
 
@@ -134,15 +171,8 @@
         }
 
     }
-
-    .home-see-all {
-        width: 100%;
-        display: flex;
-        justify-content: flex-end;
-    }
-
-
 }
+
 
 /* ======= Focus on ===== */
 
@@ -405,14 +435,14 @@ body {
     /* home */
     &.home li.job_listing,
     /* home - jobs */
-    &.archive article.type-post.has-post-thumbnail
-
+    &.archive article.type-post.has-post-thumbnail,
     /* Archive pages */
-        {
+    .crp_related {
 
 
         .home-article-image,
-        .archive-article-img {
+        .archive-article-img,
+        .crp_featured {
             width: 100%;
             aspect-ratio: 2 / 1;
             overflow: hidden;
@@ -435,7 +465,8 @@ body {
             }
         }
 
-        img.wp-post-image {
+        img.wp-post-image,
+        img.crp_thumb {
 
             object-fit: cover;
             width: 100%;

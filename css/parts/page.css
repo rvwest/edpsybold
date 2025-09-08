@@ -72,45 +72,53 @@ article.type-wpbdp_listing,
         margin-bottom: var(--sp-medium);
     }
 
-    @media only screen and (max-width: 600px) {
-
-        ul,
-        ol {
-            margin-left: 0;
-        }
-
-        .wp-block-media-text__content {
-            margin-top: var(--sp-medium);
-            padding: 0;
-
-            p:last-of-type {
-                margin-bottom: 0;
-            }
+    .crp_related {
+        h2 {
+            margin-bottom: var(--sp-large);
 
         }
 
-        .entry-content,
-        .job_description,
-        .tribe-events-content,
-        .edp-thesis-abstract {
+        @media only screen and (max-width: 600px) {
 
             ul,
             ol {
                 margin-left: 0;
             }
+
+            .wp-block-media-text__content {
+                margin-top: var(--sp-medium);
+                padding: 0;
+
+                p:last-of-type {
+                    margin-bottom: 0;
+                }
+
+            }
+
+            .entry-content,
+            .job_description,
+            .tribe-events-content,
+            .edp-thesis-abstract {
+
+                ul,
+                ol {
+                    margin-left: 0;
+                }
+            }
         }
-    }
-}
 
-/* ---- Blog post only ----- */
 
-article.type-post {
-
-    .entry-content .content-body>p:first-of-type {
-        font-size: var(--fs-title-small);
-        line-height: var(--lh-title-small);
-        margin-bottom: var(--sp-medium);
     }
 
+    /* ---- Blog post only ----- */
 
-}
+    article.type-post {
+
+        .entry-content .content-body>p:first-of-type {
+            font-size: var(--fs-title-small);
+            line-height: var(--lh-title-small);
+            margin-bottom: var(--sp-medium);
+        }
+
+
+    }

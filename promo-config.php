@@ -18,7 +18,7 @@ return [
     ],
     [
         'keys' => ['events/month/*'],
-        'html' => '<a href="/events/community/add/" class="edp-events-promo">Add your event <i class="fal fa-plus-circle fa-2x"></i></a>',
+        'html' => '<a href="/events/community/add/" class="edp-blog-promo">Add your event <i class="fal fa-plus-circle fa-2x"></i></a>',
     ],
     [
         // Apply the same promo to /blog exactly, and to /tag and any /tag/*

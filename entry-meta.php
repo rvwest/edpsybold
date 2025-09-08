@@ -41,7 +41,7 @@ if ($tags && ! is_wp_error($tags)) {
         // Then append the +X others link without a preceding comma
         $others = $count - 4;
         $label  = _n('+ %d other', '+ %d others', $others, 'edpsybold');
-        echo ' <a class="post-tag post-tag--more" href="#page-tags">' . sprintf($label, intval($others)) . '</a>';
+        echo ' <a class="post-tag post-tag--more" href="#footer-tags-block">' . sprintf($label, intval($others)) . '</a>';
     } else {
         // 5 or fewer: show them all, only the last lacks wrapper/comma
         $last_index = $count - 1;

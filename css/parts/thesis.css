@@ -6,7 +6,7 @@
         background-color: var(--cl-lightblue);
         background-image: url(../../images/edpsy-swirls-28.svg);
         background-size: 400px;
-        background-position: top right;
+        background-position: right -2px;
         background-repeat: no-repeat;
 
         /* search & sort box */
