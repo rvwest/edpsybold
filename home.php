@@ -182,7 +182,7 @@ if (get_theme_mod('longer_reads_enabled')) :
     if ($post_count > 0) :
 ?>
     <section class="longer-reads grid12 edp-bold-posts-<?php echo $post_count; ?>">
-        <h2><?php echo esc_html($title); ?></h2>
+        <h2><a href="category/features/"><?php echo esc_html($title); ?></a></h2>
         <div class="longer-reads-grid">
             <?php foreach ($posts as $post): ?>
                 <?php
