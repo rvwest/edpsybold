@@ -230,9 +230,16 @@ body>.job-manager-error {
     }
 
     p.new-job-warning,
-    div.job-manager-error {
-        background-color: var(--cl-light);
+    div.job-manager-error,
+    .job-manager-info {
+        background-color: var(--cl-dark);
+        color: var(--cl-light);
         padding: var(--sp-large) var(--sp-large) var(--sp-large) var(--sp-xlarge);
+
+        a {
+            background-color: var(--cl-light);
+            padding: 0 var(--sp-xsmall);
+        }
     }
 
     .fieldset-logged_in {

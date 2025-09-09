@@ -830,6 +830,21 @@ function custom_job_manager_update_job_listings_message($save_message)
     return ('<i class="far fa-check-circle"></i> Your changes have been saved. <a href="' . esc_url(job_manager_get_permalink('job_dashboard')) . '">Return to your dashboard</a>.');
 }
 
+
+/* fixes dodgy placeholder text on registration */
+add_filter('wpjm_get_registration_fields', 'custom_registration_fields');
+
+function custom_registration_fields($fields)
+{
+	// Here we target one of the job fields (job_title) and change it's label
+	$fields['create_account_email']['label'] = "Your email";
+	$fields['create_account_email']['placeholder'] = "";
+	$fields['create_account_email']['description'] = "";
+	// And return the modified fields
+	return $fields;
+}
+
+
 // Allows direct CSS changes to the job description editor box
 
 add_filter( 'mce_css', function( $mce_css ) {
@@ -840,6 +855,16 @@ add_filter( 'mce_css', function( $mce_css ) {
     }
     return $mce_css;
 });
+
+// Improve step 2 CTA button text 
+
+add_filter('submit_job_step_preview_submit_text', 'custom_submit_button_text');
+
+function custom_submit_button_text($button_text)
+{
+	return __('Confirm and pay', 'wp-job-manager-simple-paid-listings');
+}
+
 
 // ========== Events pages ================================================= //
 

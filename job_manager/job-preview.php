@@ -70,11 +70,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<div class="label">Location</div>
 			<div class="detail location"><?php the_job_location(); ?></div>
 		</div>
-		<div class="meta-item">
-			<div class="label">Salary</div>
-			<div class="detail salary"><?php gma_wpjmef_display_combined_data_listings(); ?></div>
-		</div>
+	
+<?php
+ob_start();
+gma_wpjmef_display_combined_data_listings();
+$salary_html = ob_get_clean();
 
+// Normalize and determine if there is any visible content.
+$decoded   = html_entity_decode( $salary_html, ENT_QUOTES, 'UTF-8' );
+$stripped  = wp_strip_all_tags( $decoded, true );
+// Remove non-breaking spaces and all whitespace.
+$visible   = preg_replace( '/\x{00A0}|\xC2\xA0|\s+/u', '', $stripped );
+
+if ( $visible !== '' ) : ?>
+	<div class="meta-item">
+		<div class="label">Salary</div>
+		<div class="detail salary"><?php echo $salary_html; ?></div>
+	</div>
+<?php endif; ?>
 		<?php if (get_option('job_manager_enable_types')) { ?>
 			<div class="meta-item">
 				<div class="label">Contract</div>
