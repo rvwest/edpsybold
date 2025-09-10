@@ -82,7 +82,13 @@ function edpsybold_footer()
 add_action('init', 'edp_register_mentor_block');
 function edp_register_mentor_block() {
     if ( function_exists('register_block_type') ) {
-        register_block_type( get_template_directory() . '/blocks/mentor-block' );
+        require_once get_template_directory() . '/blocks/mentor-block/render.php';
+        register_block_type(
+            get_template_directory() . '/blocks/mentor-block',
+            array(
+                'render_callback' => 'edp_render_mentor_block',
+            )
+        );
     }
 }
 

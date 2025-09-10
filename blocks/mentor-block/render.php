@@ -1,5 +1,5 @@
 <?php
-return function( $attributes, $content, $block ) {
+function edp_render_mentor_block( $attributes, $content, $block ) {
     $name        = isset( $attributes['name'] ) ? $attributes['name'] : '';
     $role        = isset( $attributes['role'] ) ? $attributes['role'] : '';
     $description = isset( $attributes['description'] ) ? $attributes['description'] : '';
@@ -20,9 +20,11 @@ return function( $attributes, $content, $block ) {
         );
     }
 
+    $wrapper_attributes = get_block_wrapper_attributes( array( 'class' => 'mentor-block' ) );
+
     ob_start();
     ?>
-    <div class="mentor-block">
+    <div <?php echo $wrapper_attributes; ?>>
         <?php if ( $link ) : ?>
         <a class="mentor-link" href="<?php echo esc_url( $link ); ?>">
         <?php endif; ?>
@@ -46,4 +48,4 @@ return function( $attributes, $content, $block ) {
     </div>
     <?php
     return ob_get_clean();
-};
+}

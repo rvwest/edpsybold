@@ -8,6 +8,7 @@
     var PanelBody = components.PanelBody;
     var Button = components.Button;
     var URLInput = blockEditor.URLInput;
+    var useBlockProps = blockEditor.useBlockProps;
 
     registerBlockType( 'edpsy/mentor', {
         edit: function( props ) {
@@ -26,7 +27,7 @@
                         } )
                     )
                 ),
-                el( 'div', { className: props.className },
+                el( 'div', useBlockProps( { className: 'mentor-block' } ),
                     el( MediaUpload, {
                         onSelect: onSelectImage,
                         allowedTypes: [ 'image' ],
@@ -56,7 +57,8 @@
                         className: 'mentor-description',
                         value: attrs.description,
                         onChange: function( value ) { props.setAttributes( { description: value } ); },
-                        placeholder: 'Description'
+                        placeholder: 'Description',
+                        allowedFormats: [ 'core/bold', 'core/italic', 'core/link' ]
                     } )
                 )
             ];
