@@ -137,7 +137,7 @@
 
         a:hover .crp_title,
         a:active .crp_title {
-            color: var(--cl-purple);
+            color: var(--cl-lightpurple-hover);
         }
     }
 
@@ -171,6 +171,36 @@
         }
 
     }
+}
+
+/* === YMAL only === */
+
+.crp_related {
+
+
+    a:hover .crp_title,
+    a:active .crp_title {
+        color: var(--cl-purple);
+    }
+}
+
+
+
+
+
+
+
+.article-item {
+
+    &:active,
+    &:hover {
+
+        a {
+            color: var(--cl-light);
+        }
+    }
+
+}
 }
 
 
