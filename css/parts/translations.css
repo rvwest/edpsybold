@@ -1,0 +1,12 @@
+.skepost:lang(ur) {
+
+    p,
+    li {
+        line-height: calc(var(--fs-body)*3);
+    }
+
+    h2:lang(en) {
+
+        margin-bottom: 30px;
+    }
+}
