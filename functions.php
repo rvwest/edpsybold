@@ -79,6 +79,13 @@ function edpsybold_footer()
     </script>
     <?php
 }
+add_action('init', 'edp_register_mentor_block');
+function edp_register_mentor_block() {
+    if ( function_exists('register_block_type') ) {
+        register_block_type( get_template_directory() . '/blocks/mentor-block' );
+    }
+}
+
 add_filter('document_title_separator', 'edpsybold_document_title_separator');
 function edpsybold_document_title_separator($sep)
 {

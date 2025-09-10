@@ -1,0 +1,22 @@
+{
+  "apiVersion": 2,
+  "name": "edpsy/mentor",
+  "title": "Mentor block",
+  "category": "widgets",
+  "icon": "id",
+  "description": "Display a mentor profile with image, role, description and link.",
+  "attributes": {
+    "name": { "type": "string", "default": "" },
+    "role": { "type": "string", "default": "" },
+    "description": { "type": "string", "default": "" },
+    "link": { "type": "string", "default": "" },
+    "imageID": { "type": "integer", "default": 0 },
+    "imageURL": { "type": "string", "default": "" }
+  },
+  "supports": {
+    "html": false
+  },
+  "editorScript": "file:./index.js",
+  "style": "file:./style.css",
+  "render": "file:./render.php"
+}
