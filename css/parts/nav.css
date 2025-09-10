@@ -151,6 +151,25 @@ body {
 
     header[role="banner"] {
         border-bottom: none;
+
+        .header-logo-wrapper {
+
+            padding: var(--sp-small) 0;
+
+            &:hover,
+            &:active {
+                .header-logo {
+                    opacity: 1;
+                }
+            }
+
+            .header-logo {
+                width: 110px;
+                background-color: var(--cl-light);
+                padding: var(--sp-small-plus);
+                margin: 0;
+            }
+        }
     }
 }
 
