@@ -1,0 +1,46 @@
+@import url('variables.css');
+
+.category-groups {
+    #container {
+        background-color: var(--cl-lightblue);
+        background-image: url(../../images/edpsy-swirls-28.svg);
+        background-size: 400px;
+        background-position: top right;
+        background-repeat: no-repeat;
+    }
+
+    .entry-content {
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            gap: var(--sp-small);
+        }
+
+        li {
+            background-color: var(--cl-light);
+            border: 1px solid var(--cl-dark-50);
+            border-radius: var(--rd-small);
+            padding: var(--sp-small);
+
+            &:hover {
+                background-color: var(--cl-light-75);
+            }
+
+            h4 {
+                margin: 0;
+                font-weight: var(--fw-medium);
+            }
+
+            a {
+                color: var(--cl-dark);
+                text-decoration: none;
+
+                &:hover {
+                    color: var(--cl-dark-hover);
+                }
+            }
+        }
+    }
+}
