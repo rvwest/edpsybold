@@ -955,6 +955,21 @@ function edpsy_enqueue_mobile_menu_script()
 }
 add_action('wp_enqueue_scripts', 'edpsy_enqueue_mobile_menu_script');
 
+// Match label widths on event meta
+function edpsy_enqueue_event_label_width_script()
+{
+    if (is_singular('tribe_events')) {
+        wp_enqueue_script(
+            'event-label-width',
+            get_template_directory_uri() . '/js/event-label-width.js',
+            array('jquery'),
+            null,
+            true
+        );
+    }
+}
+add_action('wp_enqueue_scripts', 'edpsy_enqueue_event_label_width_script');
+
 function edpsy_custom_time_range_in_brackets($inner, $event_id)
 {
     $event = get_post($event_id);
