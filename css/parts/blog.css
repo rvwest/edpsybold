@@ -23,26 +23,7 @@
     flex: 1 1 calc(50% - var(--sp-home-gap));
 }
 
-@media only screen and (max-width: 700px) {
-
-    .archive.category,
-    .archive.tag {
-
-        .page-promo {
-            margin-top: var(--sp-large);
-        }
-
-        #content>article,
-        #content>article {
-            flex-basis: 100%;
-
-            .archive-article-img {
-                margin-bottom: 0;
-            }
-
-        }
-    }
-}
+/* viewport-specific rules moved to parts/viewport.css */
 
 .single-post {
     article.type-post {

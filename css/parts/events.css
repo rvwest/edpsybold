@@ -314,124 +314,7 @@
         }
     }
 
-    /* === Small viewports === */
-
-    @media only screen and (max-width: 600px) {
-
-        #container {
-            .tribe-common-l-container {
-                margin: 0;
-                padding: 0;
-            }
-
-            .tribe-events-header__messages {}
-
-            .tribe-events-c-top-bar.tribe-events-header__top-bar {
-                display: flex;
-                align-items: center;
-                margin-bottom: var(--sp-medium);
-
-
-                .tribe-events-c-view-selector {
-                    margin-right: calc(var(--sp-small) - 4px);
-
-                }
-
-            }
-
-            .tribe-events-calendar-list__month-separator {
-                .tribe-events-calendar-list__month-separator-text {
-                    font-size: var(--fs-title-medium);
-                }
-            }
-
-            .edp-events-calendar-list__event-row--featured a {
-
-                .edp-events-calendar-list__event-header {
-                    border-bottom: none;
-                }
-
-                .edp-events-calendar-list__event-meta {
-
-                    border-top: none;
-                }
-
-
-            }
-
-            .edp-events-calendar-list__event-row a {
-                flex-direction: column;
-
-                .edp-events-calendar-list__event-header {
-                    margin-right: 0;
-                    padding-bottom: var(--sp-xxsmall);
-                    padding-top: var(--sp-small);
-                }
-
-                .edp-events-calendar-list__event-date-tag {
-                    margin-right: 0;
-
-                    .edp-events-calendar-list__event-date-tag-datetime {
-                        flex-direction: row;
-                        justify-content: start;
-                        padding: var(--sp-small) var(--sp-medium);
-
-                        .edp-events-calendar-list__event-date-tag-weekday {
-                            padding-right: var(--sp-xsmall);
-                        }
-
-                        .edp-events-calendar-list__event-date-tag-daynum {
-                            font-size: var(--fs-title-small);
-                            padding: 0;
-                        }
-
-                        .edp-events-calendar-list__event-date-tag-month {
-                            padding-left: var(--sp-xsmall);
-                        }
-                    }
-                }
-
-                .edp-events-calendar-list__event-date-tag .edp-events-calendar-list__event-date-tag-datetime .edp-events-calendar-list__event-date-tag-weekday,
-                .edp-events-calendar-list__event-date-tag .edp-events-calendar-list__event-date-tag-datetime .edp-events-calendar-list__event-date-tag-daynum,
-                .edp-events-calendar-list__event-date-tag .edp-events-calendar-list__event-date-tag-datetime .edp-events-calendar-list__event-date-tag-month,
-                .edp-events-calendar-list__event-header h3 {
-                    font-size: var(--fs-body);
-                    line-height: var(--lh-body);
-                    font-weight: var(--fw-medium);
-
-                }
-
-
-                .edp-events-calendar-list__event-meta {
-                    padding-top: 0;
-                    display: flex;
-                    justify-content: space-between;
-                    padding-bottom: var(--sp-small);
-                    font-weight: var(--fw-extralight);
-
-                    .epd-events-calendar-list__event-venue,
-                    .tribe-events-calendar-list__event-venue {
-                        margin-bottom: 0;
-                    }
-
-                    .tribe-events-calendar-list__event-cost {
-                        margin-top: 0;
-                    }
-                }
-
-            }
-
-            .edp-events-calendar-list__event-row.cat_on-demand a {
-                .edp-events-calendar-list__event-date-tag {
-                    .edp-events-calendar-list__event-date-tag-weekday {
-                        display: none;
-                    }
-                }
-            }
-
-
-        }
-    }
+    /* viewport-specific rules moved to parts/viewport.css */
 }
 
 /* ========= Single events pages =========== */
@@ -501,23 +384,7 @@
 
 
 
-    @media only screen and (max-width: 600px) {
-
-
-        header.event-page-header {
-            margin-bottom: var(--sp-medium);
-        }
-
-        .tribe-events-venue-map {
-            margin-top: var(--sp-small);
-        }
-
-        .tribe-events-after-html .event-disclaimer {
-            margin: 0;
-            padding: 0;
-        }
-
-    }
+    /* viewport-specific rules moved to parts/viewport.css */
 }
 
 /* ==== Homepage events ==== */

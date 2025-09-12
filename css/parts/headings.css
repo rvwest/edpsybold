@@ -22,17 +22,7 @@
 }
 
 
-@media only screen and (max-width: 600px) {
-
-    .job-listings-page article header,
-    .business-directory article header,
-    .archive main header.header,
-    .tribe-events header.tribe-events-header,
-    .add-job header.header {
-        flex-direction: column;
-        align-items: start;
-    }
-}
+/* viewport-specific rules moved to parts/viewport.css */
 
 /* == Blog post ============== */
 .single-post article,
@@ -196,33 +186,7 @@
 }
 
 
-@media only screen and (max-width: 600px) {
-    .page-promo {
-        width: 100%;
-
-
-        a {
-            flex-direction: row;
-            justify-content: space-between;
-            margin-bottom: var(--sp-medium);
-
-            .promo-title {
-                margin-bottom: var(--sp-xxsmall);
-            }
-
-            .promo-text {
-                flex-direction: column
-            }
-
-            &.edp-jobs-promo {
-                .promo-subtitle {
-                    margin-left: 0;
-                }
-            }
-
-        }
-    }
-}
+/* viewport-specific rules moved to parts/viewport.css */
 
 /* == H1 ==================================================================================== */
 
@@ -326,13 +290,7 @@ body:not(.home),
         font-size: var(--fs-display-large);
         line-height: var(--lh-display-large);
     }
-
-    @media only screen and (max-width: 600px) {
-        h1 {
-            font-size: var(--fs-display-medium);
-            line-height: var(--lh-display-medium);
-        }
-    }
+    /* viewport-specific rules moved to parts/viewport.css */
 }
 
 /* == Display medium H1 (thesis listings)  ============== */
@@ -400,15 +358,7 @@ body:not(.home),
         padding-right: var(--sp-xlarge);
     }
 
-    @media only screen and (max-width: 600px) {
-        h1 {
-            font-size: var(--fs-title-smallmedium);
-            line-height: var(--lh-title-smallmedium);
-            margin-top: var(--sp-large);
-            margin-bottom: var(--sp-medium);
-            padding-right: 0;
-        }
-    }
+    /* viewport-specific rules moved to parts/viewport.css */
 }
 
 /* == Other headings ============== */
@@ -430,10 +380,5 @@ body:not(.wp-admin) {
         font-size: var(--fs-title-small);
         font-weight: var(--fw-semibold);
     }
-
-    @media only screen and (max-width: 600px) {
-        h2 {
-            font-size: var(--fs-title-small);
-        }
-    }
+    /* viewport-specific rules moved to parts/viewport.css */
 }

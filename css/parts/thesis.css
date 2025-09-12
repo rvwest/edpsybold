@@ -122,48 +122,7 @@
 }
 
 
-@media only screen and (max-width: 600px) {
-    .business-directory.wpbdp-view-main #container {
-
-
-
-        .wpbdp-main-box .wpbdp-listings-sort-options {
-            flex-direction: column;
-
-            & select {
-                padding-left: 0;
-            }
-        }
-
-        .wpbdp-listing-excerpt a .excerpt-content {
-            flex-direction: column;
-
-            .listing-meta {
-                margin-right: 0;
-                padding-bottom: 0;
-                min-width: 200px;
-
-                .wpbdp-field-value:not(:last-child).wpbdp-field-name {
-                    margin-bottom: 0;
-                }
-
-                .secondary-meta {
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: space-between;
-
-                    .wpbdp-field-year {
-                        margin-top: -27px;
-                    }
-                }
-            }
-
-            .listing-title {
-                padding-top: 0;
-            }
-        }
-    }
-}
+/* viewport-specific rules moved to parts/viewport.css */
 
 
 

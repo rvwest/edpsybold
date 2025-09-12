@@ -295,10 +295,4 @@ div.post#post-9346 {
     text-decoration: none;
 }
 
-@media screen and (max-width: 700px) {
-
-    .cta-second-link {
-        display: none;
-    }
-
-}
+/* viewport-specific rules moved to parts/viewport.css */

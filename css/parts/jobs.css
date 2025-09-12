@@ -105,59 +105,7 @@
     }
 
 
-    @media screen and (max-width: 600px) {
-        .entry-content {
-
-            +* {
-                grid-column: 1 / span 12;
-            }
-
-
-            div.job_listings {
-                grid-column: 1 / span 12;
-                margin-top: var(--sp-large);
-
-                li a {
-
-                    .job-listing-logo {
-                        justify-content: flex-start;
-                        padding-top: var(--sp-small);
-                        /*todo*/
-                    }
-
-
-                    .job-listing-logo,
-                    .job-listing-meta,
-                    .job-listing-details {
-                        grid-column: 1 / span 12;
-                        padding-left: var(--sp-small);
-                        padding-right: var(--sp-small);
-
-                        img.company_logo {
-                            max-height: 100px;
-                            max-width: 200px;
-                        }
-
-                        .job-title h2 {
-                            font-size: var(--fs-body);
-                            line-height: var(--lh-body);
-                            font-weight: var(--fw-medium);
-                            padding-bottom: var(--sp-xxsmall);
-                        }
-
-                        .company {
-                            font-weight: var(--fw-extralight);
-                        }
-                    }
-
-
-
-                }
-            }
-
-        }
-
-    }
+    /* viewport-specific rules moved to parts/viewport.css */
 }
 
 /* ==== Preview ====== */
@@ -430,33 +378,7 @@ body>.job-manager-error {
     }
 }
 
-@media only screen and (max-width: 1000px) {
-    .option-cols {
-        display: inherit
-    }
-
-    .option-col1 {
-        width: 100%;
-        border-right: none;
-        padding-right: 0;
-        padding-bottom: 0
-    }
-
-    .option-col2 {
-        width: 100%;
-        padding-left: 0;
-    }
-
-    .option-block-or {
-        float: none;
-        margin: 4rem auto 3rem auto;
-        text-align: center;
-        padding: 0 6px 3px 6px;
-        border-radius: 0;
-        border: none;
-        background-color: var(--cl-light);
-    }
-}
+/* viewport-specific rules moved to parts/viewport.css */
 
 .edpsybold #container.edp-fullwidth .category-jobs {
 

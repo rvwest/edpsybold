@@ -1,0 +1,672 @@
+/* ==========================================================
+   Viewport-specific rules
+   - Consolidates all @media (min/max-width) rules from parts/*
+   - Grouped by viewport query
+   - Preserves original comments and context
+   ========================================================== */
+
+/* == max-width: 1000px ==================================== */
+@media only screen and (max-width: 1000px) {
+
+  /* == jobs (options layout) — from jobs.css */
+  .option-cols {
+    display: inherit
+  }
+
+  .option-col1 {
+    width: 100%;
+    border-right: none;
+    padding-right: 0;
+    padding-bottom: 0
+  }
+
+  .option-col2 {
+    width: 100%;
+    padding-left: 0
+  }
+
+  .option-block-or {
+    float: none;
+    margin: 4rem auto 3rem auto;
+    text-align: center;
+    padding: 0 6px 3px 6px;
+    border-radius: 0;
+    border: none;
+    background-color: var(--cl-light)
+  }
+}
+
+/* == min-width: 760px ===================================== */
+@media screen and (min-width: 760px) {
+
+  /* == nav desktop dropdowns — from nav.css */
+  header[role="banner"] nav.top-nav-menu {
+    ul>li {
+      ul.sub-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: var(--cl-light);
+        z-index: 1000;
+        min-width: 100%;
+        width: max-content;
+        align-items: flex-start;
+        border: 1px solid var(--cl-dark);
+
+        .menu-item-has-children:last-of-type & {
+          right: 0;
+          left: inherit
+        }
+
+        li {
+          width: 100%;
+
+          a {
+            display: flex;
+            align-items: center;
+            width: auto;
+            min-width: 100%;
+            white-space: nowrap;
+            border: none;
+            height: 27px;
+
+            &:hover,
+            &:active {
+              background-color: var(--cl-lightpurple-hover);
+              border: none
+            }
+          }
+        }
+      }
+    }
+
+    >ul>li:hover>ul.sub-menu {
+      display: flex
+    }
+
+    ul ul.sub-menu {
+      display: none
+    }
+  }
+}
+
+/* == max-width: 800px ===================================== */
+@media screen and (max-width: 800px) {
+
+  /* == signup slice — from viewports.css */
+  #signup-slice .signup-content {
+    flex-wrap: wrap;
+
+    .message {
+      width: 100%;
+
+      h2 {
+        font-size: var(--fs-title-large)
+      }
+    }
+
+    form {
+      width: 100%
+    }
+  }
+}
+
+/* == max-width: 700px ===================================== */
+@media only screen and (max-width: 700px) {
+
+  /* == nav mobile — from nav.css */
+  header[role="banner"] {
+    .menu-toggle {
+      display: block;
+      grid-column: 12 / span 1
+    }
+
+    nav.top-nav-menu {
+      grid-column: 1 / span 12;
+      margin-right: -24px;
+      margin-left: -24px;
+
+      ul {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        display: none;
+
+        li {
+          width: 100%;
+
+          .submenu-wrapper {
+            width: 100%
+          }
+        }
+      }
+
+      &.open>ul,
+      &.open>ul>.open ul {
+        display: flex;
+        margin-bottom: var(--sp-medium);
+
+        >li {
+          .submenu-wrapper {
+            display: flex
+          }
+
+          a,
+          .submenu-wrapper a {
+            width: 100%;
+            padding: var(--sp-small) var(--sp-small) var(--sp-small) var(--sp-medium);
+            border-bottom: none
+          }
+
+          a:hover,
+          &.current-menu-parent a,
+          &.current-menu-item a {
+            border-bottom: none
+          }
+
+          a:hover {
+            background-color: var(--cl-lightpurple-hover)
+          }
+
+          &.current_page_parent>a:first-of-type,
+          &.current_page_item>a:first-of-type,
+          &.current-menu-item>a:first-of-type,
+          &.current-menu-item>div>a:first-of-type,
+          &.current_page_item>div>a:first-of-type,
+          &.current_page_parent>div>a:first-of-type,
+          .current-menu-item a:first-of-type {
+            color: var(--cl-purple)
+          }
+
+          &.menu-item-object-page,
+          .menu-item-object-page {
+            display: flex;
+            flex-direction: column
+          }
+
+          button.submenu-toggle {
+            display: inline-block
+          }
+
+          ul.sub-menu {
+            padding-left: var(--sp-medium)
+          }
+        }
+      }
+    }
+  }
+
+  /* == blog archive cards — from blog.css */
+  .archive.category,
+  .archive.tag {
+    .page-promo {
+      margin-top: var(--sp-large)
+    }
+
+    #content>article,
+    #content>article {
+      flex-basis: 100%;
+
+      .archive-article-img {
+        margin-bottom: 0
+      }
+    }
+  }
+
+  /* == grid tweaks for header — from grid.css */
+  .grid12 {
+    .menu-toggle {
+      grid-column: 11 / span 2;
+      justify-self: end
+    }
+
+    nav.top-nav-menu {
+      grid-column: 1 / span 12
+    }
+  }
+
+  /* == promo banner — from promo-banner.css */
+  .cta-second-link {
+    display: none
+  }
+}
+
+/* == max-width: 600px ===================================== */
+@media only screen and (max-width: 600px) {
+
+  /* == global — from global.css */
+  body {
+    font-size: var(--fs-body-medium)
+  }
+
+  p {
+    font-size: var(--fs-body-medium)
+  }
+
+  /* == grid: base containers — from grid.css */
+  .fullwidth {
+    width: 100%;
+    padding: 0 var(--sp-medium)
+  }
+
+  .page-template-default:not(.job-listings-page, .wpbdp-view-main) article.type-page {
+    grid-column: 1 / span 12;
+
+    >* {
+      grid-column: 1 / span 12
+    }
+
+    .entry-content {
+      grid-column: 1 / span 12
+    }
+  }
+
+  /* grid: author archive — from grid.css */
+  .archive.author .archive.category-blog .grid12,
+  body.archive.author .grid12 {
+    :is(article.post) {
+      grid-column: 1 / span 12
+    }
+
+    .archive-meta {
+      grid-column: 1 / span 12;
+
+      .author-avatar {
+        grid-column: 1 / span 4
+      }
+
+      .author-description {
+        grid-column: 5 / span 7
+      }
+    }
+  }
+
+  /* grid: events list container — from grid.css */
+  .tribe-events-view--list {
+    .tribe-events-l-container {
+      >* {
+        grid-column: 1 / span 12
+      }
+    }
+
+    .tribe-events-header__top-bar {
+      grid-column: 1 / span 12
+    }
+
+    .event-disclaimer {
+      grid-column: 1 / span 12
+    }
+  }
+
+  /* grid: single listings (job/event/thesis) — from grid.css */
+  .single-tribe_events,
+  .single-job-listing,
+  .single-wpbdp_listing {
+
+    article.tribe-events-single,
+    article.type-job_listing,
+    article.wpbdp_listing {
+      >* {
+        grid-column: 1 / span 12
+      }
+
+      header {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        grid-column: 1 / span 12
+      }
+
+      .meta-slice {
+        .meta-img-l {
+          display: none
+        }
+
+        .job-listing-meta,
+        .event-listing-meta,
+        .edp-thesis-meta {
+          grid-column: 1 / span 12
+        }
+
+        .meta-img-r {
+          display: none
+        }
+      }
+
+      .job_description {
+        grid-column: 1 / span 12
+      }
+    }
+
+    .job-footer-contents {
+      grid-column: 1 / span 12
+    }
+  }
+
+  /* grid: thesis directory — from grid.css */
+  .wpbdp-view-main {
+    :is(article.page) {
+      >* {
+        grid-column: 1 / span 12
+      }
+    }
+  }
+
+  /* == headings: list page headers — from headings.css */
+  .job-listings-page article header,
+  .business-directory article header,
+  .archive main header.header,
+  .tribe-events header.tribe-events-header,
+  .add-job header.header {
+    flex-direction: column;
+    align-items: start
+  }
+
+  /* == headings: page promo — from headings.css */
+  .page-promo {
+    width: 100%;
+
+    a {
+      flex-direction: row;
+      justify-content: space-between;
+      margin-bottom: var(--sp-medium);
+
+      .promo-title {
+        margin-bottom: var(--sp-xxsmall)
+      }
+
+      .promo-text {
+        flex-direction: column
+      }
+
+      &.edp-jobs-promo {
+        .promo-subtitle {
+          margin-left: 0
+        }
+      }
+    }
+  }
+
+  /* == headings: H1 sizes on smaller — from headings.css */
+  .edp-jobs,
+  .archive {
+    h1 {
+      font-size: var(--fs-display-medium);
+      line-height: var(--lh-display-medium)
+    }
+  }
+
+  .single-post,
+  .single-tribe_events,
+  .edp-jobs.single-job_listing article.type-job_listing {
+    h1 {
+      font-size: var(--fs-title-smallmedium);
+      line-height: var(--lh-title-smallmedium);
+      margin-top: var(--sp-large);
+      margin-bottom: var(--sp-medium);
+      padding-right: 0
+    }
+  }
+
+  body:not(.wp-admin) {
+    h2 {
+      font-size: var(--fs-title-small)
+    }
+  }
+
+  /* == page content: related posts — from page.css */
+  .page-template-default:not(.job-listings-page) article.type-page,
+  article.job_listing,
+  article.tribe-events-single,
+  body:not(.home) article.type-post,
+  article.type-wpbdp_listing,
+  .tribe-events-pg-template,
+  .edp-jobs.add-job {
+    .crp_related {
+
+      ul,
+      ol {
+        margin-left: 0
+      }
+
+      .wp-block-media-text__content {
+        margin-top: var(--sp-medium);
+        padding: 0;
+
+        p:last-of-type {
+          margin-bottom: 0
+        }
+      }
+
+      .entry-content,
+      .job_description,
+      .tribe-events-content,
+      .edp-thesis-abstract {
+
+        ul,
+        ol {
+          margin-left: 0
+        }
+      }
+    }
+  }
+
+  /* == events: list view — from events.css */
+  /* === Small viewports === */
+  .post-type-archive-tribe_events,
+  .edpsybold.tribe_community_edit {
+    #container {
+      .tribe-common-l-container {
+        margin: 0;
+        padding: 0
+      }
+
+      .tribe-events-header__messages {}
+
+      .tribe-events-c-top-bar.tribe-events-header__top-bar {
+        display: flex;
+        align-items: center;
+        margin-bottom: var(--sp-medium);
+
+        .tribe-events-c-view-selector {
+          margin-right: calc(var(--sp-small) - 4px)
+        }
+      }
+
+      .tribe-events-calendar-list__month-separator {
+        .tribe-events-calendar-list__month-separator-text {
+          font-size: var(--fs-title-medium)
+        }
+      }
+
+      .edp-events-calendar-list__event-row--featured a {
+        .edp-events-calendar-list__event-header {
+          border-bottom: none
+        }
+
+        .edp-events-calendar-list__event-meta {
+          border-top: none
+        }
+      }
+
+      .edp-events-calendar-list__event-row a {
+        flex-direction: column;
+
+        .edp-events-calendar-list__event-header {
+          margin-right: 0;
+          padding-bottom: var(--sp-xxsmall);
+          padding-top: var(--sp-small)
+        }
+
+        .edp-events-calendar-list__event-date-tag {
+          margin-right: 0;
+
+          .edp-events-calendar-list__event-date-tag-datetime {
+            flex-direction: row;
+            justify-content: start;
+            padding: var(--sp-small) var(--sp-medium);
+
+            .edp-events-calendar-list__event-date-tag-weekday {
+              padding-right: var(--sp-xsmall)
+            }
+
+            .edp-events-calendar-list__event-date-tag-daynum {
+              font-size: var(--fs-title-small);
+              padding: 0
+            }
+
+            .edp-events-calendar-list__event-date-tag-month {
+              padding-left: var(--sp-xsmall)
+            }
+          }
+        }
+
+        .edp-events-calendar-list__event-date-tag .edp-events-calendar-list__event-date-tag-datetime .edp-events-calendar-list__event-date-tag-weekday,
+        .edp-events-calendar-list__event-date-tag .edp-events-calendar-list__event-date-tag-datetime .edp-events-calendar-list__event-date-tag-daynum,
+        .edp-events-calendar-list__event-date-tag .edp-events-calendar-list__event-date-tag-datetime .edp-events-calendar-list__event-date-tag-month,
+        .edp-events-calendar-list__event-header h3 {
+          font-size: var(--fs-body);
+          line-height: var(--lh-body);
+          font-weight: var(--fw-medium)
+        }
+
+        .edp-events-calendar-list__event-meta {
+          padding-top: 0;
+          display: flex;
+          justify-content: space-between;
+          padding-bottom: var(--sp-small);
+          font-weight: var(--fw-extralight);
+
+          .epd-events-calendar-list__event-venue,
+          .tribe-events-calendar-list__event-venue {
+            margin-bottom: 0
+          }
+
+          .tribe-events-calendar-list__event-cost {
+            margin-top: 0
+          }
+        }
+
+        .edp-events-calendar-list__event-row.cat_on-demand & {
+          .edp-events-calendar-list__event-date-tag {
+            .edp-events-calendar-list__event-date-tag-weekday {
+              display: none
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* == events: single event — from events.css */
+  .single-tribe_events {
+    header.event-page-header {
+      margin-bottom: var(--sp-medium)
+    }
+
+    .tribe-events-venue-map {
+      margin-top: var(--sp-small)
+    }
+
+    .tribe-events-after-html .event-disclaimer {
+      margin: 0;
+      padding: 0
+    }
+  }
+
+  /* == jobs listings page — from jobs.css */
+  .edp-jobs.job-listings-page {
+    .entry-content {
+      +* {
+        grid-column: 1 / span 12
+      }
+
+      div.job_listings {
+        grid-column: 1 / span 12;
+        margin-top: var(--sp-large);
+
+        li a {
+          .job-listing-logo {
+            justify-content: flex-start;
+            padding-top: var(--sp-small)
+          }
+
+          .job-listing-logo,
+          .job-listing-meta,
+          .job-listing-details {
+            grid-column: 1 / span 12;
+            padding-left: var(--sp-small);
+            padding-right: var(--sp-small);
+
+            img.company_logo {
+              max-height: 100px;
+              max-width: 200px
+            }
+
+            .job-title h2 {
+              font-size: var(--fs-body);
+              line-height: var(--lh-body);
+              font-weight: var(--fw-medium);
+              padding-bottom: var(--sp-xxsmall)
+            }
+
+            .company {
+              font-weight: var(--fw-extralight)
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* == thesis directory (listing) — from thesis.css */
+  .business-directory.wpbdp-view-main #container {
+    .wpbdp-main-box .wpbdp-listings-sort-options {
+      flex-direction: column;
+
+      & select {
+        padding-left: 0
+      }
+    }
+
+    .wpbdp-listing-excerpt a .excerpt-content {
+      flex-direction: column;
+
+      .listing-meta {
+        margin-right: 0;
+        padding-bottom: 0;
+        min-width: 200px;
+
+        .wpbdp-field-value:not(:last-child).wpbdp-field-name {
+          margin-bottom: 0
+        }
+
+        .secondary-meta {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+
+          .wpbdp-field-year {
+            margin-top: -27px
+          }
+        }
+      }
+
+      .listing-title {
+        padding-top: 0
+      }
+    }
+  }
+
+  /* == signup slice narrow — from viewports.css */
+  #signup-slice .signup-content {
+    .message {
+      padding-right: 0;
+
+      h2 {
+        font-size: var(--fs-title-medium);
+        line-height: var(--lh-title-medium)
+      }
+    }
+  }
+}

@@ -15,12 +15,7 @@
 }
 
 
-@media only screen and (max-width: 600px) {
-    .fullwidth {
-        width: 100%;
-        padding: 0 var(--sp-medium);
-    }
-}
+/* viewport-specific rules moved to parts/viewport.css */
 
 
 .grid12 {
@@ -49,18 +44,7 @@
     }
 }
 
-@media only screen and (max-width: 700px) {
-    .grid12 {
-        .menu-toggle {
-            grid-column: 11 / span 2;
-            justify-self: end;
-        }
-
-        nav.top-nav-menu {
-            grid-column: 1 / span 12;
-        }
-    }
-}
+/* viewport-specific rules moved to parts/viewport.css */
 
 /* === Homepage ============ */
 
@@ -102,19 +86,7 @@
     grid-column: 1 / span 12;
 }
 
-@media only screen and (max-width: 600px) {
-    .page-template-default:not(.job-listings-page, .wpbdp-view-main) article.type-page {
-        grid-column: 1 / span 12;
-
-        >* {
-            grid-column: 1 / span 12;
-        }
-
-        .entry-content {
-            grid-column: 1 / span 12;
-        }
-    }
-}
+/* viewport-specific rules moved to parts/viewport.css */
 
 
 
@@ -142,27 +114,7 @@
 
 }
 
-@media only screen and (max-width: 600px) {
-
-    .archive.author .archive.category-blog .grid12,
-    body.archive.author .grid12 {
-        :is(article.post) {
-            grid-column: 1 / span 12;
-        }
-
-        .archive-meta {
-            grid-column: 1 / span 12;
-
-            .author-avatar {
-                grid-column: 1 / span 4;
-            }
-
-            .author-description {
-                grid-column: 5 / span 7;
-            }
-        }
-    }
-}
+/* viewport-specific rules moved to parts/viewport.css */
 
 
 /* Blog post */
@@ -312,12 +264,7 @@ body.single-post article.type-post .entry-footer {
             grid-column: 2 / span 10;
         }
 
-        @media only screen and (max-width: 600px) {
-
-            >* {
-                grid-column: 1 / span 12;
-            }
-        }
+        /* viewport-specific rules moved to parts/viewport.css */
 
     }
 
@@ -333,22 +280,7 @@ body.single-post article.type-post .entry-footer {
         jobs grid-column: 2 / span 10;
     }
 
-    @media only screen and (max-width: 600px) {
-        .tribe-events-l-container {
-            >* {
-                grid-column: 1 / span 12;
-            }
-        }
-
-        .tribe-events-header__top-bar {
-            grid-column: 1 / span 12;
-        }
-
-        .event-disclaimer {
-            grid-column: 1 / span 12;
-
-        }
-    }
+    /* viewport-specific rules moved to parts/viewport.css */
 }
 
 /* Event form */
@@ -472,57 +404,7 @@ body.single-post article.type-post .entry-footer {
 
 }
 
-@media only screen and (max-width: 600px) {
-
-    .single-tribe_events,
-    .single-job-listing,
-    .single-wpbdp_listing {
-
-        article.tribe-events-single,
-        article.type-job_listing,
-        article.wpbdp_listing {
-            >* {
-                grid-column: 1 / span 12;
-            }
-
-            header {
-                display: flex;
-                flex-wrap: wrap;
-                flex-direction: column;
-                grid-column: 1 / span 12;
-            }
-
-            .meta-slice {
-                .meta-img-l {
-                    display: none;
-
-                }
-
-                .job-listing-meta,
-                .event-listing-meta,
-                .edp-thesis-meta {
-                    grid-column: 1 / span 12;
-
-
-
-                }
-
-
-                .meta-img-r {
-                    display: none;
-                }
-            }
-
-            .job_description {
-                grid-column: 1 / span 12;
-            }
-        }
-
-        .job-footer-contents {
-            grid-column: 1 / span 12;
-        }
-    }
-}
+/* viewport-specific rules moved to parts/viewport.css */
 
 /* == Thesis directory ====================== */
 
@@ -547,18 +429,7 @@ body.single-post article.type-post .entry-footer {
 
 }
 
-@media only screen and (max-width: 600px) {
-    .wpbdp-view-main {
-
-        :is(article.page) {
-
-            /* Search tools and list */
-            >* {
-                grid-column: 1 / span 12;
-            }
-        }
-    }
-}
+/* viewport-specific rules moved to parts/viewport.css */
 
 
 /* == Footer ====================== */
