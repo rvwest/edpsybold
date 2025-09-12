@@ -298,6 +298,16 @@
     }
   }
 
+  /* == headings: list page headers — from headings.css */
+  .job-listings-page article header,
+  .business-directory article header,
+  .archive main header.header,
+  .tribe-events header.tribe-events-header,
+  .add-job header.header {
+    flex-direction: column;
+    align-items: start
+  }
+
   /* == grid tweaks for header — from grid.css */
   .grid12 {
     .menu-toggle {
@@ -437,15 +447,7 @@
     }
   }
 
-  /* == headings: list page headers — from headings.css */
-  .job-listings-page article header,
-  .business-directory article header,
-  .archive main header.header,
-  .tribe-events header.tribe-events-header,
-  .add-job header.header {
-    flex-direction: column;
-    align-items: start
-  }
+
 
   /* == headings: page promo — from headings.css */
   .page-promo {
@@ -672,16 +674,18 @@
 
         li a {
           .job-listing-logo {
-            justify-content: flex-start;
-            padding-top: var(--sp-small)
+            justify-content: center;
+            padding-top: var(--sp-medium);
+            padding-bottom: var(--sp-medium);
+            border-bottom: 3px solid var(--cl-orange);
           }
 
           .job-listing-logo,
           .job-listing-meta,
           .job-listing-details {
             grid-column: 1 / span 12;
-            padding-left: var(--sp-small);
-            padding-right: var(--sp-small);
+            padding-left: var(--sp-medium);
+            padding-right: var(--sp-medium);
 
             img.company_logo {
               max-height: 100px;
