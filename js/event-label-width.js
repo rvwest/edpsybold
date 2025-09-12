@@ -10,5 +10,9 @@ jQuery(function ($) {
             maxWidth = width;
         }
     });
-    $labels.css('width', maxWidth + 'px');
+    maxWidth = Math.ceil(maxWidth / 5) * 5;
+    $labels.css({
+        width: maxWidth + 'px',
+        minWidth: maxWidth + 'px'
+    });
 });

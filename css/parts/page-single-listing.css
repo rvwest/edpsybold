@@ -70,15 +70,6 @@
                 }
             }
 
-            .event-listing-meta {
-                .meta-item,
-                .wpbdp-field-display {
-                    .label,
-                    .field-label {
-                        min-width: 0;
-                    }
-                }
-            }
 
             .meta-img-r {
                 background-repeat: no-repeat;
