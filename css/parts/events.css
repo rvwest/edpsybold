@@ -143,7 +143,7 @@
                 padding: var(--sp-medium);
                 background-color: var(--cl-light);
                 color: var(--cl-dark);
-                min-width: var(--gs-3);
+                min-width: 240px;
                 font-style: normal;
                 font-weight: var(--fw-semibold);
                 font-size: var(--fs-body);
