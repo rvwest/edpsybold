@@ -34,6 +34,55 @@
     border: none;
     background-color: var(--cl-light)
   }
+
+  /* Item pages (jobs / events / thesis) */
+  .single-tribe_events,
+  .single-job-listing,
+  .single-wpbdp_listing,
+  .job_listing_preview {
+
+    article.tribe-events-single,
+    article.type-job_listing,
+    article.wpbdp_listing {
+
+      >*,
+      .job_description {
+        grid-column: 2 / span 10;
+      }
+
+
+
+      .meta-slice {
+
+
+        .meta-img-l {
+          grid-column: 1 / span 2;
+          margin-left: var(--sp-neg-medium);
+          margin-right: var(--sp-neg-xxxxlarge);
+        }
+
+        .job-listing-meta,
+        .event-listing-meta,
+        .edp-thesis-meta {
+          grid-column: 3 / span 8;
+
+          .detail,
+          .value,
+          .field-label {
+            background-color: var(--cl-light-75);
+            z-index: 4;
+          }
+        }
+
+        .meta-img-r {
+          grid-column: 11 / span 2;
+
+          margin-right: var(--sp-neg-medium);
+          margin-left: var(--sp-neg-xxxxlarge);
+        }
+      }
+    }
+  }
 }
 
 /* == min-width: 760px ===================================== */
@@ -88,6 +137,8 @@
       display: none
     }
   }
+
+
 }
 
 /* == max-width: 800px ===================================== */
@@ -112,6 +163,34 @@
 
       br {
         display: none;
+      }
+    }
+  }
+
+  .single-tribe_events,
+  .single-job-listing,
+  .single-wpbdp_listing,
+  .job_listing_preview {
+
+    article.tribe-events-single,
+    article.type-job_listing,
+    article.wpbdp_listing {
+      .meta-slice {
+
+        .meta-img-l {
+          grid-column: 1 / span 1;
+        }
+
+        .job-listing-meta,
+        .event-listing-meta,
+        .edp-thesis-meta {
+          grid-column: 2 / span 10;
+          padding-left: var(--sp-medium);
+        }
+
+        .meta-img-r {
+          grid-column: 12 / span 1;
+        }
       }
     }
   }

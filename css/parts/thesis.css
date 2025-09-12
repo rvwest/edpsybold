@@ -140,7 +140,16 @@
         }
 
         .wpbdp-further-reading-block {
-            margin-top: var(--sp-medium)
+            margin-top: var(--sp-medium);
+
+            .value p {
+                display: flex;
+                flex-direction: column;
+
+                a {
+                    width: 100%;
+                }
+            }
         }
     }
 

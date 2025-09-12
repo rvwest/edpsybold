@@ -38,6 +38,9 @@
     --op-strong: 0.6;
 
     /* Spacing */
+    --sp-neg-xxxxlarge: -100px;
+    --sp-neg-medium: -24px;
+
     --sp-xxsmall: 3px;
     --sp-xsmall: 6px;
     --sp-small: 12px;

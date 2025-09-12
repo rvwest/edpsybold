@@ -64,6 +64,7 @@
                     .detail,
                     .value {
                         padding-left: var(--sp-medium);
+                        padding-right: var(--sp-medium);
                         font-weight: var(--fw-normal);
                         padding-bottom: var(--sp-small);
                     }
