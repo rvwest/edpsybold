@@ -309,7 +309,7 @@ body {
 
 
 
-@media screen and (min-width: 701px) {
+@media screen and (min-width: 760px) {
     header[role="banner"] nav.top-nav-menu {
         ul>li {
             ul.sub-menu {

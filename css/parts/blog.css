@@ -348,17 +348,13 @@
         flex-direction: column;
         justify-content: center;
 
-        p:author-bio {
+        p.author-bio {
             margin-bottom: 0;
         }
     }
 }
 
-
-
-
-
-#container article.type-post .authors-section {
+author-description--boxed #container article.type-post .authors-section {
 
     display: flex;
     flex-direction: column;

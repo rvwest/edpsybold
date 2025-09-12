@@ -12,7 +12,7 @@ foreach (get_coauthors() as $coauthor): ?>
 </header>
 <div class="archive-meta" itemprop="description">
 
-<?php get_template_part( 'biography', get_post_format() ); ?>
+<?php get_template_part( 'archive-biography', get_post_format() ); ?>
         </div>
 <?php if (have_posts()):
     while (have_posts()):
