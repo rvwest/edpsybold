@@ -343,6 +343,11 @@ body.single-post article.type-post .entry-footer {
         .tribe-events-header__top-bar {
             grid-column: 1 / span 12;
         }
+
+        .event-disclaimer {
+            grid-column: 1 / span 12;
+
+        }
     }
 }
 
