@@ -312,7 +312,9 @@
 
 .single-post article.type-post .entry-footer .author-info {
 
-    margin-top: var(--sp-xlarge);
+    margin-top: var(--sp-large);
+    margin-bottom: var(--sp-xlarge);
+
 }
 
 
