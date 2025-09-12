@@ -87,11 +87,13 @@
         .edp-events-calendar-list__event-row a {
             display: flex;
             justify-content: space-between;
-            padding-bottom: var(--sp-medium);
+            margin-bottom: var(--sp-large);
+            padding-bottom: 0;
 
             &:hover {
 
-                opacity: var(--op-light);
+                filter: brightness(75%);
+                opacity: 1;
             }
 
 
