@@ -511,6 +511,10 @@ body {
 
 
         }
+
+        img.crp_thumb.crp_job_logo {
+            margin-bottom: 0;
+        }
     }
 
 }
