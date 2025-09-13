@@ -32,7 +32,7 @@ if ($tags && ! is_wp_error($tags)) {
             $link = '<a class="post-tag" href="' . esc_url(get_tag_link($tag)) . '">' . esc_html($tag->name) . '</a>';
             if ($i === $last_index) {
                 // Last displayed tag: no wrapper/comma
-                echo $link;
+                echo '<div class="post-tag-wrapper">' . $link . '</div>';
             } else {
                 // Non-last: wrap with comma after
                 echo '<div class="post-tag-wrapper">' . $link . ',</div>';

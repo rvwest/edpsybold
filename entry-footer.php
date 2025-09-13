@@ -12,6 +12,6 @@ the_tags( $before, $seperator, $after );
 <div class="page-divider"> </div>
     <?php get_template_part('biography', get_post_format()); ?>
     <div class="page-divider"> </div>
-    <?php if ( function_exists( 'echo_crp' ) ) { echo_crp(); } ?>
+  <?php if ( function_exists( 'echo_crp' ) ) { echo_crp(''); } ?>
 </footer>
 <!-- file end: entry-footer.php -->

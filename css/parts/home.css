@@ -24,6 +24,7 @@
     .focus-on,
     .longer-reads {
         margin-bottom: 100px;
+        border-radius: var(--rd-large);
     }
 
     /* because the bottom row of articles bring their own margins */
@@ -72,7 +73,7 @@
             .hero-image {
                 width: calc(50% - (var(--sp-medium))/2);
                 aspect-ratio: var(--aspect-ratio-landscape);
-
+                border-radius: var(--rd-large);
             }
         }
     }
@@ -95,7 +96,7 @@
         .article-item {
 
             background-color: var(--cl-dark-50);
-
+            border-radius: var(--rd-large);
 
         }
 
@@ -160,7 +161,7 @@
 
     }
 
-    .article-item {
+    /* .article-item {
 
         &:active,
         &:hover {
@@ -170,7 +171,7 @@
             }
         }
 
-    }
+    }*/
 }
 
 /* === YMAL only === */
@@ -182,15 +183,15 @@
     a:active .crp_title {
         color: var(--cl-purple);
     }
+
+
 }
 
 
 
 
 
-
-
-.article-item {
+/* .article-item {
 
     &:active,
     &:hover {
@@ -200,8 +201,9 @@
         }
     }
 
-}
-}
+} */
+
+
 
 
 /* ======= Focus on ===== */
@@ -479,12 +481,14 @@ body {
             align-content: center;
             justify-content: center;
             margin-bottom: var(--sp-small);
+            border-radius: var(--rd-large);
         }
 
         &.job-summary .home-article-image {
             text-align: center;
             border: solid 1px var(--cl-dark-50);
             background-color: var(--cl-light);
+            border-radius: var(--rd-large);
 
 
             .crp_job_logo {
@@ -501,6 +505,7 @@ body {
             object-fit: cover;
             width: 100%;
             height: 100%;
+            border-radius: var(--rd-large);
 
 
 

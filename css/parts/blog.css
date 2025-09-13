@@ -36,7 +36,7 @@
             padding-bottom: var(--sp-xxlarge);
             background-image: url(../../images/edpsy-swirls-29.svg);
             background-size: 250px;
-            background-position: right top;
+            background-position: right -1px;
             background-repeat: no-repeat;
 
 
@@ -69,12 +69,12 @@
 
 
 
-                padding-bottom: var(--sp-xlarge);
                 display: flex;
+                justify-content: center;
                 padding-left: var(--sp-medium);
                 flex-direction: column;
                 gap: var(--sp-large);
-                padding-top: var(--sp-large);
+
                 margin-left: -106px;
                 margin-right: -24px;
 
@@ -82,6 +82,7 @@
                 .entry-date-readtime {
                     color: var(--cl-orange);
                     display: block;
+                    font-weight: var(--fw-medium);
 
                 }
 
@@ -93,6 +94,7 @@
 
                     .post-tag {
 
+                        font-weight: var(--fw-medium);
 
                         &:link,
                         &:visited,
@@ -103,6 +105,7 @@
 
                         &.post-tag--more {
 
+                            font-weight: var(--fw-light);
 
                             &:link,
                             &:visited,
@@ -128,6 +131,7 @@
                     object-fit: cover;
                     height: 100%;
                     width: 100%;
+                    border-radius: var(--rd-large);
                 }
             }
 
@@ -165,7 +169,7 @@
             }
 
             .entry-author--top {
-                margin-top: -130px;
+                margin-top: -125px;
 
                 /* 3 -107px */
 
