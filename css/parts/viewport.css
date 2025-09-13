@@ -470,7 +470,12 @@
     }
 
 
+    .entry-content {
+      a {
+        word-break: break-word;
+      }
 
+    }
 
 
     .entry-footer {
