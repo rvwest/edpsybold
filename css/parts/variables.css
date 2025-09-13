@@ -96,6 +96,7 @@
     /* ===== */
     --lh-body-small: calc(var(--fs-body-small) * 1.15);
     --lh-body: calc(var(--fs-body) * 1.5);
+    --lh-title-smallmedium: calc(var(--fs-title-smallmedium) * 1.15);
     --lh-title-medium: calc(var(--fs-title-medium) * 1.15);
     --lh-title-large: calc(var(--fs-title-large) * 1.15);
     --lh-title-xlarge: calc(var(--fs-title-xlarge) * 1.15);

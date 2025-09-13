@@ -98,7 +98,7 @@
                                 </div>
                             </div>
                             <div id="container" class="edp-fullwidth">
-                                <main id="content" role="main" class="fullwidth">
+                                <main id="content" role="main" >
 
 
                                 <?php elseif (is_singular('tribe_events')): ?>

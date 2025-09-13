@@ -35,6 +35,26 @@
     background-color: var(--cl-light)
   }
 
+  body.single-post {
+    article.type-post {
+      .entry-content {
+
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        ul,
+        ol,
+        blockquote,
+        .content-body {
+          grid-column: 2 / span 10;
+        }
+      }
+    }
+  }
+
   /* Item pages (jobs / events / thesis) */
   .single-tribe_events,
   .single-job-listing,
@@ -200,6 +220,7 @@
 @media only screen and (max-width: 700px) {
 
   /* == nav mobile — from nav.css */
+
   header[role="banner"] {
     .menu-toggle {
       display: block;
@@ -298,7 +319,10 @@
     }
   }
 
-  /* == headings: list page headers — from headings.css */
+  /* ============= Headings =============== */
+  /* ====================================== */
+
+  /* == listing pages — from headings.css */
   .job-listings-page article header,
   .business-directory article header,
   .archive main header.header,
@@ -308,21 +332,58 @@
     align-items: start
   }
 
-  /* == grid tweaks for header — from grid.css */
-  .grid12 {
-    .menu-toggle {
-      grid-column: 11 / span 2;
-      justify-self: end
-    }
+  /* == headings ===== */
 
-    nav.top-nav-menu {
-      grid-column: 1 / span 12
+  .single-post,
+  .single-tribe_events,
+  .edp-jobs.single-job_listing article.type-job_listing {
+    h1 {
+      font-size: var(--fs-title-smallmedium);
+      line-height: var(--lh-title-smallmedium);
+      margin-top: var(--sp-large);
+      margin-bottom: var(--sp-medium);
+      padding-right: 0
     }
   }
 
-  /* == promo banner — from promo-banner.css */
-  .cta-second-link {
-    display: none
+  .edp-jobs.single-job_listing,
+  .single-tribe_events,
+  .single-wpbdp_listing {
+
+    article.type-job_listing,
+    article.type-tribe_events,
+    article.type-wpbdp_listing {
+
+      header {
+
+        .company,
+        .edp-event-date-time,
+        .edp-event-cost,
+        .edp-event-location,
+        .edp-event-on-demand,
+        .wpbdp-year-inst-block {
+          font-size: var(--fs-title-small);
+          line-height: var(--fs-title-small);
+        }
+      }
+    }
+
+    /* == grid tweaks for header — from grid.css */
+    .grid12 {
+      .menu-toggle {
+        grid-column: 11 / span 2;
+        justify-self: end
+      }
+
+      nav.top-nav-menu {
+        grid-column: 1 / span 12
+      }
+    }
+
+    /* == promo banner — from promo-banner.css */
+    .cta-second-link {
+      display: none
+    }
   }
 }
 
@@ -355,6 +416,28 @@
       grid-column: 1 / span 12
     }
   }
+
+  body.single-post {
+    article.type-post {
+      .entry-content {
+
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        ul,
+        ol,
+        blockquote,
+        .content-body {
+          grid-column: 1 / span 12;
+        }
+      }
+    }
+  }
+
+
 
   /* grid: author archive — from grid.css */
   .archive.author .archive.category-blog .grid12,
@@ -483,17 +566,7 @@
     }
   }
 
-  .single-post,
-  .single-tribe_events,
-  .edp-jobs.single-job_listing article.type-job_listing {
-    h1 {
-      font-size: var(--fs-title-smallmedium);
-      line-height: var(--lh-title-smallmedium);
-      margin-top: var(--sp-large);
-      margin-bottom: var(--sp-medium);
-      padding-right: 0
-    }
-  }
+
 
   body:not(.wp-admin) {
     h2 {
