@@ -71,7 +71,7 @@
                 </div>
             </div>
             <div id="container">
-                <main id="content" role="main" class="fullwidth">
+                <main id="content" role="main" class="edp-fullwidth">
 
                 
 
@@ -85,7 +85,7 @@
                         </div>
                     </div>
                     <div id="container">
-                        <main id="content" role="main" class="fullwidth">
+                        <main id="content" role="main" >
 
 
                         <?php elseif (is_singular('wpbdp_listing')): ?>

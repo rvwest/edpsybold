@@ -1,5 +1,5 @@
 <!-- file: entry-header.php -->
-<div class="blog-header-block">
+<div class="blog-header-block edp-fullwidth">
 <header class="grid12">
     <h1 class="entry-title" itemprop="headline"><?php the_title(); ?></h1>
 </header>

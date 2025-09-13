@@ -65,6 +65,8 @@
     article.type-job_listing,
     article.wpbdp_listing {
 
+
+
       >*,
       .job_description {
         grid-column: 2 / span 10;
@@ -195,6 +197,9 @@
     article.tribe-events-single,
     article.type-job_listing,
     article.wpbdp_listing {
+
+
+
       .meta-slice {
 
         .meta-img-l {
@@ -319,8 +324,77 @@
     }
   }
 
+  /* ============= Single blog =============== */
+
+  body.single-post article.type-post {
+
+    h1.entry-title {
+      grid-column: 1 / span 12;
+      margin-bottom: var(--sp-large);
+    }
+
+    .author-image-header-block {
+
+      .entry-meta,
+      .entry-image {
+        grid-column: 1 / span 12;
+      }
+
+      .entry-meta {
+        margin: 0;
+        padding-left: 0;
+        padding-top: var(--sp-small);
+        gap: var(--sp-small);
+        padding-bottom: 0;
+
+        .entry-date-readtime {
+          display: flex;
+          gap: var(--sp-large);
+          font-weight: var(--fw-medium);
+
+
+        }
+
+        .post-tag {
+          font-weight: var(--fw-medium);
+
+        }
+
+        .entry-meta--share-button {
+          width: 100%;
+          display: flex;
+          justify-content: end;
+        }
+      }
+    }
+
+    .blog-header-block {
+      padding-bottom: var(--sp-large);
+    }
+
+    .entry-content {
+      display: flex;
+      flex-direction: column-reverse;
+
+      .authors-section {
+        display: flex;
+
+
+      }
+    }
+  }
+
+
   /* ============= Headings =============== */
   /* ====================================== */
+
+
+  .single-post article.type-post .blog-header-block header h1 {
+    font-size: var(--fs-title-smallmedium);
+    line-height: var(--lh-title-smallmedium);
+  }
+
+
 
   /* == listing pages — from headings.css */
   .job-listings-page article header,

@@ -57,8 +57,9 @@ if ($tags && ! is_wp_error($tags)) {
 }
 ?>
             </div>
-<button type="button" id="share-button" class="edp-button-pill">
+<div class="entry-meta--share-button"><button type="button" id="share-button" class="edp-button-pill">
     <?php esc_html_e('share', 'edpsybold'); ?> <i class="far fa-share-alt"></i>
 </button>
+</div>
 </div>
 <!-- file end: entry-meta.php -->
