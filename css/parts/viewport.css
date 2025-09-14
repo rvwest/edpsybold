@@ -35,7 +35,7 @@
     background-color: var(--cl-light)
   }
 
-
+  /* ==== Blog ==== */
 
   body.single-post {
     article.type-post {
@@ -129,6 +129,18 @@
         }
       }
     }
+  }
+
+  /* ======= Home ============ */
+
+  .home {
+
+    .article-grid .article-item {
+      width: calc(50% - ((var(--sp-home-gap))/2));
+      margin-bottom: calc(var(--sp-xlarge) - var(--sp-home-gap));
+    }
+
+
   }
 
   /* Item pages (jobs / events / thesis) */
@@ -352,6 +364,28 @@
       }
     }
   }
+
+  /* ==== Home ===== */
+  .home {
+
+    section.hero-post,
+    section.focus-on,
+    section.longer-reads,
+    section.homepage-events-wrapper,
+    section.homepage-jobs-wrapper {
+      h2 {
+        font-size: 50px;
+      }
+    }
+
+    section.hero-post,
+    section.focus-on,
+    section.longer-reads {
+      h2 {
+        margin-top: -56px;
+      }
+    }
+  }
 }
 
 /* == max-width: 700px ===================================== */
@@ -438,6 +472,88 @@
         }
       }
     }
+  }
+
+  /* ======= Home ====== */
+
+  .home {
+
+    .article-grid .article-item,
+    .focus-posts-grid .article-item,
+    .jobs-homepage-grid .article-item {
+
+      width: 100%;
+      margin-bottom: var(--sp-small);
+
+      a {
+        display: flex;
+
+        .article-item--image {
+          width: 40%;
+
+          .home-article-image {
+            margin-bottom: 0;
+          }
+
+        }
+
+        h3 {
+          width: 60%;
+          padding-left: var(--sp-medium);
+          padding-top: var(--sp-small);
+        }
+
+        &:hover,
+        &:active {
+          box-shadow: none;
+        }
+      }
+    }
+
+    section.hero-post,
+    section.focus-on,
+    section.longer-reads,
+    section.homepage-events-wrapper,
+    section.homepage-jobs-wrapper {
+
+      .focus-posts-grid,
+      .longer-reads-grid,
+      .jobs-homepage-grid {
+        flex-wrap: wrap;
+
+        .article-item {
+          margin-bottom: 0;
+
+          a {
+
+            &:hover,
+            &:active {
+              box-shadow: none;
+            }
+          }
+        }
+      }
+    }
+
+    .homepage-events-wrapper .edp-events-calendar-list {
+
+      margin-bottom: var(--sp-medium);
+
+      .edp-events-calendar-list__event-row-wrapper {
+
+        flex-wrap: wrap;
+
+        .edp-events-calendar-list__event-row {
+          width: 100%;
+
+          a {
+            padding-bottom: 0;
+          }
+        }
+      }
+    }
+
+
   }
 
   /* == blog archive cards — from blog.css */
@@ -597,6 +713,18 @@
 
   p {
     font-size: var(--fs-body-medium)
+  }
+
+  /* ======= Home ====== */
+
+  .home {
+
+    .article-grid .article-item {
+      width: 100%;
+      margin-bottom: calc(var(--sp-xlarge) - var(--sp-home-gap));
+    }
+
+
   }
 
   /* == grid: base containers — from grid.css */

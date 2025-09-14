@@ -74,6 +74,9 @@
                 width: calc(50% - (var(--sp-medium))/2);
                 aspect-ratio: var(--aspect-ratio-landscape);
                 border-radius: var(--rd-large);
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
             }
         }
     }
@@ -131,6 +134,8 @@
             ;
         }
 
+
+
         a:hover h3,
         a:active h3 {
             color: var(--cl-lightpurple-hover);
@@ -139,6 +144,7 @@
         a:hover .crp_title,
         a:active .crp_title {
             color: var(--cl-lightpurple-hover);
+
         }
     }
 
@@ -155,6 +161,7 @@
             font-size: var(--fs-body);
             line-height: var(--lh-body);
             font-weight: var(--fw-semibold);
+            padding: 0 var(--sp-xsmall) var(--sp-small) var(--sp-xsmall)
         }
 
 
