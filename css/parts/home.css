@@ -251,9 +251,15 @@ section.homepage-jobs-wrapper {
         color: var(--cl-dark);
     }
 
-    a:hover h3,
-    a:active h3 {
-        color: var(--cl-purple);
+    a:hover,
+    a:active {
+        h3 {
+            color: var(--cl-purple);
+        }
+
+        .home-article-image {
+            filter: brightness(75%);
+        }
     }
 
 
@@ -264,6 +270,7 @@ section.homepage-jobs-wrapper {
         flex-wrap: nowrap;
         gap: var(--sp-home-gap);
     }
+
 
 }
 
@@ -309,6 +316,17 @@ section.homepage-jobs-wrapper {
         }
     }
 
+    li.job_listing,
+    .article-item {
+
+        &:active,
+        &:hover {
+            .home-article-image {
+                filter: brightness(90%);
+            }
+        }
+
+    }
 }
 
 
