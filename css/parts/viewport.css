@@ -141,49 +141,64 @@
     }
 
 
-  }
+    section.focus-on,
+    section.longer-reads,
+    section.homepage-events-wrapper,
+    section.homepage-jobs-wrapper {
+      margin-top: 40px
+    }
 
-  .focus-on.edp-bold-posts-4,
-  .longer-reads,
-  .homepage-jobs {
+    .homepage-jobs-wrapper {
+      margin: 0 var(--sp-neg-medium);
 
-    .focus-posts-grid,
-    .longer-reads-grid,
-    .jobs-homepage-grid {
-      padding-top: var(--sp-xsmall);
-      flex-wrap: wrap;
+      .homepage-jobs {
+        margin-left: var(--sp-medium);
+        margin-right: var(--sp-medium);
+      }
+    }
 
-      .article-item {
+    .focus-on.edp-bold-posts-4,
+    .longer-reads,
+    .homepage-jobs {
 
-        width: 100%;
-        margin-bottom: 0;
-        max-width: 700px;
+      .focus-posts-grid,
+      .longer-reads-grid,
+      .jobs-homepage-grid {
+        padding-top: var(--sp-xsmall);
+        flex-wrap: wrap;
 
-        a {
-          display: flex;
+        .article-item {
 
+          width: 100%;
+          margin-bottom: 0;
+          max-width: 700px;
 
-          .article-item--image {
-            width: 30%;
+          a {
             display: flex;
-            align-items: center;
 
-            .home-article-image {
-              margin-bottom: 0;
+
+            .article-item--image {
+              width: 30%;
+              display: flex;
+              align-items: center;
+
+              .home-article-image {
+                margin-bottom: 0;
+              }
+
             }
 
-          }
+            h3 {
+              width: 70%;
+              padding-left: var(--sp-medium);
+              padding-top: var(--sp-small);
+              font-weight: normal;
+            }
 
-          h3 {
-            width: 70%;
-            padding-left: var(--sp-medium);
-            padding-top: var(--sp-small);
-            font-weight: normal;
-          }
-
-          &:hover,
-          &:active {
-            box-shadow: none;
+            &:hover,
+            &:active {
+              box-shadow: none;
+            }
           }
         }
       }
@@ -446,6 +461,29 @@
         margin-top: -56px;
       }
     }
+
+    .homepage-events-wrapper {
+      padding-left: 0;
+      padding-right: 0;
+
+      .edp-events-calendar-list {
+
+        margin-bottom: var(--sp-medium);
+
+        .edp-events-calendar-list__event-row-wrapper {
+
+          flex-wrap: wrap;
+
+          .edp-events-calendar-list__event-row {
+            width: 100%;
+
+            a {
+              padding-bottom: 0;
+            }
+          }
+        }
+      }
+    }
   }
 }
 
@@ -602,32 +640,9 @@
       }
     }
 
-    .homepage-jobs-wrapper {
-      margin: 0 var(--sp-neg-medium);
-    }
 
-    .homepage-events-wrapper {
-      padding-left: 0;
-      padding-right: 0;
 
-      .edp-events-calendar-list {
 
-        margin-bottom: var(--sp-medium);
-
-        .edp-events-calendar-list__event-row-wrapper {
-
-          flex-wrap: wrap;
-
-          .edp-events-calendar-list__event-row {
-            width: 100%;
-
-            a {
-              padding-bottom: 0;
-            }
-          }
-        }
-      }
-    }
 
 
   }
