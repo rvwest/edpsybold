@@ -143,6 +143,53 @@
 
   }
 
+  .focus-on.edp-bold-posts-4,
+  .longer-reads,
+  .homepage-jobs {
+
+    .focus-posts-grid,
+    .longer-reads-grid,
+    .jobs-homepage-grid {
+      padding-top: var(--sp-xsmall);
+      flex-wrap: wrap;
+
+      .article-item {
+
+        width: 100%;
+        margin-bottom: 0;
+        max-width: 700px;
+
+        a {
+          display: flex;
+
+
+          .article-item--image {
+            width: 30%;
+            display: flex;
+            align-items: center;
+
+            .home-article-image {
+              margin-bottom: 0;
+            }
+
+          }
+
+          h3 {
+            width: 70%;
+            padding-left: var(--sp-medium);
+            padding-top: var(--sp-small);
+            font-weight: normal;
+          }
+
+          &:hover,
+          &:active {
+            box-shadow: none;
+          }
+        }
+      }
+    }
+  }
+
   /* Item pages (jobs / events / thesis) */
   .single-tribe_events,
   .single-job-listing,
@@ -368,6 +415,20 @@
   /* ==== Home ===== */
   .home {
 
+    section.hero-post .home-hero-item a {
+      flex-direction: column;
+
+      .hero-text,
+      .hero-image {
+        width: 100%
+      }
+
+      .hero-excerpt p {
+        margin-bottom: 0;
+
+      }
+    }
+
     section.hero-post,
     section.focus-on,
     section.longer-reads,
@@ -478,6 +539,8 @@
 
   .home {
 
+
+
     .article-grid .article-item,
     .focus-posts-grid .article-item,
     .jobs-homepage-grid .article-item {
@@ -488,8 +551,11 @@
       a {
         display: flex;
 
+
         .article-item--image {
           width: 40%;
+          display: flex;
+          align-items: center;
 
           .home-article-image {
             margin-bottom: 0;
@@ -501,6 +567,7 @@
           width: 60%;
           padding-left: var(--sp-medium);
           padding-top: var(--sp-small);
+          font-weight: normal;
         }
 
         &:hover,
@@ -535,19 +602,28 @@
       }
     }
 
-    .homepage-events-wrapper .edp-events-calendar-list {
+    .homepage-jobs-wrapper {
+      margin: 0 var(--sp-neg-medium);
+    }
 
-      margin-bottom: var(--sp-medium);
+    .homepage-events-wrapper {
+      padding-left: 0;
+      padding-right: 0;
 
-      .edp-events-calendar-list__event-row-wrapper {
+      .edp-events-calendar-list {
 
-        flex-wrap: wrap;
+        margin-bottom: var(--sp-medium);
 
-        .edp-events-calendar-list__event-row {
-          width: 100%;
+        .edp-events-calendar-list__event-row-wrapper {
 
-          a {
-            padding-bottom: 0;
+          flex-wrap: wrap;
+
+          .edp-events-calendar-list__event-row {
+            width: 100%;
+
+            a {
+              padding-bottom: 0;
+            }
           }
         }
       }
@@ -719,9 +795,40 @@
 
   .home {
 
+
     .article-grid .article-item {
       width: 100%;
-      margin-bottom: calc(var(--sp-xlarge) - var(--sp-home-gap));
+      margin-bottom: var(--sp-xsmall);
+
+      a {
+        .article-item--image {
+          width: 30%
+        }
+
+        h3 {
+          width: 70%;
+          padding-top: var(--sp-xsmall);
+          padding-bottom: var(--sp-xsmall);
+        }
+      }
+    }
+
+    section.hero-post,
+    section.focus-on,
+    section.longer-reads,
+    section.homepage-events-wrapper,
+    section.homepage-jobs-wrapper {
+      h2 {
+        font-size: var(--fs-title-large);
+      }
+    }
+
+    section.hero-post,
+    section.focus-on,
+    section.longer-reads {
+      h2 {
+        margin-top: -51px;
+      }
     }
 
 
@@ -1172,6 +1279,34 @@
   }
 }
 
+
+
+@media only screen and (max-width: 500px) {
+
+
+
+  /* ======= Home ====== */
+
+  .home {
+    .article-grid .article-item a {
+
+      flex-direction: column;
+
+      .article-item--image {
+        width: 100%;
+        max-width: 280px;
+        padding-left: var(--sp-small);
+        padding-top: var(--sp-small);
+      }
+
+      h3 {
+        width: 100%;
+        padding-left: var(--sp-small);
+      }
+    }
+  }
+}
+
 /* == max-width: 440px ===================================== */
 @media only screen and (max-width: 440px) {
 
@@ -1194,5 +1329,40 @@
       font-size: var(--fs-title-small);
       line-height: var(--lh-title-small);
     }
+  }
+
+  .home {
+
+    .article-grid .article-item a {
+
+
+
+      .article-item--image {
+        width: 100%;
+        max-width: none;
+        padding-right: var(--sp-small);
+      }
+
+    }
+
+    section.hero-post,
+    section.focus-on,
+    section.longer-reads,
+    section.homepage-events-wrapper,
+    section.homepage-jobs-wrapper {
+      h2 {
+        font-size: var(--fs-title-medium);
+      }
+    }
+
+    section.hero-post,
+    section.focus-on,
+    section.longer-reads {
+      h2 {
+        margin-top: -48px;
+      }
+    }
+
+
   }
 }
