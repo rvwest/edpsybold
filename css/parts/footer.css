@@ -38,11 +38,15 @@
 footer#footer {
     background-color: var(--cl-dark);
     color: var(--cl-light);
-    padding: var(--sp-xlarge);
+    padding: var(--sp-xlarge) var(--sp-xlarge) var(--sp-large) var(--sp-xlarge);
 
     .footer-container {
         max-width: 1248px;
-        margin-top: var(--sp-small);
+
+        display: flex;
+        gap: var(--sp-home-gap);
+        justify-content: space-between;
+        margin: var(--sp-small) auto 0 auto;
 
 
 
@@ -54,6 +58,32 @@ footer#footer {
         a:hover,
         a:active {
             opacity: var(--op-strong);
+        }
+
+        .footer-content,
+        .foot-legal {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: start;
+
+            p {
+                margin-bottom: 0;
+            }
+
+            p.footer-social {
+                margin-bottom: var(--sp-small);
+            }
+
+            .footer-message {
+                flex-wrap: wrap;
+            }
+        }
+
+        .foot-legal {
+            margin-left: calc(124px + var(--sp-medium));
+            /* width of logo + gap */
         }
 
 
@@ -89,6 +119,18 @@ footer#footer {
 
 
 
+        }
+
+        .foot-legal {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--sp-xxsmall);
+
+            div {
+                display: flex;
+                flex-wrap: wrap;
+                gap: var(--sp-xxsmall);
+            }
         }
 
 
