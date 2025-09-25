@@ -16,6 +16,5 @@
 @import url('parts/footer.css');
 @import url('parts/promo-banner.css');
 @import url('parts/translations.css');
-/* consolidated viewport rules */
 @import url('parts/viewport.css');
 @import url('fontawesome/all.css');

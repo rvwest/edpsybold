@@ -787,6 +787,30 @@
     }
   }
 
+  .archive.author,
+  .archive.tag {
+
+    .promo-1 {
+      display: none;
+    }
+
+    .promo-2 {
+      display: block;
+      margin-bottom: var(--sp-medium);
+    }
+
+    .page-promo {
+      a {
+        padding: var(--sp-xsmall) var(--sp-small);
+        margin-bottom: var(--sp-medium);
+
+        i {
+          font-size: var(--fs-title-small);
+        }
+      }
+    }
+  }
+
   /* ============= Single blog =============== */
 
   body.single-post article.type-post {
@@ -1112,7 +1136,7 @@
     a {
       flex-direction: row;
       justify-content: space-between;
-      margin-bottom: var(--sp-medium);
+
 
       .promo-title {
         margin-bottom: var(--sp-xxsmall)
@@ -1132,10 +1156,11 @@
 
   /* == headings: H1 sizes on smaller — from headings.css */
   .edp-jobs,
-  .archive {
+  body:not(.home).archive {
     h1 {
       font-size: var(--fs-display-medium);
-      line-height: var(--lh-display-medium)
+      line-height: var(--lh-display-medium);
+      margin: var(--sp-large) 0 var(--sp-small) 0;
     }
   }
 
@@ -1183,6 +1208,39 @@
       }
     }
   }
+
+  /* == Blog list page === */
+
+  body:not(.home).archive {
+    article.type-post {
+      margin-bottom: var(--sp-large);
+    }
+
+    #container .author-info {
+      grid-column: 1 / span 12;
+      display: flex !important;
+      flex-direction: column;
+      padding: 0 var(--sp-medium);
+
+      .author-avatar {
+        margin-left: 0;
+        margin-bottom: var(--sp-small);
+        padding-left: 0;
+
+
+        img {
+          width: 100px;
+          height: 100px;
+        }
+      }
+
+      .author-description {
+        padding-right: 0;
+      }
+    }
+  }
+
+
 
   /* == events: list view — from events.css */
   /* === Small viewports === */

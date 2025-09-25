@@ -325,19 +325,26 @@
     }
 }
 
-.archive.author .archive-meta {
-    background-color: var(--cl-lightpurple-hover);
-    padding: var(--sp-medium) 0;
-    margin: var(--sp-large) 0 var(--sp-xlarge) 0;
+.archive.author {
+    .archive-meta {
+        background-color: var(--cl-lightpurple-hover);
+        padding: var(--sp-medium) 0;
+        margin: var(--sp-large) 0 var(--sp-xlarge) 0;
+        border-radius: var(--rd-large);
 
-    .author-description {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        .author-description {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
 
-        p.author-bio {
-            margin-bottom: 0;
+            p.author-bio {
+                margin-bottom: 0;
+            }
         }
+    }
+
+    .promo-2 {
+        display: none;
     }
 }
 

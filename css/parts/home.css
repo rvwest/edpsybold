@@ -227,8 +227,16 @@ section.longer-reads {
     }
 }
 
+section.hero-post,
+section.focus-on,
+section.longer-reads,
+section.homepage-jobs-wrapper {
+    margin-top: 60px;
+}
 
-
+section.homepage-events-wrapper {
+    padding-top: 84px !important;
+}
 
 section.hero-post,
 section.focus-on,
@@ -238,7 +246,7 @@ section.homepage-jobs-wrapper {
     display: flex;
     flex-direction: column;
 
-    margin-top: 60px;
+
 
     h2 {
         font-size: 60px;

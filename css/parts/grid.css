@@ -188,8 +188,7 @@ body.single-post {
 
 }
 
-body.single-post article.type-post .entry-footer,
-.archive.author {
+body.single-post article.type-post .entry-footer {
 
     header.header {
         grid-column: 1 / span 12;
@@ -207,10 +206,34 @@ body.single-post article.type-post .entry-footer,
         .author-description {
             grid-column: 3 / span 7;
         }
+
     }
 
-    :where(.author) .author-info {
+}
+
+
+.archive.author {
+
+    header.header {
+        grid-column: 1 / span 12;
+    }
+
+
+
+    .author-info {
         grid-column: 1 / span 10;
+        display: flex;
+
+
+        .author-avatar {
+            min-width: 173px;
+            padding-left: var(--sp-medium);
+            padding-right: var(--sp-medium);
+        }
+
+        .author-description {
+            padding-right: var(--sp-large);
+        }
     }
 }
 
