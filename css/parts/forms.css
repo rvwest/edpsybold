@@ -410,6 +410,8 @@
         outline: 1px solid var(--cl-dark);
         align-items: center;
         padding-left: var(--sp-medium);
+        min-height: 48px;
+        margin-top: var(--sp-small);
 
         &:hover {
             background-color: var(--cl-lightpurple-hover);
@@ -419,6 +421,10 @@
     input[type="file"].input-text {
         font-size: var(--fs-body);
         font-family: var(--ff);
+    }
+
+    .form-block .tribe-helptext {
+        margin-top: var(--sp-medium);
     }
 
     .form-block.form-block-job-description#form-block-job-description {
@@ -638,8 +644,7 @@ body:not(.wp-admin, .wp-core-ui) {
     .datepicker th,
     .ui-state-default,
     .ui-widget-content .ui-state-default,
-    .ui-widget-header .ui-state-default,
-    input[type="checkbox"] {
+    .ui-widget-header .ui-state-default {
         border-radius: 0;
         font-size: var(--fs-body-small);
         font-weight: var(--fw-extralight);
@@ -647,6 +652,15 @@ body:not(.wp-admin, .wp-core-ui) {
         min-height: 49px;
     }
 
+
+    input[type="checkbox"] {
+        border-radius: 0;
+        font-size: var(--fs-body-small);
+        font-weight: var(--fw-extralight);
+        min-width: 20px;
+        min-height: 20px;
+        margin-right: 10px;
+    }
 
 
     .datepicker table tr td.active.active,

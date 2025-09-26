@@ -657,6 +657,83 @@
     }
   }
 
+  /* ====== Events form ====== */
+
+
+
+
+
+  .edpsybold {
+
+    .edpsybold.edp-jobs.add-job #container.edp-fullwidth,
+    .category-jobs-admin,
+    &.tribe_community_edit {
+
+      .tribe-events-pg-template {
+        grid-column: 1 / span 12;
+      }
+
+      .tribe-events-community-details,
+      .tribe-section-content,
+      .form-block {
+
+        padding: var(--sp-small) var(--sp-small) var(--sp-medium) var(--sp-small);
+
+      }
+
+      .tribe-events-community-details {
+        padding-bottom: var(--sp-medium);
+
+        &#event_captcha {
+          padding-left: var(--sp-medium);
+        }
+      }
+
+      fieldset,
+      div.venue,
+      div.organizer,
+      .tribe-section-content-row,
+      div.events-community-post-title,
+      .events-community-post-content {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        padding: 0 var(--sp-small) var(--sp-small) var(--sp-small);
+        margin-top: 0;
+        margin-bottom: 0;
+
+        label,
+        .tribe-section-content-label {
+          width: 100%;
+          padding-left: 0;
+        }
+      }
+
+      h2:not(#signup-slice h2),
+      .tribe-section-header h3 {
+        font-size: var(--fs-title-large);
+      }
+
+      .start-end-values {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--sp-small-plus);
+        align-items: center;
+        width: 70%;
+      }
+    }
+
+    /* ==== Field widths ========*/
+
+
+    textarea#post_content,
+    input#post_title {
+      width: 100%;
+    }
+
+  }
+
+
 }
 
 /* == max-width: 700px ===================================== */
@@ -1056,6 +1133,8 @@
 
 
   }
+
+
 
   /* == grid: base containers — from grid.css */
   .fullwidth {
@@ -1536,7 +1615,7 @@
   input#company_name,
   .fieldset-type-term-multiselect .field,
   .checkbox-pair {
-    width: 100% !important;
+    width: 100%;
     max-width: var(--tb-medium);
   }
 }
@@ -1584,6 +1663,35 @@
         justify-content: flex-start;
       }
     }
+  }
+
+  /* === forms ==== */
+
+  .edpsybold {
+
+    .edpsybold.edp-jobs.add-job #container.edp-fullwidth,
+    .category-jobs-admin,
+    &.tribe_community_edit {
+
+
+      .tribe-events-community-details,
+      .tribe-section-content,
+      .form-block {
+
+        padding: var(--sp-small);
+
+      }
+    }
+  }
+
+  .edpsybold input[type="text"],
+  input[type="email"],
+  input#create_account_email,
+  input[type="password"],
+  input#company_name,
+  .fieldset-type-term-multiselect .field,
+  .checkbox-pair {
+    max-width: none;
   }
 }
 
