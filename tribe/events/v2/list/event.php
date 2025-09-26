@@ -35,15 +35,15 @@ $event_classes = tribe_get_post_class(['tribe-events-calendar-list__event', 'tri
  */
 $is_on_demand = function_exists('has_term') && has_term('on-demand', 'tribe_events_cat', $event->ID);
 if (!$is_on_demand) {
-        foreach ($event_classes as $class) {
-                if (strpos($class, 'cat_on-demand') !== false) {
-                        $is_on_demand = true;
-                        break;
-                }
-        }
+	foreach ($event_classes as $class) {
+		if (strpos($class, 'cat_on-demand') !== false) {
+			$is_on_demand = true;
+			break;
+		}
+	}
 }
 if ($is_on_demand) {
-        $container_classes[] = 'cat_on-demand';
+	$container_classes[] = 'cat_on-demand';
 }
 ?>
 <div <?php tribe_classes($container_classes); ?>>
@@ -52,44 +52,43 @@ if ($is_on_demand) {
 
 
 		<?php if ($is_on_demand): ?>
-                <?php $this->template('list/event/ondemand-tag'); ?>
-        <?php else: ?>
-                <?php $this->template('list/event/date-tag', [
-                        'event'        => $event,
-                        'request_date' => $request_date,
-                        'is_past'      => $is_past,
-                ]); ?>
-        <?php endif; ?>
+			<?php $this->template('list/event/ondemand-tag'); ?>
+		<?php else: ?>
+			<?php $this->template('list/event/date-tag', [
+				'event' => $event,
+				'request_date' => $request_date,
+				'is_past' => $is_past,
+			]); ?>
+		<?php endif; ?>
 
-		<?php if ($is_homepage): ?>  
-<div class="edp-event-title-and-meta">
-	<?php endif; ?>
-		<div class="edp-events-calendar-list__event-header">
 
-			<?php $this->template('list/event/title', ['event' => $event]); ?>
+		<div class="edp-event-title-and-meta">
+
+			<div class="edp-events-calendar-list__event-header">
+
+				<?php $this->template('list/event/title', ['event' => $event]); ?>
+
+			</div>
+			<div class="edp-events-calendar-list__event-meta">
+				<?php if ($is_on_demand): ?>
+					<address class="edp-events-calendar-list__event-venue tribe-common-b2">
+						<span class="edp-events-calendar-list__event-venue-title tribe-common-b2--bold">
+							On-demand training </span>
+						<span class="edp-events-calendar-list__event-venue-address">
+						</span>
+					</address>
+				<?php else: ?>
+					<?php $this->template('list/event/venue', [
+						'event' => $event,
+						'slug' => $slug,
+					]); ?>
+				<?php endif; ?>
+
+				<?php $this->template('list/event/cost', ['event' => $event]); ?>
+			</div>
 
 		</div>
-		<div class="edp-events-calendar-list__event-meta">
-		<?php if ($is_on_demand): ?>
-						<address class="edp-events-calendar-list__event-venue tribe-common-b2">
-							<span class="edp-events-calendar-list__event-venue-title tribe-common-b2--bold">
-								On-demand training </span>
-							<span class="edp-events-calendar-list__event-venue-address">
-							</span>
-						</address>
-					<?php else: ?>
-                                                <?php $this->template('list/event/venue', [
-                                                        'event' => $event,
-                                                        'slug'  => $slug,
-                                                ]); ?>
-					<?php endif; ?>
-			
-			<?php $this->template('list/event/cost', ['event' => $event]); ?>
-		</div>
 
-		<?php if ($is_homepage): ?>
-		</div>
-	<?php endif; ?>
 
 
 

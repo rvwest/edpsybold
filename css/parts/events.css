@@ -441,36 +441,41 @@
         }
     }
 
-    .edp-events-calendar-list__event-header {
-        padding: var(--sp-medium);
-        background-color: var(--cl-light);
-        color: var(--cl-dark);
-        margin-right: var(--sp-small);
-        flex-grow: 3;
+    .edp-event-title-and-meta {
+        display: flex;
+        width: 100%;
 
-        /*==== Homepage only change 2 =====*/
-        h3 {
-            font-size: var(--fs-body);
-            line-height: var(--lh-body);
-            font-weight: var(--fw-semibold);
+        .edp-events-calendar-list__event-header {
+            padding: var(--sp-medium);
+            background-color: var(--cl-light);
+            color: var(--cl-dark);
+            margin-right: var(--sp-small);
+            flex-grow: 3;
+
+            /*==== Homepage only change 2 =====*/
+            h3 {
+                font-size: var(--fs-body);
+                line-height: var(--lh-body);
+                font-weight: var(--fw-semibold);
+            }
         }
-    }
 
-    .edp-events-calendar-list__event-meta {
-        padding: var(--sp-medium);
-        background-color: var(--cl-light);
-        color: var(--cl-dark);
-        min-width: var(--gs-3);
-        font-style: normal;
-        font-weight: var(--fw-semibold);
-        font-size: var(--fs-body);
+        .edp-events-calendar-list__event-meta {
+            padding: var(--sp-medium);
+            background-color: var(--cl-light);
+            color: var(--cl-dark);
+            min-width: var(--gs-3);
+            font-style: normal;
+            font-weight: var(--fw-semibold);
+            font-size: var(--fs-body);
 
-        .epd-events-calendar-list__event-venue {
-            margin-bottom: var(--sp-small);
+            .epd-events-calendar-list__event-venue {
+                margin-bottom: var(--sp-small);
 
-            .epd-events-calendar-list__event-venue-address {
-                font-style: normal;
+                .epd-events-calendar-list__event-venue-address {
+                    font-style: normal;
 
+                }
             }
         }
     }
@@ -555,6 +560,8 @@ body.tribe_community_list:not(.wp-admin, .wp-core-ui) {
         position: relative;
         z-index: 1;
     }
+
+
 
     .tribe-community-events-list {
         margin-top: var(--sp-large);
