@@ -347,6 +347,17 @@
       }
     }
   }
+
+  /* ====== Events listing page ===== */
+  .tribe-events-view--list {
+
+    .tribe-events-l-container>*,
+    .tribe-events-header__top-bar,
+    .event-disclaimer {
+      grid-column: 1 / span 12;
+    }
+  }
+
 }
 
 /* == min-width: 760px ===================================== */
@@ -608,6 +619,14 @@
       }
     }
   }
+
+  /* ==== events ===== */
+
+  .post-type-archive-tribe_events #container .edp-events-calendar-list__event-row a .edp-events-calendar-list__event-header h3.edp-events-calendar-list__event-title {
+    font-size: var(--fs-body);
+    font-weight: var(--fw-semibold);
+  }
+
 }
 
 /* == max-width: 700px ===================================== */

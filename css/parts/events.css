@@ -1,3 +1,9 @@
+/* reset */
+
+.tribe-common .tribe-common-l-container {
+    padding: 0;
+}
+
 .post-type-archive-tribe_events,
 .edpsybold.tribe_community_edit {
     #container {
@@ -426,7 +432,7 @@
                 font-size: var(--fs-title-large);
                 font-weight: var(--fw-semibold);
                 color: var(--cl-dark);
-                min-height: 59px;
+                min-height: 50px;
                 /*padding: var(--sp-small) 0;*/
                 /* ====== Homepage only change 1 =====*/
                 padding: var(--sp-small) 0 0 0;
