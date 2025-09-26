@@ -717,7 +717,6 @@
       .start-end-values {
         display: flex;
         flex-wrap: wrap;
-        gap: var(--sp-small-plus);
         align-items: center;
         width: 70%;
       }

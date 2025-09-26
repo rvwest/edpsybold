@@ -69,6 +69,7 @@ Starts / ends
 		</label>
 
 <div class="start-end-values">
+	<div class="start-end-values--start">
 				<!-- Start Date -->
 				<label class="screen-reader-text" for="EventStartDate">
 					<?php esc_html_e( 'Event Start Date', 'tribe-events-community' ); ?>
@@ -100,9 +101,12 @@ Starts / ends
 					value="<?php echo esc_attr( $metabox->is_auto_draft() ? $start_time : $EventStartTime ) ?>"
 				/>
 				<span class="helper-text hide-if-js"><?php esc_html_e( 'HH:MM', 'tribe-events-community' ) ?></span>
+	</div>
+
+	<div class="start-end-values--end">
 				<span class="tribe-datetime-separator"> <?php echo esc_html_x( 'to', 'Start Date Time "to" End Date Time', 'tribe-events-community' ); ?> </span>
 
-				<!-- End Time -->
+	<!-- End Time -->
 				<label class="screen-reader-text" for="EventEndTime">
 					<?php esc_html_e( 'Event End Time', 'tribe-events-community' ); ?>
 				</label>
@@ -133,6 +137,7 @@ Starts / ends
 					value="<?php echo esc_attr( $end_date ); ?>"
 				/>
 				<span class="helper-text hide-if-js"><?php esc_html_e( 'YYYY-MM-DD', 'tribe-events-community' ); ?></span>
+</div>
 </div>
 
 		</fieldset>				<?php if ( class_exists( 'Tribe__Events__Timezones' ) && ! tribe_community_events_single_geo_mode() ) : ?>

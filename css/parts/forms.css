@@ -56,9 +56,21 @@
 
         .start-end-values {
             display: flex;
-            gap: var(--sp-small-plus);
+            flex-wrap: wrap;
             align-items: center;
             width: 70%;
+
+            .start-end-values--start,
+            .start-end-values--end {
+                display: flex;
+                gap: var(--sp-small-plus);
+                align-items: center;
+
+            }
+
+            .start-end-values--start {
+                margin-right: var(--sp-small-plus);
+            }
         }
     }
 
