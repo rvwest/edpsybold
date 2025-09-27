@@ -26,7 +26,7 @@
 
 /* == Blog post ============== */
 .single-post article,
-.page-template-default {
+.page-template-default:not(.edp-jobs) {
 
     header {
 

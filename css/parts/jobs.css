@@ -220,6 +220,8 @@ body>.job-manager-error {
         }
     }
 
+
+
     /*form#stripe-checkout-form {
 
         .option-cols {
@@ -299,8 +301,9 @@ body>.job-manager-error {
     }
 
     fieldset {
-        align-items: center;
-        padding-right: var(--sp-small);
+        align-items: start;
+        flex-direction: column;
+        gap: 0;
 
         &.fieldset-name {
             margin-bottom: 0;
@@ -345,7 +348,7 @@ body>.job-manager-error {
 
     fieldset label:not(.full-line-checkbox-field label) {
         width: 70%;
-        padding: 0 0 0 var(--sp-small);
+        padding: 0;
 
     }
 

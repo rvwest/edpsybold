@@ -348,6 +348,15 @@
     }
   }
 
+  .edp-jobs .page-promo .promo-text {
+    flex-direction: column;
+
+    .promo-subtitle {
+      margin-left: 0;
+      margin-top: var(--sp-xsmall);
+    }
+  }
+
   /* ====== Events listing page ===== */
   .tribe-events-view--list {
 
@@ -355,6 +364,120 @@
     .tribe-events-header__top-bar,
     .event-disclaimer {
       grid-column: 1 / span 12;
+    }
+  }
+
+
+  .edpsybold.edp-jobs.add-job #container.edp-fullwidth .category-jobs-admin form#stripe-checkout-form {
+
+    .option-cols {
+      flex-direction: column;
+    }
+
+    .job-details-block-fieldset {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+
+    .option-col1,
+    .option-col2 {
+      width: 100%;
+    }
+
+    .option-col1 {
+      border-bottom: solid 4px var(--cl-jobs-primary);
+      border-right: none;
+      padding-bottom: 0;
+
+    }
+
+    .option-block-or {
+      float: none;
+      margin-bottom: -20px;
+
+      margin-top: var(--sp-medium);
+      width: fit-content;
+      margin-right: auto;
+    }
+
+    job_listing_stripe_checkout_form {
+      fieldset {
+        padding-left: 0;
+      }
+    }
+  }
+
+  .edpsybold {
+
+    .edpsybold.edp-jobs.add-job #container.edp-fullwidth,
+    .category-jobs-admin,
+    &.tribe_community_edit {
+
+
+
+      fieldset,
+      div.venue,
+      div.organizer,
+      .tribe-section-content-row,
+      div.events-community-post-title,
+      .events-community-post-content {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        padding: 0 var(--sp-small) var(--sp-small) var(--sp-small);
+        margin-top: 0;
+        margin-bottom: 0;
+
+        label,
+        .tribe-section-content-label {
+          width: 100%;
+          padding-left: 0;
+        }
+      }
+
+      .fieldset-cap_declaration {
+        margin-bottom: var(--sp-small);
+
+        ul {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    &.edp-jobs.add-job #container.edp-fullwidth .form-block.form-block-job-description#form-block-job-description {
+      padding: var(--sp-medium) var(--sp-small) var(--sp-small) var(--sp-small);
+    }
+
+    textarea#post_content,
+    input#post_title {
+      width: 100%;
+    }
+
+    &.edp-jobs.add-job #container.edp-fullwidth .form-block.edpjobs-signin {
+      flex-direction: column;
+
+      .fieldset-login_required {
+        border-right: none;
+        border-bottom: solid 4px var(--cl-jobs-primary);
+        margin-left: 0;
+      }
+
+      .option-block-or {
+        float: none;
+        margin: 0 auto;
+        width: fit-content;
+        margin-bottom: -31px;
+      }
+
+      .edp-jobs-createaccount {
+        margin-left: 0;
+
+        h3,
+        p {
+          padding-left: var(--sp-small);
+        }
+      }
     }
   }
 
@@ -657,19 +780,24 @@
     }
   }
 
-  /* ====== Events form ====== */
+  /* ====== Forms (events / jobs) ====== */
 
 
-
+  .add-job article.category-jobs-admin>* {
+    grid-column: 1 / span 12;
+  }
 
 
   .edpsybold {
+
+
 
     .edpsybold.edp-jobs.add-job #container.edp-fullwidth,
     .category-jobs-admin,
     &.tribe_community_edit {
 
-      .tribe-events-pg-template {
+      .tribe-events-pg-template,
+      .entry-content {
         grid-column: 1 / span 12;
       }
 
@@ -709,10 +837,12 @@
         }
       }
 
-      h2:not(#signup-slice h2),
+      h2:not(#signup-slice h2, h2.my-events),
       .tribe-section-header h3 {
         font-size: var(--fs-title-large);
       }
+
+
 
       .start-end-values {
         display: flex;
@@ -722,13 +852,12 @@
       }
     }
 
-    /* ==== Field widths ========*/
-
-
-    textarea#post_content,
-    input#post_title {
-      width: 100%;
+    &.add-job ul.progressbar {
+      margin-left: 0 !important;
     }
+
+
+
 
   }
 
@@ -1075,6 +1204,41 @@
       display: none
     }
   }
+
+  /* === forms ==== */
+
+  .edpsybold.edp-jobs.add-job {
+
+    h1.entry-title {
+      margin-bottom: var(--sp-small);
+    }
+
+    .page-promo a {
+      padding: 0;
+      border: none;
+      margin-bottom: var(--sp-medium);
+
+      .promo-title,
+      i {
+        display: none;
+      }
+
+      .promo-subtitle {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--sp-xsmall)
+      }
+    }
+
+    #container.edp-fullwidth .fieldset-logged_in .field.account-sign-in {
+      flex-direction: column;
+      align-items: flex-start;
+
+      .signin-text {
+        padding: var(--sp-small) 0 0 0;
+      }
+    }
+  }
 }
 
 
@@ -1300,6 +1464,14 @@
       font-size: var(--fs-display-medium);
       line-height: var(--lh-display-medium);
       margin: var(--sp-large) 0 var(--sp-small) 0;
+    }
+  }
+
+  .edp-jobs.add-job .fieldset-logged_in {
+    margin-bottom: var(--sp-small);
+
+    .field.account-sign-in {
+      margin-top: 0;
     }
   }
 
@@ -1607,16 +1779,74 @@
     }
   }
 
-  .edpsybold input[type="text"],
-  input[type="email"],
-  input#create_account_email,
-  input[type="password"],
-  input#company_name,
-  .fieldset-type-term-multiselect .field,
-  .checkbox-pair {
-    width: 100%;
-    max-width: var(--tb-medium);
+  /* === forms ==== */
+
+  .edpsybold {
+
+    .field {
+      width: 100%
+    }
+
+    .field.account-sign-in {
+      margin-top: var(--sp-small)
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input#create_account_email,
+    input[type="password"],
+    input#company_name,
+    .fieldset-type-term-multiselect .field,
+    .checkbox-pair {
+      width: 100%;
+      max-width: var(--tb-medium);
+    }
+
+    input[type="text"]#company_website,
+    input[type="text"]#application {
+      width: 100%;
+      max-width: var(--tb-large);
+    }
+
+    &.edp-jobs.add-job #container.edp-fullwidth .form-block.form-block-job-description#form-block-job-description {
+      padding: 0;
+
+      fieldset {
+        padding: 0;
+      }
+    }
   }
+
+  &.edp-jobs.add-job #container.edp-fullwidth .category-jobs-admin form#stripe-checkout-form {
+
+    .option-col1,
+    .option-col2 {
+      padding-right: var(--sp-medium);
+
+      padding-left: var(--sp-medium);
+
+      fieldset {
+        padding-left: 0;
+
+        label {
+          font-size: var(--fs-body);
+        }
+      }
+    }
+
+    fieldset div.field:not(.full-line-checkbox-field) {
+      width: 100%;
+    }
+
+    .option-col1 {
+      border-bottom: solid 4px var(--cl-jobs-primary);
+      border-right: none;
+      padding-bottom: 0;
+      padding-top: 0;
+
+    }
+  }
+
 }
 
 
@@ -1692,6 +1922,35 @@
   .checkbox-pair {
     max-width: none;
   }
+
+  .edpsybold.edp-jobs.add-job #container.edp-fullwidth .category-jobs-admin form#stripe-checkout-form {
+
+
+    fieldset .job-details-block {
+      flex-direction: column;
+      align-items: start;
+      margin-left: 0;
+
+      .payment-details-name-description {
+        width: 100%;
+        justify-content: flex-start;
+        margin-bottom: var(--sp-small);
+
+
+        .field,
+        .job-listing {
+          text-align: left;
+        }
+
+
+      }
+    }
+
+    .fieldset-stripe_payment.fieldset-type-text .item-cost {
+      margin-left: 0;
+
+    }
+  }
 }
 
 /* == max-width: 440px ===================================== */
@@ -1751,5 +2010,27 @@
     }
 
 
+  }
+
+  .edpsybold.edp-jobs.add-job #container.edp-fullwidth {
+
+
+
+
+    .category-jobs-admin form#stripe-checkout-form {
+
+      .option-col1,
+      .option-col2 {
+        padding-right: var(--sp-small);
+        padding-left: var(--sp-small);
+      }
+
+      fieldset {
+        padding-left: 0;
+
+
+      }
+
+    }
   }
 }

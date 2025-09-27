@@ -270,6 +270,11 @@
 
     }
 
+    /* -- View my submitted events button -- */
+    header.my-events-header .tribe-button {
+        display: none;
+    }
+
 
     /* == Date picker interface ====================== */
     /* See forms.css */
