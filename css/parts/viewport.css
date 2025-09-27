@@ -1913,6 +1913,38 @@
     }
   }
 
+  /*=== thesis directory listing ==== */
+  .business-directory.wpbdp-view-main #container .wpbdp-main-box {
+    flex-direction: column;
+    padding: 0;
+    gap: var(--sp-medium);
+    background: none;
+    align-items: end;
+
+    .search-wrapper {
+      width: 100%;
+      padding-left: var(--sp-small);
+      border: none;
+      background-color: var(--cl-light);
+
+      .submit-btn {
+        border: none;
+        padding: 0 var(--sp-small);
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    .wpbdp-listings-sort-options {
+      background-color: var(--cl-light);
+      padding: var(--sp-xsmall) var(--sp-small);
+      flex-direction: row;
+      align-items: center;
+
+    }
+
+  }
+
 }
 
 

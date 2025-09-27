@@ -18,6 +18,12 @@
             padding: 0 var(--sp-medium);
             margin-bottom: var(--sp-xlarge);
 
+            .search-wrapper {
+                display: flex;
+
+                flex-grow: 2;
+            }
+
             .search-block {
                 flex-grow: 2;
 
