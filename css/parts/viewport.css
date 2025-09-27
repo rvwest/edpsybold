@@ -623,6 +623,7 @@
     }
   }
 
+  /* ==== item pages (job, event, thesis) ==== */
   .single-tribe_events,
   .single-job-listing,
   .single-wpbdp_listing,
@@ -857,12 +858,49 @@
       margin-left: 0 !important;
     }
 
+    /* ====== Job listing page ====== */
 
 
+    &.edp-jobs.edp-jobs.job-listings-page .entry-content ul.job_listings li a {
+      .job-listing-logo {
+        grid-column: 1 / span 3;
+
+      }
+
+      .job-listing--details-meta {
+        display: flex;
+        flex-direction: column;
+        border-left: 3px solid var(--cl-jobs-primary);
+        grid-column: 4 / span 8;
+
+        .job-listing-details {
+          padding: var(--sp-small) var(--sp-medium);
+
+          .job-title h2 {
+            font-size: var(--fs-body);
+            line-height: var(--lh-body);
+            font-weight: var(--fw-medium);
+            padding-bottom: var(--sp-xxsmall)
+          }
+
+          .company {
+            font-weight: var(--fw-extralight)
+          }
+
+
+        }
+
+        .job-listing-meta {
+
+          font-size: var(--fs-body-medium);
+
+        }
+      }
+
+
+    }
 
   }
-
-
 }
 
 /* == max-width: 700px ===================================== */
@@ -1137,10 +1175,30 @@
   /* ============= Headings =============== */
   /* ====================================== */
 
+  /* -- massive headings -- */
+  .edp-jobs,
+  .archive.post-type-archive-tribe_events {
+    h1 {
+      margin: var(--sp-large) 0 var(--sp-xlarge) 0;
+    }
+  }
+
+  /* -- medium headings -- */
+  .business-directory.wpbdp-view-main {
+    h1 {
+      margin: var(--sp-xxlarge) 0 var(--sp-xlarge) 0;
+    }
 
 
+  }
 
-
+  .edp-jobs,
+  .archive.post-type-archive-tribe_events,
+  .business-directory.wpbdp-view-main {
+    .page-promo {
+      margin-bottom: var(--sp-large);
+    }
+  }
 
   /* == listing pages — from headings.css */
   .job-listings-page article header,
@@ -1477,7 +1535,7 @@
 
   /* == headings: page promo — from headings.css */
   .page-promo {
-    /*width: 100%;*/
+    margin-bottom: var(--sp-medium);
 
     a {
       flex-direction: row;
@@ -1506,7 +1564,7 @@
     h1 {
       font-size: var(--fs-display-medium);
       line-height: var(--lh-display-medium);
-      margin: var(--sp-large) 0 var(--sp-small) 0;
+      margin: var(--sp-large) 0 var(--sp-large) 0;
     }
   }
 
@@ -1725,7 +1783,7 @@
   }
 
   /* == jobs listings page — from jobs.css */
-  .edp-jobs.job-listings-page {
+  .edpsybold.edp-jobs.job-listings-page {
     .entry-content {
       +* {
         grid-column: 1 / span 12
@@ -1733,38 +1791,40 @@
 
       div.job_listings {
         grid-column: 1 / span 12;
-        margin-top: var(--sp-large);
+        /* margin-top: var(--sp-large);*/
 
-        li a {
+        ul.job_listings li a {
           .job-listing-logo {
             justify-content: center;
             padding-top: var(--sp-medium);
             padding-bottom: var(--sp-medium);
             border-bottom: 3px solid var(--cl-orange);
+
           }
 
           .job-listing-logo,
-          .job-listing-meta,
-          .job-listing-details {
+          .job-listing--details-meta,
+          .job-listing-details,
+          .job-listing-meta {
             grid-column: 1 / span 12;
+            border-left: none;
+          }
+
+          .job-listing-logo,
+          .job-listing-details,
+          .job-listing-meta {
             padding-left: var(--sp-medium);
             padding-right: var(--sp-medium);
+
 
             img.company_logo {
               max-height: 100px;
               max-width: 200px
             }
 
-            .job-title h2 {
-              font-size: var(--fs-body);
-              line-height: var(--lh-body);
-              font-weight: var(--fw-medium);
-              padding-bottom: var(--sp-xxsmall)
-            }
 
-            .company {
-              font-weight: var(--fw-extralight)
-            }
+
+
           }
         }
       }
