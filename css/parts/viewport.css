@@ -357,17 +357,18 @@
     }
   }
 
-  /* ====== Events listing page ===== */
-  .tribe-events-view--list {
 
-    .tribe-events-l-container>*,
-    .tribe-events-header__top-bar,
-    .event-disclaimer {
-      grid-column: 1 / span 12;
-    }
+  /* ===== All listings pages (job / thesis / events) ==== */
+
+  .edp-jobs.job-listings-page .entry-content div.job_listings,
+  .wpbdp-view-main :is(article.page)>*,
+  .tribe-events-view--list .tribe-events-l-container>*,
+  .tribe-events-view--list .tribe-events-header__top-bar,
+  .tribe-events-view--list .event-disclaimer {
+    grid-column: 1 / span 12;
   }
 
-
+  /* === Job form === */
   .edpsybold.edp-jobs.add-job #container.edp-fullwidth .category-jobs-admin form#stripe-checkout-form {
 
     .option-cols {
@@ -1239,6 +1240,48 @@
       }
     }
   }
+
+  /* ===== Thesis directory listing ==== */
+
+  .business-directory.wpbdp-view-main #container {
+    .wpbdp-main-box .wpbdp-listings-sort-options {
+      flex-direction: column;
+
+      & select {
+        padding-left: 0
+      }
+    }
+
+    .wpbdp-listing-excerpt a .excerpt-content {
+      flex-direction: column;
+
+      .listing-meta {
+        margin-right: 0;
+        padding-bottom: 0;
+        min-width: 200px;
+
+        .wpbdp-field-value:not(:last-child).wpbdp-field-name {
+          margin-bottom: 0
+        }
+
+        .secondary-meta {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+
+          .wpbdp-field-year {
+            margin-top: -27px
+          }
+        }
+      }
+
+      .listing-title {
+        padding-top: 0
+      }
+    }
+  }
+
+
 }
 
 
@@ -1728,44 +1771,7 @@
     }
   }
 
-  /* == thesis directory (listing) — from thesis.css */
-  .business-directory.wpbdp-view-main #container {
-    .wpbdp-main-box .wpbdp-listings-sort-options {
-      flex-direction: column;
 
-      & select {
-        padding-left: 0
-      }
-    }
-
-    .wpbdp-listing-excerpt a .excerpt-content {
-      flex-direction: column;
-
-      .listing-meta {
-        margin-right: 0;
-        padding-bottom: 0;
-        min-width: 200px;
-
-        .wpbdp-field-value:not(:last-child).wpbdp-field-name {
-          margin-bottom: 0
-        }
-
-        .secondary-meta {
-          display: flex;
-          flex-direction: row;
-          justify-content: space-between;
-
-          .wpbdp-field-year {
-            margin-top: -27px
-          }
-        }
-      }
-
-      .listing-title {
-        padding-top: 0
-      }
-    }
-  }
 
   /* == signup slice narrow — from viewports.css */
   #signup-slice .signup-content {

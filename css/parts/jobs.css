@@ -94,7 +94,7 @@
                         grid-column: 8 / span 3;
                         background-color: var(--cl-dark);
                         color: var(--cl-light);
-                        padding: var(--sp-small) 0 var(--sp-small) var(--sp-medium);
+                        padding: var(--sp-small) var(--sp-small) var(--sp-small) var(--sp-medium);
                         height: 100%;
                         align-content: center;
                     }
