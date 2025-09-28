@@ -634,22 +634,22 @@
     article.wpbdp_listing {
 
 
-
+      /* TODO - reinstate meta-slices for thesis and events */
       .meta-slice {
 
         .meta-img-l {
-          grid-column: 1 / span 1;
+          grid-column: -1 / span 1;
         }
 
         .job-listing-meta,
         .event-listing-meta,
         .edp-thesis-meta {
-          grid-column: 2 / span 10;
+          grid-column: 1 / span 12;
           padding-left: var(--sp-medium);
         }
 
         .meta-img-r {
-          grid-column: 12 / span 1;
+          grid-column: 13 / span 1;
         }
       }
     }
