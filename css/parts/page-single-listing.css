@@ -55,7 +55,7 @@
 
                     .label,
                     .field-label {
-                        min-width: 180px;
+                        width: fit-content;
                         text-align: right;
                         padding-right: var(--sp-medium);
                         border-right: 1px solid var(--cl-dark);
