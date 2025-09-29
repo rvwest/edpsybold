@@ -1497,7 +1497,11 @@
         display: flex;
         flex-wrap: wrap;
         flex-direction: column;
-        grid-column: 1 / span 12
+        grid-column: 1 / span 12;
+
+        .job-listing-logo {
+          margin-left: 0;
+        }
       }
 
       .meta-slice {

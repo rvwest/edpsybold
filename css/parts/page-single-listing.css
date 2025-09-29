@@ -81,6 +81,7 @@
 
         .job-listing-logo {
             margin-top: var(--sp-xxlarge);
+            margin-left: var(--sp-medium);
 
             img {
                 max-height: 150px;
