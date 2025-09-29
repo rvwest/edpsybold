@@ -1,10 +1,23 @@
 (function () {
     'use strict';
 
-    var METADATA_BLOCK_SELECTOR = '.wpbdp-metadata-block';
-    var FIELD_LABEL_SELECTOR = '.field-label';
+    var BLOCK_CONFIGS = [
+        {
+            blockSelector: '.wpbdp-metadata-block',
+            labelSelector: '.field-label'
+        },
+        {
+            blockSelector: '.event-listing-meta',
+            labelSelector: '.label'
+        },
+        {
+            blockSelector: '.job-listing-meta',
+            labelSelector: '.label'
+        }
+    ];
     var resizeObserver = null;
     var scheduled = false;
+    var observedBlocks = null;
     var requestFrame =
         window.requestAnimationFrame || function (callback) {
             return window.setTimeout(callback, 16);
@@ -45,12 +58,12 @@
         });
     }
 
-    function updateBlock(block) {
+    function updateBlock(block, labelSelector) {
         if (!block) {
             return;
         }
 
-        var labels = toArray(block.querySelectorAll(FIELD_LABEL_SELECTOR));
+        var labels = toArray(block.querySelectorAll(labelSelector));
         if (!labels.length) {
             return;
         }
@@ -61,12 +74,21 @@
     }
 
     function updateAllBlocks() {
-        var blocks = document.querySelectorAll(METADATA_BLOCK_SELECTOR);
-        if (!blocks.length) {
-            return;
-        }
+        var hasAnyBlocks = false;
 
-        toArray(blocks).forEach(updateBlock);
+        BLOCK_CONFIGS.forEach(function (config) {
+            var blocks = document.querySelectorAll(config.blockSelector);
+            if (!blocks.length) {
+                return;
+            }
+
+            hasAnyBlocks = true;
+            toArray(blocks).forEach(function (block) {
+                updateBlock(block, config.labelSelector);
+            });
+        });
+
+        return hasAnyBlocks;
     }
 
     function scheduleUpdate() {
@@ -94,19 +116,36 @@
             });
         }
 
+        if (!observedBlocks && typeof window.WeakSet === 'function') {
+            observedBlocks = new window.WeakSet();
+        }
+
         blocks.forEach(function (block) {
+            if (observedBlocks && observedBlocks.has(block)) {
+                return;
+            }
+
             resizeObserver.observe(block);
+            if (observedBlocks) {
+                observedBlocks.add(block);
+            }
         });
     }
 
     function init() {
-        var blocks = document.querySelectorAll(METADATA_BLOCK_SELECTOR);
-        if (!blocks.length) {
+        var hadBlocks = updateAllBlocks();
+        if (!hadBlocks) {
             return;
         }
 
-        updateAllBlocks();
-        observeBlocks(toArray(blocks));
+        BLOCK_CONFIGS.forEach(function (config) {
+            var blocks = toArray(document.querySelectorAll(config.blockSelector));
+            if (!blocks.length) {
+                return;
+            }
+
+            observeBlocks(blocks);
+        });
 
         window.addEventListener('resize', scheduleUpdate);
         window.addEventListener('orientationchange', scheduleUpdate);
