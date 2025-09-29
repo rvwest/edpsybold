@@ -28,7 +28,7 @@
 
 
         .no_job_listings_found-text {
-            font-size: var(--fs-display-small);
+            font-size: var(--fs-title-medium);
             font-weight: var(--fw-semibold);
             line-height: var(--lh-display-small);
             color: var(--cl-light);
