@@ -2,6 +2,7 @@ jQuery(function ($) {
     $('.menu-toggle').on('click', function () {
         var nav = $('.top-nav-menu');
         nav.toggleClass('open');
+        $('body').toggleClass('top-menu-open', nav.hasClass('open'));
         $(this).find('i').toggleClass('fa-bars fa-times');
     });
 
