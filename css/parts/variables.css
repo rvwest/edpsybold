@@ -18,6 +18,7 @@
     --cl-dark-50: rgba(54, 48, 51, 0.5);
     --cl-link: #0072B9;
     --cl-straw: #FFF4DA;
+    --cl-straw-75: #fff4dabf;
     --cl-orange: #DB633B;
     --cl-lightblue: #78A8CF;
     --cl-green: #5EA259;
@@ -39,7 +40,13 @@
 
     /* Spacing */
     --sp-neg-xsmall: -6px;
+    --sp-neg-small: -12px;
+    --sp-neg-small-plus: -18px;
     --sp-neg-medium: -24px;
+    --sp-neg-large: -36px;
+    --sp-neg-xlarge: -48px;
+    --sp-neg-xxlarge: -60px;
+    --sp-neg-xxxlarge: -72px;
     --sp-neg-xxxxlarge: -100px;
 
     --sp-xxsmall: 3px;
@@ -98,6 +105,7 @@
     /* ===== */
     --lh-body-small: calc(var(--fs-body-small) * 1.15);
     --lh-body: calc(var(--fs-body) * 1.5);
+    --lh-title-small: calc(var(--fs-title-small) * 1.15);
     --lh-title-smallmedium: calc(var(--fs-title-smallmedium) * 1.15);
     --lh-title-medium: calc(var(--fs-title-medium) * 1.15);
     --lh-title-large: calc(var(--fs-title-large) * 1.15);
