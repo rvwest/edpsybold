@@ -322,7 +322,7 @@
         .meta-img-l {
           grid-column: 1 / span 2;
           margin-left: var(--sp-neg-medium);
-          margin-right: var(--sp-neg-xxxxlarge);
+          margin-right: var(--sp-neg-xxlarge);
         }
 
         .job-listing-meta,
@@ -1222,6 +1222,10 @@
       margin-bottom: var(--sp-medium);
       padding-right: 0
     }
+
+    .job-listing-logo {
+      margin-top: var(--sp-large);
+    }
   }
 
   .edp-jobs.single-job_listing,
@@ -1241,7 +1245,7 @@
         .edp-event-on-demand,
         .wpbdp-year-inst-block {
           font-size: var(--fs-title-small);
-          line-height: var(--fs-title-small);
+          line-height: var(--lh-title-small);
         }
       }
     }
@@ -1479,7 +1483,7 @@
 
   /* grid: single listings (job/event/thesis) — from grid.css */
   .single-tribe_events,
-  .single-job-listing,
+  .edp-jobs.single-job-listing,
   .single-wpbdp_listing {
 
     article.tribe-events-single,
@@ -1497,19 +1501,93 @@
       }
 
       .meta-slice {
+
+        background-color: var(--cl-straw);
+        margin: var(--sp-xlarge) var(--sp-neg-medium);
+
         .meta-img-l {
           display: none
         }
 
+
+
         .job-listing-meta,
         .event-listing-meta,
         .edp-thesis-meta {
-          grid-column: 1 / span 12
+          grid-column: 1 / span 11;
+
+
+
+
+          .meta-item,
+          .wpbdp-field-display {
+            display: flex;
+            flex-direction: column;
+            padding-left: 0;
+            width: fit-content;
+            padding-right: 0;
+
+            .label,
+            .field-label {
+              text-align: left;
+              border: none;
+              font-weight: var(--fw-normal);
+              background-color: var(--cl-straw-75);
+
+
+            }
+
+            .detail,
+            .value {
+              padding-left: 0;
+              padding-right: 0;
+              font-weight: var(--fw-extralight);
+              background-color: var(--cl-straw-75);
+
+              .wpjmef-field-combined {
+                display: flex;
+                flex-direction: column;
+
+                .spacer {
+                  display: none;
+                }
+              }
+
+            }
+          }
         }
 
-        .meta-img-r {
-          display: none
+        .edp-thesis-meta .wpbdp-metadata-block>.wpbdp-field-display {
+          .value>p {
+            margin-left: var(--sp-medium);
+          }
+
+          .value>p::before {
+            content: '•';
+            margin-left: var(--sp-neg-small-plus);
+            margin-right: var(--sp-small);
+          }
         }
+
+        .edp-thesis-meta .wpbdp-further-reading-block .wpbdp-field-display {
+          a {
+            margin-left: var(--sp-medium);
+          }
+
+          a::before {
+            content: '•';
+            margin-left: var(--sp-neg-small-plus);
+            margin-right: var(--sp-small);
+          }
+        }
+
+
+
+        .meta-img-r {
+          margin-right: var(--sp-neg-xxxxlarge);
+        }
+
+
       }
 
       .job_description {
