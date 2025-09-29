@@ -658,6 +658,17 @@
   /* ==== Home ===== */
   .home {
 
+    &.top-menu-open header[role="banner"] a.header-logo-wrapper {
+
+      padding: 0;
+
+      .header-logo {
+        width: 48px;
+        margin: var(--sp-small) 0;
+        padding: 0;
+      }
+    }
+
     section.hero-post .home-hero-item a {
       flex-direction: column;
 
