@@ -37,7 +37,7 @@
 
   /* ==== Blog ==== */
 
-  body.single-post {
+  body.single-post #container {
     article.type-post {
 
       h1.entry-title {
@@ -96,6 +96,7 @@
           .authors-section {
             display: flex;
             align-items: center;
+            flex-direction: row;
             padding-left: var(--sp-medium);
             gap: var(--sp-small);
 
@@ -116,6 +117,10 @@
                   }
                 }
               }
+            }
+
+            .author-deco {
+              display: none;
             }
           }
 
