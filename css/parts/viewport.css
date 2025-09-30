@@ -487,6 +487,9 @@
 /* == min-width: 760px ===================================== */
 @media screen and (min-width: 760px) {
 
+
+
+
   /* == nav desktop dropdowns — from nav.css */
   header[role="banner"] nav.top-nav-menu {
     ul>li {
@@ -542,6 +545,89 @@
 
 /* == max-width: 800px ===================================== */
 @media screen and (max-width: 800px) {
+
+  /* == nav mobile — from nav.css */
+
+  header[role="banner"] {
+    .menu-toggle {
+      display: block;
+      grid-column: 12 / span 1
+    }
+
+    nav.top-nav-menu {
+      grid-column: 1 / span 12;
+      margin-right: -24px;
+      margin-left: -24px;
+
+      ul {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        display: none;
+
+        li {
+          width: 100%;
+
+          .submenu-wrapper {
+            width: 100%
+          }
+        }
+      }
+
+      &.open>ul,
+      &.open>ul>.open ul {
+        display: flex;
+        margin-bottom: var(--sp-medium);
+
+        >li {
+          .submenu-wrapper {
+            display: flex
+          }
+
+          a,
+          .submenu-wrapper a {
+            width: 100%;
+            padding: var(--sp-small) var(--sp-small) var(--sp-small) var(--sp-medium);
+            border-bottom: none
+          }
+
+          a:hover,
+          &.current-menu-parent a,
+          &.current-menu-item a {
+            border-bottom: none
+          }
+
+          a:hover {
+            background-color: var(--cl-lightpurple-hover)
+          }
+
+          &.current_page_parent>a:first-of-type,
+          &.current_page_item>a:first-of-type,
+          &.current-menu-item>a:first-of-type,
+          &.current-menu-item>div>a:first-of-type,
+          &.current_page_item>div>a:first-of-type,
+          &.current_page_parent>div>a:first-of-type,
+          .current-menu-item a:first-of-type {
+            color: var(--cl-purple)
+          }
+
+          &.menu-item-object-page,
+          .menu-item-object-page {
+            display: flex;
+            flex-direction: column
+          }
+
+          button.submenu-toggle {
+            display: inline-block
+          }
+
+          ul.sub-menu {
+            padding-left: var(--sp-medium)
+          }
+        }
+      }
+    }
+  }
 
   /* == signup slice — from viewports.css */
   #signup-slice .signup-content {
@@ -917,88 +1003,7 @@
 /* == max-width: 700px ===================================== */
 @media only screen and (max-width: 700px) {
 
-  /* == nav mobile — from nav.css */
 
-  header[role="banner"] {
-    .menu-toggle {
-      display: block;
-      grid-column: 12 / span 1
-    }
-
-    nav.top-nav-menu {
-      grid-column: 1 / span 12;
-      margin-right: -24px;
-      margin-left: -24px;
-
-      ul {
-        flex-direction: column;
-        align-items: flex-start;
-        width: 100%;
-        display: none;
-
-        li {
-          width: 100%;
-
-          .submenu-wrapper {
-            width: 100%
-          }
-        }
-      }
-
-      &.open>ul,
-      &.open>ul>.open ul {
-        display: flex;
-        margin-bottom: var(--sp-medium);
-
-        >li {
-          .submenu-wrapper {
-            display: flex
-          }
-
-          a,
-          .submenu-wrapper a {
-            width: 100%;
-            padding: var(--sp-small) var(--sp-small) var(--sp-small) var(--sp-medium);
-            border-bottom: none
-          }
-
-          a:hover,
-          &.current-menu-parent a,
-          &.current-menu-item a {
-            border-bottom: none
-          }
-
-          a:hover {
-            background-color: var(--cl-lightpurple-hover)
-          }
-
-          &.current_page_parent>a:first-of-type,
-          &.current_page_item>a:first-of-type,
-          &.current-menu-item>a:first-of-type,
-          &.current-menu-item>div>a:first-of-type,
-          &.current_page_item>div>a:first-of-type,
-          &.current_page_parent>div>a:first-of-type,
-          .current-menu-item a:first-of-type {
-            color: var(--cl-purple)
-          }
-
-          &.menu-item-object-page,
-          .menu-item-object-page {
-            display: flex;
-            flex-direction: column
-          }
-
-          button.submenu-toggle {
-            display: inline-block
-          }
-
-          ul.sub-menu {
-            padding-left: var(--sp-medium)
-          }
-        }
-      }
-    }
-  }
 
   /* ======= Home ====== */
 
