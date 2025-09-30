@@ -663,7 +663,7 @@
   }
 
   /* ========= Blog ========= */
-  body.single-post article.type-post {
+  body.single-post #container article.type-post {
 
 
 
