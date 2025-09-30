@@ -35,7 +35,7 @@ function edpsybold_notice_dismissed()
 add_action('wp_enqueue_scripts', 'edpsybold_enqueue');
 function edpsybold_enqueue()
 {
-  //  wp_enqueue_style('edpsybold-style', get_stylesheet_uri());
+    //  wp_enqueue_style('edpsybold-style', get_stylesheet_uri());
     wp_enqueue_script('jquery');
     wp_enqueue_script(
         'edpsybold-share',
@@ -266,12 +266,14 @@ function add_job_manager_body_classes($classes)
     if (is_singular('job_listing')) { // Check if it's a single job listing
         $classes[] = 'edp-jobs single-job-listing'; // Add a class for single job listings
     }
-    if ( function_exists('job_manager_get_page_id') 
-     && is_page( job_manager_get_page_id( 'submit_job_form' ) ) ) {
-    // We're on the "Post a Job" (submit form) page
-    $classes[] = 'edp-jobs add-job'; // Add a class for single job listings
-}
-    
+    if (
+        function_exists('job_manager_get_page_id')
+        && is_page(job_manager_get_page_id('submit_job_form'))
+    ) {
+        // We're on the "Post a Job" (submit form) page
+        $classes[] = 'edp-jobs add-job'; // Add a class for single job listings
+    }
+
     return $classes;
 }
 add_filter('body_class', 'add_job_manager_body_classes');
@@ -283,11 +285,12 @@ add_filter('body_class', 'add_job_manager_body_classes');
 
 // ======== Customizer - featured post
 
-function mytheme_customize_register($wp_customize) {
+function mytheme_customize_register($wp_customize)
+{
     // Add a section for the Hero Post
     $wp_customize->add_section('edp_home_section', array(
-        'title'       => __('edpsy homepage settings', 'mytheme'),
-        'priority'    => 30,
+        'title' => __('edpsy homepage settings', 'mytheme'),
+        'priority' => 30,
     ));
 
     // Get all posts for the dropdown
@@ -299,17 +302,17 @@ function mytheme_customize_register($wp_customize) {
 
     // Add the setting
     $wp_customize->add_setting('hero_post_id', array(
-        'default'   => '',
+        'default' => '',
         'sanitize_callback' => 'absint',
     ));
 
     // Add the control
     $wp_customize->add_control('hero_post_id', array(
-        'label'    => __('Select Hero Post', 'mytheme'),
-        'section'  => 'edp_home_section',
+        'label' => __('Select Hero Post', 'mytheme'),
+        'section' => 'edp_home_section',
         'settings' => 'hero_post_id',
-        'type'     => 'select',
-        'choices'  => $choices,
+        'type' => 'select',
+        'choices' => $choices,
     ));
 }
 add_action('customize_register', 'mytheme_customize_register');
@@ -317,7 +320,8 @@ add_action('customize_register', 'mytheme_customize_register');
 
 // ======== Customizer - 'focus on' posts
 
-function edp_customize_register($wp_customize) {
+function edp_customize_register($wp_customize)
+{
     $section = 'edp_home_section';
 
     // ===== Focus On section =====
@@ -426,14 +430,15 @@ function edp_customize_register($wp_customize) {
 }
 add_action('customize_register', 'edp_customize_register');
 
-function edp_get_promo_classes() {
+function edp_get_promo_classes()
+{
     $file = get_template_directory() . '/css/parts/promo-banner.css';
     $classes = array();
     if (file_exists($file)) {
         $css = file_get_contents($file);
         if (preg_match_all('/\\.promo-banner-block-style--[a-z0-9_-]+/', $css, $matches)) {
             foreach (array_unique($matches[0]) as $class) {
-                $name  = ltrim($class, '.');
+                $name = ltrim($class, '.');
                 $label = preg_replace('/^promo-banner-block-style--/', '', $name);
                 $label = str_replace('-', ' ', $label);
                 $classes[$name] = $label;
@@ -444,14 +449,17 @@ function edp_get_promo_classes() {
 }
 
 if (class_exists('WP_Customize_Control')) {
-    class Edp_Customize_Rich_Text_Control extends WP_Customize_Control {
+    class Edp_Customize_Rich_Text_Control extends WP_Customize_Control
+    {
         public $type = 'edp_rich_text';
 
-        public function enqueue() {
+        public function enqueue()
+        {
             wp_enqueue_editor();
         }
 
-        public function render_content() {
+        public function render_content()
+        {
             $editor_id = $this->id . '_editor';
             $settings = array(
                 'textarea_name' => $editor_id,
@@ -489,7 +497,8 @@ if (class_exists('WP_Customize_Control')) {
     }
 }
 
-function edp_promo_banner_customize($wp_customize) {
+function edp_promo_banner_customize($wp_customize)
+{
     $wp_customize->add_section('edp_promo_banner', array(
         'title' => __('Promo banner', 'yourtheme'),
         'priority' => 40,
@@ -546,14 +555,16 @@ function edp_promo_banner_customize($wp_customize) {
 }
 add_action('customize_register', 'edp_promo_banner_customize');
 
-function edpsybold_count_class($count) {
+function edpsybold_count_class($count)
+{
     return 'edp-bold-posts-' . intval($count);
 }
 
 // ========== Jobs homepage shortcode =========== //
 
 // Register [jobs-homepage] shortcode with count-based CSS class
-function wpjm_jobs_homepage_shortcode($atts) {
+function wpjm_jobs_homepage_shortcode($atts)
+{
     $atts = shortcode_atts([
         'per_page' => 3,
     ], $atts, 'jobs-homepage');
@@ -562,24 +573,24 @@ function wpjm_jobs_homepage_shortcode($atts) {
 
     // Query jobs
     $jobs = new WP_Query([
-        'post_type'      => 'job_listing',
+        'post_type' => 'job_listing',
         'posts_per_page' => intval($atts['per_page']),
-        'post_status'    => 'publish',
+        'post_status' => 'publish',
     ]);
 
     $job_count = $jobs->found_posts;
 
-    if ( $jobs->have_posts() ) {
+    if ($jobs->have_posts()) {
         $count_class = edpsybold_count_class($job_count);
         echo '<div class="jobs-homepage-grid ' . esc_attr($count_class) . '">';
-        while ( $jobs->have_posts() ) {
+        while ($jobs->have_posts()) {
             $jobs->the_post();
 
             // Load custom template for each job
             get_template_part('_home-jobs-item');
         }
-        if  ( $count_class < 3 ) { 
-        get_template_part('_home-jobs-promo');
+        if ($count_class < 3) {
+            get_template_part('_home-jobs-promo');
         }
         echo '</div>';
     }
@@ -593,7 +604,8 @@ add_shortcode('jobs-homepage', 'wpjm_jobs_homepage_shortcode');
 // ========== Page promos ================================================= //
 // ======================================================================== //
 
-function get_page_promo() {
+function get_page_promo()
+{
     $raw = include get_template_directory() . '/promo-config.php';
 
     // Normalize config into groups of ['keys' => [...], 'html' => '...']
@@ -624,7 +636,8 @@ function get_page_promo() {
 
     // Pattern matcher: supports exact and simple prefix wildcard '/*'
     $matches = function ($pattern, $route) {
-        if (!is_string($pattern)) return false;
+        if (!is_string($pattern))
+            return false;
         $pattern = trim($pattern, '/');
         if ($pattern === '') {
             return $route === '';
@@ -659,10 +672,11 @@ function get_page_promo() {
 
     if (is_page()) {
         $post = get_post();
-        if (!$post) return;
+        if (!$post)
+            return;
 
-        $slug     = $post->post_name; // current page slug
-        $parent   = $post->post_parent ? get_post_field('post_name', $post->post_parent) : '';
+        $slug = $post->post_name; // current page slug
+        $parent = $post->post_parent ? get_post_field('post_name', $post->post_parent) : '';
         $combined = $parent ? $parent . '/' . $slug : $slug;
 
         if (isset($promos_assoc[$combined])) {
@@ -836,20 +850,20 @@ add_filter('wpjm_get_registration_fields', 'custom_registration_fields');
 
 function custom_registration_fields($fields)
 {
-	// Here we target one of the job fields (job_title) and change it's label
-	$fields['create_account_email']['label'] = "Your email";
-	$fields['create_account_email']['placeholder'] = "";
-	$fields['create_account_email']['description'] = "";
-	// And return the modified fields
-	return $fields;
+    // Here we target one of the job fields (job_title) and change it's label
+    $fields['create_account_email']['label'] = "Your email";
+    $fields['create_account_email']['placeholder'] = "";
+    $fields['create_account_email']['description'] = "";
+    // And return the modified fields
+    return $fields;
 }
 
 
 // Allows direct CSS changes to the job description editor box
 
-add_filter( 'mce_css', function( $mce_css ) {
+add_filter('mce_css', function ($mce_css) {
     // Optionally limit to the submit job page:
-    if ( function_exists('job_manager_get_page_id') && is_page( job_manager_get_page_id( 'submit_job_form' ) ) ) {
+    if (function_exists('job_manager_get_page_id') && is_page(job_manager_get_page_id('submit_job_form'))) {
         $style = get_stylesheet_directory_uri() . '/css/job-editor.css';
         return $mce_css ? $mce_css . ',' . $style : $style;
     }
@@ -858,20 +872,126 @@ add_filter( 'mce_css', function( $mce_css ) {
 
 // Improve step 2 CTA button text 
 
+add_filter('submit_job_form_submit_button_text', 'custom_submit_job_form_submit_button_text');
+
+function custom_submit_job_form_submit_button_text($button_text)
+{
+    return __('Preview and continue', 'wp-job-manager-simple-paid-listings');
+}
+
+// Improve step 3 CTA button text
+
 add_filter('submit_job_step_preview_submit_text', 'custom_submit_button_text');
 
 function custom_submit_button_text($button_text)
 {
-	return __('Confirm and pay', 'wp-job-manager-simple-paid-listings');
+    return __('Confirm and pay', 'wp-job-manager-simple-paid-listings');
 }
 
 
+// URL-slug Remove job type
+add_filter('submit_job_form_prefix_post_name_with_job_type', '__return_false');
 
 
+// Add Job ID to slug
+function custom_job_post_type_link($post_id, $post)
+{
+
+    // don't add the id if it's already part of the slug
+    $permalink = $post->post_name;
+    if (strpos($permalink, strval($post_id))) {
+        return;
+    }
+
+    // unhook this function to prevent infinite looping
+    remove_action('save_post_job_listing', 'custom_job_post_type_link', 10, 2);
+
+    // add the id to the slug
+    $permalink .= '-' . $post_id;
+
+    // update the post slug
+    wp_update_post(array(
+        'ID' => $post_id,
+        'post_name' => $permalink
+    ));
+
+    // re-hook this function
+    add_action('save_post_job_listing', 'custom_job_post_type_link', 10, 2);
+}
+add_action('save_post_job_listing', 'custom_job_post_type_link', 10, 2);
+
+add_action("init", function () {
+
+    add_shortcode("job_summary_crp", function ($atts) {
+
+        $atts = shortcode_atts(
+            [
+                'id' => '',
+                'width' => '250px',
+                'align' => 'left',
+                'featured' => null, // True to show only featured, false to hide featured, leave null to show both (when leaving out id).
+                'limit' => 1,
+            ],
+            $atts
+        );
+
+        ob_start();
+
+        $args = [
+            'post_type' => 'job_listing',
+            'post_status' => 'publish',
+        ];
+
+        if (!$atts['id']) {
+            $args['posts_per_page'] = $atts['limit'];
+            $args['orderby'] = 'rand';
+            if (!is_null($atts['featured'])) {
+                $args['meta_query'] = [
+                    [
+                        'key' => '_featured',
+                        'value' => '1',
+                        'compare' => $atts['featured'] ? '=' : '!=',
+                    ],
+                ];
+            }
+        } else {
+            $args['p'] = absint($atts['id']);
+        }
+
+        $jobs = new WP_Query($args);
+
+        if ($jobs->have_posts()) {
+            while ($jobs->have_posts()) {
+                $jobs->the_post();
+                $width = $atts['width'] ? $atts['width'] : 'auto';
+                get_job_manager_template_part('content-summary', 'job_listing');
+            }
+        }
+
+        wp_reset_postdata();
+
+        return ob_get_clean();
+    });
+
+});
+
+
+// Jobs in CRP 
+
+function crp_after_list_show_jobs()
+{
+
+    $after_list = '<div class="article-item job-summary"><div class="job_summary_shortcode align">' . do_shortcode('[job_summary_crp width="" align=""]') . '</div> </div>';
+
+    return apply_filters('crp_after_list_show_jobs', $after_list);
+
+}
+
+add_filter('crp_after_list', 'crp_after_list_show_jobs');
 // ========== Events pages ================================================= //
 
 // Add "Online" checkbox after Venue in the Location section
-add_action('tribe_events_after_venue_metabox', function($post) {
+add_action('tribe_events_after_venue_metabox', function ($post) {
     $value = get_post_meta($post->ID, '_EventOnline', true);
     ?>
     <tr>
@@ -879,13 +999,7 @@ add_action('tribe_events_after_venue_metabox', function($post) {
             <label for="EventOnline"><?php esc_html_e('Online event?', 'edpsybold'); ?></label>
         </td>
         <td>
-            <input
-                id="EventOnline"
-                name="EventOnline"
-                type="checkbox"
-                value="1"
-                <?php checked($value, '1'); ?>
-            />
+            <input id="EventOnline" name="EventOnline" type="checkbox" value="1" <?php checked($value, '1'); ?> />
             <span class="description"><?php esc_html_e('Check if this is an online/virtual event', 'edpsybold'); ?></span>
         </td>
     </tr>
@@ -893,7 +1007,7 @@ add_action('tribe_events_after_venue_metabox', function($post) {
 });
 
 // Add "CTA Label" text field after Event Website URL
-add_action('tribe_events_url_table', function($event_id) {
+add_action('tribe_events_url_table', function ($event_id) {
     $value = get_post_meta($event_id, '_EventCTALabel', true);
     ?>
     <tr>
@@ -901,14 +1015,8 @@ add_action('tribe_events_url_table', function($event_id) {
             <label for="EventCTALabel"><?php esc_html_e('CTA Label', 'edpsybold'); ?></label>
         </td>
         <td>
-            <input
-                id="EventCTALabel"
-                name="EventCTALabel"
-                type="text"
-                value="<?php echo esc_attr($value); ?>"
-                size="25"
-                placeholder="<?php esc_attr_e('Find out more and book', 'edpsybold'); ?>"
-            />
+            <input id="EventCTALabel" name="EventCTALabel" type="text" value="<?php echo esc_attr($value); ?>" size="25"
+                placeholder="<?php esc_attr_e('Find out more and book', 'edpsybold'); ?>" />
             <span class="description"><?php esc_html_e('Optional', 'edpsybold'); ?></span>
         </td>
     </tr>
@@ -916,7 +1024,7 @@ add_action('tribe_events_url_table', function($event_id) {
 });
 
 // Save the custom fields when the event is saved
-add_action('save_post_tribe_events', function($post_id) {
+add_action('save_post_tribe_events', function ($post_id) {
     if (isset($_POST['EventOnline'])) {
         update_post_meta($post_id, '_EventOnline', '1');
     } else {
@@ -997,59 +1105,60 @@ function edpsy_custom_time_range_in_brackets($inner, $event_id)
 // Add event categories to body tag
 function add_event_category_to_body_class($classes)
 {
-	if (is_singular('tribe_events')) {
-		$categories = get_the_terms(get_the_ID(), 'tribe_events_cat');
-		if ($categories && !is_wp_error($categories)) {
-			foreach ($categories as $category) {
-				$classes[] = 'event-cat-' . sanitize_html_class($category->slug);
-			}
-		}
-	}
-	return $classes;
+    if (is_singular('tribe_events')) {
+        $categories = get_the_terms(get_the_ID(), 'tribe_events_cat');
+        if ($categories && !is_wp_error($categories)) {
+            foreach ($categories as $category) {
+                $classes[] = 'event-cat-' . sanitize_html_class($category->slug);
+            }
+        }
+    }
+    return $classes;
 }
 add_filter('body_class', 'add_event_category_to_body_class');
 
 // Add classes to the event website link 
-function my_custom_event_website_link( $event = null, $label = null, $target = '_self', $class = '' ): string {
-	$post_id = Tribe__Events__Main::postIdHelper( $event );
-	$url     = tribe_get_event_website_url( $post_id );
-	$target  = $target ? $target : '_self';
+function my_custom_event_website_link($event = null, $label = null, $target = '_self', $class = ''): string
+{
+    $post_id = Tribe__Events__Main::postIdHelper($event);
+    $url = tribe_get_event_website_url($post_id);
+    $target = $target ? $target : '_self';
 
-	$target = apply_filters( 'tribe_get_event_website_link_target', $target, $url, $post_id );
+    $target = apply_filters('tribe_get_event_website_link_target', $target, $url, $post_id);
 
-	$allowed = [ '_self', '_blank', '_parent', '_top', '_unfencedTop' ];
-	if ( ! in_array( $target, $allowed ) ) {
-		$target = '_self';
-	}
+    $allowed = ['_self', '_blank', '_parent', '_top', '_unfencedTop'];
+    if (!in_array($target, $allowed)) {
+        $target = '_self';
+    }
 
-	$rel = ( '_blank' === $target ) ? 'noopener noreferrer' : 'external';
+    $rel = ('_blank' === $target) ? 'noopener noreferrer' : 'external';
 
-	if ( ! empty( $url ) ) {
-		$label = empty( $label ) ? $url : $label;
-		$label = apply_filters( 'tribe_get_event_website_link_label', $label, $post_id );
+    if (!empty($url)) {
+        $label = empty($label) ? $url : $label;
+        $label = apply_filters('tribe_get_event_website_link_label', $label, $post_id);
 
-		$class_attr = $class ? ' class="' . esc_attr( $class ) . '"' : '';
+        $class_attr = $class ? ' class="' . esc_attr($class) . '"' : '';
 
-		$html = sprintf(
-			'<a href="%s" target="%s" rel="%s"%s>%s</a>',
-			esc_url( $url ),
-			esc_attr( $target ),
-			esc_attr( $rel ),
-			$class_attr,
-			esc_html( $label )
-		);
-	} else {
-		$html = '';
-	}
+        $html = sprintf(
+            '<a href="%s" target="%s" rel="%s"%s>%s</a>',
+            esc_url($url),
+            esc_attr($target),
+            esc_attr($rel),
+            $class_attr,
+            esc_html($label)
+        );
+    } else {
+        $html = '';
+    }
 
-	return apply_filters( 'my_custom_event_website_link', $html );
+    return apply_filters('my_custom_event_website_link', $html);
 }
 
 // Remove the automatic "View Venue Website" label override
-remove_filter( 'tribe_get_venue_website_link_label', [ tribe( 'events.views.v2.hooks' ), 'filter_single_event_details_venue_website_label' ] );
+remove_filter('tribe_get_venue_website_link_label', [tribe('events.views.v2.hooks'), 'filter_single_event_details_venue_website_label']);
 
 // Add a filter to remove the colon from event metadata
-add_filter('tribe_get_event_categories', function($html, $post_id, $args, $categories) {
+add_filter('tribe_get_event_categories', function ($html, $post_id, $args, $categories) {
     // Remove the colon that's automatically added
     $html = str_replace(':', '', $html);
     return $html;
@@ -1062,14 +1171,14 @@ add_filter('tribe_get_event_categories', function($html, $post_id, $args, $categ
 
 function tribe_add_datetime_helptext()
 {
-	echo '<p class="tribe-helptext"><strong>For events that span non-consecutive dates</strong> (eg 7 March and 9 April) add the start date, then put the full details in the description</p>';
+    echo '<p class="tribe-helptext"><strong>For events that span non-consecutive dates</strong> (eg 7 March and 9 April) add the start date, then put the full details in the description</p>';
 }
 
 add_action('tribe_events_community_section_after_datetime', 'tribe_add_datetime_helptext');
 
 function tribe_add_website_helptext()
 {
-	echo '<p class="tribe-helptext">For more information about the event. Don\'t worry if there isn\'t one</p>';
+    echo '<p class="tribe-helptext">For more information about the event. Don\'t worry if there isn\'t one</p>';
 }
 
 add_action('tribe_events_community_section_after_website', 'tribe_add_website_helptext');
@@ -1078,36 +1187,36 @@ add_action('tribe_events_community_section_after_website', 'tribe_add_website_he
 // Add the custom event cost column to the admin list view
 function tribe_events_add_column_headers($columns)
 {
-	$events_label_singular = tribe_get_event_label_singular();
+    $events_label_singular = tribe_get_event_label_singular();
 
-	foreach ((array) $columns as $key => $value) {
-		$mycolumns[$key] = $value;
-		if ($key == 'author') {
-			$mycolumns['events-cats'] = sprintf(esc_html__('%s Categories', 'the-events-calendar'), $events_label_singular);
-		}
-	}
-	$columns = $mycolumns;
+    foreach ((array) $columns as $key => $value) {
+        $mycolumns[$key] = $value;
+        if ($key == 'author') {
+            $mycolumns['events-cats'] = sprintf(esc_html__('%s Categories', 'the-events-calendar'), $events_label_singular);
+        }
+    }
+    $columns = $mycolumns;
 
-	unset($columns['date']);
-	$columns['start-date'] = esc_html__('Start Date', 'the-events-calendar');
-	$columns['end-date'] = esc_html__('End Date', 'the-events-calendar');
-	// Cost addition
-	$columns['cost'] = esc_html__('Cost', 'the-events-calendar');
-	return $columns;
+    unset($columns['date']);
+    $columns['start-date'] = esc_html__('Start Date', 'the-events-calendar');
+    $columns['end-date'] = esc_html__('End Date', 'the-events-calendar');
+    // Cost addition
+    $columns['cost'] = esc_html__('Cost', 'the-events-calendar');
+    return $columns;
 }
 add_filter('manage_tribe_events_posts_columns', 'tribe_events_add_column_headers', 10, 1);
 
 // Display the event cost in the custom column
 function tribe_events_show_event_cost_column($column, $post_id)
 {
-	if ($column === 'cost') {
-		$event_cost = get_post_meta($post_id, '_EventCost', true);
-		if (!empty($event_cost)) {
-			echo $event_cost;
-		} else {
-			echo '-';
-		}
-	}
+    if ($column === 'cost') {
+        $event_cost = get_post_meta($post_id, '_EventCost', true);
+        if (!empty($event_cost)) {
+            echo $event_cost;
+        } else {
+            echo '-';
+        }
+    }
 }
 add_action('manage_tribe_events_posts_custom_column', 'tribe_events_show_event_cost_column', 10, 2);
 
@@ -1115,26 +1224,26 @@ add_action('manage_tribe_events_posts_custom_column', 'tribe_events_show_event_c
 // Register the tribe events cost custom column as sortable
 function tribe_events_custom_sortable_columns($columns)
 {
-	$columns['cost'] = 'cost';
-	return $columns;
+    $columns['cost'] = 'cost';
+    return $columns;
 }
 add_filter('manage_edit-tribe_events_sortable_columns', 'tribe_events_custom_sortable_columns');
 
 // Modify the sorting query
 function tribe_events_custom_orderby($query)
 {
-	if (!is_admin() || !$query->is_main_query()) {
-		return;
-	}
+    if (!is_admin() || !$query->is_main_query()) {
+        return;
+    }
 
-	$orderby = $query->get('orderby');
+    $orderby = $query->get('orderby');
 
-	if ('cost' == $orderby) {
-		// Set the meta key for the event cost
-		$query->set('meta_key', '_EventCost');
-		// Order by meta value as an integer
-		$query->set('orderby', 'meta_value_num');
-	}
+    if ('cost' == $orderby) {
+        // Set the meta key for the event cost
+        $query->set('meta_key', '_EventCost');
+        // Order by meta value as an integer
+        $query->set('orderby', 'meta_value_num');
+    }
 }
 add_action('pre_get_posts', 'tribe_events_custom_orderby');
 
@@ -1142,22 +1251,22 @@ add_action('pre_get_posts', 'tribe_events_custom_orderby');
 // =========== Thesis Directory  ================================================= //
 
 add_shortcode('get_search_term_used', function () {
-	/* translators: %s: Search query/keyword. */
-	return sprintf(
-		__('Search Results for "%s"', 'business-directory-plugin'),
-		esc_attr(get_search_query())
-	);
+    /* translators: %s: Search query/keyword. */
+    return sprintf(
+        __('Search Results for "%s"', 'business-directory-plugin'),
+        esc_attr(get_search_query())
+    );
 });
 
 // =========== Wordfence email  ================================================= //
 function modify_wordfence_ip_display($formatted_row, $row)
 {
-	if (isset($row['IP'])) {
-		$ip = $row['IP'];
-		$ip_url = sprintf('<a href="https://cpanel.edpsy.org.uk/cpsess8093929927/frontend/jupiter/denyip/add.html?ip=%s" target="_blank">%s</a>', $ip, $ip);
-		$formatted_row = str_replace($ip, $ip_url, $formatted_row);
-	}
-	return $formatted_row;
+    if (isset($row['IP'])) {
+        $ip = $row['IP'];
+        $ip_url = sprintf('<a href="https://cpanel.edpsy.org.uk/cpsess8093929927/frontend/jupiter/denyip/add.html?ip=%s" target="_blank">%s</a>', $ip, $ip);
+        $formatted_row = str_replace($ip, $ip_url, $formatted_row);
+    }
+    return $formatted_row;
 }
 add_filter('wordfence_attack_table_row', 'modify_wordfence_ip_display', 10, 2);
 
@@ -1165,10 +1274,11 @@ add_filter('wordfence_attack_table_row', 'modify_wordfence_ip_display', 10, 2);
 // =========== Blog list page  ================================================= //
 
 // Add classes to "Older posts" and "Newer posts" links.
-function edp_posts_nav_link_attrs( $attr ) {
+function edp_posts_nav_link_attrs($attr)
+{
     // Change this string to whatever classes you want:
     $classes = 'edp-button-solid button';
-    return trim( $attr . ' class="' . $classes . '"' );
+    return trim($attr . ' class="' . $classes . '"');
 }
-add_filter( 'previous_posts_link_attributes', 'edp_posts_nav_link_attrs' );
-add_filter( 'next_posts_link_attributes', 'edp_posts_nav_link_attrs' );
+add_filter('previous_posts_link_attributes', 'edp_posts_nav_link_attrs');
+add_filter('next_posts_link_attributes', 'edp_posts_nav_link_attrs');

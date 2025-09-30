@@ -164,9 +164,9 @@
             padding: 0 var(--sp-xsmall) var(--sp-small) var(--sp-xsmall)
         }
 
-
-
     }
+
+
 
     /* .article-item {
 
@@ -186,9 +186,19 @@
 .crp_related {
 
 
-    a:hover .crp_title,
-    a:active .crp_title {
-        color: var(--cl-purple);
+
+    .article-item {
+
+        a:hover .crp_title,
+        a:active .crp_title {
+            color: var(--cl-purple);
+        }
+
+
+        .crp_title {
+            display: block;
+        }
+
     }
 
 
@@ -517,7 +527,8 @@ body {
             border-radius: var(--rd-large);
         }
 
-        &.job-summary .home-article-image {
+        &.job-summary .home-article-image,
+        .job-summary .home-article-image {
             text-align: center;
             border: solid 1px var(--cl-dark-50);
             background-color: var(--cl-light);
@@ -533,7 +544,7 @@ body {
         }
 
         img.wp-post-image,
-        img.crp_thumb {
+        img.crp_thumb:not(.crp_job_logo) {
 
             object-fit: cover;
             width: 100%;
