@@ -1236,7 +1236,9 @@
       }
 
       .tag-links {
-        flex-direction: column;
+        flex-direction: row;
+
+        margin-bottom: var(--sp-medium);
 
         .tag-items {
           margin-left: var(--sp-neg-xsmall);
@@ -1564,6 +1566,10 @@
     .event-disclaimer {
       grid-column: 1 / span 12
     }
+  }
+
+  body.single-post #container article.type-post .entry-content .content-body {
+    grid-column: 1 / span 12;
   }
 
   /* grid: single listings (job/event/thesis) — from grid.css */
@@ -2164,25 +2170,36 @@
     }
   }
 
-  .single-post .crp_related .article-grid .article-item a {
-
-    flex-direction: column;
-    gap: 0;
-
-    figure,
-    .home-article-image {
-      width: 100%;
-      max-width: 320px;
-      margin-bottom: 0;
-
-      img {
-        margin-bottom: 0;
-      }
+  body.single-post article.type-post {
+    .entry-footer .tag-links {
+      flex-direction: column;
     }
 
-    .crp_title {
-      width: 100%;
-      padding-top: var(--sp-xsmall)
+    .crp_related .article-grid .article-item a {
+
+      flex-direction: column;
+      gap: 0;
+
+      .tag-links {
+        flex-direction: column;
+
+      }
+
+      figure,
+      .home-article-image {
+        width: 100%;
+        max-width: 320px;
+        margin-bottom: 0;
+
+        img {
+          margin-bottom: 0;
+        }
+      }
+
+      .crp_title {
+        width: 100%;
+        padding-top: var(--sp-xsmall)
+      }
     }
   }
 
