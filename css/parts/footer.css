@@ -1,5 +1,30 @@
 @import url('variables.css');
 
+.entry-footer .crp_related {
+
+    margin-left: var(--sp-medium);
+    margin-right: var(--sp-medium);
+
+    .article-grid .article-item {
+
+        a:hover,
+        a:active {
+            box-shadow: none;
+
+
+            .home-article-image,
+            .crp_thumbnail {
+                filter: brightness(90%);
+            }
+
+
+        }
+    }
+
+
+
+}
+
 #signup-slice {
     background-color: var(--cl-light);
     color: var(--cl-dark);
