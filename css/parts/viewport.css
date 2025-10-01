@@ -2179,6 +2179,33 @@
 
   }
 
+  .wp-singular.page-template.page-template-template-fullwidth-jobs {
+    .grid12>* {
+      grid-column: 1 / span 12;
+
+
+    }
+
+    #job-manager-job-dashboard .job-manager-jobs tr {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+
+      td.job_title {
+        flex-direction: column;
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+
+      .job-dashboard-actions {
+        margin-left: 0 !important;
+
+      }
+
+
+    }
+  }
+
 }
 
 
