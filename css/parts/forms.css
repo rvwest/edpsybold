@@ -549,10 +549,10 @@ div#ui-datepicker-div,
         background-color: var(--cl-light);
     }
 
-    .ui-datepicker-prev,
-    .ui-datepicker-next {
+    /*    .ui-datepicker-prev,
+  .ui-datepicker-next {
         display: none;
-    }
+    } */
 
     table {
         font-size: var(--fs-body-small);

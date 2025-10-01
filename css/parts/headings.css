@@ -42,6 +42,10 @@
     }
 }
 
+.wp-singular.page-template.page-template-template-fullwidth-jobs h1 {
+    font-size: var(--fs-title-xlarge);
+    line-height: var(--lh-title-xlarge);
+}
 
 
 
@@ -208,6 +212,9 @@
 
 /* global + breaking through Tribe css */
 
+
+
+
 body:not(.home),
 .tribe_community_edit,
 .post-type-archive-tribe_events {
@@ -216,7 +223,11 @@ body:not(.home),
     h2.my-events {
         font-weight: var(--fw-semibold);
         margin: var(--sp-xxlarge) 0 var(--sp-xxlarge) 0;
+
     }
+
+
+
 
     .title-tag {
         h1 {

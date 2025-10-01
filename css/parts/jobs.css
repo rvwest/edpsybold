@@ -533,13 +533,18 @@ table.job-manager-jobs th,
 #job-manager-job-dashboard table ul.job-dashboard-actions li:after {
     content: "|";
     color: var(--cl-dark);
+    margin-left: var(--sp-xsmall)
+}
+
+#job-manager-job-dashboard table ul.job-dashboard-actions li:last-of-type:after {
+    content: none;
 }
 
 table.job-manager-jobs .job_title small {
     border: #999 solid 1px;
     color: #999;
     padding: 0.05rem 0.3rem;
-    margin-left: 0.5rem;
+
     font-weight: 400;
     font-size: 0.8rem;
     min-width: 20%;
@@ -549,6 +554,7 @@ table.job-manager-jobs .job_title small {
 table.job-manager-jobs .job-title a,
 .dashboard-job-title {
     font-weight: 300;
+    margin-right: 0.5rem;
 }
 
 #job-manager-job-dashboard table ul.job-dashboard-actions li {
@@ -556,22 +562,46 @@ table.job-manager-jobs .job-title a,
 }
 
 #job-manager-job-dashboard table.job-manager-jobs .job_title small.dashboard-live {
-    background-color: rgb(171, 96, 96);
-    color: red;
+    background-color: var(--cl-red-25);
+    color: var(--cl-red);
 }
 
 table.job-manager-jobs .job_title {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    gap: var(--sp-xsmall);
 }
 
 table.job-manager-jobs ul.job-dashboard-actions {
     flex-basis: 100%;
     display: flex;
     flex-wrap: wrap;
+    gap: var(--sp-xsmall);
 }
 
 #job-manager-job-dashboard table ul.job-dashboard-actions li .job-dashboard-action-delete {
-    color: red
+    color: var(--cl-red)
+}
+
+.wpjm-dashboard .job-manager-message {
+
+    margin-bottom: var(--sp-medium);
+    padding: var(--sp-small) var(--sp-medium);
+    background: var(--cl-dark);
+    color: var(--cl-light);
+
+    a:link,
+    a:visited,
+    a:hover,
+    a:active,
+    a:focus {
+        color: var(--cl-light);
+    }
+
+    a:link,
+    a:visited {
+        text-decoration: underline;
+    }
+
 }
