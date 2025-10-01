@@ -29,6 +29,10 @@ article.type-wpbdp_listing,
         margin-bottom: var(--sp-medium);
     }
 
+    .wp-block-columns-is-layout-flex {
+        gap: var(--sp-home-gap);
+    }
+
 
     .entry-content,
     .job_description,
