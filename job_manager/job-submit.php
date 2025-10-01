@@ -125,9 +125,14 @@ global $job_manager;
 			}
 			?>
 		 	
-			 <button type="submit" name="submit_job" value="1" class="button edp-button-solid">
-  Preview and continue <i class="fas fa-arrow-right" aria-hidden="true"></i>
-</button>
+		<?php
+		$submit_button_label = isset($submit_button_text)
+			? $submit_button_text
+			: __('Preview and continue', 'wp-job-manager-simple-paid-listings');
+		?>
+		<button type="submit" name="submit_job" value="1" class="button edp-button-solid">
+			<?php echo esc_html($submit_button_label); ?> <i class="fas fa-arrow-right" aria-hidden="true"></i>
+		</button>
 			<span class="spinner"
 				style="background-image: url(<?php echo esc_url(includes_url('images/spinner.gif')); ?>);"></span>
 		</p>
