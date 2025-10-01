@@ -15,8 +15,20 @@ article.type-wpbdp_listing,
         width: 100%;
         height: auto;
         margin-bottom: var(--sp-medium);
+        border-radius: var(--rd-large);
 
     }
+
+    .wp-block-media-text__media img {
+        border-radius: var(--rd-large);
+    }
+
+
+    .is-stacked-on-mobile figure {
+        align-self: flex-start;
+        margin-bottom: var(--sp-medium);
+    }
+
 
     .entry-content,
     .job_description,
@@ -95,16 +107,17 @@ article.type-wpbdp_listing,
 
 
     }
+}
 
-    /* ---- Blog post only ----- */
+/* ---- Blog post only ----- */
 
-    article.type-post {
+article.type-post {
 
-        .entry-content .content-body>p:first-of-type {
-            font-size: var(--fs-title-small);
-            line-height: var(--lh-title-small);
-            margin-bottom: var(--sp-medium);
-        }
-
-
+    .entry-content .content-body>p:first-of-type {
+        font-size: var(--fs-title-small);
+        line-height: var(--lh-title-small);
+        margin-bottom: var(--sp-medium);
     }
+
+
+}

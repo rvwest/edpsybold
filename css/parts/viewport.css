@@ -345,7 +345,7 @@
     width: calc(50% - ((var(--sp-home-gap))/2));
   }
 
-  /* regular pages */
+  /* ====== Basic pages ====== */
 
   .page-template-default:not(.job-listings-page, .wpbdp-view-main) article.type-page {
     grid-column: 1 / span 12;
@@ -353,6 +353,11 @@
     >*,
     .entry-content {
       grid-column: 2 / span 10;
+    }
+
+
+    .wp-block-media-text>.wp-block-media-text__content {
+      padding: 0 0 0 var(--sp-medium)
     }
   }
 
@@ -1459,6 +1464,25 @@
     font-size: var(--fs-body-medium)
   }
 
+  body {
+    #container {
+
+      .entry-content,
+      .job_description,
+      .tribe-events-content,
+      .edp-thesis-abstract,
+      .category-jobs-admin,
+      fieldset.fieldset-cap_declaration,
+      .events-promo,
+      .category-jobs-admin {
+
+        ul {
+          margin-left: var(--sp-small);
+        }
+      }
+    }
+  }
+
   /* ======= Home ====== */
 
   .home {
@@ -1510,6 +1534,8 @@
     padding: 0 var(--sp-medium)
   }
 
+  /* ======  Basic pages ====== */
+
   .page-template-default:not(.job-listings-page, .wpbdp-view-main) article.type-page {
     grid-column: 1 / span 12;
 
@@ -1520,25 +1546,37 @@
     .entry-content {
       grid-column: 1 / span 12
     }
-  }
 
-  body.single-post {
-    article.type-post {
-      .entry-content {
 
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        p,
-        ul,
-        ol,
-        blockquote,
-        .content-body {
-          grid-column: 1 / span 12;
+
+    body.single-post {
+      article.type-post {
+        .entry-content {
+
+          h2,
+          h3,
+          h4,
+          h5,
+          h6,
+          p,
+          ul,
+          ol,
+          blockquote,
+          .content-body {
+            grid-column: 1 / span 12;
+          }
         }
       }
+    }
+
+    /* === WP blocks ==== */
+
+    .is-stacked-on-mobile figure {
+      margin-top: var(--sp-medium);
+    }
+
+    .wp-block-media-text>.wp-block-media-text__content {
+      padding-right: var(--sp-medium)
     }
   }
 

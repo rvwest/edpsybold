@@ -11,6 +11,7 @@ select[disabled]>option {
 
 a.button.edp-button-solid,
 button.edp-button-solid,
+.wp-block-button.is-style-fill a,
 .tribe-button.tribe-button-primary,
 input[type="submit"],
 input[type="button"],
@@ -67,7 +68,7 @@ button.edp-button-pill {
 
 a.button.edp-button-outline,
 button.edp-button-outline,
-.wp-block-button,
+.wp-block-button a,
 input[type="submit"].button.secondary,
 .tribe-button.tribe-button-secondary,
 .tribe-events-community-footer input[type="submit"] {
