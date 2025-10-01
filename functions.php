@@ -9,7 +9,6 @@ function edpsybold_setup()
     add_theme_support('automatic-feed-links');
     add_theme_support('html5', array('search-form', 'navigation-widgets'));
     add_theme_support('appearance-tools');
-    wp_enqueue_style('edpsy-bold-style', get_template_directory_uri() . '/css/edpsy-bold-style.css', array(), filemtime(get_template_directory()));
     global $content_width;
     if (!isset($content_width)) {
         $content_width = 1920;
@@ -36,6 +35,12 @@ add_action('wp_enqueue_scripts', 'edpsybold_enqueue');
 function edpsybold_enqueue()
 {
     //  wp_enqueue_style('edpsybold-style', get_stylesheet_uri());
+    wp_enqueue_style(
+        'edpsy-bold-style',
+        get_template_directory_uri() . '/css/edpsy-bold-style.css',
+        array(),
+        filemtime(get_template_directory() . '/css/edpsy-bold-style.css')
+    );
     wp_enqueue_script('jquery');
     wp_enqueue_script(
         'edpsybold-share',
