@@ -339,8 +339,21 @@
     }
   }
 
+
+
   .single-post .crp_related .article-grid .article-item {
     width: calc(50% - ((var(--sp-home-gap))/2));
+  }
+
+  /* regular pages */
+
+  .page-template-default:not(.job-listings-page, .wpbdp-view-main) article.type-page {
+    grid-column: 1 / span 12;
+
+    >*,
+    .entry-content {
+      grid-column: 2 / span 10;
+    }
   }
 
 

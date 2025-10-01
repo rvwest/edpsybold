@@ -49,10 +49,13 @@ article.type-wpbdp_listing,
 
         p,
         ul,
-        ol,
+        ol {
+            margin-bottom: var(--sp-medium);
+        }
+
         h2,
         h3 {
-            margin-bottom: var(--sp-medium);
+            margin-bottom: var(--sp-small);
         }
 
         blockquote {
@@ -61,6 +64,16 @@ article.type-wpbdp_listing,
             padding-left: var(--sp-medium);
             margin-bottom: var(--sp-medium);
             margin-left: var(--sp-medium);
+        }
+
+        img.img-half-max.alignleft {
+            width: 50%;
+            max-width: 300px;
+            float: left;
+            height: auto;
+            margin-right: var(--sp-medium);
+            margin-bottom: var(--sp-medium);
+            border-radius: var(--rd-large);
         }
 
 
