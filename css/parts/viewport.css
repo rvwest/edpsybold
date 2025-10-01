@@ -1483,6 +1483,11 @@
     }
   }
 
+  /*=== Special pages ==== */
+  .edpsybold #container.edp-fullwidth .category-jobs ul.fa-features {
+    margin: var(--sp-medium) var(--sp-small) 0 var(--sp-large);
+  }
+
   /* ======= Home ====== */
 
   .home {
@@ -2337,6 +2342,8 @@
     }
   }
 
+  /*==== Home ======*/
+
   .home {
 
     .article-grid .article-item a {
@@ -2372,25 +2379,40 @@
 
   }
 
-  .edpsybold.edp-jobs.add-job #container.edp-fullwidth {
+  /* ==== Events ====== */
+
+  .tribe_community_edit {
+
+    .datepicker.dropdown-menu,
+    div#ui-datepicker-div {
+      display: none !important;
+    }
+  }
+
+  .edpsybold.edp-jobs.add-job {
+
+
+
+    #container.edp-fullwidth {
 
 
 
 
-    .category-jobs-admin form#stripe-checkout-form {
+      .category-jobs-admin form#stripe-checkout-form {
 
-      .option-col1,
-      .option-col2 {
-        padding-right: var(--sp-small);
-        padding-left: var(--sp-small);
+        .option-col1,
+        .option-col2 {
+          padding-right: var(--sp-small);
+          padding-left: var(--sp-small);
+        }
+
+        fieldset {
+          padding-left: 0;
+
+
+        }
+
       }
-
-      fieldset {
-        padding-left: 0;
-
-
-      }
-
     }
   }
 }

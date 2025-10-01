@@ -19,6 +19,8 @@ article.type-wpbdp_listing,
 
     }
 
+    /*=== WP blocks */
+
     .wp-block-media-text__media img {
         border-radius: var(--rd-large);
     }
@@ -31,6 +33,14 @@ article.type-wpbdp_listing,
 
     .wp-block-columns-is-layout-flex {
         gap: var(--sp-home-gap);
+    }
+
+    .wp-block-image {
+        margin-bottom: var(--sp-medium);
+
+        figure.alignright {
+            margin-left: var(--sp-medium);
+        }
     }
 
 

@@ -12,6 +12,7 @@ select[disabled]>option {
 a.button.edp-button-solid,
 button.edp-button-solid,
 .wp-block-button.is-style-fill a,
+.wp-block-button a.has-background,
 .tribe-button.tribe-button-primary,
 input[type="submit"],
 input[type="button"],
@@ -33,6 +34,18 @@ input[type="file"]::file-selector-button {
         background-color: var(--cl-light);
         color: var(--cl-dark);
         box-shadow: none;
+    }
+}
+
+.wp-block-button a.has-background {
+    border: 1px solid var(--cl-light);
+
+    &:hover,
+    &:focus {
+        background-color: var(--cl-light) !important;
+        color: var(--cl-dark) !important;
+        box-shadow: none;
+        border: 1px solid var(--cl-dark) !important;
     }
 }
 
