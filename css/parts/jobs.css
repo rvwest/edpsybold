@@ -37,6 +37,9 @@
         }
 
         ul.job_listings {
+
+            min-height: 304px;
+
             li {
                 padding-left: 0;
 

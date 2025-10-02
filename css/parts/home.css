@@ -41,10 +41,13 @@
         a:hover,
         a:active {
             box-shadow: none;
-            opacity: var(--op-light);
+
+            .hero-image {
+                opacity: var(--op-light);
+            }
 
             h1 {
-                color: var(--cl-purple);
+                color: var(--cl-purple-hover);
             }
         }
 
@@ -272,7 +275,7 @@ section.homepage-jobs-wrapper {
     a:hover,
     a:active {
         h3 {
-            color: var(--cl-purple);
+            color: var(--cl-purple-hover);
         }
 
         .home-article-image {
@@ -290,6 +293,11 @@ section.homepage-jobs-wrapper {
     }
 
 
+}
+
+section.homepage-events-wrapper a:hover h3,
+section.homepage-events-wrapper a:active h3 {
+    color: var(--cl-dark);
 }
 
 section.hero-post,

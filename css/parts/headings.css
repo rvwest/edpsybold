@@ -332,8 +332,8 @@ body:not(.home),
 }
 
 /* == Display large H1 (jobs, blog, events)  ============== */
-.edp-jobs,
-.archive {
+body.edp-jobs,
+body.archive {
     h1 {
         font-size: var(--fs-display-large);
         line-height: var(--lh-display-large);
