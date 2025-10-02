@@ -137,8 +137,8 @@
                                                                 <div class="grid12">
                                                                     <div class="backblock-link"><a href="../../mentoring"><i
                                                                                 class="far fa-arrow-left fa-xs"></i>
-                                                                            mentoring
-                                                                            directory</a>
+                                                                            all mentors
+                                                                        </a>
                                                                     </div>
                                                                 </div>
                                                             </div>
