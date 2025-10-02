@@ -90,8 +90,8 @@ footer#footer {
             width: 100%;
             display: flex;
             flex-direction: column;
-            justify-content: space-around;
-            align-items: start;
+            justify-content: space-evenly;
+            align-items: center;
 
             p {
                 margin-bottom: 0;
@@ -107,7 +107,7 @@ footer#footer {
         }
 
         .foot-legal {
-            margin-left: calc(124px + var(--sp-medium));
+            /*margin-left: calc(124px + var(--sp-medium));*/
             /* width of logo + gap */
         }
 
@@ -140,31 +140,65 @@ footer#footer {
             color: var(--cl-light-50);
             display: flex;
             align-items: center;
+
+            justify-content: center;
+
+
+
+        }
+
+        .footer-social {
             gap: var(--sp-small);
+        }
 
+        .footer-message a {
+            margin: 0 var(--sp-small);
+        }
 
-
+        .footer-ecologi {
+            max-height: 150px;
         }
 
         .foot-legal {
             display: flex;
             flex-wrap: wrap;
             gap: var(--sp-xxsmall);
+            font-size: var(--fs-body-medium);
+
+            margin-top: var(--sp-large);
 
             div {
                 display: flex;
                 flex-wrap: wrap;
                 gap: var(--sp-xxsmall);
+                justify-content: center;
+
             }
         }
 
+        .footer-right {
+            align-content: center;
 
+            img {
+                min-width: 150px;
+            }
+
+        }
+
+
+        &.footer-container--two {
+            background-color: var(--cl-dark-plus);
+        }
 
 
     }
+
+
 
     .footer-logo {
         width: 124px;
         height: 116px;
     }
+
+
 }

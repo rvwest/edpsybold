@@ -23,8 +23,8 @@
 					hello@edpsy.org.uk</a>
 			</p>
 
-			<p class="footer-message"><a href="/community-guidelines">Community guidelines</a> | <a
-					href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Reusing our content</a> | <a
+			<p class="footer-message"><a href="/community-guidelines">Community guidelines</a> <a
+					href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Reusing our content</a> <a
 					href="/cookies">Cookies and privacy</a></p>
 
 
@@ -33,20 +33,21 @@
 		</div>
 		<div class="footer-right">
 			<a href="https://ecologi.com/edpsyltd" target="_blank" rel="noopener noreferrer"
-				title="View our Ecologi profile" style="width:200px;display:inline-block;">
+				title="View our Ecologi profile">
 				<img alt="We offset our carbon footprint via Ecologi"
 					src="https://api.ecologi.com/badges/cpw/60292431878cf1001cb5ce58?white=true&landscape=true"
-					style="width:200px;" class="footer-ecologi" />
+					style="width:100%;" class="footer-ecologi" />
 			</a>
 		</div>
 
 	</div>
-	<div class="footer-container">
+	<div class="footer-container footer-container--two">
 		<div class="foot-legal">
-			<div>edpsy ltd </div>
-			<div><span>Piccadilly Business Centre, </span><span>Aldow Enterprise Park,</span><span>Manchester,
+			<div>edpsy ltd,
+				<span>Piccadilly Business Centre, </span><span>Aldow Enterprise Park,</span><span>Manchester,
 					England,
-				</span><span>M12 6AE</span></div>
+				</span><span>M12 6AE</span>
+			</div>
 			<div><span>Company number: 12669513</span> <span>(registered in England and Wales)</div>
 		</div>
 	</div>
