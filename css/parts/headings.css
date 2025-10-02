@@ -68,7 +68,7 @@
 }
 
 
-.wp-singular.page-template.page-template-template-fullwidth-jobs h1 {
+.edp-parent-jobs .article.category-jobs h1 {
     font-size: var(--fs-title-xlarge);
     line-height: var(--lh-title-xlarge);
 }
@@ -339,13 +339,18 @@ body.archive {
         line-height: var(--lh-display-large);
     }
 
+    &.add-job h1 {
+        font-size: var(--fs-display-medium);
+        line-height: var(--lh-display-medium);
+    }
+
     /* viewport-specific rules moved to parts/viewport.css */
 }
 
 /* == Display medium H1 (thesis listings)  ============== */
 .business-directory.wpbdp-view-main h1.entry-title,
 .tribe_community_edit h2.my-events,
-.category-jobs-admin h1.entry-title {
+body.category-jobs-admin h1.entry-title {
     font-size: var(--fs-display-medium);
     line-height: var(--lh-display-medium);
 }

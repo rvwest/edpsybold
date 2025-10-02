@@ -34,8 +34,11 @@ input[type="file"]::file-selector-button {
         background-color: var(--cl-light);
         color: var(--cl-dark);
         box-shadow: none;
+
     }
 }
+
+
 
 .wp-block-button a.has-background {
     border: 1px solid var(--cl-light);
@@ -116,6 +119,20 @@ input[type="submit"].button.secondary,
         box-shadow: none;
     }
 
+}
+
+/* Outline on coloured background */
+
+.add-job input[type="submit"].button.secondary {
+    background-color: var(--cl-light);
+    border-color: var(--cl-light);
+
+    &:hover,
+    &:focus {
+
+
+        background-color: var(--cl-dark);
+    }
 }
 
 a.button.edp-button-outline.edp-button-outline--reversed,

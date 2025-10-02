@@ -1505,7 +1505,8 @@
       .events-promo,
       .category-jobs-admin {
 
-        ul {
+        ul:not(.job_listings),
+        ol {
           margin-left: var(--sp-small);
         }
       }

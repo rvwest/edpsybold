@@ -7,7 +7,8 @@ article.tribe-events-single,
 body:not(.home) article.type-post,
 article.type-wpbdp_listing,
 .tribe-events-pg-template,
-.edp-jobs.add-job {
+.edp-jobs.add-job,
+.post-type-archive-tribe_events {
 
     margin-bottom: var(--sp-xxlarge);
 
@@ -52,7 +53,8 @@ article.type-wpbdp_listing,
     .category-jobs-admin,
     fieldset.fieldset-cap_declaration,
     .events-promo,
-    .category-jobs-admin {
+    .category-jobs-admin,
+    .event-disclaimer {
 
         ul {
             margin-left: var(--sp-medium);

@@ -65,7 +65,7 @@
 
                     <?php if ($interview) { ?>
                         <div class="meta-item">
-                            <div class="label">Interview date</div>
+                            <div class="label">Possible interview date</div>
                             <div class="detail closing-date"><?php echo $interview ?></div>
                         </div>
                     <?php } ?>
