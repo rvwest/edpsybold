@@ -73,9 +73,10 @@
     .entry-content {
         grid-column: 1 / span 8;
 
-        img {
+        /*  img {
             grid-column: -1 / span 10;
         }
+*/
     }
 
 
@@ -300,10 +301,8 @@ body.single-post article.type-post .entry-footer {
     }
 
     .tribe-events-calendar-list {
-        jobs grid-column: 2 / span 10;
+        grid-column: 2 / span 10;
     }
-
-    /* viewport-specific rules moved to parts/viewport.css */
 }
 
 /* Event form */

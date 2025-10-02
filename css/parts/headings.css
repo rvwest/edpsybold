@@ -40,7 +40,33 @@
             margin-bottom: var(--sp-xxlarge);
         }
     }
+
+    /*====== Translations ===== */
+
+    &.page-id-5008,
+    &.page-id-5006,
+    &.page-id-5010,
+    &.page-id-13601,
+    &.page-id-13702,
+    &.page-id-13632 {
+
+        h1.entry-title {
+            margin-bottom: var(--sp-medium);
+        }
+
+        .entry-content .translation-options {
+            h2 {
+                margin-bottom: var(--sp-large);
+            }
+
+            p {
+                outline: solid 1px var(--cl-dark);
+                padding: var(--sp-small) var(--sp-medium);
+            }
+        }
+    }
 }
+
 
 .wp-singular.page-template.page-template-template-fullwidth-jobs h1 {
     font-size: var(--fs-title-xlarge);
@@ -223,6 +249,7 @@ body:not(.home),
     h2.my-events {
         font-weight: var(--fw-semibold);
         margin: var(--sp-xxlarge) 0 var(--sp-xxlarge) 0;
+        font-size: var(--fs-title-xlarge);
 
     }
 

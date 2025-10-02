@@ -30,8 +30,6 @@ if (empty($disable_event_search)) {
 
 	<?php $this->template('components/header-title'); ?>
 
-
-
 	<?php $this->template('components/breadcrumbs'); ?>
 
 	<?php $this->template('components/events-bar'); ?>

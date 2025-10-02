@@ -79,6 +79,8 @@ article.type-wpbdp_listing,
             margin-bottom: var(--sp-medium);
         }
 
+
+
         h2,
         h3 {
             margin-bottom: var(--sp-small);
@@ -102,6 +104,11 @@ article.type-wpbdp_listing,
             border-radius: var(--rd-large);
         }
 
+        img {
+            height: auto;
+            margin: 0;
+            max-width: 100%;
+        }
 
 
     }
@@ -120,6 +127,28 @@ article.type-wpbdp_listing,
         /* viewport-specific rules moved to parts/viewport.css */
 
 
+    }
+}
+
+.page-template-default {
+
+    &.page-id-5008,
+    &.page-id-5006,
+    &.page-id-5010,
+    &.page-id-13601,
+    &.page-id-13702,
+    &.page-id-13632 {
+
+        :lang(ur),
+        :lang(ar) {
+            font-family: arial, sans-serif;
+        }
+
+
+
+        :lang(en) {
+            font-family: var(--ff);
+        }
     }
 }
 
