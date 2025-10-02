@@ -283,6 +283,28 @@ function add_job_manager_body_classes($classes)
 }
 add_filter('body_class', 'add_job_manager_body_classes');
 
+function edpsy_add_parent_page_body_class($classes)
+{
+    if (is_page()) {
+        global $post;
+
+        if ($post instanceof WP_Post) {
+            $parent_id = $post->post_parent;
+
+            if ($parent_id) {
+                $parent = get_post($parent_id);
+
+                if ($parent instanceof WP_Post && !empty($parent->post_name)) {
+                    $classes[] = 'edp-parent-' . sanitize_html_class($parent->post_name);
+                }
+            }
+        }
+    }
+
+    return $classes;
+}
+add_filter('body_class', 'edpsy_add_parent_page_body_class');
+
 
 // ========== Homepage ================================================= //
 // ======================================================================== //
