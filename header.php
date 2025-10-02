@@ -67,8 +67,7 @@
             <!-- var: single jobs page -->
             <div class="backblock edp-fullwidth">
                 <div class="grid12">
-                    <div class="backblock-link"><a href="../../"><i class="fas fa-home fa-s"></i></a><a
-                            href="../../jobs/"><i class="far fa-arrow-left fa-xs"></i> all
+                    <div class="backblock-link"><a href="../../jobs/"><i class="far fa-arrow-left fa-xs"></i> all
                             jobs</a></div>
                 </div>
             </div>
