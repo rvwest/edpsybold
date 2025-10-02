@@ -113,6 +113,34 @@
         }
     }
 
+    /* ==== loader ==== */
+
+
+
+    ul.job_listings.loading li.dummy-job {
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+        grid-column-gap: 24px;
+        min-height: var(--lv-listing-height);
+        margin-bottom: var(--sp-medium);
+        align-items: center;
+
+        animation: skeleton-loading 1s linear infinite alternate;
+        color: transparent;
+    }
+
+    @keyframes skeleton-loading {
+        0% {
+            background-color: #F5F5F5;
+            /* FROM Color 1 */
+        }
+
+        100% {
+            background-color: #E2E2E2;
+            /* TO Color 2 */
+        }
+    }
+
 
     /* viewport-specific rules moved to parts/viewport.css */
 }
@@ -228,6 +256,8 @@ body>.job-manager-error {
             align-items: flex-end;
         }
     }
+
+
 
 
 
