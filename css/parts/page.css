@@ -11,11 +11,12 @@ article.type-wpbdp_listing,
 
     margin-bottom: var(--sp-xxlarge);
 
-    img.wp-post-image {
+    .entry-content img.wp-post-image {
         width: 100%;
         height: auto;
         margin-bottom: var(--sp-medium);
         border-radius: var(--rd-large);
+
 
     }
 

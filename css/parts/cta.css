@@ -50,7 +50,8 @@ input[type="file"]::file-selector-button {
 }
 
 
-button.edp-button-pill {
+button.edp-button-pill,
+a.button.edp-button-pill {
     width: fit-content;
     font-size: var(--fs-body);
     display: flex;
@@ -77,6 +78,16 @@ button.edp-button-pill {
     }
 }
 
+button.edp-button-pill.with-icon,
+a.button.edp-button-pill.with-icon {
+    padding-right: var(--sp-small);
+    gap: var(--sp-small);
+}
+
+a.button.edp-button--centred {
+    margin-right: auto;
+    margin-left: auto;
+}
 
 
 a.button.edp-button-outline,

@@ -20,6 +20,13 @@
                     // Determine if we're on the homepage or blog page
                     $is_homepage = is_front_page() || is_home();
 
+                    // Cache the current post slug for conditional layouts
+                    $current_slug = '';
+                    $queried_object = get_queried_object();
+                    if ($queried_object && !is_wp_error($queried_object) && property_exists($queried_object, 'post_name')) {
+                        $current_slug = $queried_object->post_name;
+                    }
+
                     // Open the h1 tag only if on the homepage
                     if ($is_homepage) {
                         echo '<h1>';
@@ -72,81 +79,90 @@
                 </div>
             </div>
             <div id="container" class="edp-fullwidth">
-                <main id="content" role="main" class="grid12">
+                <main id="content" role="main">
 
 
 
-                <?php elseif (is_singular('post')): ?>
-                    <!-- var: single blog page -->
-                    <div class="backblock edp-fullwidth">
-                        <div class="grid12">
-                            <div class="backblock-link"><a href="../../blog"><i class="far fa-arrow-left fa-xs"></i> all
-                                    blogs</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="container">
-                        <main id="content" role="main">
+                <?php elseif ($current_slug === 'interest-groups'): ?>
+                    <!-- var: interest groups page -->
+                    <div id="container" class="edp-fullwidth">
+                        <main id="content" role="main" class="grid12">
 
 
-                        <?php elseif (is_singular('wpbdp_listing')): ?>
-                            <!-- var: single thesis page -->
+                        <?php elseif (is_singular('post')): ?>
+                            <!-- var: single blog page -->
                             <div class="backblock edp-fullwidth">
                                 <div class="grid12">
-                                    <div class="backblock-link"><a href="../../thesis-directory"><i
-                                                class="far fa-arrow-left fa-xs"></i> thesis directory</a>
+                                    <div class="backblock-link"><a href="../../blog"><i class="far fa-arrow-left fa-xs"></i>
+                                            all
+                                            blogs</a>
                                     </div>
                                 </div>
                             </div>
-                            <div id="container" class="edp-fullwidth">
+                            <div id="container">
                                 <main id="content" role="main">
 
 
-                                <?php elseif (is_singular('tribe_events')): ?>
-                                    <!-- var: single event page -->
+                                <?php elseif (is_singular('wpbdp_listing')): ?>
+                                    <!-- var: single thesis page -->
                                     <div class="backblock edp-fullwidth">
                                         <div class="grid12">
-                                            <div class="backblock-link"><a href="../../events"><i
-                                                        class="far fa-arrow-left fa-xs"></i> all events</a></div>
+                                            <div class="backblock-link"><a href="../../thesis-directory"><i
+                                                        class="far fa-arrow-left fa-xs"></i> thesis directory</a>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div id="container">
-                                        <main id="content" role="main" class="fullwidth">
-                                        <?php elseif ($is_homepage): ?>
-                                            <!-- var: homepage -->
-                                            <div id="container" class="edp-fullwidth">
-                                                <main id="content" role="main">
+                                    <div id="container" class="edp-fullwidth">
+                                        <main id="content" role="main">
 
-                                                <?php elseif (in_array('edp-parent-mentoring', get_body_class(), true)): ?>
-                                                    <!-- var: single thesis page -->
-                                                    <div class="backblock edp-fullwidth">
-                                                        <div class="grid12">
-                                                            <div class="backblock-link"><a href="../../mentoring"><i
-                                                                        class="far fa-arrow-left fa-xs"></i> mentoring
-                                                                    directory</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+
+                                        <?php elseif (is_singular('tribe_events')): ?>
+                                            <!-- var: single event page -->
+                                            <div class="backblock edp-fullwidth">
+                                                <div class="grid12">
+                                                    <div class="backblock-link"><a href="../../events"><i
+                                                                class="far fa-arrow-left fa-xs"></i> all events</a></div>
+                                                </div>
+                                            </div>
+                                            <div id="container">
+                                                <main id="content" role="main" class="fullwidth">
+                                                <?php elseif ($is_homepage): ?>
+                                                    <!-- var: homepage -->
                                                     <div id="container" class="edp-fullwidth">
-                                                        <main id="content" role="main" class="grid12">
+                                                        <main id="content" role="main">
 
-                                                        <?php elseif (in_array('edp-parent-interest-groups', get_body_class(), true)): ?>
+                                                        <?php elseif (in_array('edp-parent-mentoring', get_body_class(), true)): ?>
                                                             <!-- var: single thesis page -->
                                                             <div class="backblock edp-fullwidth">
                                                                 <div class="grid12">
-                                                                    <div class="backblock-link"><a
-                                                                            href="../../interest-groups"><i
+                                                                    <div class="backblock-link"><a href="../../mentoring"><i
                                                                                 class="far fa-arrow-left fa-xs"></i>
-                                                                            all groups</a>
+                                                                            mentoring
+                                                                            directory</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div id="container" class="edp-fullwidth">
                                                                 <main id="content" role="main" class="grid12">
-                                                                <?php else: ?>
-                                                                    <!-- var: regular page -->
 
+                                                                <?php elseif (in_array('edp-parent-interest-groups', get_body_class(), true)): ?>
+                                                                    <!-- var: single thesis page -->
+                                                                    <div class="backblock edp-fullwidth">
+                                                                        <div class="grid12">
+                                                                            <div class="backblock-link"><a
+                                                                                    href="../../interest-groups"><i
+                                                                                        class="far fa-arrow-left fa-xs"></i>
+                                                                                    all groups</a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                     <div id="container" class="edp-fullwidth">
                                                                         <main id="content" role="main" class="grid12">
-                                                                        <?php endif; ?>
-                                                                        <!-- file end: header.php -->
+                                                                        <?php else: ?>
+                                                                            <!-- var: regular page -->
+
+                                                                            <div id="container" class="edp-fullwidth">
+                                                                                <main id="content" role="main"
+                                                                                    class="grid12">
+                                                                                <?php endif; ?>
+                                                                                <!-- file end: header.php -->
