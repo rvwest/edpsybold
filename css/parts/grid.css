@@ -176,7 +176,7 @@ body.single-post {
 
             .cat-links,
             .tag-links {
-                grid-column: 3 / span 7;
+                grid-column: 2 / span 7;
             }
 
             .page-divider {
@@ -187,6 +187,10 @@ body.single-post {
     }
 
 
+}
+
+body.single.single-post article.type-post .content-body {
+    grid-column: 2 / span 7;
 }
 
 body.single-post article.type-post .entry-footer {

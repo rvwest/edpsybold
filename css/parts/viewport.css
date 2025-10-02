@@ -1653,9 +1653,6 @@
     }
   }
 
-  body.single-post #container article.type-post .entry-content .content-body {
-    grid-column: 1 / span 12;
-  }
 
   /* grid: single listings (job/event/thesis) — from grid.css */
   .single-tribe_events,
@@ -1918,6 +1915,17 @@
       }
     }
   }
+
+  /* === single blog page */
+
+  body.single-post #container article.type-post .entry-content .content-body {
+    grid-column: 1 / span 12;
+    padding: 0 var(--sp-medium);
+  }
+
+
+
+
 
 
 
