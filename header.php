@@ -71,8 +71,8 @@
                             jobs</a></div>
                 </div>
             </div>
-            <div id="container">
-                <main id="content" role="main" class="edp-fullwidth">
+            <div id="container" class="edp-fullwidth">
+                <main id="content" role="main" class="grid12">
 
 
 
@@ -117,11 +117,36 @@
                                             <div id="container" class="edp-fullwidth">
                                                 <main id="content" role="main">
 
-
-                                                <?php else: ?>
-                                                    <!-- var: regular page -->
-
+                                                <?php elseif (in_array('edp-parent-mentoring', get_body_class(), true)): ?>
+                                                    <!-- var: single thesis page -->
+                                                    <div class="backblock edp-fullwidth">
+                                                        <div class="grid12">
+                                                            <div class="backblock-link"><a href="../../mentoring"><i
+                                                                        class="far fa-arrow-left fa-xs"></i> mentoring
+                                                                    directory</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                     <div id="container" class="edp-fullwidth">
                                                         <main id="content" role="main" class="grid12">
-                                                        <?php endif; ?>
-                                                        <!-- file end: header.php -->
+
+                                                        <?php elseif (in_array('edp-parent-interest-groups', get_body_class(), true)): ?>
+                                                            <!-- var: single thesis page -->
+                                                            <div class="backblock edp-fullwidth">
+                                                                <div class="grid12">
+                                                                    <div class="backblock-link"><a
+                                                                            href="../../interest-groups"><i
+                                                                                class="far fa-arrow-left fa-xs"></i>
+                                                                            all groups</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="container" class="edp-fullwidth">
+                                                                <main id="content" role="main" class="grid12">
+                                                                <?php else: ?>
+                                                                    <!-- var: regular page -->
+
+                                                                    <div id="container" class="edp-fullwidth">
+                                                                        <main id="content" role="main" class="grid12">
+                                                                        <?php endif; ?>
+                                                                        <!-- file end: header.php -->
