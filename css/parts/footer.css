@@ -63,7 +63,7 @@
 footer#footer {
     background-color: var(--cl-dark);
     color: var(--cl-light);
-    padding: var(--sp-xlarge) var(--sp-xlarge) var(--sp-large) var(--sp-xlarge);
+    padding: 0;
 
     .footer-container {
         max-width: 1248px;
@@ -71,7 +71,9 @@ footer#footer {
         display: flex;
         gap: var(--sp-home-gap);
         justify-content: space-between;
-        margin: var(--sp-small) auto 0 auto;
+        margin: 0 var(--sp-xlarge) 0 var(--sp-xlarge);
+        padding-top: var(--sp-xlarge);
+        padding-bottom: var(--sp-xlarge);
 
 
 
@@ -165,7 +167,7 @@ footer#footer {
             gap: var(--sp-xxsmall);
             font-size: var(--fs-body-medium);
 
-            margin-top: var(--sp-large);
+
 
             div {
                 display: flex;
@@ -188,6 +190,10 @@ footer#footer {
 
         &.footer-container--two {
             background-color: var(--cl-dark-plus);
+            margin-right: 0;
+            margin-left: 0;
+            padding: var(--sp-large) 0;
+            max-width: 100%;
         }
 
 
