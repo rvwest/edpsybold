@@ -9,7 +9,7 @@
 </head>
 
 <body <?php body_class(); ?>>
-<?php wp_body_open(); ?>
+    <?php wp_body_open(); ?>
     <div id="wrapper" class="hfeed">
         <?php get_template_part('_promo-banner'); ?>
 
@@ -28,7 +28,8 @@
 
 
                     <a href="<?php echo esc_url(home_url('/')); ?>"
-                        title="<?php echo esc_attr(get_bloginfo('name')); ?>" class="header-logo-wrapper" rel="home" itemprop="url">
+                        title="<?php echo esc_attr(get_bloginfo('name')); ?>" class="header-logo-wrapper" rel="home"
+                        itemprop="url">
                         <span class="visually-hidden"
                             itemprop="name"><?php echo esc_html(get_bloginfo('name')); ?></span>
                         <img src="<?php echo esc_url(get_template_directory_uri() . '/images/edpsy-logo-dark.svg'); ?>"
@@ -70,10 +71,10 @@
                             jobs</a></div>
                 </div>
             </div>
-            <div id="container">
-                <main id="content" role="main" class="edp-fullwidth">
+            <div id="container" class="edp-fullwidth">
+                <main id="content" role="main" class="grid12">
 
-                
+
 
                 <?php elseif (is_singular('post')): ?>
                     <!-- var: single blog page -->
@@ -85,7 +86,8 @@
                         </div>
                     </div>
                     <div id="container">
-                        <main id="content" role="main" >
+                        <main id="content" role="main">
+
 
 
                         <?php elseif (is_singular('wpbdp_listing')): ?>
@@ -98,7 +100,7 @@
                                 </div>
                             </div>
                             <div id="container" class="edp-fullwidth">
-                                <main id="content" role="main" >
+                                <main id="content" role="main">
 
 
                                 <?php elseif (is_singular('tribe_events')): ?>
@@ -109,18 +111,43 @@
                                                         class="far fa-arrow-left fa-xs"></i> all events</a></div>
                                         </div>
                                     </div>
-                                    <div id="container" >
+                                    <div id="container">
                                         <main id="content" role="main" class="fullwidth">
                                         <?php elseif ($is_homepage): ?>
                                             <!-- var: homepage -->
                                             <div id="container" class="edp-fullwidth">
-                                                <main id="content" role="main" >
-                                               
+                                                <main id="content" role="main">
 
-                                        <?php else: ?>
-                                            <!-- var: regular page -->
+                                                <?php elseif (in_array('edp-parent-mentoring', get_body_class(), true)): ?>
+                                                    <!-- var: single thesis page -->
+                                                    <div class="backblock edp-fullwidth">
+                                                        <div class="grid12">
+                                                            <div class="backblock-link"><a href="../../mentoring"><i
+                                                                        class="far fa-arrow-left fa-xs"></i> mentoring
+                                                                    directory</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div id="container" class="edp-fullwidth">
+                                                        <main id="content" role="main" class="grid12">
 
-                                            <div id="container" class="edp-fullwidth">
-                                                <main id="content" role="main" class="grid12">
-                                                <?php endif; ?>
-                                                <!-- file end: header.php -->
+                                                        <?php elseif (in_array('edp-parent-interest-groups', get_body_class(), true)): ?>
+                                                            <!-- var: single thesis page -->
+                                                            <div class="backblock edp-fullwidth">
+                                                                <div class="grid12">
+                                                                    <div class="backblock-link"><a
+                                                                            href="../../interest-groups"><i
+                                                                                class="far fa-arrow-left fa-xs"></i>
+                                                                            all groups</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="container" class="edp-fullwidth">
+                                                                <main id="content" role="main" class="grid12">
+                                                                <?php else: ?>
+                                                                    <!-- var: regular page -->
+
+                                                                    <div id="container" class="edp-fullwidth">
+                                                                        <main id="content" role="main" class="grid12">
+                                                                        <?php endif; ?>
+                                                                        <!-- file end: header.php -->
