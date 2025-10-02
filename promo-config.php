@@ -22,7 +22,12 @@ return [
     ],
     [
         // Apply the same promo to /blog exactly, and to /tag and any /tag/*
-        'keys' => ['blog', 'tag/*', 'author/*'],
-        'html' => '<a href="/events/community/add/" class="edp-blog-promo" >Write for us <i class="fal fa-plus-circle fa-2x"></i></a>',
+        'keys' => ['blog', 'tag/*', 'author/*', 'category/*'],
+        'html' => '<a href="/about/write-for-us/" class="edp-blog-promo" >Write for us <i class="fal fa-plus-circle fa-2x"></i></a>',
+    ],
+    [
+        // Apply the same promo to /blog exactly, and to /tag and any /tag/*
+        'keys' => ['interest-groups'],
+        'html' => '<a href="../interest-groups/add/" class="edp-blog-promo" >Add your group <i class="fal fa-plus-circle fa-2x"></i></a>',
     ],
 ];

@@ -4,6 +4,7 @@
 }
 
 /* Two-column layout for blog archives and categories */
+.archive.author #content,
 .archive.category #content,
 .archive.tag #content {
     display: flex;
@@ -11,6 +12,8 @@
     gap: var(--sp-home-gap);
 }
 
+.archive.author #content>header,
+.archive.author #content>nav,
 .archive.category #content>header,
 .archive.category #content>nav,
 .archive.tag #content>header,
@@ -18,9 +21,11 @@
     flex: 1 1 100%;
 }
 
+.archive.author #content>article,
 .archive.category #content>article,
 .archive.tag #content>article {
     flex: 1 1 calc(50% - var(--sp-home-gap));
+    max-width: 900px;
 }
 
 /* viewport-specific rules moved to parts/viewport.css */
@@ -331,6 +336,7 @@
         padding: var(--sp-medium) 0;
         margin: var(--sp-large) 0 var(--sp-xlarge) 0;
         border-radius: var(--rd-large);
+        max-width: 900px;
 
         .author-description {
             display: flex;
@@ -513,14 +519,17 @@
 
 
 /* Blog listing */
-.archive.category-blog {
+.archive.category-blog,
+.archive.author,
+.archive.tag,
+.archive.category {
     article.type-post {
 
         a:hover,
         a:active {
 
             h2 {
-                color: var(--cl-purple);
+                color: var(--cl-purple-hover);
             }
 
             img {
