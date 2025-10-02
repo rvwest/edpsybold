@@ -173,11 +173,13 @@ body {
     }
 }
 
-/* === Blog ================ */
+/* === Blog / page ================ */
 
-/* --- Blog page single -------- */
+/* --- Blog / page single -------- */
 
-.single-post {
+.single-post,
+.edp-parent-mentoring,
+.edp-parent-interest-groups {
 
     header[role="banner"] {
         border-bottom: none;
