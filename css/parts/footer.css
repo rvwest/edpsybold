@@ -71,9 +71,9 @@ footer#footer {
         display: flex;
         gap: var(--sp-home-gap);
         justify-content: space-between;
-        margin: 0 var(--sp-xlarge) 0 var(--sp-xlarge);
-        padding-top: var(--sp-xlarge);
-        padding-bottom: var(--sp-xlarge);
+        margin: 0 auto 0 auto;
+        padding: var(--sp-xlarge);
+
 
 
 
@@ -192,7 +192,7 @@ footer#footer {
             background-color: var(--cl-dark-plus);
             margin-right: 0;
             margin-left: 0;
-            padding: var(--sp-large) 0;
+            padding: var(--sp-large) var(--sp-medium);
             max-width: 100%;
         }
 
