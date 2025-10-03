@@ -422,6 +422,11 @@
     }
   }
 
+  /*=== jobs dashbaord ====*/
+
+  table.job-manager-jobs .job_title {
+    flex-direction: column;
+  }
 
   /* ===== All listings pages (job / thesis / events) ==== */
 
