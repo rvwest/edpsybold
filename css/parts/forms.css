@@ -723,3 +723,23 @@ body:not(.wp-admin, .wp-core-ui) {
         font-weight: var(--fw-semibold);
     }
 }
+
+.mc4wp-form#mc4wp-form-1 {
+    border-top: 2px solid var(--cl-dark);
+    border-bottom: 2px solid var(--cl-dark);
+    margin: var(--sp-xlarge) 0;
+    padding: var(--sp-large) 0 var(--sp-small) 0;
+
+    .mc4wp-fields {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .mc4wp-submit {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row-reverse;
+    }
+
+}
