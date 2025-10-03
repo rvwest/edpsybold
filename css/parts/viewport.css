@@ -2218,29 +2218,35 @@
   }
 
   .wp-singular.page-template.page-template-template-fullwidth-jobs {
-    .grid12>* {
+    .grid12>article.page {
       grid-column: 1 / span 12;
-
-
     }
 
-    #job-manager-job-dashboard .job-manager-jobs tr {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
+    #job-manager-job-dashboard .job-manager-jobs {
+      thead {
+        display: none;
+      }
 
-      td.job_title {
+      tr {
+        display: flex;
         flex-direction: column;
-        padding-top: 0;
-        padding-bottom: 0;
+        gap: 0;
+
+
+
+        td.job_title {
+          flex-direction: column;
+          padding-top: 0;
+          padding-bottom: 0;
+        }
+
+        .job-dashboard-actions {
+          margin-left: 0 !important;
+
+        }
+
+
       }
-
-      .job-dashboard-actions {
-        margin-left: 0 !important;
-
-      }
-
-
     }
   }
 

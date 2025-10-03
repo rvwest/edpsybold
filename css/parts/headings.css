@@ -250,6 +250,7 @@ body:not(.home),
         font-weight: var(--fw-semibold);
         margin: var(--sp-xxlarge) 0 var(--sp-xxlarge) 0;
         font-size: var(--fs-title-xlarge);
+        line-height: var(--lh-title-xlarge);
 
     }
 
