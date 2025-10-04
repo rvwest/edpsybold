@@ -149,7 +149,9 @@ article.type-wpbdp_listing,
 
 
 
-        :lang(en) {
+        div:lang(en),
+        h2:lang(en),
+        h3:lang(en) {
             font-family: var(--ff);
         }
     }
