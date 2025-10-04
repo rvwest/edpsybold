@@ -155,7 +155,7 @@
         .author-name {
           font-size: var(--sp-body-small);
           text-align: left;
-          width: 100%;
+          width: 70%;
 
           a {
             font-weight: var(--fw-medium);
