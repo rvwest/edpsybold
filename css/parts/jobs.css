@@ -165,6 +165,10 @@
         margin: 0;
     }
 
+    .meta-slice {
+        overflow: hidden;
+    }
+
 }
 
 

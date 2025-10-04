@@ -1074,6 +1074,13 @@
 
   }
 
+
+  /* === job preview only ==== */
+
+  .add-job .job_listing_preview article.type-job_listing .meta-slice .job-listing-meta {
+    margin-left: var(--sp-medium);
+  }
+
   /*==== Footer ==== */
 
   footer#footer .footer-container {
@@ -1663,7 +1670,8 @@
   /* grid: single listings (job/event/thesis) — from grid.css */
   .single-tribe_events,
   .edp-jobs.single-job-listing,
-  .single-wpbdp_listing {
+  .single-wpbdp_listing,
+  .add-job .job_listing_preview {
 
     article.tribe-events-single,
     article.type-job_listing,
@@ -1880,6 +1888,13 @@
         }
       }
     }
+  }
+
+  /* === preview only ==== */
+
+  .add-job .job_listing_preview article.type-job_listing {
+    padding-left: var(--sp-medium);
+    padding-right: var(--sp-medium);
   }
 
   body.single-post #container article.type-post .entry-content .entry-author--top .authors-section {

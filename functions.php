@@ -864,14 +864,6 @@ function admin_add_custom_admin_fields($fields)
 }
 
 
-add_filter('job_manager_update_job_listings_message', 'custom_job_manager_update_job_listings_message');
-
-function custom_job_manager_update_job_listings_message($save_message)
-{
-    return ('<i class="far fa-check-circle"></i> Your changes have been saved. <a href="' . esc_url(job_manager_get_permalink('job_dashboard')) . '">Return to your dashboard</a>.');
-}
-
-
 /* fixes dodgy placeholder text on registration */
 add_filter('wpjm_get_registration_fields', 'custom_registration_fields');
 
@@ -915,6 +907,22 @@ function custom_submit_button_text($button_text)
     return __('Confirm and pay', 'wp-job-manager-simple-paid-listings');
 }
 
+add_filter('job_manager_update_job_listings_message', 'custom_job_manager_update_job_listings_message');
+
+function custom_job_manager_update_job_listings_message($save_message)
+{
+    return ('<i class="far fa-check-circle"></i> Your changes have been saved. <a href="' . esc_url(job_manager_get_permalink('job_dashboard')) . '">Return to your dashboard</a>.');
+}
+
+add_filter('submit_job_form_fields', 'remove_remote_option');
+
+function remove_remote_option($fields)
+{
+    //remove the remote_position field
+    unset($fields['job']['remote_position']);
+
+    return $fields;
+}
 
 // URL-slug Remove job type
 add_filter('submit_job_form_prefix_post_name_with_job_type', '__return_false');
@@ -1015,7 +1023,17 @@ function crp_after_list_show_jobs()
 }
 
 add_filter('crp_after_list', 'crp_after_list_show_jobs');
+
+function remove_admin_bar()
+{
+    if (!current_user_can('administrator') && !is_admin()) {
+        show_admin_bar(false);
+    }
+}
+
 // ========== Events pages ================================================= //
+
+
 
 // Add "Online" checkbox after Venue in the Location section
 add_action('tribe_events_after_venue_metabox', function ($post) {
