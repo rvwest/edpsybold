@@ -113,7 +113,7 @@ function edp_render_meta_field_array($fields, $field_key, $label)
         <div class="edp-thesis-abstract">
             <h2>Abstract</h2>
             <?php if (!empty($fields->abstract->raw)) {
-                echo wpautop(esc_html($fields->abstract->raw));
+                echo wpautop($fields->abstract->raw);
             } ?>
 
         </div>
