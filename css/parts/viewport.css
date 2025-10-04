@@ -1668,6 +1668,8 @@
   }
 
 
+
+
   /* grid: single listings (job/event/thesis) — from grid.css */
   .single-tribe_events,
   .edp-jobs.single-job-listing,
@@ -1791,6 +1793,25 @@
     .job-footer-contents {
       grid-column: 1 / span 12
     }
+  }
+
+  /* event only === */
+
+  .single-tribe_events {
+
+    article.tribe-events-single {
+      margin-bottom: 0;
+
+      .meta-slice {
+        margin-bottom: 0 !important;
+      }
+    }
+
+    .tribe-events-after-html {
+      margin-right: var(--sp-neg-medium);
+      margin-left: var(--sp-neg-medium);
+    }
+
   }
 
   /* grid: thesis directory — from grid.css */
