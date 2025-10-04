@@ -190,7 +190,8 @@
       margin-top: 40px
     }
 
-    .homepage-jobs-wrapper {
+    .homepage-jobs-wrapper,
+    section.homepage-events-wrapper {
       margin: 0 var(--sp-neg-medium);
 
       /*.homepage-jobs {
@@ -895,8 +896,7 @@
     }
 
     .homepage-events-wrapper {
-      /*  padding-left: 0;
-      padding-right: 0;*/
+
 
       .edp-events-calendar-list {
 
