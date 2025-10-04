@@ -1695,6 +1695,7 @@
 
         background-color: var(--cl-straw);
         margin: var(--sp-xlarge) var(--sp-neg-medium);
+        overflow: hidden;
 
         .meta-img-l {
           display: none
