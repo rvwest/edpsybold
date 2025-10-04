@@ -626,7 +626,8 @@
   header[role="banner"] {
     .menu-toggle {
       display: block;
-      grid-column: 12 / span 1
+      grid-column: 12 / span 1;
+      color: var(--cl-dark);
     }
 
     nav.top-nav-menu {
