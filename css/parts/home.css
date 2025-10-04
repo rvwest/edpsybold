@@ -329,6 +329,9 @@ section.homepage-events-wrapper {
 }
 
 section.homepage-jobs-wrapper {
+
+    margin: 0 var(--sp-neg-medium);
+
     h2 {
 
         a:link,
