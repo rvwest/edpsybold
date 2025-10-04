@@ -59,7 +59,7 @@
 
 /* === Page ===================== */
 
-.page-template-default:not(.job-listings-page, .wpbdp-view-main) article.type-page {
+.page-template-default:not(.job-listings-page, .wpbdp-view-main, .wpbdp-view-search) article.type-page {
     display: grid;
     grid-template-columns: subgrid;
     grid-column: 3 / span 8;
@@ -434,7 +434,8 @@ body.single-post article.type-post .entry-footer {
 
 /* == Thesis directory ====================== */
 
-.wpbdp-view-main {
+.wpbdp-view-main,
+.page-template-default.wpbdp-view-search {
 
     :is(article.page) {
         grid-column: 1 / span 12;

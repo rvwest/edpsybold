@@ -1,6 +1,7 @@
 @import url('variables.css');
 
-.business-directory.wpbdp-view-main {
+.business-directory.wpbdp-view-main,
+.business-directory.wpbdp-view-search {
 
     #container {
         background-color: var(--cl-lightblue);

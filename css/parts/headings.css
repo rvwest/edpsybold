@@ -326,7 +326,8 @@ body:not(.home),
 
 .job-listings-page,
 .archive,
-.wpbdp-view-main {
+.wpbdp-view-main,
+.wpbdp-view-search {
     h1 {
         text-transform: lowercase;
     }
@@ -350,6 +351,7 @@ body.archive {
 
 /* == Display medium H1 (thesis listings)  ============== */
 .business-directory.wpbdp-view-main h1.entry-title,
+.business-directory.wpbdp-view-search h1.entry-title,
 .tribe_community_edit h2.my-events,
 body.category-jobs-admin h1.entry-title {
     font-size: var(--fs-display-medium);
@@ -374,7 +376,8 @@ body.category-jobs-admin h1.entry-title {
 /* == Dark ===== */
 .edp-jobs,
 .archive.post-type-archive-tribe_events,
-.business-directory.wpbdp-view-main {
+.business-directory.wpbdp-view-main,
+.business-directory.wpbdp-view-search {
     h1 {
         color: var(--cl-light);
     }

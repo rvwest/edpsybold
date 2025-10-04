@@ -59,6 +59,15 @@
 <div class="box-row"><?php echo $main_links; ?></div>
 <?php endif; ?> -->
 
-
 </div>
+<?php
+// Show the "Clear search" link only when a search has been performed and we're on search results.
+$is_bd_search_view = isset($_GET['wpbdp_view']) && $_GET['wpbdp_view'] === 'search';
+
+if ((isset($searching) && $searching) || $is_bd_search_view):
+	?>
+	<p><a class="button edp-button-solid" href="<?php echo esc_url(wpbdp_get_page_link('main')); ?>">
+			<?php esc_html_e('Clear search', 'business-directory-plugin'); ?> <i class="far fa-times"></i>
+		</a></p>
+<?php endif; ?>
 <!-- file end: business-directory/main-box.tpl.php-->

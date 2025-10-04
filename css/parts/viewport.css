@@ -1456,7 +1456,8 @@
 
   /* ===== Thesis directory listing ==== */
 
-  .business-directory.wpbdp-view-main #container {
+  .business-directory.wpbdp-view-main #container,
+  .business-directory.wpbdp-view-search #container {
     .wpbdp-main-box .wpbdp-listings-sort-options {
       flex-direction: column;
 
@@ -1891,7 +1892,8 @@
   }
 
   /* grid: thesis directory — from grid.css */
-  .wpbdp-view-main {
+  .wpbdp-view-main,
+  .page-template-default.wpbdp-view-search {
     :is(article.page) {
       >* {
         grid-column: 1 / span 12
