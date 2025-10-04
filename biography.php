@@ -14,6 +14,7 @@ if (function_exists('coauthors_posts_links')) {
         <!-- file: biography.php -->
         <div class="author-info">
             <div class="author-avatar">
+
                 <?php echo get_avatar($coauthor->user_email, '150', '', '', array('style' => '')); ?>
             </div>
 
@@ -23,11 +24,11 @@ if (function_exists('coauthors_posts_links')) {
                 <p class="author-bio">
                     <?php echo $coauthor->description; ?>
                 </p>
-                <?php if ( is_single() ) : ?>
+                <?php if (is_single()): ?>
                     <p class="author-bio">
-                        
-                        <a href="<?php echo esc_url( get_author_posts_url( $coauthor->ID, $coauthor->user_nicename ) ); ?>">
-                        View all posts by <?php echo esc_html( $coauthor->display_name ); ?>
+
+                        <a href="<?php echo esc_url(get_author_posts_url($coauthor->ID, $coauthor->user_nicename)); ?>">
+                            View all posts by <?php echo esc_html($coauthor->display_name); ?>
                         </a>
                     </p>
                 <?php endif; ?>

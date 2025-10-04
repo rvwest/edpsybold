@@ -10,27 +10,32 @@
 
 
 if (function_exists('coauthors_posts_links')) {
-    
-    $author_id = (get_user_by('slug', $coauthor));;?>
-        <!-- file: biography.php -->
-        <div class="author-info">
-            <div class="author-avatar">
-                <?php echo get_avatar($coauthor->user_email, '150', '', '', array('style' => '')); ?>
-            </div>
 
-            <div class="author-description author-description--boxed">
-                <h2 class="author-title">About <span class="author-heading"><?php echo get_the_author_meta('display_name', $coauthor);?></h2>
-
-                <p class="author-bio">
-                <?php the_author_meta( 'description' ); ?>
-                </p>
-               
-            </div>
+    $author_id = (get_user_by('slug', $coauthor));
+    ; ?>
+    <!-- file: archive-biography.php -->
+    <div class="author-info">
+        <div class="author-avatar">
+            <?php
+            echo get_avatar(get_the_author_meta('user_email'), '300', '', '', array('style' => ''));
+            ?>
 
         </div>
 
+        <div class="author-description author-description--boxed">
+            <h2 class="author-title">About <span
+                    class="author-heading"><?php echo get_the_author_meta('display_name', $coauthor); ?></h2>
 
-    
+            <p class="author-bio">
+                <?php the_author_meta('description'); ?>
+            </p>
+
+        </div>
+
+    </div>
+
+
+
 <?php } ?>
 
-<!-- file end: biography.php -->
+<!-- file end: archive-biography.php -->
