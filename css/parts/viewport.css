@@ -1009,6 +1009,10 @@
         .tribe-section-content-label {
           width: 100%;
           padding-left: 0;
+
+          &.screen-reader-text {
+            width: fit-content;
+          }
         }
       }
 
