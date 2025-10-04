@@ -111,6 +111,7 @@ header[role="banner"] {
                     padding: 0 var(--sp-medium);
                     cursor: pointer;
                     border-left: 1px solid var(--cl-dark);
+                    color: var(--cl-dark);
 
                     &:is(:hover, :active) {
                         background-color: var(--cl-lightpurple-hover);
