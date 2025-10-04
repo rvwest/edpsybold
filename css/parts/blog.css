@@ -502,6 +502,7 @@
         background-position: top left;
         background-size: 80px;
         background-repeat: no-repeat;
+        display: none;
 
     }
 }
