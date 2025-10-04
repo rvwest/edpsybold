@@ -1800,6 +1800,11 @@
     }
   }
 
+  .business-directory.single-wpbdp_listing h1 {
+    font-size: var(--fs-title-small);
+    line-height: var(--lh-title-small);
+  }
+
 
 
   /* == headings: page promo — from headings.css */
