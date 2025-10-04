@@ -364,6 +364,10 @@
         margin-top: var(--sp-large);
     }
 
+    .tribe-events-single-event-description {
+        overflow: clip;
+    }
+
     .tribe-events-after-html {
         padding: var(--sp-xlarge) 0 var(--sp-large) 0;
         background-color: var(--cl-dark);
