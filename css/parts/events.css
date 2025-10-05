@@ -354,6 +354,15 @@
         margin-bottom: var(--sp-xlarge);
     }
 
+    .tribe-events-event-image {
+        margin-bottom: var(--sp-large);
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    }
+
     .page-cta {
         display: flex;
         justify-content: start;
