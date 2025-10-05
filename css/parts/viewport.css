@@ -1531,6 +1531,17 @@
     }
   }
 
+
+  /* == Display medium H1 (thesis listings / thesis search / edit my events / jobs dashboard)  ============== */
+  .business-directory.wpbdp-view-main h1.entry-title,
+  .business-directory.wpbdp-view-search h1.entry-title,
+  .tribe_community_edit h2.my-events,
+  body.category-jobs-admin h1.entry-title {
+    font-size: var(--fs-title-xlarge);
+    line-height: var(--lh-title-xlarge);
+    margin-bottom: var(--sp-large);
+  }
+
   /*=== Special pages ==== */
   .edpsybold #container.edp-fullwidth .category-jobs ul.fa-features {
     margin: var(--sp-medium) var(--sp-small) 0 var(--sp-large);
