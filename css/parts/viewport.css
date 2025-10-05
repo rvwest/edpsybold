@@ -1351,7 +1351,8 @@
 
   .edp-jobs,
   .archive.post-type-archive-tribe_events,
-  .business-directory.wpbdp-view-main {
+  .business-directory.wpbdp-view-main,
+  .business-directory.wpbdp-view-search {
     .page-promo {
       margin-bottom: var(--sp-large);
     }
@@ -2329,7 +2330,8 @@
   }
 
   /*=== thesis directory listing ==== */
-  .business-directory.wpbdp-view-main #container .wpbdp-main-box {
+  .business-directory.wpbdp-view-main #container .wpbdp-main-box,
+  .business-directory.wpbdp-view-search #container .wpbdp-main-box {
     flex-direction: column;
     padding: 0;
     gap: var(--sp-medium);
