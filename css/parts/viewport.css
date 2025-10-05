@@ -169,6 +169,10 @@
 
         }
       }
+
+      .entry-footer .author-info {
+        padding-left: var(--sp-medium);
+      }
     }
   }
 
@@ -417,6 +421,8 @@
       }
     }
   }
+
+
 
   .edp-jobs .page-promo .promo-text {
     flex-direction: column;
@@ -1273,7 +1279,7 @@
 
   /* ============= Single blog =============== */
 
-  body.single-post article.type-post {
+  body.single-post #container article.type-post {
 
     h1.entry-title {
       grid-column: 1 / span 12;
@@ -1320,6 +1326,7 @@
         flex-direction: column;
         margin-top: 0;
         margin-bottom: var(--sp-small);
+        padding-left: 0;
 
         .author-avatar {
           margin-left: 0 !important;
