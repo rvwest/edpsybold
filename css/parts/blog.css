@@ -354,12 +354,16 @@
     }
 }
 
+<<<<<<< Updated upstream
 
 
 
 /*.author-description--boxed*/
 #container article.type-post .authors-section {
 
+=======
+.author-description--boxed #container article.type-post .authors-section {
+>>>>>>> Stashed changes
 
     display: flex;
     flex-direction: column;
