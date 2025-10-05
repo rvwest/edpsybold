@@ -149,30 +149,31 @@ article.type-wpbdp_listing,
     &.page-id-13702,
     &.page-id-13632 {
 
-        :lang(ur),
-        :lang(ar) {
-            font-family: arial, sans-serif;
+        /* Arabic / Urdu anywhere on the page */
+        html:lang(ar) body,
+        html:lang(ur) body,
+        [lang|="ar"],
+        [lang|="ur"] {
+            font-family: Arial, sans-serif;
         }
 
-
-
-        div:lang(en),
-        h2:lang(en),
-        h3:lang(en) {
+        /* English (incl. en-GB, en-US, etc.) */
+        html:lang(en) body,
+        html:lang(en-GB) body,
+        [lang|="en"] {
             font-family: var(--ff);
         }
     }
-}
 
-/* ---- Blog post only ----- */
+    /* ---- Blog post only ----- */
 
-article.type-post {
+    article.type-post {
 
-    .entry-content .content-body>p:first-of-type {
-        font-size: var(--fs-title-small);
-        line-height: var(--lh-title-small);
-        margin-bottom: var(--sp-medium);
+        .entry-content .content-body>p:first-of-type {
+            font-size: var(--fs-title-small);
+            line-height: var(--lh-title-small);
+            margin-bottom: var(--sp-medium);
+        }
+
+
     }
-
-
-}
