@@ -12,6 +12,7 @@
 
                 <input type="hidden" name="u" value="a213811bc69b5636c5103c46a">
                 <input type="hidden" name="id" value="cf7c127239">
+                <input type="hidden" name="tags" value="6330086">
 
                 <!-- people should not fill these in and expect good things -->
                 <div class="field-shift" aria-label="Please leave the following three fields empty" aria-hidden="true">
