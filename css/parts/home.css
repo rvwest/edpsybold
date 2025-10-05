@@ -23,7 +23,7 @@
     .home-divider,
     .focus-on,
     .longer-reads {
-        margin-bottom: 100px;
+        margin-bottom: 90px;
         border-radius: var(--rd-large);
     }
 
@@ -35,7 +35,7 @@
     section.hero-post {
         /*margin-top: var(--sp-xlarge);*/
         margin-top: 0px !important;
-        margin-bottom: 90px !important;
+        margin-bottom: 90px;
         background-color: var(--cl-light);
 
         a:hover,
@@ -247,10 +247,6 @@ section.homepage-jobs-wrapper {
     margin-top: 60px;
 }
 
-section.homepage-events-wrapper {
-    padding-top: 84px !important;
-}
-
 section.hero-post,
 section.focus-on,
 section.longer-reads,
@@ -356,6 +352,10 @@ section.homepage-jobs-wrapper {
         }
 
     }
+}
+
+section.homepage-events-wrapper {
+    padding-top: 84px;
 }
 
 

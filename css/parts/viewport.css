@@ -845,6 +845,21 @@
       }
     }
 
+    section.hero-post,
+    section.home-divider,
+    section.focus-on,
+    section.longer-reads {
+      margin-bottom: 74px;
+    }
+
+    section.homepage-jobs-wrapper {
+      margin-top: 10px;
+    }
+
+    section.homepage-events-wrapper {
+      padding-top: 64px;
+    }
+
     section.hero-post .home-hero-item a {
       flex-direction: column;
 
@@ -1602,7 +1617,8 @@
     section.focus-on,
     section.longer-reads {
       h2 {
-        margin-top: -51px;
+        margin-top: -61px;
+        margin-left: var(--sp-neg-small);
       }
     }
 
@@ -2594,13 +2610,13 @@
       }
     }
 
-    section.hero-post,
+    /*section.hero-post,
     section.focus-on,
     section.longer-reads {
       h2 {
         margin-top: -48px;
       }
-    }
+    }*/
 
 
   }
