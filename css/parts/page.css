@@ -5,12 +5,19 @@ also basis for: jobs page (single-job_listing.php) / events page content / Blog 
 article.job_listing,
 article.tribe-events-single,
 body:not(.home) article.type-post,
+article.type-wpbdp_listing {
+
+    margin-bottom: var(--sp-xxlarge);
+}
+
+.page-template-default:not(.job-listings-page) article.type-page,
+article.job_listing,
+article.tribe-events-single,
+body:not(.home) article.type-post,
 article.type-wpbdp_listing,
 .tribe-events-pg-template,
 .edp-jobs.add-job,
 .post-type-archive-tribe_events {
-
-    margin-bottom: var(--sp-xxlarge);
 
     .entry-content img.wp-post-image {
         width: 100%;
