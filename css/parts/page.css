@@ -149,18 +149,16 @@ article.type-wpbdp_listing,
     &.page-id-13702,
     &.page-id-13632 {
 
-        /* Arabic / Urdu anywhere on the page */
-        html:lang(ar) body,
-        html:lang(ur) body,
-        [lang|="ar"],
-        [lang|="ur"] {
+        /* Arabic / Urdu */
+        & :lang(ur),
+        & :lang(ar) {
             font-family: Arial, sans-serif;
         }
 
-        /* English (incl. en-GB, en-US, etc.) */
-        html:lang(en) body,
-        html:lang(en-GB) body,
-        [lang|="en"] {
+        /* English */
+        & div:lang(en),
+        & h2:lang(en),
+        & h3:lang(en) {
             font-family: var(--ff);
         }
     }
