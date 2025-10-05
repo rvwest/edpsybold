@@ -1599,11 +1599,11 @@
       }
     }
 
+    /* removed section.homepage-jobs-wrapper*/
     section.hero-post,
     section.focus-on,
     section.longer-reads,
-    section.homepage-events-wrapper,
-    section.homepage-jobs-wrapper {
+    section.homepage-events-wrapper {
       h2 {
         font-size: var(--fs-title-large);
       }
@@ -2467,6 +2467,12 @@
     }
   }
 
+  .latest-articles article.article-item,
+  .next-latest-posts article.article-item,
+  .final-articles article.article-item {
+    padding: 0 var(--sp-small);
+  }
+
   body.single-post article.type-post {
     .entry-footer .tag-links {
       flex-direction: column;
@@ -2599,14 +2605,17 @@
 
     }
 
+    /* Removed section.homepage-jobs-wrapper */
     section.hero-post,
     section.focus-on,
     section.longer-reads,
-    section.homepage-events-wrapper,
-    section.homepage-jobs-wrapper {
+    section.homepage-events-wrapper {
+      margin-bottom: 60px;
+
       h2 {
         font-size: var(--fs-title-medium);
       }
+
     }
 
     /*section.hero-post,
