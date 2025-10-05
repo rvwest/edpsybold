@@ -101,7 +101,7 @@
 
 
         </article>
-        <div class="fullwidth">
+        <div class="edp-fullwidth">
             <div class="job-footer grid12">
             <div class="job-footer-contents"><p><a href="/jobs" class="button edp-button-outline secondary see-all-jobs">See all jobs</a></p>
                 <p class="footnote-asa"><i class="fad fa-check"></i> We follow the <a

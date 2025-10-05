@@ -369,6 +369,10 @@
   .single-wpbdp_listing,
   .job_listing_preview {
 
+    .job-footer-contents {
+      grid-column: 2 / span 10;
+    }
+
     article.tribe-events-single,
     article.type-job_listing,
     article.wpbdp_listing {
