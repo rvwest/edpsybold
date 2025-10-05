@@ -558,10 +558,10 @@
 
 .entry-footer .crp_related {
 
-    & .type-post {
+    .type-post {
 
-        & a:hover,
-        & a:active {
+        a:hover,
+        a:active {
 
             h2 {
                 color: var(--cl-purple-hover);
@@ -573,13 +573,13 @@
 
         }
 
-        & a:link,
-        & a:visited {
+        a:link,
+        a:visited {
             color: var(--cl-dark);
 
         }
 
-        & h2.entry-title {
+        h2.entry-title {
             margin-bottom: var(--sp-small);
 
 
