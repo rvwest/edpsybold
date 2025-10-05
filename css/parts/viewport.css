@@ -1240,7 +1240,7 @@
       margin-bottom: var(--sp-medium);
     }
 
-    .page-promo {
+    /*   .page-promo {
       a {
         padding: var(--sp-xsmall) var(--sp-small);
         margin-bottom: var(--sp-medium);
@@ -1249,7 +1249,7 @@
           font-size: var(--fs-title-small);
         }
       }
-    }
+    }*/
   }
 
   .archive.tag {
