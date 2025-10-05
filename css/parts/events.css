@@ -236,7 +236,7 @@
         #tribe-community-events .events-promo {
             padding: var(--sp-xsmall) var(--sp-medium);
             border: 1px solid var(--cl-light);
-            background: var(--cl-dark-50);
+            background: var(--cl-dark-75);
             margin-bottom: var(--sp-medium);
 
             h2 {
