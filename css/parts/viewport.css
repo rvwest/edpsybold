@@ -2450,8 +2450,7 @@
         .article-item--image {
           width: 100%;
           max-width: 370px;
-          /* padding-left: var(--sp-small);*/
-          padding-top: var(--sp-small);
+          padding: var(--sp-small) 0 0 0;
         }
 
         h3 {
