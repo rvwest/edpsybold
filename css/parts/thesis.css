@@ -126,6 +126,14 @@
     .wpbdp-categories {
         display: none;
     }
+
+    #content .entry-content h2.wpbdp-search-reset {
+        margin-bottom: var(--sp-large);
+    }
+}
+
+.business-directory.wpbdp-view-search h3 {
+    color: var(--cl-light);
 }
 
 

@@ -63,26 +63,24 @@
 <?php
 // Show the "Clear search" link only when a search has been performed and we're on search results.
 $is_bd_search_view = isset($_GET['wpbdp_view']) && $_GET['wpbdp_view'] === 'search';
-$search_term       = '';
+$search_term = '';
 
 if (isset($_GET['kw'])) {
-        $search_term = sanitize_text_field(wp_unslash($_GET['kw']));
+	$search_term = sanitize_text_field(wp_unslash($_GET['kw']));
 }
 
 if ((isset($searching) && $searching) || $is_bd_search_view):
-        ?>
-        <div class="wpbdp-search-actions">
-                <?php if ($search_term): ?>
-                        <p class="wpbdp-search-term">
-                                <span class="wpbdp-search-term__label"><?php esc_html_e('Search term:', 'business-directory-plugin'); ?></span>
-                                <span class="wpbdp-search-term__value">&ldquo;<?php echo esc_html($search_term); ?>&rdquo;</span>
-                        </p>
-                <?php endif; ?>
-                <p class="wpbdp-search-reset">
-                        <a class="button edp-button-solid" href="<?php echo esc_url(wpbdp_get_page_link('main')); ?>">
-                                <?php esc_html_e('Clear search', 'business-directory-plugin'); ?> <i class="far fa-times"></i>
-                        </a>
-                </p>
-        </div>
+	?>
+	<div class="wpbdp-search-actions">
+		<?php if ($search_term): ?>
+			<h2 class="wpbdp-search-reset">
+				<a class="tag-block" href="<?php echo esc_url(wpbdp_get_page_link('main')); ?>">
+					<span class="wpbdp-search-term__value"><?php echo esc_html($search_term); ?></span> <i
+						class="far fa-times"></i>
+				</a>
+			</h2>
+		<?php endif; ?>
+
+	</div>
 <?php endif; ?>
 <!-- file end: business-directory/main-box.tpl.php-->

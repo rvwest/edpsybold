@@ -274,33 +274,7 @@ body:not(.home),
                 color: var(--cl-medpurple);
             }
 
-            .tag-block {
-                background-color: var(--cl-lightpurple-hover);
-                padding: var(--sp-xxsmall) var(--sp-small) var(--sp-xxsmall) var(--sp-small);
-                display: flex;
-                gap: var(--sp-small);
-                align-items: center;
-                color: var(--cl-dark);
-                border-radius: 4px;
 
-                &:link,
-                &:visited {
-                    border: 2px solid var(--cl-light);
-
-                    .fa-times {
-                        color: var(--cl-dark-50);
-                    }
-                }
-
-                &:hover,
-                &:active {
-                    border: 2px solid var(--cl-medpurple);
-
-                    .fa-times {
-                        color: var(--cl-medpurple);
-                    }
-                }
-            }
         }
     }
 
