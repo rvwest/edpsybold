@@ -33,6 +33,10 @@
     background-size: cover;
     background-position: center;
 
+    .field-shift {
+        display: none;
+    }
+
     .signup-content {
         background-color: var(--cl-light);
         padding: var(--sp-large);
