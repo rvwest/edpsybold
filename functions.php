@@ -145,6 +145,29 @@ function edpsybold_excerpt_read_more_link($more)
         return ' <a href="' . esc_url(get_permalink($post->ID)) . '" class="more-link">' . sprintf(__('...%s', 'edpsybold'), '<span class="screen-reader-text">  ' . esc_html(get_the_title()) . '</span>') . '</a>';
     }
 }
+
+function edp_get_relative_permalink($post)
+{
+    $permalink = get_permalink($post);
+
+    if (!$permalink) {
+        return '';
+    }
+
+    $relative = wp_make_link_relative($permalink);
+
+    if (false !== strpos($relative, '?')) {
+        $relative = substr($relative, 0, strpos($relative, '?'));
+    }
+
+    if (false !== strpos($relative, '#')) {
+        $relative = substr($relative, 0, strpos($relative, '#'));
+    }
+
+    $relative = ltrim($relative, '/');
+
+    return $relative;
+}
 add_filter('big_image_size_threshold', '__return_false');
 add_filter('intermediate_image_sizes_advanced', 'edpsybold_image_insert_override');
 function edpsybold_image_insert_override($sizes)
@@ -430,8 +453,8 @@ function edp_ajax_search_posts()
         'post_type'      => $post_type,
         'post_status'    => 'publish',
         'posts_per_page' => -1,
-        'orderby'        => 'title',
-        'order'          => 'ASC',
+        'orderby'        => 'date',
+        'order'          => 'DESC',
         'no_found_rows'  => true,
     );
 
@@ -493,9 +516,12 @@ function edp_ajax_search_posts()
                 continue;
             }
 
+            $title = get_the_title($post);
+            $title = wp_specialchars_decode($title, ENT_QUOTES);
+
             $results[] = array(
                 'id'    => $post->ID,
-                'title' => get_the_title($post),
+                'title' => $title,
             );
         }
     }
