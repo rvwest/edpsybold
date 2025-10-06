@@ -24,6 +24,7 @@
             control.filters = control.params.filters || {};
             control.placeholder = control.params.placeholder || '';
             control.requestToken = 0;
+            control.tagValidationToken = 0;
 
             control.bindEvents();
             control.maybeBindTagWatcher();
@@ -61,13 +62,18 @@
             }
 
             api(control.filters.tagSetting, function (setting) {
-                setting.bind(function (value) {
-                    if (!value) {
-                        control.clearSelection();
+                var handleTagChange = function (value) {
+                    var tagId = parseInt(value, 10);
+
+                    if (isNaN(tagId) || tagId < 0) {
+                        tagId = 0;
                     }
 
-                    control.search(control.input.val());
-                });
+                    control.onTagChange(tagId);
+                };
+
+                handleTagChange(setting.get());
+                setting.bind(handleTagChange);
             });
         },
 
@@ -82,6 +88,7 @@
             if (this.setting) {
                 this.setting.set(0);
             }
+            this.closeResults();
         },
 
         selectPost: function (postId, postTitle) {
@@ -117,6 +124,113 @@
             return value;
         },
 
+        getCurrentValue: function () {
+            var value = parseInt(this.valueField.val(), 10);
+
+            if (isNaN(value) || value <= 0) {
+                return 0;
+            }
+
+            return value;
+        },
+
+        onTagChange: function (tagId) {
+            if (!tagId) {
+                if (!this.getCurrentValue()) {
+                    this.clearSelection();
+                } else {
+                    this.closeResults();
+                }
+
+                return;
+            }
+
+            this.closeResults();
+            this.validateSelectionForTag(tagId);
+        },
+
+        validateSelectionForTag: function (tagId) {
+            var control = this;
+            var currentId = control.getCurrentValue();
+
+            if (!currentId) {
+                control.clearSelection();
+                return;
+            }
+
+            var args = control.buildRequestArgs('', {
+                tagId: tagId,
+                include: [currentId]
+            });
+
+            if (!args) {
+                control.clearSelection();
+                return;
+            }
+
+            var token = ++control.tagValidationToken;
+
+            control.requestPosts(args).done(function (items) {
+                if (token !== control.tagValidationToken) {
+                    return;
+                }
+
+                if (control.getCurrentValue() !== currentId) {
+                    return;
+                }
+
+                var match = Array.isArray(items) && items.some(function (item) {
+                    return parseInt(item.id, 10) === currentId;
+                });
+
+                if (!match) {
+                    control.clearSelection();
+                }
+            }).fail(function () {
+                if (token !== control.tagValidationToken) {
+                    return;
+                }
+
+                if (control.getCurrentValue() === currentId) {
+                    control.clearSelection();
+                }
+            });
+        },
+
+        buildRequestArgs: function (query, options) {
+            var args = {
+                nonce: edpPostSearch.nonce,
+                post_type: this.postType,
+                query: typeof query === 'string' ? query : (query === undefined || query === null ? '' : String(query))
+            };
+
+            var settings = options || {};
+
+            if (this.filters.category) {
+                args.category = this.filters.category;
+            }
+
+            if (this.filters.tagSetting) {
+                var tagId = typeof settings.tagId !== 'undefined' ? settings.tagId : this.getTagId();
+
+                if (!tagId) {
+                    return null;
+                }
+
+                args.tag_id = tagId;
+            }
+
+            if (settings.include && settings.include.length) {
+                args.include = settings.include;
+            }
+
+            return args;
+        },
+
+        requestPosts: function (args) {
+            return wp.ajax.post('edp_search_posts', args);
+        },
+
         search: function (query) {
             var control = this;
             var currentQuery = query;
@@ -125,24 +239,11 @@
                 currentQuery = currentQuery === undefined || currentQuery === null ? '' : String(currentQuery);
             }
 
-            var requestArgs = {
-                nonce: edpPostSearch.nonce,
-                post_type: control.postType,
-                query: currentQuery
-            };
+            var requestArgs = control.buildRequestArgs(currentQuery);
 
-            if (control.filters.category) {
-                requestArgs.category = control.filters.category;
-            }
-
-            if (control.filters.tagSetting) {
-                var tagId = control.getTagId();
-                if (!tagId) {
-                    control.showMessage(edpPostSearch.selectPrompt);
-                    return;
-                }
-
-                requestArgs.tag_id = tagId;
+            if (!requestArgs) {
+                control.showMessage(edpPostSearch.selectPrompt);
+                return;
             }
 
             control.results.addClass('is-open is-loading');
@@ -150,7 +251,7 @@
 
             var token = ++control.requestToken;
 
-            wp.ajax.post('edp_search_posts', requestArgs).done(function (response) {
+            control.requestPosts(requestArgs).done(function (response) {
                 if (token !== control.requestToken) {
                     return;
                 }

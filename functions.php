@@ -429,14 +429,37 @@ function edp_ajax_search_posts()
     $args = array(
         'post_type'      => $post_type,
         'post_status'    => 'publish',
-        'posts_per_page' => 20,
-        'orderby'        => 'date',
-        'order'          => 'DESC',
+        'posts_per_page' => -1,
+        'orderby'        => 'title',
+        'order'          => 'ASC',
         'no_found_rows'  => true,
     );
 
     if ('' !== $search_query) {
         $args['s'] = $search_query;
+        $args['search_columns'] = array('post_title');
+    }
+
+    $include = array();
+    if (isset($_POST['include'])) {
+        $raw_include = wp_unslash($_POST['include']);
+
+        if (!is_array($raw_include)) {
+            $raw_include = explode(',', (string) $raw_include);
+        }
+
+        foreach ($raw_include as $maybe_id) {
+            $maybe_id = absint($maybe_id);
+
+            if ($maybe_id) {
+                $include[] = $maybe_id;
+            }
+        }
+
+        if (!empty($include)) {
+            $args['post__in'] = $include;
+            $args['orderby'] = 'post__in';
+        }
     }
 
     $tax_query = array();
