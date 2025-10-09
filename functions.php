@@ -145,6 +145,29 @@ function edpsybold_excerpt_read_more_link($more)
         return ' <a href="' . esc_url(get_permalink($post->ID)) . '" class="more-link">' . sprintf(__('...%s', 'edpsybold'), '<span class="screen-reader-text">  ' . esc_html(get_the_title()) . '</span>') . '</a>';
     }
 }
+
+function edp_get_relative_permalink($post)
+{
+    $permalink = get_permalink($post);
+
+    if (!$permalink) {
+        return '';
+    }
+
+    $relative = wp_make_link_relative($permalink);
+
+    if (false !== strpos($relative, '?')) {
+        $relative = substr($relative, 0, strpos($relative, '?'));
+    }
+
+    if (false !== strpos($relative, '#')) {
+        $relative = substr($relative, 0, strpos($relative, '#'));
+    }
+
+    $relative = ltrim($relative, '/');
+
+    return $relative;
+}
 add_filter('big_image_size_threshold', '__return_false');
 add_filter('intermediate_image_sizes_advanced', 'edpsybold_image_insert_override');
 function edpsybold_image_insert_override($sizes)
@@ -312,6 +335,203 @@ add_filter('body_class', 'edpsy_add_parent_page_body_class');
 
 // ======== Customizer - featured post
 
+if (class_exists('WP_Customize_Control') && !class_exists('Edp_Post_Search_Customize_Control')) {
+    class Edp_Post_Search_Customize_Control extends WP_Customize_Control
+    {
+        public $type = 'edp_post_search';
+
+        public $post_type = 'post';
+
+        public $filters = array();
+
+        public $placeholder = '';
+
+        public function to_json()
+        {
+            parent::to_json();
+            $this->json['post_type'] = $this->post_type;
+            $this->json['filters']   = $this->filters;
+            $this->json['placeholder'] = $this->placeholder;
+            $this->json['selected'] = $this->get_selected_post();
+        }
+
+        protected function get_selected_post()
+        {
+            $post_id = absint($this->value());
+
+            if (!$post_id) {
+                return array(
+                    'id'    => 0,
+                    'title' => '',
+                );
+            }
+
+            $post = get_post($post_id);
+
+            if (!$post instanceof WP_Post) {
+                return array(
+                    'id'    => 0,
+                    'title' => '',
+                );
+            }
+
+            return array(
+                'id'    => $post_id,
+                'title' => get_the_title($post),
+            );
+        }
+
+        public function render_content()
+        {
+            if ($this->label) {
+                echo '<span class="customize-control-title">' . esc_html($this->label) . '</span>';
+            }
+
+            if ($this->description) {
+                echo '<span class="description customize-control-description">' . esc_html($this->description) . '</span>';
+            }
+
+            $selected = $this->get_selected_post();
+            ?>
+            <div class="edp-post-search" data-post-type="<?php echo esc_attr($this->post_type); ?>" data-filters="<?php echo esc_attr(wp_json_encode($this->filters)); ?>">
+                <input type="search" class="edp-post-search__input" value="<?php echo esc_attr($selected['title']); ?>" placeholder="<?php echo esc_attr($this->placeholder); ?>" autocomplete="off">
+                <input type="hidden" class="edp-post-search__value" <?php $this->link(); ?> value="<?php echo esc_attr($selected['id']); ?>">
+                <div class="edp-post-search__results" aria-live="polite"></div>
+            </div>
+            <?php
+        }
+    }
+}
+
+function edp_enqueue_customizer_assets()
+{
+    $script_path = get_template_directory() . '/js/customizer-post-search.js';
+    $style_path  = get_template_directory() . '/css/customizer-post-search.css';
+
+    $script_version = file_exists($script_path) ? filemtime($script_path) : '1.0.0';
+    $style_version  = file_exists($style_path) ? filemtime($style_path) : '1.0.0';
+
+    wp_enqueue_script(
+        'edp-customizer-post-search',
+        get_template_directory_uri() . '/js/customizer-post-search.js',
+        array('customize-controls', 'wp-util', 'jquery'),
+        $script_version,
+        true
+    );
+
+    wp_localize_script(
+        'edp-customizer-post-search',
+        'edpPostSearch',
+        array(
+            'nonce' => wp_create_nonce('edp_search_posts'),
+            'noResults' => __('No matching posts found.', 'mytheme'),
+            'selectPrompt' => __('Select a tag to choose posts.', 'mytheme'),
+        )
+    );
+
+    wp_enqueue_style(
+        'edp-customizer-post-search',
+        get_template_directory_uri() . '/css/customizer-post-search.css',
+        array(),
+        $style_version
+    );
+}
+add_action('customize_controls_enqueue_scripts', 'edp_enqueue_customizer_assets');
+
+function edp_ajax_search_posts()
+{
+    if (!current_user_can('edit_theme_options')) {
+        wp_send_json_error(__('You are not allowed to perform this action.', 'mytheme'), 403);
+    }
+
+    check_ajax_referer('edp_search_posts', 'nonce');
+
+    $post_type = isset($_POST['post_type']) ? sanitize_key(wp_unslash($_POST['post_type'])) : 'post';
+    $search_query = isset($_POST['query']) ? sanitize_text_field(wp_unslash($_POST['query'])) : '';
+
+    $args = array(
+        'post_type'      => $post_type,
+        'post_status'    => 'publish',
+        'posts_per_page' => -1,
+        'orderby'        => 'date',
+        'order'          => 'DESC',
+        'no_found_rows'  => true,
+    );
+
+    if ('' !== $search_query) {
+        $args['s'] = $search_query;
+        $args['search_columns'] = array('post_title');
+    }
+
+    $include = array();
+    if (isset($_POST['include'])) {
+        $raw_include = wp_unslash($_POST['include']);
+
+        if (!is_array($raw_include)) {
+            $raw_include = explode(',', (string) $raw_include);
+        }
+
+        foreach ($raw_include as $maybe_id) {
+            $maybe_id = absint($maybe_id);
+
+            if ($maybe_id) {
+                $include[] = $maybe_id;
+            }
+        }
+
+        if (!empty($include)) {
+            $args['post__in'] = $include;
+            $args['orderby'] = 'post__in';
+        }
+    }
+
+    $tax_query = array();
+
+    if (!empty($_POST['tag_id'])) {
+        $tax_query[] = array(
+            'taxonomy' => 'post_tag',
+            'field'    => 'term_id',
+            'terms'    => absint(wp_unslash($_POST['tag_id'])),
+        );
+    }
+
+    if (!empty($_POST['category'])) {
+        $tax_query[] = array(
+            'taxonomy' => 'category',
+            'field'    => 'slug',
+            'terms'    => sanitize_title(wp_unslash($_POST['category'])),
+        );
+    }
+
+    if (!empty($tax_query)) {
+        $args['tax_query'] = $tax_query;
+    }
+
+    $posts = new WP_Query($args);
+    $results = array();
+
+    if ($posts->have_posts()) {
+        foreach ($posts->posts as $post) {
+            if (!$post instanceof WP_Post) {
+                continue;
+            }
+
+            $title = get_the_title($post);
+            $title = wp_specialchars_decode($title, ENT_QUOTES);
+
+            $results[] = array(
+                'id'    => $post->ID,
+                'title' => $title,
+            );
+        }
+    }
+
+    wp_reset_postdata();
+
+    wp_send_json_success($results);
+}
+add_action('wp_ajax_edp_search_posts', 'edp_ajax_search_posts');
+
 function mytheme_customize_register($wp_customize)
 {
     // Add a section for the Hero Post
@@ -320,13 +540,6 @@ function mytheme_customize_register($wp_customize)
         'priority' => 30,
     ));
 
-    // Get all posts for the dropdown
-    $posts = get_posts(array('numberposts' => -1));
-    $choices = array('' => '— Select a post —');
-    foreach ($posts as $post) {
-        $choices[$post->ID] = $post->post_title;
-    }
-
     // Add the setting
     $wp_customize->add_setting('hero_post_id', array(
         'default' => '',
@@ -334,13 +547,13 @@ function mytheme_customize_register($wp_customize)
     ));
 
     // Add the control
-    $wp_customize->add_control('hero_post_id', array(
+    $wp_customize->add_control(new Edp_Post_Search_Customize_Control($wp_customize, 'hero_post_id', array(
         'label' => __('Select Hero Post', 'mytheme'),
         'section' => 'edp_home_section',
         'settings' => 'hero_post_id',
-        'type' => 'select',
-        'choices' => $choices,
-    ));
+        'post_type' => 'post',
+        'placeholder' => __('Search for a post…', 'mytheme'),
+    )));
 }
 add_action('customize_register', 'mytheme_customize_register');
 
@@ -393,28 +606,21 @@ function edp_customize_register($wp_customize)
         'choices' => $tag_choices,
     ));
 
-    // Prepare post choices once (outside the loop)
-    $post_choices = array('' => '— Select a post —');
-    $posts = get_posts(array(
-        'numberposts' => 100,
-        'post_status' => 'publish',
-    ));
-    foreach ($posts as $post) {
-        $post_choices[$post->ID] = $post->post_title;
-    }
-
     // Add Focus On post selectors
     for ($i = 1; $i <= 4; $i++) {
         $wp_customize->add_setting("focus_on_post_$i", array(
             'default' => '',
             'sanitize_callback' => 'absint',
         ));
-        $wp_customize->add_control("focus_on_post_$i", array(
+        $wp_customize->add_control(new Edp_Post_Search_Customize_Control($wp_customize, "focus_on_post_$i", array(
             'label' => __("Focus On Post $i", 'yourtheme'),
             'section' => $section,
-            'type' => 'select',
-            'choices' => $post_choices,
-        ));
+            'post_type' => 'post',
+            'filters' => array(
+                'tagSetting' => 'focus_on_tag',
+            ),
+            'placeholder' => __('Search for a tagged post…', 'yourtheme'),
+        )));
     }
 
     // ===== Longer Reads Section =====
@@ -447,12 +653,15 @@ function edp_customize_register($wp_customize)
             'default' => '',
             'sanitize_callback' => 'absint',
         ));
-        $wp_customize->add_control("longer_reads_post_$i", array(
+        $wp_customize->add_control(new Edp_Post_Search_Customize_Control($wp_customize, "longer_reads_post_$i", array(
             'label' => __("Longer Read Post $i", 'yourtheme'),
             'section' => $section,
-            'type' => 'select',
-            'choices' => $post_choices,
-        ));
+            'post_type' => 'post',
+            'filters' => array(
+                'category' => 'features',
+            ),
+            'placeholder' => __('Search feature posts…', 'yourtheme'),
+        )));
     }
 }
 add_action('customize_register', 'edp_customize_register');
