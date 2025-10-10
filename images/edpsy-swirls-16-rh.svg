@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220.07 392.5">
+  <defs>
+    <style>
+      .cls-1 {
+        stroke: #e6ca56;
+      }
+
+      .cls-1, .cls-2 {
+        fill: none;
+        mix-blend-mode: multiply;
+        stroke-miterlimit: 10;
+        stroke-width: 40px;
+      }
+
+      .cls-3 {
+        isolation: isolate;
+      }
+
+      .cls-2 {
+        stroke: #c983a9;
+      }
+    </style>
+  </defs>
+
+  <!-- Rotate entire graphic 90° anticlockwise and keep it in-frame -->
+  <!-- After rotation, width = original height + stroke overrun (229.07 + 20) = 249.07 -->
+  <!-- After rotation, height = original width (already stroke-safe) = 392.5 -->
+  <g class="cls-3" transform="translate(0,392.5) rotate(-90)">
+    <g id="Layer_1" data-name="Layer 1">
+      <path class="cls-2" d="M228.94,20C113.54,20,20,113.54,20,228.94"/>
+      <path class="cls-2" d="M85.47,228.94c0-79.24,64.23-143.47,143.47-143.47"/>
+      <path class="cls-2" d="M151.29,228.94c0-42.88,34.76-77.65,77.65-77.65"/>
+      <path class="cls-1" d="M229.03,85.6c79.24,0,143.47,64.23,143.47,143.47"/>
+      <path class="cls-1" d="M229.03,151.43c42.88,0,77.65,34.76,77.65,77.65"/>
+    </g>
+  </g>
+</svg>

@@ -179,14 +179,31 @@ article.type-post {
 }
 
 
-/* ----- Special pages -----*/
+/* ----- Special pages -----
 
-.page-id-10134 {
+.page-id-10134,
+.page-id-2 {
     #container {
-
-        background-image: url(../../images/edpsy-swirls-30.svg);
         background-size: 250px;
         background-position: right -1px;
         background-repeat: no-repeat;
+
+        article.type-page {
+            background-color: var(--cl-light-50);
+            margin-right: var(--sp-neg-medium)
+        }
     }
 }
+
+.page-id-10134,
+.page-id-2 {
+    #container {
+        background-image: url(../../images/edpsy-swirls-30.svg);
+    }
+}
+
+.page-id-2 {
+    #container {
+        background-image: url(../../images/edpsy-swirls-16-rh.svg);
+    }
+}*/
