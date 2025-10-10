@@ -177,3 +177,16 @@ article.type-post {
 
 
 }
+
+
+/* ----- Special pages -----*/
+
+.page-id-10134 {
+    #container {
+
+        background-image: url(../../images/edpsy-swirls-30.svg);
+        background-size: 250px;
+        background-position: right -1px;
+        background-repeat: no-repeat;
+    }
+}
