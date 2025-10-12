@@ -17,8 +17,9 @@ if (is_singular()) { ?>
     <div class="archive-article-img">
     <?php if ( has_post_thumbnail() ) : ?>
         <?php the_post_thumbnail(); ?>
+        <?php edpsybold_the_longer_read_badge(); ?>
     <?php endif; ?>
-</div>     
+</div>
    
 
             <h2 class="entry-title">

@@ -59,6 +59,7 @@ $display_posts = array_slice($latest_posts, 0, $display_post_count);
                 if (isset($display_posts[$item_index])) {
                     $post = $display_posts[$item_index];
                     setup_postdata($post);
+                    set_query_var('edpsybold_show_longer_read_badge', true);
                     get_template_part('_home-article-item');
                     wp_reset_postdata();
                     $item_index++;
@@ -95,6 +96,7 @@ if (get_theme_mod('focus_on_enabled')) :
             <?php foreach ($posts as $post): ?>
                 <?php
                 setup_postdata($post);
+                set_query_var('edpsybold_show_longer_read_badge', true);
                 get_template_part('_home-article-item');
                 wp_reset_postdata();
                 ?>
@@ -151,6 +153,7 @@ $next_posts = get_posts(array(
             <?php foreach ($next_posts as $post): ?>
                 <?php
                 setup_postdata($post);
+                set_query_var('edpsybold_show_longer_read_badge', true);
                 get_template_part('_home-article-item');
                 wp_reset_postdata();
                 ?>
@@ -187,6 +190,7 @@ if (get_theme_mod('longer_reads_enabled')) :
             <?php foreach ($posts as $post): ?>
                 <?php
                 setup_postdata($post);
+                set_query_var('edpsybold_show_longer_read_badge', false);
                 get_template_part('_home-article-item');
                 wp_reset_postdata();
                 ?>
@@ -248,6 +252,7 @@ $final_posts = get_posts(array(
             <?php foreach ($final_posts as $post): ?>
                 <?php
                 setup_postdata($post);
+                set_query_var('edpsybold_show_longer_read_badge', true);
                 get_template_part('_home-article-item');
                 wp_reset_postdata();
                 ?>
@@ -255,6 +260,8 @@ $final_posts = get_posts(array(
         </div>
     </section>
 <?php endif; ?>
+
+<?php set_query_var('edpsybold_show_longer_read_badge', null); ?>
 
 <?php
 $homepage_jobs_output = do_shortcode('[jobs-homepage per_page="3" show_filters="false"]');
