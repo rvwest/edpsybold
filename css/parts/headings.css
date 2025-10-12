@@ -12,7 +12,8 @@
 .business-directory article header,
 .archive main header.header,
 .tribe-events header.tribe-events-header,
-.add-job header.header {
+.add-job header.header,
+.edp-special-page-wide header.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -327,7 +328,8 @@ body.archive {
 .business-directory.wpbdp-view-main h1.entry-title,
 .business-directory.wpbdp-view-search h1.entry-title,
 .tribe_community_edit h2.my-events,
-body.category-jobs-admin h1.entry-title {
+body.category-jobs-admin h1.entry-title,
+.edp-special-page-wide header h1.entry-title {
     font-size: var(--fs-display-medium);
     line-height: var(--lh-display-medium);
 }
@@ -351,8 +353,15 @@ body.category-jobs-admin h1.entry-title {
 .edp-jobs,
 .archive.post-type-archive-tribe_events,
 .business-directory.wpbdp-view-main,
-.business-directory.wpbdp-view-search {
+.business-directory.wpbdp-view-search,
+.edp-special-page-dark {
     h1 {
+        color: var(--cl-light);
+    }
+}
+
+.edp-special-page-dark {
+    h2 {
         color: var(--cl-light);
     }
 }

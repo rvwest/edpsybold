@@ -432,10 +432,11 @@ body.single-post article.type-post .entry-footer {
 
 /* viewport-specific rules moved to parts/viewport.css */
 
-/* == Thesis directory ====================== */
+/* == Thesis directory / special pages - wide ====================== */
 
 .wpbdp-view-main,
-.page-template-default.wpbdp-view-search {
+.page-template-default.wpbdp-view-search,
+.edp-special-page-wide {
 
     :is(article.page) {
         grid-column: 1 / span 12;
@@ -454,6 +455,14 @@ body.single-post article.type-post .entry-footer {
         }
     }
 
+}
+
+.page-template-default:not(.job-listings-page, .wpbdp-view-main, .wpbdp-view-search) .edp-special-page-wide.edp-special-page-wide-text article.type-page .entry-content {
+    grid-column: 3 / span 8;
+}
+
+.page-template-default:not(.job-listings-page, .wpbdp-view-main, .wpbdp-view-search) .edp-special-page-wide.edp-special-page-listings article.type-page .entry-content {
+    grid-column: 2 / span 10;
 }
 
 /* viewport-specific rules moved to parts/viewport.css */

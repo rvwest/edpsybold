@@ -83,9 +83,12 @@
 
 
 
+
+
                 <?php elseif ($current_slug === 'interest-groups'): ?>
                     <!-- var: interest groups page -->
-                    <div id="container" class="edp-fullwidth">
+                    <div id="container"
+                        class="edp-fullwidth edp-special-page-wide edp-special-page-dark edp-special-page-listings">
                         <main id="content" role="main" class="grid12">
 
 
@@ -121,7 +124,8 @@
                                             <div class="backblock edp-fullwidth">
                                                 <div class="grid12">
                                                     <div class="backblock-link"><a href="../../events"><i
-                                                                class="far fa-arrow-left fa-xs"></i> all events</a></div>
+                                                                class="far fa-arrow-left fa-xs"></i> all events</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div id="container">

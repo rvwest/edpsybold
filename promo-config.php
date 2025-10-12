@@ -13,6 +13,10 @@ return [
         'html' => '<a href="https://docs.google.com/forms/d/e/1FAIpQLSeeHm-OYkTotMzt99GuAbgP-j1rZBl3n54kPz4e-BWZDtz-Lg/viewform?usp=sf_link" class="edp-thesis-promo">Add your thesis<i class="fal fa-plus-circle fa-2x"></i></a>',
     ],
     [
+        'keys' => ['interest-groups'],
+        'html' => '<a href="https://edpsy.org.uk/interest-groups/add/" class="edp-thesis-promo">Add a group<i class="fal fa-plus-circle fa-2x"></i></a>',
+    ],
+    [
         'keys' => ['tribe_events'],
         'html' => '<a href="/events/community/add/" class="edp-events-promo">Add your event <i class="fal fa-plus-circle fa-2x"></i></a>',
     ],
