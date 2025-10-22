@@ -358,155 +358,159 @@
 
 
 /*.author-description--boxed*/
-#container article.type-post .authors-section {
+#container article.type-post .authors-section,
 
-    .author-description--boxed #container article.type-post .authors-section {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-
-
-        &.author-count-1 {
-            .author-avatar {
-                max-width: 150px;
+.author-description--boxed #container article.type-post .authors-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
 
-                img.wp-post-image,
-                img {
-                    width: 150px;
-                    height: 150px;
 
-                }
+    &.author-count-1 {
+        .author-avatar {
+            max-width: 150px;
+            width: 150px;
+
+
+            img.wp-post-image,
+            img {
+                width: 150px;
+                height: 150px;
+
             }
-        }
-
-        &.author-count-2 {
-            .author-avatars {
-                position: relative;
-
-                .author-avatar {
-                    max-width: 110px;
-                    max-height: 110px;
-
-
-                    img,
-                    img.wp-post-image {
-                        width: 110px;
-                        height: 110px;
-
-                    }
-                }
-
-                .author-1 {
-                    position: relative;
-                    z-index: 1;
-                }
-
-                .author-2 {
-                    position: relative;
-                    z-index: 2;
-                    margin-left: -180px;
-                }
-            }
-        }
-
-        &.author-count-3 {
-            .author-avatars {
-                position: relative;
-
-                .author-avatar {
-                    max-width: 110px;
-                    max-height: 110px;
-
-                    img,
-                    img.wp-post-image {
-                        width: 110px;
-                        height: 110px;
-
-                    }
-                }
-
-                .author-1 {
-                    position: relative;
-                    z-index: 1;
-
-                }
-
-                .author-2 {
-                    position: relative;
-                    z-index: 2;
-                    margin-left: -25px;
-                }
-
-                .author-3 {
-                    position: relative;
-                    z-index: 3;
-                    margin-left: -25px;
-                }
-            }
-        }
-
-        &.author-count-4 {
-            .author-avatars {
-                position: relative;
-                flex-wrap: wrap;
-                max-width: 240px;
-                margin: 0 auto;
-                margin-bottom: var(--sp-small);
-
-                .author-avatar {
-                    max-width: 110px;
-                    max-height: 110px;
-
-
-                    img,
-                    img.wp-post-image {
-                        width: 110px;
-                        height: 110px;
-                    }
-                }
-
-                .author-1 {
-                    position: relative;
-                    z-index: 1;
-                }
-
-                .author-2 {
-                    position: relative;
-                    z-index: 2;
-                    margin-left: -25px;
-                }
-
-                .author-3 {
-                    position: relative;
-                    z-index: 3;
-                    margin-top: -15px;
-                }
-
-                .author-4 {
-                    position: relative;
-                    z-index: 4;
-                    margin-left: -25px;
-                    margin-top: -15px;
-                }
-            }
-        }
-
-
-        .author-deco {
-            width: 80px;
-            height: 50px;
-            margin-top: var(--sp-medium);
-            background-image: url(../../images/edpsy-swirls-element-2.svg);
-            background-position: top left;
-            background-size: 80px;
-            background-repeat: no-repeat;
-            display: none;
-
         }
     }
+
+    &.author-count-2 {
+        .author-avatars {
+            position: relative;
+
+            .author-avatar {
+                max-width: 110px;
+                max-height: 110px;
+                width: 110px;
+
+
+                img,
+                img.wp-post-image {
+                    width: 110px;
+                    height: 110px;
+
+                }
+            }
+
+            .author-1 {
+                position: relative;
+                z-index: 1;
+            }
+
+            .author-2 {
+                position: relative;
+                z-index: 2;
+                margin-left: -180px;
+            }
+        }
+    }
+
+    &.author-count-3 {
+        .author-avatars {
+            position: relative;
+
+            .author-avatar {
+                max-width: 110px;
+                width: 110px;
+                max-height: 110px;
+
+                img,
+                img.wp-post-image {
+                    width: 110px;
+                    height: 110px;
+
+                }
+            }
+
+            .author-1 {
+                position: relative;
+                z-index: 1;
+
+            }
+
+            .author-2 {
+                position: relative;
+                z-index: 2;
+                margin-left: -25px;
+            }
+
+            .author-3 {
+                position: relative;
+                z-index: 3;
+                margin-left: -25px;
+            }
+        }
+    }
+
+    &.author-count-4 {
+        .author-avatars {
+            position: relative;
+            flex-wrap: wrap;
+            max-width: 240px;
+            margin: 0 auto;
+            margin-bottom: var(--sp-small);
+
+            .author-avatar {
+                max-width: 110px;
+                max-height: 110px;
+                width: 110px;
+
+
+                img,
+                img.wp-post-image {
+                    width: 110px;
+                    height: 110px;
+                }
+            }
+
+            .author-1 {
+                position: relative;
+                z-index: 1;
+            }
+
+            .author-2 {
+                position: relative;
+                z-index: 2;
+                margin-left: -25px;
+            }
+
+            .author-3 {
+                position: relative;
+                z-index: 3;
+                margin-top: -15px;
+            }
+
+            .author-4 {
+                position: relative;
+                z-index: 4;
+                margin-left: -25px;
+                margin-top: -15px;
+            }
+        }
+    }
+
+
+    .author-deco {
+        width: 80px;
+        height: 50px;
+        margin-top: var(--sp-medium);
+        background-image: url(../../images/edpsy-swirls-element-2.svg);
+        background-position: top left;
+        background-size: 80px;
+        background-repeat: no-repeat;
+        display: none;
+
+    }
 }
+
 
 
 
