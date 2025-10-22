@@ -404,13 +404,13 @@
 
             .author-1 {
                 position: relative;
-                z-index: 1;
+                z-index: 2;
 
             }
 
             .author-2 {
                 position: relative;
-                z-index: 2;
+                z-index: 1;
                 margin-left: -30px;
             }
         }
@@ -437,7 +437,7 @@
 
             .author-1 {
                 position: relative;
-                z-index: 1;
+                z-index: 3;
 
             }
 
@@ -449,7 +449,7 @@
 
             .author-3 {
                 position: relative;
-                z-index: 3;
+                z-index: 1;
                 margin-left: -25px;
             }
         }
@@ -480,24 +480,24 @@
 
             .author-1 {
                 position: relative;
-                z-index: 1;
+                z-index: 4;
             }
 
             .author-2 {
                 position: relative;
-                z-index: 2;
+                z-index: 3;
                 margin-left: -25px;
             }
 
             .author-3 {
                 position: relative;
-                z-index: 3;
+                z-index: 2;
                 margin-top: -15px;
             }
 
             .author-4 {
                 position: relative;
-                z-index: 4;
+                z-index: 1;
                 margin-left: -25px;
                 margin-top: -15px;
             }
