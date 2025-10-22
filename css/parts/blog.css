@@ -383,6 +383,8 @@
     }
 
     &.author-count-2 {
+        margin-top: 20px;
+
         .author-avatars {
             position: relative;
 
@@ -403,17 +405,20 @@
             .author-1 {
                 position: relative;
                 z-index: 1;
+
             }
 
             .author-2 {
                 position: relative;
                 z-index: 2;
-                margin-left: -180px;
+                margin-left: -30px;
             }
         }
     }
 
     &.author-count-3 {
+        margin-top: 20px;
+
         .author-avatars {
             position: relative;
 
@@ -451,6 +456,8 @@
     }
 
     &.author-count-4 {
+        margin-top: 20px;
+
         .author-avatars {
             position: relative;
             flex-wrap: wrap;
