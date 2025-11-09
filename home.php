@@ -258,13 +258,27 @@ $final_posts = get_posts(array(
 
 <?php
 $homepage_jobs_output = do_shortcode('[jobs-homepage per_page="3" show_filters="false"]');
+$jobs_link_text = 'See all jobs';
+
+if (post_type_exists('job_listing')) {
+    $job_counts = wp_count_posts('job_listing');
+
+    if (is_object($job_counts)) {
+        $live_jobs_total = isset($job_counts->publish) ? (int) $job_counts->publish : 0;
+
+        if ($live_jobs_total <= 3) {
+            $jobs_link_text = 'See jobs';
+        }
+    }
+}
+
 if (trim($homepage_jobs_output) !== '') :
 ?>
 <section class="homepage-jobs-wrapper">
 <div class="homepage-jobs grid12">
 <h2><a href="jobs/">Jobs</a></h2>
 <?php echo $homepage_jobs_output; ?>
-<div class="home-see-all"><a href="jobs/" class="edp-button-outline button">See all jobs</a></div>
+<div class="home-see-all"><a href="jobs/" class="edp-button-outline button"><?php echo esc_html($jobs_link_text); ?></a></div>
 </div>
 </section>
 <?php endif; ?>
