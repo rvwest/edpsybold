@@ -167,6 +167,20 @@
             padding: 0 var(--sp-xsmall) var(--sp-small) var(--sp-xsmall)
         }
 
+        .longer-read {
+            color: var(--cl-dark);
+
+            position: absolute;
+            margin-left: 12px;
+            margin-top: -190px;
+            width: fit-content;
+            background: var(--cl-light);
+            border-radius: 6px;
+            padding-left: 6px;
+            padding-right: 6px;
+
+        }
+
     }
 
 

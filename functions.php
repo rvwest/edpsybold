@@ -145,6 +145,34 @@ function edpsybold_excerpt_read_more_link($more)
         return ' <a href="' . esc_url(get_permalink($post->ID)) . '" class="more-link">' . sprintf(__('...%s', 'edpsybold'), '<span class="screen-reader-text">  ' . esc_html(get_the_title()) . '</span>') . '</a>';
     }
 }
+
+if (!function_exists('edpsybold_the_longer_read_badge')) {
+    /**
+     * Output the "Longer read" badge for feature posts.
+     */
+    function edpsybold_the_longer_read_badge(): void
+    {
+        if (!has_category('features')) {
+            return;
+        }
+
+        /** @var WP_Post|null $post */
+        $post = get_post();
+        $should_show = apply_filters('edpsybold_show_longer_read_badge', true, $post);
+
+        if (!$should_show) {
+            return;
+        }
+
+        $badge_text = apply_filters('edpsybold_longer_read_badge_text', __('Longer read', 'edpsybold'), $post);
+
+        if ('' === $badge_text) {
+            return;
+        }
+
+        echo '<div class="longer-read">' . esc_html($badge_text) . '</div>';
+    }
+}
 add_filter('big_image_size_threshold', '__return_false');
 add_filter('intermediate_image_sizes_advanced', 'edpsybold_image_insert_override');
 function edpsybold_image_insert_override($sizes)
