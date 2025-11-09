@@ -1,0 +1,72 @@
+.edp-post-autocomplete-control {
+    position: relative;
+}
+
+.edp-post-autocomplete-field {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.edp-post-autocomplete-input {
+    flex: 1;
+    padding-right: 32px;
+}
+
+.edp-post-autocomplete-clear {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    height: 32px;
+    padding: 0;
+}
+
+.edp-post-autocomplete-clear .dashicons {
+    font-size: 16px;
+    line-height: 1;
+}
+
+.edp-post-autocomplete-clear[disabled] {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.edp-post-autocomplete-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    margin: 4px 0 0;
+    padding: 4px 0;
+    list-style: none;
+    max-height: 240px;
+    overflow-y: auto;
+    background: #fff;
+    border: 1px solid #8c8f94;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.edp-post-autocomplete-results[hidden] {
+    display: none;
+}
+
+.edp-post-autocomplete-result button {
+    width: 100%;
+    text-align: left;
+    padding: 6px 12px;
+    color: #1d2327;
+}
+
+.edp-post-autocomplete-result button:hover,
+.edp-post-autocomplete-result button:focus {
+    background: #f0f0f1;
+    outline: none;
+}
+
+.edp-post-autocomplete-empty {
+    padding: 6px 12px;
+    color: #646970;
+}

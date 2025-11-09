@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) {
 }
 echo '<!-- file: _home-article-item.php -->'; ?>
 <article <?php post_class('article-item'); ?>>
-    <a href="<?php the_permalink(); ?>">
+    <a href="<?php echo esc_url(edp_get_clean_permalink(get_the_ID())); ?>">
         <div class="article-item--image"><?php if (has_post_thumbnail()): ?>
           <div class="home-article-image">
             <?php the_post_thumbnail('medium'); ?>

@@ -13,7 +13,7 @@ if ($hero_post_id) {
     <section class="hero-post grid12">
         <h2>Featured</h2>
         <article <?php post_class('home-hero-item', $hero_post_id); ?>>
-            <a href="<?php echo esc_url(get_permalink($hero_post_id)); ?>">
+            <a href="<?php echo esc_url(edp_get_clean_permalink($hero_post_id)); ?>">
                 <div class="hero-text">
                     <h1><?php echo esc_html(get_the_title($hero_post)); ?></h1>
                     <?php
