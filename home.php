@@ -11,18 +11,21 @@ $excluded_ids = array();
 
 // Hero post
 $hero_post_id = get_theme_mod('hero_post_id');
-if ($hero_post_id) $excluded_ids[] = $hero_post_id;
+if ($hero_post_id)
+    $excluded_ids[] = $hero_post_id;
 
 // Focus On posts
 for ($i = 1; $i <= 3; $i++) {
     $id = get_theme_mod("focus_on_post_$i");
-    if ($id) $excluded_ids[] = $id;
+    if ($id)
+        $excluded_ids[] = $id;
 }
 
 // Longer Reads posts
 for ($i = 1; $i <= 2; $i++) {
     $id = get_theme_mod("longer_reads_post_$i");
-    if ($id) $excluded_ids[] = $id;
+    if ($id)
+        $excluded_ids[] = $id;
 }
 
 // Check if a job should be displayed
@@ -71,7 +74,7 @@ $display_posts = array_slice($latest_posts, 0, $display_post_count);
 
 <!-- focus on section -->
 <?php
-if (get_theme_mod('focus_on_enabled')) :
+if (get_theme_mod('focus_on_enabled')):
     $section_title = get_theme_mod('focus_on_title', 'Focus On');
 
     // Collect selected posts
@@ -87,21 +90,21 @@ if (get_theme_mod('focus_on_enabled')) :
     }
 
     $post_count = count($posts);
-    if ($post_count > 0) :
-?>
-    <section class="focus-on grid12 edp-bold-posts-<?php echo $post_count; ?>">
-        <h2><?php echo esc_html($section_title); ?></h2>
-        <div class="focus-posts-grid">
-            <?php foreach ($posts as $post): ?>
-                <?php
-                setup_postdata($post);
-                get_template_part('_home-article-item');
-                wp_reset_postdata();
-                ?>
-            <?php endforeach; ?>
-        </div>
-    </section>
-<?php
+    if ($post_count > 0):
+        ?>
+        <section class="focus-on grid12 edp-bold-posts-<?php echo $post_count; ?>">
+            <h2><?php echo esc_html($section_title); ?></h2>
+            <div class="focus-posts-grid">
+                <?php foreach ($posts as $post): ?>
+                    <?php
+                    setup_postdata($post);
+                    get_template_part('_home-article-item');
+                    wp_reset_postdata();
+                    ?>
+                <?php endforeach; ?>
+            </div>
+        </section>
+        <?php
     endif;
 endif;
 ?>
@@ -114,18 +117,21 @@ $excluded_ids = array();
 
 // Hero post
 $hero_post_id = get_theme_mod('hero_post_id');
-if ($hero_post_id) $excluded_ids[] = $hero_post_id;
+if ($hero_post_id)
+    $excluded_ids[] = $hero_post_id;
 
 // Focus On
 for ($i = 1; $i <= 3; $i++) {
     $id = get_theme_mod("focus_on_post_$i");
-    if ($id) $excluded_ids[] = $id;
+    if ($id)
+        $excluded_ids[] = $id;
 }
 
 // Longer Reads
 for ($i = 1; $i <= 2; $i++) {
     $id = get_theme_mod("longer_reads_post_$i");
-    if ($id) $excluded_ids[] = $id;
+    if ($id)
+        $excluded_ids[] = $id;
 }
 
 // Also exclude posts shown in the latest articles section
@@ -164,9 +170,9 @@ $next_posts = get_posts(array(
 <!-- longer reads section -->
 
 <?php
-if (get_theme_mod('longer_reads_enabled')) : 
+if (get_theme_mod('longer_reads_enabled')):
     $title = get_theme_mod('longer_reads_title', 'Longer Reads');
-      // Collect selected posts
+    // Collect selected posts
     $posts = array();
     for ($i = 1; $i <= 2; $i++) {
         $post_id = get_theme_mod("longer_reads_post_$i");
@@ -179,21 +185,21 @@ if (get_theme_mod('longer_reads_enabled')) :
     }
 
     $post_count = count($posts);
-    if ($post_count > 0) :
-?>
-    <section class="longer-reads grid12 edp-bold-posts-<?php echo $post_count; ?>">
-        <h2><a href="category/features/"><?php echo esc_html($title); ?></a></h2>
-        <div class="longer-reads-grid">
-            <?php foreach ($posts as $post): ?>
-                <?php
-                setup_postdata($post);
-                get_template_part('_home-article-item');
-                wp_reset_postdata();
-                ?>
-            <?php endforeach; ?>
-        </div>
-    </section>
-<?php
+    if ($post_count > 0):
+        ?>
+        <section class="longer-reads grid12 edp-bold-posts-<?php echo $post_count; ?>">
+            <h2><a href="category/features/"><?php echo esc_html($title); ?></a></h2>
+            <div class="longer-reads-grid">
+                <?php foreach ($posts as $post): ?>
+                    <?php
+                    setup_postdata($post);
+                    get_template_part('_home-article-item');
+                    wp_reset_postdata();
+                    ?>
+                <?php endforeach; ?>
+            </div>
+        </section>
+        <?php
     endif;
 endif;
 ?>
@@ -206,18 +212,21 @@ $excluded_ids = array();
 
 // Hero post
 $hero_post_id = get_theme_mod('hero_post_id');
-if ($hero_post_id) $excluded_ids[] = $hero_post_id;
+if ($hero_post_id)
+    $excluded_ids[] = $hero_post_id;
 
 // Focus On
 for ($i = 1; $i <= 3; $i++) {
     $id = get_theme_mod("focus_on_post_$i");
-    if ($id) $excluded_ids[] = $id;
+    if ($id)
+        $excluded_ids[] = $id;
 }
 
 // Longer Reads
 for ($i = 1; $i <= 2; $i++) {
     $id = get_theme_mod("longer_reads_post_$i");
-    if ($id) $excluded_ids[] = $id;
+    if ($id)
+        $excluded_ids[] = $id;
 }
 
 // Latest Articles (already in $display_posts)
@@ -272,24 +281,25 @@ if (post_type_exists('job_listing')) {
     }
 }
 
-if (trim($homepage_jobs_output) !== '') :
-?>
-<section class="homepage-jobs-wrapper">
-<div class="homepage-jobs grid12">
-<h2><a href="jobs/">Jobs</a></h2>
-<?php echo $homepage_jobs_output; ?>
-<div class="home-see-all"><a href="jobs/" class="edp-button-outline button"><?php echo esc_html($jobs_link_text); ?></a></div>
-</div>
-</section>
+if (trim($homepage_jobs_output) !== ''):
+    ?>
+    <section class="homepage-jobs-wrapper">
+        <div class="homepage-jobs grid12">
+            <h2><a href="jobs/">Jobs</a></h2>
+            <?php echo $homepage_jobs_output; ?>
+            <div class="home-see-all"><a href="jobs/"
+                    class="edp-button-outline button"><?php echo esc_html($jobs_link_text); ?></a></div>
+        </div>
+    </section>
 <?php endif; ?>
 
 <?php
 // Query the next 4 upcoming events
 $events = tribe_get_events([
-        'posts_per_page' => 4,
-        'start_date'     => date('Y-m-d H:i:s'),
-        'orderby'        => 'event_date',
-        'order'          => 'ASC',
+    'posts_per_page' => 4,
+    'start_date' => date('Y-m-d H:i:s'),
+    'orderby' => 'event_date',
+    'order' => 'ASC',
 ]);
 
 $event_count = count($events);
@@ -299,50 +309,52 @@ $count_class = edpsybold_count_class($event_count);
     <div class="homepage-events grid12">
         <h2><a href="events">Next events</a></h2>
         <?php
-        if ($events) :
-                echo '<div class="edp-events-calendar-list">';
-                $tpl = new class {
-                        public function template($template, $data = []) {
-                                $path = locate_template('tribe/events/v2/' . $template . '.php');
-                                if (!$path) {
-                                        return;
-                                }
-                                extract($data);
-                                include $path;
-                        }
-                };
-
-                $event_index = 0;
-                foreach ($events as $event_post) {
-                        if ($event_index % 2 === 0) {
-                                echo '<div class="edp-events-calendar-list__event-row-wrapper">';
-                        }
-
-                        $event = tribe_get_event($event_post);
-                        $tpl->template('list/event', [
-                                'event'        => $event,
-                                'is_past'      => false,
-                                'request_date' => null,
-                                'slug'         => 'home',
-                        ]);
-
-                        $event_index++;
-                        if ($event_index % 2 === 0 || $event_index === $event_count) {
-                                echo '</div>';
-                        }
+        if ($events):
+            echo '<div class="edp-events-calendar-list">';
+            $tpl = new class {
+                public function template($template, $data = [])
+                {
+                    $path = locate_template('tribe/events/v2/' . $template . '.php');
+                    if (!$path) {
+                        return;
+                    }
+                    extract($data);
+                    include $path;
                 }
-                echo '</div>';
-        else :
-                echo '<p>No upcoming events found.</p>';
+            };
+
+            $event_index = 0;
+            foreach ($events as $event_post) {
+                if ($event_index % 2 === 0) {
+                    echo '<div class="edp-events-calendar-list__event-row-wrapper">';
+                }
+
+                $event = tribe_get_event($event_post);
+                $tpl->template('list/event', [
+                    'event' => $event,
+                    'is_past' => false,
+                    'request_date' => null,
+                    'slug' => 'home',
+                ]);
+
+                $event_index++;
+                if ($event_index % 2 === 0 || $event_index === $event_count) {
+                    echo '</div>';
+                }
+            }
+            echo '</div>';
+        else:
+            echo '<p>No upcoming events found.</p>';
         endif;
         ?>
-<div class="home-see-all"><a href="events/" class="button edp-button-outline edp-button-outline--reversed">See all events</a></div>    
-</div>
-    
+        <div class="home-see-all"><a href="events/" class="button edp-button-outline edp-button-outline--reversed">See
+                all events</a></div>
+    </div>
+
 </section>
 
 
 
-<?php 
+<?php
 get_footer();
 echo '<!-- file end: home.php -->'; ?>

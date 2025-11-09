@@ -385,25 +385,22 @@ if (class_exists('WP_Customize_Control')) {
             $selected_json = $selected ? wp_json_encode($selected) : '';
             ?>
             <div class="edp-post-autocomplete-control" data-setting-id="<?php echo esc_attr($this->id); ?>">
-                <?php if (!empty($this->label)) : ?>
+                <?php if (!empty($this->label)): ?>
                     <span class="customize-control-title"><?php echo esc_html($this->label); ?></span>
                 <?php endif; ?>
-                <?php if (!empty($this->description)) : ?>
+                <?php if (!empty($this->description)): ?>
                     <span class="description customize-control-description"><?php echo esc_html($this->description); ?></span>
                 <?php endif; ?>
                 <div class="edp-post-autocomplete-field">
-                    <input type="text"
-                           class="edp-post-autocomplete-input"
-                           value="<?php echo esc_attr($value); ?>"
-                           autocomplete="off"
-                           placeholder="<?php echo esc_attr($this->placeholder); ?>"
-                           data-filters="<?php echo esc_attr($filters); ?>"
-                           data-selected="<?php echo esc_attr($selected_json); ?>" />
+                    <input type="text" class="edp-post-autocomplete-input" value="<?php echo esc_attr($value); ?>"
+                        autocomplete="off" placeholder="<?php echo esc_attr($this->placeholder); ?>"
+                        data-filters="<?php echo esc_attr($filters); ?>" data-selected="<?php echo esc_attr($selected_json); ?>" />
                     <button type="button" class="button-link edp-post-autocomplete-clear" <?php disabled(!$selected); ?>>
                         <span class="dashicons dashicons-dismiss" aria-hidden="true"></span>
                         <span class="screen-reader-text"><?php esc_html_e('Clear selection', 'yourtheme'); ?></span>
                     </button>
-                    <input type="hidden" <?php $this->link(); ?> value="<?php echo esc_attr($this->value()); ?>" class="edp-post-autocomplete-value" />
+                    <input type="hidden" <?php $this->link(); ?> value="<?php echo esc_attr($this->value()); ?>"
+                        class="edp-post-autocomplete-value" />
                     <ul class="edp-post-autocomplete-results" hidden></ul>
                 </div>
             </div>
@@ -854,16 +851,27 @@ function wpjm_jobs_homepage_shortcode($atts)
     ob_start();
 
     // Query jobs
+
+    $job_count_all = wp_count_posts('job_listing');
+
+
+    $job_count_published = isset($job_count_all->publish) ? (int) $job_count_all->publish : 0;
+
+    $job_count_onpage = ($job_count_published <= 3)
+        ? $job_count_published
+        : 3;
+
+
     $jobs = new WP_Query([
         'post_type' => 'job_listing',
         'posts_per_page' => intval($atts['per_page']),
         'post_status' => 'publish',
     ]);
 
-    $job_count = $jobs->found_posts;
+    //$job_count = $jobs->found_posts;
 
     if ($jobs->have_posts()) {
-        $count_class = edpsybold_count_class($job_count);
+        $count_class = edpsybold_count_class($job_count_onpage);
         echo '<div class="jobs-homepage-grid ' . esc_attr($count_class) . '">';
         while ($jobs->have_posts()) {
             $jobs->the_post();
@@ -871,7 +879,7 @@ function wpjm_jobs_homepage_shortcode($atts)
             // Load custom template for each job
             get_template_part('_home-jobs-item');
         }
-        if ($count_class < 3) {
+        if ($job_count_onpage < 3) {
             get_template_part('_home-jobs-promo');
         }
         echo '</div>';
