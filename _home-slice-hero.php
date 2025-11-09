@@ -22,7 +22,8 @@ if ($hero_post_id) {
 
                     // Get the first paragraph (if it exists)
                     if (!empty($paragraphs[0])) {
-                        echo '<div class="hero-excerpt">' . $paragraphs[0] . '</p></div>';
+                        $first_paragraph_text = wp_strip_all_tags($paragraphs[0]);
+                        echo '<div class="hero-excerpt"><p>' . esc_html($first_paragraph_text) . '</p></div>';
                     }
                     ?>
                 </div>

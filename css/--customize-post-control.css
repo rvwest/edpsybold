@@ -2,8 +2,6 @@
     position: relative;
 }
 
-
-
 .edp-post-autocomplete-field {
     position: relative;
     display: flex;
@@ -28,24 +26,6 @@
 .edp-post-autocomplete-clear .dashicons {
     font-size: 16px;
     line-height: 1;
-    text-decoration: none;
-    color: #534E50;
-}
-
-.edp-post-autocomplete-clear:hover .dashicons {
-    color: #0072B9;
-}
-
-.edp-post-autocomplete-clear .dashicons.dashicons-dismiss {
-    padding-top: 4px
-}
-
-.wp-core-ui .edp-post-autocomplete-clear.button-link {
-    text-decoration: none;
-}
-
-.customize-control-edp_heading h2 {
-    margin-top: 40px;
 }
 
 .edp-post-autocomplete-clear[disabled] {
@@ -69,33 +49,16 @@
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 
-
 .edp-post-autocomplete-results[hidden] {
     display: none;
 }
 
-.wp-core-ui .edp-post-autocomplete-result button {
+.edp-post-autocomplete-result button {
     width: 100%;
     text-align: left;
     padding: 6px 12px;
-    color: #363033;
-    text-decoration: none;
-
-    &.button-link {
-        text-decoration: none;
-    }
-
-    &.button-link:active,
-    &.button-link:hover {
-        text-decoration: underline;
-    }
-
-    &.button-link:link,
-    &.button-link:visited {
-        text-decoration: none;
-    }
+    color: #1d2327;
 }
-
 
 .edp-post-autocomplete-result button:hover,
 .edp-post-autocomplete-result button:focus {
