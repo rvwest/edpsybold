@@ -1,0 +1,168 @@
+.edpsy-post-lookup {
+    margin-top: 8px;
+    position: relative;
+}
+
+.edpsy-post-lookup__combobox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.edpsy-post-lookup__input {
+    flex: 1 1 auto;
+    padding: 4px 8px;
+    border: 1px solid #8c8f94;
+    border-radius: 3px;
+    font-size: 14px;
+    line-height: 1.4;
+    background-color: #fff;
+    color: inherit;
+}
+
+.edpsy-post-lookup__input:focus {
+    outline: none;
+    border-color: #2271b1;
+    box-shadow: 0 0 0 1px #2271b1;
+}
+
+.edpsy-post-lookup__clear {
+    display: none;
+    color: #2271b1;
+}
+
+.edpsy-post-lookup__clear:focus {
+    outline: 2px solid #2271b1;
+    outline-offset: 2px;
+}
+
+.edpsy-post-lookup__selection {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin: 8px 0;
+}
+
+.edpsy-post-lookup__token {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid #dcdcde;
+    background-color: #f6f7f7;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.edpsy-post-lookup__token-meta {
+    color: #646970;
+    font-size: 12px;
+}
+
+.edpsy-post-lookup__token.is-invalid {
+    border-color: #d63638;
+    background-color: #fbeaea;
+    color: #d63638;
+}
+
+.edpsy-post-lookup__remove {
+    border: none;
+    background: none;
+    padding: 0;
+    font-size: 12px;
+    cursor: pointer;
+    color: inherit;
+}
+
+.edpsy-post-lookup__remove:focus {
+    outline: 2px solid #2271b1;
+    outline-offset: 1px;
+}
+
+.edpsy-post-lookup__results {
+    margin-top: 4px;
+    border: 1px solid #dcdcde;
+    border-radius: 3px;
+    max-height: 220px;
+    overflow-y: auto;
+    background: #fff;
+    display: block;
+}
+
+.edpsy-post-lookup__results[aria-hidden="true"] {
+    display: none;
+}
+
+.edpsy-post-lookup__result-item {
+    padding: 6px 10px;
+    border-bottom: 1px solid #f0f0f1;
+    cursor: pointer;
+}
+
+.edpsy-post-lookup__result-item:last-child {
+    border-bottom: none;
+}
+
+.edpsy-post-lookup__result-item:hover,
+.edpsy-post-lookup__result-item:focus,
+.edpsy-post-lookup__result-item.is-highlighted {
+    background-color: #2271b1;
+    color: #fff;
+}
+
+.edpsy-post-lookup__result-meta {
+    display: inline-block;
+    margin-left: 6px;
+    font-size: 12px;
+    color: inherit;
+}
+
+.edpsy-post-lookup__notice {
+    margin-top: 6px;
+    color: #d63638;
+    font-size: 12px;
+}
+
+.edpsy-post-lookup__tag-feedback {
+    margin-top: 6px;
+    font-size: 12px;
+    color: #646970;
+}
+
+@media (prefers-color-scheme: dark) {
+    .edpsy-post-lookup__input {
+        background-color: #1d2327;
+        border-color: #3c434a;
+        color: #f0f0f0;
+    }
+
+    .edpsy-post-lookup__results {
+        background: #1d2327;
+        border-color: #3c434a;
+    }
+
+    .edpsy-post-lookup__result-item {
+        border-bottom-color: #2c3338;
+    }
+
+    .edpsy-post-lookup__token {
+        background-color: #2c3338;
+        border-color: #3c434a;
+        color: #f0f0f0;
+    }
+
+    .edpsy-post-lookup__token.is-invalid {
+        background-color: #3b1f1f;
+        border-color: #d63638;
+        color: #f87171;
+    }
+
+    .edpsy-post-lookup__notice {
+        color: #f87171;
+    }
+
+    .edpsy-post-lookup__tag-feedback {
+        color: #d0d0d0;
+    }
+}

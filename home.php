@@ -14,7 +14,7 @@ $hero_post_id = get_theme_mod('hero_post_id');
 if ($hero_post_id) $excluded_ids[] = $hero_post_id;
 
 // Focus On posts
-for ($i = 1; $i <= 3; $i++) {
+for ($i = 1; $i <= 4; $i++) {
     $id = get_theme_mod("focus_on_post_$i");
     if ($id) $excluded_ids[] = $id;
 }
@@ -117,7 +117,7 @@ $hero_post_id = get_theme_mod('hero_post_id');
 if ($hero_post_id) $excluded_ids[] = $hero_post_id;
 
 // Focus On
-for ($i = 1; $i <= 3; $i++) {
+for ($i = 1; $i <= 4; $i++) {
     $id = get_theme_mod("focus_on_post_$i");
     if ($id) $excluded_ids[] = $id;
 }
@@ -164,8 +164,11 @@ $next_posts = get_posts(array(
 <!-- longer reads section -->
 
 <?php
-if (get_theme_mod('longer_reads_enabled')) : 
+if (get_theme_mod('longer_reads_enabled')) :
     $title = get_theme_mod('longer_reads_title', 'Longer Reads');
+    $features_slug = defined('EDPSY_FEATURES_CATEGORY_SLUG') ? EDPSY_FEATURES_CATEGORY_SLUG : 'features';
+    $features_term = $features_slug ? get_category_by_slug($features_slug) : false;
+    $features_link = $features_term ? get_category_link($features_term) : '';
       // Collect selected posts
     $posts = array();
     for ($i = 1; $i <= 2; $i++) {
@@ -182,7 +185,11 @@ if (get_theme_mod('longer_reads_enabled')) :
     if ($post_count > 0) :
 ?>
     <section class="longer-reads grid12 edp-bold-posts-<?php echo $post_count; ?>">
-        <h2><a href="category/features/"><?php echo esc_html($title); ?></a></h2>
+        <?php if (!empty($features_link)) : ?>
+            <h2><a href="<?php echo esc_url($features_link); ?>"><?php echo esc_html($title); ?></a></h2>
+        <?php else : ?>
+            <h2><?php echo esc_html($title); ?></h2>
+        <?php endif; ?>
         <div class="longer-reads-grid">
             <?php foreach ($posts as $post): ?>
                 <?php
@@ -209,7 +216,7 @@ $hero_post_id = get_theme_mod('hero_post_id');
 if ($hero_post_id) $excluded_ids[] = $hero_post_id;
 
 // Focus On
-for ($i = 1; $i <= 3; $i++) {
+for ($i = 1; $i <= 4; $i++) {
     $id = get_theme_mod("focus_on_post_$i");
     if ($id) $excluded_ids[] = $id;
 }
