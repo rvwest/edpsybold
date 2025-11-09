@@ -65,9 +65,7 @@
         });
 
         this.$input.on('focus', function () {
-            if ($(this).val().length > 0) {
-                self.handleInput($(this).val());
-            }
+            self.handleInput($(this).val(), { immediate: true });
         });
 
         this.$clear.on('click', function (event) {
@@ -114,16 +112,17 @@
         }
     };
 
-    AutocompleteControl.prototype.handleInput = function (query) {
+    AutocompleteControl.prototype.handleInput = function (query, options) {
         var self = this;
-        var trimmed = query.trim();
+        var trimmed = (query || '').trim();
+        var settings = options || {};
 
         if (this.debounceTimer) {
             window.clearTimeout(this.debounceTimer);
         }
 
-        if (trimmed.length === 0) {
-            this.hideResults();
+        if (settings.immediate) {
+            self.fetchResults(trimmed);
             return;
         }
 

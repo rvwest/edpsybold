@@ -399,7 +399,10 @@ if (class_exists('WP_Customize_Control')) {
                            placeholder="<?php echo esc_attr($this->placeholder); ?>"
                            data-filters="<?php echo esc_attr($filters); ?>"
                            data-selected="<?php echo esc_attr($selected_json); ?>" />
-                    <button type="button" class="button-link edp-post-autocomplete-clear" <?php disabled(!$selected); ?>><?php esc_html_e('Clear', 'yourtheme'); ?></button>
+                    <button type="button" class="button-link edp-post-autocomplete-clear" <?php disabled(!$selected); ?>>
+                        <span class="dashicons dashicons-dismiss" aria-hidden="true"></span>
+                        <span class="screen-reader-text"><?php esc_html_e('Clear selection', 'yourtheme'); ?></span>
+                    </button>
                     <input type="hidden" <?php $this->link(); ?> value="<?php echo esc_attr($this->value()); ?>" class="edp-post-autocomplete-value" />
                     <ul class="edp-post-autocomplete-results" hidden></ul>
                 </div>
@@ -479,6 +482,7 @@ function edp_ajax_search_posts()
     check_ajax_referer('edp_search_posts', 'nonce');
 
     $query = isset($_GET['q']) ? sanitize_text_field(wp_unslash($_GET['q'])) : '';
+    $query = trim($query);
     $tag_id = isset($_GET['tag']) ? absint($_GET['tag']) : 0;
     $category = isset($_GET['category']) ? sanitize_text_field(wp_unslash($_GET['category'])) : '';
 
@@ -488,12 +492,8 @@ function edp_ajax_search_posts()
         'orderby' => 'date',
         'order' => 'DESC',
         'posts_per_page' => -1,
+        'ignore_sticky_posts' => true,
     );
-
-    if ($query !== '') {
-        $args['s'] = $query;
-        $args['search_columns'] = array('post_title');
-    }
 
     if ($tag_id > 0) {
         $args['tag_id'] = $tag_id;
@@ -510,10 +510,30 @@ function edp_ajax_search_posts()
 
     foreach ($posts_query->posts as $post) {
         $title = html_entity_decode(get_the_title($post), ENT_QUOTES, $charset);
+        $tag_terms = get_the_terms($post, 'post_tag');
+        $tag_ids = array();
+        $tag_name_match = false;
+
+        if (!empty($tag_terms) && !is_wp_error($tag_terms)) {
+            foreach ($tag_terms as $term) {
+                $tag_ids[] = (int) $term->term_id;
+
+                if ($query !== '' && !$tag_name_match && stripos($term->name, $query) !== false) {
+                    $tag_name_match = true;
+                }
+            }
+        }
+
+        $title_match = $query === '' ? true : stripos($title, $query) !== false;
+
+        if ($query !== '' && !$title_match && !$tag_name_match) {
+            continue;
+        }
+
         $results[] = array(
             'id' => $post->ID,
             'title' => $title,
-            'tags' => array_map('intval', wp_get_post_tags($post->ID, array('fields' => 'ids'))),
+            'tags' => $tag_ids,
             'categories' => array_map('intval', wp_get_post_categories($post->ID)),
         );
     }
