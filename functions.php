@@ -368,22 +368,20 @@ if (class_exists('WP_Customize_Control')) {
             $selected_json = $selected ? wp_json_encode($selected) : '';
             ?>
             <div class="edp-post-autocomplete-control" data-setting-id="<?php echo esc_attr($this->id); ?>">
-                <?php if (!empty($this->label)) : ?>
+                <?php if (!empty($this->label)): ?>
                     <span class="customize-control-title"><?php echo esc_html($this->label); ?></span>
                 <?php endif; ?>
-                <?php if (!empty($this->description)) : ?>
+                <?php if (!empty($this->description)): ?>
                     <span class="description customize-control-description"><?php echo esc_html($this->description); ?></span>
                 <?php endif; ?>
                 <div class="edp-post-autocomplete-field">
-                    <input type="text"
-                           class="edp-post-autocomplete-input"
-                           value="<?php echo esc_attr($value); ?>"
-                           autocomplete="off"
-                           placeholder="<?php echo esc_attr($this->placeholder); ?>"
-                           data-filters="<?php echo esc_attr($filters); ?>"
-                           data-selected="<?php echo esc_attr($selected_json); ?>" />
-                    <button type="button" class="button-link edp-post-autocomplete-clear" <?php disabled(!$selected); ?>><?php esc_html_e('Clear', 'yourtheme'); ?></button>
-                    <input type="hidden" <?php $this->link(); ?> value="<?php echo esc_attr($this->value()); ?>" class="edp-post-autocomplete-value" />
+                    <input type="text" class="edp-post-autocomplete-input" value="<?php echo esc_attr($value); ?>"
+                        autocomplete="off" placeholder="<?php echo esc_attr($this->placeholder); ?>"
+                        data-filters="<?php echo esc_attr($filters); ?>" data-selected="<?php echo esc_attr($selected_json); ?>" />
+                    <button type="button" class="button-link edp-post-autocomplete-clear" <?php disabled(!$selected); ?>><span
+                            class="dashicons dashicons-dismiss"></span></button>
+                    <input type="hidden" <?php $this->link(); ?> value="<?php echo esc_attr($this->value()); ?>"
+                        class="edp-post-autocomplete-value" />
                     <ul class="edp-post-autocomplete-results" hidden></ul>
                 </div>
             </div>
