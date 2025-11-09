@@ -310,6 +310,171 @@ add_filter('body_class', 'edpsy_add_parent_page_body_class');
 // ======================================================================== //
 
 
+// ======== Customizer post picker controls
+
+if (class_exists('WP_Customize_Control')) {
+    class Edp_Customize_Post_Autocomplete_Control extends WP_Customize_Control
+    {
+        public $type = 'edp_post_autocomplete';
+
+        public $placeholder = '';
+
+        public $filters = array();
+
+        public function enqueue()
+        {
+            wp_enqueue_script('edp-customize-post-control');
+            wp_enqueue_style('edp-customize-post-control');
+        }
+
+        public function to_json()
+        {
+            parent::to_json();
+
+            $this->json['placeholder'] = $this->placeholder;
+            $this->json['filters'] = $this->filters;
+            $this->json['selected'] = $this->get_selected_post_data();
+        }
+
+        protected function get_selected_post_data()
+        {
+            $value = $this->value();
+            if (empty($value)) {
+                return null;
+            }
+
+            $post = get_post($value);
+            if (!$post instanceof WP_Post || 'post' !== $post->post_type) {
+                return null;
+            }
+
+            $title = wp_specialchars_decode(get_the_title($post), ENT_QUOTES);
+            $tags = wp_get_post_tags($post->ID, array('fields' => 'ids'));
+            $categories = wp_get_post_categories($post->ID);
+
+            return array(
+                'id' => $post->ID,
+                'title' => $title,
+                'tags' => array_map('intval', $tags),
+                'categories' => array_map('intval', $categories),
+            );
+        }
+
+        public function render_content()
+        {
+            $selected = $this->get_selected_post_data();
+            $value = $selected ? $selected['title'] : '';
+            $filters = !empty($this->filters) ? wp_json_encode($this->filters) : '';
+            $selected_json = $selected ? wp_json_encode($selected) : '';
+            ?>
+            <div class="edp-post-autocomplete-control" data-setting-id="<?php echo esc_attr($this->id); ?>">
+                <?php if (!empty($this->label)): ?>
+                    <span class="customize-control-title"><?php echo esc_html($this->label); ?></span>
+                <?php endif; ?>
+                <?php if (!empty($this->description)): ?>
+                    <span class="description customize-control-description"><?php echo esc_html($this->description); ?></span>
+                <?php endif; ?>
+                <div class="edp-post-autocomplete-field">
+                    <input type="text" class="edp-post-autocomplete-input" value="<?php echo esc_attr($value); ?>"
+                        autocomplete="off" placeholder="<?php echo esc_attr($this->placeholder); ?>"
+                        data-filters="<?php echo esc_attr($filters); ?>" data-selected="<?php echo esc_attr($selected_json); ?>" />
+                    <button type="button" class="button-link edp-post-autocomplete-clear" <?php disabled(!$selected); ?>><span
+                            class="dashicons dashicons-dismiss"></span></button>
+                    <input type="hidden" <?php $this->link(); ?> value="<?php echo esc_attr($this->value()); ?>"
+                        class="edp-post-autocomplete-value" />
+                    <ul class="edp-post-autocomplete-results" hidden></ul>
+                </div>
+            </div>
+            <?php
+        }
+    }
+}
+
+function edp_customize_controls_assets()
+{
+    wp_register_script(
+        'edp-customize-post-control',
+        get_template_directory_uri() . '/js/customize-post-control.js',
+        array('customize-controls', 'jquery'),
+        '1.0.0',
+        true
+    );
+
+    wp_localize_script(
+        'edp-customize-post-control',
+        'edpCustomizePostControl',
+        array(
+            'ajaxUrl' => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('edp_search_posts'),
+            'strings' => array(
+                'noResults' => __('No matching posts found.', 'yourtheme'),
+            ),
+        )
+    );
+
+    wp_register_style(
+        'edp-customize-post-control',
+        get_template_directory_uri() . '/css/customize-post-control.css',
+        array(),
+        '1.0.0'
+    );
+}
+add_action('customize_controls_enqueue_scripts', 'edp_customize_controls_assets');
+
+function edp_ajax_search_posts()
+{
+    if (!current_user_can('edit_theme_options')) {
+        wp_send_json_error();
+    }
+
+    check_ajax_referer('edp_search_posts', 'nonce');
+
+    $query = isset($_GET['q']) ? sanitize_text_field(wp_unslash($_GET['q'])) : '';
+    $tag_id = isset($_GET['tag']) ? absint($_GET['tag']) : 0;
+    $category = isset($_GET['category']) ? sanitize_text_field(wp_unslash($_GET['category'])) : '';
+
+    $args = array(
+        'post_type' => 'post',
+        'post_status' => 'publish',
+        'orderby' => 'date',
+        'order' => 'DESC',
+        'posts_per_page' => -1,
+    );
+
+    if ($query !== '') {
+        $args['s'] = $query;
+        $args['search_columns'] = array('post_title');
+    }
+
+    if ($tag_id > 0) {
+        $args['tag_id'] = $tag_id;
+    }
+
+    if (!empty($category)) {
+        $args['category_name'] = $category;
+    }
+
+    $posts_query = new WP_Query($args);
+
+    $charset = get_bloginfo('charset');
+    $results = array();
+
+    foreach ($posts_query->posts as $post) {
+        $title = html_entity_decode(get_the_title($post), ENT_QUOTES, $charset);
+        $results[] = array(
+            'id' => $post->ID,
+            'title' => $title,
+            'tags' => array_map('intval', wp_get_post_tags($post->ID, array('fields' => 'ids'))),
+            'categories' => array_map('intval', wp_get_post_categories($post->ID)),
+        );
+    }
+
+    wp_reset_postdata();
+
+    wp_send_json_success(array('items' => $results));
+}
+add_action('wp_ajax_edp_search_posts', 'edp_ajax_search_posts');
+
 // ======== Customizer - featured post
 
 function mytheme_customize_register($wp_customize)
@@ -320,13 +485,6 @@ function mytheme_customize_register($wp_customize)
         'priority' => 30,
     ));
 
-    // Get all posts for the dropdown
-    $posts = get_posts(array('numberposts' => -1));
-    $choices = array('' => '— Select a post —');
-    foreach ($posts as $post) {
-        $choices[$post->ID] = $post->post_title;
-    }
-
     // Add the setting
     $wp_customize->add_setting('hero_post_id', array(
         'default' => '',
@@ -334,13 +492,12 @@ function mytheme_customize_register($wp_customize)
     ));
 
     // Add the control
-    $wp_customize->add_control('hero_post_id', array(
+    $wp_customize->add_control(new Edp_Customize_Post_Autocomplete_Control($wp_customize, 'hero_post_id', array(
         'label' => __('Select Hero Post', 'mytheme'),
         'section' => 'edp_home_section',
         'settings' => 'hero_post_id',
-        'type' => 'select',
-        'choices' => $choices,
-    ));
+        'placeholder' => __('Search for a post…', 'yourtheme'),
+    )));
 }
 add_action('customize_register', 'mytheme_customize_register');
 
@@ -393,28 +550,21 @@ function edp_customize_register($wp_customize)
         'choices' => $tag_choices,
     ));
 
-    // Prepare post choices once (outside the loop)
-    $post_choices = array('' => '— Select a post —');
-    $posts = get_posts(array(
-        'numberposts' => 100,
-        'post_status' => 'publish',
-    ));
-    foreach ($posts as $post) {
-        $post_choices[$post->ID] = $post->post_title;
-    }
-
     // Add Focus On post selectors
     for ($i = 1; $i <= 4; $i++) {
         $wp_customize->add_setting("focus_on_post_$i", array(
             'default' => '',
             'sanitize_callback' => 'absint',
         ));
-        $wp_customize->add_control("focus_on_post_$i", array(
+        $wp_customize->add_control(new Edp_Customize_Post_Autocomplete_Control($wp_customize, "focus_on_post_$i", array(
             'label' => __("Focus On Post $i", 'yourtheme'),
             'section' => $section,
-            'type' => 'select',
-            'choices' => $post_choices,
-        ));
+            'settings' => "focus_on_post_$i",
+            'placeholder' => __('Search for a post…', 'yourtheme'),
+            'filters' => array(
+                'tag_setting' => 'focus_on_tag',
+            ),
+        )));
     }
 
     // ===== Longer Reads Section =====
@@ -447,12 +597,15 @@ function edp_customize_register($wp_customize)
             'default' => '',
             'sanitize_callback' => 'absint',
         ));
-        $wp_customize->add_control("longer_reads_post_$i", array(
+        $wp_customize->add_control(new Edp_Customize_Post_Autocomplete_Control($wp_customize, "longer_reads_post_$i", array(
             'label' => __("Longer Read Post $i", 'yourtheme'),
             'section' => $section,
-            'type' => 'select',
-            'choices' => $post_choices,
-        ));
+            'settings' => "longer_reads_post_$i",
+            'placeholder' => __('Search for a post…', 'yourtheme'),
+            'filters' => array(
+                'category' => 'features',
+            ),
+        )));
     }
 }
 add_action('customize_register', 'edp_customize_register');
