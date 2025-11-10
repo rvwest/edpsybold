@@ -134,7 +134,6 @@
         .article-item {
             width: calc(33.333% - (2*(var(--sp-home-gap)))/3);
             margin-bottom: calc(var(--sp-xlarge) - var(--sp-home-gap));
-            ;
         }
 
 
@@ -351,6 +350,10 @@ section.homepage-jobs-wrapper {
             }
         }
 
+    }
+
+    .article-item {
+        width: calc(33.333% - (2*(var(--sp-home-gap)))/3);
     }
 }
 
