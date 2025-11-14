@@ -1442,12 +1442,13 @@
         grid-column: 1 / span 12
       }
     }
-
-    /* == promo banner — from promo-banner.css */
-    .cta-second-link {
-      display: none
-    }
   }
+
+  /* == promo banner — from promo-banner.css */
+  .cta-second-link {
+    display: none
+  }
+
 
   /* === forms ==== */
 
