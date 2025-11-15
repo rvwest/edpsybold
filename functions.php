@@ -1590,3 +1590,402 @@ function edp_posts_nav_link_attrs($attr)
 }
 add_filter('previous_posts_link_attributes', 'edp_posts_nav_link_attrs');
 add_filter('next_posts_link_attributes', 'edp_posts_nav_link_attrs');
+
+// =========== Enhanced search ================================================= //
+
+define('EDPSYBOLD_OLD_EVENTS_COOKIE', 'edpsybold_show_old_events');
+define('EDPSYBOLD_LAST_SEARCH_COOKIE', 'edpsybold_last_search');
+
+/**
+ * Determine if the provided query should use the enhanced search behaviour.
+ */
+function edpsybold_is_enhanced_search_query($query)
+{
+    return $query instanceof WP_Query && !is_admin() && $query->is_search();
+}
+
+/**
+ * Helper to set a front-end cookie that respects the WordPress paths/domains.
+ */
+function edpsybold_set_cookie($name, $value, $expiration)
+{
+    if (headers_sent()) {
+        return;
+    }
+
+    $paths = array_unique(array(
+        defined('COOKIEPATH') ? COOKIEPATH : '/',
+        defined('SITECOOKIEPATH') ? SITECOOKIEPATH : '/',
+    ));
+
+    $domain = defined('COOKIE_DOMAIN') ? COOKIE_DOMAIN : '';
+
+    foreach ($paths as $path) {
+        setcookie($name, $value, $expiration, $path, $domain, is_ssl(), true);
+    }
+}
+
+/**
+ * Remove a cookie for all recognised WordPress paths.
+ */
+function edpsybold_clear_cookie($name)
+{
+    edpsybold_set_cookie($name, '', time() - HOUR_IN_SECONDS);
+}
+
+/**
+ * Normalise the search query string used in cookies.
+ */
+function edpsybold_normalise_search_query($value)
+{
+    $value = rawurldecode($value);
+    $value = sanitize_text_field(wp_unslash($value));
+    return trim($value);
+}
+
+/**
+ * Handle persistence for the "show old events" toggle between filter requests.
+ */
+function edpsybold_prepare_search_preferences()
+{
+    if (!is_search()) {
+        return;
+    }
+
+    $search_query = isset($_GET['s']) ? edpsybold_normalise_search_query($_GET['s']) : '';
+    $last_search = isset($_COOKIE[EDPSYBOLD_LAST_SEARCH_COOKIE])
+        ? edpsybold_normalise_search_query($_COOKIE[EDPSYBOLD_LAST_SEARCH_COOKIE])
+        : '';
+
+    if ($search_query !== $last_search) {
+        edpsybold_clear_cookie(EDPSYBOLD_OLD_EVENTS_COOKIE);
+    }
+
+    if ('' !== $search_query || '' !== $last_search) {
+        edpsybold_set_cookie(EDPSYBOLD_LAST_SEARCH_COOKIE, rawurlencode($search_query), time() + DAY_IN_SECONDS);
+    }
+
+    if (isset($_GET['show_old_events'])) {
+        $show_old_events = edpsybold_normalise_search_query($_GET['show_old_events']);
+        if ('1' === $show_old_events) {
+            edpsybold_set_cookie(EDPSYBOLD_OLD_EVENTS_COOKIE, '1', time() + DAY_IN_SECONDS);
+        } else {
+            edpsybold_clear_cookie(EDPSYBOLD_OLD_EVENTS_COOKIE);
+        }
+    }
+}
+add_action('template_redirect', 'edpsybold_prepare_search_preferences');
+
+/**
+ * Check whether the visitor has opted into viewing past events for the current search.
+ */
+function edpsybold_should_show_old_events()
+{
+    if (isset($_GET['show_old_events'])) {
+        return '1' === edpsybold_normalise_search_query($_GET['show_old_events']);
+    }
+
+    if (isset($_COOKIE[EDPSYBOLD_OLD_EVENTS_COOKIE])) {
+        return '1' === edpsybold_normalise_search_query($_COOKIE[EDPSYBOLD_OLD_EVENTS_COOKIE]);
+    }
+
+    return false;
+}
+
+/**
+ * Retrieve a list of public searchable post types to use for search queries.
+ */
+function edpsybold_get_searchable_post_types()
+{
+    $post_types = get_post_types(
+        array(
+            'public' => true,
+            'exclude_from_search' => false,
+        ),
+        'names'
+    );
+
+    unset($post_types['attachment']);
+
+    $ensure_types = array('tribe_events', 'job_listing');
+    foreach ($ensure_types as $type) {
+        if (post_type_exists($type) && !in_array($type, $post_types, true)) {
+            $post_types[] = $type;
+        }
+    }
+
+    return array_values($post_types);
+}
+
+/**
+ * Build the shared meta query used to exclude expired jobs and optionally past events.
+ */
+function edpsybold_build_search_meta_query($show_old_events)
+{
+    $now = current_time('mysql');
+
+    $conditions = array(
+        array(
+            'relation' => 'OR',
+            array(
+                'key' => '_job_expires',
+                'value' => $now,
+                'compare' => '>=',
+                'type' => 'DATETIME',
+            ),
+            array(
+                'key' => '_job_expires',
+                'compare' => 'NOT EXISTS',
+            ),
+        ),
+    );
+
+    if (!$show_old_events) {
+        $conditions[] = array(
+            'relation' => 'OR',
+            array(
+                'key' => '_EventEndDate',
+                'value' => $now,
+                'compare' => '>=',
+                'type' => 'DATETIME',
+            ),
+            array(
+                'key' => '_EventEndDate',
+                'compare' => 'NOT EXISTS',
+            ),
+        );
+    }
+
+    return $conditions;
+}
+
+/**
+ * Customise the main search query to honour filters and exclusions.
+ */
+function edpsybold_customize_search_query($query)
+{
+    if (!edpsybold_is_enhanced_search_query($query)) {
+        return;
+    }
+
+    $show_old_events = edpsybold_should_show_old_events();
+    if (!$query->get('edpsybold_meta_applied')) {
+        $meta_query = $query->get('meta_query');
+        if (!is_array($meta_query)) {
+            $meta_query = array();
+        }
+
+        if (!isset($meta_query['relation'])) {
+            $meta_query['relation'] = 'AND';
+        }
+
+        foreach (edpsybold_build_search_meta_query($show_old_events) as $clause) {
+            $meta_query[] = $clause;
+        }
+
+        $query->set('meta_query', $meta_query);
+        $query->set('edpsybold_meta_applied', true);
+    }
+
+    $query->set('post_status', 'publish');
+
+    if ($query->is_main_query()) {
+        $default_types = edpsybold_get_searchable_post_types();
+        $query->set('post_type', $default_types);
+
+        $content_type = isset($_GET['content_type']) ? sanitize_key(wp_unslash($_GET['content_type'])) : '';
+
+        if (!empty($content_type) && 'everything' !== $content_type && in_array($content_type, $default_types, true)) {
+            $query->set('post_type', array($content_type));
+        }
+    }
+}
+add_action('pre_get_posts', 'edpsybold_customize_search_query', 20);
+
+/**
+ * Join additional tables needed to search authors and taxonomy terms.
+ */
+function edpsybold_search_posts_join($join, $query)
+{
+    if (!edpsybold_is_enhanced_search_query($query)) {
+        return $join;
+    }
+
+    global $wpdb;
+
+    $join .= " LEFT JOIN {$wpdb->users} AS edpsyauth ON ({$wpdb->posts}.post_author = edpsyauth.ID)";
+    $join .= " LEFT JOIN {$wpdb->term_relationships} AS edpsy_tr ON ({$wpdb->posts}.ID = edpsy_tr.object_id)";
+    $join .= " LEFT JOIN {$wpdb->term_taxonomy} AS edpsy_tt ON (edpsy_tr.term_taxonomy_id = edpsy_tt.term_taxonomy_id)";
+    $join .= " LEFT JOIN {$wpdb->terms} AS edpsy_terms ON (edpsy_tt.term_id = edpsy_terms.term_id)";
+
+    return $join;
+}
+add_filter('posts_join', 'edpsybold_search_posts_join', 10, 2);
+
+/**
+ * Replace the default search clause so we can include authors and tags.
+ */
+function edpsybold_search_posts_search($search, $query)
+{
+    if (!edpsybold_is_enhanced_search_query($query)) {
+        return $search;
+    }
+
+    global $wpdb;
+
+    $search_terms = $query->get('search_terms');
+    $search_terms = empty($search_terms) ? array() : $search_terms;
+
+    if (empty($search_terms)) {
+        $term = $query->get('s');
+        if (!empty($term)) {
+            $search_terms = array($term);
+        }
+    }
+
+    if (empty($search_terms)) {
+        return $search;
+    }
+
+    $clauses = array();
+
+    foreach ($search_terms as $term) {
+        $term = trim($term);
+        if ('' === $term) {
+            continue;
+        }
+
+        $like = '%' . $wpdb->esc_like($term) . '%';
+
+        $clause = array(
+            $wpdb->prepare("{$wpdb->posts}.post_title LIKE %s", $like),
+            $wpdb->prepare("{$wpdb->posts}.post_excerpt LIKE %s", $like),
+            $wpdb->prepare("{$wpdb->posts}.post_content LIKE %s", $like),
+            $wpdb->prepare('edpsyauth.display_name LIKE %s', $like),
+            $wpdb->prepare(
+                "(edpsy_terms.name LIKE %s AND edpsy_tt.taxonomy IN ('post_tag', 'author', 'guest-author'))",
+                $like
+            ),
+        );
+
+        $clauses[] = '(' . implode(' OR ', $clause) . ')';
+    }
+
+    if (empty($clauses)) {
+        return $search;
+    }
+
+    return ' AND (' . implode(' AND ', $clauses) . ')';
+}
+add_filter('posts_search', 'edpsybold_search_posts_search', 10, 2);
+
+/**
+ * Ensure we do not receive duplicate posts when joining extra tables.
+ */
+function edpsybold_search_posts_distinct($distinct, $query)
+{
+    if (edpsybold_is_enhanced_search_query($query)) {
+        return 'DISTINCT';
+    }
+
+    return $distinct;
+}
+add_filter('posts_distinct', 'edpsybold_search_posts_distinct', 10, 2);
+
+/**
+ * Determine whether the current search has past events that can be surfaced.
+ */
+function edpsybold_search_has_old_events($search_query)
+{
+    if (!post_type_exists('tribe_events')) {
+        return false;
+    }
+
+    $args = array(
+        's' => $search_query,
+        'post_type' => 'tribe_events',
+        'post_status' => 'publish',
+        'posts_per_page' => 1,
+        'no_found_rows' => true,
+        'fields' => 'ids',
+        'edpsybold_meta_applied' => true,
+        'meta_query' => array_merge(
+            array(
+                'relation' => 'AND',
+            ),
+            edpsybold_build_search_meta_query(true),
+            array(
+                array(
+                    'key' => '_EventEndDate',
+                    'value' => current_time('mysql'),
+                    'compare' => '<',
+                    'type' => 'DATETIME',
+                ),
+            )
+        ),
+    );
+
+    $query = new WP_Query($args);
+
+    return $query->have_posts();
+}
+
+/**
+ * Collect the post types that have at least one match for the current search term.
+ */
+function edpsybold_collect_search_post_types($search_query, $show_old_events)
+{
+    $available = array();
+    $post_types = edpsybold_get_searchable_post_types();
+
+    foreach ($post_types as $post_type) {
+        $clauses = edpsybold_build_search_meta_query($show_old_events || 'tribe_events' !== $post_type);
+
+        $args = array(
+            's' => $search_query,
+            'post_type' => $post_type,
+            'post_status' => 'publish',
+            'posts_per_page' => 1,
+            'no_found_rows' => true,
+            'fields' => 'ids',
+            'edpsybold_meta_applied' => true,
+            'meta_query' => array_merge(array('relation' => 'AND'), $clauses),
+        );
+
+        $query = new WP_Query($args);
+
+        if ($query->have_posts()) {
+            $available[] = $post_type;
+        }
+    }
+
+    if (!$show_old_events && !in_array('tribe_events', $available, true) && edpsybold_search_has_old_events($search_query)) {
+        $available[] = 'tribe_events';
+    }
+
+    return array_values(array_unique($available));
+}
+
+/**
+ * Provide a friendly label for the search filters and result listings.
+ */
+function edpsybold_get_search_post_type_label($post_type)
+{
+    $custom_labels = array(
+        'post' => __('Blog', 'edpsybold'),
+        'tribe_events' => __('Event', 'edpsybold'),
+        'job_listing' => __('Job', 'edpsybold'),
+    );
+
+    if (isset($custom_labels[$post_type])) {
+        return $custom_labels[$post_type];
+    }
+
+    $object = get_post_type_object($post_type);
+
+    if ($object instanceof WP_Post_Type) {
+        return $object->labels->singular_name;
+    }
+
+    return ucwords(str_replace(array('-', '_'), ' ', $post_type));
+}
