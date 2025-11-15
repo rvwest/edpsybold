@@ -1590,3 +1590,141 @@ function edp_posts_nav_link_attrs($attr)
 }
 add_filter('previous_posts_link_attributes', 'edp_posts_nav_link_attrs');
 add_filter('next_posts_link_attributes', 'edp_posts_nav_link_attrs');
+
+// =========== WP Statistics Advanced Reporting customisations ================ //
+
+/**
+ * Extend WP Statistics Advanced Reporting link tracker filters with a page URL search.
+ */
+add_action('plugins_loaded', 'edpsybold_register_link_tracker_page_url_filter', 30);
+function edpsybold_register_link_tracker_page_url_filter()
+{
+    if (!class_exists('\\WP_Statistics\\AdvancedReporting\\WP_Statistics_Advanced_Reporting')) {
+        return;
+    }
+
+    add_filter('wp_statistics_advanced_reporting_link_tracker_filters', 'edpsybold_link_tracker_add_page_url_filter');
+    add_filter('wp_statistics_advanced_reporting_link_tracker_request', 'edpsybold_link_tracker_normalize_page_url_filter', 10, 2);
+    add_filter('wp_statistics_advanced_reporting_link_tracker_query_args', 'edpsybold_link_tracker_apply_page_url_filter', 10, 2);
+
+    add_action('admin_enqueue_scripts', 'edpsybold_enqueue_link_tracker_page_url_assets');
+}
+
+/**
+ * Register the page URL filter in the list of available link tracker filters.
+ *
+ * @param array $filters Existing filters.
+ * @return array Filters with the page URL filter appended.
+ */
+function edpsybold_link_tracker_add_page_url_filter($filters)
+{
+    if (!is_array($filters)) {
+        $filters = array();
+    }
+
+    $filters['page_url'] = array(
+        'type' => 'text',
+        'label' => __('Page URL', 'edpsybold'),
+        'placeholder' => __('Filter by URL…', 'edpsybold'),
+    );
+
+    return $filters;
+}
+
+/**
+ * Sanitize the page URL filter value inside the request payload.
+ *
+ * @param array $request     Request arguments passed to the query.
+ * @param array $raw_request Raw request sent from the client.
+ * @return array Normalized request.
+ */
+function edpsybold_link_tracker_normalize_page_url_filter($request, $raw_request)
+{
+    if (!is_array($request)) {
+        $request = array();
+    }
+
+    $value = '';
+    if (isset($raw_request['page_url'])) {
+        $value = sanitize_text_field(wp_unslash($raw_request['page_url']));
+    } elseif (isset($_REQUEST['page_url'])) {
+        $value = sanitize_text_field(wp_unslash($_REQUEST['page_url']));
+    }
+
+    if ($value === '') {
+        unset($request['page_url']);
+        return $request;
+    }
+
+    $request['page_url'] = $value;
+
+    return $request;
+}
+
+/**
+ * Apply the page URL filter to the link tracker database query.
+ *
+ * @param array $query_args Query arguments prepared by the plugin.
+ * @param array $request    Normalized request payload.
+ * @return array Updated query arguments.
+ */
+function edpsybold_link_tracker_apply_page_url_filter($query_args, $request)
+{
+    if (empty($request['page_url'])) {
+        return $query_args;
+    }
+
+    global $wpdb;
+
+    $like_value = '%' . $wpdb->esc_like($request['page_url']) . '%';
+    $condition = $wpdb->prepare('link.url LIKE %s', $like_value);
+
+    if (isset($query_args['where']) && is_array($query_args['where'])) {
+        $query_args['where'][] = $condition;
+    } elseif (isset($query_args['where']) && is_string($query_args['where']) && $query_args['where'] !== '') {
+        $query_args['where'] .= ' AND ' . $condition;
+    } else {
+        $query_args['where'] = array($condition);
+    }
+
+    return $query_args;
+}
+
+/**
+ * Enqueue the UI enhancements that surface the new filter in the admin screen.
+ *
+ * @param string $hook Current admin hook suffix.
+ */
+function edpsybold_enqueue_link_tracker_page_url_assets($hook)
+{
+    if (!is_admin()) {
+        return;
+    }
+
+    $current_page = isset($_GET['page']) ? sanitize_key(wp_unslash($_GET['page'])) : '';
+    if ($current_page === '' || strpos($current_page, 'advanced-reporting') === false) {
+        return;
+    }
+
+    $script_path = get_template_directory() . '/js/link-tracker-page-url-filter.js';
+    if (!file_exists($script_path)) {
+        return;
+    }
+
+    wp_enqueue_script(
+        'edpsybold-link-tracker-page-url-filter',
+        get_template_directory_uri() . '/js/link-tracker-page-url-filter.js',
+        array('jquery'),
+        filemtime($script_path),
+        true
+    );
+
+    wp_localize_script(
+        'edpsybold-link-tracker-page-url-filter',
+        'edpsyboldLinkTrackerUrlFilter',
+        array(
+            'label' => __('Page URL', 'edpsybold'),
+            'placeholder' => __('Filter by URL…', 'edpsybold'),
+        )
+    );
+}
