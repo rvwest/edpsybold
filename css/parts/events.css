@@ -245,6 +245,10 @@
             }
         }
 
+        .tec-settings-form {
+            display: none;
+        }
+
         #recurrence-changed-row {
             display: none;
         }
@@ -513,6 +517,8 @@
 
 
 }
+
+
 
 body.tribe_community_list:not(.wp-admin, .wp-core-ui) {
     h2:not(.signup-content h2) {
