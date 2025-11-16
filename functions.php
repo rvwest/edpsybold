@@ -1817,7 +1817,12 @@ function edpsybold_search_posts_join($join, $query)
     $join .= " LEFT JOIN {$wpdb->term_relationships} AS edpsy_tr ON ({$wpdb->posts}.ID = edpsy_tr.object_id)";
     $join .= " LEFT JOIN {$wpdb->term_taxonomy} AS edpsy_tt ON (edpsy_tr.term_taxonomy_id = edpsy_tt.term_taxonomy_id)";
     $join .= " LEFT JOIN {$wpdb->terms} AS edpsy_terms ON (edpsy_tt.term_id = edpsy_terms.term_id)";
-    $join .= " LEFT JOIN {$wpdb->term_relationships} AS edpsy_ga_tr ON (edpsy_tt.term_taxonomy_id = edpsy_ga_tr.term_taxonomy_id)";
+    // Limit the additional term relationship join to Co-Authors Plus entries so
+    // we don't explode the row count by joining every taxonomy term
+    $join .= $wpdb->prepare(
+        " LEFT JOIN {$wpdb->term_relationships} AS edpsy_ga_tr ON (edpsy_tt.taxonomy = %s AND edpsy_tt.term_taxonomy_id = edpsy_ga_tr.term_taxonomy_id)",
+        'author'
+    );
     $join .= " LEFT JOIN {$wpdb->posts} AS edpsy_ga ON (
         edpsy_ga_tr.object_id = edpsy_ga.ID
         AND edpsy_ga.post_type = 'guest-author'
