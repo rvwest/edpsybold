@@ -1693,6 +1693,31 @@ function edpsybold_should_show_old_events()
 }
 
 /**
+ * Retrieve the taxonomies that should be considered when searching term names.
+ */
+function edpsybold_get_search_taxonomies()
+{
+    $taxonomies = array();
+    $candidates = array('post_tag', 'author', 'guest-author');
+
+    foreach ($candidates as $taxonomy) {
+        if (taxonomy_exists($taxonomy)) {
+            $taxonomies[] = $taxonomy;
+        }
+    }
+
+    return $taxonomies;
+}
+
+/**
+ * Determine if guest author content is available for enhanced searching.
+ */
+function edpsybold_has_guest_authors()
+{
+    return post_type_exists('guest-author') && taxonomy_exists('author');
+}
+
+/**
  * Retrieve a list of public searchable post types to use for search queries.
  */
 function edpsybold_get_searchable_post_types()
@@ -1813,21 +1838,31 @@ function edpsybold_search_posts_join($join, $query)
 
     global $wpdb;
 
+    $taxonomies = edpsybold_get_search_taxonomies();
+    $has_guest_authors = edpsybold_has_guest_authors();
+
     $join .= " LEFT JOIN {$wpdb->users} AS edpsyauth ON ({$wpdb->posts}.post_author = edpsyauth.ID)";
-    $join .= " LEFT JOIN {$wpdb->term_relationships} AS edpsy_tr ON ({$wpdb->posts}.ID = edpsy_tr.object_id)";
-    $join .= " LEFT JOIN {$wpdb->term_taxonomy} AS edpsy_tt ON (edpsy_tr.term_taxonomy_id = edpsy_tt.term_taxonomy_id)";
-    $join .= " LEFT JOIN {$wpdb->terms} AS edpsy_terms ON (edpsy_tt.term_id = edpsy_terms.term_id)";
-    // Limit the additional term relationship join to Co-Authors Plus entries so
-    // we don't explode the row count by joining every taxonomy term
-    $join .= $wpdb->prepare(
-        " LEFT JOIN {$wpdb->term_relationships} AS edpsy_ga_tr ON (edpsy_tt.taxonomy = %s AND edpsy_tt.term_taxonomy_id = edpsy_ga_tr.term_taxonomy_id)",
-        'author'
-    );
-    $join .= " LEFT JOIN {$wpdb->posts} AS edpsy_ga ON (
-        edpsy_ga_tr.object_id = edpsy_ga.ID
-        AND edpsy_ga.post_type = 'guest-author'
-        AND edpsy_ga.post_status = 'publish'
-    )";
+    if (!empty($taxonomies)) {
+        $join .= " LEFT JOIN {$wpdb->term_relationships} AS edpsy_tr ON ({$wpdb->posts}.ID = edpsy_tr.object_id)";
+
+        $placeholders = implode(', ', array_fill(0, count($taxonomies), '%s'));
+        $sql = " LEFT JOIN {$wpdb->term_taxonomy} AS edpsy_tt ON (edpsy_tr.term_taxonomy_id = edpsy_tt.term_taxonomy_id AND edpsy_tt.taxonomy IN ($placeholders))";
+        $join .= call_user_func_array(array($wpdb, 'prepare'), array_merge(array($sql), $taxonomies));
+
+        $join .= " LEFT JOIN {$wpdb->terms} AS edpsy_terms ON (edpsy_tt.term_id = edpsy_terms.term_id)";
+
+        if ($has_guest_authors && in_array('author', $taxonomies, true)) {
+            $join .= $wpdb->prepare(
+                " LEFT JOIN {$wpdb->term_relationships} AS edpsy_ga_tr ON (edpsy_tt.taxonomy = %s AND edpsy_tt.term_taxonomy_id = edpsy_ga_tr.term_taxonomy_id)",
+                'author'
+            );
+            $join .= " LEFT JOIN {$wpdb->posts} AS edpsy_ga ON (
+                edpsy_ga_tr.object_id = edpsy_ga.ID
+                AND edpsy_ga.post_type = 'guest-author'
+                AND edpsy_ga.post_status = 'publish'
+            )";
+        }
+    }
 
     return $join;
 }
@@ -1843,6 +1878,15 @@ function edpsybold_search_posts_search($search, $query)
     }
 
     global $wpdb;
+
+    $taxonomies = edpsybold_get_search_taxonomies();
+    $has_guest_authors = edpsybold_has_guest_authors();
+    $taxonomy_clause = '';
+
+    if (!empty($taxonomies)) {
+        $placeholders = implode(', ', array_fill(0, count($taxonomies), '%s'));
+        $taxonomy_clause = " (edpsy_terms.name LIKE %s AND edpsy_tt.taxonomy IN ($placeholders)) ";
+    }
 
     $search_terms = $query->get('search_terms');
     $search_terms = empty($search_terms) ? array() : $search_terms;
@@ -1873,13 +1917,17 @@ function edpsybold_search_posts_search($search, $query)
             $wpdb->prepare("{$wpdb->posts}.post_excerpt LIKE %s", $like),
             $wpdb->prepare("{$wpdb->posts}.post_content LIKE %s", $like),
             $wpdb->prepare('edpsyauth.display_name LIKE %s', $like),
-            $wpdb->prepare('edpsy_ga.post_title LIKE %s', $like),
-            $wpdb->prepare('edpsy_ga.post_name LIKE %s', $like),
-            $wpdb->prepare(
-                "(edpsy_terms.name LIKE %s AND edpsy_tt.taxonomy IN ('post_tag', 'author', 'guest-author'))",
-                $like
-            ),
         );
+
+        if ($has_guest_authors) {
+            $clause[] = $wpdb->prepare('edpsy_ga.post_title LIKE %s', $like);
+            $clause[] = $wpdb->prepare('edpsy_ga.post_name LIKE %s', $like);
+        }
+
+        if ($taxonomy_clause) {
+            $params = array_merge(array($taxonomy_clause, $like), $taxonomies);
+            $clause[] = call_user_func_array(array($wpdb, 'prepare'), $params);
+        }
 
         $clauses[] = '(' . implode(' OR ', $clause) . ')';
     }
