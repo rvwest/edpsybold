@@ -1817,6 +1817,12 @@ function edpsybold_search_posts_join($join, $query)
     $join .= " LEFT JOIN {$wpdb->term_relationships} AS edpsy_tr ON ({$wpdb->posts}.ID = edpsy_tr.object_id)";
     $join .= " LEFT JOIN {$wpdb->term_taxonomy} AS edpsy_tt ON (edpsy_tr.term_taxonomy_id = edpsy_tt.term_taxonomy_id)";
     $join .= " LEFT JOIN {$wpdb->terms} AS edpsy_terms ON (edpsy_tt.term_id = edpsy_terms.term_id)";
+    $join .= " LEFT JOIN {$wpdb->term_relationships} AS edpsy_ga_tr ON (edpsy_tt.term_taxonomy_id = edpsy_ga_tr.term_taxonomy_id)";
+    $join .= " LEFT JOIN {$wpdb->posts} AS edpsy_ga ON (
+        edpsy_ga_tr.object_id = edpsy_ga.ID
+        AND edpsy_ga.post_type = 'guest-author'
+        AND edpsy_ga.post_status = 'publish'
+    )";
 
     return $join;
 }
@@ -1862,6 +1868,8 @@ function edpsybold_search_posts_search($search, $query)
             $wpdb->prepare("{$wpdb->posts}.post_excerpt LIKE %s", $like),
             $wpdb->prepare("{$wpdb->posts}.post_content LIKE %s", $like),
             $wpdb->prepare('edpsyauth.display_name LIKE %s', $like),
+            $wpdb->prepare('edpsy_ga.post_title LIKE %s', $like),
+            $wpdb->prepare('edpsy_ga.post_name LIKE %s', $like),
             $wpdb->prepare(
                 "(edpsy_terms.name LIKE %s AND edpsy_tt.taxonomy IN ('post_tag', 'author', 'guest-author'))",
                 $like

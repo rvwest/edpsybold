@@ -14,6 +14,9 @@ $has_old_events = edpsybold_search_has_old_events($search_query);
 $show_toggle_for_events = post_type_exists('tribe_events')
     && ('everything' === $selected_content_type || 'tribe_events' === $selected_content_type)
     && ($show_old_events || $has_old_events);
+
+global $wp_query;
+$results_count = $wp_query instanceof WP_Query ? (int) $wp_query->found_posts : 0;
 ?>
 
 <section class="search-results" id="search-results">
@@ -24,6 +27,14 @@ $show_toggle_for_events = post_type_exists('tribe_events')
         <div class="search-results__search-form">
             <?php get_search_form(); ?>
         </div>
+        <p class="search-results__count">
+            <?php
+            printf(
+                esc_html(_n('%s result', '%s results', $results_count, 'edpsybold')),
+                esc_html(number_format_i18n($results_count))
+            );
+            ?>
+        </p>
         <?php if (!empty($available_post_types)): ?>
             <form class="search-results__filters" method="get" action="<?php echo esc_url(home_url('/')); ?>">
                 <input type="hidden" name="s" value="<?php echo esc_attr($search_query); ?>">
@@ -63,7 +74,9 @@ $show_toggle_for_events = post_type_exists('tribe_events')
         <?php while (have_posts()): ?>
             <?php
             the_post();
-            $post_type_label = edpsybold_get_search_post_type_label(get_post_type());
+            $post_type = get_post_type();
+            $post_type_label = edpsybold_get_search_post_type_label($post_type);
+            $show_thumbnail = ('post' === $post_type && has_post_thumbnail());
             ?>
             <article <?php post_class('search-result'); ?> id="post-<?php the_ID(); ?>">
                 <header class="search-result__header">
@@ -72,12 +85,31 @@ $show_toggle_for_events = post_type_exists('tribe_events')
                         <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                     </h2>
                 </header>
-                <div class="search-result__excerpt">
-                    <?php the_excerpt(); ?>
+                <div class="search-result__body">
+                    <?php if ($show_thumbnail): ?>
+                        <div class="search-result__thumbnail">
+                            <a href="<?php the_permalink(); ?>">
+                                <?php the_post_thumbnail('medium_large', array('loading' => 'lazy')); ?>
+                            </a>
+                        </div>
+                    <?php endif; ?>
+                    <div class="search-result__excerpt">
+                        <?php the_excerpt(); ?>
+                    </div>
                 </div>
             </article>
         <?php endwhile; ?>
-        <?php get_template_part('nav', 'below'); ?>
+        <nav class="search-results__pagination" aria-label="<?php esc_attr_e('Search results pagination', 'edpsybold'); ?>">
+            <?php
+            the_posts_pagination(
+                array(
+                    'mid_size' => 2,
+                    'prev_text' => __('Previous', 'edpsybold'),
+                    'next_text' => __('Next', 'edpsybold'),
+                )
+            );
+            ?>
+        </nav>
     <?php else: ?>
         <article id="post-0" class="post no-results not-found">
             <header class="header">
