@@ -2,7 +2,7 @@
 <?php get_header(); ?>
 
 <?php
-$search_query = get_search_query();
+$search_query = get_search_query(false);
 $show_old_events = edpsybold_should_show_old_events();
 $available_post_types = edpsybold_collect_search_post_types($search_query, $show_old_events);
 $selected_content_type = isset($_GET['content_type']) ? sanitize_key(wp_unslash($_GET['content_type'])) : 'everything';
