@@ -1743,45 +1743,21 @@ function edpsybold_get_searchable_post_types()
 }
 
 /**
- * Build the shared meta query used to exclude expired jobs and optionally past events.
+ * Check whether a search query includes the provided post type.
  */
-function edpsybold_build_search_meta_query($show_old_events)
+function edpsybold_search_query_includes_type($query, $post_type)
 {
-    $now = current_time('mysql');
+    $types = $query->get('post_type');
 
-    $conditions = array(
-        array(
-            'relation' => 'OR',
-            array(
-                'key' => '_job_expires',
-                'value' => $now,
-                'compare' => '>=',
-                'type' => 'DATETIME',
-            ),
-            array(
-                'key' => '_job_expires',
-                'compare' => 'NOT EXISTS',
-            ),
-        ),
-    );
-
-    if (!$show_old_events) {
-        $conditions[] = array(
-            'relation' => 'OR',
-            array(
-                'key' => '_EventEndDate',
-                'value' => $now,
-                'compare' => '>=',
-                'type' => 'DATETIME',
-            ),
-            array(
-                'key' => '_EventEndDate',
-                'compare' => 'NOT EXISTS',
-            ),
-        );
+    if (empty($types) || 'any' === $types) {
+        return true;
     }
 
-    return $conditions;
+    if (is_string($types)) {
+        return $post_type === $types;
+    }
+
+    return in_array($post_type, (array) $types, true);
 }
 
 /**
@@ -1794,23 +1770,7 @@ function edpsybold_customize_search_query($query)
     }
 
     $show_old_events = edpsybold_should_show_old_events();
-    if (!$query->get('edpsybold_meta_applied')) {
-        $meta_query = $query->get('meta_query');
-        if (!is_array($meta_query)) {
-            $meta_query = array();
-        }
-
-        if (!isset($meta_query['relation'])) {
-            $meta_query['relation'] = 'AND';
-        }
-
-        foreach (edpsybold_build_search_meta_query($show_old_events) as $clause) {
-            $meta_query[] = $clause;
-        }
-
-        $query->set('meta_query', $meta_query);
-        $query->set('edpsybold_meta_applied', true);
-    }
+    $query->set('edpsybold_show_old_events', $show_old_events);
 
     $query->set('post_status', 'publish');
 
@@ -1941,6 +1901,52 @@ function edpsybold_search_posts_search($search, $query)
 add_filter('posts_search', 'edpsybold_search_posts_search', 10, 2);
 
 /**
+ * Limit search results to current/active jobs and events.
+ */
+function edpsybold_search_posts_where($where, $query)
+{
+    if (!edpsybold_is_enhanced_search_query($query)) {
+        return $where;
+    }
+
+    global $wpdb;
+
+    $now = current_time('mysql');
+
+    if (edpsybold_search_query_includes_type($query, 'job_listing')) {
+        $where .= $wpdb->prepare(
+            " AND ( {$wpdb->posts}.post_type <> 'job_listing' OR NOT EXISTS ("
+            . "SELECT 1 FROM {$wpdb->postmeta} jobmeta"
+            . " WHERE jobmeta.post_id = {$wpdb->posts}.ID"
+            . " AND jobmeta.meta_key = %s"
+            . " AND jobmeta.meta_value <> ''"
+            . " AND jobmeta.meta_value < %s"
+            . ') )',
+            '_job_expires',
+            $now
+        );
+    }
+
+    $show_old_events = (bool) $query->get('edpsybold_show_old_events');
+    if (!$show_old_events && edpsybold_search_query_includes_type($query, 'tribe_events')) {
+        $where .= $wpdb->prepare(
+            " AND ( {$wpdb->posts}.post_type <> 'tribe_events' OR NOT EXISTS ("
+            . "SELECT 1 FROM {$wpdb->postmeta} eventmeta"
+            . " WHERE eventmeta.post_id = {$wpdb->posts}.ID"
+            . " AND eventmeta.meta_key = %s"
+            . " AND eventmeta.meta_value <> ''"
+            . " AND eventmeta.meta_value < %s"
+            . ') )',
+            '_EventEndDate',
+            $now
+        );
+    }
+
+    return $where;
+}
+add_filter('posts_where', 'edpsybold_search_posts_where', 10, 2);
+
+/**
  * Ensure we do not receive duplicate posts when joining extra tables.
  */
 function edpsybold_search_posts_distinct($distinct, $query)
@@ -1969,20 +1975,14 @@ function edpsybold_search_has_old_events($search_query)
         'posts_per_page' => 1,
         'no_found_rows' => true,
         'fields' => 'ids',
-        'edpsybold_meta_applied' => true,
-        'meta_query' => array_merge(
+        'edpsybold_show_old_events' => true,
+        'meta_query' => array(
             array(
-                'relation' => 'AND',
+                'key' => '_EventEndDate',
+                'value' => current_time('mysql'),
+                'compare' => '<',
+                'type' => 'DATETIME',
             ),
-            edpsybold_build_search_meta_query(true),
-            array(
-                array(
-                    'key' => '_EventEndDate',
-                    'value' => current_time('mysql'),
-                    'compare' => '<',
-                    'type' => 'DATETIME',
-                ),
-            )
         ),
     );
 
@@ -2000,8 +2000,6 @@ function edpsybold_collect_search_post_types($search_query, $show_old_events)
     $post_types = edpsybold_get_searchable_post_types();
 
     foreach ($post_types as $post_type) {
-        $clauses = edpsybold_build_search_meta_query($show_old_events || 'tribe_events' !== $post_type);
-
         $args = array(
             's' => $search_query,
             'post_type' => $post_type,
@@ -2009,8 +2007,7 @@ function edpsybold_collect_search_post_types($search_query, $show_old_events)
             'posts_per_page' => 1,
             'no_found_rows' => true,
             'fields' => 'ids',
-            'edpsybold_meta_applied' => true,
-            'meta_query' => array_merge(array('relation' => 'AND'), $clauses),
+            'edpsybold_show_old_events' => ($show_old_events || 'tribe_events' !== $post_type),
         );
 
         $query = new WP_Query($args);
