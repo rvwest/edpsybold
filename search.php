@@ -10,10 +10,7 @@ if (!in_array($selected_content_type, $available_post_types, true)) {
     $selected_content_type = 'everything';
 }
 
-$has_old_events = edpsybold_search_has_old_events($search_query);
-$show_toggle_for_events = post_type_exists('tribe_events')
-    && ('everything' === $selected_content_type || 'tribe_events' === $selected_content_type)
-    && ($show_old_events || $has_old_events);
+$show_toggle_for_events = post_type_exists('tribe_events');
 $should_render_filters_form = !empty($available_post_types) || $show_toggle_for_events || $show_old_events;
 
 global $wp_query;
