@@ -1864,7 +1864,7 @@ function edpsybold_search_posts_search($search, $query)
     $taxonomies = edpsybold_get_search_taxonomies();
     $has_guest_authors = edpsybold_has_guest_authors();
     $wpbdp_listingmeta_table = edpsybold_get_wpbdp_listingmeta_table();
-    $has_wpbdp_form_fields = post_type_exists('wpbdp_listing') && !empty($wpbdp_listingmeta_table);
+    $has_wpbdp_form_fields = post_type_exists('wpbdp_listing');
     $taxonomy_clause = '';
 
     if (!empty($taxonomies)) {
@@ -1926,14 +1926,43 @@ function edpsybold_search_posts_search($search, $query)
         }
 
         if ($has_wpbdp_form_fields) {
+            $wpbdp_meta_checks = array();
+
+            if (!empty($wpbdp_listingmeta_table)) {
+                $wpbdp_meta_checks[] = $wpdb->prepare(
+                    'EXISTS ('
+                    . "SELECT 1 FROM {$wpbdp_listingmeta_table} AS edpsy_wpbdp_listingmeta"
+                    . " WHERE edpsy_wpbdp_listingmeta.listing_id = {$wpdb->posts}.ID"
+                    . ' AND edpsy_wpbdp_listingmeta.meta_value LIKE %s'
+                    . ')',
+                    $like
+                );
+            }
+
+            $wpbdp_hidden_prefix = $wpdb->esc_like('_') . '%';
+            $wpbdp_field_prefix = $wpdb->esc_like('_wpbdp_') . '%';
+
+            $wpbdp_meta_checks[] = $wpdb->prepare(
+                'EXISTS ('
+                . "SELECT 1 FROM {$wpdb->postmeta} AS edpsy_wpbdp_postmeta"
+                . " WHERE edpsy_wpbdp_postmeta.post_id = {$wpdb->posts}.ID"
+                . ' AND edpsy_wpbdp_postmeta.meta_value LIKE %s'
+                . ' AND ('
+                . 'edpsy_wpbdp_postmeta.meta_key LIKE %s'
+                . ' OR edpsy_wpbdp_postmeta.meta_key NOT LIKE %s'
+                . ')
+                )',
+                $like,
+                $wpbdp_field_prefix,
+                $wpbdp_hidden_prefix
+            );
+
             $clause[] = $wpdb->prepare(
-                "( {$wpdb->posts}.post_type = %s AND EXISTS ("
-                . "SELECT 1 FROM {$wpbdp_listingmeta_table} AS edpsy_wpbdp_listingmeta"
-                . " WHERE edpsy_wpbdp_listingmeta.listing_id = {$wpdb->posts}.ID"
-                . " AND edpsy_wpbdp_listingmeta.meta_value LIKE %s"
-                . ') )',
-                'wpbdp_listing',
-                $like
+                '('
+                . "{$wpdb->posts}.post_type = %s"
+                . ' AND (' . implode(' OR ', $wpbdp_meta_checks) . ')
+                )',
+                'wpbdp_listing'
             );
         }
 
@@ -2028,6 +2057,7 @@ function edpsybold_search_has_old_events($search_query)
         'posts_per_page' => 1,
         'no_found_rows' => true,
         'fields' => 'ids',
+        'suppress_filters' => false,
         'edpsybold_show_old_events' => true,
         'meta_query' => array(
             array(
@@ -2060,6 +2090,7 @@ function edpsybold_collect_search_post_types($search_query, $show_old_events)
             'posts_per_page' => 1,
             'no_found_rows' => true,
             'fields' => 'ids',
+            'suppress_filters' => false,
             'edpsybold_show_old_events' => ($show_old_events || 'tribe_events' !== $post_type),
         );
 

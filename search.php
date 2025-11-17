@@ -14,6 +14,7 @@ $has_old_events = edpsybold_search_has_old_events($search_query);
 $show_toggle_for_events = post_type_exists('tribe_events')
     && ('everything' === $selected_content_type || 'tribe_events' === $selected_content_type)
     && ($show_old_events || $has_old_events);
+$should_render_filters_form = !empty($available_post_types) || $show_toggle_for_events || $show_old_events;
 
 global $wp_query;
 $results_count = $wp_query instanceof WP_Query ? (int) $wp_query->found_posts : 0;
@@ -35,22 +36,24 @@ $results_count = $wp_query instanceof WP_Query ? (int) $wp_query->found_posts : 
             );
             ?>
         </p>
-        <?php if (!empty($available_post_types)): ?>
+        <?php if ($should_render_filters_form): ?>
             <form class="search-results__filters" method="get" action="<?php echo esc_url(home_url('/')); ?>">
                 <input type="hidden" name="s" value="<?php echo esc_attr($search_query); ?>">
-                <label for="search-content-type" class="screen-reader-text">
-                    <?php esc_html_e('Filter by content type', 'edpsybold'); ?>
-                </label>
-                <select id="search-content-type" name="content_type" onchange="this.form.submit()">
-                    <option value="everything" <?php selected($selected_content_type, 'everything'); ?>>
-                        <?php esc_html_e('Everything', 'edpsybold'); ?>
-                    </option>
-                    <?php foreach ($available_post_types as $type): ?>
-                        <option value="<?php echo esc_attr($type); ?>" <?php selected($selected_content_type, $type); ?>>
-                            <?php echo esc_html(edpsybold_get_search_post_type_label($type)); ?>
+                <?php if (!empty($available_post_types)): ?>
+                    <label for="search-content-type" class="screen-reader-text">
+                        <?php esc_html_e('Filter by content type', 'edpsybold'); ?>
+                    </label>
+                    <select id="search-content-type" name="content_type" onchange="this.form.submit()">
+                        <option value="everything" <?php selected($selected_content_type, 'everything'); ?>>
+                            <?php esc_html_e('Everything', 'edpsybold'); ?>
                         </option>
-                    <?php endforeach; ?>
-                </select>
+                        <?php foreach ($available_post_types as $type): ?>
+                            <option value="<?php echo esc_attr($type); ?>" <?php selected($selected_content_type, $type); ?>>
+                                <?php echo esc_html(edpsybold_get_search_post_type_label($type)); ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                <?php endif; ?>
                 <?php if ($show_toggle_for_events): ?>
                     <div class="search-results__toggle">
                         <input type="hidden" name="show_old_events" value="0">
