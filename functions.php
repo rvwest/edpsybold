@@ -1718,6 +1718,28 @@ function edpsybold_has_guest_authors()
 }
 
 /**
+ * Determine whether the Business Directory listing meta table is available.
+ */
+function edpsybold_get_wpbdp_listingmeta_table()
+{
+    static $table = null;
+
+    if (null !== $table) {
+        return $table;
+    }
+
+    global $wpdb;
+
+    $candidate = $wpdb->prefix . 'wpbdp_listingmeta';
+    $like = $wpdb->esc_like($candidate);
+    $found = $wpdb->get_var($wpdb->prepare('SHOW TABLES LIKE %s', $like));
+
+    $table = ($found === $candidate) ? $candidate : '';
+
+    return $table;
+}
+
+/**
  * Retrieve a list of public searchable post types to use for search queries.
  */
 function edpsybold_get_searchable_post_types()
@@ -1841,6 +1863,8 @@ function edpsybold_search_posts_search($search, $query)
 
     $taxonomies = edpsybold_get_search_taxonomies();
     $has_guest_authors = edpsybold_has_guest_authors();
+    $wpbdp_listingmeta_table = edpsybold_get_wpbdp_listingmeta_table();
+    $has_wpbdp_form_fields = post_type_exists('wpbdp_listing') && !empty($wpbdp_listingmeta_table);
     $taxonomy_clause = '';
 
     if (!empty($taxonomies)) {
@@ -1876,12 +1900,41 @@ function edpsybold_search_posts_search($search, $query)
             $wpdb->prepare("{$wpdb->posts}.post_title LIKE %s", $like),
             $wpdb->prepare("{$wpdb->posts}.post_excerpt LIKE %s", $like),
             $wpdb->prepare("{$wpdb->posts}.post_content LIKE %s", $like),
-            $wpdb->prepare('edpsyauth.display_name LIKE %s', $like),
         );
+
+        $author_clause = "( {$wpdb->posts}.post_type = 'post'";
+        $author_params = array();
+
+        if ($has_guest_authors) {
+            $author_clause .= " AND NOT EXISTS (";
+            $author_clause .= "SELECT 1 FROM {$wpdb->term_relationships} AS edpsy_author_rel";
+            $author_clause .= " INNER JOIN {$wpdb->term_taxonomy} AS edpsy_author_tt";
+            $author_clause .= " ON edpsy_author_rel.term_taxonomy_id = edpsy_author_tt.term_taxonomy_id";
+            $author_clause .= " WHERE edpsy_author_rel.object_id = {$wpdb->posts}.ID";
+            $author_clause .= " AND edpsy_author_tt.taxonomy = %s";
+            $author_clause .= ')';
+            $author_params[] = 'author';
+        }
+
+        $author_clause .= ' AND edpsyauth.display_name LIKE %s )';
+        $author_params[] = $like;
+        $clause[] = call_user_func_array(array($wpdb, 'prepare'), array_merge(array($author_clause), $author_params));
 
         if ($has_guest_authors) {
             $clause[] = $wpdb->prepare('edpsy_ga.post_title LIKE %s', $like);
             $clause[] = $wpdb->prepare('edpsy_ga.post_name LIKE %s', $like);
+        }
+
+        if ($has_wpbdp_form_fields) {
+            $clause[] = $wpdb->prepare(
+                "( {$wpdb->posts}.post_type = %s AND EXISTS ("
+                . "SELECT 1 FROM {$wpbdp_listingmeta_table} AS edpsy_wpbdp_listingmeta"
+                . " WHERE edpsy_wpbdp_listingmeta.listing_id = {$wpdb->posts}.ID"
+                . " AND edpsy_wpbdp_listingmeta.meta_value LIKE %s"
+                . ') )',
+                'wpbdp_listing',
+                $like
+            );
         }
 
         if ($taxonomy_clause) {
