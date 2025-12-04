@@ -52,6 +52,14 @@ article.type-wpbdp_listing,
         }
     }
 
+    ul.fa-ul {
+        margin-left: var(--sp-small);
+
+        li {
+            list-style-type: none;
+        }
+    }
+
 
     .entry-content,
     .job_description,
