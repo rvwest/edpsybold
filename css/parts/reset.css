@@ -385,7 +385,11 @@ section {
     color: inherit;
 }
 
+/** Search **/
 
+select#search-content-type {
+    all: inherit;
+}
 
 /** ============== Business Directory ============== **/
 
