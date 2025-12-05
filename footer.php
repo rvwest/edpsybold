@@ -10,6 +10,7 @@
 
 		<div class="footer-content">
 			<p class="footer-social">
+				<a href="/educated-guess-podcast" class="footer-bluesky-svg"><i class="fas fa-podcast"></i></a> |
 				<a href="https://bsky.app/profile/edpsy.bsky.social" class="footer-bluesky-svg"><img
 						src="<?php echo get_template_directory_uri(); ?>/images/bluesky.svg"
 						class="footer-img-svg"></i></a> |
