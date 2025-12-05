@@ -22,17 +22,12 @@ $results_count = $wp_query instanceof WP_Query ? (int) $wp_query->found_posts : 
         <h1 class="entry-title" itemprop="name">
             <?php printf(esc_html__('Search Results for: %s', 'edpsybold'), esc_html($search_query)); ?>
         </h1>
+
+        <!-- search field and options -->
         <div class="search-results__search-form">
             <?php get_search_form(); ?>
         </div>
-        <p class="search-results__count">
-            <?php
-            printf(
-                esc_html(_n('%s result', '%s results', $results_count, 'edpsybold')),
-                esc_html(number_format_i18n($results_count))
-            );
-            ?>
-        </p>
+        <!-- filters -->
         <?php if ($should_render_filters_form): ?>
             <form class="search-results__filters" method="get" action="<?php echo esc_url(home_url('/')); ?>">
                 <input type="hidden" name="s" value="<?php echo esc_attr($search_query); ?>">
@@ -68,6 +63,15 @@ $results_count = $wp_query instanceof WP_Query ? (int) $wp_query->found_posts : 
                 </noscript>
             </form>
         <?php endif; ?>
+        <!-- end of search field and options -->
+        <p class="search-results__count">
+            <?php
+            printf(
+                esc_html(_n('%s result', '%s results', $results_count, 'edpsybold')),
+                esc_html(number_format_i18n($results_count))
+            );
+            ?>
+        </p>
     </header>
 
     <?php if (have_posts()): ?>
@@ -125,4 +129,3 @@ $results_count = $wp_query instanceof WP_Query ? (int) $wp_query->found_posts : 
 
 <?php get_footer(); ?>
 <!-- file end: search.php -->
-
