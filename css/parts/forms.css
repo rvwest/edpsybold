@@ -106,6 +106,7 @@
     }
 
     a:focus,
+    button.wp-element-button:focus,
     .category-jobs a.button:focus,
     .wpjm-page input.button:focus,
     .job-manager-form fieldset input.input-date:focus,
@@ -129,6 +130,7 @@
 
     textarea,
     input[type="text"],
+    input[type="search"],
     input[type="email"],
     input[type="password"],
     input[type="tel"] {
@@ -164,6 +166,7 @@
 
     /* Standard */
     input[type="text"],
+    input[type="search"],
     input[type="email"],
     input#create_account_email,
     input[type="password"],

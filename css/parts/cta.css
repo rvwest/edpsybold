@@ -10,6 +10,7 @@ select[disabled]>option {
 }
 
 a.button.edp-button-solid,
+button.wp-element-button,
 button.edp-button-solid,
 .wp-block-button.is-style-fill a,
 .wp-block-button a.has-background,
