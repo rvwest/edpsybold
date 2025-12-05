@@ -52,13 +52,7 @@ article.type-wpbdp_listing,
         }
     }
 
-    ul.fa-ul {
-        margin-left: var(--sp-small);
 
-        li {
-            list-style-type: none;
-        }
-    }
 
 
     .entry-content,
@@ -79,6 +73,14 @@ article.type-wpbdp_listing,
                 margin-left: var(--sp-medium);
                 margin-bottom: var(--sp-xsmall);
 
+            }
+
+            &.fa-ul {
+                margin-left: var(--sp-small);
+
+                li {
+                    list-style-type: none;
+                }
             }
         }
 
