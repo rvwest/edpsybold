@@ -177,16 +177,14 @@ article.type-wpbdp_listing,
 
 /* ---- Blog post only ----- */
 
-article.type-post {
-
-    .entry-content .content-body>p:first-of-type {
-        font-size: var(--fs-title-small);
-        line-height: var(--lh-title-small);
-        margin-bottom: var(--sp-medium);
-    }
-
-
+article.type-post .entry-content .content-body>p:first-of-type,
+p.chunky-bodytext {
+    font-size: var(--fs-title-small);
+    line-height: var(--lh-title-small);
+    margin-bottom: var(--sp-medium);
 }
+
+
 
 
 /* ----- Special pages -----
