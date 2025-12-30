@@ -40,7 +40,7 @@
                     </div>
                     <div class="meta-item">
                         <div class="label">Salary</div>
-                        <div class="detail salary"><?php gma_wpjmef_display_combined_data_listings(); ?> <?php if ($soulbury_detail_info) { ?> <br> <?php echo $soulbury_detail_info; } ?></div>
+                        <div class="detail salary"><?php gma_wpjmef_display_combined_data_listings(); ?> <?php if ($soulbury_detail_info) { ?> <?php echo $soulbury_detail_info; } ?></div>
                        
                     </div>
 
