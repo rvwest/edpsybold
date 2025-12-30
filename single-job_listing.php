@@ -1,6 +1,7 @@
 <!-- file: single-job_listing.php -->
 <?php $closing = get_post_meta($post->ID, '_closing_date', true, get_option('date_format')); ?>
 <?php $interview = get_post_meta($post->ID, '_interview_date', true) ?>
+<?php $soulbury_detail_info = get_post_meta($post->ID, '_job_soulbury_detail_info', true) ?>
 
 <?php get_header(); ?>
 <?php if (have_posts()):
@@ -39,8 +40,11 @@
                     </div>
                     <div class="meta-item">
                         <div class="label">Salary</div>
-                        <div class="detail salary"><?php gma_wpjmef_display_combined_data_listings(); ?></div>
+                        <div class="detail salary"><?php gma_wpjmef_display_combined_data_listings(); ?> <?php if ($soulbury_detail_info) { ?> <br> <?php echo $soulbury_detail_info; } ?></div>
+                       
                     </div>
+
+                    
 
                     <?php if (get_option('job_manager_enable_types')) { ?>
                         <div class="meta-item">
