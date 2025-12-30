@@ -1489,7 +1489,9 @@
 
   .business-directory.wpbdp-view-main #container,
   .business-directory.wpbdp-view-search #container {
-    .wpbdp-main-box .wpbdp-listings-sort-options {
+
+    .wpbdp-main-box .wpbdp-listings-sort-options,
+    .search-main-box .search-listings-sort-options {
       flex-direction: column;
 
       & select {
@@ -2356,7 +2358,8 @@
 
   /*=== thesis directory listing ==== */
   .business-directory.wpbdp-view-main #container .wpbdp-main-box,
-  .business-directory.wpbdp-view-search #container .wpbdp-main-box {
+  .business-directory.wpbdp-view-search #container .wpbdp-main-box,
+  .search-main-box {
     flex-direction: column;
     padding: 0;
     gap: var(--sp-medium);

@@ -18,9 +18,6 @@ $search_context = wp_parse_args(
         <h1 class="entry-title" itemprop="name">
             <?php printf(esc_html__('Search Results for: %s', 'edpsybold'), esc_html($search_context['search_query'])); ?>
         </h1>
-
-        <?php require locate_template('search-form.php'); ?>
-
         <p class="search-results__count">
             <?php
             printf(
@@ -29,6 +26,9 @@ $search_context = wp_parse_args(
             );
             ?>
         </p>
+        <?php require locate_template('search-form.php'); ?>
+
+
     </header>
 
     <?php if (have_posts()): ?>

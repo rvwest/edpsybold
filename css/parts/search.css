@@ -1,0 +1,103 @@
+@import url('variables.css');
+
+body.search,
+.business-directory.wpbdp-view-main,
+.business-directory.wpbdp-view-search {
+
+    .search-main-box {
+        border: 1px solid var(--cl-dark);
+    }
+
+    .wpbdp-main-box,
+    .search-main-box {
+        display: flex;
+        width: 100%;
+        background-color: var(--cl-light);
+        align-items: center;
+        padding: 0 var(--sp-medium);
+        margin-bottom: var(--sp-xlarge);
+
+        .search-wrapper {
+            display: flex;
+
+            flex-grow: 2;
+        }
+
+        .search-block {
+            flex-grow: 2;
+
+            .main-input {
+                display: flex;
+
+                svg {
+                    width: 20px;
+                    margin-right: var(--sp-small);
+                }
+
+                input[type="text"],
+                input[type="search"] {
+                    width: 100%;
+                    border: none;
+
+                    &::placeholder {
+                        color: var(--cl-dark);
+                    }
+                }
+            }
+
+
+        }
+
+
+
+        .submit-btn {
+            padding-right: var(--sp-medium);
+            border-right: solid 1px var(--cl-dark);
+            display: flex;
+            align-items: center;
+        }
+
+        .wpbdp-listings-sort-options,
+        .search-listings-sort-options {
+            padding-left: var(--sp-medium);
+            display: flex;
+
+            label {
+                padding-left: 0;
+                font-weight: var(--fw-normal);
+            }
+
+
+        }
+
+        .search-listings-sort-options select#search-content-type {
+            padding-left: var(--sp-xsmall);
+        }
+
+        .wpbdp-listings-sort-options select {
+            padding-left: var(--sp-small);
+        }
+
+    }
+
+    .search-results__toggle.checkbox-pair {
+        width: fit-content;
+        padding-right: var(--sp-medium);
+    }
+
+    article.search-result {
+        display: flex;
+        flex-direction: column;
+        gap: var(--sp-xsmall);
+
+        &.search-result--post {
+            .search-result__body {
+                display: flex;
+                gap: var(--sp-small);
+            }
+        }
+
+
+    }
+
+}

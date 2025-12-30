@@ -7,7 +7,7 @@
 
 ?>
 <!-- file: business-directory/main-box.tpl.php-->
-<div id="wpbdp-main-box" class="wpbdp-main-box" data-breakpoints-class-prefix="wpbdp-main-box">
+<div id="wpbdp-main-box" class="wpbdp-main-box " data-breakpoints-class-prefix="wpbdp-main-box">
 
 	<?php if (wpbdp_get_option('show-search-listings') || $in_shortcode): ?>
 		<div class="search-wrapper">
