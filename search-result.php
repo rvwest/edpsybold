@@ -24,7 +24,7 @@ $thumbnail_available = ('post' === $post_type && has_post_thumbnail());
             <?php if ($thumbnail_available): ?>
                 <div class="search-result__thumbnail">
                     <a href="<?php the_permalink(); ?>">
-                        <?php the_post_thumbnail('medium_large', array('loading' => 'lazy')); ?>
+                        <?php the_post_thumbnail('medium', array('loading' => 'lazy')); ?>
                     </a>
                 </div>
             <?php endif; ?>
