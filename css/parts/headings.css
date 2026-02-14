@@ -415,3 +415,32 @@ body:not(.wp-admin) {
 
     /* viewport-specific rules moved to parts/viewport.css */
 }
+
+/* Chunky H2 titles */
+
+.edp-jobs.single-job_listing article.type-job_listing,
+.single-tribe_events article.type-tribe_events,
+.single-wpbdp_listing article.type-wpbdp_listing,
+.search-results {
+    header {
+
+
+        .entry-title,
+        .tribe-events-single-event-title {
+            margin-bottom: var(--sp-small);
+        }
+
+        .company,
+        .edp-event-date-time,
+        .edp-event-cost,
+        .edp-event-location,
+        .edp-event-on-demand,
+        .wpbdp-year-inst-block,
+        .search-results__count {
+            font-size: var(--fs-title-medium);
+            font-weight: var(--fw-semibold);
+            line-height: var(--lh-title-large);
+        }
+
+    }
+}

@@ -3,8 +3,8 @@
     the_posts_pagination(
         array(
             'mid_size' => 2,
-            'prev_text' => __('Previous', 'edpsybold'),
-            'next_text' => __('Next', 'edpsybold'),
+            'prev_text' => __('previous', 'edpsybold'),
+            'next_text' => __('next', 'edpsybold'),
         )
     );
     ?>

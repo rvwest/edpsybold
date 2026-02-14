@@ -4,8 +4,20 @@ body.search,
 .business-directory.wpbdp-view-main,
 .business-directory.wpbdp-view-search {
 
+
+
+    .entry-title {
+        margin-bottom: var(--sp-small);
+    }
+
+    /* Search only */
     .search-main-box {
         border: 1px solid var(--cl-dark);
+    }
+
+    /* Thesis only */
+    .wpbdp-main-box {
+        margin-bottom: var(--sp-xlarge);
     }
 
     .wpbdp-main-box,
@@ -82,6 +94,7 @@ body.search,
     .search-results__filters-2 {
         display: flex;
         justify-content: end;
+        margin-right: 1px;
 
         .search-results__toggle.checkbox-pair {
             width: fit-content;
@@ -96,14 +109,74 @@ body.search,
         flex-direction: column;
         gap: var(--sp-xsmall);
 
+        .search-result__type {
+            font-weight: var(--fw-medium);
+        }
+
         &.search-result--post {
+
+
+
             .search-result__body {
                 display: flex;
                 gap: var(--sp-small);
             }
         }
 
+        .search-result__title {
+            max-width: var(--gs-7);
+        }
 
+        .search-result__excerpt {
+            max-width: var(--gs-6);
+        }
+
+    }
+
+    .search-results__pagination {
+        margin-bottom: var(--sp-xlarge);
+
+        .nav-links {
+            display: flex;
+            gap: var(--sp-small);
+            justify-content: center;
+
+            .page-numbers {
+                color: var(--cl-dark);
+                font-weight: var(--fw-medium);
+
+
+                &.next:hover,
+                &.prev:hover {
+                    color: var(--cl-link);
+                }
+            }
+
+            .page-numbers:not(.next):not(.prev) {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 32px;
+                height: 32px;
+                border-radius: 50%;
+                background-color: var(--cl-light);
+
+                &.current {
+                    background-color: var(--cl-dark);
+                    color: var(--cl-light);
+                }
+
+                &:not(.current):not(.next):not(.prev):hover {
+                    background-color: var(--cl-link);
+                    color: var(--cl-light);
+                }
+
+            }
+
+
+
+
+        }
     }
 
 }
