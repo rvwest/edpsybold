@@ -1,5 +1,16 @@
 @import url('variables.css');
 
+body.search {
+
+
+
+
+    /* Search only */
+    .search-main-box {
+        border: 1px solid var(--cl-dark);
+    }
+}
+
 body.search,
 .business-directory.wpbdp-view-main,
 .business-directory.wpbdp-view-search {
@@ -10,10 +21,7 @@ body.search,
         margin-bottom: var(--sp-small);
     }
 
-    /* Search only */
-    .search-main-box {
-        border: 1px solid var(--cl-dark);
-    }
+
 
     /* Thesis only */
     .wpbdp-main-box {
@@ -120,15 +128,18 @@ body.search,
             .search-result__body {
                 display: flex;
                 gap: var(--sp-small);
+                justify-content: space-between;
             }
         }
 
         .search-result__title {
-            max-width: var(--gs-7);
+            max-width: 710px;
+            /*            max-width: var(--gs-7);*/
         }
 
         .search-result__excerpt {
-            max-width: var(--gs-6);
+            /* max-width: var(--gs-6);*/
+            max-width: 670px;
         }
 
     }

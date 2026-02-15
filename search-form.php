@@ -6,7 +6,7 @@ $show_toggle_for_events = $search_context['show_toggle_for_events'];
 $should_render_filters_form = $search_context['should_render_filters_form'];
 $show_old_events = $search_context['show_old_events'];
 ?>
-<div class="search-main-box">
+<div class="search-main-box" id="search-main-box">
 
     <form role="search" method="get" class="search-form search-wrapper" action="<?php echo esc_url(home_url('/')); ?>">
         <div class="search-block">

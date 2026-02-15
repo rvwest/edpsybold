@@ -446,7 +446,8 @@
   .wpbdp-view-main :is(article.page)>*,
   .tribe-events-view--list .tribe-events-l-container>*,
   .tribe-events-view--list .tribe-events-header__top-bar,
-  .tribe-events-view--list .event-disclaimer {
+  .tribe-events-view--list .event-disclaimer,
+  .search .search-results {
     grid-column: 1 / span 12;
   }
 
@@ -2356,10 +2357,42 @@
     }
   }
 
+  /* === Search === */
+
+  .search #search-main-box {
+    flex-direction: column;
+    border: none;
+    padding: 0;
+    gap: var(--sp-small);
+    align-items: end;
+
+    .search-wrapper {
+      border: 1px solid var(--cl-dark);
+      width: 100%;
+      padding-left: var(--sp-medium);
+
+      .submit-btn {
+        border-right: none;
+      }
+
+
+    }
+
+    .search-listings-sort-options {
+      border: 1px solid var(--cl-dark);
+      padding: var(--sp-small) var(--sp-medium);
+      align-items: center;
+
+      select#search-content-type {
+        border: none;
+        padding: 0 0 0 var(--sp-small);
+      }
+    }
+  }
+
   /*=== thesis directory listing ==== */
   .business-directory.wpbdp-view-main #container .wpbdp-main-box,
-  .business-directory.wpbdp-view-search #container .wpbdp-main-box,
-  .search-main-box {
+  .business-directory.wpbdp-view-search #container .wpbdp-main-box {
     flex-direction: column;
     padding: 0;
     gap: var(--sp-medium);
