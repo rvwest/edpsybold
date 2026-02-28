@@ -6,71 +6,78 @@ $article_classes = 'search-result search-result--' . sanitize_html_class($post_t
 $thumbnail_available = ('post' === $post_type && has_post_thumbnail());
 ?>
 
-<article <?php post_class($article_classes); ?> id="post-<?php the_ID(); ?>">
-    <div class="search-result__type"><?php echo esc_html($post_type_label); ?></div>
+<article <?php post_class($article_classes); ?> id="post-<?php the_ID(); ?>"><a href="<?php the_permalink(); ?>"
+        class="whole-post-link">
+        <div class="search-result__type"><?php echo esc_html($post_type_label); ?></div>
 
 
-    <?php if ('post' === $post_type): ?>
+        <?php if ('post' === $post_type): ?>
 
-        <div class="search-result__body">
-            <div class="search-result__text">
-                <h2 class="search-result__title">
-                    <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                </h2>
-                <div class="search-result__excerpt">
-                    <?php the_excerpt(); ?>
+            <div class="search-result__body">
+
+                <div class="search-result__text">
+                    <h2 class="search-result__title">
+                        <?php the_title(); ?>
+                    </h2>
+                    <div class="search-result__excerpt">
+                        <?php echo esc_html(wp_trim_words(get_the_excerpt(), 30)); ?>
+                    </div>
                 </div>
-            </div>
-            <?php if ($thumbnail_available): ?>
+                <?php if ($thumbnail_available): ?>
 
-                <div class="search-result__thumbnail archive-article-img">
-                    <a href="<?php the_permalink(); ?>">
+                    <div class="search-result__thumbnail archive-article-img">
+
                         <?php the_post_thumbnail('medium', array('loading' => 'lazy')); ?>
-                    </a>
-                </div>
-            <?php endif; ?>
-        </div>
-    <?php elseif ('tribe_events' === $post_type): ?>
 
-        <div class="search-result__body">
-            <div class="search-result__text">
-                <h2 class="search-result__title">
-                    <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                </h2>
-                <?php if (function_exists('tribe_get_start_date')): ?>
-                    <p class="search-result__meta">
-                        <?php echo esc_html(tribe_get_start_date(get_the_ID(), false, get_option('date_format'))); ?>
-                    </p>
+                    </div>
+
                 <?php endif; ?>
+            </div>
 
-                <div class="search-result__excerpt">
-                    <?php the_excerpt(); ?>
+
+
+        <?php elseif ('tribe_events' === $post_type): ?>
+            <div class="search-result__body">
+                <div class="search-result__text">
+                    <h2 class="search-result__title">
+                        <?php the_title(); ?>
+                    </h2>
+                    <?php if (function_exists('tribe_get_start_date')): ?>
+                        <p class="search-result__meta">
+                            <?php echo esc_html(tribe_get_start_date(get_the_ID(), false, get_option('date_format'))); ?>
+                        </p>
+                    <?php endif; ?>
+
+                    <div class="search-result__excerpt">
+                        <?php echo esc_html(wp_trim_words(get_the_excerpt(), 30)); ?>
+                    </div>
                 </div>
             </div>
-        </div>
-    <?php elseif ('thesis' === $post_type || 'wpbdp_listing' === $post_type): ?>
 
-        <div class="search-result__body">
-            <div class="search-result__text">
-                <h2 class="search-result__title">
-                    <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                </h2>
-                <div class="search-result__excerpt">
-                    <?php the_excerpt(); ?>
+        <?php elseif ('thesis' === $post_type || 'wpbdp_listing' === $post_type): ?>
+            <div class="search-result__body">
+                <div class="search-result__text">
+                    <h2 class="search-result__title">
+                        <?php the_title(); ?>
+                    </h2>
+                    <div class="search-result__excerpt">
+                        <?php echo esc_html(wp_trim_words(get_the_excerpt(), 30)); ?>
+                    </div>
                 </div>
             </div>
-        </div>
-    <?php else: ?>
 
-        <div class="search-result__body">
-            <div class="search-result__text">
-                <h2 class="search-result__title">
-                    <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                </h2>
-                <div class="search-result__excerpt">
-                    <?php the_excerpt(); ?>
+        <?php else: ?>
+            <div class="search-result__body">
+                <div class="search-result__text">
+                    <h2 class="search-result__title">
+                        <?php the_title(); ?>
+                    </h2>
+                    <div class="search-result__excerpt">
+                        <?php echo esc_html(wp_trim_words(get_the_excerpt(), 30)); ?>
+                    </div>
                 </div>
             </div>
-        </div>
-    <?php endif; ?>
+
+        <?php endif; ?>
+    </a>
 </article>
