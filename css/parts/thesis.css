@@ -11,67 +11,7 @@
         background-repeat: no-repeat;
 
         /* search & sort box */
-        .wpbdp-main-box {
-            display: flex;
-            width: 100%;
-            background-color: var(--cl-light);
-            align-items: center;
-            padding: 0 var(--sp-medium);
-            margin-bottom: var(--sp-xlarge);
 
-            .search-wrapper {
-                display: flex;
-
-                flex-grow: 2;
-            }
-
-            .search-block {
-                flex-grow: 2;
-
-                .main-input {
-                    display: flex;
-
-                    svg {
-                        width: 20px;
-                        margin-right: var(--sp-small);
-                    }
-
-                    input[type="text"] {
-                        width: 100%;
-                        border: none;
-
-                        &::placeholder {
-                            color: var(--cl-dark);
-                        }
-                    }
-                }
-
-
-            }
-
-            .submit-btn {
-                padding-right: var(--sp-medium);
-                border-right: solid 1px var(--cl-dark);
-            }
-
-            .wpbdp-listings-sort-options {
-                padding-left: var(--sp-medium);
-                display: flex;
-
-                label {
-                    padding-left: 0;
-                    font-weight: var(--fw-normal);
-                }
-
-                select {
-                    padding-left: var(--sp-small);
-
-
-
-
-                }
-            }
-        }
 
         .wpbdp-listing-excerpt {
 

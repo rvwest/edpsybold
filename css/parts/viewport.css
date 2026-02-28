@@ -434,6 +434,8 @@
     }
   }
 
+
+
   /*=== jobs dashbaord ====*/
 
   table.job-manager-jobs .job_title {
@@ -446,7 +448,8 @@
   .wpbdp-view-main :is(article.page)>*,
   .tribe-events-view--list .tribe-events-l-container>*,
   .tribe-events-view--list .tribe-events-header__top-bar,
-  .tribe-events-view--list .event-disclaimer {
+  .tribe-events-view--list .event-disclaimer,
+  .search .search-results {
     grid-column: 1 / span 12;
   }
 
@@ -796,6 +799,19 @@
 
     .blog-header-block {
       padding-bottom: var(--sp-large);
+    }
+  }
+
+  /*=== search ====*/
+
+  .search-result__type {}
+
+  .search-result__body {
+    display: flex;
+    flex-direction: column-reverse;
+
+    .search-result__thumbnail {
+      margin-top: var(--sp-small);
     }
   }
 
@@ -1489,7 +1505,9 @@
 
   .business-directory.wpbdp-view-main #container,
   .business-directory.wpbdp-view-search #container {
-    .wpbdp-main-box .wpbdp-listings-sort-options {
+
+    .wpbdp-main-box .wpbdp-listings-sort-options,
+    .search-main-box .search-listings-sort-options {
       flex-direction: column;
 
       & select {
@@ -2351,6 +2369,39 @@
       padding-bottom: 0;
       padding-top: 0;
 
+    }
+  }
+
+  /* === Search === */
+
+  .search #search-main-box {
+    flex-direction: column;
+    border: none;
+    padding: 0;
+    gap: var(--sp-small);
+    align-items: end;
+
+    .search-wrapper {
+      border: 1px solid var(--cl-dark);
+      width: 100%;
+      padding-left: var(--sp-medium);
+
+      .submit-btn {
+        border-right: none;
+      }
+
+
+    }
+
+    .search-listings-sort-options {
+      border: 1px solid var(--cl-dark);
+      padding: var(--sp-small) var(--sp-medium);
+      align-items: center;
+
+      select#search-content-type {
+        border: none;
+        padding: 0 0 0 var(--sp-small);
+      }
     }
   }
 
