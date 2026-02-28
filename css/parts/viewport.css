@@ -434,6 +434,8 @@
     }
   }
 
+
+
   /*=== jobs dashbaord ====*/
 
   table.job-manager-jobs .job_title {
@@ -797,6 +799,19 @@
 
     .blog-header-block {
       padding-bottom: var(--sp-large);
+    }
+  }
+
+  /*=== search ====*/
+
+  .search-result__type {}
+
+  .search-result__body {
+    display: flex;
+    flex-direction: column-reverse;
+
+    .search-result__thumbnail {
+      margin-top: var(--sp-small);
     }
   }
 
