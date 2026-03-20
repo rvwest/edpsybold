@@ -50,6 +50,23 @@ function edpsybold_enqueue()
         true
     );
 }
+// Dan O'Hare profile page — conditionally enqueue page stylesheet
+add_action('wp_enqueue_scripts', 'edpsybold_dan_enqueue');
+function edpsybold_dan_enqueue()
+{
+    if (is_page_template('page-dan.php') || (is_page() && get_page_template_slug() === '' && is_page('dan'))) {
+        wp_enqueue_style(
+            'dan-page-style',
+            get_template_directory_uri() . '/css/parts/dan-page.css',
+            array('edpsy-bold-style'),
+            filemtime(get_template_directory() . '/css/parts/dan-page.css')
+        );
+    }
+}
+
+// Dan O'Hare profile page — ACF field groups
+require_once get_template_directory() . '/inc/acf-dan-page.php';
+
 add_action('wp_footer', 'edpsybold_footer');
 function edpsybold_footer()
 {
