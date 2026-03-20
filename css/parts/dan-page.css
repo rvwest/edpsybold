@@ -24,10 +24,23 @@
 
 /* ----- PAGE WRAPPER ------------------------------------------------- */
 
+/*
+ * The parent #container carries class="edp-fullwidth" which applies
+ * padding: 0 24px from grid.css. We zero that out here so Dan's full-bleed
+ * sections can reach the viewport edge.
+ * #wrapper also has overflow:hidden in global.css — no negative-margin hacks
+ * needed; just removing the container padding is enough.
+ */
+#container:has(> main.dan-page-content) {
+    padding-left:  0;
+    padding-right: 0;
+}
+
 main.dan-page-content {
     display:          block;   /* override grid12 */
-    max-width:        var(--dan-max-width);
-    margin:           0 auto;
+    width:            100%;
+    max-width:        none;    /* sections control their own max-width internally */
+    margin:           0;
     background-color: var(--cl-light);
     padding:          0;
 }
