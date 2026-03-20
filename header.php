@@ -158,7 +158,7 @@
                                                                     </div>
                                                                     <div id="container" class="edp-fullwidth">
                                                                         <main id="content" role="main" class="grid12">
-                                                                        <?php elseif ($current_slug === 'dan'): ?>
+                                                                        <?php elseif (is_page_template('page-dan.php')): ?>
                                                                             <!-- var: dan profile page -->
                                                                             <div id="container" class="edp-fullwidth">
                                                                                 <main id="content" role="main"
