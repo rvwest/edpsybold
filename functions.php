@@ -2131,3 +2131,33 @@ function edpsybold_get_search_post_type_label($post_type)
 
     return ucwords(str_replace(array('-', '_'), ' ', $post_type));
 }
+
+/**
+ * Allow only administrators (manage_options) to upload SVG files.
+ */
+add_filter('upload_mimes', 'edpsybold_admin_only_svg_upload');
+function edpsybold_admin_only_svg_upload($mimes)
+{
+    if (current_user_can('manage_options')) {
+        $mimes['svg'] = 'image/svg+xml';
+    } else {
+        unset($mimes['svg']);
+    }
+
+    return $mimes;
+}
+
+// Ensure WordPress accepts SVG uploads when admins are allowed.
+add_filter('wp_check_filetype_and_ext', 'edpsybold_admin_svg_filetype', 10, 5);
+function edpsybold_admin_svg_filetype($data, $file, $filename, $mimes, $real_mime = null)
+{
+    $extension = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+
+    if ('svg' === $extension && current_user_can('manage_options')) {
+        $data['ext'] = 'svg';
+        $data['type'] = 'image/svg+xml';
+        $data['proper_filename'] = $filename;
+    }
+
+    return $data;
+}
