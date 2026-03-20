@@ -40,6 +40,8 @@ $header_illus    = get_field( 'dan_header_illustration' );
         />
     <?php endif; ?>
 
+    <div class="dan-inner"><!-- flex row; illustration stays outside at section level -->
+
     <div class="dan-hero__left">
 
         <?php if ( $name ) : ?>
@@ -84,5 +86,7 @@ $header_illus    = get_field( 'dan_header_illustration' );
             />
         </div>
     <?php endif; ?>
+
+    </div><!-- .dan-inner -->
 
 </section><!-- .dan-hero -->

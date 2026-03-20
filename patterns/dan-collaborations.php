@@ -14,6 +14,7 @@ $heading = get_field( 'dan_collab_heading' );
 $collabs = get_field( 'dan_collabs' );
 ?>
 <section class="dan-collabs" aria-label="Working together">
+<div class="dan-inner">
 
     <div class="dan-collabs__header">
         <?php if ( $eyebrow ) : ?>
@@ -54,4 +55,5 @@ $collabs = get_field( 'dan_collabs' );
         </div><!-- .dan-collabs__grid -->
     <?php endif; ?>
 
+</div><!-- .dan-inner -->
 </section><!-- .dan-collabs -->

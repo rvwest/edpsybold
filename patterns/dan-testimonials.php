@@ -15,6 +15,7 @@ $heading      = get_field( 'dan_testimonials_heading' );
 $testimonials = get_field( 'dan_testimonials' );
 ?>
 <section class="dan-testimonials" aria-label="Testimonials">
+<div class="dan-inner">
 
     <?php if ( $eyebrow || $heading ) : ?>
         <div class="dan-testimonials__header">
@@ -51,4 +52,5 @@ $testimonials = get_field( 'dan_testimonials' );
         </div><!-- .dan-testimonials__masonry -->
     <?php endif; ?>
 
+</div><!-- .dan-inner -->
 </section><!-- .dan-testimonials -->

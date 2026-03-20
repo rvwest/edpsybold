@@ -17,6 +17,7 @@ $articles    = get_field( 'dan_media_articles' );
 $logos       = get_field( 'dan_media_logos' );
 ?>
 <section class="dan-media" aria-label="Media coverage">
+<div class="dan-inner">
 
     <div class="dan-media__top">
         <div class="dan-media__top-left">
@@ -98,4 +99,5 @@ $logos       = get_field( 'dan_media_logos' );
         </div>
     <?php endif; ?>
 
+</div><!-- .dan-inner -->
 </section><!-- .dan-media -->

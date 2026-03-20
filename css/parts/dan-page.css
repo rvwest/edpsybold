@@ -24,13 +24,7 @@
 
 /* ----- PAGE WRAPPER ------------------------------------------------- */
 
-/*
- * The parent #container carries class="edp-fullwidth" which applies
- * padding: 0 24px from grid.css. We zero that out here so Dan's full-bleed
- * sections can reach the viewport edge.
- * #wrapper also has overflow:hidden in global.css — no negative-margin hacks
- * needed; just removing the container padding is enough.
- */
+/* Remove the 24px gutter that .edp-fullwidth adds to #container */
 #container:has(> main.dan-page-content) {
     padding-left:  0;
     padding-right: 0;
@@ -39,10 +33,21 @@
 main.dan-page-content {
     display:          block;   /* override grid12 */
     width:            100%;
-    max-width:        none;    /* sections control their own max-width internally */
+    max-width:        none;
     margin:           0;
     background-color: var(--cl-light);
     padding:          0;
+}
+
+/*
+ * Shared centred-content wrapper used inside every full-bleed section.
+ * Section backgrounds reach the viewport edge; this inner div centres
+ * the readable content at --lv-full-width with the design h-padding.
+ */
+.dan-inner {
+    max-width: var(--lv-full-width);
+    margin:    0 auto;
+    padding:   0 var(--dan-h-padding);
 }
 
 /* ============================================================
@@ -51,9 +56,13 @@ main.dan-page-content {
 
 .dan-hero {
     background-color: var(--cl-dark);
-    padding:          100px var(--dan-h-padding);
+    padding:          100px 0;           /* horizontal centering via .dan-inner */
     position:         relative;
     overflow:         hidden;
+}
+
+/* The .dan-inner inside the hero becomes the flex row */
+.dan-hero .dan-inner {
     display:          flex;
     align-items:      flex-start;
     gap:              116px;
@@ -187,7 +196,7 @@ main.dan-page-content {
 .dan-stats__stripe-seg:nth-child(6) { background-color: var(--cl-purple); }
 
 .dan-stats__inner {
-    max-width:        1071px;
+    max-width:        var(--lv-full-width);
     margin:           0 auto;
     padding:          0 var(--dan-h-padding);
     display:          flex;
@@ -268,9 +277,18 @@ main.dan-page-content {
     display:          flex;
     align-items:      stretch;
     gap:              29px;
-    padding-right:    var(--dan-h-padding);
     padding-top:      var(--dan-section-gap);
     padding-left:     0; /* illustration bleeds to left edge */
+    /*
+     * Right padding keeps the content column's right edge aligned with
+     * the --lv-full-width centred container used by other sections.
+     * At viewport > --lv-full-width: accounts for the auto margin offset.
+     * At viewport <= --lv-full-width: falls back to --dan-h-padding.
+     */
+    padding-right: max(
+        var(--dan-h-padding),
+        calc((100vw - var(--lv-full-width)) / 2 + var(--dan-h-padding))
+    );
 }
 
 .dan-about__illustration {
@@ -333,7 +351,7 @@ main.dan-page-content {
    ============================================================ */
 
 .dan-media {
-    padding:          var(--dan-section-gap) var(--dan-h-padding);
+    padding:          var(--dan-section-gap) 0;
 }
 
 .dan-media__top {
@@ -478,7 +496,7 @@ main.dan-page-content {
    ============================================================ */
 
 .dan-policy {
-    padding:          0 var(--dan-h-padding) var(--dan-section-gap);
+    padding:          0 0 var(--dan-section-gap);
 }
 
 .dan-policy__box {
@@ -584,7 +602,7 @@ main.dan-page-content {
    ============================================================ */
 
 .dan-podcast {
-    padding:          0 var(--dan-h-padding) var(--dan-section-gap);
+    padding:          0 0 var(--dan-section-gap);
 }
 
 .dan-podcast__upper {
@@ -738,7 +756,7 @@ main.dan-page-content {
    ============================================================ */
 
 .dan-talks {
-    padding:          0 var(--dan-h-padding) var(--dan-section-gap);
+    padding:          0 0 var(--dan-section-gap);
 }
 
 .dan-talks__box {
@@ -864,7 +882,7 @@ main.dan-page-content {
    ============================================================ */
 
 .dan-thoughts {
-    padding:          0 var(--dan-h-padding) var(--dan-section-gap);
+    padding:          0 0 var(--dan-section-gap);
 }
 
 .dan-thoughts__top {
@@ -993,7 +1011,7 @@ main.dan-page-content {
    ============================================================ */
 
 .dan-collabs {
-    padding:          0 var(--dan-h-padding) var(--dan-section-gap);
+    padding:          0 0 var(--dan-section-gap);
 }
 
 .dan-collabs__header {
@@ -1079,7 +1097,7 @@ main.dan-page-content {
    ============================================================ */
 
 .dan-testimonials {
-    padding:          var(--dan-section-gap) var(--dan-h-padding);
+    padding:          var(--dan-section-gap) 0;
 }
 
 .dan-testimonials__header {
@@ -1184,9 +1202,12 @@ main.dan-page-content {
 
     /* Hero */
     .dan-hero {
+        padding:          var(--sp-xxlarge) 0;   /* horizontal via .dan-inner */
+    }
+
+    .dan-hero .dan-inner {
         flex-direction:   column;
         gap:              var(--sp-xxlarge);
-        padding:          var(--sp-xxlarge) var(--dan-h-padding);
     }
 
     .dan-hero__left {
@@ -1205,10 +1226,7 @@ main.dan-page-content {
         width:            120px;
     }
 
-    /* Stats */
-    .dan-stats__inner {
-        padding:          0 var(--dan-h-padding);
-    }
+    /* Stats — --dan-h-padding already 24px via :root above, no override needed */
 
     .dan-stats__row {
         flex-direction:   column;
@@ -1219,11 +1237,11 @@ main.dan-page-content {
         width:            auto;
     }
 
-    /* About */
+    /* About — column, restore symmetric padding since illustration is stacked */
     .dan-about {
         flex-direction:   column;
-        padding-right:    var(--dan-h-padding);
-        padding-left:     var(--dan-h-padding);
+        padding-left:     var(--dan-h-padding);  /* illustration no longer bleeds on mobile */
+        padding-right:    var(--dan-h-padding);  /* max() calc evaluates to 24px anyway */
     }
 
     .dan-about__illustration {

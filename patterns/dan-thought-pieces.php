@@ -16,6 +16,7 @@ $heading  = get_field( 'dan_thoughts_heading' );
 $articles = get_field( 'dan_thoughts_articles' );
 ?>
 <section class="dan-thoughts" aria-label="Thought pieces">
+<div class="dan-inner">
 
     <div class="dan-thoughts__top">
         <div class="dan-thoughts__top-left">
@@ -82,4 +83,5 @@ $articles = get_field( 'dan_thoughts_articles' );
         </div><!-- .dan-thoughts__cards -->
     <?php endif; ?>
 
+</div><!-- .dan-inner -->
 </section><!-- .dan-thoughts -->

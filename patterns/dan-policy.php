@@ -16,6 +16,7 @@ $description = get_field( 'dan_policy_description' );
 $items       = get_field( 'dan_policy_items' );
 ?>
 <section class="dan-policy" aria-label="Policy and systems work">
+<div class="dan-inner">
     <div class="dan-policy__box">
 
         <div class="dan-policy__left">
@@ -57,4 +58,5 @@ $items       = get_field( 'dan_policy_items' );
         <?php endif; ?>
 
     </div><!-- .dan-policy__box -->
+</div><!-- .dan-inner -->
 </section><!-- .dan-policy -->

@@ -19,6 +19,7 @@ $cta_text = get_field( 'dan_talks_cta_text' );
 $cta_url  = get_field( 'dan_talks_cta_url' );
 ?>
 <section class="dan-talks" aria-label="Signature talks">
+<div class="dan-inner">
     <div class="dan-talks__box">
 
         <div class="dan-talks__header">
@@ -65,4 +66,5 @@ $cta_url  = get_field( 'dan_talks_cta_url' );
         <?php endif; ?>
 
     </div><!-- .dan-talks__box -->
+</div><!-- .dan-inner -->
 </section><!-- .dan-talks -->

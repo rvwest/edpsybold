@@ -19,6 +19,7 @@ $stats       = get_field( 'dan_podcast_stats' );
 $episodes    = get_field( 'dan_podcast_episodes' );
 ?>
 <section class="dan-podcast" aria-label="Podcast">
+<div class="dan-inner">
 
     <div class="dan-podcast__upper">
 
@@ -116,4 +117,5 @@ $episodes    = get_field( 'dan_podcast_episodes' );
         </div>
     <?php endif; ?>
 
+</div><!-- .dan-inner -->
 </section><!-- .dan-podcast -->
