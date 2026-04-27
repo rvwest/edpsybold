@@ -241,7 +241,7 @@
 
 
 
-body:not(.home),
+body:not(.home, .page-template-page-dan),
 .tribe_community_edit,
 .post-type-archive-tribe_events {
 
@@ -327,7 +327,8 @@ body.archive {
 .business-directory.wpbdp-view-main h1.entry-title,
 .business-directory.wpbdp-view-search h1.entry-title,
 .tribe_community_edit h2.my-events,
-body.category-jobs-admin h1.entry-title {
+body.category-jobs-admin h1.entry-title,
+.page-template-page-dan h1 {
     font-size: var(--fs-display-medium);
     line-height: var(--lh-display-medium);
 }
@@ -351,7 +352,8 @@ body.category-jobs-admin h1.entry-title {
 .edp-jobs,
 .archive.post-type-archive-tribe_events,
 .business-directory.wpbdp-view-main,
-.business-directory.wpbdp-view-search {
+.business-directory.wpbdp-view-search,
+.page-template-page-dan {
     h1 {
         color: var(--cl-light);
     }

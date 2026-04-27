@@ -64,6 +64,7 @@
     --sp-xlarge: 48px;
     --sp-xxlarge: 60px;
     --sp-xxxlarge: 72px;
+    --sp-xxxxlarge: 100px;
 
     /* Page specific spacing */
     --sp-home-gap: var(--sp-medium);
