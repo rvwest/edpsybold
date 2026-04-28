@@ -28,6 +28,8 @@
     --cl-darkblue: #21659c;
     --cl-green: #5EA259;
     --cl-yellow: #E5C957;
+    --cl-yellow-preserved-80: rgb(222, 189, 46, 0.8);
+    /* appears as edp yellow when placed over cream background */
     --cl-purple: #59408A;
     --cl-purple-hover: #78679E;
     --cl-medpurple: #A359A2;

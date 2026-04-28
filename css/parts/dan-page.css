@@ -51,6 +51,19 @@ main.dan-page-content {
     padding: 0;
 }
 
+
+/* ============================================================
+   0.5 ALL SLICES
+   ============================================================ */
+
+.dan-media,
+.dan-about,
+.dan-policy,
+.dan-podcast,
+.dan-talks {
+    padding-bottom: var(--dan-section-gap);
+}
+
 /* ============================================================
    1. HERO
    ============================================================ */
@@ -299,7 +312,6 @@ main.dan-page-content {
     display: flex;
     align-items: stretch;
     gap: 29px;
-    padding-top: var(--dan-section-gap);
     padding-left: 0;
     /* illustration bleeds to left edge */
     /*
@@ -376,10 +388,6 @@ main.dan-page-content {
    4. MEDIA COVERAGE
    ============================================================ */
 
-.dan-media {
-    padding: var(--dan-section-gap) 0;
-}
-
 .dan-media__top {
     display: flex;
     align-items: flex-start;
@@ -453,10 +461,9 @@ main.dan-page-content {
 .dan-media__cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--sp-medium);
+    gap: var(--sp-home-gap);
     /* 24px */
-    max-width: 1071px;
-    margin: 0 auto var(--sp-xxlarge);
+    max-width: var(--lv-full-width);
 }
 
 .dan-media__card {
@@ -479,7 +486,7 @@ main.dan-page-content {
     /* 14px */
     font-weight: var(--fw-normal);
     color: var(--cl-orange);
-    margin: 0;
+    margin: var(--sp-small) 0 0 0;
     font-family: var(--ff);
 }
 
@@ -530,13 +537,23 @@ main.dan-page-content {
    5. POLICY & SYSTEMS
    ============================================================ */
 
-.dan-policy {
-    padding: 0 0 var(--dan-section-gap);
+.dan-policy__swirl {
+    background-image: url("../../images/edpsy-swirls-16-flipped-v.svg");
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    background-size: 350px;
+    width: 350px;
+    height: 210px;
+    margin-left: -204px;
+    margin-top: -152px;
+    z-index: 0;
 }
 
+
+
 .dan-policy__box {
-    background-color: var(--cl-yellow);
-    padding: var(--sp-xxlarge);
+    background-color: var(--cl-yellow-preserved-80);
+    padding: var(--sp-xxlarge) 160px;
     /* 60px */
     display: flex;
     gap: 51px;
@@ -643,9 +660,6 @@ main.dan-page-content {
    6. PODCAST
    ============================================================ */
 
-.dan-podcast {
-    padding: 0 0 var(--dan-section-gap);
-}
 
 .dan-podcast__upper {
     display: flex;
@@ -706,7 +720,10 @@ main.dan-page-content {
     align-items: stretch;
     flex-wrap: wrap;
     gap: 0;
+    justify-content: space-between;
 }
+
+
 
 .dan-podcast__stat {
     padding-right: var(--sp-xxlarge);
@@ -805,13 +822,10 @@ main.dan-page-content {
    7. SIGNATURE TALKS
    ============================================================ */
 
-.dan-talks {
-    padding: 0 0 var(--dan-section-gap);
-}
+
 
 .dan-talks__box {
     background-color: var(--dan-pink);
-    max-width: 1070px;
     margin: 0 auto;
     padding: var(--sp-xxlarge);
     /* 60px */
@@ -857,17 +871,16 @@ main.dan-page-content {
     display: flex;
     flex-direction: column;
     gap: var(--sp-medium);
+    background-color: var(--cl-light);
+    padding: var(--sp-small);
     /* 24px */
 }
 
 .dan-talks__topic {
     display: inline-block;
-    background-color: var(--cl-light);
-    color: var(--cl-dark);
     font-size: var(--fs-body-medium);
     /* 16px */
     font-weight: 700;
-    padding: 10px 16px;
     width: fit-content;
     font-family: var(--ff);
 }
