@@ -64,6 +64,21 @@ main.dan-page-content {
     padding-bottom: var(--dan-section-gap);
 }
 
+.dan-podcast__heading,
+.dan-policy__heading,
+.dan-media__heading,
+.dan-stats__heading,
+.dan-about__heading,
+.dan-talks__heading,
+.dan-thoughts__heading,
+.dan-collabs__heading {
+    font-size: var(--fs-title-xlarge);
+    font-weight: var(--fw-semibold);
+    line-height: var(--lh-title-xlarge);
+    color: var(--cl-dark);
+    margin: 0;
+}
+
 /* ============================================================
    1. HERO
    ============================================================ */
@@ -250,15 +265,6 @@ main.dan-page-content {
     font-family: var(--ff);
 }
 
-.dan-stats__heading {
-    font-size: var(--fs-title-xlarge);
-    /* 40px */
-    font-weight: var(--fw-semibold);
-    line-height: var(--lh-title-xlarge);
-    color: var(--cl-light);
-    margin: 0;
-}
-
 .dan-stats__row {
     display: flex;
     max-width: var(--lv-full-width);
@@ -313,6 +319,7 @@ main.dan-page-content {
     align-items: stretch;
     gap: 29px;
     padding-left: 0;
+    margin-top: var(--sp-xxlarge);
     /* illustration bleeds to left edge */
     /*
      * Right padding keeps the content column's right edge aligned with
@@ -352,14 +359,6 @@ main.dan-page-content {
     font-family: var(--ff);
 }
 
-.dan-about__heading {
-    font-size: var(--fs-title-xlarge);
-    /* 40px */
-    font-weight: var(--fw-semibold);
-    color: var(--cl-dark);
-    margin: 0;
-    font-family: var(--ff);
-}
 
 .dan-about__body {
     display: flex;
@@ -413,14 +412,6 @@ main.dan-page-content {
     font-family: var(--ff);
 }
 
-.dan-media__heading {
-    font-size: var(--fs-title-xlarge);
-    /* 40px */
-    font-weight: var(--fw-semibold);
-    color: var(--cl-dark);
-    margin: 0;
-    font-family: var(--ff);
-}
 
 .dan-media__subheading {
     font-size: var(--fs-body);
@@ -578,15 +569,6 @@ main.dan-page-content {
     font-family: var(--ff);
 }
 
-.dan-policy__heading {
-    font-size: var(--fs-title-xlarge);
-    /* 40px */
-    font-weight: var(--fw-semibold);
-    color: var(--cl-dark);
-    margin: 0;
-    font-family: var(--ff);
-}
-
 .dan-policy__description {
     font-size: var(--fs-body);
     /* 18px */
@@ -692,15 +674,6 @@ main.dan-page-content {
     /* 14px */
     font-weight: var(--fw-normal);
     color: var(--cl-lightblue);
-    margin: 0;
-    font-family: var(--ff);
-}
-
-.dan-podcast__heading {
-    font-size: var(--fs-title-xlarge);
-    /* 40px */
-    font-weight: var(--fw-semibold);
-    color: var(--cl-dark);
     margin: 0;
     font-family: var(--ff);
 }
@@ -850,14 +823,6 @@ main.dan-page-content {
     font-family: var(--ff);
 }
 
-.dan-talks__heading {
-    font-size: var(--fs-title-xlarge);
-    /* 40px */
-    font-weight: var(--fw-semibold);
-    color: var(--cl-dark);
-    margin: 0;
-    font-family: var(--ff);
-}
 
 .dan-talks__grid {
     display: flex;
@@ -872,7 +837,7 @@ main.dan-page-content {
     flex-direction: column;
     gap: var(--sp-medium);
     background-color: var(--cl-light);
-    padding: var(--sp-small);
+    padding: var(--sp-medium);
     /* 24px */
 }
 
@@ -886,9 +851,6 @@ main.dan-page-content {
 }
 
 .dan-talks__desc {
-    font-size: var(--fs-body);
-    /* 18px */
-    font-weight: var(--fw-normal);
     color: var(--cl-dark);
     margin: 0;
     line-height: var(--lh-body);
@@ -985,14 +947,7 @@ main.dan-page-content {
     font-family: var(--ff);
 }
 
-.dan-thoughts__heading {
-    font-size: var(--fs-title-xlarge);
-    /* 40px */
-    font-weight: var(--fw-semibold);
-    color: var(--cl-dark);
-    margin: 0;
-    font-family: var(--ff);
-}
+
 
 .dan-thoughts__nav {
     display: flex;
@@ -1115,13 +1070,7 @@ main.dan-page-content {
 }
 
 .dan-collabs__heading {
-    font-size: var(--fs-title-xlarge);
-    /* 40px */
-    font-weight: var(--fw-semibold);
-    color: var(--cl-dark);
     max-width: 341px;
-    margin: 0;
-    font-family: var(--ff);
 }
 
 .dan-collabs__grid {
