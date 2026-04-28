@@ -15,7 +15,7 @@ $eyebrow  = get_field( 'dan_thoughts_eyebrow' );
 $heading  = get_field( 'dan_thoughts_heading' );
 $articles = get_field( 'dan_thoughts_articles' );
 ?>
-<section class="dan-thoughts" aria-label="Thought pieces">
+<section class="dan-thoughts edp-fullwidth" aria-label="Thought pieces">
 <div class="dan-inner">
 
     <div class="dan-thoughts__top">

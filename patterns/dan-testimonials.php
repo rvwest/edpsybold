@@ -14,7 +14,7 @@ $eyebrow      = get_field( 'dan_testimonials_eyebrow' );
 $heading      = get_field( 'dan_testimonials_heading' );
 $testimonials = get_field( 'dan_testimonials' );
 ?>
-<section class="dan-testimonials" aria-label="Testimonials">
+<section class="dan-testimonials edp-fullwidth" aria-label="Testimonials">
 <div class="dan-inner">
 
     <?php if ( $eyebrow || $heading ) : ?>

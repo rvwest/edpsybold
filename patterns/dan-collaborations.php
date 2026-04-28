@@ -13,10 +13,14 @@ $eyebrow = get_field( 'dan_collab_eyebrow' );
 $heading = get_field( 'dan_collab_heading' );
 $collabs = get_field( 'dan_collabs' );
 ?>
-<section class="dan-collabs" aria-label="Working together">
+<section class="dan-collabs edp-fullwidth" aria-label="Working together">
 <div class="dan-inner">
 
-    <div class="dan-collabs__header">
+    
+
+    <?php if ( $collabs ) : ?>
+        <div class="dan-collabs__grid">
+            <div class="dan-collabs__header">
         <?php if ( $eyebrow ) : ?>
             <p class="dan-collabs__eyebrow"><?php echo esc_html( $eyebrow ); ?></p>
         <?php endif; ?>
@@ -24,9 +28,6 @@ $collabs = get_field( 'dan_collabs' );
             <h2 class="dan-collabs__heading"><?php echo esc_html( $heading ); ?></h2>
         <?php endif; ?>
     </div>
-
-    <?php if ( $collabs ) : ?>
-        <div class="dan-collabs__grid">
             <?php foreach ( $collabs as $collab ) :
                 $logo = isset( $collab['collab_logo'] ) ? $collab['collab_logo'] : null;
             ?>

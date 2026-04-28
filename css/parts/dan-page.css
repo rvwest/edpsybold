@@ -58,10 +58,13 @@ main.dan-page-content {
 
 .dan-media,
 .dan-about,
-.dan-policy,
 .dan-podcast,
-.dan-talks {
+.dan-talks, .dan-collabs, .dan-testimonials, .dan-thoughts {
     padding-bottom: var(--dan-section-gap);
+}
+
+.dan-policy {
+padding-bottom: calc(var(--dan-section-gap) - 55px);
 }
 
 .dan-podcast__heading,
@@ -647,9 +650,6 @@ main.dan-page-content {
     display: flex;
     gap: 67px;
     align-items: flex-start;
-    padding-bottom: var(--sp-xxlarge);
-    border-bottom: 1px solid var(--cl-dark);
-    margin-bottom: var(--sp-xxlarge);
 }
 
 .dan-podcast__artwork {
@@ -919,9 +919,6 @@ main.dan-page-content {
    8. THOUGHT PIECES
    ============================================================ */
 
-.dan-thoughts {
-    padding: 0 0 var(--dan-section-gap);
-}
 
 .dan-thoughts__top {
     display: flex;
@@ -979,8 +976,6 @@ main.dan-page-content {
     grid-template-columns: repeat(3, 1fr);
     gap: var(--sp-medium);
     /* 24px */
-    max-width: 1071px;
-    margin: 0 auto;
 }
 
 .dan-thoughts__card {
@@ -1049,9 +1044,6 @@ main.dan-page-content {
    9. WORKING TOGETHER (Collaborations)
    ============================================================ */
 
-.dan-collabs {
-    padding: 0 0 var(--dan-section-gap);
-}
 
 .dan-collabs__header {
     display: flex;
@@ -1137,9 +1129,6 @@ main.dan-page-content {
    10. TESTIMONIALS
    ============================================================ */
 
-.dan-testimonials {
-    padding: var(--dan-section-gap) 0;
-}
 
 .dan-testimonials__header {
     text-align: center;
