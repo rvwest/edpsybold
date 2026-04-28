@@ -396,7 +396,7 @@ body.category-jobs-admin h1.entry-title,
 }
 
 /* == Other headings ============== */
-body:not(.wp-admin) {
+body:not(.wp-admin, .page-template-page-dan) {
     h2 {
         font-size: var(--fs-title-medium);
         font-weight: var(--fw-semibold);

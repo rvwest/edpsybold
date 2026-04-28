@@ -141,8 +141,8 @@ main.dan-page-content {
 .dan-hero__badge {
     background-color: var(--cl-yellow);
     color: var(--cl-dark);
-    font-size: 12px;
-    font-weight: 700;
+    font-size: var(--fs-body-small);
+    font-weight: var(--fw-semibold);
     padding: 10px 16px;
     line-height: 1.2;
     font-family: var(--ff);
@@ -179,7 +179,6 @@ main.dan-page-content {
 .dan-stats__stripe {
     display: flex;
     height: 6px;
-    margin-bottom: var(--sp-xxlarge);
 }
 
 .dan-stats__stripe-seg {
@@ -211,19 +210,19 @@ main.dan-page-content {
 }
 
 .dan-stats__inner {
-    max-width: var(--lv-full-width);
     margin: 0 auto;
-    padding: 0 var(--dan-h-padding);
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: var(--sp-xxlarge);
+    align-items: start;
+    gap: var(--sp-home-gap);
+    max-width: var(--lv-full-width);
+    padding-top: var(--sp-xxlarge);
 }
 
 .dan-stats__header {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
     gap: var(--sp-small);
     /* 12px */
     text-align: center;
@@ -232,7 +231,7 @@ main.dan-page-content {
 .dan-stats__eyebrow {
     font-size: var(--fs-body-small);
     /* 14px */
-    font-weight: var(--fw-normal);
+    font-weight: var(--fw-semibold);
     color: var(--cl-orange);
     margin: 0;
     font-family: var(--ff);
@@ -242,31 +241,35 @@ main.dan-page-content {
     font-size: var(--fs-title-xlarge);
     /* 40px */
     font-weight: var(--fw-semibold);
+    line-height: var(--lh-title-xlarge);
     color: var(--cl-light);
     margin: 0;
-    font-family: var(--ff);
 }
 
 .dan-stats__row {
     display: flex;
+    max-width: var(--lv-full-width);
     flex-wrap: wrap;
-    gap: 29px;
-    justify-content: center;
+    width: 100%;
+    justify-content: space-between;
+    gap: var(--sp-home-gap);
 }
 
 .dan-stats__card {
     padding: 20px;
-    width: 191px;
+    max-width: 100%;
     display: flex;
+    color: var(--cl-light);
     flex-direction: column;
     gap: 8px;
+    flex-grow: 1;
+    border-left: 8px solid;
 }
 
 .dan-stats__number {
     font-size: var(--dan-fs-stat);
     /* 50px */
     font-weight: var(--fw-semibold);
-    color: var(--cl-dark);
     line-height: 1;
     margin: 0;
     font-family: var(--ff);
@@ -276,7 +279,6 @@ main.dan-page-content {
     font-size: var(--fs-body-small);
     /* 14px */
     font-weight: var(--fw-semibold);
-    color: var(--cl-dark);
     margin: 0;
     font-family: var(--ff);
 }
@@ -285,7 +287,6 @@ main.dan-page-content {
     font-size: var(--fs-body-small);
     /* 14px */
     font-weight: var(--fw-normal);
-    color: var(--cl-dark);
     margin: 0;
     font-family: var(--ff);
 }
