@@ -2162,6 +2162,38 @@ function edpsybold_admin_svg_filetype($data, $file, $filename, $mimes, $real_mim
     return $data;
 }
 
+// =========== TEMPORARY DIAGNOSTIC — remove after confirming JSON keys =========== //
+add_action('wp_statistics_single_content_search_console_widgets', function () {
+    if (!current_user_can('manage_options')) {
+        return;
+    }
+    global $wpdb;
+    $table = $wpdb->prefix . 'statistics_events';
+    $rows  = $wpdb->get_results(
+        "SELECT event_name, page_id, event_data, date
+         FROM `{$table}`
+         WHERE event_name IN ('click', 'mouseup')
+         ORDER BY ID DESC
+         LIMIT 10"
+    );
+    echo '<div class="wps-card" style="border:2px solid red">';
+    echo '<div class="wps-card__title"><h2>🔍 DIAGNOSTIC — raw event_data (remove when done)</h2></div>';
+    echo '<div class="inside"><pre style="overflow:auto;max-height:400px;font-size:12px">';
+    if (empty($rows)) {
+        echo 'No click/mouseup rows found in ' . esc_html($table);
+    } else {
+        foreach ($rows as $r) {
+            echo '--- event_name=' . esc_html($r->event_name)
+               . '  page_id=' . esc_html($r->page_id)
+               . '  date=' . esc_html($r->date) . "\n";
+            $decoded = json_decode($r->event_data, true);
+            echo esc_html(json_encode($decoded, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)) . "\n\n";
+        }
+    }
+    echo '</pre></div></div>';
+});
+// =========== END TEMPORARY DIAGNOSTIC =========== //
+
 // =========== WP Statistics — extension: per-post external link clicks =========== //
 /**
  * WP Statistics — extension: per-post external link clicks
