@@ -2167,29 +2167,96 @@ add_action('wp_statistics_single_content_search_console_widgets', function () {
     if (!current_user_can('manage_options')) {
         return;
     }
+
     global $wpdb;
-    $table = $wpdb->prefix . 'statistics_events';
-    $rows  = $wpdb->get_results(
-        "SELECT event_name, page_id, event_data, date
-         FROM `{$table}`
-         WHERE event_name IN ('click', 'mouseup')
-         ORDER BY ID DESC
-         LIMIT 10"
-    );
+    $events_table = $wpdb->prefix . 'statistics_events';
+    $pages_table  = $wpdb->prefix . 'statistics_pages';
+    $current_post_id = isset($_GET['post_id']) ? intval($_GET['post_id']) : 0;
+
     echo '<div class="wps-card" style="border:2px solid red">';
-    echo '<div class="wps-card__title"><h2>🔍 DIAGNOSTIC — raw event_data (remove when done)</h2></div>';
-    echo '<div class="inside"><pre style="overflow:auto;max-height:400px;font-size:12px">';
-    if (empty($rows)) {
-        echo 'No click/mouseup rows found in ' . esc_html($table);
-    } else {
-        foreach ($rows as $r) {
-            echo '--- event_name=' . esc_html($r->event_name)
-               . '  page_id=' . esc_html($r->page_id)
-               . '  date=' . esc_html($r->date) . "\n";
-            $decoded = json_decode($r->event_data, true);
-            echo esc_html(json_encode($decoded, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)) . "\n\n";
+    echo '<div class="wps-card__title"><h2>🔍 DIAGNOSTIC — remove when done</h2></div>';
+    echo '<div class="inside"><pre style="overflow:auto;max-height:600px;font-size:12px">';
+
+    // ── 1. Does statistics_pages exist, and what does page_id map to? ──────────
+    echo "=== PART 1: What does page_id refer to in statistics_events? ===\n";
+    echo "Current URL post_id (from \$_GET): {$current_post_id}\n\n";
+
+    $pages_table_exists = $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $pages_table ) );
+    if ( $pages_table_exists ) {
+        echo "statistics_pages table EXISTS. Columns:\n";
+        $cols = $wpdb->get_results( "SHOW COLUMNS FROM `{$pages_table}`" );
+        foreach ( $cols as $col ) {
+            echo '  ' . esc_html( $col->Field ) . ' (' . esc_html( $col->Type ) . ")\n";
         }
+
+        // For the page_ids seen in recent events, look them up in statistics_pages
+        echo "\npage_id values from last 20 events, joined to statistics_pages:\n";
+        // phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+        $joined = $wpdb->get_results(
+            "SELECT e.page_id, p.uri, p.page_id AS sp_wp_post_id
+             FROM `{$events_table}` e
+             LEFT JOIN `{$pages_table}` p ON p.id = e.page_id
+             WHERE e.event_name IN ('click', 'mouseup')
+             ORDER BY e.ID DESC
+             LIMIT 20"
+        );
+        // phpcs:enable
+        if ( $joined ) {
+            foreach ( $joined as $j ) {
+                echo '  events.page_id=' . esc_html( $j->page_id )
+                   . '  →  pages.uri=' . esc_html( $j->uri )
+                   . '  pages.page_id(wp_post_id)=' . esc_html( $j->sp_wp_post_id ) . "\n";
+            }
+        } else {
+            echo "  (no rows returned)\n";
+        }
+
+        // Also: find the statistics_pages.id for the current WP post
+        echo "\nLooking up statistics_pages rows where page_id (WP post ID) = {$current_post_id}:\n";
+        $sp_rows = $wpdb->get_results( $wpdb->prepare(
+            "SELECT id, uri, page_id FROM `{$pages_table}` WHERE page_id = %d LIMIT 5",
+            $current_post_id
+        ) );
+        if ( $sp_rows ) {
+            foreach ( $sp_rows as $sp ) {
+                echo '  statistics_pages.id=' . esc_html( $sp->id )
+                   . '  uri=' . esc_html( $sp->uri )
+                   . '  wp_post_id=' . esc_html( $sp->page_id ) . "\n";
+            }
+        } else {
+            echo "  No statistics_pages rows found for wp_post_id={$current_post_id}\n";
+        }
+
+    } else {
+        echo "statistics_pages table does NOT exist.\n";
+        echo "page_id in statistics_events likely IS the WordPress post ID directly.\n";
     }
+
+    // ── 2. Events for the current post_id ─────────────────────────────────────
+    echo "\n=== PART 2: Events where page_id = {$current_post_id} (direct match) ===\n";
+    // phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+    $direct = $wpdb->get_results( $wpdb->prepare(
+        "SELECT event_name, page_id, event_data, date
+         FROM `{$events_table}`
+         WHERE event_name IN ('click', 'mouseup')
+           AND page_id = %d
+         ORDER BY ID DESC
+         LIMIT 5",
+        $current_post_id
+    ) );
+    // phpcs:enable
+    if ( $direct ) {
+        foreach ( $direct as $r ) {
+            echo '  event_name=' . esc_html( $r->event_name )
+               . '  page_id=' . esc_html( $r->page_id )
+               . '  date=' . esc_html( $r->date ) . "\n";
+            $d = json_decode( $r->event_data, true );
+            echo '  ' . esc_html( json_encode( $d, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES ) ) . "\n\n";
+        }
+    } else {
+        echo "  No rows found with page_id = {$current_post_id}\n";
+    }
+
     echo '</pre></div></div>';
 });
 // =========== END TEMPORARY DIAGNOSTIC =========== //
