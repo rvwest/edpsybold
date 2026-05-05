@@ -2161,3 +2161,112 @@ function edpsybold_admin_svg_filetype($data, $file, $filename, $mimes, $real_mim
 
     return $data;
 }
+
+// =========== WP Statistics — extension: per-post external link clicks =========== //
+/**
+ * WP Statistics — extension: per-post external link clicks
+ * Adds an "External Links Clicked" table to the Content Analytics single-post view.
+ * Reads from {prefix}statistics_events (event_name IN 'click','mouseup') populated by Data Plus.
+ * Filters out internal edpsy.org.uk URLs (mouseup events aren't host-filtered by the tracker JS).
+ */
+if (!function_exists('mytheme_wps_render_external_links_card')) {
+    function mytheme_wps_render_external_links_card()
+    {
+        if (
+            !is_admin()
+            || !isset($_GET['page']) || $_GET['page'] !== 'wps_content-analytics_page'
+            || !isset($_GET['type']) || $_GET['type'] !== 'single'
+            || empty($_GET['post_id'])
+        ) {
+            return;
+        }
+
+        $post_id = intval($_GET['post_id']);
+        if ($post_id <= 0) {
+            return;
+        }
+
+        if (!class_exists('\WP_Statistics\Components\DateRange')) {
+            return;
+        }
+
+        $range = \WP_Statistics\Components\DateRange::get();
+        if (empty($range['from']) || empty($range['to'])) {
+            return;
+        }
+
+        global $wpdb;
+
+        $table      = $wpdb->prefix . 'statistics_events';
+        $date_from  = $range['from'] . ' 00:00:00';
+        $date_to    = $range['to'] . ' 23:59:59';
+        $host_like  = '%' . $wpdb->esc_like('edpsy.org.uk') . '%';
+
+        // phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+        $results = $wpdb->get_results(
+            $wpdb->prepare(
+                "SELECT
+                    JSON_UNQUOTE(JSON_EXTRACT(event_data, '$.tu')) AS url,
+                    JSON_UNQUOTE(JSON_EXTRACT(event_data, '$.ev')) AS link_text,
+                    COUNT(*) AS clicks
+                FROM `{$table}`
+                WHERE event_name IN ('click', 'mouseup')
+                    AND page_id = %d
+                    AND date BETWEEN %s AND %s
+                    AND JSON_EXTRACT(event_data, '$.tu') IS NOT NULL
+                    AND JSON_UNQUOTE(JSON_EXTRACT(event_data, '$.tu')) NOT LIKE %s
+                    AND JSON_UNQUOTE(JSON_EXTRACT(event_data, '$.tu')) <> ''
+                GROUP BY url, link_text
+                ORDER BY clicks DESC
+                LIMIT 50",
+                $post_id,
+                $date_from,
+                $date_to,
+                $host_like
+            )
+        );
+        // phpcs:enable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+
+        ?>
+        <div class="wps-card">
+            <div class="wps-card__title">
+                <h2><?php esc_html_e('External Links Clicked', 'edpsybold'); ?> <span class="wps-tooltip" title="<?php esc_attr_e('Outbound links clicked by visitors on this post during the selected date range.', 'edpsybold'); ?>"><i class="wps-tooltip-icon info"></i></span></h2>
+            </div>
+            <div class="inside">
+                <?php if (empty($results)) : ?>
+                    <div class="o-wrap o-wrap--no-data wps-center"><?php esc_html_e('No external link clicks recorded for this period.', 'edpsybold'); ?></div>
+                <?php else : ?>
+                    <div class="o-table-wrapper">
+                        <table width="100%" class="o-table wps-new-table">
+                            <thead>
+                                <tr>
+                                    <th class="wps-pd-l"><?php esc_html_e('Link Text', 'edpsybold'); ?></th>
+                                    <th class="wps-pd-l"><?php esc_html_e('URL', 'edpsybold'); ?></th>
+                                    <th class="wps-pd-l"><?php esc_html_e('Clicks', 'edpsybold'); ?></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($results as $row) : ?>
+                                    <tr>
+                                        <td class="wps-pd-l">
+                                            <?php echo esc_html(!empty($row->link_text) ? $row->link_text : '—'); ?>
+                                        </td>
+                                        <td class="wps-pd-l">
+                                            <a href="<?php echo esc_url($row->url); ?>" title="<?php echo esc_attr($row->url); ?>" target="_blank" rel="noopener noreferrer">
+                                                <?php echo esc_html($row->url); ?>
+                                            </a>
+                                        </td>
+                                        <td class="wps-pd-l"><?php echo esc_html($row->clicks); ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+        <?php
+    }
+
+    add_action('wp_statistics_single_content_search_console_widgets', 'mytheme_wps_render_external_links_card');
+}
