@@ -2233,6 +2233,21 @@ if (!function_exists('mytheme_wps_external_links_card')) {
             echo '<!-- mytheme_wps_external_links_card SQL: ' . esc_html($sql) . ' -->';
         }
         ?>
+        <style>
+        #mytheme-external-links-card .o-table { table-layout: fixed; }
+        #mytheme-external-links-card .o-table th:nth-child(1),
+        #mytheme-external-links-card .o-table td:nth-child(1) { width: 30%; }
+        #mytheme-external-links-card .o-table th:nth-child(2),
+        #mytheme-external-links-card .o-table td:nth-child(2) { width: 60%; }
+        #mytheme-external-links-card .o-table th:nth-child(3),
+        #mytheme-external-links-card .o-table td:nth-child(3) { width: 10%; white-space: nowrap; }
+        #mytheme-external-links-card .o-table td:nth-child(2) a {
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        </style>
         <div class="wps-card" id="mytheme-external-links-card">
             <div class="wps-card__title">
                 <h2><?php esc_html_e('External Links Clicked', 'edpsybold'); ?> <span class="wps-tooltip" title="<?php esc_attr_e('Outbound links clicked by visitors on this post during the selected date range.', 'edpsybold'); ?>"><i class="wps-tooltip-icon info"></i></span></h2>
