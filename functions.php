@@ -2233,7 +2233,7 @@ if (!function_exists('mytheme_wps_external_links_card')) {
             echo '<!-- mytheme_wps_external_links_card SQL: ' . esc_html($sql) . ' -->';
         }
         ?>
-        <div class="wps-card">
+        <div class="wps-card" id="mytheme-external-links-card">
             <div class="wps-card__title">
                 <h2><?php esc_html_e('External Links Clicked', 'edpsybold'); ?> <span class="wps-tooltip" title="<?php esc_attr_e('Outbound links clicked by visitors on this post during the selected date range.', 'edpsybold'); ?>"><i class="wps-tooltip-icon info"></i></span></h2>
             </div>
@@ -2272,4 +2272,39 @@ if (!function_exists('mytheme_wps_external_links_card')) {
     }
 
     add_action('wp_statistics_single_content_search_console_widgets', 'mytheme_wps_external_links_card');
+}
+
+if (!function_exists('mytheme_wps_external_links_reorder')) {
+    function mytheme_wps_external_links_reorder()
+    {
+        if (
+            !is_admin()
+            || !isset($_GET['page']) || $_GET['page'] !== 'wps_content-analytics_page'
+            || !isset($_GET['type']) || $_GET['type'] !== 'single'
+        ) {
+            return;
+        }
+        ?>
+        <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var card = document.getElementById('mytheme-external-links-card');
+            if (!card) return;
+            // Find the Top Countries card by its heading text
+            var headings = document.querySelectorAll('.wps-card .wps-card__title h2');
+            var topCountriesCard = null;
+            for (var i = 0; i < headings.length; i++) {
+                if (headings[i].textContent.trim().indexOf('Top Countries') === 0) {
+                    topCountriesCard = headings[i].closest('.wps-card');
+                    break;
+                }
+            }
+            if (topCountriesCard) {
+                topCountriesCard.parentNode.insertBefore(card, topCountriesCard);
+            }
+        });
+        </script>
+        <?php
+    }
+
+    add_action('admin_footer', 'mytheme_wps_external_links_reorder');
 }
