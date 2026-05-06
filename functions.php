@@ -2234,13 +2234,17 @@ if (!function_exists('mytheme_wps_external_links_card')) {
         }
         ?>
         <style>
-        #mytheme-external-links-card .o-table { table-layout: fixed; }
+        #mytheme-external-links-card .o-table { table-layout: fixed; width: 100%; }
         #mytheme-external-links-card .o-table th:nth-child(1),
         #mytheme-external-links-card .o-table td:nth-child(1) { width: 30%; }
-        #mytheme-external-links-card .o-table th:nth-child(2),
-        #mytheme-external-links-card .o-table td:nth-child(2) { width: 60%; }
         #mytheme-external-links-card .o-table th:nth-child(3),
-        #mytheme-external-links-card .o-table td:nth-child(3) { width: 10%; white-space: nowrap; }
+        #mytheme-external-links-card .o-table td:nth-child(3) { width: 4em; text-align: right; white-space: nowrap; }
+        #mytheme-external-links-card .o-table th:nth-child(2),
+        #mytheme-external-links-card .o-table td:nth-child(2) {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
         #mytheme-external-links-card .o-table td:nth-child(2) a {
             display: block;
             overflow: hidden;
