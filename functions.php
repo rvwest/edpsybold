@@ -2198,9 +2198,9 @@ if (!function_exists('mytheme_wps_external_links_card')) {
 
         global $wpdb;
 
-        $table     = $wpdb->prefix . 'statistics_events';
+        $table = $wpdb->prefix . 'statistics_events';
         $date_from = $range['from'] . ' 00:00:00';
-        $date_to   = $range['to'] . ' 23:59:59';
+        $date_to = $range['to'] . ' 23:59:59';
         $host_like = '%' . $wpdb->esc_like('edpsy.org.uk') . '%';
 
         // phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
@@ -2233,33 +2233,18 @@ if (!function_exists('mytheme_wps_external_links_card')) {
             echo '<!-- mytheme_wps_external_links_card SQL: ' . esc_html($sql) . ' -->';
         }
         ?>
-        <style>
-        #mytheme-external-links-card .o-table { table-layout: fixed; width: 100%; }
-        #mytheme-external-links-card .o-table th:nth-child(1),
-        #mytheme-external-links-card .o-table td:nth-child(1) { width: 30%; }
-        #mytheme-external-links-card .o-table th:nth-child(3),
-        #mytheme-external-links-card .o-table td:nth-child(3) { width: 4em; text-align: right; white-space: nowrap; }
-        #mytheme-external-links-card .o-table th:nth-child(2),
-        #mytheme-external-links-card .o-table td:nth-child(2) {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-        #mytheme-external-links-card .o-table td:nth-child(2) a {
-            display: block;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-        </style>
         <div class="wps-card" id="mytheme-external-links-card">
             <div class="wps-card__title">
-                <h2><?php esc_html_e('External Links Clicked', 'edpsybold'); ?> <span class="wps-tooltip" title="<?php esc_attr_e('Outbound links clicked by visitors on this post during the selected date range.', 'edpsybold'); ?>"><i class="wps-tooltip-icon info"></i></span></h2>
+                <h2><?php esc_html_e('External Links Clicked', 'edpsybold'); ?> <span class="wps-tooltip"
+                        title="<?php esc_attr_e('Outbound links clicked by visitors on this post during the selected date range.', 'edpsybold'); ?>"><i
+                            class="wps-tooltip-icon info"></i></span></h2>
             </div>
             <div class="inside">
-                <?php if (empty($results)) : ?>
-                    <div class="o-wrap o-wrap--no-data wps-center"><?php esc_html_e('No external link clicks recorded for this period.', 'edpsybold'); ?></div>
-                <?php else : ?>
+                <?php if (empty($results)): ?>
+                    <div class="o-wrap o-wrap--no-data wps-center">
+                        <?php esc_html_e('No external link clicks recorded for this period.', 'edpsybold'); ?>
+                    </div>
+                <?php else: ?>
                     <div class="o-table-wrapper">
                         <table width="100%" class="o-table wps-new-table">
                             <thead>
@@ -2270,11 +2255,13 @@ if (!function_exists('mytheme_wps_external_links_card')) {
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($results as $row) : ?>
+                                <?php foreach ($results as $row): ?>
                                     <tr>
-                                        <td class="wps-pd-l"><?php echo esc_html(!empty($row->link_text) ? $row->link_text : '—'); ?></td>
+                                        <td class="wps-pd-l"><?php echo esc_html(!empty($row->link_text) ? $row->link_text : '—'); ?>
+                                        </td>
                                         <td class="wps-pd-l">
-                                            <a href="<?php echo esc_url($row->url); ?>" title="<?php echo esc_attr($row->url); ?>" target="_blank" rel="noopener noreferrer">
+                                            <a href="<?php echo esc_url($row->url); ?>" title="<?php echo esc_attr($row->url); ?>"
+                                                target="_blank" rel="noopener noreferrer">
                                                 <?php echo esc_html($row->url); ?>
                                             </a>
                                         </td>
@@ -2305,22 +2292,22 @@ if (!function_exists('mytheme_wps_external_links_reorder')) {
         }
         ?>
         <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var card = document.getElementById('mytheme-external-links-card');
-            if (!card) return;
-            // Find the Top Countries card by its heading text
-            var headings = document.querySelectorAll('.wps-card .wps-card__title h2');
-            var topCountriesCard = null;
-            for (var i = 0; i < headings.length; i++) {
-                if (headings[i].textContent.trim().indexOf('Top Countries') === 0) {
-                    topCountriesCard = headings[i].closest('.wps-card');
-                    break;
+            document.addEventListener('DOMContentLoaded', function () {
+                var card = document.getElementById('mytheme-external-links-card');
+                if (!card) return;
+                // Find the Top Countries card by its heading text
+                var headings = document.querySelectorAll('.wps-card .wps-card__title h2');
+                var topCountriesCard = null;
+                for (var i = 0; i < headings.length; i++) {
+                    if (headings[i].textContent.trim().indexOf('Top Countries') === 0) {
+                        topCountriesCard = headings[i].closest('.wps-card');
+                        break;
+                    }
                 }
-            }
-            if (topCountriesCard) {
-                topCountriesCard.parentNode.insertBefore(card, topCountriesCard);
-            }
-        });
+                if (topCountriesCard) {
+                    topCountriesCard.parentNode.insertBefore(card, topCountriesCard);
+                }
+            });
         </script>
         <?php
     }
