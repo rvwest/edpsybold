@@ -3,6 +3,11 @@
     width: 100%;
 }
 
+#mytheme-external-links-card .o-table th:nth-child(1),
+#mytheme-external-links-card .o-table td:nth-child(1) {
+    width: 30%;
+}
+
 #mytheme-external-links-card .o-table th:nth-child(3),
 #mytheme-external-links-card .o-table td:nth-child(3) {
     width: 4em;

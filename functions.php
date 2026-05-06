@@ -2169,7 +2169,36 @@ function edpsybold_admin_svg_filetype($data, $file, $filename, $mimes, $real_mim
  * Reads from {prefix}statistics_events (event_name = 'click') populated by Data Plus.
  * JSON keys confirmed from live data: $.target_url (URL), $.element.value (anchor text).
  * Filters out internal edpsy.org.uk URLs and mailto: links.
+ *
+ * Template: wp-statistics/external-links-card.php
+ * JS:       wp-statistics/external-links-reorder.js
+ * CSS:      css/parts/admin.css
  */
+
+add_action('admin_enqueue_scripts', function () {
+    if (empty($_GET['page']) || strpos($_GET['page'], 'wps_') !== 0) {
+        return;
+    }
+    wp_enqueue_style(
+        'edpsybold-admin',
+        get_template_directory_uri() . '/css/parts/admin.css',
+        array(),
+        filemtime(get_template_directory() . '/css/parts/admin.css')
+    );
+    if (
+        $_GET['page'] === 'wps_content-analytics_page'
+        && !empty($_GET['type']) && $_GET['type'] === 'single'
+    ) {
+        wp_enqueue_script(
+            'mytheme-wps-reorder',
+            get_template_directory_uri() . '/wp-statistics/external-links-reorder.js',
+            array(),
+            filemtime(get_template_directory() . '/wp-statistics/external-links-reorder.js'),
+            true
+        );
+    }
+});
+
 if (!function_exists('mytheme_wps_external_links_card')) {
     function mytheme_wps_external_links_card()
     {
@@ -2198,9 +2227,9 @@ if (!function_exists('mytheme_wps_external_links_card')) {
 
         global $wpdb;
 
-        $table = $wpdb->prefix . 'statistics_events';
+        $table     = $wpdb->prefix . 'statistics_events';
         $date_from = $range['from'] . ' 00:00:00';
-        $date_to = $range['to'] . ' 23:59:59';
+        $date_to   = $range['to'] . ' 23:59:59';
         $host_like = '%' . $wpdb->esc_like('edpsy.org.uk') . '%';
 
         // phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
@@ -2229,88 +2258,8 @@ if (!function_exists('mytheme_wps_external_links_card')) {
         $results = $wpdb->get_results($sql);
         // phpcs:enable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 
-        if (defined('WP_DEBUG') && WP_DEBUG && empty($results)) {
-            echo '<!-- mytheme_wps_external_links_card SQL: ' . esc_html($sql) . ' -->';
-        }
-        ?>
-        <div class="wps-card" id="mytheme-external-links-card">
-            <div class="wps-card__title">
-                <h2><?php esc_html_e('External Links Clicked', 'edpsybold'); ?> <span class="wps-tooltip"
-                        title="<?php esc_attr_e('Outbound links clicked by visitors on this post during the selected date range.', 'edpsybold'); ?>"><i
-                            class="wps-tooltip-icon info"></i></span></h2>
-            </div>
-            <div class="inside">
-                <?php if (empty($results)): ?>
-                    <div class="o-wrap o-wrap--no-data wps-center">
-                        <?php esc_html_e('No external link clicks recorded for this period.', 'edpsybold'); ?>
-                    </div>
-                <?php else: ?>
-                    <div class="o-table-wrapper">
-                        <table width="100%" class="o-table wps-new-table">
-                            <thead>
-                                <tr>
-                                    <th class="wps-pd-l"><?php esc_html_e('Link Text', 'edpsybold'); ?></th>
-                                    <th class="wps-pd-l"><?php esc_html_e('URL', 'edpsybold'); ?></th>
-                                    <th class="wps-pd-l"><?php esc_html_e('Clicks', 'edpsybold'); ?></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($results as $row): ?>
-                                    <tr>
-                                        <td class="wps-pd-l"><?php echo esc_html(!empty($row->link_text) ? $row->link_text : '—'); ?>
-                                        </td>
-                                        <td class="wps-pd-l">
-                                            <a href="<?php echo esc_url($row->url); ?>" title="<?php echo esc_attr($row->url); ?>"
-                                                target="_blank" rel="noopener noreferrer">
-                                                <?php echo esc_html($row->url); ?>
-                                            </a>
-                                        </td>
-                                        <td class="wps-pd-l"><?php echo esc_html($row->clicks); ?></td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
-                    </div>
-                <?php endif; ?>
-            </div>
-        </div>
-        <?php
+        include get_template_directory() . '/wp-statistics/external-links-card.php';
     }
 
     add_action('wp_statistics_single_content_search_console_widgets', 'mytheme_wps_external_links_card');
-}
-
-if (!function_exists('mytheme_wps_external_links_reorder')) {
-    function mytheme_wps_external_links_reorder()
-    {
-        if (
-            !is_admin()
-            || !isset($_GET['page']) || $_GET['page'] !== 'wps_content-analytics_page'
-            || !isset($_GET['type']) || $_GET['type'] !== 'single'
-        ) {
-            return;
-        }
-        ?>
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                var card = document.getElementById('mytheme-external-links-card');
-                if (!card) return;
-                // Find the Top Countries card by its heading text
-                var headings = document.querySelectorAll('.wps-card .wps-card__title h2');
-                var topCountriesCard = null;
-                for (var i = 0; i < headings.length; i++) {
-                    if (headings[i].textContent.trim().indexOf('Top Countries') === 0) {
-                        topCountriesCard = headings[i].closest('.wps-card');
-                        break;
-                    }
-                }
-                if (topCountriesCard) {
-                    topCountriesCard.parentNode.insertBefore(card, topCountriesCard);
-                }
-            });
-        </script>
-        <?php
-    }
-
-    add_action('admin_footer', 'mytheme_wps_external_links_reorder');
 }
