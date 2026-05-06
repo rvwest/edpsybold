@@ -28,3 +28,28 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+/* External Clicks stat injected into the At a Glance panel */
+.mytheme-wps-stat-item {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.mytheme-wps-stat-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #808a94;
+    margin-bottom: 8px;
+}
+
+.mytheme-wps-stat-value {
+    display: block;
+    font-size: 32px;
+    font-weight: 700;
+    color: #1d2327;
+    line-height: 1;
+}

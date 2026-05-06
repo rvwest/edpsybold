@@ -2,13 +2,14 @@
 /**
  * Template: External Links Clicked card for WP Statistics single-post view.
  * Included by mytheme_wps_external_links_card() in functions.php.
- * Variables in scope: $results (array of stdClass), $sql (string).
+ * Variables in scope: $results (array of stdClass), $sql (string), $total_clicks (int).
  */
 
 if (defined('WP_DEBUG') && WP_DEBUG && empty($results)) {
     echo '<!-- mytheme_wps_external_links_card SQL: ' . esc_html($sql) . ' -->';
 }
 ?>
+<span id="mytheme-wps-ext-clicks-total" data-total="<?php echo esc_attr($total_clicks); ?>" hidden></span>
 <div class="wps-card" id="mytheme-external-links-card">
     <div class="wps-card__title">
         <h2>

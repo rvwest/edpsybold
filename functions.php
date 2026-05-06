@@ -2256,6 +2256,21 @@ if (!function_exists('mytheme_wps_external_links_card')) {
         );
 
         $results = $wpdb->get_results($sql);
+
+        $total_clicks = (int) $wpdb->get_var( $wpdb->prepare(
+            "SELECT COUNT(*) FROM `{$table}`
+            WHERE event_name = 'click'
+                AND page_id = %d
+                AND date BETWEEN %s AND %s
+                AND JSON_EXTRACT(event_data, '$.target_url') IS NOT NULL
+                AND JSON_UNQUOTE(JSON_EXTRACT(event_data, '$.target_url')) <> ''
+                AND JSON_UNQUOTE(JSON_EXTRACT(event_data, '$.target_url')) NOT LIKE %s
+                AND JSON_UNQUOTE(JSON_EXTRACT(event_data, '$.target_url')) NOT LIKE 'mailto:%'",
+            $post_id,
+            $date_from,
+            $date_to,
+            $host_like
+        ) );
         // phpcs:enable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 
         include get_template_directory() . '/wp-statistics/external-links-card.php';
