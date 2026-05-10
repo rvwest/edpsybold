@@ -59,12 +59,15 @@ main.dan-page-content {
 .dan-media,
 .dan-about,
 .dan-podcast,
-.dan-talks, .dan-collabs, .dan-testimonials, .dan-thoughts {
+.dan-talks,
+.dan-collabs,
+.dan-testimonials,
+.dan-thoughts {
     padding-bottom: var(--dan-section-gap);
 }
 
 .dan-policy {
-padding-bottom: calc(var(--dan-section-gap) - 55px);
+    padding-bottom: calc(var(--dan-section-gap) - 55px);
 }
 
 .dan-podcast__heading,
@@ -78,8 +81,21 @@ padding-bottom: calc(var(--dan-section-gap) - 55px);
     font-size: var(--fs-title-xlarge);
     font-weight: var(--fw-semibold);
     line-height: var(--lh-title-xlarge);
-    color: var(--cl-dark);
     margin: 0;
+}
+
+.dan-podcast__heading,
+.dan-policy__heading,
+.dan-media__heading,
+.dan-about__heading,
+.dan-talks__heading,
+.dan-thoughts__heading,
+.dan-collabs__heading {
+    color: var(--cl-dark);
+}
+
+.dan-stats__heading {
+    color: var(--cl-light);
 }
 
 /* ============================================================
@@ -124,8 +140,7 @@ padding-bottom: calc(var(--dan-section-gap) - 55px);
 }
 
 .dan-hero__name {
-    font-weight: var(--fw-semibold);
-    margin: 0;
+    color: var(--cl-light);
 }
 
 .dan-hero__roles {
@@ -269,22 +284,19 @@ padding-bottom: calc(var(--dan-section-gap) - 55px);
 }
 
 .dan-stats__row {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
     max-width: var(--lv-full-width);
-    flex-wrap: wrap;
     width: 100%;
-    justify-content: space-between;
     gap: var(--sp-home-gap);
 }
 
 .dan-stats__card {
     padding: 20px;
-    max-width: 100%;
     display: flex;
     color: var(--cl-light);
     flex-direction: column;
     gap: 8px;
-    flex-grow: 1;
     border-left: 8px solid;
 }
 
@@ -299,6 +311,7 @@ padding-bottom: calc(var(--dan-section-gap) - 55px);
 
 .dan-stats__label {
     font-size: var(--fs-body-small);
+    line-height: var(--lh-body-small);
     /* 14px */
     font-weight: var(--fw-semibold);
     margin: 0;
@@ -311,6 +324,7 @@ padding-bottom: calc(var(--dan-section-gap) - 55px);
     font-weight: var(--fw-normal);
     margin: 0;
     font-family: var(--ff);
+    line-height: var(--lh-body-small);
 }
 
 /* ============================================================
@@ -838,6 +852,7 @@ padding-bottom: calc(var(--dan-section-gap) - 55px);
     gap: var(--sp-medium);
     background-color: var(--cl-light);
     padding: var(--sp-medium);
+    border-radius: var(--rd-large);
     /* 24px */
 }
 
@@ -1080,6 +1095,8 @@ padding-bottom: calc(var(--dan-section-gap) - 55px);
     display: flex;
     flex-direction: column;
     gap: 32px;
+    border-radius: var(--rd-large);
+    ;
 }
 
 .dan-collab-card__logo {
@@ -1172,15 +1189,14 @@ padding-bottom: calc(var(--dan-section-gap) - 55px);
     gap: var(--sp-small);
     /* 12px */
     margin-bottom: var(--sp-medium);
+    border-radius: var(--rd-large);
     /* 24px */
 }
 
 .dan-testimonial-card__quote-mark {
-    background-color: var(--cl-light);
-    padding: 22px;
-    font-size: 40px;
-    font-weight: 700;
-    color: var(--cl-dark);
+    font-size: 70px;
+    font-weight: var(--fw-semibold);
+    color: var(--cl-light);
     line-height: 1;
     width: fit-content;
     font-family: var(--ff);
@@ -1256,6 +1272,10 @@ padding-bottom: calc(var(--dan-section-gap) - 55px);
         right: -40%;
     }
 
+    .dan-stats__row {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
 }
 
 /* ============================================================
@@ -1277,11 +1297,10 @@ padding-bottom: calc(var(--dan-section-gap) - 55px);
 
 
     /* Stats — --dan-h-padding already 24px via :root above, no override needed */
-
     .dan-stats__row {
-        flex-direction: column;
-        align-items: stretch;
+        grid-template-columns: repeat(2, 1fr);
     }
+
 
     .dan-stats__card {
         width: auto;
@@ -1348,6 +1367,7 @@ padding-bottom: calc(var(--dan-section-gap) - 55px);
         width: 100%;
         height: auto;
         max-width: 365px;
+        border-radius: var(--rd-large);
     }
 
     .dan-podcast__stats {
@@ -1389,5 +1409,14 @@ padding-bottom: calc(var(--dan-section-gap) - 55px);
     /* Testimonials */
     .dan-testimonials__masonry {
         column-count: 1;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .dan-stats__row {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
     }
 }

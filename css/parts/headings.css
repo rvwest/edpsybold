@@ -251,11 +251,7 @@ body:not(.home, .page-template-page-dan),
         margin: var(--sp-xxlarge) 0 var(--sp-xxlarge) 0;
         font-size: var(--fs-title-xlarge);
         line-height: var(--lh-title-xlarge);
-
     }
-
-
-
 
     .title-tag {
         h1 {
@@ -333,6 +329,9 @@ body.category-jobs-admin h1.entry-title,
     line-height: var(--lh-display-medium);
 }
 
+.page-template-page-dan h1 {
+    font-weight: var(--fw-semibold);
+}
 
 
 
