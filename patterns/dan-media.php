@@ -63,19 +63,19 @@ $logos = get_field('dan_media_logos');
                                     </div>
                                 <?php endif; ?>
                             </div>
+                            <div class="details">
+                                <?php if ($article['article_outlet']): ?>
+                                    <p class="dan-media__card-outlet">
+                                        <?php echo esc_html($article['article_outlet']); ?>
+                                    </p>
+                                <?php endif; ?>
+                                <?php if ($article['article_headline']): ?>
+                                    <h2 class="entry-title">
+                                        <?php echo esc_html($article['article_headline']); ?>
+                                    </h2>
+                                <?php endif; ?>
 
-                            <?php if ($article['article_outlet']): ?>
-                                <p class="dan-media__card-outlet">
-                                    <?php echo esc_html($article['article_outlet']); ?>
-                                </p>
-                            <?php endif; ?>
-                            <?php if ($article['article_headline']): ?>
-                                <h2 class="entry-title">
-                                    <?php echo esc_html($article['article_headline']); ?>
-                                </h2>
-                            <?php endif; ?>
-
-
+                            </div>
                         </a>
 
                         </header>

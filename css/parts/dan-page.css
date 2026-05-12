@@ -491,12 +491,17 @@ main.dan-page-content {
 
 .dan-media__card-img {
     width: 100%;
-    height: 171px;
+    aspect-ratio: 2 / 1;
+    overflow: hidden;
+    align-content: center;
+    justify-content: center;
     object-fit: cover;
-    border-radius: 12px;
+    border-radius: var(--rd-large);
     display: block;
     margin-bottom: var(--sp-small);
 }
+
+
 
 .dan-media__card-outlet,
 .dan-thoughts__card-topic {
@@ -1371,6 +1376,62 @@ main.dan-page-content {
     .dan-testimonials__masonry {
         column-count: 1;
     }
+
+    body .dan-media__cards,
+    body .dan-thoughts__cards {
+        margin-bottom: var(--sp-xxlarge);
+    }
+
+    body .dan-media__cards article.type-post,
+    body .dan-thoughts__cards article.type-post {
+
+        width: 100%;
+        margin-bottom: 0;
+
+        a {
+            display: flex;
+
+
+            .archive-article-img {
+                width: 40%;
+                /*display: flex;
+                align-items: center;*/
+
+                .home-article-image,
+                .article-item-image {
+                    margin-bottom: 0;
+                }
+
+            }
+
+            .details {
+                width: 60%;
+                padding-top: 0;
+                font-weight: normal;
+
+
+                padding: var(--sp-small) var(--sp-xsmall) var(--sp-small) var(--sp-medium);
+
+
+                .dan-media__card-outlet,
+                .dan-thoughts__card-topic {
+                    margin-top: 0;
+                    font-size: var(--fs-body-small);
+                }
+
+                h2.entry-title {
+                    margin-bottom: 0;
+                    padding-bottom: 0;
+                    font-weight: normal;
+                }
+            }
+
+            &:hover,
+            &:active {
+                box-shadow: none;
+            }
+        }
+    }
 }
 
 
@@ -1388,7 +1449,23 @@ main.dan-page-content {
     .dan-podcast__stats {
         margin-top: var(--sp-medium);
     }
+
+    body .dan-media__cards article.type-post a,
+    body .dan-thoughts__cards article.type-post a {
+
+
+        .archive-article-img {
+            width: 30%;
+            margin-top: var(--sp-small);
+
+        }
+
+        .details {
+            width: 70%;
+        }
+    }
 }
+
 
 @media (max-width: 500px) {
 

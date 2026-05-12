@@ -57,14 +57,15 @@ $articles = get_field('dan_thoughts_articles');
                                     </div>
                                 <?php endif; ?>
                             </div>
-                            <?php if (!empty($article['article_topic'])): ?>
-                                <p class="dan-thoughts__card-topic">
-                                    <?php echo esc_html($article['article_topic']); ?>
-                                </p>
-                            <?php endif; ?>
-                            <?php if ($article['article_title']): ?>
-                                <h2 class="entry-title"><?php echo esc_html($article['article_title']); ?></h2>
-                            <?php endif; ?>
+                            <div class="details"> <?php if (!empty($article['article_topic'])): ?>
+                                    <p class="dan-thoughts__card-topic">
+                                        <?php echo esc_html($article['article_topic']); ?>
+                                    </p>
+                                <?php endif; ?>
+                                <?php if ($article['article_title']): ?>
+                                    <h2 class="entry-title"><?php echo esc_html($article['article_title']); ?></h2>
+                                <?php endif; ?>
+                            </div>
 
 
                         </a>
