@@ -64,17 +64,17 @@ $logos = get_field('dan_media_logos');
                                 <?php endif; ?>
                             </div>
 
-
-                            <?php if ($article['article_headline']): ?>
-                                <h2 class="entry-title">
-                                    <?php echo esc_html($article['article_headline']); ?>
-                                </h2>
-                            <?php endif; ?>
                             <?php if ($article['article_outlet']): ?>
                                 <p class="dan-media__card-outlet">
                                     <?php echo esc_html($article['article_outlet']); ?>
                                 </p>
                             <?php endif; ?>
+                            <?php if ($article['article_headline']): ?>
+                                <h2 class="entry-title">
+                                    <?php echo esc_html($article['article_headline']); ?>
+                                </h2>
+                            <?php endif; ?>
+
 
                         </a>
 

@@ -52,22 +52,21 @@ $articles = get_field('dan_thoughts_articles');
                             <div class="archive-article-img">
                                 <?php if ($img): ?>
                                     <div class="article-item--image">
-                                        <img src="<?php echo esc_url($img['url']); ?>"
-                                            alt="<?php echo esc_attr($img['alt']); ?>" class="dan-media__card-img"
-                                            loading="lazy" />
+                                        <img src="<?php echo esc_url($img['url']); ?>" alt="<?php echo esc_attr($img['alt']); ?>"
+                                            class="dan-media__card-img" loading="lazy" />
                                     </div>
                                 <?php endif; ?>
                             </div>
-
-                            <?php if ($article['article_title']): ?>
-                                <h2 class="entry-title"><?php echo esc_html($article['article_title']); ?></h2>
-                            <?php endif; ?>
-
                             <?php if (!empty($article['article_topic'])): ?>
                                 <p class="dan-thoughts__card-topic">
                                     <?php echo esc_html($article['article_topic']); ?>
                                 </p>
                             <?php endif; ?>
+                            <?php if ($article['article_title']): ?>
+                                <h2 class="entry-title"><?php echo esc_html($article['article_title']); ?></h2>
+                            <?php endif; ?>
+
+
                         </a>
                     </article>
                 <?php endforeach; ?>

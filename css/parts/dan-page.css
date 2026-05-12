@@ -349,7 +349,7 @@ main.dan-page-content {
 }
 
 .dan-about__illustration {
-    width: 522px;
+    height: 342px;
     flex-shrink: 0;
     object-fit: cover;
     object-position: center;
@@ -361,6 +361,7 @@ main.dan-page-content {
     display: flex;
     flex-direction: column;
     gap: var(--sp-medium);
+    min-width: 380px;
     /* 24px */
     justify-content: center;
     padding-top: var(--sp-xxlarge);
@@ -387,7 +388,6 @@ main.dan-page-content {
     flex: 1;
     font-size: var(--fs-body);
     /* 18px */
-    font-weight: var(--fw-normal);
     color: var(--cl-dark);
     line-height: var(--lh-body);
 }
@@ -433,7 +433,6 @@ main.dan-page-content {
 .dan-media__subheading {
     font-size: var(--fs-body);
     /* 18px */
-    font-weight: var(--fw-normal);
     color: var(--cl-dark);
     margin: 0;
     line-height: var(--lh-body);
@@ -474,12 +473,14 @@ main.dan-page-content {
     max-width: var(--lv-full-width);
 }
 
-.dan-media__cards article h2.entry-title {
+.dan-media__cards article h2.entry-title,
+.dan-thoughts__cards article h2.entry-title {
     font-size: var(--fs-body);
     line-height: var(--lh-body);
     font-weight: var(--fw-semibold);
     padding: 0 var(--sp-xsmall) var(--sp-small) var(--sp-xsmall)
 }
+
 
 .dan-media__card {
     display: flex;
@@ -497,13 +498,24 @@ main.dan-page-content {
     margin-bottom: var(--sp-small);
 }
 
-.dan-media__card-outlet {
-    font-size: var(--fs-body-small);
-    /* 14px */
+.dan-media__card-outlet,
+.dan-thoughts__card-topic {
     font-weight: var(--fw-normal);
-    color: var(--cl-orange);
-    margin: var(--sp-small) 0 0 0;
+    margin: var(--sp-small) var(--sp-xsmall) 0 var(--sp-xsmall);
     font-family: var(--ff);
+}
+
+.dan-media__card-outlet {
+    color: var(--cl-orange);
+}
+
+.page-template-page-dan article.type-post a:hover,
+.page-template-page-dan article.type-post a:active {
+
+    .dan-media__card-outlet,
+    .dan-thoughts__card-topic {
+        color: var(--cl-purple);
+    }
 }
 
 .dan-media__card-headline {
@@ -597,7 +609,6 @@ main.dan-page-content {
 .dan-policy__description {
     font-size: var(--fs-body);
     /* 18px */
-    font-weight: var(--fw-normal);
     color: var(--cl-dark);
     margin: 0;
     line-height: var(--lh-body);
@@ -703,7 +714,6 @@ main.dan-page-content {
 .dan-podcast__description {
     font-size: var(--fs-body);
     /* 18px */
-    font-weight: var(--fw-normal);
     color: var(--cl-dark);
     margin: 0;
     line-height: var(--lh-body);
@@ -1001,11 +1011,8 @@ main.dan-page-content {
 }
 
 .dan-thoughts__card-topic {
-    font-size: var(--fs-body-small);
-    font-weight: var(--fw-normal);
+
     color: var(--dan-green);
-    margin: 0;
-    font-family: var(--ff);
 }
 
 /* ============================================================
@@ -1269,8 +1276,9 @@ main.dan-page-content {
     }
 
     .dan-about__illustration {
-        width: 100%;
-        height: 300px;
+        /*width: 100%;
+        height: 300px;*/
+        display: none;
     }
 
     .dan-about__body {
@@ -1362,6 +1370,23 @@ main.dan-page-content {
     /* Testimonials */
     .dan-testimonials__masonry {
         column-count: 1;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .dan-about__content,
+    .dan-media__top,
+    .dan-policy__left,
+    .dan-podcast__info,
+    .dan-thoughts__top {
+        gap: var(--sp-xxsmall);
+    }
+
+
+    .dan-podcast__stats {
+        margin-top: var(--sp-medium);
     }
 }
 
