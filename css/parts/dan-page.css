@@ -1380,7 +1380,15 @@ main.dan-page-content {
     body .dan-media__cards,
     body .dan-thoughts__cards {
         margin-bottom: var(--sp-xxlarge);
+
+
     }
+
+    .dan-media__nav,
+    .dan-thoughts__nav {
+        display: none;
+    }
+
 
     body .dan-media__cards article.type-post,
     body .dan-thoughts__cards article.type-post {
@@ -1456,8 +1464,7 @@ main.dan-page-content {
 
         .archive-article-img {
             width: 30%;
-            margin-top: var(--sp-small);
-
+            margin-top: calc(var(--sp-small) + 27px);
         }
 
         .details {
