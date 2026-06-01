@@ -479,6 +479,7 @@ main.dan-page-content {
 
 /* vertical-mode nav: stack up arrow above down arrow */
 @media (max-width: 500px) {
+
     .dan-media__nav,
     .dan-thoughts__nav {
         flex-direction: column;
@@ -1545,6 +1546,7 @@ a.dan-collab-card:focus-visible {
 
     }
 
+    /*
     body .dan-media__cards article.type-post a,
     body .dan-thoughts__cards article.type-post a {
 
@@ -1557,7 +1559,7 @@ a.dan-collab-card:focus-visible {
         .details {
             width: 70%;
         }
-    }
+    }*/
 
     body h2 {
 
