@@ -30,8 +30,13 @@ $collabs = get_field( 'dan_collabs' );
     </div>
             <?php foreach ( $collabs as $collab ) :
                 $logo = isset( $collab['collab_logo'] ) ? $collab['collab_logo'] : null;
+                $url  = ! empty( $collab['collab_url'] ) ? $collab['collab_url'] : '';
+                $tag  = $url ? 'a' : 'div';
+                $attrs = $url
+                    ? ' href="' . esc_url( $url ) . '" target="_blank" rel="noopener noreferrer"'
+                    : '';
             ?>
-                <div class="dan-collab-card">
+                <<?php echo $tag; ?> class="dan-collab-card"<?php echo $attrs; ?>>
                     <?php if ( $logo ) : ?>
                         <img
                             src="<?php echo esc_url( $logo['url'] ); ?>"
@@ -51,7 +56,7 @@ $collabs = get_field( 'dan_collabs' );
                             <p class="dan-collab-card__desc"><?php echo wp_kses_post( $collab['collab_description'] ); ?></p>
                         <?php endif; ?>
                     </div>
-                </div><!-- .dan-collab-card -->
+                </<?php echo $tag; ?>><!-- .dan-collab-card -->
             <?php endforeach; ?>
         </div><!-- .dan-collabs__grid -->
     <?php endif; ?>

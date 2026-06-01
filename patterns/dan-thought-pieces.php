@@ -43,7 +43,7 @@ $articles = get_field('dan_thoughts_articles');
 
         <?php if ($articles): ?>
             <div class="dan-thoughts__cards" id="dan-thoughts-carousel">
-                <?php foreach (array_slice($articles, 0, 3) as $article):
+                <?php foreach ($articles as $article):
                     $img = isset($article['article_image']) ? $article['article_image'] : null;
                     $url = isset($article['article_url']) ? $article['article_url'] : '';
                     ?>

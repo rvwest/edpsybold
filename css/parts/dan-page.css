@@ -466,6 +466,12 @@ main.dan-page-content {
     color: var(--cl-light);
 }
 
+.dan-media__nav-btn:disabled {
+    opacity: 0.35;
+    cursor: default;
+    pointer-events: none;
+}
+
 .dan-media__cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1010,6 +1016,12 @@ main.dan-page-content {
     color: var(--cl-light);
 }
 
+.dan-thoughts__nav-btn:disabled {
+    opacity: 0.35;
+    cursor: default;
+    pointer-events: none;
+}
+
 .dan-thoughts__cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1106,6 +1118,23 @@ main.dan-page-content {
     margin: 0;
     line-height: var(--lh-body);
     font-family: var(--ff);
+}
+
+a.dan-collab-card {
+    text-decoration: none;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+a.dan-collab-card:hover,
+a.dan-collab-card:focus-visible {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+    outline: none;
+}
+
+a.dan-collab-card:focus-visible {
+    outline: 2px solid var(--cl-orange);
+    outline-offset: 2px;
 }
 
 /* ============================================================

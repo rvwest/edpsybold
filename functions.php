@@ -61,6 +61,13 @@ function edpsybold_dan_enqueue()
             array('edpsy-bold-style'),
             filemtime(get_template_directory() . '/css/parts/dan-page.css')
         );
+        wp_enqueue_script(
+            'dan-carousel',
+            get_template_directory_uri() . '/js/dan-carousel.js',
+            array(),
+            filemtime(get_template_directory() . '/js/dan-carousel.js'),
+            true
+        );
     }
 }
 
