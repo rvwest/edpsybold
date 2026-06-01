@@ -477,13 +477,26 @@ main.dan-page-content {
     width: 100%;
 }
 
-/* vertical-mode nav: stack up arrow above down arrow */
-@media (max-width: 500px) {
-    .dan-media__nav,
-    .dan-thoughts__nav {
-        flex-direction: column;
-    }
+.dan-show-more-btn {
+    background: none;
+    border: none;
+    padding: var(--sp-small) 0;
+    color: var(--cl-orange);
+    font-size: var(--fs-body-medium);
+    font-family: var(--ff);
+    font-weight: var(--fw-semibold);
+    cursor: pointer;
+    display: block;
+    margin-top: var(--sp-medium);
+    text-decoration: underline;
+    text-underline-offset: 3px;
 }
+
+.dan-show-more-btn:hover {
+    color: var(--cl-dark);
+}
+
+/* vertical-mode nav was previously stacked — no longer needed */
 
 .dan-media__cards {
     display: grid;

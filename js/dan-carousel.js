@@ -1,222 +1,279 @@
 ( function () {
 	'use strict';
 
-	var BREAK_VERT = 501;  /* below → vertical, 3 cards stacked */
-	var BREAK_WIDE = 769;  /* below → horizontal, 2 cards */
-	var carousels  = {};
+	var BREAK_MID  = 501;   /* below → show-more; above → horizontal carousel */
+	var BREAK_WIDE = 769;   /* below → 2-card carousel; above → 3-card carousel */
+	var SHOW_N     = 3;     /* cards always visible in show-more mode */
 
-	function isVertical() { return window.innerWidth < BREAK_VERT; }
+	var instances = {};     /* keyed by carousel track ID */
 
-	function pageSize() {
-		/* vertical and wide-desktop both show 3; mid-range shows 2 */
-		return window.innerWidth < BREAK_WIDE ? ( isVertical() ? 3 : 2 ) : 3;
-	}
+	/* ================================================================
+	   SHARED HELPERS
+	   ================================================================ */
 
-	/* ---- read computed column-gap in px while track is still a grid ---- */
 	function readGap( track ) {
 		var g = parseFloat( window.getComputedStyle( track ).columnGap );
 		return isNaN( g ) ? 24 : g;
 	}
 
-	/* ===== HORIZONTAL MEASURE ===== */
-	function measureH( id ) {
-		var c  = carousels[ id ];
-		var ps = c.ps;
+	function getMode() {
+		return window.innerWidth < BREAK_MID ? 'showmore' : 'carousel';
+	}
 
-		/* clear vertical-mode overrides */
-		c.track.style.flexDirection = 'row';
-		c.track.style.height        = '';
-		c.wrap.style.height         = '';
-		c.items.forEach( function ( item ) {
-			item.style.height     = '';
-			item.style.boxSizing  = '';
-		} );
+	function carouselPageSize() {
+		return window.innerWidth < BREAK_WIDE ? 2 : 3;
+	}
+
+	/* ================================================================
+	   HORIZONTAL CAROUSEL
+	   ================================================================ */
+
+	function carouselTranslate( c, animate ) {
+		var x = -( c.start * ( c.cardWidth + c.gap ) );
+		c.track.style.transition = animate
+			? 'transform 0.42s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+			: 'none';
+		c.track.style.transform = 'translateX(' + x + 'px)';
+	}
+
+	function carouselUpdateNav( inst ) {
+		var c        = inst.carousel;
+		var maxStart = c.items.length - c.ps;
+
+		if ( inst.nav ) inst.nav.style.display = maxStart > 0 ? '' : 'none';
+		if ( inst.prevBtn ) inst.prevBtn.disabled = ( c.start <= 0 );
+		if ( inst.nextBtn ) inst.nextBtn.disabled = ( c.start >= maxStart );
+
+		/* ensure icons are left/right arrows */
+		var pi = inst.prevBtn && inst.prevBtn.querySelector( 'i' );
+		var ni = inst.nextBtn && inst.nextBtn.querySelector( 'i' );
+		if ( pi ) pi.className = 'far fa-arrow-left';
+		if ( ni ) ni.className = 'far fa-arrow-right';
+	}
+
+	function carouselMeasure( inst ) {
+		var c    = inst.carousel;
+		c.ps     = carouselPageSize();
 
 		var wrapW   = c.wrap.offsetWidth;
-		c.cardWidth = ( wrapW - c.gap * ( ps - 1 ) ) / ps;
-		c.cardHeight = 0; /* unused in this mode */
+		c.cardWidth = ( wrapW - c.gap * ( c.ps - 1 ) ) / c.ps;
 
 		c.track.style.width = ( c.items.length * c.cardWidth + ( c.items.length - 1 ) * c.gap ) + 'px';
-
 		c.items.forEach( function ( item ) {
 			item.style.width      = c.cardWidth + 'px';
 			item.style.flexShrink = '0';
 			item.style.minWidth   = '0';
 		} );
-	}
-
-	/* ===== VERTICAL MEASURE ===== */
-	function measureV( id ) {
-		var c  = carousels[ id ];
-		var ps = c.ps;
-
-		/* clear horizontal-mode overrides */
-		c.track.style.flexDirection = 'column';
-		c.track.style.width         = '100%';
-		c.items.forEach( function ( item ) {
-			item.style.width      = '';
-			item.style.flexShrink = '';
-			item.style.minWidth   = '';
-			item.style.height     = ''; /* clear first so we can measure natural height */
-			item.style.boxSizing  = '';
-		} );
-
-		/* find the tallest card so all can be uniform */
-		var maxH = 0;
-		c.items.forEach( function ( item ) {
-			var h = item.offsetHeight;
-			if ( h > maxH ) maxH = h;
-		} );
-		c.cardHeight = maxH;
-		c.cardWidth  = 0; /* unused in this mode */
-
-		/* lock every card to the same height */
-		c.items.forEach( function ( item ) {
-			item.style.height    = maxH + 'px';
-			item.style.boxSizing = 'border-box';
-		} );
-
-		c.track.style.height = ( c.items.length * maxH + ( c.items.length - 1 ) * c.gap ) + 'px';
-		c.wrap.style.height  = ( ps * maxH + ( ps - 1 ) * c.gap ) + 'px';
-	}
-
-	/* ---- dispatch to the right measure function, clamp start ---- */
-	function measure( id ) {
-		var c    = carousels[ id ];
-		c.ps     = pageSize();
-		c.vert   = isVertical();
-
-		if ( c.vert ) {
-			measureV( id );
-		} else {
-			measureH( id );
-		}
 
 		var maxStart = c.items.length - c.ps;
 		if ( c.start > maxStart ) c.start = Math.max( maxStart, 0 );
 
-		translate( id, c.start, false );
-		updateNav( id );
+		carouselTranslate( c, false );
+		carouselUpdateNav( inst );
 	}
 
-	/* ---- translate the track (X or Y depending on mode) ---- */
-	function translate( id, start, animate ) {
-		var c    = carousels[ id ];
-		var unit = c.vert ? c.cardHeight : c.cardWidth;
-		var val  = -( start * ( unit + c.gap ) );
-		var axis = c.vert ? 'translateY' : 'translateX';
-
-		c.track.style.transition = animate
-			? 'transform 0.42s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
-			: 'none';
-		c.track.style.transform  = axis + '(' + val + 'px)';
-	}
-
-	/* ---- update button disabled state, nav visibility, arrow icons ---- */
-	function updateNav( id ) {
-		var c        = carousels[ id ];
-		var maxStart = c.items.length - c.ps;
-
-		/* hide nav entirely if all cards fit without scrolling */
-		if ( c.nav ) c.nav.style.display = maxStart > 0 ? '' : 'none';
-
-		if ( c.prevBtn ) c.prevBtn.disabled = ( c.start <= 0 );
-		if ( c.nextBtn ) c.nextBtn.disabled = ( c.start >= maxStart );
-
-		/* swap arrow icons to match orientation */
-		var prevIcon = c.prevBtn && c.prevBtn.querySelector( 'i' );
-		var nextIcon = c.nextBtn && c.nextBtn.querySelector( 'i' );
-		if ( prevIcon ) prevIcon.className = c.vert ? 'far fa-arrow-up'   : 'far fa-arrow-left';
-		if ( nextIcon ) nextIcon.className = c.vert ? 'far fa-arrow-down' : 'far fa-arrow-right';
-	}
-
-	/* ---- slide to a new start index ---- */
-	function slide( id, start ) {
-		var c   = carousels[ id ];
-		c.start = start;
-		translate( id, start, true );
-		updateNav( id );
-	}
-
-	/* ---- one-time setup per carousel track ---- */
-	function init( id ) {
+	function setupCarousel( id, inst ) {
 		var track = document.getElementById( id );
 		if ( ! track ) return;
 
 		var gap = readGap( track );
 
-		/* wrap track in overflow:hidden clipping div */
+		/* wrap in overflow:hidden clipping div */
 		var wrap = document.createElement( 'div' );
 		wrap.className = 'dan-carousel-wrap';
 		track.parentNode.insertBefore( wrap, track );
 		wrap.appendChild( track );
 
-		/* switch from grid to flex; gap stays as-is from CSS */
-		track.style.display  = 'flex';
-		track.style.flexWrap = 'nowrap';
-		track.style.maxWidth = 'none';
+		track.style.display      = 'flex';
+		track.style.flexWrap     = 'nowrap';
+		track.style.flexDirection = 'row';
+		track.style.gap          = gap + 'px';
+		track.style.maxWidth     = 'none';
 
-		carousels[ id ] = {
+		inst.carousel = {
 			track    : track,
 			wrap     : wrap,
 			items    : Array.prototype.slice.call( track.children ),
 			start    : 0,
 			gap      : gap,
-			cardWidth : 0,
-			cardHeight: 0,
-			ps       : pageSize(),
-			vert     : isVertical(),
-			nav      : null,
-			prevBtn  : null,
-			nextBtn  : null,
+			cardWidth: 0,
+			ps       : carouselPageSize(),
 		};
+		inst.mode = 'carousel';
 
-		measure( id );
+		carouselMeasure( inst );
+
+		/* wire click handlers once */
+		if ( ! inst.prevWired ) {
+			inst.prevBtn && inst.prevBtn.addEventListener( 'click', function () {
+				var c = inst.carousel;
+				if ( ! c ) return;
+				var next = Math.max( c.start - c.ps, 0 );
+				if ( next !== c.start ) { c.start = next; carouselTranslate( c, true ); carouselUpdateNav( inst ); }
+			} );
+			inst.prevWired = true;
+		}
+		if ( ! inst.nextWired ) {
+			inst.nextBtn && inst.nextBtn.addEventListener( 'click', function () {
+				var c = inst.carousel;
+				if ( ! c ) return;
+				var maxStart = c.items.length - c.ps;
+				var next     = Math.min( c.start + c.ps, maxStart );
+				if ( next !== c.start ) { c.start = next; carouselTranslate( c, true ); carouselUpdateNav( inst ); }
+			} );
+			inst.nextWired = true;
+		}
 	}
 
-	/* ---- boot ---- */
+	function teardownCarousel( inst ) {
+		if ( ! inst.carousel ) return;
+		var c     = inst.carousel;
+		var track = c.track;
+		var wrap  = c.wrap;
+
+		/* unwrap the track */
+		if ( wrap && wrap.parentNode ) {
+			wrap.parentNode.insertBefore( track, wrap );
+			wrap.parentNode.removeChild( wrap );
+		}
+
+		/* clear all inline styles set by the carousel */
+		track.style.display       = '';
+		track.style.flexWrap      = '';
+		track.style.flexDirection = '';
+		track.style.gap           = '';
+		track.style.maxWidth      = '';
+		track.style.width         = '';
+		track.style.transform     = '';
+		track.style.transition    = '';
+
+		c.items.forEach( function ( item ) {
+			item.style.width      = '';
+			item.style.flexShrink = '';
+			item.style.minWidth   = '';
+		} );
+
+		inst.carousel = null;
+	}
+
+	/* ================================================================
+	   SHOW MORE / SHOW FEWER
+	   ================================================================ */
+
+	function setupShowMore( id, inst ) {
+		var track = document.getElementById( id );
+		if ( ! track ) return;
+
+		/* hide nav arrows — not needed in this mode */
+		if ( inst.nav ) inst.nav.style.display = 'none';
+
+		/* stack cards in a single column */
+		track.style.display       = 'flex';
+		track.style.flexDirection = 'column';
+
+		var items = Array.prototype.slice.call( track.children );
+
+		/* show first SHOW_N, hide the rest */
+		items.forEach( function ( item, i ) {
+			item.style.display = i < SHOW_N ? '' : 'none';
+		} );
+
+		/* only add toggle if there are cards to reveal */
+		var toggle = null;
+		if ( items.length > SHOW_N ) {
+			toggle = document.createElement( 'button' );
+			toggle.className   = 'dan-show-more-btn';
+			toggle.textContent = 'Show more';
+			toggle.setAttribute( 'aria-expanded', 'false' );
+
+			var expanded = false;
+			toggle.addEventListener( 'click', function () {
+				expanded = ! expanded;
+				items.forEach( function ( item, i ) {
+					if ( i >= SHOW_N ) item.style.display = expanded ? '' : 'none';
+				} );
+				toggle.textContent = expanded ? 'Show fewer' : 'Show more';
+				toggle.setAttribute( 'aria-expanded', String( expanded ) );
+			} );
+
+			/* insert directly after the track element */
+			track.parentNode.insertBefore( toggle, track.nextSibling );
+		}
+
+		inst.showMore = { track: track, items: items, toggle: toggle };
+		inst.mode     = 'showmore';
+	}
+
+	function teardownShowMore( inst ) {
+		if ( ! inst.showMore ) return;
+		var sm = inst.showMore;
+
+		if ( sm.toggle && sm.toggle.parentNode ) {
+			sm.toggle.parentNode.removeChild( sm.toggle );
+		}
+
+		sm.items.forEach( function ( item ) { item.style.display = ''; } );
+
+		sm.track.style.display       = '';
+		sm.track.style.flexDirection = '';
+
+		/* restore nav for carousel mode */
+		if ( inst.nav ) inst.nav.style.display = '';
+
+		inst.showMore = null;
+	}
+
+	/* ================================================================
+	   INIT & RESIZE
+	   ================================================================ */
+
+	function initOrUpdate( id ) {
+		var inst = instances[ id ];
+		var mode = getMode();
+
+		if ( inst.mode === mode ) {
+			if ( mode === 'carousel' ) carouselMeasure( inst );
+			return;
+		}
+
+		if ( inst.mode === 'carousel' )  teardownCarousel( inst );
+		if ( inst.mode === 'showmore' )  teardownShowMore( inst );
+
+		if ( mode === 'carousel' ) setupCarousel( id, inst );
+		else                       setupShowMore( id, inst );
+	}
+
 	document.addEventListener( 'DOMContentLoaded', function () {
 
+		/* collect instances from nav buttons */
 		document.querySelectorAll( '[data-carousel-prev], [data-carousel-next]' ).forEach( function ( btn ) {
 			var id = btn.dataset.carouselPrev || btn.dataset.carouselNext;
 			if ( ! id ) return;
-			if ( ! carousels[ id ] ) init( id );
 
-			var c = carousels[ id ];
-			if ( ! c ) return;
+			if ( ! instances[ id ] ) {
+				instances[ id ] = {
+					mode: null, carousel: null, showMore: null,
+					nav: null, prevBtn: null, nextBtn: null,
+					prevWired: false, nextWired: false,
+				};
+			}
 
-			if ( btn.hasAttribute( 'data-carousel-prev' ) ) {
-				c.prevBtn = btn;
-				c.nav     = btn.parentElement;
-			}
-			if ( btn.hasAttribute( 'data-carousel-next' ) ) {
-				c.nextBtn = btn;
-				if ( ! c.nav ) c.nav = btn.parentElement;
-			}
+			var inst = instances[ id ];
+			if ( btn.hasAttribute( 'data-carousel-prev' ) ) { inst.prevBtn = btn; inst.nav = btn.parentElement; }
+			if ( btn.hasAttribute( 'data-carousel-next' ) ) { inst.nextBtn = btn; if ( ! inst.nav ) inst.nav = btn.parentElement; }
 		} );
 
-		Object.keys( carousels ).forEach( updateNav );
-
-		document.querySelectorAll( '[data-carousel-prev], [data-carousel-next]' ).forEach( function ( btn ) {
-			var id     = btn.dataset.carouselPrev || btn.dataset.carouselNext;
-			var isNext = btn.hasAttribute( 'data-carousel-next' );
-
-			btn.addEventListener( 'click', function () {
-				var c = carousels[ id ];
-				if ( ! c ) return;
-				var maxStart = c.items.length - c.ps;
-				var next     = isNext
-					? Math.min( c.start + c.ps, maxStart )
-					: Math.max( c.start - c.ps, 0 );
-				if ( next !== c.start ) slide( id, next );
-			} );
+		Object.keys( instances ).forEach( function ( id ) {
+			var mode = getMode();
+			if ( mode === 'carousel' ) setupCarousel( id, instances[ id ] );
+			else                       setupShowMore( id, instances[ id ] );
 		} );
 
 		var resizeTimer;
 		window.addEventListener( 'resize', function () {
 			clearTimeout( resizeTimer );
 			resizeTimer = setTimeout( function () {
-				Object.keys( carousels ).forEach( measure );
+				Object.keys( instances ).forEach( initOrUpdate );
 			}, 150 );
 		} );
 	} );
