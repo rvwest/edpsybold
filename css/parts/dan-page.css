@@ -1558,6 +1558,7 @@ a.dan-collab-card:focus-visible {
 
     }
 
+    /*
     body .dan-media__cards article.type-post a,
     body .dan-thoughts__cards article.type-post a {
 
@@ -1570,7 +1571,7 @@ a.dan-collab-card:focus-visible {
         .details {
             width: 70%;
         }
-    }
+    }*/
 
     body h2 {
 
