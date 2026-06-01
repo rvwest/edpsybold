@@ -1417,14 +1417,14 @@ a.dan-collab-card:focus-visible {
         flex-direction: column;
     }
 
-    /* Thoughts */
+    /* Thoughts
     .dan-thoughts__top {
         flex-direction: column;
     }
 
     .dan-thoughts__cards {
         grid-template-columns: 1fr;
-    }
+    } */
 
     /* Collabs */
     .dan-collabs__grid {
@@ -1453,12 +1453,8 @@ a.dan-collab-card:focus-visible {
 
 
 
-    .dan-media__nav,
-    .dan-thoughts__nav {
-        display: none;
-    }
 
-
+    /*
     body .dan-media__cards article.type-post,
     body .dan-thoughts__cards article.type-post {
 
@@ -1471,8 +1467,7 @@ a.dan-collab-card:focus-visible {
 
             .archive-article-img {
                 width: 40%;
-                /*display: flex;
-                align-items: center;*/
+                
 
                 .home-article-image,
                 .article-item-image {
@@ -1508,7 +1503,7 @@ a.dan-collab-card:focus-visible {
                 box-shadow: none;
             }
         }
-    }
+    } */
 }
 
 
