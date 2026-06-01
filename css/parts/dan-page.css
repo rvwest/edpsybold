@@ -59,11 +59,16 @@ main.dan-page-content {
 .dan-media,
 .dan-about,
 .dan-podcast,
-.dan-talks,
-.dan-collabs,
-.dan-testimonials,
-.dan-thoughts {
+.dan-testimonials {
     padding-bottom: var(--dan-section-gap);
+}
+
+.dan-thoughts {
+    padding-bottom: var(--sp-xxlarge);
+}
+
+.dan-talks {
+    margin-bottom: var(--sp-xxxlarge);
 }
 
 .dan-policy {
@@ -861,10 +866,11 @@ main.dan-page-content {
    7. SIGNATURE TALKS
    ============================================================ */
 
-
+.dan-talks {
+    background-color: var(--cl-lightpurple);
+}
 
 .dan-talks__box {
-    background-color: var(--dan-pink);
     margin: 0 auto;
     padding: var(--sp-xxlarge);
     /* 60px */
@@ -1078,6 +1084,15 @@ body .dan-thoughts__cards article.type-post {
    9. WORKING TOGETHER (Collaborations)
    ============================================================ */
 
+.dan-collabs {
+    background-color: var(--cl-straw);
+    padding-bottom: var(--sp-xlarge);
+    margin-bottom: var(--sp-xxxlarge);
+}
+
+.dan-collabs .dan-inner {
+    padding-top: var(--sp-xxlarge);
+}
 
 .dan-collabs__header {
     display: flex;
@@ -1120,9 +1135,10 @@ body .dan-thoughts__cards article.type-post {
 
 .dan-collab-card__logo {
     width: 156px;
-    height: 78px;
+    max-height: 78px;
     object-fit: contain;
     display: block;
+    object-position: left center;
 }
 
 .dan-collab-card__body {
@@ -1311,6 +1327,10 @@ a.dan-collab-card:focus-visible {
 
     .dan-stats__row {
         grid-template-columns: repeat(3, 1fr);
+    }
+
+    .dan-testimonials__masonry {
+        column-count: 2;
     }
 
 }
@@ -1636,6 +1656,12 @@ a.dan-collab-card:focus-visible {
         padding-left: var(--sp-medium);
         padding-right: var(--sp-medium);
     }
+
+    .dan-collab-card {
+        flex-direction: column;
+        gap: 24px;
+    }
+
 
     .dan-podcast__upper {
         margin-left: var(--sp-medium);
