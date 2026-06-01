@@ -472,6 +472,11 @@ main.dan-page-content {
     pointer-events: none;
 }
 
+.dan-carousel-wrap {
+    overflow: hidden;
+    width: 100%;
+}
+
 .dan-media__cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
