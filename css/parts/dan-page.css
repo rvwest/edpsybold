@@ -477,6 +477,14 @@ main.dan-page-content {
     width: 100%;
 }
 
+/* vertical-mode nav: stack up arrow above down arrow */
+@media (max-width: 500px) {
+    .dan-media__nav,
+    .dan-thoughts__nav {
+        flex-direction: column;
+    }
+}
+
 .dan-media__cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
