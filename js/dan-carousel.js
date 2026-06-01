@@ -117,8 +117,8 @@
 				if ( ! c ) return;
 				var maxStart = c.items.length - PAGE_SIZE;
 				var next     = isNext
-					? Math.min( c.start + 1, maxStart )
-					: Math.max( c.start - 1, 0 );
+					? Math.min( c.start + PAGE_SIZE, maxStart )
+					: Math.max( c.start - PAGE_SIZE, 0 );
 				if ( next !== c.start ) slide( id, next );
 			} );
 		} );
