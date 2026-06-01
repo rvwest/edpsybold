@@ -27,18 +27,7 @@ $articles = get_field('dan_thoughts_articles');
                 <?php endif; ?>
             </div>
 
-            <?php if ($articles && count($articles) > 2): ?>
-                <div class="dan-thoughts__nav" aria-label="Thought pieces carousel navigation">
-                    <button class="dan-thoughts__nav-btn" aria-label="Previous thought pieces"
-                        data-carousel-prev="dan-thoughts-carousel">
-                        <i class="far fa-arrow-left" aria-hidden="true"></i>
-                    </button>
-                    <button class="dan-thoughts__nav-btn" aria-label="Next thought pieces"
-                        data-carousel-next="dan-thoughts-carousel">
-                        <i class="far fa-arrow-right" aria-hidden="true"></i>
-                    </button>
-                </div>
-            <?php endif; ?>
+
         </div><!-- .dan-thoughts__top -->
 
         <?php if ($articles): ?>
@@ -73,6 +62,17 @@ $articles = get_field('dan_thoughts_articles');
                 <?php endforeach; ?>
             </div><!-- .dan-thoughts__cards -->
         <?php endif; ?>
-
+<?php if ($articles && count($articles) > 2): ?>
+                    <div class="dan-thoughts__nav" aria-label="Thought pieces carousel navigation">
+                        <button class="dan-thoughts__nav-btn" aria-label="Previous thought pieces"
+                            data-carousel-prev="dan-thoughts-carousel">
+                            <i class="far fa-arrow-left" aria-hidden="true"></i>
+                        </button>
+                        <button class="dan-thoughts__nav-btn" aria-label="Next thought pieces"
+                            data-carousel-next="dan-thoughts-carousel">
+                            <i class="far fa-arrow-right" aria-hidden="true"></i>
+                        </button>
+                    </div>
+            <?php endif; ?>
     </div><!-- .dan-inner -->
 </section><!-- .dan-thoughts -->

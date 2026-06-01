@@ -32,17 +32,7 @@ $logos = get_field('dan_media_logos');
                 <?php endif; ?>
             </div>
 
-            <?php if ($articles && count($articles) > 2): ?>
-                <div class="dan-media__nav" aria-label="Article carousel navigation">
-                    <button class="dan-media__nav-btn" aria-label="Previous articles"
-                        data-carousel-prev="dan-media-carousel">
-                        <i class="far fa-arrow-left" aria-hidden="true"></i>
-                    </button>
-                    <button class="dan-media__nav-btn" aria-label="Next articles" data-carousel-next="dan-media-carousel">
-                        <i class="far fa-arrow-right" aria-hidden="true"></i>
-                    </button>
-                </div>
-            <?php endif; ?>
+
         </div><!-- .dan-media__top -->
 
         <?php if ($articles): ?>
@@ -87,7 +77,18 @@ $logos = get_field('dan_media_logos');
 
                 <?php endforeach; ?>
             </div><!-- .dan-media__cards -->
+            <?php if ($articles && count($articles) > 2): ?>
+                <div class="dan-media__nav" aria-label="Article carousel navigation">
+                    <button class="dan-media__nav-btn" aria-label="Previous articles" data-carousel-prev="dan-media-carousel">
+                        <i class="far fa-arrow-left" aria-hidden="true"></i>
+                    </button>
+                    <button class="dan-media__nav-btn" aria-label="Next articles" data-carousel-next="dan-media-carousel">
+                        <i class="far fa-arrow-right" aria-hidden="true"></i>
+                    </button>
+                </div>
+            <?php endif; ?>
         <?php endif; ?>
+
 
         <?php if ($logos): ?>
             <div class="dan-media__logos" aria-label="Featured in">

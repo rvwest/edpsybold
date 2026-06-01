@@ -15,7 +15,7 @@
 
     --dan-h-padding: 185px;
     --dan-max-width: 1440px;
-    --dan-section-gap: 150px;
+    --dan-section-gap: 100px;
     /* 50px stat number — no match in theme type scale */
     --dan-fs-stat: 50px;
     /* 24px card title — no exact match as named size var */
@@ -409,7 +409,7 @@ main.dan-page-content {
     align-items: flex-start;
     justify-content: space-between;
     gap: var(--sp-xxlarge);
-    margin-bottom: var(--sp-xxlarge);
+    margin-bottom: var(--sp-xlarge);
 }
 
 .dan-media__top-left {
@@ -438,13 +438,6 @@ main.dan-page-content {
     /*   line-height: var(--lh-body);
      font-size: var(--fs-body);
     font-family: var(--ff);*/
-}
-
-.dan-media__nav {
-    display: flex;
-    gap: var(--sp-small);
-    flex-shrink: 0;
-    align-items: center;
 }
 
 .dan-media__nav-btn {
@@ -487,7 +480,8 @@ main.dan-page-content {
     font-weight: var(--fw-semibold);
     cursor: pointer;
     display: block;
-    margin-top: var(--sp-medium);
+    margin-top: 0;
+    margin-bottom: var(--sp-large);
     text-decoration: underline;
     text-underline-offset: 3px;
 }
@@ -720,7 +714,8 @@ main.dan-page-content {
 .dan-podcast__upper {
     display: flex;
     gap: 67px;
-    align-items: flex-start;
+    align-items: center;
+    margin: 0 var(--sp-xxlarge);
 }
 
 .dan-podcast__artwork {
@@ -729,6 +724,7 @@ main.dan-page-content {
     flex-shrink: 0;
     object-fit: cover;
     display: block;
+    border-radius: var(--rd-large);
 }
 
 .dan-podcast__info {
@@ -899,6 +895,7 @@ main.dan-page-content {
     gap: var(--sp-medium);
     /* 24px */
     margin-bottom: var(--sp-xxlarge);
+    flex-wrap: wrap;
 }
 
 .dan-talks__card {
@@ -909,6 +906,7 @@ main.dan-page-content {
     background-color: var(--cl-light);
     padding: var(--sp-medium);
     border-radius: var(--rd-large);
+    min-width: 280px;
     /* 24px */
 }
 
@@ -996,7 +994,7 @@ main.dan-page-content {
     align-items: flex-start;
     justify-content: space-between;
     gap: var(--sp-xxlarge);
-    margin-bottom: var(--sp-xxlarge);
+    margin-bottom: var(--sp-xlarge);
 }
 
 .dan-thoughts__top-left {
@@ -1015,13 +1013,15 @@ main.dan-page-content {
     font-family: var(--ff);
 }
 
-
-
+.dan-media__nav,
 .dan-thoughts__nav {
     display: flex;
     gap: var(--sp-small);
     flex-shrink: 0;
     align-items: center;
+    justify-content: end;
+    margin-top: var(--sp-small);
+    margin-bottom: var(--sp-large);
 }
 
 .dan-thoughts__nav-btn {
@@ -1057,6 +1057,21 @@ main.dan-page-content {
 .dan-thoughts__card-topic {
 
     color: var(--dan-green);
+}
+
+body .dan-media__cards,
+body .dan-thoughts__cards {
+    margin-bottom: 0;
+
+
+}
+
+body .dan-media__cards article.type-post,
+body .dan-thoughts__cards article.type-post {
+
+    margin-bottom: 0;
+
+
 }
 
 /* ============================================================
@@ -1361,6 +1376,11 @@ a.dan-collab-card:focus-visible {
         gap: var(--sp-medium);
     }
 
+    .dan-media__cards article h2.entry-title,
+    .dan-thoughts__cards article h2.entry-title {
+        font-weight: var(--fw-normal);
+    }
+
     /* Policy */
     .dan-policy__box {
         flex-direction: column;
@@ -1392,7 +1412,6 @@ a.dan-collab-card:focus-visible {
         width: 100%;
         height: auto;
         max-width: 365px;
-        border-radius: var(--rd-large);
     }
 
     .dan-podcast__stats {
@@ -1413,8 +1432,17 @@ a.dan-collab-card:focus-visible {
     }
 
     /* Talks */
+
+    .dan-talks__box {
+        padding: var(--sp-xxlarge) var(--sp-xlarge);
+    }
+
     .dan-talks__grid {
         flex-direction: column;
+    }
+
+    .dan-talks__header {
+        align-items: start;
     }
 
     /* Thoughts
@@ -1444,66 +1472,14 @@ a.dan-collab-card:focus-visible {
         column-count: 1;
     }
 
-    body .dan-media__cards,
-    body .dan-thoughts__cards {
-        margin-bottom: var(--sp-xxlarge);
-
-
-    }
-
-
-
-
-    /*
     body .dan-media__cards article.type-post,
     body .dan-thoughts__cards article.type-post {
 
         width: 100%;
-        margin-bottom: 0;
-
-        a {
-            display: flex;
 
 
-            .archive-article-img {
-                width: 40%;
-                
 
-                .home-article-image,
-                .article-item-image {
-                    margin-bottom: 0;
-                }
-
-            }
-
-            .details {
-                width: 60%;
-                padding-top: 0;
-                font-weight: normal;
-
-
-                padding: var(--sp-small) var(--sp-xsmall) var(--sp-small) var(--sp-medium);
-
-
-                .dan-media__card-outlet,
-                .dan-thoughts__card-topic {
-                    margin-top: 0;
-                    font-size: var(--fs-body-small);
-                }
-
-                h2.entry-title {
-                    margin-bottom: 0;
-                    padding-bottom: 0;
-                    font-weight: normal;
-                }
-            }
-
-            &:hover,
-            &:active {
-                box-shadow: none;
-            }
-        }
-    } */
+    }
 }
 
 
@@ -1533,6 +1509,10 @@ a.dan-collab-card:focus-visible {
 
     .dan-podcast__stats {
         margin-top: var(--sp-medium);
+    }
+
+    .dan-podcast__upper {
+        margin: 0 var(--sp-xlarge);
     }
 
     .dan-policy__box {
@@ -1586,9 +1566,12 @@ a.dan-collab-card:focus-visible {
 
     body h2.dan-about__heading,
     .dan-policy__heading,
-    .dan-thoughts__top,
     .dan-collabs__header {
         margin-bottom: var(--sp-small);
+    }
+
+    .dan-thoughts__top {
+        margin-bottom: calc(var(--sp-small) + var(--sp-medium));
     }
 
     .dan-testimonials__header,
@@ -1628,18 +1611,34 @@ a.dan-collab-card:focus-visible {
         }
     }
 
+    .dan-media .dan-inner,
+    .dan-thoughts .dan-inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
     body .dan-media__cards {
-        margin-bottom: var(--sp-medium);
+        margin-bottom: 0;
     }
 
     .dan-policy__box {
-        padding-left: var(--sp-medium);
-        padding-right: var(--sp-medium);
+        padding: var(--sp-large) var(--sp-medium);
     }
 
     .dan-stats__row {
         display: flex;
         flex-direction: column;
         align-items: stretch;
+    }
+
+    .dan-talks__box {
+        padding-left: var(--sp-medium);
+        padding-right: var(--sp-medium);
+    }
+
+    .dan-podcast__upper {
+        margin-left: var(--sp-medium);
+        margin-right: var(--sp-medium);
     }
 }

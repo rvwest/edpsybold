@@ -18,7 +18,7 @@ $artwork = get_field('dan_podcast_artwork');
 $stats = get_field('dan_podcast_stats');
 $episodes = get_field('dan_podcast_episodes');
 ?>
-<section class="dan-podcast edp-fullwidth" aria-label="Podcast">
+<section class="dan-podcast " aria-label="Podcast">
     <div class="dan-inner">
 
         <div class="dan-podcast__upper">
@@ -70,8 +70,7 @@ $episodes = get_field('dan_podcast_episodes');
                                     <span class="dan-podcast__ep-ref"><?php echo esc_html($episode['ep_ref']); ?></span>
                                 <?php endif; ?>
                                 <?php if ($episode['ep_url']): ?>
-                                    <a href="<?php echo esc_url($episode['ep_url']); ?>" target="_blank"
-                                        rel="noopener noreferrer">
+                                    <a href="<?php echo esc_url($episode['ep_url']); ?>" target="_blank" rel="noopener noreferrer">
                                         <?php echo esc_html($episode['ep_title']); ?>
                                     </a>
                                 <?php else: ?>
@@ -91,9 +90,8 @@ $episodes = get_field('dan_podcast_episodes');
                                             <a href="<?php echo esc_url($purl); ?>" class="dan-podcast__platform-link" target="_blank"
                                                 rel="noopener noreferrer" aria-label="<?php echo esc_attr($pimg['alt']); ?>">
                                             <?php endif; ?>
-                                            <img src="<?php echo esc_url($pimg['url']); ?>"
-                                                alt="<?php echo esc_attr($pimg['alt']); ?>" class="dan-podcast__platform-img"
-                                                loading="lazy" />
+                                            <img src="<?php echo esc_url($pimg['url']); ?>" alt="<?php echo esc_attr($pimg['alt']); ?>"
+                                                class="dan-podcast__platform-img" loading="lazy" />
                                             <?php if ($purl): ?>
                                             </a>
                                         <?php endif; ?>
