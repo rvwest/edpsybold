@@ -32,7 +32,7 @@ $logos = get_field('dan_media_logos');
                 <?php endif; ?>
             </div>
 
-            <?php if ($articles && count($articles) > 3): ?>
+            <?php if ($articles && count($articles) > 2): ?>
                 <div class="dan-media__nav" aria-label="Article carousel navigation">
                     <button class="dan-media__nav-btn" aria-label="Previous articles"
                         data-carousel-prev="dan-media-carousel">

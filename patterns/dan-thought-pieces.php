@@ -27,7 +27,7 @@ $articles = get_field('dan_thoughts_articles');
                 <?php endif; ?>
             </div>
 
-            <?php if ($articles && count($articles) > 3): ?>
+            <?php if ($articles && count($articles) > 2): ?>
                 <div class="dan-thoughts__nav" aria-label="Thought pieces carousel navigation">
                     <button class="dan-thoughts__nav-btn" aria-label="Previous thought pieces"
                         data-carousel-prev="dan-thoughts-carousel">
