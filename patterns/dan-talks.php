@@ -18,7 +18,7 @@ $talks = get_field('dan_talks');
 $cta_text = get_field('dan_talks_cta_text');
 $cta_url = get_field('dan_talks_cta_url');
 ?>
-<section class="dan-talks edp-fullwidth" aria-label="Signature talks">
+<section class="dan-talks " aria-label="Signature talks">
     <div class="dan-inner">
         <div class="dan-talks__box">
 

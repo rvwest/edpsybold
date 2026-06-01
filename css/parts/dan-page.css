@@ -271,7 +271,7 @@ main.dan-page-content {
     align-items: start;
     gap: var(--sp-small);
     /* 12px */
-    text-align: center;
+    text-align: left;
 }
 
 .dan-stats__eyebrow {
@@ -431,12 +431,13 @@ main.dan-page-content {
 
 
 .dan-media__subheading {
-    font-size: var(--fs-body);
+
     /* 18px */
     color: var(--cl-dark);
     margin: 0;
-    line-height: var(--lh-body);
-    font-family: var(--ff);
+    /*   line-height: var(--lh-body);
+     font-size: var(--fs-body);
+    font-family: var(--ff);*/
 }
 
 .dan-media__nav {
@@ -1163,6 +1164,7 @@ main.dan-page-content {
     font-weight: var(--fw-semibold);
     color: var(--cl-light);
     line-height: 1;
+    margin-bottom: -30px;
     width: fit-content;
     font-family: var(--ff);
 }
@@ -1308,6 +1310,8 @@ main.dan-page-content {
     .dan-policy__box {
         flex-direction: column;
         gap: var(--sp-xxlarge);
+        padding-left: var(--sp-xxxlarge);
+        padding-right: var(--sp-xxxlarge);
     }
 
     .dan-policy__left {
@@ -1372,6 +1376,14 @@ main.dan-page-content {
         grid-template-columns: 1fr;
     }
 
+    .dan-collab-card {
+        flex-direction: row;
+    }
+
+    .dan-collab-card__logo {
+        min-width: 156px;
+    }
+
     /* Testimonials */
     .dan-testimonials__masonry {
         column-count: 1;
@@ -1383,6 +1395,8 @@ main.dan-page-content {
 
 
     }
+
+
 
     .dan-media__nav,
     .dan-thoughts__nav {
@@ -1445,6 +1459,19 @@ main.dan-page-content {
 
 @media (max-width: 600px) {
 
+
+    .dan-hero__left {
+        margin-top: var(--sp-large);
+    }
+
+    .dan-hero__illustration {
+        opacity: 0.7;
+    }
+
+    .dan-stats__inner {
+        padding-top: var(--sp-xlarge);
+    }
+
     .dan-about__content,
     .dan-media__top,
     .dan-policy__left,
@@ -1458,23 +1485,106 @@ main.dan-page-content {
         margin-top: var(--sp-medium);
     }
 
+    .dan-policy__box {
+        padding-top: var(--sp-xlarge);
+        padding-bottom: var(--sp-xlarge);
+    }
+
+    .dan-talks.edp-fullwidth {
+
+
+        .dan-talks__grid {
+            margin-bottom: var(--sp-xlarge);
+        }
+
+        .dan-talks__box {
+            padding: var(--sp-large) var(--sp-medium);
+        }
+
+    }
+
     body .dan-media__cards article.type-post a,
     body .dan-thoughts__cards article.type-post a {
 
 
         .archive-article-img {
             width: 30%;
-            margin-top: calc(var(--sp-small) + 27px);
+            margin-top: 18px;
         }
 
         .details {
             width: 70%;
         }
     }
+
+    body h2 {
+
+        &.dan-stats__heading,
+        &.dan-about__heading,
+        &.dan-media__heading,
+        &.dan-policy__heading,
+        &.dan-podcast__heading,
+        &.dan-talks__heading,
+        &.dan-thoughts__heading,
+        &.dan-collabs__heading,
+        &.dan-testimonials__heading {
+            font-size: var(--fs-title-medium);
+            line-height: var(--lh-title-medium);
+        }
+    }
+
+    body h2.dan-about__heading,
+    .dan-policy__heading,
+    .dan-thoughts__top,
+    .dan-collabs__header {
+        margin-bottom: var(--sp-small);
+    }
+
+    .dan-testimonials__header,
+    .dan-talks__header {
+        margin-bottom: calc(var(--sp-small) + var(--sp-medium));
+    }
+
+    .dan-testimonials__header,
+    .dan-collabs__header {
+        align-items: center;
+    }
 }
 
 
 @media (max-width: 500px) {
+    .page-template-page-dan h1 {
+        font-size: var(--fs-display-small);
+    }
+
+    body.page-template-page-dan article.type-post {
+
+        margin-bottom: var(--sp-xsmall);
+
+        a {
+
+            flex-direction: column;
+
+            .archive-article-img {
+                width: 100%;
+                margin-top: 0;
+            }
+
+            .details {
+                width: 100%;
+                padding: 0 var(--sp-xsmall) var(--sp-medium) var(--sp-xsmall);
+            }
+        }
+    }
+
+    body .dan-media__cards {
+        margin-bottom: var(--sp-medium);
+    }
+
+    .dan-policy__box {
+        padding-left: var(--sp-medium);
+        padding-right: var(--sp-medium);
+    }
 
     .dan-stats__row {
         display: flex;
