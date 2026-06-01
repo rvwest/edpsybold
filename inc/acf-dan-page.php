@@ -746,6 +746,14 @@ acf_add_local_field_group( array(
             'type'          => 'text',
         ),
         array(
+            'key'           => 'field_dan_collab_subtitle',
+            'label'         => 'Subtitle',
+            'name'          => 'dan_collab_subtitle',
+            'type'          => 'textarea',
+            'rows'          => 3,
+            'instructions'  => 'Optional paragraph displayed beneath the heading.',
+        ),
+        array(
             'key'           => 'field_dan_collabs',
             'label'         => 'Collaborations',
             'name'          => 'dan_collabs',

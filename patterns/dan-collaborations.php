@@ -9,9 +9,10 @@
  *             dan_collabs (repeater: collab_logo, collab_role, collab_title, collab_description)
  */
 
-$eyebrow = get_field( 'dan_collab_eyebrow' );
-$heading = get_field( 'dan_collab_heading' );
-$collabs = get_field( 'dan_collabs' );
+$eyebrow   = get_field( 'dan_collab_eyebrow' );
+$heading   = get_field( 'dan_collab_heading' );
+$subtitle  = get_field( 'dan_collab_subtitle' );
+$collabs   = get_field( 'dan_collabs' );
 ?>
 <section class="dan-collabs edp-fullwidth" aria-label="Working together">
 <div class="dan-inner">
@@ -26,6 +27,9 @@ $collabs = get_field( 'dan_collabs' );
         <?php endif; ?>
         <?php if ( $heading ) : ?>
             <h2 class="dan-collabs__heading"><?php echo esc_html( $heading ); ?></h2>
+        <?php endif; ?>
+        <?php if ( $subtitle ) : ?>
+            <p class="dan-collabs__subtitle"><?php echo esc_html( $subtitle ); ?></p>
         <?php endif; ?>
     </div>
             <?php foreach ( $collabs as $collab ) :
