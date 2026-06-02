@@ -11,13 +11,12 @@
  *   Suggested asset from theme: images/edpsy-swirls-16.svg or edpsy-swirls-26.svg
  *
  * ACF fields: dan_about_eyebrow, dan_about_heading,
- *             dan_about_col1, dan_about_col2, dan_about_illustration
+ *             dan_about_col1, dan_about_illustration
  */
 
-$eyebrow = get_field('dan_about_eyebrow');
-$heading = get_field('dan_about_heading');
-$col1 = get_field('dan_about_col1');
-$col2 = get_field('dan_about_col2');
+$eyebrow      = get_field('dan_about_eyebrow');
+$heading      = get_field('dan_about_heading');
+$col1         = get_field('dan_about_col1');
 $illustration = get_field('dan_about_illustration');
 ?>
 <section class="dan-about" aria-label="About Dan">
@@ -40,12 +39,9 @@ $illustration = get_field('dan_about_illustration');
             <h2 class="dan-about__heading"><?php echo esc_html($heading); ?></h2>
         <?php endif; ?>
 
-        <?php if ($col1 || $col2): ?>
+        <?php if ($col1): ?>
             <div class="dan-about__body">
-                <?php if ($col1): ?>
-                    <div class="dan-about__col"><?php echo wp_kses_post($col1); ?></div>
-                <?php endif; ?>
-
+                <div class="dan-about__col"><?php echo wp_kses_post(wpautop($col1)); ?></div>
             </div>
         <?php endif; ?>
 
