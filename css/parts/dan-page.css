@@ -365,7 +365,7 @@ main.dan-page-content {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: var(--sp-medium);
+    gap: var(--sp-small);
     min-width: 380px;
     /* 24px */
     justify-content: center;
@@ -760,19 +760,24 @@ main.dan-page-content {
 }
 
 .dan-podcast__stats {
-    display: flex;
+    /*   display: flex;
     align-items: stretch;
     flex-wrap: wrap;
     gap: 0;
-    justify-content: space-between;
+    justify-content: space-between; */
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+    gap: var(--sp-home-gap);
+
 }
 
 
 
 .dan-podcast__stat {
-    padding-right: var(--sp-xxlarge);
-    margin-right: var(--sp-xxlarge);
-    border-right: 1px solid var(--cl-dark);
+    padding-left: var(--sp-small);
+    border-left: 4px solid var(--cl-thesis-primary);
     display: flex;
     flex-direction: column;
     gap: 4px;
@@ -872,7 +877,7 @@ main.dan-page-content {
 
 .dan-talks__box {
     margin: 0 auto;
-    padding: var(--sp-xxlarge);
+    padding: var(--sp-xxlarge) 0;
     /* 60px */
 }
 
@@ -1141,6 +1146,20 @@ body .dan-thoughts__cards article.type-post {
     object-position: left center;
 }
 
+.footer-right a {
+    position: relative;
+    display: inline-block;
+}
+
+.footer-right a::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgb(255, 251, 242);
+    mix-blend-mode: multiply;
+    pointer-events: none;
+}
+
 .dan-collab-card__body {
     display: flex;
     flex-direction: column;
@@ -1168,9 +1187,6 @@ body .dan-thoughts__cards article.type-post {
 }
 
 .dan-collab-card__desc {
-    font-size: var(--fs-body-medium);
-    /* 16px */
-    font-weight: var(--fw-normal);
     color: var(--cl-dark);
     margin: 0;
     line-height: var(--lh-body);
@@ -1335,6 +1351,12 @@ a.dan-collab-card:focus-visible {
 
 }
 
+@media (max-width: 900px) {
+    .dan-podcast__stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 /* ============================================================
    RESPONSIVE — Mobile 768px breakpoint
    ============================================================ */
@@ -1434,9 +1456,10 @@ a.dan-collab-card:focus-visible {
         max-width: 365px;
     }
 
+
+
     .dan-podcast__stats {
-        flex-wrap: wrap;
-        gap: var(--sp-medium);
+        grid-template-columns: repeat(4, 1fr);
     }
 
     .dan-podcast__stat {
@@ -1501,6 +1524,8 @@ a.dan-collab-card:focus-visible {
 
     }
 }
+
+
 
 
 @media (max-width: 600px) {
@@ -1666,5 +1691,13 @@ a.dan-collab-card:focus-visible {
     .dan-podcast__upper {
         margin-left: var(--sp-medium);
         margin-right: var(--sp-medium);
+    }
+}
+
+@media (max-width: 400px) {
+
+
+    .dan-podcast__stats {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
