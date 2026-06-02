@@ -37,7 +37,7 @@ $logos = get_field('dan_media_logos');
 
         <?php if ($articles): ?>
             <div class="dan-media__cards" id="dan-media-carousel">
-                <?php foreach ($articles as $article):
+                <?php foreach (array_reverse($articles) as $article):
                     $img = isset($article['article_image']) ? $article['article_image'] : null;
                     $url = isset($article['article_url']) ? $article['article_url'] : '';
                     ?>
