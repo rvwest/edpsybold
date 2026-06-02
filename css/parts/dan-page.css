@@ -592,11 +592,13 @@ main.dan-page-content {
     display: flex;
     flex-wrap: wrap;
     gap: 70px;
+    width: 100%;
+    justify-content: space-around;
     align-items: center;
 }
 
 .dan-media__logo-item {
-    width: 158px;
+    max-width: 158px;
     height: 57px;
     object-fit: contain;
     display: block;
