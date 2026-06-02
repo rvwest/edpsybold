@@ -38,6 +38,8 @@
                         font-size: var(--fs-body);
                         font-weight: var(--fw-semibold);
                         color: var(--cl-dark);
+                        /* border-bottom-left-radius: var(--rd-large);
+                        border-top-left-radius: var(--rd-large);*/
 
                         .wpbdp-field-value:not(:last-child) {
                             margin-bottom: var(--sp-small);
@@ -48,6 +50,8 @@
                         background-color: var(--cl-light);
                         padding: var(--sp-medium);
                         flex-grow: 1;
+                        /* border-bottom-right-radius: var(--rd-large);
+                        border-top-right-radius: var(--rd-large);*/
 
                         h3 {
                             font-size: var(--fs-body);

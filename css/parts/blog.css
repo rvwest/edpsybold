@@ -535,7 +535,8 @@
 .archive.category-blog,
 .archive.author,
 .archive.tag,
-.archive.category {
+.archive.category,
+.page-template-page-dan {
 
     article.type-post {
 
