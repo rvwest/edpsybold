@@ -63,6 +63,10 @@ main.dan-page-content {
     padding-bottom: var(--dan-section-gap);
 }
 
+.dan-podcast {
+    padding-bottom: var(--sp-xxxlarge);
+}
+
 .dan-thoughts {
     padding-bottom: var(--sp-xxlarge);
 }
@@ -1427,8 +1431,8 @@ a.dan-collab-card:focus-visible {
     .dan-policy__box {
         flex-direction: column;
         gap: var(--sp-xxlarge);
-        padding-left: var(--sp-xxxlarge);
-        padding-right: var(--sp-xxxlarge);
+        padding-left: var(--sp-medium);
+        padding-right: var(--sp-medium);
     }
 
     .dan-policy__left {
@@ -1448,6 +1452,7 @@ a.dan-collab-card:focus-visible {
     .dan-podcast__upper {
         flex-direction: column;
         gap: var(--sp-xxlarge);
+        margin: 0 var(--sp-medium);
     }
 
     .dan-podcast__artwork {
@@ -1477,7 +1482,7 @@ a.dan-collab-card:focus-visible {
     /* Talks */
 
     .dan-talks__box {
-        padding: var(--sp-xxlarge) var(--sp-xlarge);
+        padding: var(--sp-xxlarge) 0;
     }
 
     .dan-talks__grid {
@@ -1498,6 +1503,11 @@ a.dan-collab-card:focus-visible {
     } */
 
     /* Collabs */
+
+    .dan-collabs__header {
+        margin-bottom: var(--sp-small);
+    }
+
     .dan-collabs__grid {
         grid-template-columns: 1fr;
     }
@@ -1556,9 +1566,6 @@ a.dan-collab-card:focus-visible {
         margin-top: var(--sp-medium);
     }
 
-    .dan-podcast__upper {
-        margin: 0 var(--sp-xlarge);
-    }
 
     .dan-policy__box {
         padding-top: var(--sp-xlarge);
@@ -1573,9 +1580,17 @@ a.dan-collab-card:focus-visible {
         }
 
         .dan-talks__box {
-            padding: var(--sp-large) var(--sp-medium);
+            padding: var(--sp-xlarge) 0;
         }
 
+    }
+
+    .dan-collabs .dan-inner {
+        padding-top: var(--sp-xlarge);
+    }
+
+    .dan-collabs__header p {
+        margin-bottom: 0;
     }
 
     /*
@@ -1610,9 +1625,12 @@ a.dan-collab-card:focus-visible {
     }
 
     body h2.dan-about__heading,
-    .dan-policy__heading,
     .dan-collabs__header {
         margin-bottom: var(--sp-small);
+    }
+
+    .dan-policy__heading {
+        margin-bottom: var(--sp-medium);
     }
 
     .dan-thoughts__top {
@@ -1621,7 +1639,7 @@ a.dan-collab-card:focus-visible {
 
     .dan-testimonials__header,
     .dan-talks__header {
-        margin-bottom: calc(var(--sp-small) + var(--sp-medium));
+        margin-bottom: var(--sp-xlarge);
     }
 
     .dan-testimonials__header,
@@ -1634,6 +1652,10 @@ a.dan-collab-card:focus-visible {
 @media (max-width: 500px) {
     .page-template-page-dan h1 {
         font-size: var(--fs-display-small);
+    }
+
+    .dan-media .button {
+        margin-bottom: var(--sp-xlarge);
     }
 
     body.page-template-page-dan article.type-post {
@@ -1651,7 +1673,7 @@ a.dan-collab-card:focus-visible {
 
             .details {
                 width: 100%;
-                padding: 0 var(--sp-xsmall) var(--sp-medium) var(--sp-xsmall);
+                padding: 0 var(--sp-xsmall) 0 var(--sp-xsmall);
             }
         }
     }
@@ -1668,7 +1690,8 @@ a.dan-collab-card:focus-visible {
     }
 
     .dan-policy__box {
-        padding: var(--sp-large) var(--sp-medium);
+        padding-left: var(--sp-medium);
+        padding-right: var(--sp-medium);
     }
 
     .dan-stats__row {
