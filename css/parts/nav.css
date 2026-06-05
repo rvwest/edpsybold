@@ -75,6 +75,10 @@ header[role="banner"] {
                     border-bottom: 3px solid var(--cl-light);
                 }
 
+                a[href$="search/"] {
+                    min-height: 76px;
+                }
+
                 .submenu-wrapper {
                     display: flex;
                     width: 100%;

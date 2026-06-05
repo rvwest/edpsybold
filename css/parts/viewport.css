@@ -684,6 +684,10 @@
             border-bottom: none
           }
 
+          a[href$="search/"] {
+            min-height: 51px;
+          }
+
           a:hover,
           &.current-menu-parent a,
           &.current-menu-item a {
