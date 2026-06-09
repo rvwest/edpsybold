@@ -10,17 +10,22 @@
 
 		<div class="footer-content">
 			<p class="footer-social">
-				<a href="/educated-guess-podcast" class="footer-bluesky-svg"><i class="fas fa-podcast"></i></a> |
-				<a href="https://bsky.app/profile/edpsy.bsky.social" class="footer-bluesky-svg"><img
+				<a href="/educated-guess-podcast" class="footer-bluesky-svg" aria-label="Educated Guess podcast"><i
+						class="fas fa-podcast" aria-hidden="true"></i></a> |
+				<a href="https://bsky.app/profile/edpsy.bsky.social" class="footer-bluesky-svg"
+					aria-label="edpsy on Bluesky"><img
 						src="<?php echo get_template_directory_uri(); ?>/images/bluesky.svg"
 						class="footer-img-svg"></i></a> |
-				<a href="https://www.facebook.com/edpsy.org.uk/"><i class="fab fa-facebook"></i></a> |
-				<a href="https://www.linkedin.com/company/edpsy/about/"><i class="fab fa-linkedin"></i></a> |
+				<a href="https://www.facebook.com/edpsy.org.uk/" aria-label="edpsy on Facebook"><i
+						class="fab fa-facebook" aria-hidden="true"></i></a> |
+				<a href="https://www.linkedin.com/company/edpsy/about/" aria-label="edpsy on LinkedIn"><i
+						class="fab fa-linkedin" aria-hidden="true"></i></a> |
 
 				<!--<a href="https://threads.net/edpsyuk" style="vertical-align: middle;"><img height="22px"
 								src="<?php echo get_template_directory_uri(); ?>/images/threads.svg"
 								class="footer-img-svg"></a> |-->
-				<a href="mailto:hello@edpsy.org.uk" class="footer-mail"><i class="fal fa-envelope"></i>
+				<a href="mailto:hello@edpsy.org.uk" class="footer-mail"><i class="fal fa-envelope"
+						aria-hidden="true"></i>
 					hello@edpsy.org.uk</a>
 			</p>
 
