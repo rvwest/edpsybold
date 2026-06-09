@@ -83,9 +83,6 @@
 
 
 .page-promo {
-
-
-
     a {
         display: flex;
         align-items: center;
@@ -152,6 +149,10 @@
         &.edp-events-promo:link,
         &.edp-events-promo:visited {
             background-color: var(--cl-dark-50);
+        }
+
+        &.edp-events-promo {
+            width: max-content;
         }
 
         &:hover,
