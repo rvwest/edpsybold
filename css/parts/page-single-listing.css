@@ -74,7 +74,7 @@
             img {
                 max-height: 150px;
                 max-width: 290px;
-                width: 100%;
+                width: auto;
 
             }
         }
