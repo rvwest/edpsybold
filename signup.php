@@ -14,10 +14,9 @@
                 <input type="hidden" name="id" value="cf7c127239">
                 <input type="hidden" name="tags" value="6330086">
 
-                <!-- people should not fill these in and expect good things -->
+                <!-- narp -->
                 <div class="field-shift" aria-label="Please leave the following three fields empty" aria-hidden="true">
-                    <!-- Mailchimp's own bot field (b_<u>_<id>): Mailchimp rejects the
-                         submission server-side if this contains anything -->
+                    <!-- MCs narp field -->
                     <input type="text" name="b_a213811bc69b5636c5103c46a_cf7c127239" tabindex="-1" value=""
                         autocomplete="off">
 
@@ -33,6 +32,7 @@
                     <textarea name="b_comment" tabindex="-1" placeholder="Please comment" id="b_comment"
                         autocomplete="off"></textarea>
                 </div>
+                <!-- yarp -->
                 <input type="text" id="MERGE1" name="MERGE1" placeholder="forename" required>
                 <input type="text" id="MERGE2" name="MERGE2" placeholder="surname" required>
 
