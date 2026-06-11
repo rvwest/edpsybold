@@ -8,7 +8,7 @@
                 <p>We will never share your email with anyone else.</p>
             </div>
 
-            <form action="https://edpsy.us1.list-manage.com/subscribe/post" method="POST">
+            <form action="https://edpsy.us1.list-manage.com/subscribe/post" method="POST" id="signup-form">
 
                 <input type="hidden" name="u" value="a213811bc69b5636c5103c46a">
                 <input type="hidden" name="id" value="cf7c127239">
@@ -16,15 +16,22 @@
 
                 <!-- people should not fill these in and expect good things -->
                 <div class="field-shift" aria-label="Please leave the following three fields empty" aria-hidden="true">
+                    <!-- Mailchimp's own bot field (b_<u>_<id>): Mailchimp rejects the
+                         submission server-side if this contains anything -->
+                    <input type="text" name="b_a213811bc69b5636c5103c46a_cf7c127239" tabindex="-1" value=""
+                        autocomplete="off">
+
                     <label for="b_name">Name: </label>
-                    <input type="text" name="b_name" tabindex="-1" value="" placeholder="Freddie" id="b_name">
+                    <input type="text" name="b_name" tabindex="-1" value="" placeholder="Freddie" id="b_name"
+                        autocomplete="off">
 
                     <label for="b_email">Email: </label>
                     <input type="email" name="b_email" tabindex="-1" value="" placeholder="youremail@gmail.com"
-                        id="b_email">
+                        id="b_email" autocomplete="off">
 
                     <label for="b_comment">Comment: </label>
-                    <textarea name="b_comment" tabindex="-1" placeholder="Please comment" id="b_comment"></textarea>
+                    <textarea name="b_comment" tabindex="-1" placeholder="Please comment" id="b_comment"
+                        autocomplete="off"></textarea>
                 </div>
                 <input type="text" id="MERGE1" name="MERGE1" placeholder="forename" required>
                 <input type="text" id="MERGE2" name="MERGE2" placeholder="surname" required>
@@ -38,4 +45,29 @@
         </div>
     </div>
 </div>
+<script>
+    (function () {
+        var form = document.getElementById('signup-form');
+        if (!form) return;
+        var loadedAt = Date.now();
+
+        form.addEventListener('submit', function (e) {
+            var traps = ['b_name', 'b_email', 'b_comment', 'b_a213811bc69b5636c5103c46a_cf7c127239'];
+            var trapped = traps.some(function (name) {
+                var field = form.elements[name];
+                return field && field.value.trim() !== '';
+            });
+            // no human fills the form in under 3 seconds of the page loading
+            var tooFast = (Date.now() - loadedAt) < 3000;
+
+            if (trapped || tooFast) {
+                e.preventDefault();
+                // pretend it worked so bots don't learn they were caught
+                form.style.display = 'none';
+                var response = document.querySelector('.mc4wp-response');
+                if (response) response.textContent = 'Thanks for signing up!';
+            }
+        });
+    })();
+</script>
 <!-- file end: signup.php -->
