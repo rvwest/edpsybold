@@ -1725,4 +1725,10 @@ a.dan-collab-card:focus-visible {
     .dan-podcast__stats {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .dan-hero__portrait {
+        max-width: 80%;
+        padding-top: 20px;
+    }
+
 }
