@@ -1680,6 +1680,14 @@ a.dan-collab-card:focus-visible {
         }
     }
 
+    .dan-about__content,
+    .dan-media__top,
+    .dan-policy__left,
+    .dan-podcast__info,
+    .dan-thoughts__top {
+        min-width: none;
+    }
+
     .dan-media .dan-inner,
     .dan-thoughts .dan-inner {
         display: flex;
