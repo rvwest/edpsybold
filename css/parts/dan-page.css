@@ -1685,7 +1685,7 @@ a.dan-collab-card:focus-visible {
     .dan-policy__left,
     .dan-podcast__info,
     .dan-thoughts__top {
-        min-width: none;
+        min-width: auto;
     }
 
     .dan-media .dan-inner,
