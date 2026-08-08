@@ -34,13 +34,51 @@ function edpsybold_notice_dismissed()
 add_action('wp_enqueue_scripts', 'edpsybold_enqueue');
 function edpsybold_enqueue()
 {
-    //  wp_enqueue_style('edpsybold-style', get_stylesheet_uri());
+    $template_directory = get_template_directory();
+    $template_uri = get_template_directory_uri();
+
+    $legacy_relative_path = '/css/edpsy-bold-style--legacy.css';
+    $modern_relative_path = '/css/edpsy-bold-style.css';
+
+    wp_enqueue_style(
+        'edpsy-bold-style-legacy',
+        $template_uri . $legacy_relative_path,
+        array(),
+        filemtime($template_directory . $legacy_relative_path)
+    );
+
     wp_enqueue_style(
         'edpsy-bold-style',
-        get_template_directory_uri() . '/css/edpsy-bold-style.css',
-        array(),
-        filemtime(get_template_directory() . '/css/edpsy-bold-style.css')
+        $template_uri . $modern_relative_path,
+        array('edpsy-bold-style-legacy'),
+        filemtime($template_directory . $modern_relative_path)
     );
+
+    wp_register_script('edpsybold-nesting-check', '', array(), null, false);
+    $nesting_check_script = "(function(){\n" .
+        "    var supportsNesting = false;\n" .
+        "    try {\n" .
+        "        supportsNesting = window.CSS && typeof window.CSS.supports === 'function' && window.CSS.supports('selector(&)');\n" .
+        "    } catch (error) {\n" .
+        "        supportsNesting = false;\n" .
+        "    }\n" .
+        "    var legacyStyle = document.getElementById('edpsy-bold-style-legacy-css');\n" .
+        "    var modernStyle = document.getElementById('edpsy-bold-style-css');\n" .
+        "    if (!legacyStyle) {\n" .
+        "        return;\n" .
+        "    }\n" .
+        "    if (supportsNesting) {\n" .
+        "        legacyStyle.setAttribute('media', 'not all');\n" .
+        "        if (modernStyle) {\n" .
+        "            modernStyle.setAttribute('media', 'all');\n" .
+        "        }\n" .
+        "    } else if (modernStyle) {\n" .
+        "        modernStyle.setAttribute('media', 'not all');\n" .
+        "    }\n" .
+        "})();";
+    wp_add_inline_script('edpsybold-nesting-check', $nesting_check_script);
+    wp_enqueue_script('edpsybold-nesting-check');
+
     wp_enqueue_script('jquery');
     wp_enqueue_script(
         'edpsybold-share',
