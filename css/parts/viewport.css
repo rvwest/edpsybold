@@ -1270,6 +1270,7 @@
     #content>article,
     #content>article {
       flex-basis: 100%;
+      max-width: 900px;
 
       .archive-article-img {
         margin-bottom: 0
