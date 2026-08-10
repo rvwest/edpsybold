@@ -35,6 +35,12 @@ $datepicker_format = Tribe__Date_Utils::get_datepicker_format_index();
 <?php do_action('tribe_events_community_form_before_template', $tribe_event_id); ?>
 
 <div class="events-promo">
+	<h2>Advertise your event or CPD course with us</h2>
+	<ul>
+		<li>Reach a wide, engaged audience</li>
+		<li>Details of your event - public and accessible to all</li>
+		<li>Added to our popular events pages and events mailout (~1500 subscribers)</li>
+	</ul>
 	<h2>Prices</h2>
 	<ul>
 		<li>Free and low-cost events (tickets under £15) - free to add an event</li>
@@ -43,22 +49,21 @@ $datepicker_format = Tribe__Date_Utils::get_datepicker_format_index();
 	<p>No time limits, and all events will be shared on the site and in our events mailouts.</p>
 </div>
 
-<form method="post" enctype="multipart/form-data"
-	data-datepicker_format="<?php echo esc_attr($datepicker_format); ?>">
+<form method="post" enctype="multipart/form-data" data-datepicker_format="<?php echo esc_attr($datepicker_format); ?>">
 	<input type="hidden" name="post_ID" id="post_ID" value="<?php echo absint($tribe_event_id); ?>" />
 	<?php wp_nonce_field('ecp_event_submission'); ?>
 	<div class="tribe-section-header">
-	<h3>Key information</h3>
+		<h3>Key information</h3>
 	</div>
-	
+
 	<div class="form-block">
-	<?php tribe_get_template_part('community/modules/title'); ?>
+		<?php tribe_get_template_part('community/modules/title'); ?>
 
-	<?php tribe_get_template_part('community/modules/description'); ?>
+		<?php tribe_get_template_part('community/modules/description'); ?>
 
-	<?php tribe_get_template_part('integrations/the-events-calendar/modules/datepickers'); ?>
+		<?php tribe_get_template_part('integrations/the-events-calendar/modules/datepickers'); ?>
 
-</div>
+	</div>
 
 
 
