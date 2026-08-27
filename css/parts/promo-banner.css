@@ -262,7 +262,6 @@ div.post#post-9346 {
 .cta-body-block--series-pale {
     color: var(--cl-dark);
     background-color: var(--cl-light);
-    margin-bottom: 20px;
     border: rgba(187, 221, 255, 0.55) 1px solid;
     box-shadow: inset 0 0 50px var(--cl-light),
         /* inner white */
@@ -277,7 +276,7 @@ div.post#post-9346 {
     margin-bottom: 30px;
     display: flex;
     align-items: center;
-    padding: 10px 20px;
+    padding: 14px 20px;
 
     img {
         max-height: none;
