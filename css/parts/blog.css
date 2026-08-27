@@ -121,6 +121,18 @@
                         }
                     }
 
+
+                    .post-tag.campaign-tag {
+                        color: var(--cl-medpurple);
+                    }
+
+                    /* .post-tag.campaign-tag {
+                        background-color: var(--cl-medpurple);
+                        color: var(--cl-light);
+                        padding: 0 var(--sp-xsmall);
+                        border-radius: var(--rd-small);
+                    }*/
+
                     .post-tag-wrapper {
                         margin-right: var(--sp-xsmall);
                     }

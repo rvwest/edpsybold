@@ -22,6 +22,25 @@
     <?php
 $tags = get_the_terms(get_the_ID(), 'post_tag');
 if ($tags && ! is_wp_error($tags)) {
+    // Active campaign tag (if any) is listed first and flagged for styling.
+    foreach ($tags as $i => $tag) {
+        if (get_field('tag_cta_active', $tag)) {
+            $campaign_index = $i;
+            break;
+        }
+    }
+    if (isset($campaign_index)) {
+        $campaign_tag = $tags[$campaign_index];
+        unset($tags[$campaign_index]);
+        array_unshift($tags, $campaign_tag);
+        $tags = array_values($tags);
+    }
+
+    $tag_link = function ($tag) {
+        $class = 'post-tag' . (get_field('tag_cta_active', $tag) ? ' campaign-tag' : '');
+        return '<a class="' . esc_attr($class) . '" href="' . esc_url(get_tag_link($tag)) . '">' . esc_html($tag->name) . '</a>';
+    };
+
     $count = count($tags);
 
     if ($count > 5) {
@@ -29,7 +48,7 @@ if ($tags && ! is_wp_error($tags)) {
         $display = array_slice($tags, 0, 4);
         $last_index = count($display) - 1;
         foreach ($display as $i => $tag) {
-            $link = '<a class="post-tag" href="' . esc_url(get_tag_link($tag)) . '">' . esc_html($tag->name) . '</a>';
+            $link = $tag_link($tag);
             if ($i === $last_index) {
                 // Last displayed tag: no wrapper/comma
                 echo '<div class="post-tag-wrapper">' . $link . '</div>';
@@ -46,7 +65,7 @@ if ($tags && ! is_wp_error($tags)) {
         // 5 or fewer: show them all, only the last lacks wrapper/comma
         $last_index = $count - 1;
         foreach ($tags as $i => $tag) {
-            $link = '<a class="post-tag" href="' . esc_url(get_tag_link($tag)) . '">' . esc_html($tag->name) . '</a>';
+            $link = $tag_link($tag);
             if ($i === $last_index) {
                 echo $link;
             } else {
