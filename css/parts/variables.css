@@ -130,6 +130,9 @@
     --fw-medium: 500;
     --fw-semibold: 600;
 
+    /* text max-widths */
+    --tw-max: 824px;
+
     /* article images */
     --aspect-ratio-landscape: 16/9;
 

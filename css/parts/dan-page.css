@@ -403,10 +403,35 @@ main.dan-page-content {
 
 .dan-about__col p {
     margin: 0 0 1em;
+    max-width: var(--tw-max);
 }
 
 .dan-about__col p:last-child {
     margin-bottom: 0;
+}
+
+/*
+ * Above ~1970px the illustration's natural (fixed-height, intrinsic-width)
+ * flex position falls short of the --lv-full-width grid's left inset used
+ * by every other section. Past that point, unpin the content column from
+ * the illustration's width and align it to the shared grid instead —
+ * the illustration stays bled to the viewport's left edge regardless.
+ */
+@media (min-width: 1970px) {
+    .dan-about {
+        position: relative;
+        min-height: 342px;
+    }
+
+    .dan-about__illustration {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .dan-about__content {
+        margin-left: calc((100vw - var(--lv-full-width) - 17px) / 2);
+    }
 }
 
 /* ============================================================
@@ -659,6 +684,7 @@ main.dan-page-content {
 
 .dan-policy__description p {
     margin: 0 0 1em;
+    max-width: var(--tw-max);
 }
 
 .dan-policy__description p:last-child {
