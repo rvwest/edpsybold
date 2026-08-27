@@ -84,9 +84,9 @@ acf_add_local_field_group( array(
             'label'             => 'Campaign posts',
             'name'              => 'tag_cta_posts',
             'type'              => 'relationship',
-            'instructions'      => 'Choose which blog posts tagged with this tag are part of the campaign. Only these posts get the promo block and styled tag when opened directly — the tag\'s archive listing still shows every tagged post as normal.',
+            'instructions'      => 'Choose which blog posts tagged with this tag are part of the campaign — including unpublished drafts, so campaign styling is already in place when they go live. Only these posts get the promo block and styled tag when opened directly; the tag\'s archive listing still shows every tagged post as normal.',
             'post_type'         => array('post'),
-            'filters'           => array('search', 'taxonomy'),
+            'filters'           => array('search'),
             'return_format'     => 'id',
             'conditional_logic' => array(
                 array(
@@ -129,54 +129,25 @@ acf_add_local_field_group( array(
 ) );
 
 /**
- * The tag_cta_posts relationship field's built-in "taxonomy" filter
- * defaults to listing every taxonomy on the "post" post type (categories
- * as well as tags), grouped, in a plain dropdown. That's the wrong scope
- * here — admins are picking posts by tag — so:
- *   - restrict the filter to post_tag terms only, recomputed on every load
- *     so newly created tags show up without touching this file
- *   - relabel the placeholder from ACF's generic "Select taxonomy"
- *   - make the dropdown searchable (select2), since there are a lot of tags
+ * Scope the tag_cta_posts relationship field's left-hand "available posts"
+ * list to just the posts already carrying the tag being edited (instead of
+ * every post on the site), and include unpublished statuses so drafts can
+ * be added to a campaign and already have the styling in place once
+ * published.
  */
-add_filter( 'acf/load_field/key=field_tag_cta_posts', function ( $field ) {
-    $tags = get_terms( array(
-        'taxonomy'   => 'post_tag',
-        'fields'     => 'slugs',
-        'hide_empty' => false,
-    ) );
-    if ( ! is_wp_error( $tags ) ) {
-        $field['taxonomy'] = array_map( function ( $slug ) {
-            return 'post_tag:' . $slug;
-        }, $tags );
-    }
-    return $field;
-} );
-
-add_action( 'admin_enqueue_scripts', function () {
-    global $pagenow;
-    if ( ! in_array( $pagenow, array( 'term.php', 'edit-tags.php' ), true ) ) {
-        return;
-    }
-    if ( ( $_GET['taxonomy'] ?? '' ) !== 'post_tag' ) {
-        return;
+add_filter( 'acf/fields/relationship/query/key=field_tag_cta_posts', function ( $args, $field, $post_id ) {
+    if ( is_string( $post_id ) && strpos( $post_id, 'term_' ) === 0 ) {
+        $term_id = (int) substr( $post_id, 5 );
+        $args['tax_query'] = array(
+            array(
+                'taxonomy' => 'post_tag',
+                'field'    => 'term_id',
+                'terms'    => $term_id,
+            ),
+        );
     }
 
-    add_filter( 'gettext', function ( $translation, $text, $domain ) {
-        if ( $domain === 'acf' && $text === 'Select taxonomy' ) {
-            return __( 'Select tag', 'edpsybold' );
-        }
-        return $translation;
-    }, 10, 3 );
+    $args['post_status'] = array( 'publish', 'future', 'draft', 'pending', 'private' );
 
-    add_action( 'admin_footer', function () { ?>
-        <script>
-        jQuery(function ($) {
-            function edpsyEnhanceTagCtaFilter() {
-                $('.acf-relationship .filter.-taxonomy select').not('.select2-hidden-accessible').select2({ width: '100%' });
-            }
-            edpsyEnhanceTagCtaFilter();
-            $(document).on('acf/setup_fields', edpsyEnhanceTagCtaFilter);
-        });
-        </script>
-    <?php } );
-} );
+    return $args;
+}, 10, 3 );
