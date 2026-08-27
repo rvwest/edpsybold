@@ -161,13 +161,6 @@
     background-size: 1000px;
 }
 
-.promo-banner-block-style--green-light {
-    background: $color-about;
-    background: -moz-linear-gradient(-45deg, $color-about 0%, #5f8929 100%);
-    background: -webkit-linear-gradient(-45deg, $color-about 0%, #5f8929 100%);
-    background: linear-gradient(135deg, $color-about 0%, #5f8929 100%)
-}
-
 
 .promo-banner-block-style--dark {
     background: #181c1d;
@@ -222,13 +215,13 @@
 }
 
 /* Refugee Education UK promo */
-
+/*
 div.post#post-7821 .container.post-wrap .row-fluid,
 div.post#post-7817 .container.post-wrap .row-fluid,
 div.post#post-7819 .container.post-wrap .row-fluid,
 div.post#post-9346 .container.post-wrap .row-fluid {
-    background: white;
-    box-shadow: 35px 0 31px #fff, -41px 0 35px #fff
+    background: var(--cl-light);
+    box-shadow: 35px 0 31px var(--cl-light), -41px 0 35px var(--cl-light)
 }
 
 div.post#post-7817,
@@ -240,14 +233,14 @@ div.post#post-9346 {
     background-size: contain;
     background-position: right top;
 }
-
+*/
 
 .promo-banner-block-style--refugee-pale {
     background: #b28bfc;
     background: -moz-linear-gradient(-45deg, #b28bfc 0%, #ffbc8f 100%);
     background: -webkit-linear-gradient(-45deg, #b28bfc 0%, #ffbc8f 100%);
     background: linear-gradient(135deg, #b28bfc 0%, #ffbc8f 100%);
-    color: $color-copy;
+    color: var(--cl-dark);
 }
 
 .promo-banner-block-style--refugee {
@@ -255,44 +248,57 @@ div.post#post-9346 {
     background: -moz-linear-gradient(-45deg, #115599 0%, #2B65F5 100%);
     background: -webkit-linear-gradient(-45deg, #115599 0%, #2B65F5 100%);
     background: linear-gradient(135deg, #115599 0%, #2B65F5 100%);
-    //color: $color-copy;
 }
 
 .promo-banner-block.promo-banner-block-style--refugee-pale a:link,
 .promo-banner-block.promo-banner-block-style--refugee-pale a:visited,
 .promo-banner-block.promo-banner-block-style--refugee-pale a:hover,
 .promo-banner-block.promo-banner-block-style--refugee-pale a:active {
-    color: $color-copy;
+    color: var(--cl-dark);
 }
 
 
-.cta-body-block--refugee-pale {
-    color: #052d67;
+.cta-body-block--refugee-pale,
+.cta-body-block--series-pale {
+    color: var(--cl-dark);
+    background-color: var(--cl-light);
     margin-bottom: 20px;
     border: rgba(187, 221, 255, 0.55) 1px solid;
-    box-shadow: inset 0 0 50px #fff,
+    box-shadow: inset 0 0 50px var(--cl-light),
         /* inner white */
-        -2px 1px 65px rgba(178, 139, 252, 0.07) inset,
+        /* -2px 1px 65px rgba(178, 139, 252, 0.07) inset,*/
         /*inner left magenta short */
         50px 6px 100px rgba(255, 188, 143, 0.54),
         /* outer peach - right top */
         -30px 20px 78px rgba(178, 139, 252, 0.45),
         /* outer magenta - left bottom */
-        50px 5px 80px #fff;
+        50px 5px 80px var(--cl-light);
     margin-top: 30px;
     margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+
+    img {
+        max-height: none;
+        padding-right: 16px;
+        width: 65px;
+        height: 40px;
+    }
+
+    p {
+        margin-bottom: 0 !important;
+    }
 }
 
 .cta-body-block.cta-body-block--refugee-pale a:link,
 .cta-body-block.cta-body-block--refugee-pale a:visited,
 .cta-body-block.cta-body-block--refugee-pale a:hover,
 .cta-body-block.cta-body-block--refugee-pale a:active {
-    color: $color-link;
+    color: var(--cl-link);
 }
 
 #content .cta-body-block.cta-body-block--refugee-pale a:hover,
 #content .cta-body-block.cta-body-block--refugee-pale a:active {
     text-decoration: none;
 }
-
-/* viewport-specific rules moved to parts/viewport.css */
