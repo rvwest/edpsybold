@@ -22,11 +22,17 @@
     <?php
 $tags = get_the_terms(get_the_ID(), 'post_tag');
 if ($tags && ! is_wp_error($tags)) {
-    // Active campaign tag (if any) is listed first and flagged for styling.
-    foreach ($tags as $i => $tag) {
-        if (get_field('tag_cta_active', $tag)) {
-            $campaign_index = $i;
-            break;
+    // This post's campaign tag, if it's one of the posts picked for that
+    // campaign (see edpsybold_get_post_tag_cta()) — listed first and
+    // flagged for styling. A tag merely present on the post doesn't
+    // qualify on its own.
+    $campaign_term = edpsybold_get_post_tag_cta(get_the_ID());
+    if ($campaign_term) {
+        foreach ($tags as $i => $tag) {
+            if ($tag->term_id === $campaign_term->term_id) {
+                $campaign_index = $i;
+                break;
+            }
         }
     }
     if (isset($campaign_index)) {
@@ -36,8 +42,8 @@ if ($tags && ! is_wp_error($tags)) {
         $tags = array_values($tags);
     }
 
-    $tag_link = function ($tag) {
-        $class = 'post-tag' . (get_field('tag_cta_active', $tag) ? ' campaign-tag' : '');
+    $tag_link = function ($tag) use ($campaign_term) {
+        $class = 'post-tag' . ($campaign_term && $tag->term_id === $campaign_term->term_id ? ' campaign-tag' : '');
         return '<a class="' . esc_attr($class) . '" href="' . esc_url(get_tag_link($tag)) . '">' . esc_html($tag->name) . '</a>';
     };
 

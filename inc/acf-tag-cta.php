@@ -10,7 +10,14 @@
  *   - tag_cta_text      — at the top of the tag's archive page
  *   - tag_cta_blog_text — inserted into the body of tagged blog posts
  *
- * ACF Pro features used: NONE (true_false, wysiwyg, image — all in ACF Free)
+ * The archive listing shows every post carrying the tag, as normal —
+ * including older posts that predate the campaign. The in-article
+ * treatment (inserted block + styled tag) is scoped separately to just
+ * the posts chosen in tag_cta_posts, so tagging an old post after the
+ * fact doesn't retroactively pull it into a live campaign.
+ *
+ * ACF Pro features used: NONE (true_false, wysiwyg, image, relationship —
+ * all in ACF Free)
  *
  * Location rule: taxonomy == post_tag
  */
@@ -62,6 +69,25 @@ acf_add_local_field_group( array(
             'toolbar'           => 'basic',
             'media_upload'      => 0,
             'delay'             => 1,
+            'conditional_logic' => array(
+                array(
+                    array(
+                        'field'    => 'field_tag_cta_active',
+                        'operator' => '==',
+                        'value'    => '1',
+                    ),
+                ),
+            ),
+        ),
+        array(
+            'key'               => 'field_tag_cta_posts',
+            'label'             => 'Campaign posts',
+            'name'              => 'tag_cta_posts',
+            'type'              => 'relationship',
+            'instructions'      => 'Choose which blog posts tagged with this tag are part of the campaign. Only these posts get the promo block and styled tag when opened directly — the tag\'s archive listing still shows every tagged post as normal.',
+            'post_type'         => array('post'),
+            'filters'           => array('search', 'taxonomy'),
+            'return_format'     => 'id',
             'conditional_logic' => array(
                 array(
                     array(

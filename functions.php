@@ -80,9 +80,13 @@ require_once get_template_directory() . '/inc/acf-tag-cta.php';
 // ========== Tag campaign promo blocks ==================================== //
 // ======================================================================== //
 
-// Returns the first active campaign tag on a post (ACF: tag_cta_active +
-// tag_cta_blog_text both set), or null. If a post has more than one active
-// campaign tag, only the first is used.
+// Returns the campaign tag a post belongs to (ACF: tag_cta_active +
+// tag_cta_blog_text set on the tag, AND the post explicitly chosen in the
+// tag's tag_cta_posts field), or null. A post merely carrying the tag isn't
+// enough — it must be one of the posts picked for the campaign, so tagging
+// an older article doesn't retroactively pull it into a live campaign. If a
+// post is chosen for more than one active campaign tag, only the first is
+// used.
 function edpsybold_get_post_tag_cta($post_id)
 {
     $terms = get_the_terms($post_id, 'post_tag');
@@ -90,7 +94,11 @@ function edpsybold_get_post_tag_cta($post_id)
         return null;
     }
     foreach ($terms as $term) {
-        if (get_field('tag_cta_active', $term) && get_field('tag_cta_blog_text', $term)) {
+        if (!get_field('tag_cta_active', $term) || !get_field('tag_cta_blog_text', $term)) {
+            continue;
+        }
+        $campaign_posts = get_field('tag_cta_posts', $term);
+        if (is_array($campaign_posts) && in_array($post_id, $campaign_posts)) {
             return $term;
         }
     }
