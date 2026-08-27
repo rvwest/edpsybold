@@ -127,3 +127,56 @@ acf_add_local_field_group( array(
         ),
     ),
 ) );
+
+/**
+ * The tag_cta_posts relationship field's built-in "taxonomy" filter
+ * defaults to listing every taxonomy on the "post" post type (categories
+ * as well as tags), grouped, in a plain dropdown. That's the wrong scope
+ * here — admins are picking posts by tag — so:
+ *   - restrict the filter to post_tag terms only, recomputed on every load
+ *     so newly created tags show up without touching this file
+ *   - relabel the placeholder from ACF's generic "Select taxonomy"
+ *   - make the dropdown searchable (select2), since there are a lot of tags
+ */
+add_filter( 'acf/load_field/key=field_tag_cta_posts', function ( $field ) {
+    $tags = get_terms( array(
+        'taxonomy'   => 'post_tag',
+        'fields'     => 'slugs',
+        'hide_empty' => false,
+    ) );
+    if ( ! is_wp_error( $tags ) ) {
+        $field['taxonomy'] = array_map( function ( $slug ) {
+            return 'post_tag:' . $slug;
+        }, $tags );
+    }
+    return $field;
+} );
+
+add_action( 'admin_enqueue_scripts', function () {
+    global $pagenow;
+    if ( ! in_array( $pagenow, array( 'term.php', 'edit-tags.php' ), true ) ) {
+        return;
+    }
+    if ( ( $_GET['taxonomy'] ?? '' ) !== 'post_tag' ) {
+        return;
+    }
+
+    add_filter( 'gettext', function ( $translation, $text, $domain ) {
+        if ( $domain === 'acf' && $text === 'Select taxonomy' ) {
+            return __( 'Select tag', 'edpsybold' );
+        }
+        return $translation;
+    }, 10, 3 );
+
+    add_action( 'admin_footer', function () { ?>
+        <script>
+        jQuery(function ($) {
+            function edpsyEnhanceTagCtaFilter() {
+                $('.acf-relationship .filter.-taxonomy select').not('.select2-hidden-accessible').select2({ width: '100%' });
+            }
+            edpsyEnhanceTagCtaFilter();
+            $(document).on('acf/setup_fields', edpsyEnhanceTagCtaFilter);
+        });
+        </script>
+    <?php } );
+} );
