@@ -653,9 +653,16 @@ main.dan-page-content {
     font-size: var(--fs-body);
     /* 18px */
     color: var(--cl-dark);
-    margin: 0;
     line-height: var(--lh-body);
     font-family: var(--ff);
+}
+
+.dan-policy__description p {
+    margin: 0 0 1em;
+}
+
+.dan-policy__description p:last-child {
+    margin-bottom: 0;
 }
 
 .dan-policy__right {

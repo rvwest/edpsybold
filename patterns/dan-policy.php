@@ -28,7 +28,7 @@ $items = get_field('dan_policy_items');
                     <h2 class="dan-policy__heading"><?php echo esc_html($heading); ?></h2>
                 <?php endif; ?>
                 <?php if ($description): ?>
-                    <p class="dan-policy__description"><?php echo wp_kses_post($description); ?></p>
+                    <div class="dan-policy__description"><?php echo wp_kses_post($description); ?></div>
                 <?php endif; ?>
             </div><!-- .dan-policy__left -->
 

@@ -383,7 +383,8 @@ acf_add_local_field_group( array(
             'name'          => 'dan_policy_description',
             'type'          => 'textarea',
             'rows'          => 4,
-            'instructions'  => '18px Regular text in the left column.',
+            'new_lines'     => 'wpautop',
+            'instructions'  => '18px Regular text in the left column. Use line breaks to split into paragraphs.',
         ),
         array(
             'key'           => 'field_dan_policy_items',
