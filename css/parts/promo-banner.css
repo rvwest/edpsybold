@@ -262,7 +262,7 @@ div.post#post-9346 {
 .cta-body-block--series-pale {
     color: var(--cl-dark);
     background-color: var(--cl-light);
-    border: rgba(187, 221, 255, 0.55) 1px solid;
+    /* border: rgba(187, 221, 255, 0.55) 1px solid; */
     box-shadow: inset 0 0 50px var(--cl-light),
         /* inner white */
         /* -2px 1px 65px rgba(178, 139, 252, 0.07) inset,*/
@@ -277,6 +277,7 @@ div.post#post-9346 {
     display: flex;
     align-items: center;
     padding: 14px 20px;
+    border-radius: var(--rd-large);
 
     img {
         max-height: none;
@@ -288,6 +289,11 @@ div.post#post-9346 {
     p {
         margin-bottom: 0 !important;
     }
+}
+
+.cta-body-block--series-pale.cta-body-block--series-listingpage {
+    margin-bottom: var(--sp-xlarge);
+    max-width: 900px;
 }
 
 .cta-body-block.cta-body-block--refugee-pale a:link,
