@@ -74,6 +74,67 @@ function edpsybold_dan_enqueue()
 // Dan O'Hare profile page — ACF field groups
 require_once get_template_directory() . '/inc/acf-dan-page.php';
 
+// Tag campaign promo blocks — ACF field group
+require_once get_template_directory() . '/inc/acf-tag-cta.php';
+
+// ========== Tag campaign promo blocks ==================================== //
+// ======================================================================== //
+
+// Returns the first active campaign tag on a post (ACF: tag_cta_active +
+// tag_cta_blog_text both set), or null. If a post has more than one active
+// campaign tag, only the first is used.
+function edpsybold_get_post_tag_cta($post_id)
+{
+    $terms = get_the_terms($post_id, 'post_tag');
+    if (!$terms || is_wp_error($terms)) {
+        return null;
+    }
+    foreach ($terms as $term) {
+        if (get_field('tag_cta_active', $term) && get_field('tag_cta_blog_text', $term)) {
+            return $term;
+        }
+    }
+    return null;
+}
+
+// Renders the promo block markup for a campaign tag term, for use inside
+// a blog post's content (see edpsybold_get_post_tag_cta()).
+function edpsybold_render_tag_cta_block($term)
+{
+    $text = get_field('tag_cta_blog_text', $term);
+    $image = get_field('tag_cta_image', $term);
+    $image_url = $image ? $image['url'] : get_template_directory_uri() . '/images/edpsy-swirls-13.svg';
+    $image_alt = $image ? $image['alt'] : '';
+
+    return '<div class="cta-body-block cta-body-block--series-pale">'
+        . '<img decoding="async" src="' . esc_url($image_url) . '" alt="' . esc_attr($image_alt) . '">'
+        . $text
+        . '</div>';
+}
+
+// Inserts $insertion HTML after the closing </p> of the given paragraph
+// (1-indexed) within $content. Falls back to appending at the end if the
+// content has fewer paragraphs than $paragraph_id.
+function edpsybold_insert_after_paragraph($content, $insertion, $paragraph_id = 1)
+{
+    $closing_p = '</p>';
+    $paragraphs = explode($closing_p, $content);
+    $inserted = false;
+    foreach ($paragraphs as $index => $paragraph) {
+        if (trim($paragraph)) {
+            $paragraphs[$index] .= $closing_p;
+        }
+        if ($paragraph_id == $index + 1) {
+            $paragraphs[$index] .= $insertion;
+            $inserted = true;
+        }
+    }
+    if (!$inserted) {
+        $paragraphs[count($paragraphs) - 1] .= $insertion;
+    }
+    return implode('', $paragraphs);
+}
+
 add_action('wp_footer', 'edpsybold_footer');
 function edpsybold_footer()
 {
