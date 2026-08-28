@@ -373,8 +373,8 @@ main.dan-page-content {
     min-width: 380px;
     /* 24px */
     justify-content: center;
-    padding-top: var(--sp-xxlarge);
-    padding-bottom: var(--sp-xxlarge);
+    padding-top: var(--sp-medium);
+    padding-bottom: 0;
 }
 
 .dan-about__eyebrow {
