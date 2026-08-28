@@ -28,5 +28,6 @@ if ( ! function_exists( 'get_field' ) ) {
 <?php get_template_part( 'patterns/dan-thought-pieces' ); ?>
 <?php get_template_part( 'patterns/dan-collaborations' ); ?>
 <?php get_template_part( 'patterns/dan-testimonials' ); ?>
+<?php get_template_part( 'patterns/dan-cta' ); ?>
 
 <?php get_footer(); ?>

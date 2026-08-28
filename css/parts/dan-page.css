@@ -629,6 +629,13 @@ main.dan-page-content {
     display: block;
 }
 
+.dan-media__cta {
+    border-top: 1px solid var(--cl-dark);
+    margin-top: var(--sp-xxlarge);
+    padding-top: var(--sp-xlarge);
+    text-align: center;
+}
+
 /* ============================================================
    5. POLICY & SYSTEMS
    ============================================================ */
@@ -1353,6 +1360,55 @@ a.dan-collab-card:focus-visible {
     font-family: var(--ff);
 }
 
+/* ============================================================
+   11. CLOSING CTA
+   Placeholder styling, copied from the dan-talks box (section 7)
+   so it can be adapted independently later.
+   ============================================================ */
+
+.dan-cta {
+    background-color: var(--cl-green);
+}
+
+.dan-cta__box {
+    margin: 0 auto;
+    padding: var(--sp-xxlarge) 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--sp-medium);
+    /* 24px */
+}
+
+.dan-cta__heading {
+    font-size: var(--fs-title-xlarge);
+    font-weight: var(--fw-semibold);
+    line-height: var(--lh-title-xlarge);
+    color: var(--cl-dark);
+    margin: 0;
+    font-family: var(--ff);
+}
+
+.dan-cta__cta {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--sp-medium);
+    /* 24px */
+    width: 100%;
+}
+
+.dan-cta__cta-text {
+    font-size: var(--fs-body);
+    /* 18px */
+    font-weight: var(--fw-semibold);
+    color: var(--cl-dark);
+    margin: 0;
+    font-family: var(--ff);
+}
+
 
 @media (max-width: 1000px) {
     .dan-hero .dan-inner {
@@ -1653,7 +1709,8 @@ a.dan-collab-card:focus-visible {
         &.dan-talks__heading,
         &.dan-thoughts__heading,
         &.dan-collabs__heading,
-        &.dan-testimonials__heading {
+        &.dan-testimonials__heading,
+        &.dan-cta__heading {
             font-size: var(--fs-title-medium);
             line-height: var(--lh-title-medium);
         }

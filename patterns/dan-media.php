@@ -7,7 +7,8 @@
  *
  * ACF fields: dan_media_eyebrow, dan_media_heading, dan_media_subheading,
  *             dan_media_articles (repeater: article_outlet, article_headline, article_image, article_url),
- *             dan_media_logos (repeater: logo_image)
+ *             dan_media_logos (repeater: logo_image),
+ *             dan_media_cta_text, dan_media_cta_url
  */
 
 $eyebrow = get_field('dan_media_eyebrow');
@@ -15,6 +16,8 @@ $heading = get_field('dan_media_heading');
 $subheading = get_field('dan_media_subheading');
 $articles = get_field('dan_media_articles');
 $logos = get_field('dan_media_logos');
+$cta_text = get_field('dan_media_cta_text');
+$cta_url = get_field('dan_media_cta_url');
 ?>
 <section class="dan-media edp-fullwidth" aria-label="Media coverage">
     <div class="dan-inner">
@@ -100,6 +103,14 @@ $logos = get_field('dan_media_logos');
                     <img src="<?php echo esc_url($img['url']); ?>" alt="<?php echo esc_attr($img['alt']); ?>"
                         class="dan-media__logo-item" loading="lazy" />
                 <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
+
+        <?php if ($cta_url): ?>
+            <div class="dan-media__cta">
+                <a href="<?php echo esc_url($cta_url); ?>" class="button edp-button-solid" tabindex="0">
+                    <?php echo esc_html($cta_text ?: 'Learn more'); ?> <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                </a>
             </div>
         <?php endif; ?>
 

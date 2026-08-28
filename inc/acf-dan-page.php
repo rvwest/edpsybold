@@ -330,6 +330,19 @@ acf_add_local_field_group( array(
             ),
         ),
         array(
+            'key'           => 'field_dan_media_cta_text',
+            'label'         => 'CTA Button Text',
+            'name'          => 'dan_media_cta_text',
+            'type'          => 'text',
+        ),
+        array(
+            'key'           => 'field_dan_media_cta_url',
+            'label'         => 'CTA Button URL',
+            'name'          => 'dan_media_cta_url',
+            'type'          => 'text',
+            'instructions'  => 'Enter a URL (https://...) or email link (mailto:hello@edpsy.org.uk).',
+        ),
+        array(
             'key'           => 'field_dan_media_logos',
             'label'         => 'Media Outlet Logos',
             'name'          => 'dan_media_logos',
@@ -869,6 +882,48 @@ acf_add_local_field_group( array(
     ),
     'location'              => $dan_location,
     'menu_order'            => 100,
+    'position'              => 'normal',
+    'style'                 => 'default',
+    'label_placement'       => 'top',
+    'instruction_placement' => 'label',
+) );
+
+/* ============================================================
+   11. CLOSING CTA
+   ============================================================ */
+acf_add_local_field_group( array(
+    'key'                   => 'group_dan_cta',
+    'title'                 => 'Dan — Closing CTA',
+    'fields'                => array(
+        array(
+            'key'           => 'field_dan_cta_heading',
+            'label'         => 'Heading',
+            'name'          => 'dan_cta_heading',
+            'type'          => 'text',
+        ),
+        array(
+            'key'           => 'field_dan_cta_text',
+            'label'         => 'CTA Text',
+            'name'          => 'dan_cta_text',
+            'type'          => 'text',
+            'instructions'  => '18px SemiBold line of text above the CTA button.',
+        ),
+        array(
+            'key'           => 'field_dan_cta_button_text',
+            'label'         => 'CTA Button Text',
+            'name'          => 'dan_cta_button_text',
+            'type'          => 'text',
+        ),
+        array(
+            'key'           => 'field_dan_cta_button_url',
+            'label'         => 'CTA Button URL',
+            'name'          => 'dan_cta_button_url',
+            'type'          => 'text',
+            'instructions'  => 'Enter a URL (https://...) or email link (mailto:hello@edpsy.org.uk).',
+        ),
+    ),
+    'location'              => $dan_location,
+    'menu_order'            => 110,
     'position'              => 'normal',
     'style'                 => 'default',
     'label_placement'       => 'top',
