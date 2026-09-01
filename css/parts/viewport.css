@@ -163,6 +163,15 @@
 
             }
 
+            /* Undo the full-width 290px name box (used to centre names under
+               the avatar cluster); the reduced single-row layout wants the
+               name left-aligned beside the avatars like counts 2–4. */
+            &.author-count-5 .author-name {
+              width: 70%;
+              margin-left: 0;
+              margin-right: 0;
+            }
+
 
           }
 

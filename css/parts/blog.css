@@ -575,6 +575,16 @@
                 margin-top: -15px;
             }
         }
+
+        /* Match the avatar block's fixed width so the names centre under the
+           avatar cluster even when the sidebar column is narrower than the
+           block (mid viewport widths ~1001–1159px, where the 290px avatars
+           overflow the column and shift right of the section centre). */
+        .author-name {
+            width: 290px;
+            margin-left: auto;
+            margin-right: auto;
+        }
     }
 
 
