@@ -516,6 +516,67 @@
         }
     }
 
+    &.author-count-5 {
+        margin-top: 20px;
+
+        .author-avatars {
+            position: relative;
+            flex-wrap: wrap;
+            justify-content: center;
+            /* Fixed width sized for exactly three 110px avatars with -25px
+               overlaps (110 + 85 + 85 = 280), plus a small buffer so rounding
+               never wraps the third. Must stay below 365px so authors 4 & 5
+               still wrap to a second row. */
+            width: 290px;
+            max-width: 290px;
+            margin: 0 auto;
+            margin-bottom: var(--sp-small);
+
+            .author-avatar {
+                max-width: 110px;
+                max-height: 110px;
+                width: 110px;
+
+
+                img,
+                img.wp-post-image {
+                    width: 110px;
+                    height: 110px;
+                }
+            }
+
+            .author-1 {
+                position: relative;
+                z-index: 5;
+            }
+
+            .author-2 {
+                position: relative;
+                z-index: 4;
+                margin-left: -25px;
+            }
+
+            .author-3 {
+                position: relative;
+                z-index: 3;
+                margin-left: -25px;
+            }
+
+            .author-4 {
+                position: relative;
+                z-index: 2;
+                margin-top: -15px;
+            }
+
+            .author-5 {
+                position: relative;
+                z-index: 1;
+                margin-left: -25px;
+                margin-top: -15px;
+            }
+        }
+    }
+
 
     .author-deco {
         width: 80px;

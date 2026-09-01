@@ -144,6 +144,20 @@
               }
             }
 
+            &.author-count-5 .author-avatars {
+              margin: 0;
+              flex-wrap: nowrap;
+
+              .author-4,
+              .author-5 {
+                margin-top: 0;
+              }
+
+              .author-4 {
+                margin-left: -25px;
+              }
+            }
+
 
           }
 
