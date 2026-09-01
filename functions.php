@@ -1157,7 +1157,7 @@ function custom_submit_job_form_fields($fields)
         'classes' => ['job-manager-datepicker'],
         'priority' => 8,
         'description' => "eg " . date('j F Y', strtotime('+30 days')),
-        'sanitize_callback' => [__CLASS__, 'sanitize_meta_field_date'],
+        'sanitize_callback' => 'sanitize_text_field',
     );
     $fields['job']['interview_date'] = array(
         'label' => __('Possible interview dates', 'job_manager'),
@@ -1166,7 +1166,7 @@ function custom_submit_job_form_fields($fields)
         'required' => false,
         'priority' => 8,
         'description' => "eg " . date('j F', strtotime('+45 days')) . " - " . date('j F Y', strtotime('+47 days')),
-        'sanitize_callback' => [__CLASS__, 'sanitize_text_field'],
+        'sanitize_callback' => 'sanitize_text_field',
     );
     $fields['job']['cap_declaration'] = array(
         'label' => __('Declaration', 'job_manager'),
@@ -1217,7 +1217,7 @@ function admin_add_custom_admin_fields($fields)
         'required' => false,
         'priority' => 14,
         'description' => "eg " . date('j F Y', strtotime('+45 days')),
-        'sanitize_callback' => [__CLASS__, 'sanitize_text_field'],
+        'sanitize_callback' => 'sanitize_text_field',
     );
     unset($fields['_company_video']);
     unset($fields['_company_tagline']);
@@ -1623,7 +1623,7 @@ function tribe_events_show_event_cost_column($column, $post_id)
     if ($column === 'cost') {
         $event_cost = get_post_meta($post_id, '_EventCost', true);
         if (!empty($event_cost)) {
-            echo $event_cost;
+            echo esc_html($event_cost);
         } else {
             echo '-';
         }
@@ -2079,6 +2079,14 @@ function edpsybold_search_posts_search($search, $query)
 
     if (empty($clauses)) {
         return $search;
+    }
+
+    // Core's $search clause carries the password-protected-post restriction for
+    // logged-out visitors (WP_Query::parse_search). This filter replaces that
+    // clause wholesale, so re-apply the restriction here or protected posts
+    // become searchable — and their bodies guessable — by anonymous visitors.
+    if (!is_user_logged_in()) {
+        $clauses[] = $wpdb->prepare("{$wpdb->posts}.post_password = %s", '');
     }
 
     return ' AND (' . implode(' AND ', $clauses) . ')';
