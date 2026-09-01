@@ -31,6 +31,16 @@ function edpsybold_notice_dismissed()
     if (isset($_GET['dismiss']))
         add_user_meta($user_id, 'edpsybold_notice_dismissed_11', 'true', true);
 }
+// Returns a version string tied to a file's actual contents (not its mtime),
+// so a new hash is only produced when the file itself changes — mtimes are
+// unreliable across deploys (git checkouts, rsync, etc.) and can leave
+// repeat visitors served a cached stylesheet.
+function edpsybold_asset_version($path)
+{
+    $hash = md5_file($path);
+    return $hash ? substr($hash, 0, 12) : filemtime($path);
+}
+
 add_action('wp_enqueue_scripts', 'edpsybold_enqueue');
 function edpsybold_enqueue()
 {
@@ -39,7 +49,7 @@ function edpsybold_enqueue()
         'edpsy-bold-style',
         get_template_directory_uri() . '/css/edpsy-bold-style.css',
         array(),
-        filemtime(get_template_directory() . '/css/edpsy-bold-style.css')
+        edpsybold_asset_version(get_template_directory() . '/css/edpsy-bold-style.css')
     );
     wp_enqueue_script('jquery');
     wp_enqueue_script(
@@ -59,7 +69,7 @@ function edpsybold_dan_enqueue()
             'dan-page-style',
             get_template_directory_uri() . '/css/parts/dan-page.css',
             array('edpsy-bold-style'),
-            filemtime(get_template_directory() . '/css/parts/dan-page.css')
+            edpsybold_asset_version(get_template_directory() . '/css/parts/dan-page.css')
         );
         wp_enqueue_script(
             'dan-carousel',
