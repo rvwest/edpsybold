@@ -116,7 +116,7 @@
                             &:visited,
                             &:hover,
                             &:active {
-                                color: var(--cl-dark-75)
+                                color: var(--cl-dark-75);
                             }
                         }
                     }
