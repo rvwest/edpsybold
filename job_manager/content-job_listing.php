@@ -4,6 +4,15 @@
     exit; // Exit if accessed directly.
 }
 
+global $post;
+
+// Mirrors the guard in WP Job Manager's own content-job_listing.php: this theme
+// override otherwise bypasses the password and view-capability checks for any
+// listing surfaced through a direct WP_Query.
+if (post_password_required($post) || !job_manager_user_can_view_job_listing($post->ID)) {
+    return;
+}
+
 echo '<!-- file: job_manager/content-job_listing.php -->';
 ?>
 

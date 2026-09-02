@@ -19,17 +19,37 @@ add_action('admin_notices', 'edpsybold_notice');
 function edpsybold_notice()
 {
     $user_id = get_current_user_id();
-    $admin_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http') . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-    $param = (count($_GET)) ? '&' : '?';
+    // Built from the current admin request and signed with a nonce, so the
+    // dismiss link cannot be fired on an admin's behalf from another site.
+    $dismiss_url = wp_nonce_url(
+        add_query_arg('dismiss', '1'),
+        'edpsybold_dismiss_notice',
+        'edpsybold_dismiss_nonce'
+    );
     if (!get_user_meta($user_id, 'edpsybold_notice_dismissed_11') && current_user_can('manage_options'))
-        echo '<div class="notice notice-info"><p><a href="' . esc_url($admin_url), esc_html($param) . 'dismiss" class="alignright" style="text-decoration:none"><big>' . esc_html__('Ⓧ', 'edpsybold') . '</big></a>' . wp_kses_post(__('<big><strong>🏆 Thank you for using edpsybold!</strong></big>', 'edpsybold')) . '<p>' . esc_html__('Powering over 10k websites! Buy me a sandwich! 🥪', 'edpsybold') . '</p><a href="https://github.com/bhadaway/edpsybold/issues/57" class="button-primary" target="_blank"><strong>' . esc_html__('How do you use edpsybold?', 'edpsybold') . '</strong></a> <a href="https://opencollective.com/edpsybold" class="button-primary" style="background-color:green;border-color:green" target="_blank"><strong>' . esc_html__('Donate', 'edpsybold') . '</strong></a> <a href="https://wordpress.org/support/theme/edpsybold/reviews/#new-post" class="button-primary" style="background-color:purple;border-color:purple" target="_blank"><strong>' . esc_html__('Review', 'edpsybold') . '</strong></a> <a href="https://github.com/bhadaway/edpsybold/issues" class="button-primary" style="background-color:orange;border-color:orange" target="_blank"><strong>' . esc_html__('Support', 'edpsybold') . '</strong></a></p></div>';
+        echo '<div class="notice notice-info"><p><a href="' . esc_url($dismiss_url) . '" class="alignright" style="text-decoration:none"><big>' . esc_html__('Ⓧ', 'edpsybold') . '</big></a>' . wp_kses_post(__('<big><strong>🏆 Thank you for using edpsybold!</strong></big>', 'edpsybold')) . '<p>' . esc_html__('Powering over 10k websites! Buy me a sandwich! 🥪', 'edpsybold') . '</p><a href="https://github.com/bhadaway/edpsybold/issues/57" class="button-primary" target="_blank"><strong>' . esc_html__('How do you use edpsybold?', 'edpsybold') . '</strong></a> <a href="https://opencollective.com/edpsybold" class="button-primary" style="background-color:green;border-color:green" target="_blank"><strong>' . esc_html__('Donate', 'edpsybold') . '</strong></a> <a href="https://wordpress.org/support/theme/edpsybold/reviews/#new-post" class="button-primary" style="background-color:purple;border-color:purple" target="_blank"><strong>' . esc_html__('Review', 'edpsybold') . '</strong></a> <a href="https://github.com/bhadaway/edpsybold/issues" class="button-primary" style="background-color:orange;border-color:orange" target="_blank"><strong>' . esc_html__('Support', 'edpsybold') . '</strong></a></p></div>';
 }
 add_action('admin_init', 'edpsybold_notice_dismissed');
 function edpsybold_notice_dismissed()
 {
-    $user_id = get_current_user_id();
-    if (isset($_GET['dismiss']))
-        add_user_meta($user_id, 'edpsybold_notice_dismissed_11', 'true', true);
+    if (!isset($_GET['dismiss'], $_GET['edpsybold_dismiss_nonce'])) {
+        return;
+    }
+
+    if (
+        !wp_verify_nonce(
+            sanitize_text_field(wp_unslash($_GET['edpsybold_dismiss_nonce'])),
+            'edpsybold_dismiss_notice'
+        )
+    ) {
+        return;
+    }
+
+    if (!current_user_can('manage_options')) {
+        return;
+    }
+
+    add_user_meta(get_current_user_id(), 'edpsybold_notice_dismissed_11', 'true', true);
 }
 // Returns a version string tied to a file's actual contents (not its mtime),
 // so a new hash is only produced when the file itself changes — mtimes are
@@ -1412,6 +1432,7 @@ add_action('tribe_events_after_venue_metabox', function ($post) {
         <td>
             <input id="EventOnline" name="EventOnline" type="checkbox" value="1" <?php checked($value, '1'); ?> />
             <span class="description"><?php esc_html_e('Check if this is an online/virtual event', 'edpsybold'); ?></span>
+            <?php wp_nonce_field('edpsybold_event_fields', 'edpsybold_event_fields_nonce'); ?>
         </td>
     </tr>
     <?php
@@ -1436,13 +1457,36 @@ add_action('tribe_events_url_table', function ($event_id) {
 
 // Save the custom fields when the event is saved
 add_action('save_post_tribe_events', function ($post_id) {
+    // Only act on a real submission of the event edit form. The nonce is printed
+    // alongside these fields, so its absence means the save came from somewhere
+    // that never showed them — autosave, quick edit, REST, the Community Events
+    // front-end form. Without this check those saves fall through to the else
+    // branch below and silently reset _EventOnline to '0'.
+    if (
+        !isset($_POST['edpsybold_event_fields_nonce'])
+        || !wp_verify_nonce(
+            sanitize_text_field(wp_unslash($_POST['edpsybold_event_fields_nonce'])),
+            'edpsybold_event_fields'
+        )
+    ) {
+        return;
+    }
+
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+
+    if (!current_user_can('edit_post', $post_id)) {
+        return;
+    }
+
     if (isset($_POST['EventOnline'])) {
         update_post_meta($post_id, '_EventOnline', '1');
     } else {
         update_post_meta($post_id, '_EventOnline', '0');
     }
     if (isset($_POST['EventCTALabel'])) {
-        update_post_meta($post_id, '_EventCTALabel', sanitize_text_field($_POST['EventCTALabel']));
+        update_post_meta($post_id, '_EventCTALabel', sanitize_text_field(wp_unslash($_POST['EventCTALabel'])));
     }
 });
 

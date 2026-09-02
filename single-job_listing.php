@@ -82,7 +82,16 @@
                 <div class="meta-img-r"></div>
             </div>
 
-            <?php if (get_option('job_manager_hide_expired_content', 1) && 'expired' === $post->post_status): ?>
+            <?php
+            // Mirrors WP Job Manager's own content-single-job_listing.php: this
+            // theme template replaces it, so the view-capability check and the
+            // password gate have to be re-asserted here or restricted listings
+            // render in full to anyone.
+            if (post_password_required($post)) : ?>
+                <div class="job_description"><?php echo get_the_password_form(); ?></div>
+            <?php elseif (!job_manager_user_can_view_job_listing($post->ID)) : ?>
+                <?php get_job_manager_template_part('access-denied', 'single-job_listing'); ?>
+            <?php elseif (get_option('job_manager_hide_expired_content', 1) && 'expired' === $post->post_status): ?>
                 <div class="job-manager-info"><?php _e('This listing has expired.', 'wp-job-manager'); ?></div>
             <?php else: ?>
                 <div class="job_description">
@@ -93,7 +102,7 @@
 
                 <?php if (candidates_can_apply()): ?>
                     <?php get_job_manager_template('job-application.php'); ?>
-                    
+
                 <?php endif; ?>
 
             <?php endif; ?>

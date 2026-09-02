@@ -15,7 +15,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-global $job_manager;
+global $job_manager, $post;
+
+// Mirrors the guard in WP Job Manager's own content-summary-job_listing.php —
+// see content-job_listing.php for the rationale.
+if ( post_password_required( $post ) || ! job_manager_user_can_view_job_listing( $post->ID ) ) {
+	return;
+}
+
 echo '<!-- file: job_manager/content-summary-job_listing.php -->';
 ?>
 <a href="<?php the_permalink(); ?>" class="crp_link post-3212 crp_job">
