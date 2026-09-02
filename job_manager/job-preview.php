@@ -113,7 +113,7 @@ if (!defined('ABSPATH')) {
 					<?php if ($interview) { ?>
 						<div class="meta-item">
 							<div class="label">Possible interview date</div>
-							<div class="detail closing-date"><?php echo $interview ?></div>
+							<div class="detail closing-date"><?php echo esc_html($interview) ?></div>
 						</div>
 					<?php } ?>
 

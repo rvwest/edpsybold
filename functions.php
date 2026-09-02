@@ -1674,7 +1674,11 @@ function modify_wordfence_ip_display($formatted_row, $row)
 {
     if (isset($row['IP'])) {
         $ip = $row['IP'];
-        $ip_url = sprintf('<a href="https://cpanel.edpsy.org.uk/cpsess8093929927/frontend/jupiter/denyip/add.html?ip=%s" target="_blank">%s</a>', $ip, $ip);
+        $ip_url = sprintf(
+            '<a href="https://cpanel.edpsy.org.uk/frontend/jupiter/denyip/add.html?ip=%s" target="_blank">%s</a>',
+            esc_attr($ip),
+            esc_html($ip)
+        );
         $formatted_row = str_replace($ip, $ip_url, $formatted_row);
     }
     return $formatted_row;

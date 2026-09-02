@@ -51,7 +51,7 @@ $website_title = tribe_events_get_venue_website_title(); ?>
 
 	<?php if (!empty($phone)): ?>
 		<li>
-			<a href="tel:<?php echo $phone ?>"><?php echo $phone ?></a>
+			<a href="tel:<?php echo esc_attr($phone) ?>"><?php echo esc_html($phone) ?></a>
 	</li>
 	<?php endif ?>
 	</ul>

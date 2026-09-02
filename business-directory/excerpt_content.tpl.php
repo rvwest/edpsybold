@@ -22,7 +22,7 @@
 
 			echo '<div class="wpbdp-field-value wpbdp-methodology">Multi-method</div>';
 		} else {
-			echo '<div class="wpbdp-field-value wpbdp-methodology">' . $fields->methodology->raw[0] . '</div>';
+			echo '<div class="wpbdp-field-value wpbdp-methodology">' . esc_html($fields->methodology->raw[0]) . '</div>';
 		}
 		?>
 
@@ -31,7 +31,7 @@
 
 
 	<div class="listing-title">
-		<h3><?php echo $fields->title->raw; ?></h3>
+		<h3><?php echo esc_html($fields->title->raw); ?></h3>
 		<?php echo $fields->subtitle->html; ?>
 	</div>
 </div>
