@@ -1194,7 +1194,7 @@ function custom_submit_job_form_fields($fields)
         'required' => true,
         'placeholder' => 'I confirm this',
         'priority' => 9,
-        'description' => __('<p>We follow the <a href="https://www.asa.org.uk/type/non_broadcast/code_section/20.html">CAP Code for employment advertisements</a>. Please confirm:</p><ul><li>This is a genuine employment opportunity</li><li>All details provided are comprehensive and accurate</li><li>You are acting directly for the employer, and not an employment agency</li><li>Your organisation is not in dispute with the <abbr title="Association of Educational Psychologists">AEP</abbr></li></ul>', 'wp-job-manager'),
+        'description' => __('<p>We follow the <a href="https://www.asa.org.uk/type/non_broadcast/code_section/20.html">CAP Code for employment advertisements</a>. Please confirm:</p><ul><li>This is a genuine employment opportunity</li><li>All details provided are comprehensive and accurate</li><li>You are acting directly for the employer, and not an employment agency</li></ul>', 'wp-job-manager'),
     );
 
     unset($fields['company']['company_video']);
@@ -2386,9 +2386,9 @@ if (!function_exists('mytheme_wps_external_links_card')) {
 
         global $wpdb;
 
-        $table     = $wpdb->prefix . 'statistics_events';
+        $table = $wpdb->prefix . 'statistics_events';
         $date_from = $range['from'] . ' 00:00:00';
-        $date_to   = $range['to'] . ' 23:59:59';
+        $date_to = $range['to'] . ' 23:59:59';
         $host_like = '%' . $wpdb->esc_like('edpsy.org.uk') . '%';
 
         // phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
@@ -2416,7 +2416,7 @@ if (!function_exists('mytheme_wps_external_links_card')) {
 
         $results = $wpdb->get_results($sql);
 
-        $total_clicks = (int) $wpdb->get_var( $wpdb->prepare(
+        $total_clicks = (int) $wpdb->get_var($wpdb->prepare(
             "SELECT COUNT(*) FROM `{$table}`
             WHERE event_name = 'click'
                 AND page_id = %d
@@ -2429,7 +2429,7 @@ if (!function_exists('mytheme_wps_external_links_card')) {
             $date_from,
             $date_to,
             $host_like
-        ) );
+        ));
         // phpcs:enable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 
         include get_template_directory() . '/wp-statistics/external-links-card.php';
