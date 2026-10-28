@@ -624,9 +624,9 @@
         align-items: flex-start;
         border: 1px solid var(--cl-dark);
 
-        .menu-item-has-children:last-of-type & {
+        .menu-item-has-children:nth-last-of-type(-n+2) & {
           right: 0;
-          left: inherit
+          left: inherit;
         }
 
         li {
