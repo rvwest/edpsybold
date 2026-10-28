@@ -30,7 +30,7 @@
 			</p>
 
 			<p class="footer-message"><a href="/community-guidelines">Community guidelines</a> <a
-					href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Reusing our content</a> <a
+					href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Reusing our content</a> <a
 					href="/cookies">Cookies and privacy</a></p>
 
 

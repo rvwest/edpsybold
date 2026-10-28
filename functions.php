@@ -1157,7 +1157,7 @@ function custom_submit_job_form_fields($fields)
     $fields['job']['job_location']['placeholder'] = "";
     $fields['job']['application']['label'] = "Where to apply";
     $fields['job']['application']['description'] = "eg https://yourorg.gov.uk/apply";
-    $fields['job']['application']['value'] = "http://";
+    $fields['job']['application']['value'] = "https://";
     $fields['job']['application']['placeholder'] = "";
     $fields['job']['job_type']['description'] = "You can select more than one";
     $fields['company']['company_name']['placeholder'] = "";
