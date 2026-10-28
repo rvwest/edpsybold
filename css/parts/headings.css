@@ -10,7 +10,7 @@
 /* == listing page (jobs, blog, thesis, events) - page title + CTA block ============== */
 .job-listings-page article header,
 .business-directory article header,
-.archive main header.header,
+.archive:not(.search) main header.header,
 .tribe-events header.tribe-events-header,
 .add-job header.header {
     display: flex;
@@ -294,11 +294,14 @@ body:not(.home, .page-template-page-dan),
 /* == Listing pages (jobs, blog, events (.archive covers both))  ============== */
 /* ==================================================================================== */
 
-
+/* 23439 and 8129 are search landing pages on live and local */
 .job-listings-page,
 .archive,
 .wpbdp-view-main,
-.wpbdp-view-search {
+.wpbdp-view-search,
+.search,
+.page-id-23439,
+.page-id-8129 {
     h1 {
         text-transform: lowercase;
     }
@@ -306,7 +309,7 @@ body:not(.home, .page-template-page-dan),
 
 /* == Display large H1 (jobs, blog, events)  ============== */
 body.edp-jobs,
-body.archive {
+body.archive:not(.search) {
     h1 {
         font-size: var(--fs-display-large);
         line-height: var(--lh-display-large);
@@ -361,7 +364,7 @@ body.category-jobs-admin h1.entry-title,
 
 /* == Light ===== */
 /* Blog listing page */
-.archive {
+.archive:not(.search) {
     h1 {
         color: var(--cl-blog-primary);
         margin-left: -7px;
