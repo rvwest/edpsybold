@@ -45,9 +45,5 @@ $redirect = 'event_form' === $page_slug
 		</div>
 	<?php endif; ?>
 
-	<a class="tribe-ce-lostpassword" href="<?php echo esc_url( wp_lostpassword_url() ); ?>">
-		<?php esc_html_e( 'Lost your password?', 'tribe-events-community' ); ?>
-	</a>
-
 	<?php do_action( 'tribe_community_after_login_form' ); ?>
 </div>

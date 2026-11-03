@@ -539,11 +539,6 @@ body.tribe_community_list:not(.wp-admin, .wp-core-ui) {
         display: none;
     }
 
-    /* Signed-out state: 'Sign in' button sits inline with the password link */
-    .tribe-ce-login {
-        margin-right: var(--sp-medium);
-    }
-
     .tribe-community-events-content {
         margin-bottom: var(--sp-xxlarge);
     }
