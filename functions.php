@@ -1639,6 +1639,21 @@ function tribe_add_website_helptext()
 add_action('tribe_events_community_section_after_website', 'tribe_add_website_helptext');
 
 
+// Tribe community events - the 'My events' dashboard hides its title when logged out
+// (the plugin swaps the list template for a login form), so add the heading back.
+
+function edpsybold_community_logged_out_title($html, $slug)
+{
+    if ($slug !== 'listing' || is_user_logged_in()) {
+        return $html;
+    }
+
+    return $html . '<h1 class="tribe-community-events-list-title">' . esc_html__('My events', 'tribe-events-community') . '</h1>';
+}
+
+add_filter('tec_community_tickets_before_html', 'edpsybold_community_logged_out_title', 10, 2);
+
+
 // Add the custom event cost column to the admin list view
 function tribe_events_add_column_headers($columns)
 {

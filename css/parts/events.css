@@ -521,6 +521,10 @@
 
 
 body.tribe_community_list:not(.wp-admin, .wp-core-ui) {
+
+    /* h1 is the 'My events' title; it is an h1 in both the logged-in and
+       logged-out states, and needs to out-rank the plugin's own title rule */
+    h1,
     h2:not(.signup-content h2) {
         font-size: var(--fs-display-medium);
         line-height: var(--lh-display-medium);
