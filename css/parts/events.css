@@ -519,6 +519,10 @@
 }
 
 
+.tribe-events-community-login-form {
+    min-height: 40vh;
+}
+
 
 body.tribe_community_list:not(.wp-admin, .wp-core-ui) {
 

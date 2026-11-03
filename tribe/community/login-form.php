@@ -24,26 +24,23 @@ $redirect = 'event_form' === $page_slug
 
 ?>
 
-<div class="tribe-community-events">
+<div class="tribe-community-events tribe-events-community-login-form">
 
-	<?php do_action( 'tec_events_community_{$page_slug}_before_login_form' ); ?>
+	<?php do_action('tec_events_community_{$page_slug}_before_login_form'); ?>
 
-	<?php do_action( 'tribe_community_before_login_form' ); ?>
+	<?php do_action('tribe_community_before_login_form'); ?>
 
-	<p><?php echo esc_html( $caption ); ?></p>
+	<p>Please sign in to view the events you've added.</p>
 
-	<a
-		class="tribe-button tribe-button-primary tribe-ce-login"
-		href="<?php echo esc_url( wp_login_url( $redirect ) ); ?>"
-	>
-		<?php esc_html_e( 'Sign in', 'tribe-events-community' ); ?>
+	<a class="tribe-button tribe-button-primary tribe-ce-login" href="<?php echo esc_url(wp_login_url($redirect)); ?>">
+		<?php esc_html_e('Sign in', 'tribe-events-community'); ?>
 	</a>
 
-	<?php if ( get_option( 'users_can_register' ) ) : ?>
+	<?php if (get_option('users_can_register')): ?>
 		<div class="tribe-ce-register">
-			<?php wp_register( '<div class="tribe-ce-register">', '</div>', true ); ?>
+			<?php wp_register('<div class="tribe-ce-register">', '</div>', true); ?>
 		</div>
 	<?php endif; ?>
 
-	<?php do_action( 'tribe_community_after_login_form' ); ?>
+	<?php do_action('tribe_community_after_login_form'); ?>
 </div>
