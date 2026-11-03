@@ -364,7 +364,7 @@ body.category-jobs-admin h1.entry-title,
 
 /* == Light ===== */
 /* Blog listing page */
-.archive:not(.search) {
+.archive:not(.search, .post-type-archive-tribe_events) {
     h1 {
         color: var(--cl-blog-primary);
         margin-left: -7px;

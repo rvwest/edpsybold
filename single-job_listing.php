@@ -92,7 +92,7 @@
             <?php elseif (!job_manager_user_can_view_job_listing($post->ID)) : ?>
                 <?php get_job_manager_template_part('access-denied', 'single-job_listing'); ?>
             <?php elseif (get_option('job_manager_hide_expired_content', 1) && 'expired' === $post->post_status): ?>
-                <div class="job-manager-info"><?php _e('This listing has expired.', 'wp-job-manager'); ?></div>
+                <div class="job-manager-info"><div class="job-ad-closed"><?php _e('This listing has closed', 'wp-job-manager'); ?></div></div>
             <?php else: ?>
                 <div class="job_description">
                     <?php wpjm_the_job_description(); ?>

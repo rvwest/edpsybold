@@ -137,6 +137,13 @@
 
         margin-bottom: 0;
     }
+
+    .job-ad-closed {
+        background-color: var(--cl-dark);
+        color: var(--cl-light);
+        padding: var(--sp-small);
+        margin-bottom: var(--sp-xlarge);
+    }
 }
 
 /* ==== Thesis only ==================================== */
