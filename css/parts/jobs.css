@@ -507,6 +507,10 @@ body>.job-manager-error {
 
 /* Dashboard */
 
+#job-manager-job-dashboard {
+    min-height: 40vh;
+}
+
 #job-manager-job-dashboard td.company {
     vertical-align: middle;
 
