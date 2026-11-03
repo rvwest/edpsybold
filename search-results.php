@@ -47,7 +47,7 @@ $search_context = wp_parse_args(
             </header>
             <div class="entry-content" itemprop="mainContentOfPage">
                 <p><?php esc_html_e('Sorry, nothing matched your search. Please try again.', 'edpsybold'); ?></p>
-                <?php require locate_template('search-form.php'); ?>
+                <?php // require locate_template('search-form.php'); ?>
             </div>
         </article>
     <?php endif; ?>

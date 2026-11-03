@@ -9,6 +9,14 @@ body.search {
     }
 }
 
+/* search start page */
+body.page-id-8129,
+body.page-id-23439 {
+    .type-page .entry-content {
+        min-height: 40vh;
+    }
+}
+
 body.search,
 .business-directory.wpbdp-view-main,
 .business-directory.wpbdp-view-search {
@@ -95,6 +103,10 @@ body.search,
             padding-left: var(--sp-small);
         }
 
+    }
+
+    .search-results {
+        min-height: 80vh;
     }
 
     .search-results__filters-2 {
