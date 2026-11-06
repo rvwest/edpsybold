@@ -149,7 +149,7 @@
                                                                     <div class="backblock edp-fullwidth">
                                                                         <div class="grid12">
                                                                             <div class="backblock-link"><a
-                                                                                    href="../boost"><i
+                                                                                    href="../../boost"><i
                                                                                         class="far fa-arrow-left fa-xs"></i>
                                                                                     boost</a>
                                                                             </div>
