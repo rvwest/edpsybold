@@ -242,6 +242,30 @@ body {
 
 }
 
+/* --- Boost -------- */
+
+.edp-parent-boost,
+.edp-parent-boost-2 {
+
+    header[role="banner"] {
+        border-bottom: none;
+    }
+
+    .backblock {
+        background-color: var(--cl-green);
+
+        a {
+            color: var(--cl-light);
+
+            &:hover {
+                color: var(--cl-light);
+
+            }
+        }
+    }
+
+}
+
 /* === Jobs ================ */
 
 /* --- Jobs listing -------- */

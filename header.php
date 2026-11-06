@@ -144,30 +144,46 @@
                                                             </div>
                                                             <div id="container" class="edp-fullwidth">
                                                                 <main id="content" role="main" class="grid12">
-
-                                                                <?php elseif (in_array('edp-parent-interest-groups', get_body_class(), true)): ?>
-                                                                    <!-- var: single thesis page -->
+                                                                <?php elseif (array_intersect(['edp-parent-boost', 'edp-parent-boost-2'], get_body_class())): ?>
+                                                                    <!-- var: boost page -->
                                                                     <div class="backblock edp-fullwidth">
                                                                         <div class="grid12">
                                                                             <div class="backblock-link"><a
-                                                                                    href="../../interest-groups"><i
+                                                                                    href="../boost"><i
                                                                                         class="far fa-arrow-left fa-xs"></i>
-                                                                                    all groups</a>
+                                                                                    boost</a>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                     <div id="container" class="edp-fullwidth">
                                                                         <main id="content" role="main" class="grid12">
-                                                                        <?php elseif (is_page_template('page-dan.php')): ?>
-                                                                            <!-- var: dan profile page -->
-                                                                            <div id="container" class="edp-fullwidth">
-                                                                                <main id="content" role="main"
-                                                                                    class="dan-page-content">
-                                                                        <?php else: ?>
-                                                                            <!-- var: regular page -->
-
+                                                                        <?php elseif (in_array('edp-parent-interest-groups', get_body_class(), true)): ?>
+                                                                            <!-- var: single thesis page -->
+                                                                            <div class="backblock edp-fullwidth">
+                                                                                <div class="grid12">
+                                                                                    <div class="backblock-link"><a
+                                                                                            href="../../interest-groups"><i
+                                                                                                class="far fa-arrow-left fa-xs"></i>
+                                                                                            all groups</a>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
                                                                             <div id="container" class="edp-fullwidth">
                                                                                 <main id="content" role="main"
                                                                                     class="grid12">
-                                                                                <?php endif; ?>
-                                                                                <!-- file end: header.php -->
+                                                                                <?php elseif (is_page_template('page-dan.php')): ?>
+                                                                                    <!-- var: dan profile page -->
+                                                                                    <div id="container"
+                                                                                        class="edp-fullwidth">
+                                                                                        <main id="content" role="main"
+                                                                                            class="dan-page-content">
+                                                                                        <?php else: ?>
+                                                                                            <!-- var: regular page -->
+
+                                                                                            <div id="container"
+                                                                                                class="edp-fullwidth">
+                                                                                                <main id="content"
+                                                                                                    role="main"
+                                                                                                    class="grid12">
+                                                                                                <?php endif; ?>
+                                                                                                <!-- file end: header.php -->

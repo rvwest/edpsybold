@@ -215,3 +215,33 @@ p.chunky-bodytext {
         background-image: url(../../images/edpsy-swirls-16-rh.svg);
     }
 }*/
+
+/* == edpsy Boost (page 8038): logo in place of the H1 text ==============
+   The heading text stays in the DOM and is only pushed out of the box
+   (Kellum method), so screen readers still announce the H1 normally. */
+
+body.page-id-8038 h1.entry-title {
+    width: min(100%, 320px);
+    aspect-ratio: 1024 / 245.21;
+    /* intrinsic size of images/edpsy-boost-logo.svg */
+    background-image: url(../../images/edpsy-boost-logo.svg);
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: contain;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* Forced-colours modes drop background images, so fall back to the text. */
+@media (forced-colors: active) {
+
+    body.page-id-8038 h1.entry-title {
+        width: auto;
+        aspect-ratio: auto;
+        background-image: none;
+        text-indent: 0;
+        white-space: normal;
+        overflow: visible;
+    }
+}
